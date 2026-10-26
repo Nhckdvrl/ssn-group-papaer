@@ -1,0 +1,3501 @@
+{
+  "spec": {
+    "experiment": "E148",
+    "revision": "step5000-tokens20B",
+    "seq_len": 512,
+    "batch_size": 2,
+    "microbatch": 2,
+    "warm_steps": 32,
+    "pulse_steps": 128,
+    "suffix_steps": 512,
+    "lr": 1e-05,
+    "warmup_steps": 16,
+    "grad_clip": 1.0,
+    "aux_coef": 0.001,
+    "layer": 9,
+    "seed": 148,
+    "optimizer": "HF_Adafactor_FP32_master",
+    "beta1": null,
+    "weight_decay": 0.0,
+    "relative_step": false,
+    "scale_parameter": false,
+    "held_sequences": 64,
+    "eval_batch": 8,
+    "snapshots": [
+      32,
+      160,
+      288,
+      608,
+      672
+    ],
+    "full_snapshots": [
+      32,
+      160,
+      672
+    ],
+    "max_gpu_seconds": 10800
+  },
+  "spec_hash": "4582b24aaae3038b4744c50a32dcaae4fa263a19a8d538507a2844d7bb9e0d89",
+  "source_sha256": {
+    "e148_common.py": "7b8d6e6c721ba0f86a19777d25b74e790b03c4dbd3e4a2fe1c7de86e8ee6bb9a",
+    "e148_native.py": "e94659d25c6dbc71eebbd60fd24119b7782586c36a72def2ea771df34c3a31e4",
+    "e148_readout.py": "91e08af04f05f3786e72bacefe3bdee81f23db3745281d854dd496f00021bd2f",
+    "e148_test.py": "b0043b282c81aa7655ca33a85b81dc8620cc53b2abcfd8ef5053ddb8b5ff4d8a",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92"
+  },
+  "software": {
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "Adafactor_source_sha256": "58ccaf2c61a19a9995c044d58ee310eb50b8243dd22128345c8fe70611ef6cb9"
+  },
+  "model_assets": {
+    "model_repo": "allenai/OLMoE-1B-7B-0924",
+    "revision": "step5000-tokens20B",
+    "files": {
+      "config.json": {
+        "source": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B/config.json",
+        "path": "/tmp/xiang-moe-20261026/e148/model/config.json",
+        "size_bytes": 760,
+        "sha256": "7b51fed908c2058ab52ba074d13c5dc4e2622b5a883caef91a6770724a093e16"
+      },
+      "generation_config.json": {
+        "source": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B/generation_config.json",
+        "path": "/tmp/xiang-moe-20261026/e148/model/generation_config.json",
+        "size_bytes": 120,
+        "sha256": "d77272ffaa7e62a904e8e130bb25ab11585bd4a5026e388d6d682e4b82892ce2"
+      },
+      "model-00001-of-00003.safetensors": {
+        "source": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B/model-00001-of-00003.safetensors",
+        "path": "/tmp/xiang-moe-20261026/e148/model/model-00001-of-00003.safetensors",
+        "size_bytes": 4997744872,
+        "sha256": "f9b2a84690f6cf7d33ed9168ad4fc7fe7d5734381f4a7e4533324e7f64dfbc82"
+      },
+      "model-00002-of-00003.safetensors": {
+        "source": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B/model-00002-of-00003.safetensors",
+        "path": "/tmp/xiang-moe-20261026/e148/model/model-00002-of-00003.safetensors",
+        "size_bytes": 4997235176,
+        "sha256": "78beb59324ba5190afcc4c396c66d4e1d7c0898f9cb76224657aa941297e3fae"
+      },
+      "model-00003-of-00003.safetensors": {
+        "source": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B/model-00003-of-00003.safetensors",
+        "path": "/tmp/xiang-moe-20261026/e148/model/model-00003-of-00003.safetensors",
+        "size_bytes": 3843741912,
+        "sha256": "432c8665e60580dc401b46be1771ed73db24bfdf0f0f794698d628fca9252eb0"
+      },
+      "model.safetensors.index.json": {
+        "source": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B/model.safetensors.index.json",
+        "path": "/tmp/xiang-moe-20261026/e148/model/model.safetensors.index.json",
+        "size_bytes": 287214,
+        "sha256": "0e2e1e0d8d357ac7af817cff28410c3dbad398f060c517a433e4076b2aae5579"
+      },
+      "special_tokens_map.json": {
+        "source": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B/special_tokens_map.json",
+        "path": "/tmp/xiang-moe-20261026/e148/model/special_tokens_map.json",
+        "size_bytes": 65,
+        "sha256": "b77491e270c6fcc5b2ecf22370f7318a6a18d3cabea09ba7bab92e9bf12656c2"
+      },
+      "tokenizer.json": {
+        "source": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B/tokenizer.json",
+        "path": "/tmp/xiang-moe-20261026/e148/model/tokenizer.json",
+        "size_bytes": 2115417,
+        "sha256": "a094266ac6c4982efba277bc251349a5a6d6ad37efb39a2a90f53d8be2a40a40"
+      },
+      "tokenizer_config.json": {
+        "source": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B/tokenizer_config.json",
+        "path": "/tmp/xiang-moe-20261026/e148/model/tokenizer_config.json",
+        "size_bytes": 5372,
+        "sha256": "78a839c7851f14f9fb30e664c2b46166dc0628f2900679e5ec160656f702edff"
+      }
+    },
+    "CPU_stage_seconds": 246.83808183670044
+  },
+  "model_assets_sha256": "98abb3ecb41a96b112d428a2053b3b8105fc57da2cea5b527035db670a4cc97e",
+  "plan_path": "/tmp/xiang-moe-20261026/e148/plan.npz",
+  "plan_sha256": "2a99e17cdca9b2adbbf708c3765fae70b47d8459dcad2677bac087d2cf4c41fb",
+  "data_manifest": "/tmp/xiang-moe-20261025/e125_data_cover/manifest.json",
+  "data_manifest_sha256": "6c744887ce55db491c58ed191e8bfd427262a7a083466ca28d48134ddee2349f",
+  "data_provenance": {
+    "train": [
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_000.npy",
+        "key": null,
+        "sha256": "9b486efbe21c014fc1820401b2b0be730d17e5814f69f4f870dd7cef642e75a1",
+        "source": "Dolma CC",
+        "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+        "dtype": "uint16",
+        "token_count": 31005089,
+        "windows": 60438,
+        "sampling_weight": 0.06055681439240045
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_001.npy",
+        "key": null,
+        "sha256": "cfebffed80206964848b4a856a9920b6cf63f7e24d5cc58f479b761393733fb2",
+        "source": "Dolma CC",
+        "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+        "dtype": "uint16",
+        "token_count": 31005073,
+        "windows": 60438,
+        "sampling_weight": 0.06055678314239947
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_002.npy",
+        "key": null,
+        "sha256": "d1218b2c82b9cce1d1b7678862e437588489b9aaaf4b4bf5561a8b2afef0d4c8",
+        "source": "Dolma CC",
+        "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+        "dtype": "uint16",
+        "token_count": 31005073,
+        "windows": 60438,
+        "sampling_weight": 0.06055678314239947
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_003.npy",
+        "key": null,
+        "sha256": "2a1caa2dbf5d3a202c199b8f21f8a6aaa394ea6ea8de8aa522f4d88cc3fb5830",
+        "source": "Dolma CC",
+        "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+        "dtype": "uint16",
+        "token_count": 31005073,
+        "windows": 60438,
+        "sampling_weight": 0.06055678314239947
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_004.npy",
+        "key": null,
+        "sha256": "d4ead70ce7a4a2a5521b5b9356c32152a7d8ac772bfd04222be042414f406bb9",
+        "source": "Dolma CC",
+        "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+        "dtype": "uint16",
+        "token_count": 31005073,
+        "windows": 60438,
+        "sampling_weight": 0.06055678314239947
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_005.npy",
+        "key": null,
+        "sha256": "81b5b58be77cd3c5d5e03aad8f08e61a2dccf45753ae2974996227ac9a7ec75f",
+        "source": "Dolma CC",
+        "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+        "dtype": "uint16",
+        "token_count": 31005073,
+        "windows": 60438,
+        "sampling_weight": 0.06055678314239947
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_006.npy",
+        "key": null,
+        "sha256": "172d6c2bd807797ec0b7a38be6aed3864f63607c4fd46d80985ff1d471379d89",
+        "source": "Refined Web",
+        "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+        "dtype": "uint16",
+        "token_count": 71019906,
+        "windows": 138440,
+        "sampling_weight": 0.13871075433471108
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_007.npy",
+        "key": null,
+        "sha256": "4bd87f3ad0e7354bffa490c0e30801a5655fd2d746e579b351fa04858245045f",
+        "source": "Refined Web",
+        "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+        "dtype": "uint16",
+        "token_count": 71019906,
+        "windows": 138440,
+        "sampling_weight": 0.13871075433471108
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_008.npy",
+        "key": null,
+        "sha256": "a14bcf86405feacbb4d2283155d2c6cf0eda9c843f961488c31eceaa33e2e787",
+        "source": "StarCoder",
+        "file_id": "starcoder/starcoder-0017.json.gz",
+        "dtype": "uint16",
+        "token_count": 41049633,
+        "windows": 80018,
+        "sampling_weight": 0.08017506500547078
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_009.npy",
+        "key": null,
+        "sha256": "b1872cdd2a657fc79a0d7e554ea620d71e8ee5239d122445fe1e8b21ff0202ae",
+        "source": "StarCoder",
+        "file_id": "starcoder/starcoder-0047.json.gz",
+        "dtype": "uint16",
+        "token_count": 41049633,
+        "windows": 80018,
+        "sampling_weight": 0.08017506500547078
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_010.npy",
+        "key": null,
+        "sha256": "0f1c646ef2648dc7de24d8f4019470cb802312b4a8a11c8ffae2542198558ccf",
+        "source": "C4",
+        "file_id": "c4-filtered/c4-0073.json.gz",
+        "dtype": "uint16",
+        "token_count": 10768145,
+        "windows": 20990,
+        "sampling_weight": 0.021031531907235373
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_011.npy",
+        "key": null,
+        "sha256": "4f84d5c5bca2f079f04fd942cde07102da81e499a391e643a7c8219c71f0cc94",
+        "source": "C4",
+        "file_id": "c4-filtered/c4-0032.json.gz",
+        "dtype": "uint16",
+        "token_count": 10768129,
+        "windows": 20990,
+        "sampling_weight": 0.021031500657234397
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_012.npy",
+        "key": null,
+        "sha256": "13358489f6de7afb54ac7372491a5505fb713186fc451cf95503b451d5eace4e",
+        "source": "Reddit",
+        "file_id": "reddit/reddit-0026.json.gz",
+        "dtype": "uint16",
+        "token_count": 12433153,
+        "windows": 24236,
+        "sampling_weight": 0.0242835007588594
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_013.npy",
+        "key": null,
+        "sha256": "888213c93e2559ac8f7546e4afcf974a572e72b98e1e49febc6490e13ded7ce7",
+        "source": "Reddit",
+        "file_id": "reddit/reddit-0041.json.gz",
+        "dtype": "uint16",
+        "token_count": 12433153,
+        "windows": 24236,
+        "sampling_weight": 0.0242835007588594
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_014.npy",
+        "key": null,
+        "sha256": "c30a323ce80cc60b9f41a54ad962691e9473361069d36f871f696455782a20df",
+        "source": "Semantic Scholar",
+        "file_id": "pes2o/pes2o-0009.json.gz",
+        "dtype": "uint16",
+        "token_count": 8900832,
+        "windows": 17350,
+        "sampling_weight": 0.01738443804326369
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_015.npy",
+        "key": null,
+        "sha256": "88d8985d51d729712e0d6a9ec6bc1766eb0c488de2d5b92d4a5fa1bf1b01201e",
+        "source": "Semantic Scholar",
+        "file_id": "pes2o/pes2o-0018.json.gz",
+        "dtype": "uint16",
+        "token_count": 8900832,
+        "windows": 17350,
+        "sampling_weight": 0.01738443804326369
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_016.npy",
+        "key": null,
+        "sha256": "5504d9cb679f0a6a4d848b8f722d0e7e7864d4ab85117c75c571a4b9f71a081f",
+        "source": "arXiv",
+        "file_id": "redpajama-arxiv/arxiv-0002.json.gz",
+        "dtype": "uint16",
+        "token_count": 4357056,
+        "windows": 8493,
+        "sampling_weight": 0.008509875265933602
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_017.npy",
+        "key": null,
+        "sha256": "5e45af543cac88fd085cc777029f6966f308f274ff1057c3fbd761fc1dae8160",
+        "source": "arXiv",
+        "file_id": "redpajama-arxiv/arxiv-0063.json.gz",
+        "dtype": "uint16",
+        "token_count": 4357040,
+        "windows": 8493,
+        "sampling_weight": 0.008509844015932626
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_018.npy",
+        "key": null,
+        "sha256": "d5a8da4e9a742832d7db83ffa9cad50e70aa1057a404546da94a079c619c3463",
+        "source": "StackExchange",
+        "file_id": "redpajama-stackexchange/stackexchange-0014.json.gz",
+        "dtype": "uint16",
+        "token_count": 3049936,
+        "windows": 5945,
+        "sampling_weight": 0.005956906436153326
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_019.npy",
+        "key": null,
+        "sha256": "6be8a9948a9f81485aad28099c4dbfb2b56899aa0e250da69c48a29302c3c3bc",
+        "source": "StackExchange",
+        "file_id": "redpajama-stackexchange/stackexchange-0011.json.gz",
+        "dtype": "uint16",
+        "token_count": 3049936,
+        "windows": 5945,
+        "sampling_weight": 0.005956906436153326
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_020.npy",
+        "key": null,
+        "sha256": "eacd177984c06c379aa8d5928175c70229cdd0447e2d6ed6558a865c417dac30",
+        "source": "Flan",
+        "file_id": "tulu_flan/tulu_flan-0001.json.gz",
+        "dtype": "uint16",
+        "token_count": 2567552,
+        "windows": 5004,
+        "sampling_weight": 0.005014750156710942
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_021.npy",
+        "key": null,
+        "sha256": "94e961629234db769a9c3171eb084f22f961fbe7182a1bae1890949b4a644da2",
+        "source": "Flan",
+        "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+        "dtype": "uint16",
+        "token_count": 2567536,
+        "windows": 5004,
+        "sampling_weight": 0.005014718906709966
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_022.npy",
+        "key": null,
+        "sha256": "bb41061251fd64df8da4da0532e2a9fa6c66b7d546f221851d3fb0823e83b166",
+        "source": "CC News",
+        "file_id": "cc_news_head/cc_news-0001.json.gz",
+        "dtype": "uint16",
+        "token_count": 1112608,
+        "windows": 2168,
+        "sampling_weight": 0.002173062567908205
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_023.npy",
+        "key": null,
+        "sha256": "0f77a7eba792936b5c161b92e26980ad01664520598df403d853aac701fca040",
+        "source": "CC News",
+        "file_id": "cc_news_tail/cc_news-0000.json.gz",
+        "dtype": "uint16",
+        "token_count": 1112608,
+        "windows": 2168,
+        "sampling_weight": 0.002173062567908205
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_024.npy",
+        "key": null,
+        "sha256": "c2216795e5f7035719af86873be0be3d1c8f166b5777a677c2d3a7d7025de2fa",
+        "source": "CC News",
+        "file_id": "cc_news_middle/cc_news-0002.json.gz",
+        "dtype": "uint16",
+        "token_count": 1112608,
+        "windows": 2168,
+        "sampling_weight": 0.002173062567908205
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_025.npy",
+        "key": null,
+        "sha256": "4e035c2f0b84b69b2fb9fe9361ff5c1badb813a5711e027c5bbbe7393b72bf47",
+        "source": "CC News",
+        "file_id": "cc_news_head/cc_news-0000.json.gz",
+        "dtype": "uint16",
+        "token_count": 1112592,
+        "windows": 2168,
+        "sampling_weight": 0.0021730313179072285
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_026.npy",
+        "key": null,
+        "sha256": "019a3641759628974bd881dd19fb1d23ad4bb5925227626bc60e50e76c4fc532",
+        "source": "OpenWebMath",
+        "file_id": "proof_pile_2-open_web_math/open-web-math-train-0001.json.gz",
+        "dtype": "uint16",
+        "token_count": 1960672,
+        "windows": 3821,
+        "sampling_weight": 0.003829437619669926
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_027.npy",
+        "key": null,
+        "sha256": "7c96a2cb748d5079820aeef56ef099f04b00116015d30bbdbeede439b1e7f20b",
+        "source": "OpenWebMath",
+        "file_id": "proof_pile_2-open_web_math/open-web-math-train-0000.json.gz",
+        "dtype": "uint16",
+        "token_count": 1960672,
+        "windows": 3821,
+        "sampling_weight": 0.003829437619669926
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_028.npy",
+        "key": null,
+        "sha256": "e814007e4970a4b1c82d42489321253d36cdb1d58ae36f8c611101a2e6e945db",
+        "source": "Algebraic Stack",
+        "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0000.json.gz",
+        "dtype": "uint16",
+        "token_count": 1960672,
+        "windows": 3821,
+        "sampling_weight": 0.003829437619669926
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_029.npy",
+        "key": null,
+        "sha256": "ac70b64deb3acf8e29739d2532b6a1f32cde576c9e893cc4a08f7ebdd897499c",
+        "source": "Algebraic Stack",
+        "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0009.json.gz",
+        "dtype": "uint16",
+        "token_count": 1960672,
+        "windows": 3821,
+        "sampling_weight": 0.003829437619669926
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_030.npy",
+        "key": null,
+        "sha256": "91dfa2a14ba9b3b6f438463032d624aa6ef068635c1df764bd5855e0c9e0543c",
+        "source": "Project Gutenberg",
+        "file_id": "books/books-0000.json.gz",
+        "dtype": "uint16",
+        "token_count": 1649456,
+        "windows": 3215,
+        "sampling_weight": 0.003221593850674808
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_031.npy",
+        "key": null,
+        "sha256": "d6e99d7b266fb53d3fbb0163ffd3c71dd10fc106073a998a7dc32da127a87c21",
+        "source": "MegaWika",
+        "file_id": "wikiref_megawika/megawika-0162.json.gz",
+        "dtype": "uint16",
+        "token_count": 715808,
+        "windows": 1395,
+        "sampling_weight": 0.0013980625436894544
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_032.npy",
+        "key": null,
+        "sha256": "f07ffc9d0728e79cbe9aed29778addc3240a01532a5eb6312bf9fae31278ae9d",
+        "source": "MegaWika",
+        "file_id": "wikiref_megawika/megawika-0144.json.gz",
+        "dtype": "uint16",
+        "token_count": 715792,
+        "windows": 1395,
+        "sampling_weight": 0.001398031293688478
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/train/file_033.npy",
+        "key": null,
+        "sha256": "2670906abce71008671e8a97bc04cb8796a727df1790b7c91ee72cd72dc59af5",
+        "source": "Wikipedia & Wikibooks",
+        "file_id": "wiki/wiki-0000.json.gz",
+        "dtype": "uint16",
+        "token_count": 2303008,
+        "windows": 4489,
+        "sampling_weight": 0.004498062640564457
+      }
+    ],
+    "held": [
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_000.npy",
+        "key": null,
+        "sha256": "0e20ddc9957412d643b0b2545dcf6d48b0128d83e01181e75ced50a069252d6e",
+        "source": "Dolma CC",
+        "file_id": "cc_en_tail/cc_en_tail-0337.json.gz",
+        "dtype": "uint16",
+        "token_count": 60557,
+        "windows": 118,
+        "sampling_weight": 0.06055693944306056
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_001.npy",
+        "key": null,
+        "sha256": "ab608ebba7fd51bde48dc214ea2f6c340fcc7128084b974e81f1e917610f2826",
+        "source": "Dolma CC",
+        "file_id": "cc_en_tail/cc_en_tail-0162.json.gz",
+        "dtype": "uint16",
+        "token_count": 60557,
+        "windows": 118,
+        "sampling_weight": 0.06055693944306056
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_002.npy",
+        "key": null,
+        "sha256": "1b014da5a738e1b8e80a5480a419ffcdd4b44f45e37d6d53dba124dcae88d7c7",
+        "source": "Dolma CC",
+        "file_id": "cc_en_head/cc_en_head-0142.json.gz",
+        "dtype": "uint16",
+        "token_count": 60557,
+        "windows": 118,
+        "sampling_weight": 0.06055693944306056
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_003.npy",
+        "key": null,
+        "sha256": "66a7b34ff17bf40cc931ec69cf1a0fe4b24de4f90fb9003bee7001ce88cf100a",
+        "source": "Dolma CC",
+        "file_id": "cc_en_middle/cc_en_middle-0342.json.gz",
+        "dtype": "uint16",
+        "token_count": 60557,
+        "windows": 118,
+        "sampling_weight": 0.06055693944306056
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_004.npy",
+        "key": null,
+        "sha256": "947acfbfae2d893e84f92e744c5f9f538161cd7823f776304149f76377afb6b9",
+        "source": "Dolma CC",
+        "file_id": "cc_en_head/cc_en_head-0088.json.gz",
+        "dtype": "uint16",
+        "token_count": 60557,
+        "windows": 118,
+        "sampling_weight": 0.06055693944306056
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_005.npy",
+        "key": null,
+        "sha256": "9238848918f57be3bc2c7e2fb77a2db87c452f12b436dc6b40418fda67d29fd5",
+        "source": "Dolma CC",
+        "file_id": "cc_en_middle/cc_en_middle-0258.json.gz",
+        "dtype": "uint16",
+        "token_count": 60556,
+        "windows": 118,
+        "sampling_weight": 0.060555939444060555
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_006.npy",
+        "key": null,
+        "sha256": "96f3adbc3b19673e4315c1cf2a0a12730a79f06e0ceedc5f1bd06ba2f3e47c9e",
+        "source": "Refined Web",
+        "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+        "dtype": "uint16",
+        "token_count": 138711,
+        "windows": 270,
+        "sampling_weight": 0.1387108612891387
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_007.npy",
+        "key": null,
+        "sha256": "039d9f6bffc3ef2bb246d017698d86bf5bbf631c13ca541f6045d2d66a5a7ca8",
+        "source": "Refined Web",
+        "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+        "dtype": "uint16",
+        "token_count": 138711,
+        "windows": 270,
+        "sampling_weight": 0.1387108612891387
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_008.npy",
+        "key": null,
+        "sha256": "01f0a0317c0ecedc8baf742c6499686ace8ceae350e351ba5a8e46a8b37f51bc",
+        "source": "StarCoder",
+        "file_id": "starcoder/starcoder-0038.json.gz",
+        "dtype": "uint16",
+        "token_count": 80175,
+        "windows": 156,
+        "sampling_weight": 0.08017491982508017
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_009.npy",
+        "key": null,
+        "sha256": "e8fe8095ac899fb0ae27970c89724dde0ab20dc30e61028df8cbd88cca223787",
+        "source": "StarCoder",
+        "file_id": "starcoder/starcoder-0037.json.gz",
+        "dtype": "uint16",
+        "token_count": 80175,
+        "windows": 156,
+        "sampling_weight": 0.08017491982508017
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_010.npy",
+        "key": null,
+        "sha256": "f8a8aef0930cd27e3d2475fbcf9ce20eb061e2f236bd0092412a131dedca2a74",
+        "source": "C4",
+        "file_id": "c4-filtered/c4-0029.json.gz",
+        "dtype": "uint16",
+        "token_count": 21032,
+        "windows": 40,
+        "sampling_weight": 0.02103197896802103
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_011.npy",
+        "key": null,
+        "sha256": "515ceae3ca8e3f36747ee0c68647642b5f795264285c5db4a0e0ccbf182acff5",
+        "source": "C4",
+        "file_id": "c4-filtered/c4-0144.json.gz",
+        "dtype": "uint16",
+        "token_count": 21031,
+        "windows": 40,
+        "sampling_weight": 0.021030978969021032
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_012.npy",
+        "key": null,
+        "sha256": "dd80aeb3fac09ae988e72fe4c9d769c26d4b83eba51ec5dbdc601ac5778093d1",
+        "source": "Reddit",
+        "file_id": "reddit/reddit-0029.json.gz",
+        "dtype": "uint16",
+        "token_count": 24284,
+        "windows": 47,
+        "sampling_weight": 0.024283975716024284
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_013.npy",
+        "key": null,
+        "sha256": "c07834bdac501e2d0dc441fcd0f9d212b55e7ec61b2752e6e8067f3cb48e3857",
+        "source": "Reddit",
+        "file_id": "reddit/reddit-0003.json.gz",
+        "dtype": "uint16",
+        "token_count": 24283,
+        "windows": 47,
+        "sampling_weight": 0.024282975717024282
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_014.npy",
+        "key": null,
+        "sha256": "95802c03ba139680240c4d5f33d0106583a8af0732e4713e6fcdaa946909c5d3",
+        "source": "Semantic Scholar",
+        "file_id": "pes2o/pes2o-0024.json.gz",
+        "dtype": "uint16",
+        "token_count": 17385,
+        "windows": 33,
+        "sampling_weight": 0.017384982615017384
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_015.npy",
+        "key": null,
+        "sha256": "e3c20f59035cff324decfb7e8623bcc76f5a0e513a70ae626df41484a5eb0130",
+        "source": "Semantic Scholar",
+        "file_id": "pes2o/pes2o-0014.json.gz",
+        "dtype": "uint16",
+        "token_count": 17384,
+        "windows": 33,
+        "sampling_weight": 0.017383982616017386
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_016.npy",
+        "key": null,
+        "sha256": "4298b2f2a67d2bd1c1e337c5a725a2e31cec5f1294235e9807e0cc688ce2e1fd",
+        "source": "arXiv",
+        "file_id": "redpajama-arxiv/arxiv-0041.json.gz",
+        "dtype": "uint16",
+        "token_count": 8510,
+        "windows": 16,
+        "sampling_weight": 0.00850999149000851
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_017.npy",
+        "key": null,
+        "sha256": "cfbf87015930728049086647fe940b0d748e61c523f4c16791c9231d7c7b78cf",
+        "source": "arXiv",
+        "file_id": "redpajama-arxiv/arxiv-0065.json.gz",
+        "dtype": "uint16",
+        "token_count": 8510,
+        "windows": 16,
+        "sampling_weight": 0.00850999149000851
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_018.npy",
+        "key": null,
+        "sha256": "b27c72feb9acd2fec85cf10a23a25c810b999ef1a38adaa87903eec8b0c468f5",
+        "source": "StackExchange",
+        "file_id": "redpajama-stackexchange/stackexchange-0004.json.gz",
+        "dtype": "uint16",
+        "token_count": 5957,
+        "windows": 11,
+        "sampling_weight": 0.005956994043005957
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_019.npy",
+        "key": null,
+        "sha256": "d1a92c659138e591872f53cf2fddf09a5600ca60d54d765220dc0506ceebfd7e",
+        "source": "StackExchange",
+        "file_id": "redpajama-stackexchange/stackexchange-0023.json.gz",
+        "dtype": "uint16",
+        "token_count": 5957,
+        "windows": 11,
+        "sampling_weight": 0.005956994043005957
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_020.npy",
+        "key": null,
+        "sha256": "4e28b101a6b8f8f1d30d20baabee65235745562717cf35ed701150ffde54e4ea",
+        "source": "Flan",
+        "file_id": "tulu_flan/tulu_flan-0047.json.gz",
+        "dtype": "uint16",
+        "token_count": 5015,
+        "windows": 9,
+        "sampling_weight": 0.005014994985005015
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_021.npy",
+        "key": null,
+        "sha256": "9c0939ce94856419d94c28e18160d72d5d5ac2accecf6b3b83c42232ea25901e",
+        "source": "Flan",
+        "file_id": "tulu_flan/tulu_flan-0006.json.gz",
+        "dtype": "uint16",
+        "token_count": 5014,
+        "windows": 9,
+        "sampling_weight": 0.005013994986005014
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_022.npy",
+        "key": null,
+        "sha256": "56ce76762a00e16355b53bb10bdcc6d9bb7863975a612a4b8b14a35a4ecb05d0",
+        "source": "CC News",
+        "file_id": "cc_news_middle/cc_news-0000.json.gz",
+        "dtype": "uint16",
+        "token_count": 2898,
+        "windows": 5,
+        "sampling_weight": 0.002897997102002898
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_023.npy",
+        "key": null,
+        "sha256": "003b1506476e46c2350714c17ef34fb7708ae3b0f6692ef9eeb32ec4576220a2",
+        "source": "CC News",
+        "file_id": "cc_news_head/cc_news-0002.json.gz",
+        "dtype": "uint16",
+        "token_count": 2897,
+        "windows": 5,
+        "sampling_weight": 0.002896997103002897
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_024.npy",
+        "key": null,
+        "sha256": "53adf32dc674efe63e2ceb3d1f73a26a205e82b7b0069a68c11dffb3b7db03fb",
+        "source": "CC News",
+        "file_id": "cc_news_head/cc_news-0004.json.gz",
+        "dtype": "uint16",
+        "token_count": 2897,
+        "windows": 5,
+        "sampling_weight": 0.002896997103002897
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_025.npy",
+        "key": null,
+        "sha256": "ea1b9253a9f11aa28fd79f411ad36f4bdc20d89a0458697e13e91a80c607c85a",
+        "source": "OpenWebMath",
+        "file_id": "proof_pile_2-open_web_math/open-web-math-train-0003.json.gz",
+        "dtype": "uint16",
+        "token_count": 3830,
+        "windows": 7,
+        "sampling_weight": 0.00382999617000383
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_026.npy",
+        "key": null,
+        "sha256": "b2320d5dd39a80ff14306edc055e591a7880aea82d7fac4eaf9fc0643d352a8e",
+        "source": "OpenWebMath",
+        "file_id": "proof_pile_2-open_web_math/open-web-math-train-0009.json.gz",
+        "dtype": "uint16",
+        "token_count": 3829,
+        "windows": 7,
+        "sampling_weight": 0.003828996171003829
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_027.npy",
+        "key": null,
+        "sha256": "a41838b6b9cc5337661e730510562deda395ca297aeff283f4badb9df64fa4e0",
+        "source": "Algebraic Stack",
+        "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0007.json.gz",
+        "dtype": "uint16",
+        "token_count": 3830,
+        "windows": 7,
+        "sampling_weight": 0.00382999617000383
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_028.npy",
+        "key": null,
+        "sha256": "76e579d700a95e4229c7536720fe49e406127a7c34687959ca80babab6cf90c8",
+        "source": "Algebraic Stack",
+        "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0010.json.gz",
+        "dtype": "uint16",
+        "token_count": 3829,
+        "windows": 7,
+        "sampling_weight": 0.003828996171003829
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_029.npy",
+        "key": null,
+        "sha256": "efc6f7a303e535c6ac1c1ec9e145441259bcafc2d2993ef3ce8b4ea09eb1d4ff",
+        "source": "Project Gutenberg",
+        "file_id": "books/books-0002.json.gz",
+        "dtype": "uint16",
+        "token_count": 3222,
+        "windows": 6,
+        "sampling_weight": 0.003221996778003222
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_030.npy",
+        "key": null,
+        "sha256": "9aa00bc29afe4cfd6e62d40e24322f41f0cfc2059f5586a047f48d01b5b9d243",
+        "source": "MegaWika",
+        "file_id": "wikiref_megawika/megawika-0221.json.gz",
+        "dtype": "uint16",
+        "token_count": 1398,
+        "windows": 2,
+        "sampling_weight": 0.001397998602001398
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_031.npy",
+        "key": null,
+        "sha256": "25644989bb82247a8e1a2405bb7d83bf7278cb97e5101ab22c2119ba48bb6fbf",
+        "source": "MegaWika",
+        "file_id": "wikiref_megawika/megawika-0000.json.gz",
+        "dtype": "uint16",
+        "token_count": 1398,
+        "windows": 2,
+        "sampling_weight": 0.001397998602001398
+      },
+      {
+        "path": "/tmp/xiang-moe-20261025/e125_data_cover/held/file_032.npy",
+        "key": null,
+        "sha256": "508731842c5f3f930acbbdbc12db0aaec8635dfc1c1da581a53bcc80c31c8608",
+        "source": "Wikipedia & Wikibooks",
+        "file_id": "wiki/wiki-0001.json.gz",
+        "dtype": "uint16",
+        "token_count": 4498,
+        "windows": 8,
+        "sampling_weight": 0.004497995502004498
+      }
+    ]
+  },
+  "selected": [
+    {
+      "sequence": 0,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0037.json.gz",
+      "window": 8,
+      "tokens": 512,
+      "token_sha256": "e15f086229f26027ea71ef412b38c850ab7b9db4b956364dd129e696156c8d58"
+    },
+    {
+      "sequence": 1,
+      "source": "Dolma CC",
+      "file_id": "cc_en_head/cc_en_head-0142.json.gz",
+      "window": 38,
+      "tokens": 512,
+      "token_sha256": "5e53dbc08325ffdac5c59fa174e3ae7586c0cc103ac3bfdec08c10d6a35a8166"
+    },
+    {
+      "sequence": 2,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0038.json.gz",
+      "window": 31,
+      "tokens": 512,
+      "token_sha256": "b1456691ade505d386f625eec6dda9abb3610236caf77300815c3650b6bcddcb"
+    },
+    {
+      "sequence": 3,
+      "source": "Algebraic Stack",
+      "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0010.json.gz",
+      "window": 6,
+      "tokens": 512,
+      "token_sha256": "19894278aebea348c2acfd1b29c6b32804268d33f05830f56bdb1789274562a3"
+    },
+    {
+      "sequence": 4,
+      "source": "Dolma CC",
+      "file_id": "cc_en_head/cc_en_head-0142.json.gz",
+      "window": 94,
+      "tokens": 512,
+      "token_sha256": "5e1c9369154c954cf2f34a06351e46a8f749fdb558995ee9c479797877d11598"
+    },
+    {
+      "sequence": 5,
+      "source": "Reddit",
+      "file_id": "reddit/reddit-0029.json.gz",
+      "window": 37,
+      "tokens": 512,
+      "token_sha256": "903804a4476820a19d29a0b8e99b4366eb8961ccd894ce603c8b8743f418f510"
+    },
+    {
+      "sequence": 6,
+      "source": "Semantic Scholar",
+      "file_id": "pes2o/pes2o-0014.json.gz",
+      "window": 15,
+      "tokens": 512,
+      "token_sha256": "099bacc6266b1a77435538ce39d7dbe4b01bc6ce6bb8682ff5adfdaddb64f6c4"
+    },
+    {
+      "sequence": 7,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 82,
+      "tokens": 512,
+      "token_sha256": "737d923ed5ce433fa7ffc32ada768f14fcdda2ce0bf630e3ee01d23a7f4e53af"
+    },
+    {
+      "sequence": 8,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0258.json.gz",
+      "window": 73,
+      "tokens": 512,
+      "token_sha256": "797a858fa4f53d736e244b138efef687c03b00d42f2bbe1e26a2296c36c7c598"
+    },
+    {
+      "sequence": 9,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 90,
+      "tokens": 512,
+      "token_sha256": "1ce90cb0424a7bebe260c53433b6cd040f2cd8622aa2a1d59289cfc5b5d6faac"
+    },
+    {
+      "sequence": 10,
+      "source": "Reddit",
+      "file_id": "reddit/reddit-0029.json.gz",
+      "window": 0,
+      "tokens": 512,
+      "token_sha256": "ec87844eca8b9f12c19976e5c7bb163403100c35a0d3ed8b66e36318eaba38fb"
+    },
+    {
+      "sequence": 11,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 136,
+      "tokens": 512,
+      "token_sha256": "5c0c0efc96a4a7c644b292e279f708b354f6c860c0f0b5cd78e301a89e7b8ab5"
+    },
+    {
+      "sequence": 12,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0342.json.gz",
+      "window": 97,
+      "tokens": 512,
+      "token_sha256": "ab7bf04401dc9c8ced6e79e9de99780956f98e931441ffe4d414bdd7a0fb023a"
+    },
+    {
+      "sequence": 13,
+      "source": "Semantic Scholar",
+      "file_id": "pes2o/pes2o-0014.json.gz",
+      "window": 13,
+      "tokens": 512,
+      "token_sha256": "41cdc7a27f4c8fb6a695b078543a976510049baf84d3e97ea1d130e4b4a012fc"
+    },
+    {
+      "sequence": 14,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 212,
+      "tokens": 512,
+      "token_sha256": "a8ba9c459c374eacf98f4b9ea3e6288d4dbb721de1a1b7517ed615fe916c846e"
+    },
+    {
+      "sequence": 15,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0342.json.gz",
+      "window": 105,
+      "tokens": 512,
+      "token_sha256": "4289cb06d89e7cacb6137656827d0e5b337e1b40bfe0c28e53e7b1b23b4b7e1b"
+    },
+    {
+      "sequence": 16,
+      "source": "Reddit",
+      "file_id": "reddit/reddit-0029.json.gz",
+      "window": 29,
+      "tokens": 512,
+      "token_sha256": "4f136fd9ae20dc011fc71abcc29e42266d4bad0d4193b07c80ab5671a94181ba"
+    },
+    {
+      "sequence": 17,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0038.json.gz",
+      "window": 49,
+      "tokens": 512,
+      "token_sha256": "a5c6fb9a5ae25297cac5fabc6309a84b85ca6ab6f991147722ccc915309f4ce9"
+    },
+    {
+      "sequence": 18,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 247,
+      "tokens": 512,
+      "token_sha256": "14126cea4308b6a8bf1550b13546860c271a4b033424f88ad403c298ad84432b"
+    },
+    {
+      "sequence": 19,
+      "source": "Dolma CC",
+      "file_id": "cc_en_head/cc_en_head-0142.json.gz",
+      "window": 1,
+      "tokens": 512,
+      "token_sha256": "4af3e556206b03bef01e863191d2c3b6e84522ac1d2f50fe78a02b7c2faca22b"
+    },
+    {
+      "sequence": 20,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 228,
+      "tokens": 512,
+      "token_sha256": "d211bf538d9f474e47ea69ef1a46848cc2bce606e1c3cc06da81553ecae3b14f"
+    },
+    {
+      "sequence": 21,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0337.json.gz",
+      "window": 115,
+      "tokens": 512,
+      "token_sha256": "445b3c2e2059d825728f1ac856962397c7a64a813266aaa92bd561297a41a79e"
+    },
+    {
+      "sequence": 22,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 210,
+      "tokens": 512,
+      "token_sha256": "f44d39ec12e97dee8120a6394d23a180d565eb6685f80fdd114810b9c83d7408"
+    },
+    {
+      "sequence": 23,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0342.json.gz",
+      "window": 89,
+      "tokens": 512,
+      "token_sha256": "fc2f9bf68b2b36eccd139dade6424a52475d72d5d00a3370580001f388d4d35f"
+    },
+    {
+      "sequence": 24,
+      "source": "C4",
+      "file_id": "c4-filtered/c4-0144.json.gz",
+      "window": 15,
+      "tokens": 512,
+      "token_sha256": "46489c6626063d44f9e55bba8c21a7e08cc74768c2c60724d18cf22e299b5c82"
+    },
+    {
+      "sequence": 25,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 130,
+      "tokens": 512,
+      "token_sha256": "08c2d61110db27ee972be513d1d46f7dedefd1718bd3fbaf6885c51b60aaaa63"
+    },
+    {
+      "sequence": 26,
+      "source": "C4",
+      "file_id": "c4-filtered/c4-0029.json.gz",
+      "window": 0,
+      "tokens": 512,
+      "token_sha256": "6209489fd82cda36352cbb153bdde8f475819186be5036b531e2d7c14a32c2a0"
+    },
+    {
+      "sequence": 27,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0038.json.gz",
+      "window": 110,
+      "tokens": 512,
+      "token_sha256": "e5090468d5c64cdd09c4c2ab1dda70384366ebaaba9205a4da4c78fd50c94a53"
+    },
+    {
+      "sequence": 28,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 212,
+      "tokens": 512,
+      "token_sha256": "4d6f40e9c3dc80f665b019fd9d81949c64a03dc71f8175b61d0637d4e5ef261c"
+    },
+    {
+      "sequence": 29,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0037.json.gz",
+      "window": 28,
+      "tokens": 512,
+      "token_sha256": "9a6197a7d92a2105389a1c08232111565175b8295523afb346f0734dc223aa87"
+    },
+    {
+      "sequence": 30,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0337.json.gz",
+      "window": 23,
+      "tokens": 512,
+      "token_sha256": "40c0d33db0bf880ff0965949fc093b7c06a2b96e6d384d66d9a5b3950bb31a11"
+    },
+    {
+      "sequence": 31,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 202,
+      "tokens": 512,
+      "token_sha256": "232507885b182cf5d45055a10cfefe5fa3424b349aba674255a3198a51f8619f"
+    },
+    {
+      "sequence": 32,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0258.json.gz",
+      "window": 3,
+      "tokens": 512,
+      "token_sha256": "277d7e97ee9cb0b4b9b5fe1e83ee0c036badd24d17da9f8c830d4412f6126a5f"
+    },
+    {
+      "sequence": 33,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0162.json.gz",
+      "window": 16,
+      "tokens": 512,
+      "token_sha256": "009d8718a615f0a69f527a0055e5fc4e44421ca1466051eea032541962471230"
+    },
+    {
+      "sequence": 34,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 185,
+      "tokens": 512,
+      "token_sha256": "1a45701caf77b30ac69c47bb088cf1756c9e250057ac306ab08fa2953c20c502"
+    },
+    {
+      "sequence": 35,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0037.json.gz",
+      "window": 88,
+      "tokens": 512,
+      "token_sha256": "4c3a1025ceccb154a9836e86e80636d8dd8437368d085f052fe6b1cf62d780ed"
+    },
+    {
+      "sequence": 36,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0258.json.gz",
+      "window": 22,
+      "tokens": 512,
+      "token_sha256": "dad4fd842fd2dd81ddaeed8333ffbbed96f5dd7ed0dd20b468536d7ad6fb39bf"
+    },
+    {
+      "sequence": 37,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0038.json.gz",
+      "window": 85,
+      "tokens": 512,
+      "token_sha256": "3458d9062e3495fb2f54402453e5adfcd87b05c6e1ff345eb8bda33a45b45fb2"
+    },
+    {
+      "sequence": 38,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0162.json.gz",
+      "window": 23,
+      "tokens": 512,
+      "token_sha256": "40838ddb3c42306dc5a4cf469070bb47b54d359c6af1d3c6cdcf1bd46b4387d0"
+    },
+    {
+      "sequence": 39,
+      "source": "Dolma CC",
+      "file_id": "cc_en_head/cc_en_head-0142.json.gz",
+      "window": 60,
+      "tokens": 512,
+      "token_sha256": "a2419d1c43174c6d1f34550f9a899bd932f6d942a5bce631c10de381aa9929e4"
+    },
+    {
+      "sequence": 40,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0342.json.gz",
+      "window": 40,
+      "tokens": 512,
+      "token_sha256": "0a9d4b683902bc77ce9ba3e9c93eafc6c47c9de5b12e0857033817e3ef4dec62"
+    },
+    {
+      "sequence": 41,
+      "source": "Flan",
+      "file_id": "tulu_flan/tulu_flan-0006.json.gz",
+      "window": 8,
+      "tokens": 512,
+      "token_sha256": "6f0044858397846c6028bdb877d8d9361f49d3f93b874e525c65c0458f57ee09"
+    },
+    {
+      "sequence": 42,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 256,
+      "tokens": 512,
+      "token_sha256": "bbb8dc16e2239b90346d250a42e732040281118b5e3ad7b44d6c9130e4858338"
+    },
+    {
+      "sequence": 43,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0037.json.gz",
+      "window": 85,
+      "tokens": 512,
+      "token_sha256": "254d8611da8a030329fa90fd58eae04a34de2cccc67379f487be3521db2c3d11"
+    },
+    {
+      "sequence": 44,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0037.json.gz",
+      "window": 24,
+      "tokens": 512,
+      "token_sha256": "13a70853d49d60c5ba73c796a6e0c329695bb0664256716204a4ef67cca28bb8"
+    },
+    {
+      "sequence": 45,
+      "source": "Algebraic Stack",
+      "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0007.json.gz",
+      "window": 6,
+      "tokens": 512,
+      "token_sha256": "6dabaac6aef35a474e7b4686457df32590e18bb19bdaa8a21cbd07075052172a"
+    },
+    {
+      "sequence": 46,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 93,
+      "tokens": 512,
+      "token_sha256": "4e0a783f754d3f2002f7ba3ef24f0eecd864ad472311237ff83ed81fe4ea388f"
+    },
+    {
+      "sequence": 47,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0162.json.gz",
+      "window": 73,
+      "tokens": 512,
+      "token_sha256": "fe136d0dd537ffe2c5b365ae5e68c0e93ebb7d71744bba8005a3adeb1fb9815e"
+    },
+    {
+      "sequence": 48,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0037.json.gz",
+      "window": 98,
+      "tokens": 512,
+      "token_sha256": "07a54e4fe777cab2a450e74b98dcadefad0a02a28c21f2a7d9be073add2fa096"
+    },
+    {
+      "sequence": 49,
+      "source": "Semantic Scholar",
+      "file_id": "pes2o/pes2o-0014.json.gz",
+      "window": 32,
+      "tokens": 512,
+      "token_sha256": "0efe59c1175c1d4d62451715c934541d7b0689dcf6f321fb30651959adf73f7e"
+    },
+    {
+      "sequence": 50,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 157,
+      "tokens": 512,
+      "token_sha256": "0c86bf5839d5d28514aa6e948323e4c561573b47892bce03efe23146d5148a78"
+    },
+    {
+      "sequence": 51,
+      "source": "Semantic Scholar",
+      "file_id": "pes2o/pes2o-0024.json.gz",
+      "window": 14,
+      "tokens": 512,
+      "token_sha256": "b0c4f7c8c456f1f3a45b2749b9c0f49befbd0be234946fc9365334c55991b642"
+    },
+    {
+      "sequence": 52,
+      "source": "CC News",
+      "file_id": "cc_news_head/cc_news-0004.json.gz",
+      "window": 3,
+      "tokens": 512,
+      "token_sha256": "3359cdac3d7315a4ac2f5eeac11331063b2cb1bf3ec9b5b2ab39369f3feab94b"
+    },
+    {
+      "sequence": 53,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 134,
+      "tokens": 512,
+      "token_sha256": "024229556c97dc16d2c00fd60263a2b2c3def6b7a15123989413826860319e1f"
+    },
+    {
+      "sequence": 54,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0258.json.gz",
+      "window": 16,
+      "tokens": 512,
+      "token_sha256": "920d3f93c9e83f094194d69d92e0d271703b8d2a1f4adcbdddf530b4fd9703f1"
+    },
+    {
+      "sequence": 55,
+      "source": "Dolma CC",
+      "file_id": "cc_en_head/cc_en_head-0142.json.gz",
+      "window": 71,
+      "tokens": 512,
+      "token_sha256": "b86fcd31eaca963b687369c42135945cba6d775009533dcd3f531a8c9856ceb9"
+    },
+    {
+      "sequence": 56,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0337.json.gz",
+      "window": 97,
+      "tokens": 512,
+      "token_sha256": "c01d56e0877804d0a7ec156cf016cbc88d3cd03d952271581bb38860d9112cba"
+    },
+    {
+      "sequence": 57,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 165,
+      "tokens": 512,
+      "token_sha256": "31664b95b17af2bc56985c117ae723e00c74c485930a7a5394c676a0cab8b41b"
+    },
+    {
+      "sequence": 58,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0337.json.gz",
+      "window": 21,
+      "tokens": 512,
+      "token_sha256": "66a2d9ebdfd77af92516438c97360c78b3bdee58880f736b9c043656fef81a10"
+    },
+    {
+      "sequence": 59,
+      "source": "C4",
+      "file_id": "c4-filtered/c4-0029.json.gz",
+      "window": 32,
+      "tokens": 512,
+      "token_sha256": "0f583b580ad6b86af2e76d1b77980f25b757fbc26482e288660aeea996e199cb"
+    },
+    {
+      "sequence": 60,
+      "source": "arXiv",
+      "file_id": "redpajama-arxiv/arxiv-0041.json.gz",
+      "window": 4,
+      "tokens": 512,
+      "token_sha256": "65807e85d9240d229123fb0dfd4fb7dd8ce73165a0e99f777231de49f05d3dd9"
+    },
+    {
+      "sequence": 61,
+      "source": "Dolma CC",
+      "file_id": "cc_en_head/cc_en_head-0088.json.gz",
+      "window": 71,
+      "tokens": 512,
+      "token_sha256": "9d9c05a2f382b9fbd5f91c1b72a0804b7a8286509ee8e160eee204344853fee9"
+    },
+    {
+      "sequence": 62,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0337.json.gz",
+      "window": 50,
+      "tokens": 512,
+      "token_sha256": "d4260598e88439253a543597ec09ccbacbde94523ff66ea2b77f49291c5ac67d"
+    },
+    {
+      "sequence": 63,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 139,
+      "tokens": 512,
+      "token_sha256": "4d35fcaf8354ed5d134273b656fbbad5f89afaa9fd0fab0a4a039aa0359c1b1d"
+    }
+  ],
+  "cal_windows": [
+    [
+      0,
+      58992
+    ],
+    [
+      1,
+      43629
+    ],
+    [
+      2,
+      39922
+    ],
+    [
+      2,
+      45313
+    ],
+    [
+      3,
+      52535
+    ],
+    [
+      4,
+      966
+    ],
+    [
+      4,
+      55431
+    ],
+    [
+      6,
+      101778
+    ],
+    [
+      7,
+      9860
+    ],
+    [
+      7,
+      82655
+    ],
+    [
+      8,
+      59534
+    ],
+    [
+      9,
+      10270
+    ],
+    [
+      9,
+      42560
+    ],
+    [
+      9,
+      63639
+    ],
+    [
+      19,
+      324
+    ],
+    [
+      30,
+      21
+    ]
+  ],
+  "pulse_pool": [
+    {
+      "pool_id": 0,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 65434
+        },
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 70676
+        }
+      ]
+    },
+    {
+      "pool_id": 1,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 44802
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 45674
+        }
+      ]
+    },
+    {
+      "pool_id": 2,
+      "source": "Semantic Scholar",
+      "windows": [
+        {
+          "file_index": 14,
+          "file_id": "pes2o/pes2o-0009.json.gz",
+          "window": 6647
+        },
+        {
+          "file_index": 14,
+          "file_id": "pes2o/pes2o-0009.json.gz",
+          "window": 2015
+        }
+      ]
+    },
+    {
+      "pool_id": 3,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 66046
+        },
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 52438
+        }
+      ]
+    },
+    {
+      "pool_id": 4,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 19957
+        },
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 23747
+        }
+      ]
+    },
+    {
+      "pool_id": 5,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 2,
+          "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+          "window": 34888
+        },
+        {
+          "file_index": 0,
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "window": 25536
+        }
+      ]
+    },
+    {
+      "pool_id": 6,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 33733
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 31577
+        }
+      ]
+    },
+    {
+      "pool_id": 7,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 58754
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 34915
+        }
+      ]
+    },
+    {
+      "pool_id": 8,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 47915
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 118272
+        }
+      ]
+    },
+    {
+      "pool_id": 9,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 0,
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "window": 12597
+        },
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 9148
+        }
+      ]
+    },
+    {
+      "pool_id": 10,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 29986
+        },
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 13180
+        }
+      ]
+    },
+    {
+      "pool_id": 11,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 4,
+          "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+          "window": 29080
+        },
+        {
+          "file_index": 2,
+          "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+          "window": 48529
+        }
+      ]
+    },
+    {
+      "pool_id": 12,
+      "source": "Reddit",
+      "windows": [
+        {
+          "file_index": 13,
+          "file_id": "reddit/reddit-0041.json.gz",
+          "window": 3658
+        },
+        {
+          "file_index": 12,
+          "file_id": "reddit/reddit-0026.json.gz",
+          "window": 17627
+        }
+      ]
+    },
+    {
+      "pool_id": 13,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 4,
+          "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+          "window": 20143
+        },
+        {
+          "file_index": 0,
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "window": 52783
+        }
+      ]
+    },
+    {
+      "pool_id": 14,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 14525
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 27322
+        }
+      ]
+    },
+    {
+      "pool_id": 15,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 22757
+        },
+        {
+          "file_index": 0,
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "window": 28453
+        }
+      ]
+    },
+    {
+      "pool_id": 16,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 77393
+        },
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 61071
+        }
+      ]
+    },
+    {
+      "pool_id": 17,
+      "source": "Semantic Scholar",
+      "windows": [
+        {
+          "file_index": 14,
+          "file_id": "pes2o/pes2o-0009.json.gz",
+          "window": 1471
+        },
+        {
+          "file_index": 14,
+          "file_id": "pes2o/pes2o-0009.json.gz",
+          "window": 914
+        }
+      ]
+    },
+    {
+      "pool_id": 18,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 109501
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 8326
+        }
+      ]
+    },
+    {
+      "pool_id": 19,
+      "source": "Semantic Scholar",
+      "windows": [
+        {
+          "file_index": 14,
+          "file_id": "pes2o/pes2o-0009.json.gz",
+          "window": 15800
+        },
+        {
+          "file_index": 15,
+          "file_id": "pes2o/pes2o-0018.json.gz",
+          "window": 5734
+        }
+      ]
+    },
+    {
+      "pool_id": 20,
+      "source": "C4",
+      "windows": [
+        {
+          "file_index": 10,
+          "file_id": "c4-filtered/c4-0073.json.gz",
+          "window": 6618
+        },
+        {
+          "file_index": 10,
+          "file_id": "c4-filtered/c4-0073.json.gz",
+          "window": 11538
+        }
+      ]
+    },
+    {
+      "pool_id": 21,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 48664
+        },
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 74596
+        }
+      ]
+    },
+    {
+      "pool_id": 22,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 4,
+          "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+          "window": 21130
+        },
+        {
+          "file_index": 0,
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "window": 43527
+        }
+      ]
+    },
+    {
+      "pool_id": 23,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 4,
+          "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+          "window": 25154
+        },
+        {
+          "file_index": 5,
+          "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+          "window": 53651
+        }
+      ]
+    },
+    {
+      "pool_id": 24,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 56424
+        },
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 49847
+        }
+      ]
+    },
+    {
+      "pool_id": 25,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 59363
+        },
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 38344
+        }
+      ]
+    },
+    {
+      "pool_id": 26,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 4,
+          "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+          "window": 37803
+        },
+        {
+          "file_index": 2,
+          "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+          "window": 59661
+        }
+      ]
+    },
+    {
+      "pool_id": 27,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 46166
+        },
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 12563
+        }
+      ]
+    },
+    {
+      "pool_id": 28,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 49845
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 123873
+        }
+      ]
+    },
+    {
+      "pool_id": 29,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 0,
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "window": 33796
+        },
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 47892
+        }
+      ]
+    },
+    {
+      "pool_id": 30,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 0,
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "window": 15700
+        },
+        {
+          "file_index": 0,
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "window": 21319
+        }
+      ]
+    },
+    {
+      "pool_id": 31,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 26675
+        },
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 65916
+        }
+      ]
+    },
+    {
+      "pool_id": 32,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 4982
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 70633
+        }
+      ]
+    },
+    {
+      "pool_id": 33,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 41667
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 89016
+        }
+      ]
+    },
+    {
+      "pool_id": 34,
+      "source": "Reddit",
+      "windows": [
+        {
+          "file_index": 12,
+          "file_id": "reddit/reddit-0026.json.gz",
+          "window": 10623
+        },
+        {
+          "file_index": 12,
+          "file_id": "reddit/reddit-0026.json.gz",
+          "window": 505
+        }
+      ]
+    },
+    {
+      "pool_id": 35,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 124016
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 56222
+        }
+      ]
+    },
+    {
+      "pool_id": 36,
+      "source": "Flan",
+      "windows": [
+        {
+          "file_index": 21,
+          "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+          "window": 2832
+        },
+        {
+          "file_index": 21,
+          "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+          "window": 131
+        }
+      ]
+    },
+    {
+      "pool_id": 37,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 23266
+        },
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 1129
+        }
+      ]
+    },
+    {
+      "pool_id": 38,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 117386
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 42444
+        }
+      ]
+    },
+    {
+      "pool_id": 39,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 4,
+          "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+          "window": 5332
+        },
+        {
+          "file_index": 5,
+          "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+          "window": 28541
+        }
+      ]
+    },
+    {
+      "pool_id": 40,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 115971
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 100119
+        }
+      ]
+    },
+    {
+      "pool_id": 41,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 5,
+          "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+          "window": 7809
+        },
+        {
+          "file_index": 2,
+          "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+          "window": 13774
+        }
+      ]
+    },
+    {
+      "pool_id": 42,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 0,
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "window": 53288
+        },
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 4632
+        }
+      ]
+    },
+    {
+      "pool_id": 43,
+      "source": "C4",
+      "windows": [
+        {
+          "file_index": 11,
+          "file_id": "c4-filtered/c4-0032.json.gz",
+          "window": 4971
+        },
+        {
+          "file_index": 11,
+          "file_id": "c4-filtered/c4-0032.json.gz",
+          "window": 2125
+        }
+      ]
+    },
+    {
+      "pool_id": 44,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 30326
+        },
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 35034
+        }
+      ]
+    },
+    {
+      "pool_id": 45,
+      "source": "Flan",
+      "windows": [
+        {
+          "file_index": 20,
+          "file_id": "tulu_flan/tulu_flan-0001.json.gz",
+          "window": 3758
+        },
+        {
+          "file_index": 21,
+          "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+          "window": 2618
+        }
+      ]
+    },
+    {
+      "pool_id": 46,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 22795
+        },
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 50383
+        }
+      ]
+    },
+    {
+      "pool_id": 47,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 48828
+        },
+        {
+          "file_index": 5,
+          "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+          "window": 31570
+        }
+      ]
+    },
+    {
+      "pool_id": 48,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 2,
+          "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+          "window": 18940
+        },
+        {
+          "file_index": 4,
+          "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+          "window": 21591
+        }
+      ]
+    },
+    {
+      "pool_id": 49,
+      "source": "Semantic Scholar",
+      "windows": [
+        {
+          "file_index": 15,
+          "file_id": "pes2o/pes2o-0018.json.gz",
+          "window": 3375
+        },
+        {
+          "file_index": 15,
+          "file_id": "pes2o/pes2o-0018.json.gz",
+          "window": 14698
+        }
+      ]
+    },
+    {
+      "pool_id": 50,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 1820
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 85003
+        }
+      ]
+    },
+    {
+      "pool_id": 51,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 60689
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 49077
+        }
+      ]
+    },
+    {
+      "pool_id": 52,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 19711
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 65517
+        }
+      ]
+    },
+    {
+      "pool_id": 53,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 29943
+        },
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 23852
+        }
+      ]
+    },
+    {
+      "pool_id": 54,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 37569
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 123724
+        }
+      ]
+    },
+    {
+      "pool_id": 55,
+      "source": "arXiv",
+      "windows": [
+        {
+          "file_index": 17,
+          "file_id": "redpajama-arxiv/arxiv-0063.json.gz",
+          "window": 3191
+        },
+        {
+          "file_index": 16,
+          "file_id": "redpajama-arxiv/arxiv-0002.json.gz",
+          "window": 992
+        }
+      ]
+    },
+    {
+      "pool_id": 56,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 104246
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 123241
+        }
+      ]
+    },
+    {
+      "pool_id": 57,
+      "source": "C4",
+      "windows": [
+        {
+          "file_index": 10,
+          "file_id": "c4-filtered/c4-0073.json.gz",
+          "window": 17504
+        },
+        {
+          "file_index": 10,
+          "file_id": "c4-filtered/c4-0073.json.gz",
+          "window": 7494
+        }
+      ]
+    },
+    {
+      "pool_id": 58,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 24189
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 53480
+        }
+      ]
+    },
+    {
+      "pool_id": 59,
+      "source": "Flan",
+      "windows": [
+        {
+          "file_index": 21,
+          "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+          "window": 3471
+        },
+        {
+          "file_index": 21,
+          "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+          "window": 1634
+        }
+      ]
+    },
+    {
+      "pool_id": 60,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 0,
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "window": 27430
+        },
+        {
+          "file_index": 4,
+          "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+          "window": 15370
+        }
+      ]
+    },
+    {
+      "pool_id": 61,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 34849
+        },
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 32448
+        }
+      ]
+    },
+    {
+      "pool_id": 62,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 2,
+          "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+          "window": 20135
+        },
+        {
+          "file_index": 0,
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "window": 6039
+        }
+      ]
+    },
+    {
+      "pool_id": 63,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 125592
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 6654
+        }
+      ]
+    },
+    {
+      "pool_id": 64,
+      "source": "Semantic Scholar",
+      "windows": [
+        {
+          "file_index": 15,
+          "file_id": "pes2o/pes2o-0018.json.gz",
+          "window": 14654
+        },
+        {
+          "file_index": 15,
+          "file_id": "pes2o/pes2o-0018.json.gz",
+          "window": 15402
+        }
+      ]
+    },
+    {
+      "pool_id": 65,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 60866
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 53155
+        }
+      ]
+    },
+    {
+      "pool_id": 66,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 0,
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "window": 36277
+        },
+        {
+          "file_index": 4,
+          "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+          "window": 43729
+        }
+      ]
+    },
+    {
+      "pool_id": 67,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 23173
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 92808
+        }
+      ]
+    },
+    {
+      "pool_id": 68,
+      "source": "Semantic Scholar",
+      "windows": [
+        {
+          "file_index": 15,
+          "file_id": "pes2o/pes2o-0018.json.gz",
+          "window": 7972
+        },
+        {
+          "file_index": 15,
+          "file_id": "pes2o/pes2o-0018.json.gz",
+          "window": 737
+        }
+      ]
+    },
+    {
+      "pool_id": 69,
+      "source": "arXiv",
+      "windows": [
+        {
+          "file_index": 16,
+          "file_id": "redpajama-arxiv/arxiv-0002.json.gz",
+          "window": 2556
+        },
+        {
+          "file_index": 16,
+          "file_id": "redpajama-arxiv/arxiv-0002.json.gz",
+          "window": 2033
+        }
+      ]
+    },
+    {
+      "pool_id": 70,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 95252
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 95690
+        }
+      ]
+    },
+    {
+      "pool_id": 71,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 17756
+        },
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 47804
+        }
+      ]
+    },
+    {
+      "pool_id": 72,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 71397
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 81325
+        }
+      ]
+    },
+    {
+      "pool_id": 73,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 44709
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 82713
+        }
+      ]
+    },
+    {
+      "pool_id": 74,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 2,
+          "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+          "window": 11774
+        },
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 29857
+        }
+      ]
+    },
+    {
+      "pool_id": 75,
+      "source": "C4",
+      "windows": [
+        {
+          "file_index": 10,
+          "file_id": "c4-filtered/c4-0073.json.gz",
+          "window": 9134
+        },
+        {
+          "file_index": 10,
+          "file_id": "c4-filtered/c4-0073.json.gz",
+          "window": 4598
+        }
+      ]
+    },
+    {
+      "pool_id": 76,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 19277
+        },
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 9615
+        }
+      ]
+    },
+    {
+      "pool_id": 77,
+      "source": "Reddit",
+      "windows": [
+        {
+          "file_index": 13,
+          "file_id": "reddit/reddit-0041.json.gz",
+          "window": 213
+        },
+        {
+          "file_index": 13,
+          "file_id": "reddit/reddit-0041.json.gz",
+          "window": 3932
+        }
+      ]
+    },
+    {
+      "pool_id": 78,
+      "source": "C4",
+      "windows": [
+        {
+          "file_index": 10,
+          "file_id": "c4-filtered/c4-0073.json.gz",
+          "window": 15513
+        },
+        {
+          "file_index": 10,
+          "file_id": "c4-filtered/c4-0073.json.gz",
+          "window": 1689
+        }
+      ]
+    },
+    {
+      "pool_id": 79,
+      "source": "C4",
+      "windows": [
+        {
+          "file_index": 11,
+          "file_id": "c4-filtered/c4-0032.json.gz",
+          "window": 20694
+        },
+        {
+          "file_index": 11,
+          "file_id": "c4-filtered/c4-0032.json.gz",
+          "window": 11371
+        }
+      ]
+    },
+    {
+      "pool_id": 80,
+      "source": "Semantic Scholar",
+      "windows": [
+        {
+          "file_index": 14,
+          "file_id": "pes2o/pes2o-0009.json.gz",
+          "window": 9012
+        },
+        {
+          "file_index": 14,
+          "file_id": "pes2o/pes2o-0009.json.gz",
+          "window": 2255
+        }
+      ]
+    },
+    {
+      "pool_id": 81,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 24683
+        },
+        {
+          "file_index": 0,
+          "file_id": "cc_en_tail/cc_en_tail-0358.json.gz",
+          "window": 58777
+        }
+      ]
+    },
+    {
+      "pool_id": 82,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 65357
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 122974
+        }
+      ]
+    },
+    {
+      "pool_id": 83,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 2,
+          "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+          "window": 25757
+        },
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 51751
+        }
+      ]
+    },
+    {
+      "pool_id": 84,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 14624
+        },
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 18368
+        }
+      ]
+    },
+    {
+      "pool_id": 85,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 55799
+        },
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 53822
+        }
+      ]
+    },
+    {
+      "pool_id": 86,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 71987
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 45751
+        }
+      ]
+    },
+    {
+      "pool_id": 87,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 57908
+        },
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 17301
+        }
+      ]
+    },
+    {
+      "pool_id": 88,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 16672
+        },
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 68914
+        }
+      ]
+    },
+    {
+      "pool_id": 89,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 5,
+          "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+          "window": 39562
+        },
+        {
+          "file_index": 4,
+          "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+          "window": 30837
+        }
+      ]
+    },
+    {
+      "pool_id": 90,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 44297
+        },
+        {
+          "file_index": 5,
+          "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+          "window": 59434
+        }
+      ]
+    },
+    {
+      "pool_id": 91,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 56305
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 22704
+        }
+      ]
+    },
+    {
+      "pool_id": 92,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 47738
+        },
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 39124
+        }
+      ]
+    },
+    {
+      "pool_id": 93,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 127060
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 102274
+        }
+      ]
+    },
+    {
+      "pool_id": 94,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 54593
+        },
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 24694
+        }
+      ]
+    },
+    {
+      "pool_id": 95,
+      "source": "C4",
+      "windows": [
+        {
+          "file_index": 11,
+          "file_id": "c4-filtered/c4-0032.json.gz",
+          "window": 9624
+        },
+        {
+          "file_index": 11,
+          "file_id": "c4-filtered/c4-0032.json.gz",
+          "window": 6508
+        }
+      ]
+    },
+    {
+      "pool_id": 96,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 4,
+          "file_id": "cc_en_tail/cc_en_tail-0197.json.gz",
+          "window": 43546
+        },
+        {
+          "file_index": 5,
+          "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+          "window": 16732
+        }
+      ]
+    },
+    {
+      "pool_id": 97,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 120488
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 80638
+        }
+      ]
+    },
+    {
+      "pool_id": 98,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 2,
+          "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+          "window": 50756
+        },
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 13197
+        }
+      ]
+    },
+    {
+      "pool_id": 99,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 39250
+        },
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 26583
+        }
+      ]
+    },
+    {
+      "pool_id": 100,
+      "source": "C4",
+      "windows": [
+        {
+          "file_index": 11,
+          "file_id": "c4-filtered/c4-0032.json.gz",
+          "window": 19033
+        },
+        {
+          "file_index": 11,
+          "file_id": "c4-filtered/c4-0032.json.gz",
+          "window": 9346
+        }
+      ]
+    },
+    {
+      "pool_id": 101,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 52381
+        },
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 26051
+        }
+      ]
+    },
+    {
+      "pool_id": 102,
+      "source": "Flan",
+      "windows": [
+        {
+          "file_index": 21,
+          "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+          "window": 3165
+        },
+        {
+          "file_index": 21,
+          "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+          "window": 4928
+        }
+      ]
+    },
+    {
+      "pool_id": 103,
+      "source": "MegaWika",
+      "windows": [
+        {
+          "file_index": 32,
+          "file_id": "wikiref_megawika/megawika-0144.json.gz",
+          "window": 940
+        },
+        {
+          "file_index": 31,
+          "file_id": "wikiref_megawika/megawika-0162.json.gz",
+          "window": 1216
+        }
+      ]
+    },
+    {
+      "pool_id": 104,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 12826
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 24804
+        }
+      ]
+    },
+    {
+      "pool_id": 105,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 28176
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 114129
+        }
+      ]
+    },
+    {
+      "pool_id": 106,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 73400
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 125790
+        }
+      ]
+    },
+    {
+      "pool_id": 107,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 46163
+        },
+        {
+          "file_index": 1,
+          "file_id": "cc_en_head/cc_en_head-0114.json.gz",
+          "window": 55738
+        }
+      ]
+    },
+    {
+      "pool_id": 108,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 57163
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 102065
+        }
+      ]
+    },
+    {
+      "pool_id": 109,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 39856
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 72736
+        }
+      ]
+    },
+    {
+      "pool_id": 110,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 103233
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 65973
+        }
+      ]
+    },
+    {
+      "pool_id": 111,
+      "source": "StackExchange",
+      "windows": [
+        {
+          "file_index": 18,
+          "file_id": "redpajama-stackexchange/stackexchange-0014.json.gz",
+          "window": 4350
+        },
+        {
+          "file_index": 19,
+          "file_id": "redpajama-stackexchange/stackexchange-0011.json.gz",
+          "window": 695
+        }
+      ]
+    },
+    {
+      "pool_id": 112,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 42253
+        },
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 43218
+        }
+      ]
+    },
+    {
+      "pool_id": 113,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 62865
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 115996
+        }
+      ]
+    },
+    {
+      "pool_id": 114,
+      "source": "Flan",
+      "windows": [
+        {
+          "file_index": 21,
+          "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+          "window": 3918
+        },
+        {
+          "file_index": 21,
+          "file_id": "tulu_flan/tulu_flan-0042.json.gz",
+          "window": 4293
+        }
+      ]
+    },
+    {
+      "pool_id": 115,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 19016
+        },
+        {
+          "file_index": 2,
+          "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+          "window": 34233
+        }
+      ]
+    },
+    {
+      "pool_id": 116,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 17647
+        },
+        {
+          "file_index": 9,
+          "file_id": "starcoder/starcoder-0047.json.gz",
+          "window": 38581
+        }
+      ]
+    },
+    {
+      "pool_id": 117,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 108271
+        },
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 126711
+        }
+      ]
+    },
+    {
+      "pool_id": 118,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 938
+        },
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 36587
+        }
+      ]
+    },
+    {
+      "pool_id": 119,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 2,
+          "file_id": "cc_en_middle/cc_en_middle-0111.json.gz",
+          "window": 29429
+        },
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 57629
+        }
+      ]
+    },
+    {
+      "pool_id": 120,
+      "source": "Semantic Scholar",
+      "windows": [
+        {
+          "file_index": 15,
+          "file_id": "pes2o/pes2o-0018.json.gz",
+          "window": 15044
+        },
+        {
+          "file_index": 14,
+          "file_id": "pes2o/pes2o-0009.json.gz",
+          "window": 4512
+        }
+      ]
+    },
+    {
+      "pool_id": 121,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 120659
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 87383
+        }
+      ]
+    },
+    {
+      "pool_id": 122,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 6,
+          "file_id": "falcon-refinedweb-filtered/falcon-0400.json.gz",
+          "window": 103205
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 43258
+        }
+      ]
+    },
+    {
+      "pool_id": 123,
+      "source": "Refined Web",
+      "windows": [
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 120308
+        },
+        {
+          "file_index": 7,
+          "file_id": "falcon-refinedweb-filtered/falcon-0426.json.gz",
+          "window": 82908
+        }
+      ]
+    },
+    {
+      "pool_id": 124,
+      "source": "Reddit",
+      "windows": [
+        {
+          "file_index": 13,
+          "file_id": "reddit/reddit-0041.json.gz",
+          "window": 796
+        },
+        {
+          "file_index": 12,
+          "file_id": "reddit/reddit-0026.json.gz",
+          "window": 20561
+        }
+      ]
+    },
+    {
+      "pool_id": 125,
+      "source": "C4",
+      "windows": [
+        {
+          "file_index": 11,
+          "file_id": "c4-filtered/c4-0032.json.gz",
+          "window": 19309
+        },
+        {
+          "file_index": 11,
+          "file_id": "c4-filtered/c4-0032.json.gz",
+          "window": 7530
+        }
+      ]
+    },
+    {
+      "pool_id": 126,
+      "source": "StarCoder",
+      "windows": [
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 43926
+        },
+        {
+          "file_index": 8,
+          "file_id": "starcoder/starcoder-0017.json.gz",
+          "window": 60182
+        }
+      ]
+    },
+    {
+      "pool_id": 127,
+      "source": "Dolma CC",
+      "windows": [
+        {
+          "file_index": 5,
+          "file_id": "cc_en_head/cc_en_head-0135.json.gz",
+          "window": 351
+        },
+        {
+          "file_index": 3,
+          "file_id": "cc_en_middle/cc_en_middle-0243.json.gz",
+          "window": 42208
+        }
+      ]
+    }
+  ],
+  "phase_token_sha256": {
+    "warm": "bfe2ce08caeae133db93370268091f71ceaa468c5186a38299d3a3fd836fbb25",
+    "pulse_sorted_pool": "86770274ebfb226bc88555f70717e1e0d2c1751b8f40ce0f74bb9bb787046d27",
+    "suffix": "e4f606672b57a2977aac395bca113d411cb8c92250f9df78423c9a5e780c3792",
+    "held": "5569ae6ea9e1fcbd4329aa8263a17fb549dc0490aedaa5308c24c2f8ee6cf60f"
+  },
+  "old_held_excluded": 512,
+  "new_held_available": 1421,
+  "input_file_clusters": 20,
+  "scope": "One native pretrained parent; only the order of 128 complete batches differs. A-repeat is not an independent seed. Held exclusion is relative to the specified old512, not a claim that no historical evaluation ever touched these windows."
+}

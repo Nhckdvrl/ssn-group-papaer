@@ -1,9 +1,15 @@
 # PAIN LOG — Mechanism Population Dynamics
 
-> **2026-10-26：** 各痛点中的“下一步 / 建议”是当时的动作记录，不是当前队列。用户已确认 [MoE 当前方向](moe/RESEARCH_DIRECTION.md) 并要求初步设计；本轮已明确授权恢复执行，E144/E145、条件后续E146以及新登记gate-only强对照E147均完成；旧段落中的未运行/暂停记录保留历史意义。P01–P14 里的 `scripts/`、`results/` 路径以 [`heads/`](heads/README.md) 为根，P15–P31 以 [`moe/`](moe/README.md) 为根；公开套件问题 P09–P14 汇总在 [`suite-audits/`](suite-audits/README.md)。
+> **2026-10-26：** 各痛点中的“下一步 / 建议”是当时的动作记录，不是当前队列。用户已确认 [MoE 当前方向](moe/RESEARCH_DIRECTION.md) 并要求初步设计；本轮已明确授权恢复执行，E144/E145、条件后续E146以及新登记gate-only强对照E147均完成；旧段落中的未运行/暂停记录保留历史意义。P01–P14 里的 `scripts/`、`results/` 路径以 [`heads/`](heads/README.md) 为根，P15–P32 以 [`moe/`](moe/README.md) 为根；公开套件问题 P09–P14 汇总在 [`suite-audits/`](suite-audits/README.md)。
 
 
 只记录真实运行中出现的痛点、异常、失败或意外成功。不要预填“我们希望出现”的现象。
+
+## P32（2026-10-26）：受控终点配套与原生形成过程之间缺少可运行桥接
+
+- E144–E147有预测后果和强gate-only解释，但骨干/目标固定，不能回答完整网络的分工如何随历史形成。原归档只含初末权重，不能追认中间动力学。
+- 实际资产是OLMoE四个公开训练检查点；小型MoE在既有记录路径未找到，不按历史计划假定已下载。7B全FP32 Adam状态估计超96GB单卡；现有Adafactor和可微BF16 shader是待验证的资源方案，不是已成立可行性。
+- E148已在新模型读数前写卡：早期原生checkpoint、全参数CE继续学习，同父/同batch集合的次序pulse、共同后缀和同流repeat，保存稀疏快照；先核验精度、梯度和成本。该窗口不冒充原始预训练optimizer续接，不自动把工程选择当科学结果。
 
 ## P31（2026-10-26）：跨训练组件抵消的预测后果与重组粒度尚不清楚
 

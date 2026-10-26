@@ -1,0 +1,18 @@
+{
+  "records": [
+    {
+      "stage": "CPU_known_answer_before_GPU",
+      "status": "failed_resume_check",
+      "source_sha256_before_fix": {
+        "e148_common.py": "7b8d6e6c721ba0f86a19777d25b74e790b03c4dbd3e4a2fe1c7de86e8ee6bb9a",
+        "e148_native.py": "e94659d25c6dbc71eebbd60fd24119b7782586c36a72def2ea771df34c3a31e4",
+        "e148_readout.py": "91e08af04f05f3786e72bacefe3bdee81f23db3745281d854dd496f00021bd2f",
+        "e148_test.py": "b0043b282c81aa7655ca33a85b81dc8620cc53b2abcfd8ef5053ddb8b5ff4d8a",
+        "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+        "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92"
+      },
+      "unchanged_plan_sha256": "2a99e17cdca9b2adbbf708c3765fae70b47d8459dcad2677bac087d2cf4c41fb",
+      "diagnosis_pending_confirmation": "Nonpersistent rotary buffers are absent from model.state_dict; restored constructor buffers can differ after BF16->FP32 conversion. Preserve all named buffers in full snapshots."
+    }
+  ]
+}
