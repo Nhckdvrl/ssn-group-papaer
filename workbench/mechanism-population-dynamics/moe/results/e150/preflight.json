@@ -1,6 +1,6 @@
 {
   "experiment": "E150",
-  "status": "partial",
+  "status": "complete",
   "source_sha256": {
     "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
     "e150_data.py": "58e3f24c0bd10199f75cb906788818539628f414e299ca3a875e4e6c30ff0f49",
@@ -60,10 +60,56 @@
       "all_slot_mask_exact": true,
       "checkpoint_keys_strict": true,
       "parameter_count": 13568641024
+    },
+    "1": {
+      "source": "StdMoE_1b14b_1T_EmoAnnealed",
+      "cal_BF16_logits": {
+        "path": "/home/xiang/mechpop_cache/e150_native_protocol_cube/cal_source_1.npz",
+        "sha256": "f8ee016ff7d68b5fd00d8bfce8f06c7c0578422469740f9649f68671be7be084"
+      },
+      "buffer_hash": "d03a271a4215869f6070f196ef37450dfad6f7cdb5bc6092d3b5aacc451bfb47",
+      "precision_metric_columns": [
+        "nll",
+        "ref_to_variant_kl",
+        "variant_to_ref_kl",
+        "ref_top1_agreement"
+      ],
+      "FP32_to_BF16_metrics_per_sequence": [
+        [
+          3.2276532649993896,
+          0.0009715568739920855,
+          0.0009786434238776565,
+          0.9921875
+        ],
+        [
+          2.8899316787719727,
+          0.0008132991497404873,
+          0.0008182915044017136,
+          0.96875
+        ]
+      ],
+      "zero_L9_metrics_per_sequence": [
+        [
+          3.255195140838623,
+          0.05750975385308266,
+          0.05559067055583,
+          0.8203125
+        ],
+        [
+          2.9529666900634766,
+          0.03912197798490524,
+          0.035289276391267776,
+          0.8984375
+        ]
+      ],
+      "BF16_repeat_exact": true,
+      "all_slot_mask_exact": true,
+      "checkpoint_keys_strict": true,
+      "parameter_count": 13568641024
     }
   },
   "physical_gpu": 0,
   "peak_allocated_bytes": 54821924352,
   "visible_device_uuid": "1acd95ff-7d72-8dd8-77f2-77418f90965e",
-  "asset_manifest_sha256": "4968515ec28aa8d801130bf55e0afb5d84f8432468b3ed14a41553154d7fb22e"
+  "asset_manifest_sha256": "1fcd4994577134cb83a73777d52e21f73c94c9ba52c6dc0cea2d4e2ea8bb4ead"
 }
