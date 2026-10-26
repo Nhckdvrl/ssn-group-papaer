@@ -100,7 +100,7 @@ Machine-readable companion: `results/asset_inventory_2026-10-26.json`.
 - 同研究者从raw独立实现点值/角点/交互代数一致性检查：`scripts/e148149_verify_results.py`，结果`results/e148149_raw_verification.json`；不冒称独立L3校对。
 - [E148/E149封存](results/e148149_artifact_seal.json)绑定源码提交`2f492784`、完整耐久manifest、全部结果proof与实际资源。耐久`run_metadata_2f492784.tar.gz`（903,189 B）是该精确提交的源码/小型结果包，可配合独立大资产恢复；不是新增模型或科学重复。
 
-## E150新发现的公开成熟分叉（尚在下载，不伪称已可运行）
+## E150公开成熟分叉：最初核查与后续完成记录
 
 - [作者发布清单](https://github.com/allenai/EMO#midtraining-ablation-models)与两训练脚本共同指向成熟1T parent `step238419`，之后标准/文档pool协议各退火50B；声明谱系、尚未取得的原始起点/batch/optimizer证据分开记录。HF commit/file metadata已实际读取，见`results/mature_assets_2026-10-27/emo_repo_pins.json`。
 - 标准终点`allenai/StdMoE_1b14b_1T` pin `b82073bb43aaaddc0f71d5ce139ad291a3948b32`；协议终点`allenai/StdMoE_1b14b_1T_EmoAnnealed` pin `d18c640b39e67f89669f38c5db8b5ed22a6927ca`。两份FP32权重各54,275,336,216 B，总新增下载108.55GB，写NFS HF缓存`/home/xiang/mechpop_cache/hf_emo_mature`，不在NVMe重复存两份。
@@ -123,4 +123,6 @@ Machine-readable companion: `results/asset_inventory_2026-10-26.json`.
 
 [E150封存](results/e150/artifact_seal.json)：精确结果提交870f88cf的`run_metadata_870f88cf.tar.gz`已存同一耐久raw目录，761,274 B；6个科学raw/input/cal文件共88,515,567 B逐项重核SHA，公开108.55GB模型权重只引用原完整核验的HF缓存，避免重复复制。封存与后续E151新结果分开，不回写旧raw。
 
-E151只复用同两native权重/输入，新增3份固定random mask和全局R/S必要性raw于`~/mechpop_cache/e151_native_selectivity_necessity/`；目前主读数运行中，不将计划写成完成。
+E151已完整完成，仍复用同两native权重/输入：`~/mechpop_cache/e151_native_selectivity_necessity/metrics.npz` 4,270,219 B，SHA `8c02187d75488219f82c20023382a0134495479f4586115a564a0602c6fb9ee7`；`random_masks.npz`的3份固定mask由`results/e151/plan.json`锁定，非训练seed。12条件全部保留，native逐token NLL与E150一致、源参数/buffer只读，CPU点复核误差0。实际.330641878 GPU·时、单卡81.857GB，无新训练或新模型下载。
+
+E151复算：`~/.venvs/mechpop/bin/python moe/scripts/e151_native.py analyze --physical-gpu 0`，再`e151_verify_results.py`与`e151_plot.py`。原模型重新执行须另计资源；所有phase budget已结清，不能把已有raw恢复算成新实验或独立复现。

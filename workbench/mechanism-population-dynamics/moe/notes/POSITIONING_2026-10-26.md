@@ -84,3 +84,11 @@ E148/E149已经显示：高于精确repeat的预测残留，并未自动成为�
 | 最新venue corpus nearest命中的Coupling Experts and Routers、Read-ME、Tight Clusters | 本轮仅检索标题/库记录，未新读原文；接收标签只是检索地图 | 一般耦合、解耦、聚类不是可直接认领的新点；不据标题或热度自动判定本题重复/关线 |
 
 **Compression risk：** 仅展示16格完整NLL，容易退化为一般模型拼装敏感性。E150在任何原生GPU读数前补强了固定prefix预算下的suffix pruning损失，相对每格自身完整预测配对，并把shared单列。它直接区分完整质量与受限计算可用性；仍不自动识别语义封装，masked-softmax尺度适应与支持路径都须保留解释。若native性质本身没有出现，不以更换预算/任务救阳性。新颖性仍需具体结果与近邻全文校对，没有自动判决。
+
+### E150/E151后重新核对的ownership
+
+回读[EMO §3.2/4.1/A.2–3](https://allenai.org/papers/emo)：它已明确区分127 routed+1 shared，训练pool内重归一化、变pool大小与shared的益处都有作者证据；我们的接口核对与预算收益不能重新包装成发现。回读[Rethinking Routing §2.2](https://arxiv.org/html/2610.22353v1#S2.SS2)的个体专家零化、逐层随机routing和shared作用，已有一般shared重要性及routing不敏感性诊断。不能把E151泛化成首次发现共享路径或首次测专家必要性。
+
+当前更具体的候选增量是：在**同shared架构、公开成熟协议历史**之间，通过dense/router/routed/shared来源交叉识别可转移性质与配套边界，并把完整质量、随机预算鲁棒性、输入选择价值及依赖配置分开。我们的B gate独移不转移预算收益，R/S/D配套与依赖配置变化比单看route集中更有解释力。结果只是一个声明同父协议包、语言窗口，尚未证明域级语义单元、普遍形成必要性或独立seed规律。
+
+最强竞争解释仍是路由分母/尺度适应、一般删减鲁棒性与始终激活计算补偿；E151支持后两者参与，同时保留R实际作用和prefix选择优势。下一证据应检验原始任务/独立输入及normalizer保留门值操作，而不是靠新增相关性图或层扫描扩大故事。与EMO/MirrorMoE的差异需围绕这些具体识别方式，不据接近或热度关闭方向。

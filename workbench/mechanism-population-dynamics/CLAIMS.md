@@ -7,6 +7,8 @@
 ## MoE方向（2026-10-26 用户确认方向；当前说明见 [moe/RESEARCH_DIRECTION.md](moe/RESEARCH_DIRECTION.md)）
 
 **用户在讨论后已确认方向，并授权整理上传和初步实验设计。用户本轮明确授权科研执行；E144/E145 已完整获得预测配套与共同接收者兼容性结果，新增限定C10/C11=L1，旧C06–C09数值与等级不变。E146条件分组和E147新登记gate-only强对照也已完整完成：分组收益成立，尚无Γ额外优于gate-only的证据。**
+
+**夜间更新至E151：** E148/E149限定短程原生历史响应与配套的区别（C13=L1）；E150成熟来源交叉与E151全局必要性/随机预算显示跨route/shared/dense配套及依赖配置变化（C14=L1）。后两卡同一模型/输入人口，不计独立训练复现；全部旧等级和原数不变。
 - 当前问题：给定真实语言模型接口及其要求的条件计算，任务与学习历史分别约束哪些专家职责和配套；这些差异何时改变合法组件重组后的预测行为。E130 保持限定 C07；原生函数重复实现不是独立预训练，需由具体预测后果建立其解释价值。
 
 > **2026-10-26 范围修订：** 下表 C07 的 P30 注记保留早先审视的来源；“专家几乎可互换”“蒸馏线偏离原问题”不能作为当前一般结论。E134 中 dense-CE 的 c-only held ΔNLL 小，但 calibration 残差平方能量比仍约 41%–43%；E135/E136 冻结原生接口学生的 c-only ΔNLL 分别约 .0395/.0408。当前将其作为不同接口与监督下的限定观察。详见 [P30 修订](PAIN_LOG.md) 与 [摘要重算](moe/results/discussion_2026-10-26/reanalysis.json)，不改变 C07 的原始数字或等级。
@@ -23,6 +25,8 @@
 | C12 | 在F三学生/同64序列/8×8固定粒度中，train Γ分组的NLL增量.000681小于3个预定随机分组.001690–.002151；但gate-only分组也获相近收益（gate-only−Γ=+.0000048，交叉CI[−.000251,.000266]），当前未检出Γ带来额外预测优势 | L1 | E146/E147；`results/e146/summary.json`、`raw_verification.json`、`groups.json`；`results/e147/summary.json`、`groups.json`、`manifest.json` | 同teacher/固定gate三学生、一个粒度、4来源basis/3随机分区；CI非seed或随机分区总体。E147为E146结果后新登记强对照。支持可保持的配套边界，不支持天然/最小语义联盟，也未作等价检验 | 2026-10-26；训练定组/held分离，全部48+12新bank保留、μ/层端点逐位重放、FP64Γ与C/V吻合；保留Γ额外优势未检出的结果 |
 | C13 | 在公开OLMoE step5000的单父状态全参数继续学习中，等曝光128batch次序处理的A/B预测KL经512共同更新由.002751降至.000893 [文件CI .000676,.001218]；同流repeat精确相同，但自身late→final KL约.0071。L9互换NLL区间均跨0，全网络8格的backbone×MoE交叉−共源配对代价亦为−.00006069 [−.00050318,.00024186]，当前未检出强来源配套障碍 | L1 | E148/E149；`results/e148/{summary,grafts,plan,pulse_exposure_audit}.json`、`results/e149/{summary,manifest}.json`；冻结源码SHA、`results/e148149_raw_verification.json` | 一个已训练20B token的父状态、FA有限继续学习、2×512 batch、一个处理剂量；非独立seed或原optimizer复现。末期仍漂移，不称稳定职责或严格可组合等价；KL含真实BF16程序敏感性，输入CI非父状态总体，E149不是独立训练/输入复现。保留BAB相对AAA有损但相对BBB区间跨0 | 2026-10-27；三分支全部完成、同父参数/buffer/RNG及pulse多重集合/后缀字节链一致；自装配/repeat和全部native角差0、源参数/buffer只读hash通过。CPU阶段/GPU全词表点差≤3.2e−8，raw点值/代数复核误差≤3.5e−18，未作独立L3校对 |
 | C14 | 在EMO公开声明同父的标准/文档pool退火成熟A/B中，整MoE双向移植平均增加NLL .127787 [.122068,.134908]，route/shared和router/route也有正配对代价。B在固定32槽prefix预算下比A损伤更小（自身selector ΔNLL差−.738449），但B router来源平均使full→restricted KL增加.239/.206；路由专家、dense及shared来源分别减弱它，收益不能只归给router组织 | L1 | E150卡；`results/e150/{summary,manifest,raw_verification,asset_manifest}.json`；核心9cd5ba33、统计27050fad及observer SHA | 一个公开协议包/声明同父、无起始batch/optimizer字节链；20文件输入CI非seed总体。新tokenizer语言窗口、固定prefix32槽，非MMLU复现或完整语义模块证据；函数/支持/归一化/一般弱R依赖尚未完全区分；平均背景含14个未训练hybrid，非机制责任比例 | 2026-10-27；48条件全部保留，native角/cal重载逐位一致、权重/buffer只读；raw独立tensor轴点值误差≤1.12e−16（同研究者非L3）。1.123525 GPU·时、单卡81.857GB，无新训练；下一项仅做全局必要性和随机同预算强对照 |
+
+**C14解释限定更新（E151完成，等级保持L1）：** 同两模型的R-zero ΔNLL A/B=6.096/2.770、shared-zero=1.097/2.972；依赖配置改变，不能当知识责任比例。B随机32预算也比A稳健（.910 vs2.708），同时B自身prefix仍比随机低.432827 [.163812,.803882] NLL。支持一般鲁棒性/依赖变化与有用选择并存，削弱“R已消失”及“只靠route集中”两个单一解释；不自动证明独立语义模块。证据[E151](moe/experiments/E151-native-pruning-selectivity-necessity.md)、`moe/results/e151/{summary,manifest,raw_verification}.json`；同研究者CPU点误差0、native逐token NLL复现E150。未升级C06–C14，也不因一次强对照新造等级。
 
 - **2026-10-25纠正完成：** POS held964/48词形的正确样本标签置换，16层残差CI>0、p≤.002；L9 δ_D=.20594 [.18131,.22787]。保留组织存在的局部证据，不恢复旧错误p值；L0比例.097未达原20%尺度。无跨seed升级。
 - **2026-10-26解释撤回：** E130 order1不是纯次序干预，source/window RNG还造成曝光多重集合TV=.4041%。撤回此前汇报中的“只改纯次序”因果措辞，保留数据流RNG对照与全部结果；未有相应C##被升级。E131已用严格同batch集合和共同后缀隔离该问题，形成限定C08=L1。C06不变。
