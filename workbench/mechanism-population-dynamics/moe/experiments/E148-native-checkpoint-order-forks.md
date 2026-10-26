@@ -66,3 +66,7 @@
 **原生训练侧profile后的资源修订（任何新held/parent读数之前）：** 单卡实测峰值56.270GB，稳定约4.30秒/更新，全部6.919B参数可训练，Adafactor状态仅39.90MB，原生BF16/FP32 master shader输出逐位一致。固定1952总更新的纯训练预估2.33 GPU·时，另有约194GB完整checkpoint与预测/移植读出；首包上限由3改为**4 GPU·时**留I/O余量。未增加分支、更新数、输入、LR或科学读数；修订与旧profile保留，重复预检计入预算，不依据held效果扩容。
 
 **主实验held前的数值实现修订：** 两轮训练侧相同流的短更新出现约1e−4–1e−3 loss差，故在主分叉前固定PyTorch deterministic algorithms、CUBLAS_WORKSPACE_CONFIG=:4096:8、TF32关闭，并增加两个相同更新的重跑样本hash/损失差诊断。数据/步骤/LR/aux/读数不变；旧profile、全部开销保留。该诊断不用于筛seed/输入，完整A-repeat仍给全流程地板。
+
+**确定性原生预检实测：** 全参数6919161856，shader/reference与重复前向差0；相同两次更新的全参数固定抽样hash相同、loss差[0,0]。峰值56.319GB；约6.19秒/更新，固定1952更新核心成本预估3.36 GPU·时；保留4 GPU·时资源包，未改变剂量。预检结果不计为形成机制或新主张。CPU恢复缺口、旧非确定性地板和所有成本继续保留。主parent在这些校对完成后启动。
+
+**任何次序处理前的I/O资源修订：** 共同parent warm32已完成，首个完整FP32 checkpoint为27.72GB，SHA吞吐实测约344MB/s；保存/文件SHA/全tensorSHA占主要额外时间。总执行包改为**5 GPU·时**，仅由`e148_execute.py`的独立资源调度层读取`resource_allowance.json`，不改变已验证的模型/训练内核、输入、剂量、LR、RNG或读数。原科学/内核配置hash与parent保持一致；外层policy/launcher另存SHA与实际开销，绝不将新增资源伪称原4小时配置。该修订在A/B/A-repeat开始前作出，不依据任何处理效应。
