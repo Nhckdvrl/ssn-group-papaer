@@ -1,0 +1,72 @@
+{
+  "active_training_processes": 0,
+  "archive_scope": "Seed0/2 new initial+final checkpoints and training proofs, existing failure proof, source scaffold. Readout raw files are staged separately; final archive seal awaits prediction/A independent audit.",
+  "experiment": "E139",
+  "host": "fvcrc21",
+  "new_training_seeds": {
+    "seed0": {
+      "checkpoint_bytes": 4833679347,
+      "final_checkpoint": {
+        "checkpoint": "/tmp/xiang-moe-20261025/e139_seed0/checkpoint.pt",
+        "checkpoint_sha256": "cba05e446905cf4397d824cd76b6e867d4088729c3d545acef2bbf2681e3cbc0",
+        "expert_only_tensor_sha256": "f4c281ddc5fc1c7b8291d12f9d08135282af2ff1e5d154faa71b342422c29f5d",
+        "full_tensor_sha256": "45a3902f6bd30b8a5348de00174297c4bcb0cb543f1cafeadd1e423a67120912",
+        "gate_tensor_sha256": "d8ac09bfe6743c7b3e9902af424d32304d9c0281e65aa9d51fb65ac7744de611",
+        "step": 4096
+      },
+      "final_file_mtime_unix": 1792986011,
+      "initial_bytes": 1611236884,
+      "initial_checkpoint": {
+        "checkpoint": "/tmp/xiang-moe-20261025/e139_seed0/initial.pt",
+        "checkpoint_sha256": "81fe1e7ea325f07ae12b73f1f0f57c42251483050292610bf40e6e4db423032c",
+        "expert_only_tensor_sha256": "48d7787bca54b03a06356a6214bcae59130395f31a671b666247952a3f438027",
+        "full_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+        "gate_tensor_sha256": "fd4a42233bbb7f39cacffc12e70bacaaec6bc1812064830ec32076635df8652a",
+        "step": 0
+      },
+      "initial_file_mtime_unix": 1792985260,
+      "matched_fixed_expert_only_sha256": "48d7787bca54b03a06356a6214bcae59130395f31a671b666247952a3f438027",
+      "planned_steps": 4096,
+      "status": "complete",
+      "step": 4096
+    },
+    "seed2": {
+      "checkpoint_bytes": 4833679411,
+      "final_checkpoint": {
+        "checkpoint": "/tmp/xiang-moe-20261025/e139_seed2/checkpoint.pt",
+        "checkpoint_sha256": "19144805a8f542e82335b41a825bd28795a31bd12987e79c323436754be7e1e9",
+        "expert_only_tensor_sha256": "756b4964de5db24206155926382b2777de19bc3b97e7741380b0288a99eaabcb",
+        "full_tensor_sha256": "bb4ba8d13a6ac320765f2f61f6875b1c42b61bcd20e28407b530497af359c6e1",
+        "gate_tensor_sha256": "67edd5775b25fd9de8c1bc4268603bd4041e3849ec6612112bb9eb901cdca2aa",
+        "step": 4096
+      },
+      "final_file_mtime_unix": 1792986011,
+      "initial_bytes": 1611236948,
+      "initial_checkpoint": {
+        "checkpoint": "/tmp/xiang-moe-20261025/e139_seed2/initial.pt",
+        "checkpoint_sha256": "a7d2ed71d640f7e48f4b90c7d42ab9ed2afdd5ed74f27171995e50bcd3417b3b",
+        "expert_only_tensor_sha256": "9420adea223e653259bb57700a6792a3ffac05e88385c9b7d9348914cc7bc387",
+        "full_tensor_sha256": "8cfdb44f5eaf014ea4af3d986b493f94cb5a10cad50643c797cc474b75f4ce2e",
+        "gate_tensor_sha256": "b2309c4eafdff9e884a6ca2455d86b3906cc9930a3565486cb9641cc4ced5801",
+        "step": 0
+      },
+      "initial_file_mtime_unix": 1792985258,
+      "matched_fixed_expert_only_sha256": "9420adea223e653259bb57700a6792a3ffac05e88385c9b7d9348914cc7bc387",
+      "planned_steps": 4096,
+      "status": "complete",
+      "step": 4096
+    }
+  },
+  "phase": "stable_model_assets_and_plot_scaffold",
+  "previous_device_setup_failure": {
+    "budget_completed_seconds": 1.0088108517229557,
+    "classification": "technical failure before any initial checkpoint or optimizer update; both attempts retained; same seeds will restart after CUDA RNG state setup repair",
+    "failed_attempts": 2,
+    "initial_checkpoints_written": false,
+    "optimizer_updates": 0,
+    "path": "/home/xiang/mechpop_cache/e139_device_setup_failure_032252/failure.json"
+  },
+  "readout_errors": {},
+  "readout_pid_at_snapshot": null,
+  "readout_status": "complete"
+}

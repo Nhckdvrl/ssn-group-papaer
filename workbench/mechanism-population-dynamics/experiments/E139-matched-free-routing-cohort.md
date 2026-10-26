@@ -1,6 +1,6 @@
 # E139：自由路由的配对三学生对照（2026-10-26）
 
-- **状态：** RUNNING；03:26:50 UTC修复设备初始化后重启原seed0/2，预登记部分保持。
+- **状态：** DONE；训练、全部读数、三份独立审计完整；原预登记与技术失败记录保持。
 - **类型：** PILOT / REPRO；补齐E138缺失条件，不是优化恢复分数。
 - **对应：** P26：固定分配组三学生较一致，尚不能将一致性归因于额外路由信息；承接P25/C07的问题，主张等级暂不变。
 - **问题（一句话）：** 同样的总函数目标与预算下，提供并冻结teacher分配，是否比自由联合学习更稳定地确定跨初始化的实际计算分解？
@@ -47,3 +47,14 @@
 - 新自由seed0/2全部4096完整、9个预定MSE事件保留，held固定train-energy MSE=.17027721505543736/.1704162564373377；复用seed1(E135)=.1693501617。无seed筛选或续训。
 - 读数源`e139_components.py` SHA `ce8e7029f707b735770a4915bbca4e53406033867bea4d4683a0b0c7fe7342b2`；`e139_readout.py` SHA `6ac6444b6b61dfc7b4380e8d4ad05c81286dbd6bfec9d6bac386060ff2e359e9`冻结，原训练SHA不变。CPU/非自逆置换/不同support零散射/方差双恒等式/paired输入CI/mapped-A已知答案及真实初始资产预检通过；完整终点CPU预检正在执行，随后才GPU读数。
 - Hcal沿原8192整体reshape B16×512 native程序，cal cost存原始SSE（除8192即原定义MSE，同一最优置换）；未中心化/缩放。固定与自由A都由各自该cal映射CPU重标，fixed identity另保留。不物理重排权重，避免引入新的BF16平局效应。
+
+### 完整结果与独立审计
+- `results/e139/readout.json`全components/predictions/A complete、errors空。实际总预算1901.946335 GPU秒（含1.008811秒两次更新前设备失败；无失败seed筛选），旧ledger不变。
+- Dolma teacher误差/共同bias/cohort variance（nativeTeacher能量归一）：free .176401906/.160690527/.015711380；fixed .162563352/.148547890/.014015462。总函数及拟合仍不同，不宣称同函数等价。
+- 同vector²/位置单位componentVar free/fixed=.072467196/.031208956；FP64sumVar=.017869477/.015947143；cross=−.054597719/−.015261813。paired free−fixed componentVar=+.041258240 [输入CI .039905247,.043002846]，cross=−.039335906 [−.040786718,−.037973749]，sumVar=+.001922334 [.001551537,.002431933]；nativeVar差+.001929495。不是seed处理效应CI。
+- POS同方向：componentVar .074797000/.036913420，sumVar .019476059/.017823811；paired component差+.037883580 [.029155292,.047470226]，sumVar差+.001652248 [.000975050,.002305398]。原群体/单位各自保持，不与Dolma归一量混合。
+- 初态componentVar fixed .339771大于free .129446，因此最终关系不是简单较低初始variance floor；不把初终相减改为新主读数。fixed final两张cal map全64identity，initial18/19；free final1/0身份碰巧相同只是编号，不作语义证据。
+- 自然Dolma三student pair KL free=.009105268/.009220522/.009063447，fixed原=.008730334/.008823162/.008845247；free teacher→student=.042595403/.042465585/.042789074。POS三pair=.008997134/.007485945/.010062931，完整NLL/top1/反向KL及区间均保留，不按较近者挑seed。
+- 同cal-component映射下辅助A free三pair=.178186900/.191692996/.233825446，fixed=.484816185/.526466312/.499266457；full区间在summary。free seed0的expert11/57、seed2的expert6在POS held target-on=0，free seed1无zero-on；fixed seed0/1/2的42/51/52为0。全部64列保留。零覆盖列的原A为0，但row-center可继承组内共同均值；free/fixed A差包含support、门值、mask与映射因素，不能解释为纯expert-content差。
+- 训练对象`training_independent_audit.json`逐值核对192专家初值/同gate与自由gate更新、六运行4096步的orders/LR/曝光一致；`components_independent_audit.json`从cost/raw重算全8条件点/1000CI/64表及4paired contrasts，并用pair-SSE/9与energy-minus-mean两条恒等式验证variance，max点差2.22e−15。`independent_audit.json`重算完整POS F32 logp与所有A/区间，max点差3.49e−9；Dolma重加stored token数据，不冒称重建未保存全词表。
+- 主张：新增限定C09=L1，C07/C08保持；实际计算分解稳定性受协议影响，额外分量变动在和中大部抵消。只补E140同完整teacher-gate初态但trainable的单条件，区分初始组织与持续固定协议，不扩拟合/mapper网格。

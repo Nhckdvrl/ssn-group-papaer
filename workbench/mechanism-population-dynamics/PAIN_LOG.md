@@ -2,6 +2,14 @@
 
 只记录真实运行中出现的痛点、异常、失败或意外成功。不要预填“我们希望出现”的现象。
 
+## P28（2026-10-26）：actual贡献变异尚未分开调用支持与共同调用内容
+- E139的C09是actual mask×gate×expert贡献，不是纯expert内容；较大的component variance可能主要来自不同输入调用位置，不能只凭向量读数继续内容故事。
+- E141只读重放原held、沿原cal map，把全pair SSE精确拆XOR与both-on，并pairSum/9重建原variance；共同on的f/门值对称分解作辅助，无任何off查询/新matcher/训练。R/F先做，T原终点后补，主Dolma人口即可。
+
+## P27（2026-10-26）：共同初始组织与持续固定接口尚未分开
+- E139三学生组间Dolma componentVar .072467/.031209，而sumVar .017869/.015947；多数额外分量变动由负cross抵消，独立统计通过。原对照同时提供共同teacher gate与全程冻结/移除router优化，不能区分这些条件。
+- E140只新增teacher-gate初始化但trainable的三学生，同fixed逐张量完整初态/同总Y与4096预算；单一旧cal component对应及完整函数差。它检验初始组织还是持续冻结协议，不能单独归因teacher信息vs共享初始化，不加随机gate/超参网格。
+
 ## P26（2026-10-26）：固定分配组较一致，尚不能归因于路由信息
 - E138固定gate三学生Dolma teacher误差=.162563、共同偏差=.148548、student方差=.014015；多数重建误差是共有偏差。分量方差.031209经负cross −.015262变成sum方差.015947，说明部分抵消，不代表巨大同函数自由度。
 - E139只补匹配free-router seed0/2并复用E135 seed1；同expert初值/目标/缓存/4096预算，两组同唯一cal actual-component置换，fixed identity另保留。比较完整协议，不称纯边界机制；不扫匹配/训练超参或筛拟合。卡在新增GPU前登记。

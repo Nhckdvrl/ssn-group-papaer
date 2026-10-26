@@ -1,0 +1,312 @@
+{
+  "experiment": "E139",
+  "status": "complete_training_object_and_exposure_audit_only",
+  "scope": "Direct remote CPU mmap and own SHA256/tensor comparison; no primary statistics or GPU calls. Readout results not yet audited.",
+  "source_sha256": {
+    "e139_train.py": "93ac8504e21364ca94d6dd5ca18c22493850c41e74b7f0d1cfe12b398e3bcbac",
+    "e139_components.py": "ce8e7029f707b735770a4915bbca4e53406033867bea4d4683a0b0c7fe7342b2",
+    "e139_readout.py": "6ac6444b6b61dfc7b4380e8d4ad05c81286dbd6bfec9d6bac386060ff2e359e9"
+  },
+  "remote_CP_objects": {
+    "objects": {
+      "seed0": {
+        "initial_expert_tensors_exact_equal_paired_fixed": true,
+        "paired_expert_tensors": 192,
+        "states": {
+          "initial": {
+            "full_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+            "expert_only_tensor_sha256": "48d7787bca54b03a06356a6214bcae59130395f31a671b666247952a3f438027",
+            "gate_tensor_sha256": "fd4a42233bbb7f39cacffc12e70bacaaec6bc1812064830ec32076635df8652a",
+            "checkpoint": "/tmp/xiang-moe-20261025/e139_seed0/initial.pt",
+            "checkpoint_sha256": "81fe1e7ea325f07ae12b73f1f0f57c42251483050292610bf40e6e4db423032c",
+            "step": 0,
+            "schema": "E139-free-routing-student-v1",
+            "config_hash": "f80758c82ae11d19a0249e9f471125a06f35247698f1a85b2d04b4b24d1fcd62",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "all_master_FP32": true,
+            "cache_counts_minmax": [
+              0,
+              0
+            ],
+            "cache_batch_count": 1024,
+            "optimizer_steps": []
+          },
+          "final": {
+            "full_tensor_sha256": "45a3902f6bd30b8a5348de00174297c4bcb0cb543f1cafeadd1e423a67120912",
+            "expert_only_tensor_sha256": "f4c281ddc5fc1c7b8291d12f9d08135282af2ff1e5d154faa71b342422c29f5d",
+            "gate_tensor_sha256": "d8ac09bfe6743c7b3e9902af424d32304d9c0281e65aa9d51fb65ac7744de611",
+            "checkpoint": "/tmp/xiang-moe-20261025/e139_seed0/checkpoint.pt",
+            "checkpoint_sha256": "cba05e446905cf4397d824cd76b6e867d4088729c3d545acef2bbf2681e3cbc0",
+            "step": 4096,
+            "schema": "E139-free-routing-student-v1",
+            "config_hash": "f80758c82ae11d19a0249e9f471125a06f35247698f1a85b2d04b4b24d1fcd62",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "all_master_FP32": true,
+            "cache_counts_minmax": [
+              4,
+              4
+            ],
+            "cache_batch_count": 1024,
+            "optimizer_steps": [
+              4096
+            ],
+            "summary_final_tensor_sha256_matches": true
+          }
+        },
+        "free_gate_change": {
+          "changed_entries": 131072,
+          "entries": 131072,
+          "max_abs_difference": 0.2391735315322876,
+          "squared_L2_difference": 98.59879592386577
+        },
+        "paired_fixed_states": {
+          "initial": {
+            "full_tensor_sha256": "a9c1ad7f813bc2ed93ee5de8274b21503fbf6ffed124c67a6d5e9af852ac2291",
+            "expert_only_tensor_sha256": "48d7787bca54b03a06356a6214bcae59130395f31a671b666247952a3f438027",
+            "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+            "checkpoint_sha256": "146cacda5e9ba6a4bf231d6eda9f0a6c3b461f36a222453f1823d56a73b898ad"
+          },
+          "final": {
+            "full_tensor_sha256": "52ae894f168fe8dac800d3367d10acd9ddfda72eee431232175ec6de6776e840",
+            "expert_only_tensor_sha256": "025c7fcafd86cbcee817fe87f2b454f79bf12349a40359dda68f73f02fd8f53e",
+            "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+            "checkpoint_sha256": "9cb88040d2c3de8026a9a2dc8dfaa2a9a7a022ec4f388d37bd336e70d5ac2a3f"
+          }
+        },
+        "summary": {
+          "status": "complete",
+          "step": 4096,
+          "evaluation_steps": [
+            0,
+            512,
+            1024,
+            1536,
+            2048,
+            2560,
+            3072,
+            3584,
+            4096
+          ],
+          "driver_sha256": "93ac8504e21364ca94d6dd5ca18c22493850c41e74b7f0d1cfe12b398e3bcbac"
+        }
+      },
+      "seed1": {
+        "initial_expert_tensors_exact_equal_paired_fixed": true,
+        "paired_expert_tensors": 192,
+        "states": {
+          "initial": {
+            "full_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+            "expert_only_tensor_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+            "gate_tensor_sha256": "676b94a0026c60374b615a4b6a2bbe9ec4064b3058e6f4abef83ed9e7e78457e",
+            "checkpoint": "/tmp/xiang-moe-20261025/e135_student/initial.pt",
+            "checkpoint_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+            "step": 0,
+            "schema": "E135-student-v1",
+            "config_hash": "78a913135b4b100a3680ffa6b701ab2a94e29508d32f36f89e06fa4fafde1050",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "all_master_FP32": true,
+            "cache_counts_minmax": [
+              0,
+              0
+            ],
+            "cache_batch_count": 1024,
+            "optimizer_steps": []
+          },
+          "final": {
+            "full_tensor_sha256": "ec27fb8063d7091d205e2d7fa613f49b170b40282c3355aaafbf25d75828c2fa",
+            "expert_only_tensor_sha256": "e6f63f52a3de4180323aea9772a66f3309e825a389b16af6e3b6c4c872fcd0f2",
+            "gate_tensor_sha256": "17b9ffc8a57fa563bcdad0cd1ace635ac59f193df3c961341f6d1cc7f9a403ae",
+            "checkpoint": "/tmp/xiang-moe-20261025/e135_student/checkpoint.pt",
+            "checkpoint_sha256": "45933dc5ed847c1e393b166c1108087d708e264e08f0530d166d0dcb251cd1d7",
+            "step": 4096,
+            "schema": "E135-student-v1",
+            "config_hash": "78a913135b4b100a3680ffa6b701ab2a94e29508d32f36f89e06fa4fafde1050",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "all_master_FP32": true,
+            "cache_counts_minmax": [
+              4,
+              4
+            ],
+            "cache_batch_count": 1024,
+            "optimizer_steps": [
+              4096
+            ],
+            "summary_final_tensor_sha256_matches": true
+          }
+        },
+        "free_gate_change": {
+          "changed_entries": 131072,
+          "entries": 131072,
+          "max_abs_difference": 0.26317912340164185,
+          "squared_L2_difference": 99.48832658283378
+        },
+        "paired_fixed_states": {
+          "initial": {
+            "full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+            "expert_only_tensor_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+            "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+            "checkpoint_sha256": "3f420c7511529c346f1654f006ffc0dcd3cfbc0bde25c8a9f25e0be45edd78a6"
+          },
+          "final": {
+            "full_tensor_sha256": "b51776965b9c1fc06506012c755b47179fa49ea94b10a901c22544277dcca120",
+            "expert_only_tensor_sha256": "ece77c58c09a68d5c7c9dd7451a8b9f29726aa7e4d8eba0e5a63a71a1bf0efb2",
+            "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+            "checkpoint_sha256": "7126ae1661ba5d0bfd696b2284247a848982facfb6625b3f9265edd709368ec0"
+          }
+        },
+        "summary": {
+          "status": "complete",
+          "step": 4096,
+          "evaluation_steps": [
+            0,
+            512,
+            1024,
+            1536,
+            2048,
+            2560,
+            3072,
+            3584,
+            4096
+          ],
+          "driver_sha256": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7"
+        }
+      },
+      "seed2": {
+        "initial_expert_tensors_exact_equal_paired_fixed": true,
+        "paired_expert_tensors": 192,
+        "states": {
+          "initial": {
+            "full_tensor_sha256": "8cfdb44f5eaf014ea4af3d986b493f94cb5a10cad50643c797cc474b75f4ce2e",
+            "expert_only_tensor_sha256": "9420adea223e653259bb57700a6792a3ffac05e88385c9b7d9348914cc7bc387",
+            "gate_tensor_sha256": "b2309c4eafdff9e884a6ca2455d86b3906cc9930a3565486cb9641cc4ced5801",
+            "checkpoint": "/tmp/xiang-moe-20261025/e139_seed2/initial.pt",
+            "checkpoint_sha256": "a7d2ed71d640f7e48f4b90c7d42ab9ed2afdd5ed74f27171995e50bcd3417b3b",
+            "step": 0,
+            "schema": "E139-free-routing-student-v1",
+            "config_hash": "8f38f38b8c46d05a4d11c08bfe7a2b629891d2becb1f0f1ee4c11b2afdc7e495",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "all_master_FP32": true,
+            "cache_counts_minmax": [
+              0,
+              0
+            ],
+            "cache_batch_count": 1024,
+            "optimizer_steps": []
+          },
+          "final": {
+            "full_tensor_sha256": "bb4ba8d13a6ac320765f2f61f6875b1c42b61bcd20e28407b530497af359c6e1",
+            "expert_only_tensor_sha256": "756b4964de5db24206155926382b2777de19bc3b97e7741380b0288a99eaabcb",
+            "gate_tensor_sha256": "67edd5775b25fd9de8c1bc4268603bd4041e3849ec6612112bb9eb901cdca2aa",
+            "checkpoint": "/tmp/xiang-moe-20261025/e139_seed2/checkpoint.pt",
+            "checkpoint_sha256": "19144805a8f542e82335b41a825bd28795a31bd12987e79c323436754be7e1e9",
+            "step": 4096,
+            "schema": "E139-free-routing-student-v1",
+            "config_hash": "8f38f38b8c46d05a4d11c08bfe7a2b629891d2becb1f0f1ee4c11b2afdc7e495",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "all_master_FP32": true,
+            "cache_counts_minmax": [
+              4,
+              4
+            ],
+            "cache_batch_count": 1024,
+            "optimizer_steps": [
+              4096
+            ],
+            "summary_final_tensor_sha256_matches": true
+          }
+        },
+        "free_gate_change": {
+          "changed_entries": 131072,
+          "entries": 131072,
+          "max_abs_difference": 0.28501883149147034,
+          "squared_L2_difference": 98.58125178783422
+        },
+        "paired_fixed_states": {
+          "initial": {
+            "full_tensor_sha256": "db50ee401389fe330b81604fcb556e4d9229cdf73e3b01202f4f7bb074228669",
+            "expert_only_tensor_sha256": "9420adea223e653259bb57700a6792a3ffac05e88385c9b7d9348914cc7bc387",
+            "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+            "checkpoint_sha256": "c4af871a4d6c6808f11826ab0fa279ad6d8e457026e74c29e674a332d626e48e"
+          },
+          "final": {
+            "full_tensor_sha256": "77b6c44ee64fb0035ba8d7ebd9cca2ac92a4897712d687f5c23e7456f9a9549b",
+            "expert_only_tensor_sha256": "0abf9639063b941cb358a26d718cdf5817fb2d31be94d4efdedfb6cdbb86f3bb",
+            "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+            "checkpoint_sha256": "61f5e4d059507071a1232b015f511683a197a7c9007dc8f89b73491c35f59873"
+          }
+        },
+        "summary": {
+          "status": "complete",
+          "step": 4096,
+          "evaluation_steps": [
+            0,
+            512,
+            1024,
+            1536,
+            2048,
+            2560,
+            3072,
+            3584,
+            4096
+          ],
+          "driver_sha256": "93ac8504e21364ca94d6dd5ca18c22493850c41e74b7f0d1cfe12b398e3bcbac"
+        }
+      }
+    },
+    "cuda_initialized": false
+  },
+  "all_six_free_fixed_seed_step_epoch_index_LR_position_exposure_sequences_exact_equal": true,
+  "actual_cache_manifest_and_epoch_orders_SHA_verified_and_all_log_indices_match_exact_epoch_orders_array": true,
+  "logs": {
+    "free_seed0": {
+      "sha256": "0d60e30bf26c7a0528dee8ce2a97505811aef42d24372d3c3f69948c30553bd2",
+      "records": 4096,
+      "each_epoch_exact_permutation": true,
+      "exposure_total": 33554432,
+      "sequence_sha256": "ab4c50a3668bceb5fcc82f44be7676d2dce2cd1de24d922550f6a749a225e491"
+    },
+    "fixed_seed0": {
+      "sha256": "f98911dd9ec4509a16153dcf92f928328b61293b4eb9e6b0665ae413d7be9024",
+      "records": 4096,
+      "each_epoch_exact_permutation": true,
+      "exposure_total": 33554432,
+      "sequence_sha256": "ab4c50a3668bceb5fcc82f44be7676d2dce2cd1de24d922550f6a749a225e491"
+    },
+    "free_seed1": {
+      "sha256": "b2d60dda5e65190f50a21229bd88bc05bdd31b03394dee468a4161af84c1ac2a",
+      "records": 4096,
+      "each_epoch_exact_permutation": true,
+      "exposure_total": 33554432,
+      "sequence_sha256": "ab4c50a3668bceb5fcc82f44be7676d2dce2cd1de24d922550f6a749a225e491"
+    },
+    "fixed_seed1": {
+      "sha256": "4501d3989e9a3bffbf8fea58cf8e42dc0e8b7096b579eb8edfb03675145222c9",
+      "records": 4096,
+      "each_epoch_exact_permutation": true,
+      "exposure_total": 33554432,
+      "sequence_sha256": "ab4c50a3668bceb5fcc82f44be7676d2dce2cd1de24d922550f6a749a225e491"
+    },
+    "free_seed2": {
+      "sha256": "41e50bb069db2c90d4397208f2f5f40d77b82b2efee231e9ed9e3fd071352272",
+      "records": 4096,
+      "each_epoch_exact_permutation": true,
+      "exposure_total": 33554432,
+      "sequence_sha256": "ab4c50a3668bceb5fcc82f44be7676d2dce2cd1de24d922550f6a749a225e491"
+    },
+    "fixed_seed2": {
+      "sha256": "10326a4080320751d24a33e0b0c46ee9ee2280e4f7130e9ef797bdaf208a503c",
+      "records": 4096,
+      "each_epoch_exact_permutation": true,
+      "exposure_total": 33554432,
+      "sequence_sha256": "ab4c50a3668bceb5fcc82f44be7676d2dce2cd1de24d922550f6a749a225e491"
+    }
+  },
+  "immutable_old_E135_free_seed1_and_all_fixed_CP_files_and_tensor_proofs_match_previous_records": true,
+  "all_three_initial_expert_hashes_distinct": true,
+  "reference_summary_sha256": {
+    "E135": "6367cc0bce561ae453cfb14dc87725808500f8d5ee2297455c32d029f1b83475",
+    "E138": "d6c7de86c76f0fff2494de4fdd48b442aa757165b41bcddd26b0d0eef626cf98"
+  },
+  "readout_CPU_preflight_proofs_independently_match_all_actual_free_fixed_CP_objects": true,
+  "readout_CPU_preflight_sha256": "8b086b0b3c569df3bd9c69d9dcfcfeb3c16af89de7174bb150fcffa9c8b65315"
+}

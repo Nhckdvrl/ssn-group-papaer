@@ -1,0 +1,1362 @@
+{
+  "A_pair_correspondence": {
+    "seed0_to_seed1": {
+      "Fixed Hcal map": {
+        "ci95": [
+          0.3775688061554309,
+          0.5764014859784875
+        ],
+        "coverage_comparable": true,
+        "n_valid_columns": 64,
+        "point": 0.48481618488169653
+      },
+      "Fixed known identity": {
+        "ci95": [
+          0.37901197902521616,
+          0.5707396039039988
+        ],
+        "coverage_comparable": true,
+        "n_valid_columns": 64,
+        "point": 0.48481618488169653
+      },
+      "Free Hcal map": {
+        "ci95": [
+          0.05830910998816268,
+          0.31435415051729443
+        ],
+        "coverage_comparable": true,
+        "n_valid_columns": 64,
+        "point": 0.17818689962785414
+      }
+    },
+    "seed0_to_seed2": {
+      "Fixed Hcal map": {
+        "ci95": [
+          0.4068657619805035,
+          0.6075100939053737
+        ],
+        "coverage_comparable": true,
+        "n_valid_columns": 64,
+        "point": 0.5264663119949338
+      },
+      "Fixed known identity": {
+        "ci95": [
+          0.40430094716346643,
+          0.6048191081703408
+        ],
+        "coverage_comparable": true,
+        "n_valid_columns": 64,
+        "point": 0.5264663119949338
+      },
+      "Free Hcal map": {
+        "ci95": [
+          0.154638789432241,
+          0.26233452680792674
+        ],
+        "coverage_comparable": true,
+        "n_valid_columns": 64,
+        "point": 0.19169299623266348
+      }
+    },
+    "seed1_to_seed2": {
+      "Fixed Hcal map": {
+        "ci95": [
+          0.3214972908654167,
+          0.6316635462586744
+        ],
+        "coverage_comparable": true,
+        "n_valid_columns": 64,
+        "point": 0.499266457460193
+      },
+      "Fixed known identity": {
+        "ci95": [
+          0.31591006791319237,
+          0.622938244827172
+        ],
+        "coverage_comparable": true,
+        "n_valid_columns": 64,
+        "point": 0.499266457460193
+      },
+      "Free Hcal map": {
+        "ci95": [
+          0.20300689278295336,
+          0.30505364778092564
+        ],
+        "coverage_comparable": true,
+        "n_valid_columns": 64,
+        "point": 0.2338254459682329
+      }
+    }
+  },
+  "POS_support_and_A_interpretation": {
+    "A_difference_caveat": "Free/fixed A difference includes support, gate, mask, mapping and row-centered mean effects; it is not a pure expert-content comparison.",
+    "all_columns_retained": true,
+    "fixed_zero_target_on_experts": [
+      42,
+      51,
+      52
+    ],
+    "free_seed0_zero_target_on_experts": [
+      11,
+      57
+    ],
+    "free_seed2_zero_target_on_experts": [
+      6
+    ]
+  },
+  "archive_seal_ready": false,
+  "audit_state_at_plot_time": {
+    "A": "pending at plot time if no independent audit file exists",
+    "components": "results/e139/components_independent_audit.json",
+    "predictor": "pending at plot time if no independent audit file exists"
+  },
+  "cohort": [
+    "seed0",
+    "reused observed E135 seed1",
+    "seed2"
+  ],
+  "components": {
+    "Dolma_held_positions": {
+      "component_variance": {
+        "fixed_final_Dolma_held_positions": {
+          "mapping": "calibration",
+          "metric": {
+            "ci95": [
+              -0.01587332338861796,
+              -0.014677284880534125
+            ],
+            "defined_draws": 1000,
+            "point": -0.0152618126566572
+          }
+        },
+        "fixed_identity_final_Dolma_held_positions_identity": {
+          "mapping": "identity",
+          "metric": {
+            "ci95": [
+              -0.015859641404689748,
+              -0.014598048336003049
+            ],
+            "defined_draws": 1000,
+            "point": -0.0152618126566572
+          }
+        },
+        "fixed_identity_initial_Dolma_held_positions_identity": {
+          "mapping": "identity",
+          "metric": {
+            "ci95": [
+              -7.489907727316033e-05,
+              6.099332884583621e-06
+            ],
+            "defined_draws": 1000,
+            "point": -3.5982267474699015e-05
+          }
+        },
+        "fixed_initial_Dolma_held_positions": {
+          "mapping": "calibration",
+          "metric": {
+            "ci95": [
+              -2.6905659808804938e-05,
+              5.6608841573327604e-05
+            ],
+            "defined_draws": 1000,
+            "point": 1.8932704335894446e-05
+          }
+        },
+        "free_final_Dolma_held_positions": {
+          "mapping": "calibration",
+          "metric": {
+            "ci95": [
+              -0.05638046855926361,
+              -0.05297024009812327
+            ],
+            "defined_draws": 1000,
+            "point": -0.05459771914330912
+          }
+        },
+        "free_initial_Dolma_held_positions": {
+          "mapping": "calibration",
+          "metric": {
+            "ci95": [
+              -3.660313059247141e-05,
+              -9.728109087336983e-06
+            ],
+            "defined_draws": 1000,
+            "point": -2.312977443458264e-05
+          }
+        }
+      },
+      "fixed_final_Dolma_held_positions": {
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.015466842734491625,
+            0.016389071857124363
+          ],
+          "defined_draws": 1000,
+          "point": 0.015945794068024863
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.1634572793129924,
+            0.1737108091370989
+          ],
+          "defined_draws": 1000,
+          "point": 0.16900720931901947
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.1793053548151321,
+            0.1898167835284725
+          ],
+          "defined_draws": 1000,
+          "point": 0.18495300338704432
+        }
+      },
+      "fixed_initial_Dolma_held_positions": {
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.32754103574207827,
+            0.35255379539360443
+          ],
+          "defined_draws": 1000,
+          "point": 0.3397812067572233
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            1.2290726985087101,
+            1.415817251956579
+          ],
+          "defined_draws": 1000,
+          "point": 1.3095569972646162
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            1.5714245283795367,
+            1.7516839760627199
+          ],
+          "defined_draws": 1000,
+          "point": 1.6493382040218396
+        }
+      },
+      "free_final_Dolma_held_positions": {
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.017323092542242634,
+            0.01856584845607812
+          ],
+          "defined_draws": 1000,
+          "point": 0.017875288939789725
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.17346280915327764,
+            0.19039666194085536
+          ],
+          "defined_draws": 1000,
+          "point": 0.18282223645081586
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.1916739062336263,
+            0.20819716779698505
+          ],
+          "defined_draws": 1000,
+          "point": 0.2006975253906056
+        }
+      },
+      "free_initial_Dolma_held_positions": {
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.12706064826146193,
+            0.13194866229630725
+          ],
+          "defined_draws": 1000,
+          "point": 0.1294192297146911
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            1.1187077060630437,
+            1.3102949517959896
+          ],
+          "defined_draws": 1000,
+          "point": 1.202139846480768
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            1.2466550794805566,
+            1.4401406082742685
+          ],
+          "defined_draws": 1000,
+          "point": 1.3315590761954592
+        }
+      }
+    },
+    "POS_held_targets": {
+      "component_variance": {
+        "fixed_final_POS_held_targets": {
+          "mapping": "calibration",
+          "metric": {
+            "ci95": [
+              -0.02203445028278152,
+              -0.01651025183190142
+            ],
+            "defined_draws": 1000,
+            "point": -0.0190896085369489
+          }
+        },
+        "fixed_identity_final_POS_held_targets_identity": {
+          "mapping": "identity",
+          "metric": {
+            "ci95": [
+              -0.022059273042492146,
+              -0.016514827373528388
+            ],
+            "defined_draws": 1000,
+            "point": -0.0190896085369489
+          }
+        },
+        "fixed_identity_initial_POS_held_targets_identity": {
+          "mapping": "identity",
+          "metric": {
+            "ci95": [
+              -0.000982707239737631,
+              0.0004238450741953011
+            ],
+            "defined_draws": 1000,
+            "point": -0.0002801818328830308
+          }
+        },
+        "fixed_initial_POS_held_targets": {
+          "mapping": "calibration",
+          "metric": {
+            "ci95": [
+              -0.000888138658798987,
+              0.0005055386728544252
+            ],
+            "defined_draws": 1000,
+            "point": -0.000157818943800625
+          }
+        },
+        "free_final_POS_held_targets": {
+          "mapping": "calibration",
+          "metric": {
+            "ci95": [
+              -0.0647585880414238,
+              -0.04659625879303195
+            ],
+            "defined_draws": 1000,
+            "point": -0.05532094037757054
+          }
+        },
+        "free_initial_POS_held_targets": {
+          "mapping": "calibration",
+          "metric": {
+            "ci95": [
+              -0.000691358796838633,
+              -0.0001949685258664427
+            ],
+            "defined_draws": 1000,
+            "point": -0.00043903848993243066
+          }
+        }
+      },
+      "fixed_final_POS_held_targets": {
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.0167888495573002,
+            0.018927629745333418
+          ],
+          "defined_draws": 1000,
+          "point": 0.01782582031454777
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.19560738543318912,
+            0.2265968089574025
+          ],
+          "defined_draws": 1000,
+          "point": 0.21119349856146946
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.2125324562767894,
+            0.24535539085471977
+          ],
+          "defined_draws": 1000,
+          "point": 0.22901931887601723
+        }
+      },
+      "fixed_initial_POS_held_targets": {
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.34952132812218095,
+            0.3917050027586337
+          ],
+          "defined_draws": 1000,
+          "point": 0.37039255959133466
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.740829602265333,
+            0.826495559345701
+          ],
+          "defined_draws": 1000,
+          "point": 0.7815880015090428
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            1.094337420656364,
+            1.2143394717918594
+          ],
+          "defined_draws": 1000,
+          "point": 1.1519805611003775
+        }
+      },
+      "free_final_POS_held_targets": {
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.018237726743114715,
+            0.020865871020174148
+          ],
+          "defined_draws": 1000,
+          "point": 0.01947826549365786
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.2207853928278254,
+            0.25253573532377804
+          ],
+          "defined_draws": 1000,
+          "point": 0.23714835677924231
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.2393945858023,
+            0.27312540525252726
+          ],
+          "defined_draws": 1000,
+          "point": 0.25662662227290023
+        }
+      },
+      "free_initial_POS_held_targets": {
+        "native_cohort_variance_per_position": {
+          "ci95": [
+            0.13590677010919885,
+            0.1418008665666497
+          ],
+          "defined_draws": 1000,
+          "point": 0.13879265011688827
+        },
+        "native_mean_bias_SSE_per_position": {
+          "ci95": [
+            0.6346727489158092,
+            0.7010783357796607
+          ],
+          "defined_draws": 1000,
+          "point": 0.666162905524335
+        },
+        "native_mean_teacher_SSE_per_position": {
+          "ci95": [
+            0.7725958157804905,
+            0.8398538391827448
+          ],
+          "defined_draws": 1000,
+          "point": 0.8049555556412233
+        }
+      }
+    }
+  },
+  "experiment": "E139",
+  "independent_audit_status_at_plot_time": {
+    "A_independent_audit.json": "pending",
+    "components_independent_audit.json": "complete_component_subset_audit_only",
+    "predictor_independent_audit.json": "pending"
+  },
+  "input_CI_scope": "File/word cluster bootstrap conditional on models and mappings; not seed uncertainty; pair intervals are dependent.",
+  "natural_predictor_pairs": {
+    "Dolma_held_positions": {
+      "seed0_to_seed1": {
+        "fixed": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 138,
+          "input_clusters": 32,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.007301929300796632,
+              0.010036977919696254
+            ],
+            "point": 0.0087303337720003
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.007346167654964858,
+              0.01012432136444312
+            ],
+            "point": 0.008791797007900021
+          },
+          "left_nll": {
+            "ci95": [
+              1.9839884919519848,
+              2.848755035736823
+            ],
+            "point": 2.4486626731199164
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.00040581859451717687,
+              0.0007462101104820086
+            ],
+            "point": 0.00015213927203688483
+          },
+          "right_nll": {
+            "ci95": [
+              1.984390663096768,
+              2.8494491720002193
+            ],
+            "point": 2.448814812393996
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.9545849846620673,
+              0.9653140397556608
+            ],
+            "point": 0.9594154357910156
+          },
+          "weighting": "token mean, file clusters"
+        },
+        "free": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 139,
+          "input_clusters": 32,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.007833782770032903,
+              0.010482451182813211
+            ],
+            "point": 0.009105268158909746
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.007820306427529695,
+              0.010526891856763287
+            ],
+            "point": 0.009130793740360531
+          },
+          "left_nll": {
+            "ci95": [
+              1.9780918877138416,
+              2.868446524283359
+            ],
+            "point": 2.4510878005552326
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.0009096333540989356,
+              0.0002981105639392551
+            ],
+            "point": -0.0003071228791452998
+          },
+          "right_nll": {
+            "ci95": [
+              1.9773791306391253,
+              2.8683635639701768
+            ],
+            "point": 2.450780677674522
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.9518354511819132,
+              0.9633355197272544
+            ],
+            "point": 0.9572792053222656
+          },
+          "weighting": "token mean, file clusters"
+        }
+      },
+      "seed0_to_seed2": {
+        "fixed": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 138,
+          "input_clusters": 32,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.007372393036148239,
+              0.010210853623616943
+            ],
+            "point": 0.008823162024820069
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.007303743627299072,
+              0.010155668732018258
+            ],
+            "point": 0.008753867541881039
+          },
+          "left_nll": {
+            "ci95": [
+              1.9839884919519848,
+              2.848755035736823
+            ],
+            "point": 2.4486626731199164
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.0006646323746302271,
+              0.0005865138738706203
+            ],
+            "point": -4.940497240779845e-05
+          },
+          "right_nll": {
+            "ci95": [
+              1.9837969360285712,
+              2.8486966140632197
+            ],
+            "point": 2.44861326814467
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.954419606942739,
+              0.9647348294054865
+            ],
+            "point": 0.9591331481933594
+          },
+          "weighting": "token mean, file clusters"
+        },
+        "free": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 139,
+          "input_clusters": 32,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.007924706175647958,
+              0.010573930601350453
+            ],
+            "point": 0.00922052170608618
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.007956236191218704,
+              0.01061048675179371
+            ],
+            "point": 0.009255448161794338
+          },
+          "left_nll": {
+            "ci95": [
+              1.9780918877138416,
+              2.868446524283359
+            ],
+            "point": 2.4510878005552326
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.0011244625737349158,
+              0.0005281841948247384
+            ],
+            "point": -0.00031566592540755833
+          },
+          "right_nll": {
+            "ci95": [
+              1.977832065892393,
+              2.8684311453691644
+            ],
+            "point": 2.4507721346323357
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.9515551162347561,
+              0.9634102011859009
+            ],
+            "point": 0.9570426940917969
+          },
+          "weighting": "token mean, file clusters"
+        }
+      },
+      "seed1_to_seed2": {
+        "fixed": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 138,
+          "input_clusters": 32,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.007383559710042377,
+              0.01012989064462052
+            ],
+            "point": 0.008845246587003672
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.007326904025185146,
+              0.010026336692614827
+            ],
+            "point": 0.008745209740849299
+          },
+          "left_nll": {
+            "ci95": [
+              1.984390663096768,
+              2.8494491720002193
+            ],
+            "point": 2.448814812393996
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.0008998236014315327,
+              0.0004885006054370279
+            ],
+            "point": -0.00020154424503188433
+          },
+          "right_nll": {
+            "ci95": [
+              1.9837969360285712,
+              2.8486966140632197
+            ],
+            "point": 2.44861326814467
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.9537416716235773,
+              0.9650081756797377
+            ],
+            "point": 0.9588966369628906
+          },
+          "weighting": "token mean, file clusters"
+        },
+        "free": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 139,
+          "input_clusters": 32,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.007781046206160612,
+              0.01038444100397507
+            ],
+            "point": 0.009063447106347608
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.007837909999193095,
+              0.01042516156215316
+            ],
+            "point": 0.00911707895955672
+          },
+          "left_nll": {
+            "ci95": [
+              1.9773791306391253,
+              2.8683635639701768
+            ],
+            "point": 2.450780677674522
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.0007481958797453485,
+              0.0006545202293522915
+            ],
+            "point": -8.543044669286109e-06
+          },
+          "right_nll": {
+            "ci95": [
+              1.977832065892393,
+              2.8684311453691644
+            ],
+            "point": 2.4507721346323357
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.951780484883448,
+              0.9634262002070689
+            ],
+            "point": 0.9571800231933594
+          },
+          "weighting": "token mean, file clusters"
+        }
+      }
+    },
+    "POS_held_targets": {
+      "seed0_to_seed1": {
+        "fixed": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 138,
+          "input_clusters": 48,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.0055494184192391785,
+              0.01258554336039209
+            ],
+            "point": 0.008463626129894396
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.005675034860878638,
+              0.01402822394886584
+            ],
+            "point": 0.008899417775022378
+          },
+          "left_nll": {
+            "ci95": [
+              1.8572295845050826,
+              2.306018700682501
+            ],
+            "point": 2.070506244452448
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.003554074161546962,
+              0.018276995977143388
+            ],
+            "point": 0.007832361056708382
+          },
+          "right_nll": {
+            "ci95": [
+              1.8614086620686787,
+              2.314252477017029
+            ],
+            "point": 2.078338605492099
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.935898648345799,
+              0.9706533008624
+            ],
+            "point": 0.9535532380201496
+          },
+          "weighting": "equal word means"
+        },
+        "free": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 139,
+          "input_clusters": 48,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.005856502823257018,
+              0.013296897715247256
+            ],
+            "point": 0.00899713392261386
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.005813074096146748,
+              0.013555415715862008
+            ],
+            "point": 0.00922521212908066
+          },
+          "left_nll": {
+            "ci95": [
+              1.8696258503163152,
+              2.30188797032861
+            ],
+            "point": 2.0732776295216944
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.012193578011891863,
+              0.012212349966629562
+            ],
+            "point": -0.00037318308828283983
+          },
+          "right_nll": {
+            "ci95": [
+              1.8664080696068057,
+              2.2964671477620664
+            ],
+            "point": 2.0729044464334105
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.9474836534992783,
+              0.980305095996732
+            ],
+            "point": 0.9648169368757601
+          },
+          "weighting": "equal word means"
+        }
+      },
+      "seed0_to_seed2": {
+        "fixed": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 138,
+          "input_clusters": 48,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.0055015032800103105,
+              0.008532039234601227
+            ],
+            "point": 0.006869213132886918
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.00549198628441249,
+              0.008119665150624478
+            ],
+            "point": 0.00670509715038034
+          },
+          "left_nll": {
+            "ci95": [
+              1.8572295845050826,
+              2.306018700682501
+            ],
+            "point": 2.070506244452448
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.009505361095999108,
+              0.013476123059852267
+            ],
+            "point": 0.0016544631900643255
+          },
+          "right_nll": {
+            "ci95": [
+              1.8549933732215098,
+              2.3093079872228404
+            ],
+            "point": 2.0721607076365425
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.944994627172936,
+              0.9765600522333058
+            ],
+            "point": 0.962097549781373
+          },
+          "weighting": "equal word means"
+        },
+        "free": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 139,
+          "input_clusters": 48,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.005791389449581908,
+              0.009484912881323668
+            ],
+            "point": 0.007485945051890298
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.0057434257285875565,
+              0.009590133571096393
+            ],
+            "point": 0.007465815764476624
+          },
+          "left_nll": {
+            "ci95": [
+              1.8696258503163152,
+              2.30188797032861
+            ],
+            "point": 2.0732776295216944
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.011161462187362492,
+              0.008756536615971025
+            ],
+            "point": -0.001106538713372584
+          },
+          "right_nll": {
+            "ci95": [
+              1.8642885313420847,
+              2.303247355463176
+            ],
+            "point": 2.072171090807715
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.9410140373226309,
+              0.9777971305315053
+            ],
+            "point": 0.9602111141173638
+          },
+          "weighting": "equal word means"
+        }
+      },
+      "seed1_to_seed2": {
+        "fixed": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 138,
+          "input_clusters": 48,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.0057928567460462784,
+              0.014991995164102545
+            ],
+            "point": 0.009492485626110677
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.005740521882344877,
+              0.012737346754302298
+            ],
+            "point": 0.008646826367098953
+          },
+          "left_nll": {
+            "ci95": [
+              1.8614086620686787,
+              2.314252477017029
+            ],
+            "point": 2.078338605492099
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.016216052518961473,
+              0.003424319687489876
+            ],
+            "point": -0.0061778979080077435
+          },
+          "right_nll": {
+            "ci95": [
+              1.8549933732215098,
+              2.3093079872228404
+            ],
+            "point": 2.0721607076365425
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.9437502207929596,
+              0.9773292401532291
+            ],
+            "point": 0.9615057600351716
+          },
+          "weighting": "equal word means"
+        },
+        "free": {
+          "bootstrap_iterations": 1000,
+          "bootstrap_seed": 139,
+          "input_clusters": 48,
+          "items": 512,
+          "kl_left_to_right": {
+            "ci95": [
+              0.005722709020704887,
+              0.01568577728628436
+            ],
+            "point": 0.010062930507086154
+          },
+          "kl_right_to_left": {
+            "ci95": [
+              0.005666566742141815,
+              0.015392838035327124
+            ],
+            "point": 0.009941213085365946
+          },
+          "left_nll": {
+            "ci95": [
+              1.8664080696068057,
+              2.2964671477620664
+            ],
+            "point": 2.0729044464334105
+          },
+          "nll_gap_right_minus_left": {
+            "ci95": [
+              -0.012058570689757063,
+              0.010121586087239398
+            ],
+            "point": -0.0007333555409311668
+          },
+          "right_nll": {
+            "ci95": [
+              1.8642885313420847,
+              2.303247355463176
+            ],
+            "point": 2.072171090807715
+          },
+          "top1_agreement": {
+            "ci95": [
+              0.9407251093303481,
+              0.9724866067007609
+            ],
+            "point": 0.9572235175635906
+          },
+          "weighting": "equal word means"
+        }
+      }
+    }
+  },
+  "paired_free_minus_fixed": {
+    "Dolma_held_positions": {
+      "final": {
+        "bootstrap_iterations": 1000,
+        "bootstrap_seed": 139,
+        "input_clusters": 32,
+        "metrics": {
+          "FP64_sum_cohort_variance_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.015947142856658672,
+            "free": 0.017869476722383856,
+            "free_minus_fixed": 0.0019223338657251843,
+            "paired_input_cluster_ci95": [
+              0.0015515369418384313,
+              0.002431933494136655
+            ]
+          },
+          "cohort_variance_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.031208955513315872,
+            "free": 0.07246719586569297,
+            "free_minus_fixed": 0.0412582403523771,
+            "paired_input_cluster_ci95": [
+              0.03990524733368501,
+              0.04300284578141357
+            ]
+          },
+          "component_cross_covariance_per_position": {
+            "defined_draws": 1000,
+            "fixed": -0.0152618126566572,
+            "free": -0.05459771914330912,
+            "free_minus_fixed": -0.03933590648665192,
+            "paired_input_cluster_ci95": [
+              -0.04078671779537111,
+              -0.03797374937396368
+            ]
+          },
+          "native_cohort_variance_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.015945794068024863,
+            "free": 0.017875288939789725,
+            "free_minus_fixed": 0.001929494871764862,
+            "paired_input_cluster_ci95": [
+              0.0015584498595687178,
+              0.002438287024257507
+            ]
+          },
+          "native_mean_bias_SSE_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.16900720931901947,
+            "free": 0.18282223645081586,
+            "free_minus_fixed": 0.013815027131796387,
+            "paired_input_cluster_ci95": [
+              0.008943798206639077,
+              0.017453985961512448
+            ]
+          },
+          "native_mean_teacher_SSE_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.18495300338704432,
+            "free": 0.2006975253906056,
+            "free_minus_fixed": 0.015744522003561273,
+            "paired_input_cluster_ci95": [
+              0.011437933231347102,
+              0.01904648531624757
+            ]
+          }
+        },
+        "scope": "Same held input file/word clusters resampled for both groups; fixed observed cohorts/maps, not a seed treatment-effect CI. No inference from interval overlap."
+      },
+      "initial": {
+        "bootstrap_iterations": 1000,
+        "bootstrap_seed": 139,
+        "input_clusters": 32,
+        "metrics": {
+          "FP64_sum_cohort_variance_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.33978994671836305,
+            "free": 0.12942255873770497,
+            "free_minus_fixed": -0.21036738798065807,
+            "paired_input_cluster_ci95": [
+              -0.2240688939329596,
+              -0.19780594977009922
+            ]
+          },
+          "cohort_variance_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.33977101401402715,
+            "free": 0.12944568851213956,
+            "free_minus_fixed": -0.2103253255018876,
+            "paired_input_cluster_ci95": [
+              -0.22402442704544429,
+              -0.1977763931450001
+            ]
+          },
+          "component_cross_covariance_per_position": {
+            "defined_draws": 1000,
+            "fixed": 1.8932704335894446e-05,
+            "free": -2.312977443458264e-05,
+            "free_minus_fixed": -4.2062478770477085e-05,
+            "paired_input_cluster_ci95": [
+              -7.705540057250843e-05,
+              -6.007422906453863e-07
+            ]
+          },
+          "native_cohort_variance_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.3397812067572233,
+            "free": 0.1294192297146911,
+            "free_minus_fixed": -0.21036197704253218,
+            "paired_input_cluster_ci95": [
+              -0.2240631972177894,
+              -0.19780091980031506
+            ]
+          },
+          "native_mean_bias_SSE_per_position": {
+            "defined_draws": 1000,
+            "fixed": 1.3095569972646162,
+            "free": 1.202139846480768,
+            "free_minus_fixed": -0.10741715078384817,
+            "paired_input_cluster_ci95": [
+              -0.1142863025754132,
+              -0.10116546204176775
+            ]
+          },
+          "native_mean_teacher_SSE_per_position": {
+            "defined_draws": 1000,
+            "fixed": 1.6493382040218396,
+            "free": 1.3315590761954592,
+            "free_minus_fixed": -0.3177791278263804,
+            "paired_input_cluster_ci95": [
+              -0.3382754283657562,
+              -0.29908884681578407
+            ]
+          }
+        },
+        "scope": "Same held input file/word clusters resampled for both groups; fixed observed cohorts/maps, not a seed treatment-effect CI. No inference from interval overlap."
+      }
+    },
+    "POS_held_targets": {
+      "final": {
+        "bootstrap_iterations": 1000,
+        "bootstrap_seed": 139,
+        "input_clusters": 48,
+        "metrics": {
+          "FP64_sum_cohort_variance_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.01782381140091414,
+            "free": 0.019476059257639775,
+            "free_minus_fixed": 0.001652247856725634,
+            "paired_input_cluster_ci95": [
+              0.0009750497486954756,
+              0.0023053979294775716
+            ]
+          },
+          "cohort_variance_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.03691341993786304,
+            "free": 0.07479699963521032,
+            "free_minus_fixed": 0.03788357969734728,
+            "paired_input_cluster_ci95": [
+              0.029155292352334324,
+              0.0474702258588783
+            ]
+          },
+          "component_cross_covariance_per_position": {
+            "defined_draws": 1000,
+            "fixed": -0.0190896085369489,
+            "free": -0.05532094037757054,
+            "free_minus_fixed": -0.03623133184062165,
+            "paired_input_cluster_ci95": [
+              -0.04567211204251596,
+              -0.02786350856374584
+            ]
+          },
+          "native_cohort_variance_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.01782582031454777,
+            "free": 0.01947826549365786,
+            "free_minus_fixed": 0.0016524451791100903,
+            "paired_input_cluster_ci95": [
+              0.0009748536333766378,
+              0.0023056565451074003
+            ]
+          },
+          "native_mean_bias_SSE_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.21119349856146946,
+            "free": 0.23714835677924231,
+            "free_minus_fixed": 0.025954858217772853,
+            "paired_input_cluster_ci95": [
+              0.023548099735755473,
+              0.028886527173048845
+            ]
+          },
+          "native_mean_teacher_SSE_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.22901931887601723,
+            "free": 0.25662662227290023,
+            "free_minus_fixed": 0.027607303396883,
+            "paired_input_cluster_ci95": [
+              0.025203712940204303,
+              0.03070508073519267
+            ]
+          }
+        },
+        "scope": "Same held input file/word clusters resampled for both groups; fixed observed cohorts/maps, not a seed treatment-effect CI. No inference from interval overlap."
+      },
+      "initial": {
+        "bootstrap_iterations": 1000,
+        "bootstrap_seed": 139,
+        "input_clusters": 48,
+        "metrics": {
+          "FP64_sum_cohort_variance_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.37040521131557114,
+            "free": 0.13879617094222535,
+            "free_minus_fixed": -0.2316090403733458,
+            "paired_input_cluster_ci95": [
+              -0.2527461982004384,
+              -0.21088646538784306
+            ]
+          },
+          "cohort_variance_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.37056303025937176,
+            "free": 0.13923520943215778,
+            "free_minus_fixed": -0.23132782082721398,
+            "paired_input_cluster_ci95": [
+              -0.25292661156198454,
+              -0.21029210761509826
+            ]
+          },
+          "component_cross_covariance_per_position": {
+            "defined_draws": 1000,
+            "fixed": -0.000157818943800625,
+            "free": -0.00043903848993243066,
+            "free_minus_fixed": -0.00028121954613180566,
+            "paired_input_cluster_ci95": [
+              -0.0009589208585206963,
+              0.00046400704493497935
+            ]
+          },
+          "native_cohort_variance_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.37039255959133466,
+            "free": 0.13879265011688827,
+            "free_minus_fixed": -0.2315999094744464,
+            "paired_input_cluster_ci95": [
+              -0.25273365683490234,
+              -0.21087662959629824
+            ]
+          },
+          "native_mean_bias_SSE_per_position": {
+            "defined_draws": 1000,
+            "fixed": 0.7815880015090428,
+            "free": 0.666162905524335,
+            "free_minus_fixed": -0.11542509598470785,
+            "paired_input_cluster_ci95": [
+              -0.12653137616700616,
+              -0.10476651642454961
+            ]
+          },
+          "native_mean_teacher_SSE_per_position": {
+            "defined_draws": 1000,
+            "fixed": 1.1519805611003775,
+            "free": 0.8049555556412233,
+            "free_minus_fixed": -0.34702500545915416,
+            "paired_input_cluster_ci95": [
+              -0.3794247737653226,
+              -0.3155617405288876
+            ]
+          }
+        },
+        "scope": "Same held input file/word clusters resampled for both groups; fixed observed cohorts/maps, not a seed treatment-effect CI. No inference from interval overlap."
+      }
+    }
+  },
+  "readout_sha256": "d42ce48fe06dddcbac553c0050ad92c1c5c9079f3365f3215359a6965611bbf8",
+  "readout_status": "complete",
+  "source_readout_sha256": "d42ce48fe06dddcbac553c0050ad92c1c5c9079f3365f3215359a6965611bbf8"
+}

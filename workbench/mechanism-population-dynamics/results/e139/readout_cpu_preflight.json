@@ -1,0 +1,186 @@
+{
+  "status": "CPU_preflight_only",
+  "phase": "all",
+  "proofs": {
+    "free": {
+      "seed1": {
+        "scope": "Already observed E135 free-router pilot reused",
+        "initial": {
+          "checkpoint": "/tmp/xiang-moe-20261025/e135_student/initial.pt",
+          "checkpoint_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+          "full_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+          "expert_only_tensor_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+          "gate_tensor_sha256": "676b94a0026c60374b615a4b6a2bbe9ec4064b3058e6f4abef83ed9e7e78457e",
+          "step": 0
+        },
+        "final": {
+          "checkpoint": "/tmp/xiang-moe-20261025/e135_student/checkpoint.pt",
+          "checkpoint_sha256": "45933dc5ed847c1e393b166c1108087d708e264e08f0530d166d0dcb251cd1d7",
+          "full_tensor_sha256": "ec27fb8063d7091d205e2d7fa613f49b170b40282c3355aaafbf25d75828c2fa",
+          "expert_only_tensor_sha256": "e6f63f52a3de4180323aea9772a66f3309e825a389b16af6e3b6c4c872fcd0f2",
+          "gate_tensor_sha256": "17b9ffc8a57fa563bcdad0cd1ace635ac59f193df3c961341f6d1cc7f9a403ae",
+          "step": 4096
+        }
+      },
+      "seed0": {
+        "initial": {
+          "checkpoint": "/tmp/xiang-moe-20261025/e139_seed0/initial.pt",
+          "checkpoint_sha256": "81fe1e7ea325f07ae12b73f1f0f57c42251483050292610bf40e6e4db423032c",
+          "full_tensor_sha256": "0f898b422ee00a4b2255efcea6e6fd4063fbd91f38e614fc74ad8f85ba936fff",
+          "expert_only_tensor_sha256": "48d7787bca54b03a06356a6214bcae59130395f31a671b666247952a3f438027",
+          "gate_tensor_sha256": "fd4a42233bbb7f39cacffc12e70bacaaec6bc1812064830ec32076635df8652a",
+          "step": 0
+        },
+        "final": {
+          "checkpoint": "/tmp/xiang-moe-20261025/e139_seed0/checkpoint.pt",
+          "checkpoint_sha256": "cba05e446905cf4397d824cd76b6e867d4088729c3d545acef2bbf2681e3cbc0",
+          "full_tensor_sha256": "45a3902f6bd30b8a5348de00174297c4bcb0cb543f1cafeadd1e423a67120912",
+          "expert_only_tensor_sha256": "f4c281ddc5fc1c7b8291d12f9d08135282af2ff1e5d154faa71b342422c29f5d",
+          "gate_tensor_sha256": "d8ac09bfe6743c7b3e9902af424d32304d9c0281e65aa9d51fb65ac7744de611",
+          "step": 4096
+        }
+      },
+      "seed2": {
+        "initial": {
+          "checkpoint": "/tmp/xiang-moe-20261025/e139_seed2/initial.pt",
+          "checkpoint_sha256": "a7d2ed71d640f7e48f4b90c7d42ab9ed2afdd5ed74f27171995e50bcd3417b3b",
+          "full_tensor_sha256": "8cfdb44f5eaf014ea4af3d986b493f94cb5a10cad50643c797cc474b75f4ce2e",
+          "expert_only_tensor_sha256": "9420adea223e653259bb57700a6792a3ffac05e88385c9b7d9348914cc7bc387",
+          "gate_tensor_sha256": "b2309c4eafdff9e884a6ca2455d86b3906cc9930a3565486cb9641cc4ced5801",
+          "step": 0
+        },
+        "final": {
+          "checkpoint": "/tmp/xiang-moe-20261025/e139_seed2/checkpoint.pt",
+          "checkpoint_sha256": "19144805a8f542e82335b41a825bd28795a31bd12987e79c323436754be7e1e9",
+          "full_tensor_sha256": "bb4ba8d13a6ac320765f2f61f6875b1c42b61bcd20e28407b530497af359c6e1",
+          "expert_only_tensor_sha256": "756b4964de5db24206155926382b2777de19bc3b97e7741380b0288a99eaabcb",
+          "gate_tensor_sha256": "67edd5775b25fd9de8c1bc4268603bd4041e3849ec6612112bb9eb901cdca2aa",
+          "step": 4096
+        }
+      }
+    },
+    "fixed": {
+      "seed1": {
+        "initial": {
+          "experiment": "E136",
+          "condition": "oracle_initial",
+          "step": 0,
+          "checkpoint": "/tmp/xiang-moe-20261025/e136_oracle/initial.pt",
+          "checkpoint_sha256": "3f420c7511529c346f1654f006ffc0dcd3cfbc0bde25c8a9f25e0be45edd78a6",
+          "full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+          "expert_only_tensor_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+          "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+          "initialization": {
+            "source_initial": "/tmp/xiang-moe-20261025/e135_student/initial.pt",
+            "source_initial_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+            "source_initial_full_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+            "source_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+            "oracle_initial_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+            "oracle_initial_full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+            "oracle_gate_FP32_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+            "teacher_gate_BF16_sha256": "cca37d604b8d1dd454b7847ff64e6aec9038907c6eef28671b828a23dd1b2fcb",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "source_trainer_sha256": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7",
+            "scope": "Teacher gate rows supplied/frozen; initial experts and ordering unchanged; no teacher per-expert targets"
+          },
+          "config_hash": "44b61a622d6bce2e0f0ed2739d4c928fb50221274a64fc14e531eca6860bc9dc",
+          "U_coupled_reuse_proof": {
+            "status": "coupled_reuse",
+            "source": "/tmp/xiang-moe-20261025/e135_readout/initial_functional.npz",
+            "source_sha256": "5939862d46d8475a4267fb238f2cc91227a34fd47a9d21312b45719a9186416b",
+            "expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+            "source_initial_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+            "reason": "Only the gate changed; common native-teacher U injection uses identical expert functions, inputs andalpha.125; no old A/normal/support reused"
+          },
+          "teacher_support_source_proof": {
+            "path": "/tmp/xiang-moe-20261025/e135_readout/teacher_functional.npz",
+            "sha256": "150f3a2580238d6cc66b129a2f520249332b6b00998e57e51426186f8b9ca133",
+            "teacher_block_tensor_sha256": "f93b6fde2ec9947dee793f7ed885d39587388c9fcf2efae58fdf98a12b2cd4c9",
+            "population_exact": true
+          }
+        },
+        "final": {
+          "experiment": "E136",
+          "condition": "oracle_final",
+          "step": 4096,
+          "checkpoint": "/tmp/xiang-moe-20261025/e136_oracle/checkpoint.pt",
+          "checkpoint_sha256": "7126ae1661ba5d0bfd696b2284247a848982facfb6625b3f9265edd709368ec0",
+          "full_tensor_sha256": "b51776965b9c1fc06506012c755b47179fa49ea94b10a901c22544277dcca120",
+          "expert_only_tensor_sha256": "ece77c58c09a68d5c7c9dd7451a8b9f29726aa7e4d8eba0e5a63a71a1bf0efb2",
+          "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+          "initialization": {
+            "source_initial": "/tmp/xiang-moe-20261025/e135_student/initial.pt",
+            "source_initial_sha256": "9e4698832351a2a8223389c84acf5cd7819ed000b001f3ba7b974788afbf29d4",
+            "source_initial_full_tensor_sha256": "90193b8663b9065178253f59dde135c5ab6f95b1317a77fd14f61e1dea0a66ca",
+            "source_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+            "oracle_initial_expert_only_sha256": "c0c6a2ba4e11f8951abb6de4d4f6f016246e9c84f30d145afcb5cdf7bbd982f4",
+            "oracle_initial_full_tensor_sha256": "43483fd4729713a788d05a85e23d55eb95da207667ce89829d3ad08ba15289a5",
+            "oracle_gate_FP32_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+            "teacher_gate_BF16_sha256": "cca37d604b8d1dd454b7847ff64e6aec9038907c6eef28671b828a23dd1b2fcb",
+            "cache_manifest_sha256": "2c95a706ab9d70609de565e1d141b33a7ae0f7b5805686caf0165147ce7dfc43",
+            "source_trainer_sha256": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7",
+            "scope": "Teacher gate rows supplied/frozen; initial experts and ordering unchanged; no teacher per-expert targets"
+          },
+          "config_hash": "44b61a622d6bce2e0f0ed2739d4c928fb50221274a64fc14e531eca6860bc9dc",
+          "teacher_support_source_proof": {
+            "path": "/tmp/xiang-moe-20261025/e135_readout/teacher_functional.npz",
+            "sha256": "150f3a2580238d6cc66b129a2f520249332b6b00998e57e51426186f8b9ca133",
+            "teacher_block_tensor_sha256": "f93b6fde2ec9947dee793f7ed885d39587388c9fcf2efae58fdf98a12b2cd4c9",
+            "population_exact": true
+          }
+        },
+        "scope": "Already observed E136 pilot reused, not a new prospective seed"
+      },
+      "seed0": {
+        "initial": {
+          "checkpoint": "/tmp/xiang-moe-20261025/e138_seed0/initial.pt",
+          "checkpoint_sha256": "146cacda5e9ba6a4bf231d6eda9f0a6c3b461f36a222453f1823d56a73b898ad",
+          "full_tensor_sha256": "a9c1ad7f813bc2ed93ee5de8274b21503fbf6ffed124c67a6d5e9af852ac2291",
+          "expert_only_tensor_sha256": "48d7787bca54b03a06356a6214bcae59130395f31a671b666247952a3f438027",
+          "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+          "seed": 0,
+          "step": 0,
+          "config_hash": "e69d72ffa100d441786a3384a22710a4af0ac9e5578764ec92647188882d871e"
+        },
+        "final": {
+          "checkpoint": "/tmp/xiang-moe-20261025/e138_seed0/checkpoint.pt",
+          "checkpoint_sha256": "9cb88040d2c3de8026a9a2dc8dfaa2a9a7a022ec4f388d37bd336e70d5ac2a3f",
+          "full_tensor_sha256": "52ae894f168fe8dac800d3367d10acd9ddfda72eee431232175ec6de6776e840",
+          "expert_only_tensor_sha256": "025c7fcafd86cbcee817fe87f2b454f79bf12349a40359dda68f73f02fd8f53e",
+          "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+          "seed": 0,
+          "step": 4096,
+          "config_hash": "e69d72ffa100d441786a3384a22710a4af0ac9e5578764ec92647188882d871e"
+        }
+      },
+      "seed2": {
+        "initial": {
+          "checkpoint": "/tmp/xiang-moe-20261025/e138_seed2/initial.pt",
+          "checkpoint_sha256": "c4af871a4d6c6808f11826ab0fa279ad6d8e457026e74c29e674a332d626e48e",
+          "full_tensor_sha256": "db50ee401389fe330b81604fcb556e4d9229cdf73e3b01202f4f7bb074228669",
+          "expert_only_tensor_sha256": "9420adea223e653259bb57700a6792a3ffac05e88385c9b7d9348914cc7bc387",
+          "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+          "seed": 2,
+          "step": 0,
+          "config_hash": "607ae0c6e5484c0331141fe308691d5eb8f2d072ca788fd88221b3f6b111b3c5"
+        },
+        "final": {
+          "checkpoint": "/tmp/xiang-moe-20261025/e138_seed2/checkpoint.pt",
+          "checkpoint_sha256": "61f5e4d059507071a1232b015f511683a197a7c9007dc8f89b73491c35f59873",
+          "full_tensor_sha256": "77b6c44ee64fb0035ba8d7ebd9cca2ac92a4897712d687f5c23e7456f9a9549b",
+          "expert_only_tensor_sha256": "0abf9639063b941cb358a26d718cdf5817fb2d31be94d4efdedfb6cdbb86f3bb",
+          "gate_tensor_sha256": "cbe8194cab0f38671392e32e69662ccd2f422e6b2baacb31ddde4cafd5e5eb35",
+          "seed": 2,
+          "step": 4096,
+          "config_hash": "607ae0c6e5484c0331141fe308691d5eb8f2d072ca788fd88221b3f6b111b3c5"
+        }
+      }
+    }
+  },
+  "POS_Htarget_shape": [
+    512,
+    2048
+  ],
+  "readout_sha256": "6ac6444b6b61dfc7b4380e8d4ad05c81286dbd6bfec9d6bac386060ff2e359e9",
+  "components_sha256": "ce8e7029f707b735770a4915bbca4e53406033867bea4d4683a0b0c7fe7342b2"
+}

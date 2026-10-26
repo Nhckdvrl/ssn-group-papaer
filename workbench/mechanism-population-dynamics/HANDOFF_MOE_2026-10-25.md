@@ -6,7 +6,7 @@
 - 本文与其他文档冲突时，**以本文为准**。
 
 **2026-10-25 接手校正（用户已明确继续投入；后续事实以实验卡/结果为准）：**
-- **当前状态（2026-10-26 03时UTC后；覆盖以下历史快照）：** E130/C07与E131/C08、E135–138全部完成并独立审计。E138固定分配三学生Dolma teacher误差=.162563，共同偏差=.148548，学生间方差=.014015（均/teacher输出能量）；actual component方差=.031209、FP64 sum方差=.015947、cross=−.015262（同一hidden vector²单位）。主要teacher误差是共同偏差，学生之间比与teacher更接近；尚非严格同函数或数学不可识别性。E139已前瞻登记配对free-router新增seed0/2、复用E135 seed1，固定组复用E138/E136；不设teacher恢复准入线，不做优化/匹配网格。新的训练和读数状态以E139卡为准。用户要求持续执行、不退出。
+- **当前状态（2026-10-26 03:58 UTC后；覆盖以下历史快照）：** E130/C07=L2、E131/C08=L1、E135–139完整并独立审计。E139/C09=L1：三学生free/fixed actual componentVar=.072467/.031209，FP64 sumVar=.017869/.015947；差+.041258的分量变动中cross差−.039336大部抵消，nativeY方差只差+.001929，函数/teacher偏差仍不同。全部结果/已观察pilot和失败预算保留。E140已前瞻登记单个新teacher-gate初始化但trainable条件，三新seed0/1/2完整初态与对应fixed一致，检验初始组织还是持续固定协议；04:04:20UTC已在node21GPU0/1/2实际启动3新seed，PID884887/884888/884889；source1b1c81…c02f07冻结，更新正常，原4096终点不变。没有恢复门槛、续训网格或新匹配网格。用户要求持续执行、不退出。
 - **E136–138覆盖限制：** POS held512的teacher/fixed experts42/51/52 raw target-on=0、原A恒0；row-centering会产生继承共同均值的变化，“64个数值有效列”不代表64个独立内容承担。旧分数和全列保留，不静默删列。Dolma支持覆盖另报。
 - **E137/E138：** E137内容on/off及误差抵消见`results/e137/components.json`；E138真正分开共同teacher偏差和student之间变异见`results/e138/readout.json`与`independent_audit.json`，不要再把单学生重建误差说成跨学生不重现。E138三学生seed1是已观察pilot，seed0/2为新增；CI只表输入抽样，不是seed总体CI。
 - **E131终点执行已完整：** `e131_compare_batch.py`全15对/词形CI、`e131_predictor_compare.py`三个预定时点、`e124_routing.py`最终N1、`e131_plot_trajectory.py`及独立CP/统计审计均complete，结果和引用在E131卡；不重跑旧训练。
@@ -355,3 +355,6 @@
    - PolyPythias 重置一条会改变已发表论文的一个结论，优先报告。
    - 流程见 §6 副产品。**提交前需要人明确同意**（对外发布）。
    - 若维护者确认、且问题长期不修，再考虑写简短的勘误说明。
+
+
+2026-10-26 E139覆盖补充：free seed0原expert11/57、seed2原6在POS held target-on=0，原A全0；fixed42/51/52仍为0。所有列/旧读数保留，原row-center数值有效不是独立内容承担。当前原始资产归档由E139 archive manifest说明，不能以本机同名/tmp替代node21原件。

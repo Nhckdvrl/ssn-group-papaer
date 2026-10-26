@@ -469,3 +469,49 @@ ownership方面，路由与内容耦合、共享计算、随机路由和几何�
 新增定位已写根library的 `EXPERT_ALIGNMENT_PAPER_CARDS_2026-10-26.md` 最后一节。OpenReview原hash PDF/note PDF/forum/api2均受403校验，本次没有读到论文全文；只实读作者实验室出版页、Sungjun Lim主页及官方代码README。实验室列RRD为ICML2026 Workshop；作者主页另列改题名“...for Recovery after Dense-to-MoE Conversion”为under-review，未核对后续正式接收版或具体修订日期。不能把搜索摘要当原文，也不能声称全文已排除跨seed实验。
 
 可核实的方法ownership已经足够明确：公开代码包含dense拆分MoE、shared输出恢复、teacher magnitude路由监督及task CE。这与E135–139的固定原生块函数目标/随机学生/配对free-fixed协议/实际分量cohort变异不是同一证据对象，但“teacher路由指导有助恢复”不是我们可认领的新发现。当前记强相关待全文复核，非精确撞车判决；不改变实验、claim或线状态，不推迟E139。
+
+### E139执行前只读实现审阅
+
+已读component/readout草稿及其复用的native_trace，没有改源/调用GPU。`source_to_seed1`为source行到anchor列，held用逆排列取统一坐标；native_trace已把full-row query转为局部query索引，再逐模型零scatter，故不同support不会按on-row位置误配。FP64 sum在排列之外累加actual BF16 component，component cohort variance、native cohort bias/variance及跨expert covariance的单位自洽。Hcal确以B16×512完整physical program计actual分量；保存cost是总SSE，与MSE仅差公共尺度，不改变Hungarian对应，数值单位宜明确。
+
+最新草稿已补相同rows/file-word draws下free−fixed的配对区间，也已将原fixed A以本次fixed cal maps纯CPU重标、原identity另保留；此前实现中两项待齐现在已解决。配对区间只反映当前cohort和maps条件下的输入不确定性。独立NumPy审计核心置于/tmp，已通过非自逆三循环映射、不同support零scatter、三对SSE/9和能量方差恒等式、共同draw抵消的toy。待held结果与冻结source到齐再复算完整点/区间、cal maps和CP曝光，不冒称草稿审阅等于已核对执行结果。
+
+### E139完整训练的独立实际对象/曝光审计
+
+结果 `results/e139/training_independent_audit.json`。远端CPU mmap三free初/终与paired fixed原状态，自己重算文件SHA、full/expert/gate张量hash，逐值比较每seed全部192个初始expert张量；初值配对完全相同、三个expert初值hash不同。自由gate三个终点131072个元素均已改变，max绝对变化seed0/1/2为.23917/.26318/.28502；这只是实际操纵检查，不是科学分数门槛。所有终点step/Adam4096，初值optimizer空、曝光0，终点1024批各4次、全部9个固定评测事件齐全。
+
+三free加三fixed的全部4096条`(step, epoch, cache_batch_index, LR, position_exposures)`逐项完全一致；实际cache manifest/epoch_orders.npy的SHA绑定原登记，日志每项batch_index也直接等原四epoch排列，各epoch无放回且总33,554,432位置曝光。旧E135 free1及全部fixed初/终的原文件SHA与张量proof均等原审计摘要；同一批独立实际对象proof再逐项等新readout CPU preflight。训练器/组件/readout三个冻结SHA匹配。整个审计未初始化CUDA、未调用主统计函数。此时完整readout仍运行，训练审计不代替待完成的cal映射/held统计审计，也不按held拟合分数选终点。
+
+## E139完整读数独立审计与组织约束的科学解释
+
+完整结果 `results/e139/independent_audit.json`，链接 `training_independent_audit.json` 与 `components_independent_audit.json`；没有调用主统计函数、重跑GPU、改变冻结源或主读数。组件快照与最终readout的components逐项相同。全部8个group×phase×population的global点、1000次seed139区间、64表及四个paired contrasts复算通过：最大点差2.22e−15、CI差8.88e−16、64表差0。除重加保存的variance外，另由每expert三对SSE/9与平均能量−mean-vector能量独立重建variance，逐序列最大差分别9.95e−14/6.20e−13。native总输出的bias/variance恒等式也核对；这是保存充分统计的独立代数复算，不是重新生成native向量或校准矩阵的GPU内积。
+
+重新对四组初/终的原64×64 cost矩阵解Hungarian，全部source→seed1 maps吻合；held inverse gather方向由非自逆三循环toy另验。fixed终点两张map全部64identity，初值为18/19个identity；free终点1/0个identity，初值1/1。Hcal矩阵/源SHA绑定原training-only native8192位置，原CP与完整输入曝光已独立核对。fixed总输出统计逐序列与E138原identity结果最大差约3e−12（Dolma归约），POS逐项相同。不得把cal source的raw SSE数值叫逐维MSE，二者公共尺度虽不影响对应。
+
+| 固定终点，同vector²/位置 | Dolma free | Dolma fixed | free−fixed，paired输入95%CI |
+|---|---:|---:|---:|
+| 实际component cohort variance之和 | .072467196 | .031208956 | +.041258240 [.039905247,.043002846] |
+| FP64 sum component cohort variance | .017869477 | .015947143 | +.001922334 [.001551537,.002431933] |
+| 跨expert covariance | −.054597719 | −.015261813 | −.039335906 [−.040786718,−.037973749] |
+| native cohort variance | .017875289 | .015945794 | +.001929495 [.001558450,.002438287] |
+| cohort mean对teacher偏差 | .182822236 | .169007209 | +.013815027 [.008943798,.017453986] |
+
+POS方向一致：component variance free−fixed=+.037883580 [.029155292,.047470226]，cross=−.036231332 [−.045672112,−.027863509]，native variance=+.001652445 [.000974854,.002305657]。所以两组差异不是“总函数相等、只改分工”；函数共同偏差和跨学生总输出变异均不同。可直接看到额外分量变动在求和时大幅抵消，**这里的cross以cohort mean为中心，描述学生间变动抵消**，区别于E137以teacher为参照的分量误差cross，不能混叫同一估计对象。初值fixed component variance=.339771反而高于free=.129446；终点低变异并非简单的低初值variance floor，但不能事后把初终相减当新识别量或因此单独指定机制。
+
+完整POS FP32 logp自己以NumPy F64重算6对双向KL/GT NLL/top1和seed139等词形区间，均值/CI最大差3.49e−9/4.66e−9；原teacher和free seed1全数组分别与旧采集逐位相同。Dolma从已存token指标重加，global/source点与CI吻合，未声称重建未保存的完整词表分布。自由组三个pair Dolma KL=.00910527/.00922052/.00906345，fixed为.00873033/.00882316/.00884525；POS free=.00899713/.00748594/.01006293，fixed=.00846363/.00686921/.00949249。既不把这些差说0，也不设相对百分比等价线。teacher→free Dolma KL=.0425954/.0424656/.0427891，剩余共同偏差继续完整保留。
+
+两组每个A pair均按本次预定Hcal component map独立做F32 row-center/cal word-offset后转F64相关、1000次seed139词形bootstrap；所有点/CI吻合，全部draw/64坐标有效，无valid-set变化。free三个pair Aρ=.178187 [.058309,.314354]、.191693 [.154639,.262335]、.233825 [.203007,.305054]；fixed对应.484816 [.377569,.576401]、.526466 [.406866,.607510]、.499266 [.321497,.631664]。**free seed0原expert11/57、seed2原expert6也在POS held目标位置无承担、原A全0；free1无zero-on，fixed仍42/51/52。** 所有原列保留，并报告原坐标和映射后坐标coverage；row-centering继承共同均值的限制适用于两组。自然正常NLL逐项等各完整POS分布的GT计分，未选A=0，复用数组/原CP/source proof均绑定。输入区间不是seed处理效应区间，三pair不当独立replication。
+
+**当前能说的：** 这一原生总Y重学问题中，提供并持续冻结teacher分配的完整协议，让本有限cohort在预定实际component对应下更稳定；其free−fixed分量变异差大于sum差，伴随相应负covariance差。它不是原生预训练职责唯一性，也不是纯expert内容变化：actual component含支持、门值和内容，且两协议还改变aux/全局clip/weight-decay耦合。结合E130/E131，这开始为“组织约束能改变跨训练实际分工稳定性”提供受控证据，但没有将有限fit转成严格同函数分解自由度。
+
+### 唯一下一因果条件建议：共同teacher gate初值，随后允许联合训练
+
+独立判断：这一个新增cohort值得做，优先于续训到任意fidelity水平、更多matcher或random-frozen可实现性混杂。三个expert初值逐个与现有free/fixed配对，复制相同teacher gate作初值、随后按原free完整参数目标/优化器/4096固定预算训练；沿同cal-MSE→held、同Y/实际component/预测/A规则评价，不另改loss/gain/预算。这直接把**共同组织起点是否足够**与**持续施加固定分配协议是否有额外作用**变成可比较的条件，承接“选择与维持”的问题，仍区别于E131在dense→MoE CE平台中的纯batch顺序脉冲。
+
+设新条件T、原随机gate自由组R、固定组F。T与F初始权重可完全相同，因此T−F检验允许路由继续学习的完整协议作用；但仍包括aux梯度、global clip及gate weight decay，不是冻结界面的孤立机制。T−R都联合训练，但同时改变“共同gate初始化”与“teacher-informedness”，故不能单独声称teacher知识有效，更不能称任何共有随机gate都无效。**不为这项限制立即再加common-random组**；把估计对象写清即可，这一条件本身仍有较高信息量。
+
+若T在给定预算下保留F式较稳定分解，说明这个共同teacher起点可以在后续自由学习中提供足够的稳定约束，持续冻结不是此次结果的必要解释；若T更接近R而F稳定，说明初始化信息单独不足于原自由学习协议，持续固定这一组合约束有额外作用；若函数拟合也改变，则一并报告组织与函数效应，不指定等价门槛。仍只做有限cohort连续比较，不把T未达teacher当失败，也不由一种分支自动追加修复网格。冻结/路由KD/early ossification已有ownership；本条件的增量只能是配对跨训练、相同原生总函数目标下选择与维持组织的受控证据，不是新蒸馏或路由训练法。本审读者未立卡、实现或启动该条件，实验和主张状态由主执行者/人按现有授权处理。
+
+### E140实际前瞻卡最后核对
+
+已只读核对 `experiments/E140-native-router-warmstart-cohort.md`，无科学阻塞。卡已保留T−R的共同初始化/teacher-informedness混杂、F−T的完整解冻/aux/clip/decay协议效应，三新seed均prospective、全部fixed完整初态及RNG逐项绑定、fresh全参数optimizer和原4096预算；没有teacher恢复或路由变化门槛。initial cal/component的SHA耦合复用有完整状态/输入/physical program条件，final及三个新A全部fresh；两旧组以SHA引用。实际分量、无对齐Y、预测、配对输入CI与zero-on覆盖边界也齐全。辅助route相对初始teacher的变化应沿所施加的原物理expert坐标解释，不与final cal component map混作自然职责匹配；这是既有读数的坐标说明，不需新增条件。未改卡/源码，未用GPU，不再扩展后续网格。
