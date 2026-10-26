@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "CPU_only": true,
+  "source_sha256": {
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+    "e144145_run.py": "e52275aec98269e9f8fc9b0476027dd251f65234f8ca91dbeb1792e24087a566",
+    "e144145_analyze.py": "c17ae07babdc28398b9207313dc472274169a53b81a2164a6040e67ee28b083f",
+    "e144145_test.py": "b43a997114e4d95d72feaab8a083da36b134a055dcc2e75511e3c4a79670586d",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e146_grouped.py": "b04d90c81feb1fbdaa54b7caf2f9330b14f8804878db8b088f4f8e63a3cea57e"
+  },
+  "checks": {
+    "sparse_FP64_gamma_matches_dense_truth": true,
+    "gamma_C_V_identities": {
+      "symmetry_max_abs": 0.0,
+      "trace_minus_C": 0.0,
+      "sum_minus_V": 3.469446951953614e-18
+    },
+    "singleton_whole_endpoints": true,
+    "greedy_known_negative_pairs": true,
+    "grouped_source_enumeration": true
+  }
+}
