@@ -44,11 +44,11 @@ def main():
     ax.legend(frameon=False,fontsize=8)
     ax=axes[1,1]
     for selector,color,offset in (("A",BLUE,-.12),("B",RED,.12)):
-        rows=d["restriction"]["selectors"][selector]["pruning_penalty_coupling"]
-        for i,key in enumerate(("router_x_routed","routed_x_shared","dense_x_complete_MoE")):
-            row=rows[key]["pairing_cost" if i==2 else "mean_pairing_cost"]
+        rows=d["restriction"]["selectors"][selector]["factor_effect_on_full_to_restricted_KL"]
+        for i,factor in enumerate(factors):
+            row=rows[factor+"_B_minus_A"]
             point(ax,i,row,color,offset=offset,label=f"Selector {selector}" if i==0 else None)
-    ax.set(xticks=range(3),xticklabels=["Router / routed","Routed / shared","Dense / whole MoE"],title="D  Pairing effects on restricted-compute cost",ylabel="Crossed minus paired pruning cost")
+    ax.set(xticks=range(4),xticklabels=["Dense","Routers","Routed","Shared"],title="D  Source effects on predictive sensitivity",ylabel="B minus A source: full-to-restricted KL")
     ax.legend(frameon=False,fontsize=8)
     for ax in axes.flat:ax.axhline(0,color="#BBBBBB",linewidth=.7);ax.grid(axis="y",alpha=.15)
     fig.tight_layout(rect=(0,.09,1,1),w_pad=2,h_pad=2)

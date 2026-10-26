@@ -91,3 +91,5 @@ prefix累积与覆盖的门值在FP32 softmax/topk后，按原生程序cast到hi
 已下载A全部11分片并逐项与公开LFS SHA比对；A/B公开的11分片SHA没有任何同名重合，不把两个标签误当两份实际相同权重。A原生参数13,568,641,024；FP32原始权重加载、全模型BF16 cast后重复/完整mask逐位一致，missing/unexpected/mismatched/error keys全部为空。峰值54.821924GB。两条training-cal、各128计分位置：BF16 NLL=3.00733376，FP32→BF16 KL=.000705543，top1一致=.996094，zero L9 ΔNLL=.07368028。只有工程与精度意义，无CI或新科学主张。
 
 该预检683.3532 GPU秒=.18982034 GPU·时，GPU已释放。B及全部48主条件仍未读；预算继续按原7200秒计所有预检、I/O、失败与主读数。辅助normalizer observer在A校准完成、主held之前登记；它不改v2主读数/条件或冻结前向。所有实现失败若出现照常保留。
+
+**主held前明确统计对应：** 预定的full→restricted KL与pruning ΔNLL分别计算同样的四因素平均flip和G×R/R×S/D×whole-MoE交互；来源对标签代价的作用不自动解释为预测分布更稳定。`e150_analyze.py`保留核心统计并追加这些同指标对比和normalizer侧记录，另存分析代码SHA。没有新增模型条件或据主读数修改统计。
