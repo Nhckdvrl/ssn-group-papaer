@@ -72,3 +72,15 @@
 ## E148原生窗口的解释边界（分支完成之前）
 
 本轮回原始[OLMoE报告§5.1–5.2](https://arxiv.org/html/2409.02060)重读，已有中间checkpoint路由饱和与共激活分析；5000步/20B的部分层对终点Top8保留已可达约60%。因此E148是在既有组织上检验继续学习的可塑性与历史响应，不能把它写成分工从无到有。候选增量需落在同父等曝光的次序处理、共同后缀与合法组件移植后果，而非首次发现路由稳定/共激活。我们的FA继续学习也不冒充原报告optimizer复现。阅读范围与idea来源见[本轮论文卡](../../../../library/themes/moe-routing/OLMOE_NATIVE_HISTORY_CARD_2026-10-26.md)。
+
+## 2026-10-27：成熟协议资产与真正需要区分的模块性质
+
+E148/E149已经显示：高于精确repeat的预测残留，并未自动成为稳定或不可组合的组织。下一步不靠自行加训练剂量产生损伤。新检索读到[EMO正文及Appendix B.4](https://allenai.org/papers/emo)、[发布代码](https://github.com/allenai/EMO)和实际HF集合，确认标准1T后不同50B退火协议的成熟权重确实已发布；原生GPU尚未运行。来源/pins及精确阅读范围见[论文卡](../../../../library/themes/moe-routing/EMO_MATURE_ASSET_CARD_2026-10-27.md)和E150卡。
+
+| 近邻 / 阅读状态 | 已拥有的主张或资产 | 我们应区别的对象 |
+|---|---|---|
+| EMO，正文§1–3/B.4 + 官方代码实际读过 | 文档pool组织约束、原生域级选择、同模型内子集使用/组合；成熟标准及协议分叉 | 跨公开历史的来源兼容性；受限计算性质能否由router、routed expert、shared expert或dense接口分别转移。不能偷换其“组合”定义再宣称反驳 |
+| Routers Learn the Geometry，前次已读 | router/expert共同演化、梯度几何与aux耦合 | 不认领一般耦合或初始化影响。必须是具体受控/公开历史下的功能后果 |
+| 最新venue corpus nearest命中的Coupling Experts and Routers、Read-ME、Tight Clusters | 本轮仅检索标题/库记录，未新读原文；接收标签只是检索地图 | 一般耦合、解耦、聚类不是可直接认领的新点；不据标题或热度自动判定本题重复/关线 |
+
+**Compression risk：** 仅展示16格完整NLL，容易退化为一般模型拼装敏感性。E150在任何原生GPU读数前补强了固定prefix预算下的suffix pruning损失，相对每格自身完整预测配对，并把shared单列。它直接区分完整质量与受限计算可用性；仍不自动识别语义封装，masked-softmax尺度适应与支持路径都须保留解释。若native性质本身没有出现，不以更换预算/任务救阳性。新颖性仍需具体结果与近邻全文校对，没有自动判决。

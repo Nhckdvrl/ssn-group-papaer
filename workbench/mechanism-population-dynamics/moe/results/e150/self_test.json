@@ -2,8 +2,9 @@
   "status": "passed",
   "CPU_only": true,
   "source_sha256": {
-    "e150_native.py": "a10eff5a209665b254f2abc14e8a89b6555762e2ec625c4cb46b1526349ada1b",
+    "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
     "e150_data.py": "58e3f24c0bd10199f75cb906788818539628f414e299ca3a875e4e6c30ff0f49",
+    "e150_restricted.py": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c",
     "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
     "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
     "StdMoE_1b14b_1T/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
@@ -19,6 +20,10 @@
     "source_parameters_and_buffers_unchanged": true,
     "two_and_four_way_known_answers": true,
     "masked_variable_length_known_answer": true,
-    "uint32_token_storage": true
+    "uint32_token_storage": true,
+    "prefix_only_budget_counts": true,
+    "all_expert_mask_bitwise_identity": true,
+    "coverage_known_full_mask": true,
+    "gate_hooks_restored": true
   }
 }

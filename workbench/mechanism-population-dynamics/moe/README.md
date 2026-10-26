@@ -57,4 +57,4 @@ E148/E149完整完成后，不追加LR/剂量扫描。[E150](experiments/E150-na
 - 大权重沿[ASSETS](ASSETS.md)原位置；新raw在`~/mechpop_cache/e144_prediction_recombination`、`e145_history_cross`、`e146_grouped_recombination`、`e147_gate_group_control`，未放入Git。没有重建71.7GB训练H/Y cache。
 - [本日日志](../logs/2026-10-26.md)、[历史阶段快照](notes/GPT_PHASE_SUMMARY_E120-E142.md)、[导师原问](notes/ADVISOR_2026-10-23.md)。当前解释以本页/方向文档/完整结果为准，历史暂停与过宽判断均保留来源。
 
-**下一项已登记、无新训练：** E150先完成公开权重完整SHA及原生cal精度/显存预检，再运行16格。所有结果先回写本页，不用下载/实现完成冒充科学结果。
+**下一项已登记、无新训练：** E150先完成公开权重完整SHA及原生cal精度/显存预检，再运行16格。GPU读数前的v2修订在每格增加两个固定前缀selector的32槽预算，评分后续未见文本，比较受限−自身完整NLL，区分一般质量兼容性与受限计算可用性的来源；同时报告支持覆盖。共48个拼装/预算条件，输入与2 GPU·时包不变；不把这种语言窗口诊断称语义模块或论文benchmark复现。

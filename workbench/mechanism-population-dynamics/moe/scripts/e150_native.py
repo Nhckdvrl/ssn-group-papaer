@@ -25,6 +25,7 @@ import transformers
 import e144145_common as old
 from e144145_analyze import input_stats
 import e150_data as data
+import e150_restricted as restricted
 
 torch.use_deterministic_algorithms(True)
 torch.backends.cuda.matmul.allow_tf32 = False
@@ -37,10 +38,16 @@ CASES = tuple(itertools.product(range(2), repeat=4))
 read, write, sha = old.read, old.write, old.sha
 
 
-def assets(complete=False):
+def assets(complete=False, required_sources=(0,1)):
     manifest = read(RESULT / ("asset_manifest.json" if complete else "metadata.json"))
-    if manifest["status"] != ("complete" if complete else "metadata_complete"):
+    allowed=("complete",) if complete and len(required_sources)==2 else ("partial","complete") if complete else ("metadata_complete",)
+    if manifest["status"] not in allowed:
         raise ValueError("Complete pinned asset stage required")
+    if complete:
+        for source in required_sources:
+            record=manifest["models"].get(NAMES[source])
+            if record is None or len([n for n in record["files"] if n.endswith(".safetensors")]) != 11:
+                raise ValueError("Every requested source must have all eleven shards verified")
     for model in manifest["models"].values():
         for filename, proof in model["files"].items():
             path = Path(proof["path"])
@@ -53,7 +60,7 @@ def assets(complete=False):
 
 
 def proof():
-    result = {name: sha(WB / "scripts" / name) for name in ("e150_native.py", "e150_data.py", "e144145_common.py", "e123_frozen_moe.py")}
+    result = {name: sha(WB / "scripts" / name) for name in ("e150_native.py", "e150_data.py", "e150_restricted.py", "e144145_common.py", "e123_frozen_moe.py")}
     for name, record in assets()["models"].items():
         for file in ("configuration_emo.py", "modeling_emo.py", "config.json"):
             result[name+"/"+file] = record["files"][file]["sha256"]
@@ -151,6 +158,16 @@ def self_test():
     for source, model in enumerate(models):
         assert all(torch.equal(value, states[source][name]) for name,value in model.state_dict().items())
         assert old.tensor_hash(buffers(model)) == saved_buffers[source]
+    keep = restricted.prefix_keep(models[0],ids[:,:3],keep_total=3)
+    assert keep.shape == (2,2,4) and keep[:,:,-1].all() and np.all(keep.sum(-1) == 3)
+    all_slots = np.ones_like(keep)
+    with restricted.restricted_gates(models[0],all_slots):
+        assert torch.equal(fwd(models[0],ids,mask),native[0])
+    with restricted.routing_coverage(models[0],np.stack([keep,all_slots]),mask.numpy()) as cover:
+        assert torch.equal(fwd(models[0],ids,mask),native[0])
+    assert np.allclose(cover[1,:,:,:2],1.,atol=1e-7)
+    assert np.array_equal(cover[0,:,:,2],cover[1,:,:,2]) and np.all((cover[:,:,:,2]>0)&(cover[:,:,:,2]<=1))
+    assert all(len(gate._forward_hooks) == 0 for gate in restricted.gates(models[0]))
     y = {c: np.array(1+2*c[0]+3*c[1]+5*c[2]+7*c[3]+11*c[1]*c[2]+13*c[2]*c[3]+17*np.prod(c)) for c in CASES}
     assert interaction(y, (1,2), (0,0)) == 11
     assert np.mean([interaction(y, (1,2), f) for f in itertools.product(range(2), repeat=2)]) == 15.25
@@ -161,7 +178,8 @@ def self_test():
     assert example.tolist() == [100277,100351]
     result = {"status":"passed", "CPU_only":True, "source_sha256":proof(), "checks":{
         "all_16_parameter_sources":True, "native_corners_exact":True, "source_parameters_and_buffers_unchanged":True,
-        "two_and_four_way_known_answers":True, "masked_variable_length_known_answer":True, "uint32_token_storage":True}}
+        "two_and_four_way_known_answers":True, "masked_variable_length_known_answer":True, "uint32_token_storage":True,
+        "prefix_only_budget_counts":True,"all_expert_mask_bitwise_identity":True,"coverage_known_full_mask":True,"gate_hooks_restored":True}}
     write(RESULT / "self_test.json", result)
     return {"status":"passed"}
 
@@ -171,19 +189,22 @@ class Budget(old.Budget):
         self.path, self.experiment, self.phase, self.limit = RESULT / "budget.json", "e150", phase, 7200
 
 
-def ready():
+def ready(required_sources=(0,1)):
     test = read(RESULT / "self_test.json")
     if test["status"] != "passed" or test["source_sha256"] != proof(): raise ValueError("Matching CPU source tests required")
     plan = read(RESULT / "plan.json")
     if plan["data_source_sha256"] != sha(data.__file__) or sha(plan["path"]) != plan["sha256"]: raise ValueError("Frozen input bytes/code differ")
-    return plan, assets(complete=True)
+    return plan, assets(complete=True,required_sources=required_sources)
 
 
 def load_fp32(source):
     cfg_cls, cls, root = classes(source)
     cfg = cfg_cls.from_json_file(root / "config.json")
-    return cls.from_pretrained(root, config=cfg, dtype=torch.float32, local_files_only=True,
-                               attn_implementation="sdpa").to("cuda:0").eval().requires_grad_(False)
+    model, info = cls.from_pretrained(root, config=cfg, dtype=torch.float32, local_files_only=True,
+                                     attn_implementation="sdpa",output_loading_info=True)
+    bad={k:info[k] for k in ("missing_keys","unexpected_keys","mismatched_keys","error_msgs") if info.get(k)}
+    if bad: raise ValueError(f"Checkpoint/model keys do not match exactly: {bad}")
+    return model.to("cuda:0").eval().requires_grad_(False)
 
 
 def load_bf16(source):
@@ -200,16 +221,23 @@ class Zero(nn.Module):
 
 
 @torch.no_grad()
-def preflight(physical):
-    plan, asset = ready()
+def preflight(physical,sources=(0,1)):
+    plan, asset = ready(sources)
     with np.load(plan["path"]) as raw: cal = raw["cal"][:2,:129].copy(); valid = raw["cal_mask"][:2,:128].copy()
-    lock = None; result = {"experiment":"E150", "status":"partial", "source_sha256":proof(), "models":{}}
+    lock = None
+    result=read(RESULT/"preflight.json") if (RESULT/"preflight.json").exists() else {
+        "experiment":"E150", "status":"partial", "source_sha256":proof(), "models":{}}
+    if result["source_sha256"] != proof(): raise ValueError("Earlier calibration used different source code")
     try:
-        with Budget("mature_native_calibration_preflight") as budget:
+        with Budget("mature_native_calibration_preflight_sources_"+"_".join(map(str,sources))) as budget:
             lock = old.gpu_lock(physical)
             ids = torch.from_numpy(cal.astype(np.int64)).to("cuda:0")
             mask = torch.cat((torch.ones((2,1),device="cuda:0",dtype=torch.bool),torch.from_numpy(valid).to("cuda:0")),1)
-            for source in range(2):
+            for source in sources:
+                if str(source) in result["models"]:
+                    existing=result["models"][str(source)]["cal_BF16_logits"]
+                    if sha(existing["path"]) != existing["sha256"]: raise ValueError("Earlier sealed calibration raw changed")
+                    continue
                 budget.check(); model = load_fp32(source)
                 p32 = fwd(model, ids[:,:-1], mask[:,:-1]).float().log_softmax(-1)
                 model.bfloat16(); torch.cuda.empty_cache()
@@ -217,6 +245,8 @@ def preflight(physical):
                 again = fwd(model, ids[:,:-1], mask[:,:-1])
                 if not torch.equal(logits, again): raise ValueError("BF16 native calibration replay differs")
                 p16 = logits.float().log_softmax(-1)
+                with restricted.restricted_gates(model,np.ones((2,len(model.model.layers),128),bool)):
+                    if not torch.equal(fwd(model,ids[:,:-1],mask[:,:-1]),logits): raise ValueError("All-slot mask changed the native calibration predictor")
                 precision = data.masked_mean(old.prediction_metrics(p32,p16,ids[:,1:]).cpu().numpy(), valid)
                 original = model.model.layers[9].mlp
                 model.model.layers[9].mlp = Zero(original.gate)
@@ -230,12 +260,14 @@ def preflight(physical):
                 result["models"][str(source)] = {"source":NAMES[source], "cal_BF16_logits":{"path":str(path),"sha256":sha(path)},
                     "buffer_hash":old.tensor_hash(buffers(model)), "precision_metric_columns":list(old.METRICS),
                     "FP32_to_BF16_metrics_per_sequence":precision.tolist(), "zero_L9_metrics_per_sequence":positive.tolist(),
-                    "BF16_repeat_exact":True, "parameter_count":sum(p.numel() for p in model.parameters())}
+                    "BF16_repeat_exact":True,"all_slot_mask_exact":True,"checkpoint_keys_strict":True,
+                    "parameter_count":sum(p.numel() for p in model.parameters())}
                 write(RESULT / "preflight.json",result)
                 del model, p32, p16, zero, logits, again, original
                 torch.cuda.empty_cache()
                 old.emit("E150_native_preflight",source=source,peak_GB=torch.cuda.max_memory_allocated()/1e9)
-            result.update(status="complete", physical_gpu=physical, peak_allocated_bytes=torch.cuda.max_memory_allocated(),
+            result.update(status="complete" if set(result["models"]) == {"0","1"} else "partial", physical_gpu=physical,
+                          peak_allocated_bytes=max(torch.cuda.max_memory_allocated(),result.get("peak_allocated_bytes",0)),
                           visible_device_uuid=str(torch.cuda.get_device_properties(0).uuid), asset_manifest_sha256=sha(RESULT/"asset_manifest.json"))
             write(RESULT / "preflight.json",result)
     finally:
@@ -272,18 +304,33 @@ def evaluate(physical):
             for name,p in models[0].named_parameters(): counts[group_index(name,127)] += p.numel()
             if not all(counts): raise ValueError("Empty source factor")
             values = np.empty((16,64,512,2,4),np.float32)
+            restricted_values = np.empty((2,16,64,512,4),np.float32)
+            coverage = np.empty((2,16,64,16,3),np.float32)
+            prefix_keeps = np.empty((2,64,16,128),bool)
+            suffix_valid = valid & (np.arange(512)[None,:] >= 127)
+            if np.any(~valid[:,:128]): raise ValueError("Every prefix must contain 128 real observed tokens")
             for start in range(0,64,4):
                 budget.check(); restore(models,blocks)
                 ids = torch.from_numpy(held[start:start+4].astype(np.int64)).to("cuda:0")
                 mask = torch.cat((torch.ones((len(ids),1),device="cuda:0",dtype=torch.bool),torch.from_numpy(valid[start:start+4]).to("cuda:0")),1)
+                keeps=np.stack([restricted.prefix_keep(m,ids[:,:128],32) for m in models])
+                prefix_keeps[:,start:start+4]=keeps
                 refs = [fwd(m,ids[:,:-1],mask[:,:-1]) for m in models]
                 logp = [r.float().log_softmax(-1) for r in refs]
                 for index,case in enumerate(CASES):
                     budget.check(); model = assemble(models,blocks,case)
-                    logits = fwd(model,ids[:,:-1],mask[:,:-1])
+                    with restricted.routing_coverage(model,keeps,suffix_valid[start:start+4]) as observed:
+                        logits = fwd(model,ids[:,:-1],mask[:,:-1])
+                    coverage[:,index,start:start+4]=observed
                     if len(set(case)) == 1 and not torch.equal(logits,refs[case[0]]): raise ValueError("Full native corner assembly differs")
                     q = logits.float().log_softmax(-1)
                     for ref in range(2): values[index,start:start+4,:,ref] = old.prediction_metrics(logp[ref],q,ids[:,1:]).cpu().numpy()
+                    for policy in range(2):
+                        budget.check()
+                        with restricted.restricted_gates(model,keeps[policy]):
+                            pruned=fwd(model,ids[:,:-1],mask[:,:-1]).float().log_softmax(-1)
+                        restricted_values[policy,index,start:start+4]=old.prediction_metrics(q,pruned,ids[:,1:]).cpu().numpy()
+                        del pruned
                     del q,logits
                 del refs,logp,ids,mask
                 old.emit("E150_cube_batch",sequences=start+4,peak_GB=torch.cuda.max_memory_allocated()/1e9)
@@ -293,7 +340,8 @@ def evaluate(physical):
             if not np.array_equal(values[...,0,0],values[...,1,0]): raise ValueError("Reference-dependent NLL")
             path = RAW / "cube_metrics.npz"
             if path.exists(): raise ValueError("Refusing to replace full cube metrics")
-            np.savez_compressed(path,metrics=values,valid=valid,cases=np.array(CASES),fields=np.array(old.METRICS))
+            np.savez_compressed(path,metrics=values,valid=valid,cases=np.array(CASES),fields=np.array(old.METRICS),
+                                restricted_metrics=restricted_values,routing_coverage=coverage,prefix_keeps=prefix_keeps,suffix_valid=suffix_valid)
             result = {"experiment":"E150", "status":"complete", "source_sha256":proof(), "input_plan_sha256":sha(RESULT/"plan.json"),
                 "asset_manifest_sha256":sha(RESULT/"asset_manifest.json"), "source_order":list(NAMES), "factor_order":list(FACTORS),
                 "factor_parameter_counts":dict(zip(FACTORS,counts)), "source_parameter_hashes":before, "source_buffer_hashes":before_buffers,
@@ -302,6 +350,11 @@ def evaluate(physical):
                 "raw":{"path":str(path),"sha256":sha(path),"size_bytes":path.stat().st_size}, "physical_gpu":physical,
                 "visible_device_uuid":str(torch.cuda.get_device_properties(0).uuid),"peak_allocated_bytes":torch.cuda.max_memory_allocated(),
                 "software":{"torch":torch.__version__,"transformers":transformers.__version__,"deterministic":torch.are_deterministic_algorithms_enabled()},
+                "restriction":{"prefix_observed_tokens":128,"first_scored_target_id_index":128,"total_kept_slots":32,
+                    "coverage_fields":["selected_top7_fraction_kept","selected_top7_weight_fraction_kept","native_applied_top7_total_weight"],
+                    "routed_kept":31,"shared_kept":1,"selector_sources":["A","B"],"future_or_labels_used_for_selection":False,
+                    "restricted_metric_reference":"The same assembled hybrid with all experts available",
+                    "operator":"Mask omitted routed logits to -inf before native routed softmax; shared slot remains unmasked. Diagnostic, not a deployment memory method."},
                 "scope":"Published protocol-package endpoints with a declared common parent; actual BF16 whole-model cast, no new training or independent-seed inference."}
             write(RESULT/"manifest.json",result)
     finally:
@@ -314,7 +367,11 @@ def analyze():
     if manifest["status"] != "complete" or manifest["source_sha256"] != proof(): raise ValueError("Sealed complete result required")
     raw = manifest["raw"]
     if sha(raw["path"]) != raw["sha256"]: raise ValueError("Cube raw differs")
-    with np.load(raw["path"]) as f: a = np.stack([data.masked_mean(v.astype(float),f["valid"]) for v in f["metrics"]])
+    with np.load(raw["path"]) as f:
+        a = np.stack([data.masked_mean(v.astype(float),f["valid"]) for v in f["metrics"]])
+        full_suffix=np.stack([data.masked_mean(v.astype(float),f["suffix_valid"]) for v in f["metrics"]])
+        pruned=np.stack([[data.masked_mean(v.astype(float),f["suffix_valid"]) for v in policy] for policy in f["restricted_metrics"]])
+        coverage=f["routing_coverage"].copy();suffix_targets=int(f["suffix_valid"].sum())
     stats = lambda x: input_stats(np.asarray(x),plan["selected"],150001)
     y = {case:a[i,:,0,0] for i,case in enumerate(CASES)}
     result = {"experiment":"E150","status":"complete","cases":{},"interactions":{},"primary":{},
@@ -335,6 +392,34 @@ def analyze():
         result["primary"][label] = {"mean_interaction":stats(value),"mean_pairing_cost":stats(-value/2)}
     value = y[(1,1,1,1)]-y[(0,1,1,1)]-y[(1,0,0,0)]+y[(0,0,0,0)]
     result["primary"]["dense_x_complete_MoE"] = {"interaction":stats(value),"pairing_cost":stats(-value/2)}
+    restriction={"prefix_tokens":128,"kept_total_slots":32,"suffix_targets":suffix_targets,"selectors":{}}
+    penalties=pruned[:,:,:,0]-full_suffix[None,:,:,0,0]
+    for policy,selector in enumerate("AB"):
+        ys={case:penalties[policy,i] for i,case in enumerate(CASES)}
+        by_case={}
+        for i,case in enumerate(CASES):
+            name="".join("AB"[k] for k in case)
+            by_case[name]={"full_suffix_nll":stats(full_suffix[i,:,0,0]),"restricted_suffix_nll":stats(pruned[policy,i,:,0]),
+                "pruning_delta_nll":stats(ys[case]),"full_to_restricted_KL":stats(pruned[policy,i,:,1]),
+                "mean_layer_routed_top7_support_retained":stats(coverage[policy,i,:,:,0].mean(-1)),
+                "mean_layer_routed_top7_mass_retained":stats(coverage[policy,i,:,:,1].mean(-1)),
+                "mean_layer_native_applied_routed_mass":stats(coverage[policy,i,:,:,2].mean(-1))}
+        effects={}
+        for axis,label in enumerate(FACTORS):
+            flips=[interaction(ys,(axis,),f) for f in itertools.product(range(2),repeat=3)]
+            effects[label+"_B_minus_A"]=stats(np.mean(flips,axis=0))
+        coupling={}
+        for axes,label in (((1,2),"router_x_routed"),((2,3),"routed_x_shared")):
+            value=np.mean([interaction(ys,axes,f) for f in itertools.product(range(2),repeat=2)],axis=0)
+            coupling[label]={"mean_interaction":stats(value),"mean_pairing_cost":stats(-value/2)}
+        value=ys[(1,1,1,1)]-ys[(0,1,1,1)]-ys[(1,0,0,0)]+ys[(0,0,0,0)]
+        coupling["dense_x_complete_MoE"]={"interaction":stats(value),"pairing_cost":stats(-value/2)}
+        restriction["selectors"][selector]={"cases":by_case,"factor_effect_on_pruning_penalty":effects,
+            "pruning_penalty_coupling":coupling,
+            "native_B_minus_A_pruning_penalty_fixed_selector":stats(ys[(1,1,1,1)]-ys[(0,0,0,0)])}
+    restriction["native_own_selector_B_minus_A_pruning_penalty"]=stats(penalties[1,-1]-penalties[0,0])
+    restriction["scope"]="A context-prefix budget diagnostic on these language windows, not an MMLU reproduction or evidence that a domain label identifies semantic modules. No transfer-of-modularity claim unless native pruning phenotype itself is observed."
+    result["restriction"]=restriction
     write(RESULT/"summary.json",result)
     return {"status":"complete","native_NLL":[result["cases"][x]["nll"]["point"] for x in ("AAAA","BBBB")],"primary":result["primary"]}
 
@@ -342,6 +427,7 @@ def analyze():
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("mode",choices=("self-test","preflight","evaluate","analyze")); p.add_argument("--physical-gpu",type=int,default=0)
+    p.add_argument("--source",type=int,choices=(0,1),help="Calibrate one fully verified source while the other downloads; all sources still required for evaluation")
     args = p.parse_args(); torch.set_num_threads(4)
-    output = self_test() if args.mode == "self-test" else preflight(args.physical_gpu) if args.mode == "preflight" else evaluate(args.physical_gpu) if args.mode == "evaluate" else analyze()
+    output = self_test() if args.mode == "self-test" else preflight(args.physical_gpu,(args.source,) if args.source is not None else (0,1)) if args.mode == "preflight" else evaluate(args.physical_gpu) if args.mode == "evaluate" else analyze()
     print(json.dumps(output,indent=2),flush=True)
