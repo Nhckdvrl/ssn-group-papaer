@@ -1,6 +1,6 @@
 # MoE 近邻定位补充（2026-10-26）
 
-> **当前为用户暂停整理快照。** 前文/各日期的下一项建议只保留为历史讨论，不构成执行队列；当前事实与授权见[研究总览](GPT_PHASE_SUMMARY_E120-E142.md)及工作台README。
+> **历史定位快照。** 用户经后续讨论已确认方向并授权整理与初步设计。本文保留原检索范围，当前母问题、补充近邻与 E144–E146 设计见 [研究说明](../RESEARCH_DIRECTION.md)；旧建议不自动构成运行队列。
 
 
 **范围：** 按 E130 固定目标下的跨训练功能对应与 E132 bank readout 检索；用 venue corpus 最近邻、MoE awesome / DailyArXiv 镜像发现来源，再回原论文核对。以下是 claim ownership 与 compression risk 地图，不作新颖性裁决。

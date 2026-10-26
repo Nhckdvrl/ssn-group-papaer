@@ -49,8 +49,15 @@ Read-only inventory of durable NFS assets, workspace results, and named node-loc
 - E120–E127 are represented primarily by workspace results and durable E121/E123/E124/E125 source assets; several older results have no centralized archive manifest.
 - E130 has seven complete run-level NFS assets with per-run archive manifests, plus initial captures and anchor functions. There is no single consolidated E130 archive; `/tmp/xiang-moe-20261025/e130_analysis` and derived Hcal are staging only.
 - E131 final ordered/permuted branches, parent/plan, diagnostic functions, predictor comparison and analysis are durably manifested. The N1 Hcal is referenced by path/SHA and can be recovered from the archived anchor functional capture.
-- E132’s five `bank.pt` files (about 8.06GB) are verified in fvcrc20 NVMe only; no durable bank archive exists. E133 has a complete workspace summary while its ~1.35GB output-alignment scratch is fvcrc20 NVMe only.
+- Correction from the recorded 2026-10-26 archival action: E132's five banks and E133's output-alignment assets were copied to the durable roots listed above and checked against the existing SHA values; original NVMe sources were retained. See [E132 manifest](results/e132/asset_archive_manifest.json), [E133 manifest](results/e133/asset_archive_manifest.json), and [the dated log](../logs/2026-10-26.md). The earlier “NVMe only” statement was superseded; this document edit is not a new filesystem availability check.
 - E135’s ~71.7GB H/Y cache is fvcrc21 NVMe only. Its durable cache recipe and E123/E125 token pools are the rebuild path. E134–E142 experiment archives are sealed; old pilot/cohort weights are references, not duplicated assets.
 - Per-run E130 finalization pointers and manifest SHA values are in `results/e130/finalization/`; the machine-readable run list is in `results/asset_inventory_2026-10-26.json`.
 
 Machine-readable companion: `results/asset_inventory_2026-10-26.json`.
+
+## 2026-10-26：首轮设计的实际依赖
+
+- [E144](experiments/E144-fixed-gate-recombination.md) 与条件后续 [E146](experiments/E146-grouped-recombination.md)：E138 seed0/2 与 E136 seed1 的 step4096 专家、共同 teacher gate、公共模型、旧 held token/元数据；分组另需 training Hcal8192。
+- [E145](experiments/E145-history-gate-bank-cross.md)：E135 seed1 共同接收者、E139 seed0/2、E142 seed0/2，以及既有 final Hcal→seed1 对应。R/S 共享的 seed1 只是一份模型，不能按两份独立模型计算资产或重复数。
+- 原训练归档包含 initial 与最终 checkpoint；九次 evaluation 是标量日志，不是九份中间参数快照。首轮只读推理不依赖整份约 71.7GB 训练 H/Y cache；缺少派生 H 时可由固定 prefix 重放有来源与哈希的 token。
+- 本轮只核对仓库清单与脚本，未访问计算节点验证资产可读性。新 driver、E144 selected/source maps、E145 交叉配置、E146 分组及新结果尚不存在；不能把设计文档当执行完成证明。执行端按 manifest 核验来源，再登记自己的实际资源和恢复动作。

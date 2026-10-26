@@ -1,6 +1,8 @@
-# MoE 实验索引 E120–E142（2026-10-26）
+# MoE 实验索引 E120–E146（2026-10-26）
 
-这是已有证据的导航，不改变实验卡、主张等级或工作台状态。E120–142的结果与审计文件已落盘；暂停前关于后续互换的讨论未注册为实验，不纳入本索引。大模型、缓存和原始数组以原卡及归档清单中的路径为准；此处只指向小摘要。
+这是已有证据与新设计的导航。E120–E142 是已有结果；用户在讨论后确认 [当前方向](../RESEARCH_DIRECTION.md)，E144–E146 于本次正式登记设计，均未实现/运行。E143 保留备选。大模型、缓存和原始数组以原卡及归档清单中的路径为准；下列历史数字不因新设计而更改，主张等级不变。
+
+## 已有实验 E120–E142
 
 | 实验 | 问题 → 已记录结果 | 主要证据 |
 |---|---|---|
@@ -29,3 +31,14 @@
 | [E142](E142-shared-random-router-cohort.md) | 共享一个未训练random gate能否稳定本cohort → S组componentVar=.043262，介于R=.072467与T=.032818/F=.031209；只新增Dolma，不新增POS/A，S/R共享已观察seed1；卡片、读数、三份审计与归档均为DONE。用户要求暂停新增实验。 | [`readout_table.json`](../results/e142/readout_table.json)、[`independent_audit.json`](../results/e142/independent_audit.json)、[`archive_manifest.json`](../results/e142/archive_manifest.json) |
 
 **解释边界：** 上列E138–142的变异是同一teacher/层/cache/有限训练预算下三个学生的有限cohort统计；文件/词形区间是输入评测不确定性，不是seed总体或协议处理效应区间。E141的XOR是观察到的支持分账，不是替换mask的因果效应。所有工作仍属已结项头线之外的人授权MoE驻留，未自动形成论文或新工作台状态。
+
+## 新登记的设计与备选（没有新模型结果）
+
+| 实验 | 状态 / 对应 | 设计问题与固定规模 | 结果 |
+|---|---|---|---|
+| [E143](E143-cross-model-routing-division.md) | PLANNED；暂存备选 | 不同公开 MoE 的跨模型路由组织；原协议保留，不进本批 | 模型测量未运行；数据脚本曾运行，不等同结果 |
+| [E144](E144-fixed-gate-recombination.md) | PLANNED；核心 1；C09/P31 | F 三学生共同 gate 下 24 重组 + 3 native + μ/teacher/zero；64 完整序列，真实 KL/NLL 与同子集 C−V | driver、配置、来源表与结果未生成 |
+| [E145](E145-history-gate-bank-cross.md) | PLANNED；核心 2；C09/P27–P29 | R/S 同一 seed1 接收者、四 donor 的 gate×bank 四格，共 13 条件，teacher 至多另 1；同 E144 输入 | driver、配置与结果未生成 |
+| [E146](E146-grouped-recombination.md) | PLANNED；条件后续；C09/P31 | 一个 training-Γ 分区 + 三个随机同大小分区；固定 8×8；共 48 新 bank | 未生成分区或结果；不自动排队 |
+
+本轮另有 [POST-HOC 摘要重算](../results/discussion_2026-10-26/reanalysis.json) 与 [CPU 脚本](../scripts/recompute_discussion_20261026.py)，只重算已提交统计，不算新实验或新训练。优先级按问题与依赖，不排日期、不自动扩大网格；现有结果与失败记录保持完整。

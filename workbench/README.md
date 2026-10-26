@@ -122,13 +122,13 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 **2026-10-21 用户位置纠正：**主线仍归属原 `game-npc-agents` 工作台，不保留平级 `role-playing-agents`。父工作台 ACTIVE-MAIN，**其中历史矿区 A 继续 CLOSED／TERMINATED**；B–E 仍为知识矿区，`in-context-evidence-structure` 继续 ACTIVE-EXPLORE。新研究处于驻留阶段；I01已完成E01/E02首次真实观测，未形成机制主张。
 
-## 9. 登记表（2026-10-21；`tools/process/check.py` 读取本表）
+## 9. 登记表（2026-10-26；`tools/process/check.py` 读取本表）
 
 状态只能是 `ACTIVE-MAIN` / `ACTIVE-EXPLORE` / `PROPOSED` / `PAUSED` / `CLOSED`；ACTIVE-MAIN 与 ACTIVE-EXPLORE 各最多 1 条。改状态由人决定并写进对应 README 的决策记录。“截稿”只填官方公告的日期（YYYY-MM-DD），未公告写“—”。
 
 | workbench | 状态 | 目标会议 | 截稿 | 主张账本 | 上次人审 | 备注 |
 |---|---|---|---|---|---|---|
-| `mechanism-population-dynamics` | CLOSED | — | — | `CLAIMS.md` | 2026-10-26 | 2026-10-26 按主题整理：[头的研究与找补](mechanism-population-dynamics/heads/README.md) · [MoE 方向（暂停，含审视）](mechanism-population-dynamics/moe/README.md) · [套件审计](mechanism-population-dynamics/suite-audits/README.md) · [总入口](mechanism-population-dynamics/README.md)。 |
+| `mechanism-population-dynamics` | PAUSED | — | — | `CLAIMS.md` | 2026-10-26 | **用户已确认 MoE 主线并授权整理上传、初步设计；模型执行仍暂停。** [当前问题与证据](mechanism-population-dynamics/moe/RESEARCH_DIRECTION.md) · [E144–E146 设计入口](mechanism-population-dynamics/moe/README.md)。头线仍 CLOSED，其他 ACTIVE 分配不变；[总入口](mechanism-population-dynamics/README.md)。 |
 | `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有原生GPU测量与训练**：R1–R5持续开放；固定数据充分训练seed0/1/2为38/19/36（各48）；当前方法入口按RESEARCH_PLAN与I14/E20执行，尚无已成立科学主张；不改变ACTIVE分配 |
 | `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有真实GPU底座**：E12四静态策略完整八任务评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审；I01/I02/I03仍为候选，主张均L0；实时数字见workbench状态页，不改变ACTIVE调度 |
 | `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | 继续保持正式探索线；截至 2026-10-11 已完成 E103，E104 的运行前设计已建立，尚未形成新机制主张；本次清理不改变其研究状态。 |
