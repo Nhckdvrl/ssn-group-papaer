@@ -44,6 +44,7 @@
 | [E148](E148-native-checkpoint-order-forks.md) | DONE；C13/P32 | 原生次序响应KL由.002751降至.000893，小于末期自身漂移约.0071；L9互换NLL区间均跨0 | [summary](../results/e148/summary.json) |
 | [E149](E149-native-system-source-cube.md) | DONE；C13/P32 | 全网络8格，backbone×MoE配对代价−.000061 [−.000503,.000242]，未检出交互 | [summary](../results/e149/summary.json) |
 | [E150](E150-native-mature-routing-protocol-cross.md) | DONE；C14/P32 | 完整MoE互换平均+.127787 NLL；B native裁剪代价低.738449，B router单独不转移此收益，D/R/S参与 | [summary](../results/e150/summary.json) |
+| [E151](E151-native-pruning-selectivity-necessity.md) | RUNNING；C14/P32 | 无新训练，全R/全S零化与3固定随机32预算；结果待完 | [plan](../results/e151/plan.json) |
 
 E144–E147无新训练；全量来源、donor、分区均保留。新C10–C12仅L1，旧C06–C09数字与等级不变；范围与当前解释见[README](../README.md)。本轮发现并在held之前修复CUDA库导入后的可见卡缓存问题，全部预检与成本保留。E147在E146结果之后、运行前新登记，没有倒写E146预设对照。
 

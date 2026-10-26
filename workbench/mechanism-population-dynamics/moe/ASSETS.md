@@ -107,3 +107,18 @@ Machine-readable companion: `results/asset_inventory_2026-10-26.json`.
 - 两份小型code/config/tokenizer已下载且与公开Git blob/LFS核验，native代码只差额外assert/logging类型保护；源码不能标为逐字节相同。实际配置128总expert/top8含末槽1共享，**127选7+1**；共享softmax单槽权重1，路由部分对127独立softmax。四因素操作必须沿真实接口，不复用OLMoE64选8的假设。
 - 原生custom code针对HF4.57.1；当前4.57.6的CPU tiny两层16格全部参数来源/native角/只读检查已通过，无新环境安装。64旧语言窗口decode后新tokenizer重编为30,994个真实target（uint32，非uint16），input CI仍20文件簇、探索性；不跨tokenizer比较绝对NLL。新GPU预检/科学读数尚未运行。
 - **实际校准更新：** A全部11分片完整LFS SHA已验证，13.5686B参数原生FP32/BF16单卡cal通过，峰值54.822GB，重复/全mask差0、keys严格匹配；用时.18982 GPU·时。`results/e150/preflight.json`当前仅source0、明确partial，B和主held未运行；校准logits/日志耐久位于`~/mechpop_cache/e150_native_protocol_cube/`。冻结核心9cd5ba33；normalizer只读observer另存源SHA，不改前向。
+
+### E150完整完成后的耐久资产
+
+两终点全部44个权重/小型文件已核验，FP32权重实际合计108,550,672,432 B；`results/e150/asset_manifest.json`为complete，不再依赖上面的阶段partial说明。两source cal均通过，全部48主条件已完成；新代码未训练参数。
+
+| 大资产 | 位置 / size | 证据 |
+|---|---|---|
+| 模型A/B原始权重、代码、tokenizer | `~/mechpop_cache/hf_emo_mature/models--allenai--StdMoE_1b14b_1T{,_EmoAnnealed}/snapshots/<各pin>/` | `asset_manifest.json`逐文件公开Git/LFS及实际SHA；无需复制另一份权重 |
+| E150主矩阵 | `~/mechpop_cache/e150_native_protocol_cube/cube_metrics.npz`，23,911,964 B | SHA `83577a3343aa7366216029ab0b4a02a75f513d39e18c6a66d0b8b0e0cb3f1d83` |
+| normalizer侧记录 | 同目录`normalizer_observations.npz`，229,605 B | SHA `12f1209ef42c8647ccd3584bc0388ba1d360d95b528d6d0e8cc9e8ce7f8413a7` |
+| 新token输入/文本/cal位模式 | 同目录`plan.npz`、`text_windows.jsonl`、`cal_source_0/1.npz` | `results/e150/plan.json`、`preflight.json`全部实际path/SHA；30,994 full及22,866 suffix targets/格 |
+
+恢复统计：`~/.venvs/mechpop/bin/python moe/scripts/e150_analyze.py`，再`e150_verify_results.py`与`e150_plot.py`。重新跑模型另计资源，先恢复上述固定pins/source/input与既有环境；流程是`e150_execute.py evaluate --physical-gpu N`，不是漏掉normalizer observer的裸driver。源代码9cd5ba33、完整统计27050fad及之后封存摘要中的确切SHA是追溯入口。
+
+E151只复用同两native权重/输入，新增3份固定random mask和全局R/S必要性raw于`~/mechpop_cache/e151_native_selectivity_necessity/`；目前主读数运行中，不将计划写成完成。
