@@ -95,21 +95,21 @@ $$
 
 对**给定任务后各 Query 输出及其加噪过程条件独立**的任务族（每个 $P_j$ 可以是多峰分布），先使用通用的跨 Query 公式。令 $m_{j,a}^*(z_a,t)$ 为固定任务 $j$ 时第 $a$ 个 Query 的最优去噪均值，对 $a\neq b$：
 
-$
+$$
 \boxed{
 J_{ab}(z,t)=\frac{a_t}{s_t^2}
 \operatorname{Cov}_{j\sim\rho(z,t)}
 \!\bigl(m_{j,a}^*(z_a,t),m_{j,b}^*(z_b,t)\bigr)
 }
-$
+$$
 
 这是全协方差分解在跨 Query 块上的直接结果：给定 $\Theta=j$ 和 $Z_t$ 后，各 Query 的剩余条件协方差为零。**任务族 B 的 $P_3$ 本身是多峰混合，必须使用此公式或直接 Autograd，而不能把它误当成单峰高斯。**
 
 作为可解析的特例，若所有任务都满足 $P_j(\mathbf Y)=\mathcal N(\mu_j,\tau^2I)$，记 $v_t=a_t^2\tau^2+s_t^2$、$\rho_j=P(\Theta=j\mid Z_t=z,D,\mathbf X)$，则：
 
-$
+$$
 J_{ab}(z,t)=\frac{a_ts_t^2}{v_t^2}\operatorname{Cov}_{j\sim\rho(z,t)}(\mu_{j,a},\mu_{j,b}),\qquad a\neq b.
-$
+$$
 
 这给出了对共享任务引起的跨 Query 耦合的**功能级测量**，无需先猜具体 Heads。对一般结构化图像，任务内也可能存在空间耦合，不能把所有非对角项唯一归因于跨任务不确定性；通过“任务内噪声独立”受控实验检验后，再探索真实场景。
 
