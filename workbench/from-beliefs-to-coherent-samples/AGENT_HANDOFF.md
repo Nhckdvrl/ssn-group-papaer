@@ -45,12 +45,12 @@
 ## 3. 本轮开始后的具体任务（请你独立设计代码与深入实验）
 
 ### A. 先做完整但轻量的解析环境（E0）
-1. 实现 shared-task episodic data generator：任务权重 \pi，n 个 Context，Q 个 Query；统一支持 Q=1 和 Q>1。
-2. 主环境：二维线性高斯任务点 \tilde\theta∈{(-1,1),(0,0),(+1,1)}，y=\tilde\theta^\top x+\epsilon。写出精确 posterior w(D)、joint predictive Gaussian mixture 与在扩散噪声下的 Oracle Denoiser/Score/Jacobian。
-3. 对照任务：同均值异预测分布（Context A/B）；连续弱区分证据随 n 增长；**单 Query P3=(P1+P2)/2、但联合分布 rank 增长**。不要把不同的解析对照不加解释地混为同一任务族。
-4. 记录单 Query 与联合的差别、共享任务 vs 独立任务生成的不一致率、Oracle 的跨 Query 协方差和 JVP。用数值有限差分与 Autograd 相互验证解析导数。
+1. 实现 shared-task episodic data generator：任务先验 $\pi$、$n$ 个 Context、$Q$ 个 Query；统一支持 $Q=1$ 和 $Q>1$。
+2. **任务族 A**：二维线性高斯任务点 $\tilde\theta\in\{(-1,1),(0,0),(+1,1)\}$，$y=\tilde\theta^\top x+\epsilon$。写出精确 posterior $w(D)$、joint predictive Gaussian mixture 与在扩散噪声下的 Oracle Denoiser/Score/Jacobian。
+3. **任务族 B**：同一目标 Query 上满足 $P_3=(P_1+P_2)/2$，但多个 Query 在给定任务后独立，研究 $r^{(1)}=1<r^{(2)}=2$。与任务族 A 的“同均值异分布”和弱证据随 $n$ 增长相互补充；**B 不可直接复用 A 的三任务单高斯 Oracle**。见下方自然生成构造。
+4. 记录同均值异分布、同边缘异联合、共享任务 vs 独立任务生成的不一致率，以及 Oracle 的跨 Query 协方差/JVP；使用有限差分与 Autograd 互相验证解析导数。
 
-一个便于实现的 Oracle 公式：
+**任务族 A 的单高斯 Oracle（仅适用 A）**：
 $$
 w_j(D)\propto\pi_j\exp\{-\tfrac1{2\sigma^2}\sum_i(y_i-\tilde\theta_j^\top x_i)^2\}.
 $$
@@ -66,7 +66,27 @@ m^*=\sum_j\rho_jm_j^*.
 $$
 核对极限与端点，保证计算数值稳定。
 
-**E0 通过条件**：精确 posterior 归一化正确、Oracle 联合采样与边缘化匹配、Jacobian 有解析与数值一致性、同边缘异联合的差别确实可观测。这些是基础实现测试，不是模型发现。
+**任务族 B：可由自然 Context 产生两个后验、同一 Query 边缘相同而联合不同**
+
+以 $\Theta\in\{1,2,3\}$、等先验，输入类型 $x\in\{u,v\}$ 作为一个**单独的、完整定义的任务族**：
+
+| 输入类型 | 任务 1 | 任务 2 | 任务 3 |
+|---|---|---|---|
+| $u$（用于任务筛选） | $\mathcal N(1,\sigma^2)$ | $\mathcal N(1,\sigma^2)$ | $\mathcal N(0,\sigma^2)$ |
+| $v$（用于混合比较） | $P_- = \mathcal N(-1,\sigma^2)$ | $P_+ = \mathcal N(+1,\sigma^2)$ | $P_3=(P_-+P_+)/2$ |
+
+- **Context A**：重复提供 $u$、观测值接近 1，得到 $w_A\approx(1/2,1/2,0)$；**Context B**：重复提供 $v$，观测出现明显正负混合，得到 $w_B\approx(0,0,1)$。这两个 Context 都应来自训练任务分布与采集机制，不要只在测试时人工制造。
+- **Query 均为 $v$**：A/B 的单 Query 预测边缘几乎相同（都是 $(P_-+P_+)/2$），但两个 Query 的联合分布分别近似 $(P_-\otimes P_-+P_+\otimes P_+)/2$ 与 $P_3\otimes P_3$。
+- **重要可行性提醒**：若在所有输入上都规定 $P_3=(P_1+P_2)/2$，则等先验下 $L_3(D)=\prod_i(L_{1,i}+L_{2,i})/2\geq\sqrt{L_1(D)L_2(D)}$；当任务 1/2 的后验对称时，无法仅靠“不分正负”的 Context 排除任务 3。$u/v$ 设计故意令混合等式**仅在目标 Query $v$ 上成立**，绝不可默默将其等同于任务族 A。
+- 通用 Oracle：$w_j(D)\propto\pi_j\prod_i p_j(y_i\mid x_i)$；对各 Query 定义 $q_{j,t}(z_q\mid x_q)=\int \mathcal N(z_q;a_ty,s_t^2)\,P_j(dy\mid x_q)$，$\rho_j(z,t)\propto w_j(D)\prod_q q_{j,t}(z_q\mid x_q)$，并计算单任务最优均值 $m_{j,q}^*(z_q,t)=\mathbb E[Y_q\mid Z_{q,t}=z_q,\Theta=j,D]$。总均值为 $m_q^*=\sum_j\rho_j m_{j,q}^*$；当 $a\neq b$，
+$
+J_{ab}(z,t)=\frac{a_t}{s_t^2}
+\operatorname{Cov}_{j\sim\rho(z,t)}
+\!\bigl(m_{j,a}^*(z_a,t),m_{j,b}^*(z_b,t)\bigr).
+$
+- 任务 3 的单任务 Denoiser **是两高斯分量的后验均值混合（随 $z_q$ 非线性变化）**。以 $Q=2,z=(0,0)$ 为诊断点：在 $w_A$ 下 $J_{12}>0$（共享左右模式）；在 $w_B$ 下 $J_{12}=0$（给定任务 3 后两个 Query 的模式独立）。同时检查有限样本下的近似值、Autograd 与解析一致；避免误把**任务 3 允许独立变号**标成“生成不一致”。
+
+**E0 通过条件**：两种任务族的精确 posterior 均归一化；$Q=1$ 时联合模型退化为边缘模型；Oracle 联合采样与边缘化一致；任务族 B 能通过自然 Context 得到两组目标后验；$J_{12}$ 在两组黄金对照下的表现与公式一致（含 Autograd / 有限差分）；同边缘异联合的差别确实可观测。以上均是实现测试，不是模型发现。这些是基础实现测试，不是模型发现。
 
 ### B. 随后设计并训练最小联合 Denoiser / DiT（E1）
 - 以 **同一 Episode 的整个 Query Sequence** 为模型输入，不要把 Q 个 Query 当成互不通信的独立 Batch 后却声称学到了联合机制。
@@ -93,8 +113,8 @@ $$
 ## 4. 实验质量、报告与代码纪律
 
 - **先检查仓库、硬件、依赖与现有可复用实现**，不盲目覆盖代码或启动大规模训练。仅在合适位置创建实验目录；本 workbench 初始只保留这三个 .md 文档。
-- 重要计算要有单元测试：posterior sum=1；Q=1 时 joint=marginal；联合边缘化；任务内独立时协方差理论；Jacobian finite difference；variance-Jacobian 在理想 Oracle 下的数值近似。
-- 分清数据生成器中隐变量 \Theta 与训练时模型可见量；模型不可窥见解析 posterior 或 task ID，除非该 run 被清楚标为 Oracle / Ablation。
+- 重要计算要有单元测试：posterior sum=1；$Q=1$ 时 joint=marginal；联合边缘化；任务族 B 的上下文可实现性及跨 Query Jacobian；任务内独立时协方差理论；Jacobian finite difference / Autograd；variance-Jacobian 在理想 Oracle 下的数值近似。
+- 分清数据生成器中隐变量 \Theta 与训练时模型可见量；模型不可窥见解析 posterior 或 Task ID，除非该 run 被清楚标为 Oracle / Ablation。
 - 报告 n、Q、先验熵、测例是否 OOD、噪声规模、扩散时间、Sampler 类型、训练 Episode 数、Seeds、置信区间/波动、计算开销。相同 Q 的模型需公平预算比较。
 - 可用概率难分开的任务分量来考察强度，但不要只用可分模式分类指标；结合 joint KL / NLL（可计算时）、W1/MMD、Covariance、模式频率、任务规则违反率。
 - 可做可视化，但**图好看不是结论**。优先给正面/负面假设表、具体数值、Oracle vs learned 差距以及因果检查。
