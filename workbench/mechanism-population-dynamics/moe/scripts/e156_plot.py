@@ -46,7 +46,7 @@ def render(summary, scope, output):
     titles = (('Full accuracy', 'P-mask accuracy', 'Accuracy drop'),
               ('Full answer-token NLL', 'P-mask answer-token NLL', 'NLL increase'))
     fig, axes = plt.subplots(2, 3, figsize=(12.4, 9.7), layout=None)
-    fig.subplots_adjust(left=.075, right=.96, top=.88, bottom=.30, wspace=.31, hspace=.36)
+    fig.subplots_adjust(left=.075, right=.96, top=.88, bottom=.36, wspace=.31, hspace=.36)
     for ri in range(2):
         shared = np.concatenate((grids[ri][0].ravel(), grids[ri][1].ravel()))
         lo, hi = float(shared.min()), float(shared.max())
@@ -83,7 +83,7 @@ def render(summary, scope, output):
         'Intervals: paired question bootstrap within each fixed subject, equal subject macro. '
         'A/B contrast excludes the P/P identity corner.'
     )
-    fig.text(.075, .265, caption, va='top', ha='left', fontsize=9, linespacing=1.55)
+    fig.text(.075, .27, caption, va='top', ha='left', fontsize=9, linespacing=1.55)
     output.mkdir(parents=True, exist_ok=True)
     for extension in ('png','pdf'):
         fig.savefig(output / f'e156_source_cross_{scope}.{extension}', dpi=200, bbox_inches='tight')

@@ -147,3 +147,5 @@ E155已完整完成：`~/mechpop_cache/e155_native_task_branch_necessity/scores_
 **2026-10-27资源复核（非新实验）：** 限定常规HF与`hf_olmoe`两缓存根，OLMoE 0924 base main/20B/419B/2516B均有完整3分片，未找到Instruct权重；64选8、无shared、`norm_topk_prob=false`。公开卡声明base→SFT→DPO谱系不等于已核验训练字节链，plain/chat评测格式也需区分。[只读核查](results/mature_olmoe_asset_check_2026-10-27.json)供未来有实质科学动机时复用，本轮没有另开模型实验。
 
 E156评测期间，全文缓存增至9篇193页，新增Sparsity Moves Computation v2、Beyond Routing v1、Basic-Refinement官方ACL版；PDF/文本仍在`~/mechpop_cache/moe_primary_reading_20261027/`，版本/SHA/阅读覆盖见[统一manifest](notes/PRIMARY_READING_2026-10-27.json)，小型论文卡和接口核对进Git，无作者模型运行。
+
+E156全部22条件已完成，`~/mechpop_cache/e156_common_parent_cross/scores.npz` 101,431 B，SHA `17febe351a8f8e4136b4e79ed75fd88792281970c45f2b4ac9a7eceb697f67b6`；同目录`native_references.npz`、`receiver_task_masks.npz`由plan/selectors锁定。源码8ec5add4，所有三模型canonical BF16参数/buffer/cal及128题native候选LL精确一致、只读hash通过。复算`e156_analyze.py analyze`、`e156_transfer_contrasts.py`、`e156_plot.py`；独立审计`results/e156_independent_audit/audit.py --raw <scores路径> --summary moe/results/e156/summary.json`。实际2.255563879 GPU·时、单卡81.837203GB，预算complete、GPU释放，无新训练/模型下载。

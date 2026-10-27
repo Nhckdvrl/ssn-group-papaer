@@ -14,3 +14,4 @@
 局限：raw只保存全词表首token KL标量，未保存概率分布；可复算其汇总和对比及CI，不能独立从概率计算该KL或确认模型前向。四选项 score KL可从raw重算。
 
 CPU合成最小自检：`~/.venvs/mechpop/bin/python -B moe/results/e156_independent_audit/audit.py --self-test`；覆盖已知分数/答案长度、KL恒等、AB方向及排除PP、双科等权bootstrap。未运行真实结果审计。
+实际运行：E156预算complete且原进程退出后，从完整101,431 B raw复算3576项点/配对CI/来源对比，最大误差1.7763568394002505e−15，全部通过，见report.json。原生参数/buffer/cal身份由原manifest控制另行核验；本CPU检查不从未保存的全词表概率重建KL，也不称盲法设计审计。
