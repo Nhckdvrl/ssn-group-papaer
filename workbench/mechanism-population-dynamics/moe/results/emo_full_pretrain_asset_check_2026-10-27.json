@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-27",
+  "scope": "官方README/模型卡/训练脚本、HF小文件和共享缓存浅层检查；不下载权重、不运行模型、不修改实验状态",
+  "model": {
+    "repo": "allenai/Emo_1b14b_1T",
+    "hf_current_main_commit": "007852b1e3d22222f8ee03c6a53fa30e47898dcb",
+    "model_card": "https://huggingface.co/allenai/Emo_1b14b_1T",
+    "weights": "11公开safetensors分片共54275336216 bytes；仅HF metadata，未下载或哈希权重。",
+    "release_description": "官方README和模型卡称EMO目标预训练1T tokens，再进行EMO 50B anneal；是最终1T+50B模型，不是裸1T终点。"
+  },
+  "lineage": {
+    "official_github_commit": "246fdec72e599319c717aefe29a1d1fdad7c97a0",
+    "readme": "https://github.com/allenai/EMO/blob/246fdec72e599319c717aefe29a1d1fdad7c97a0/README.md",
+    "train_script": "https://github.com/allenai/EMO/blob/246fdec72e599319c717aefe29a1d1fdad7c97a0/scripts/models/emo_1b14b_1t.sh",
+    "anneal_script": "https://github.com/allenai/EMO/blob/246fdec72e599319c717aefe29a1d1fdad7c97a0/scripts/models/emo_1b14b_1t_emoanneal.sh",
+    "details": "官方预训练脚本指定1T及随机文档专家池8–128；官方退火脚本的checkpoint为EMO命名路径step238419，并设置50B，和本研究Std-P出发的两个退火分支不同。README区分EMO主线和Std 1T / Std-P后退火。",
+    "seed": "当前公开训练Python脚本ExperimentConfig默认init_seed=12536，load_path=None，也允许已有save checkpoint恢复或load_path；发布训练脚本未显式设置init_seed/load_path。此为当前代码默认，不能证明历史运行使用的seed、初始权重或无恢复。",
+    "limitations": "未查验训练原始日志、step0、optimizer和batch字节链；不能因相同默认seed/配置断言同一或独立初始化，亦不能把脚本显示的模型名视为训练链字节证明。",
+    "script": "https://github.com/allenai/EMO/blob/246fdec72e599319c717aefe29a1d1fdad7c97a0/src/scripts/train/olmoe-1B-7B_fsl.py"
+  },
+  "architecture": {
+    "config_url": "https://huggingface.co/allenai/Emo_1b14b_1T/blob/007852b1e3d22222f8ee03c6a53fa30e47898dcb/config.json",
+    "num_experts": 128,
+    "num_shared_experts": 1,
+    "num_experts_per_tok": 8,
+    "interpretation": "127 routed top7加1 shared；norm_topk_prob=false",
+    "config_sha256": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "std_P_config_byte_identical": true
+  },
+  "tokenizer": {
+    "comparison": "HTTP读取公开固定commit小文件，与本地Std-P pin d2a4949c9d4ad6cf47fbac131f7e020077332b21对应文件逐字节比较，四项全部相同；不是模型推理。",
+    "equal_sha256": {
+      "tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+      "tokenizer_config.json": "733b2ec0f743cf206dd20335eacbd4427c85487fd6f5216bb361f92a85314315",
+      "special_tokens_map.json": "4cb2b52960bababa8ec27153831e405ef7811e3fad1226106e09c28e715cfb21",
+      "chat_template.jinja": "153280e3ff55d19da1398bdb3914ee2a51b80429bfaedde11d7d216c39db80f3"
+    },
+    "limit": "只核对这四个文件；行为及多token对齐尚未运行验证。"
+  },
+  "cache": {
+    "searched_roots": [
+      "/home/xiang/mechpop_cache/hf_emo_mature",
+      "/home/xiang/.cache/huggingface/hub",
+      "/home/xiang/mechpop_cache"
+    ],
+    "result": "浅层未发现models--allenai--Emo_1b14b_1T目录；hf_emo_mature中已有Std-P/Std与Std-EmoAnnealed，不能把后者当全程EMO主模型。",
+    "limitation": "未搜索节点NVMe或任意其他路径，不表示全局绝无缓存。"
+  },
+  "outcome": "资产准备；不自动新增模型或实验"
+}

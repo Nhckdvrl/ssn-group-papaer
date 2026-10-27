@@ -1,0 +1,164 @@
+{
+  "experiment": "E158",
+  "status": "prepared",
+  "data_script_sha256": "21f081a23ec548bf2fd9758dce38c99260efc22bef36db555057cd1828f821be",
+  "source_commit": "1b9ec3cf2b8368e42bde7e80fcef384312a6ec07",
+  "source_manifest": {
+    "path": "/home/xiang/mechpop_cache/moe_primary_reading_20261027/lre_official_1b9ec3cf/source_manifest.json",
+    "sha256": "71d59f96b76f1b2d2f0cc323feccb8cc8dfef2900837605d687e7da9fd046278"
+  },
+  "source_files": {
+    "country_capital_city.json": {
+      "sha256": "9945d2da1fa1145c1d7e59ac61a25ebee74299c00bd53fc9308167f9e1d44fc0",
+      "git_blob_sha1": "b353e2a76acad8d370d97b46d66b776fcf6ec685"
+    },
+    "country_language.json": {
+      "sha256": "0996525735107934f0d2e467e6fac7d2c785c42e8300ccb41ae6e9b5dfde2b76",
+      "git_blob_sha1": "a69180e3921b34e798688395c3ff45ca0cf0b768"
+    }
+  },
+  "tokenizer": {
+    "model": "allenai/StdMoE_1b14b_1T_Preanneal",
+    "revision": "d2a4949c9d4ad6cf47fbac131f7e020077332b21",
+    "path": "/home/xiang/mechpop_cache/hf_emo_mature/models--allenai--StdMoE_1b14b_1T_Preanneal/snapshots/d2a4949c9d4ad6cf47fbac131f7e020077332b21",
+    "transformers_version": "4.57.6",
+    "files": {
+      "tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+      "tokenizer_config.json": "733b2ec0f743cf206dd20335eacbd4427c85487fd6f5216bb361f92a85314315",
+      "special_tokens_map.json": "4cb2b52960bababa8ec27153831e405ef7811e3fad1226106e09c28e715cfb21"
+    },
+    "add_special_tokens": false,
+    "answer": "first token after exact prompt prefix"
+  },
+  "templates": [
+    [
+      "The capital of {} is",
+      "The capital city of {} is"
+    ],
+    [
+      "The language used in {} is",
+      "In {}, the primary language is"
+    ]
+  ],
+  "labels": [
+    "country_capital_city",
+    "country_language"
+  ],
+  "scenarios": [
+    "entity",
+    "attribute",
+    "paraphrase"
+  ],
+  "matching": "seed158003 randomized augmenting path; source-label multiset permutation; excludes source and target tokens",
+  "query_order": "qid=(relation*2+template)*24+country; qid r*48+c canonical",
+  "last_prompt_token": 374,
+  "num_queries": 96,
+  "range_count": [
+    24,
+    14
+  ],
+  "arrays": {
+    "ids": {
+      "shape": [
+        588
+      ],
+      "dtype": "uint32"
+    },
+    "offsets": {
+      "shape": [
+        97
+      ],
+      "dtype": "int64"
+    },
+    "gold_token": {
+      "shape": [
+        96
+      ],
+      "dtype": "int64"
+    },
+    "relation": {
+      "shape": [
+        96
+      ],
+      "dtype": "int8"
+    },
+    "country": {
+      "shape": [
+        96
+      ],
+      "dtype": "int8"
+    },
+    "template": {
+      "shape": [
+        96
+      ],
+      "dtype": "int8"
+    },
+    "target_query_index": {
+      "shape": [
+        2,
+        24
+      ],
+      "dtype": "int64"
+    },
+    "source_query_index": {
+      "shape": [
+        3,
+        2,
+        24
+      ],
+      "dtype": "int64"
+    },
+    "control_token": {
+      "shape": [
+        3,
+        2,
+        24
+      ],
+      "dtype": "int64"
+    },
+    "range_token_ids": {
+      "shape": [
+        2,
+        24
+      ],
+      "dtype": "int64"
+    },
+    "range_count": {
+      "shape": [
+        2
+      ],
+      "dtype": "int64"
+    },
+    "token_union": {
+      "shape": [
+        38
+      ],
+      "dtype": "int64"
+    },
+    "native_query_order": {
+      "shape": [
+        96
+      ],
+      "dtype": "int64"
+    }
+  },
+  "assets": {
+    "data.npz": {
+      "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/data.npz",
+      "sha256": "0a80ae850b0fef8840b95f1f5033712cb24d6c32bbfb8c1d6368517593f89344",
+      "bytes": 4467
+    },
+    "queries.json": {
+      "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/queries.json",
+      "sha256": "4a7c9574eec409c0cf2fa3e24f81e6a01def28bab92cc47e5d12dfb3e78cf56c",
+      "bytes": 41770
+    },
+    "corrections.json": {
+      "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/corrections.json",
+      "sha256": "6ac6023852f70ab8e0c461d4225861729dc9ba9e584d2da4d6f1706fa324bddf",
+      "bytes": 478
+    }
+  },
+  "scope": "published labels only; no model output, training, GPU or test-set selection"
+}
