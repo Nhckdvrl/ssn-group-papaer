@@ -1,7 +1,7 @@
 # From Beliefs to Coherent Samples
 ## Predictive Sufficiency and Trajectory Specialization in Generative In-Context Learning
 
-状态：新研究 workbench / 研究蓝图 v0（2026-10-27）。相关工作见 [RELATED_WORK.md](./RELATED_WORK.md)，给本地执行 Agent 的说明见 [AGENT_HANDOFF.md](./AGENT_HANDOFF.md)。
+状态：研究蓝图（2026-10-27；E0/E1 待实施）。相关工作见 [RELATED_WORK.md](./RELATED_WORK.md)，给本地执行 Agent 的说明见 [AGENT_HANDOFF.md](./AGENT_HANDOFF.md)。
 
 > **一句话**：预训练生成式 Transformer 如何根据有限示例推断不确定的潜在任务，在表示处理中保留单个及联合 Query 真正需要的信息，并经扩散过程生成既校准又全局一致的输出？
 >
@@ -21,14 +21,14 @@ Fu et al. [2610.05333](https://arxiv.org/abs/2610.05333) 将生成式 ICL 的目
 
 ## 2. 统一统计设置：共享潜在任务的联合生成
 
-Episode 先抽潜在任务，随后获取 n 个 Demonstrations，同一任务下需生成 Q 个目标：
+Episode 先抽潜在任务，随后获取 $n$ 个 Demonstrations，同一任务下需生成 $Q$ 个目标：
 
 $$
 \Theta\sim\pi,\quad D_n=\{(x_i,y_i)\}_{i=1}^n,\quad
 \mathbf X=(x_{*1},\ldots,x_{*Q}),\quad \mathbf Y=(Y_{*1},\ldots,Y_{*Q}).
 $$
 
-在给定 \Theta、各 Query 的条件下，基础实验假设观测噪声独立；真实应用可以放宽这个假设。由上下文更新：
+在给定 $\Theta$、各 Query 的条件下，基础实验假设观测噪声独立；真实应用可以放宽这个假设。由上下文更新：
 
 $$
 w_j(D_n)=P(\Theta=j\mid D_n),\qquad
@@ -43,13 +43,13 @@ P^{\rm ind}(\mathbf y\mid D_n,\mathbf X)
 =\prod_{q=1}^Q \sum_j w_j(D_n)P_j(y_q\mid x_{*q}).
 $$
 
-两者对每个 Query 的边缘预测可以完全相同，但第二个式子允许不同 Query 隐式采用不同任务。若 K 个模式可完全辨别且后验为 w，独立模式选择导致同一 Episode 规则不一致的概率为：
+两者对每个 Query 的边缘预测可以完全相同，但第二个式子允许不同 Query 隐式采用不同任务。若 $K$ 个模式可完全辨别且后验为 $w$，独立模式选择导致同一 Episode 规则不一致的概率为：
 
 $$
 P_{\rm inconsistent}=1-\sum_{j=1}^K w_j^Q.
 $$
 
-例如 K=2，w=(1/2,1/2)，Q=2 时 50%，Q=4 时 87.5%。这不是预测实际 DiT 一定失败，而是表明**正确边缘生成与正确联合生成属于不同能力**。联合生成模型、共享随机潜变量基线有能力解决它；我们的研究要检验预训练 DiT 如何学、如何表示、如何生成以及为何失准。
+例如 $K=2$、$w=(1/2,1/2)$ 时，$Q=2$ 的不一致率为 50%，$Q=4$ 时为 87.5%。这不是预测实际 DiT 一定失败，而是表明**正确边缘生成与正确联合生成属于不同能力**。联合生成模型、共享随机潜变量基线有能力解决它；我们的研究要检验预训练 DiT 如何学、如何表示、如何生成以及为何失准。
 
 图像中的多个 Patch / 多个物体可用于研究全局协同，但**图像 Patch 不自动严格等价于独立 Query**，要区别空间相关观测噪声、任务全局性以及不同对象的条件结构。
 
@@ -64,9 +64,9 @@ $$
 
 研究问题：哪些任务之间的区分，对给定一个 Query 不必要，却对多个 Query 的共同生成成为必要信息？
 
-一个非常干净的解析例子：取两种不同的单 Query 分布 P1/P2，并令第三种任务在单 Query 上满足 P3=(P1+P2)/2。单 Query 的预测族仿射维度为 1；如果给定任务后两个 Query 独立，则联合任务族 P1⊗P1、P2⊗P2、P3⊗P3 一般有仿射维度 2。因此 **r^(1)=1，r^(2)=2**。同一个表示在单 Query 上可能充分、在联合 Query 上不充分。这个例子应当从概率空间角度证明并给出可复现实验；不要把 rank 自动等同于某层 Hidden State 的欧氏维度，也不要无条件声称任意低维非线性编码一定失败。
+一个非常干净的解析例子：取两种不同的单 Query 分布 $P_1,P_2$，并令第三种任务在**目标 Query 上**满足 $P_3=(P_1+P_2)/2$。单 Query 的预测族仿射维度为 1；如果给定任务后两个 Query 独立，则联合任务族 $P_1\otimes P_1$、$P_2\otimes P_2$、$P_3\otimes P_3$ 的仿射维度为 2，即 **$r^{(1)}=1<r^{(2)}=2$**。同一个表示在单 Query 上可能充分、在联合 Query 上不充分。这个例子应当从概率空间角度证明并给出可复现实验；不要把 rank 自动等同于某层 Hidden State 的欧氏维度，也不要无条件声称任意低维非线性编码一定失败。
 
-对明确只通过 H=T(D_n,\mathbf X) 接收上下文的生成器 q_H，可用经典 KL 恒等式区分“压缩损失”与“剩余生成误差”：
+对明确只通过 $H=T(D_n,\mathbf X)$ 接收上下文的生成器 $q_H$，可用经典 KL 恒等式区分“压缩损失”与“剩余生成误差”：
 
 $$
 \mathbb E\,\mathrm{KL}(P^*_{\!D}\|q_H)
@@ -76,7 +76,7 @@ I(\mathbf Y;D_n\mid H,\mathbf X)
 \mathbb E\,\mathrm{KL}(P^*_{\!H}\|q_H).
 $$
 
-它给 Representation 一个**任务依赖的预测充分性标准**，也说明内部丢失信息和下游实现不佳是两个不同问题。它只对真实的信息瓶颈成立；实际 DiT 里随噪声 z_t 变化的 Query Hidden States 不可直接逐层套此等式。
+它给 Representation 一个**任务依赖的预测充分性标准**，也说明内部丢失信息和下游实现不佳是两个不同问题。它只对真实的信息瓶颈成立；实际 DiT 里随噪声 $z_t$ 变化的 Query Hidden States 不可直接逐层套此等式。
 
 ## 3. 联合扩散：从 Task Belief 到 Coherent Sample
 
@@ -87,23 +87,35 @@ Z_t=a_t\mathbf Y+s_t\varepsilon,\quad \varepsilon\sim N(0,I),\quad
 m^*(z,t,D,\mathbf X)=\mathbb E[\mathbf Y\mid Z_t=z,D,\mathbf X].
 $$
 
-用 x0-prediction 时，理想 Denoiser 的 Jacobian 与条件协方差有精确关系（a_t,s_t>0）：
+用 $x_0$-prediction 时，理想 Denoiser 的 Jacobian 与条件协方差有精确关系（$a_t,s_t>0$）：
 
 $$
 J_t(z)=\nabla_zm^*(z,t)=\frac{a_t}{s_t^2}\operatorname{Cov}(\mathbf Y\mid Z_t=z,D,\mathbf X).
 $$
 
-对于固定潜在任务且给定任务后 Query 独立、同方差的高斯任务族，跨 Query Jacobian Block 有解析结构。若 P_j(\mathbf Y)=N(\mu_j,\tau^2 I)，记 v_t=a_t^2\tau^2+s_t^2、\rho_j=P(\Theta=j\mid Z_t=z,D,\mathbf X)，则 a≠b 时：
+对**给定任务后各 Query 输出及其加噪过程条件独立**的任务族（每个 $P_j$ 可以是多峰分布），先使用通用的跨 Query 公式。令 $m_{j,a}^*(z_a,t)$ 为固定任务 $j$ 时第 $a$ 个 Query 的最优去噪均值，对 $a\neq b$：
 
-$$
-J_{ab}(z,t)=\frac{a_ts_t^2}{v_t^2}\operatorname{Cov}_{j\sim\rho(z,t)}(\mu_{j,a},\mu_{j,b}).
-$$
+$
+\boxed{
+J_{ab}(z,t)=\frac{a_t}{s_t^2}
+\operatorname{Cov}_{j\sim\rho(z,t)}
+\!\bigl(m_{j,a}^*(z_a,t),m_{j,b}^*(z_b,t)\bigr)
+}
+$
+
+这是全协方差分解在跨 Query 块上的直接结果：给定 $\Theta=j$ 和 $Z_t$ 后，各 Query 的剩余条件协方差为零。**任务族 B 的 $P_3$ 本身是多峰混合，必须使用此公式或直接 Autograd，而不能把它误当成单峰高斯。**
+
+作为可解析的特例，若所有任务都满足 $P_j(\mathbf Y)=\mathcal N(\mu_j,\tau^2I)$，记 $v_t=a_t^2\tau^2+s_t^2$、$\rho_j=P(\Theta=j\mid Z_t=z,D,\mathbf X)$，则：
+
+$
+J_{ab}(z,t)=\frac{a_ts_t^2}{v_t^2}\operatorname{Cov}_{j\sim\rho(z,t)}(\mu_{j,a},\mu_{j,b}),\qquad a\neq b.
+$
 
 这给出了对共享任务引起的跨 Query 耦合的**功能级测量**，无需先猜具体 Heads。对一般结构化图像，任务内也可能存在空间耦合，不能把所有非对角项唯一归因于跨任务不确定性；通过“任务内噪声独立”受控实验检验后，再探索真实场景。
 
 ### 3.1 轨迹专业化与两种统计量
 
-上下文 Task Belief 为 w_j(D)，给定带噪采样状态的 Responsibility 为 \rho_j(z,t,D)。理想模型满足：
+上下文 Task Belief 为 $w_j(D)$，给定带噪采样状态的 Responsibility 为 $\rho_j(z,t,D)$。理想模型满足：
 
 $$
 \mathbb E_{Z_t\mid D}[\rho_j(Z_t,t,D)]=w_j(D).
@@ -116,7 +128,7 @@ S(t;D)=I(\Theta;Z_t\mid D)
 =H(w(D))-\mathbb E_{Z_t\mid D}H(\rho(Z_t,t,D)).
 $$
 
-在可比较的高斯通道 Z_\gamma=\sqrt\gamma\,\mathbf Y+\varepsilon 中，I-MMSE 和全协方差分解给出：
+在可比较的高斯通道 $Z_\gamma=\sqrt\gamma\,\mathbf Y+\varepsilon$ 中，I-MMSE 和全协方差分解给出：
 
 $$
 \frac{dS}{d\gamma}
@@ -124,9 +136,9 @@ $$
 \operatorname{Cov}_{j\sim\rho} (m_j^*(Z_\gamma)).
 $$
 
-这些是**理论参照与诊断工具**，不是预言模型必须出现陡峭 Speciation、分立 Head 或某个固定时间点。对理想随机 Markov 逆过程，可讨论 \rho 的条件期望/鞅结构；**确定性 DDIM 不是同样的随机过程**，不可不加说明地套路径鞅结论。
+这些是**理论参照与诊断工具**，不是预言模型必须出现陡峭 Speciation、分立 Head 或某个固定时间点。对理想随机 Markov 逆过程，可讨论 $\rho$ 的条件期望/鞅结构；**确定性 DDIM 不是同样的随机过程**，不可不加说明地套路径鞅结论。
 
-### 3.2 二阶方差—Jacobian 一致性（Gemini 最后一轮的重要补充）
+### 3.2 二阶方差—Jacobian 一致性
 
 全协方差分解 + 上述 Tweedie/Jacobian 关系产生：
 
@@ -139,7 +151,7 @@ $$
 }
 $$
 
-它是严格成立的**理想模型恒等式**（a_t>0，有限二阶矩，恰当端点极限）。直观上，噪声减少时“尚未从局部推断中显露的协方差”逐渐转成不同轨迹的已实现差异。归一化 Trace 可以在理想高斯通道下作为专业化进度指标。
+它是严格成立的**理想模型恒等式**（$a_t>0$、有限二阶矩、恰当端点极限）。直观上，噪声减少时“尚未从局部推断中显露的协方差”逐渐转成不同轨迹的已实现差异。归一化 Trace 可以在理想高斯通道下作为专业化进度指标；它衡量总体协方差的分配，不应自动等同于跨任务模式归属的准确率。
 
 重要：对训练出的失准网络，它不是自动成立的守恒定律。若模型的初始与最终表示都错误地对称坍缩，模型内部自洽也未必暴露问题。应当将它用于**Oracle 对照、时间剖面、近似一致性诊断与候选校准**，不能用它单独声称恢复真实后验。
 
@@ -162,9 +174,11 @@ $$
 ## 5. 实验主线：先解析、后模型、再机制、最后高维
 
 ### E0｜解析 Bayes Oracle 与能力下界（不训练网络也有科学内容）
-- **任务族 A（同均值异分布）**：二维线性高斯，\tilde\theta∈{(-1,1),(0,0),(+1,1)}，y=\tilde\theta^\top x+\epsilon。Context 近似 x=(0,1), y≈1 时得到两端双峰；y≈0 时得到中心单峰。Query 可取 x=(1,0)，让两种 Context 在均值一致时具有明显不同的分布。
-- **连续收缩**：让上下文 x^{(1)} 有小而非零的变化，随 n∈{1,2,4,8,16,32} 累积区分 ±1 的证据。将“严格 x=(0,1) 的歧义诊断集”与“可辨识性随 n 变化的自然训练/测试集”分开；避免把刻意设计的测例当成训练分布外推能力。
-- **任务族 B（联合秩变化）**：单 Query P3=(P1+P2)/2，但给定任务后多 Query 独立；测试 r^(1)<r^(2)、边缘预测相同而联合预测不同。
+- **任务族 A（同均值异分布）**：二维线性高斯，$\tilde\theta\in\{(-1,1),(0,0),(+1,1)\}$、$y=\tilde\theta^\top x+\epsilon$。Context 近似 $x=(0,1),y\approx1$ 时得到两端双峰；$y\approx0$ 时得到中心单峰。Query 可取 $x_*=(1,0)$，使两种 Context 在均值一致时具有明显不同的分布。
+- **连续收缩**：让上下文 $x^{(1)}$ 有小而非零的变化，随 $n\in\{1,2,4,8,16,32\}$ 累积区分 $\pm1$ 的证据。将“严格 $x=(0,1)$ 的歧义诊断集”与“可辨识性随 $n$ 变化的自然训练/测试集”分开，确保诊断样本的生成机制也在训练分布支持内。
+- **任务族 B（联合秩变化）**：在**目标 Query 类型**上令 $P_3=(P_1+P_2)/2$，但给定任务后多个 Query 独立。验证 $r^{(1)}<r^{(2)}$、单 Query 边缘相同而联合分布不同；特别测量 $J_{12}$（使用第 3 节通用公式）。
+  - 一个自然可采样的**独立实验族**：用两类输入 $u,v$；在 $u$ 上 $P_1=P_2=\mathcal N(1,\sigma^2)$，$P_3=\mathcal N(0,\sigma^2)$；在 $v$ 上 $P_1=\mathcal N(-1,\sigma^2)$、$P_2=\mathcal N(+1,\sigma^2)$、$P_3=(P_1+P_2)/2$。等先验时，重复观测 $u,y\approx1$ 得到 $w_A\approx(1/2,1/2,0)$；观测多个 $v$ 且出现正负混合样本，可得到 $w_B\approx(0,0,1)$；**Query 固定为 $v$**，两者边缘分布近乎相同，但联合分布明显不同。
+  - **实现提醒**：如果对所有 Context 输入也强制 $P_3=(P_1+P_2)/2$，等先验下无法通过“不分正负”的上下文可靠地获得 $w_A$，因为 $L_3(D)=\prod_i (L_{1,i}+L_{2,i})/2\geq\sqrt{L_1(D)L_2(D)}$。上面的 $u/v$ 设计只要求**目标 Query**上满足混合关系；它不同于任务族 A 的纯线性高斯模型，不应未经说明地把两者合成一个模型。训练集中也要覆盖两类上下文采集方式，避免只在测试时制造罕见 Prompt。
 - **任务族 C（空间方向）**：二维输出的四方向或共享位移规则，多 Query 与多坐标耦合；用于检验跨 Query Block / 空间协同。
 
 输出：Oracle posterior、Oracle joint samples、无模型的 Independent Marginal Baseline、解析协方差/Jacobian、rank 演示和不一致率曲线。这是建立问题本身而非赌网络行为。
@@ -204,10 +218,10 @@ $$
 - 纯任务向量构成弯曲曲线、信念落入凸包是一种很好的**候选编码**，不是任意 Transformer 的隐藏层必需。半径/纯度在正规单纯形上与 Rényi-2 相关，不可无条件当成 Shannon 熵。
 - 已知统计恒等式可以贡献新研究框架；不要重复吹成首创新定律。相反，别因其经典而否定新对象上的机制意义。
 - KL 压缩分解需要真正的信息瓶颈；Cross-Attention Hidden States 可依赖 noisy Query，不能草率当 H(D)。
-- 非对角 Jacobian 在给定任务独立噪声的模型里有清楚的跨任务解释；一般图像中任务内部依赖也会贡献非对角项。
-- 方差—Jacobian 公式的 a_t→0 极限需谨慎估计；理想一致性不是模型正确性的充分条件。单靠样本均值、单靠二阶矩、单靠同一模型自身闭环，都可能漏检错误，需要独立 Bayes Oracle 与完整联合分布评估。
-- \rho 的鞅解释依赖匹配的随机逆 Markov 过程；DDIM 确定性轨迹不要直接套。
-- 把 Q 个样本独立堆在 Batch 中不会自动产生跨 Query Jacobian；但显式共享 latent、组合采样也可构建联合分布。Self-Attention 是一种候选架构，不是唯一机制。
+- 非对角 Jacobian 在给定任务独立噪声的模型里有清楚的跨任务解释；**若单任务本身是多峰（如任务族 B 的 $P_3$），仍须使用通用协方差公式**；一般图像中任务内部依赖也会贡献非对角项。
+- 方差—Jacobian 公式的 $a_t\to0$ 极限需谨慎估计；理想一致性不是模型正确性的充分条件。单靠样本均值、单靠二阶矩、单靠同一模型自身闭环，都可能漏检错误，需要独立 Bayes Oracle 与完整联合分布评估。
+- $\rho$ 的鞅解释依赖匹配的随机逆 Markov 过程；DDIM 确定性轨迹不要直接套。
+- 把 $Q$ 个样本独立堆在 Batch 中不会自动产生跨 Query Jacobian；但显式共享 latent、组合采样也可构建联合分布。Self-Attention 是一种候选架构，不是唯一机制。
 - RKHS / MMD 的投影可用于分布级诊断；对任务混合权重的唯一恢复需要相应可辨识条件；熵差/方向偏置不是自动正交的三项误差分解。
 - “同一任务”不是普遍要求所有独立生成样本一致；**只对明确属于同一 Episode、共享同一潜在规则的 Query 集合**要求联合一致。分别启动不同 Episode 的图像生成可以合法独立抽任务。
 
