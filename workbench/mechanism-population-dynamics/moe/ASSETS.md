@@ -139,3 +139,7 @@ E152全部22条件完成，仍复用同两权重、输入和旧5套mask。耐久
 - 成熟父P `allenai/StdMoE_1b14b_1T_Preanneal` pin `d2a4949c9d4ad6cf47fbac131f7e020077332b21`，公开FP32权重54,275,336,216 B已取回原NFS HF缓存一份、11分片及小型文件逐项公开Git/LFS SHA核验；`results/e154/asset_manifest.json`。三个成熟模型权重总计162,826,008,648 B，无新训练。12个张量近邻仅为资产检查，不替代原始训练状态链。
 - E154新raw `~/mechpop_cache/e154_native_parent_boundary/metrics.npz` 3,315,828 B，SHA `f36eb7b39c7932336aadba97ee2a3e020b91c6fc7e3250c4c88096385bbe54f5`；同目录保留`inherited_masks.npz`、`cal_native_bf16.npz`。9条件全部完成，原生代码bea72824；`e154_analyze.py analyze`、`e154_verify_results.py`、`e154_plot.py`从raw复算。实际.329929935 GPU·时、54.821924GB峰值；A/B只继承旧raw，不算重复实验。
 - 四篇完整一手PDF/文本/阅读记录在`~/mechpop_cache/moe_primary_reading_20261027/`，EMO25页、MirrorMoE20页、Training-Free Halving9页、OptEP23页；仅small manifest/论文卡/比较入Git，全文PDF留缓存。
+
+E155已完整完成：`~/mechpop_cache/e155_native_task_branch_necessity/scores_{P,A,B}.npz`分别15,965/15,929/15,803 B，SHA/原生fingerprint在`results/e155/manifest_{P,A,B}.json`。统计`e155_native.py analyze --physical-gpu 0`，再`e155_verify_results.py`、`e155_plot.py`；独立Terra报告与POST-HOC common-success分开存档。实际1.343426979 GPU·时，每卡54.685606GB峰值，预算均complete。
+
+[E154封存](results/e154/artifact_seal.json)绑定70b2ec6f源码/结果包，`run_metadata_70b2ec6f.tar.gz` 40,813,419 B，raw/mask/cal共36,227,755 B，SHA逐项复核。E156重用同三公开模型，CPU先BF16后同卡驻留，真实匹配所有native权重/buffer/输出身份才进入新条件。
