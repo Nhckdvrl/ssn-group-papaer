@@ -149,3 +149,5 @@ E155已完整完成：`~/mechpop_cache/e155_native_task_branch_necessity/scores_
 E156评测期间，全文缓存增至9篇193页，新增Sparsity Moves Computation v2、Beyond Routing v1、Basic-Refinement官方ACL版；PDF/文本仍在`~/mechpop_cache/moe_primary_reading_20261027/`，版本/SHA/阅读覆盖见[统一manifest](notes/PRIMARY_READING_2026-10-27.json)，小型论文卡和接口核对进Git，无作者模型运行。
 
 E156全部22条件已完成，`~/mechpop_cache/e156_common_parent_cross/scores.npz` 101,431 B，SHA `17febe351a8f8e4136b4e79ed75fd88792281970c45f2b4ac9a7eceb697f67b6`；同目录`native_references.npz`、`receiver_task_masks.npz`由plan/selectors锁定。源码8ec5add4，所有三模型canonical BF16参数/buffer/cal及128题native候选LL精确一致、只读hash通过。复算`e156_analyze.py analyze`、`e156_transfer_contrasts.py`、`e156_plot.py`；独立审计`results/e156_independent_audit/audit.py --raw <scores路径> --summary moe/results/e156/summary.json`。实际2.255563879 GPU·时、单卡81.837203GB，预算complete、GPU释放，无新训练/模型下载。
+
+[E156封存](results/e156/artifact_seal.json)绑定结果提交`0aa2a561`；耐久`run_metadata_0aa2a561.tar.gz` 41,935,765 B，三个raw/reference/mask文件共141,847 B。13个Git数值源码逐一匹配冻结提交`8ec5add4`和运行manifest，11个HF源码/config/tokenizer另按固定snapshot核SHA，不复制162.8GB权重。

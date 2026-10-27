@@ -1,0 +1,26 @@
+{
+  "status": "static_review_complete",
+  "scope": "只读代码检查；未执行GPU、未读或制造E157结果；不代表真实模型预检通过。",
+  "source_sha256": {
+    "scripts/e157_run.py": "a4fb5c529dcc4199449589f7aead045cb9c0bdbc770162059085f95cdd2e5fa3",
+    "scripts/e157_analyze.py": "667e2f2b3f7460e7c1060815f0ed1598b5ffbdc046adf23d6b883af2085f220e",
+    "scripts/e156_run.py": "0fa128e6d34a129e308d4870818af59812a1ef517b1f3e75dcb142e4e1cebe6f",
+    "scripts/e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
+    "scripts/e150_restricted.py": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c"
+  },
+  "findings": {
+    "assembly": "P接收者及其gate，逐层mask前127槽true选对应donor expert、false取P；最后shared由P/A/B独立选取。prepare校验每层32槽且shared为true，故31个R。",
+    "isolation": "浅复制block以及其_modules/_parameters/_buffers注册表，创建新的ModuleList，不编辑源block及原expert；restore后检查各来源state_dict和buffer hash。仍需真实GPU验证。",
+    "coverage": "每题native P/A/B各一次并逐项对照E156；group 2 × donor 2 × shared 3 得12新full格，原生参考3个。输出轴与分析器约定一致。",
+    "inherited": "题0/64按题目subject继承对应group mask，先核对整bank同mask对旧E156受限LL，再核对部分bank同mask的LL、首token logits及token数；仅结构点检查，128题受限全量为E156继承而非新测量；off-domain受限未测。",
+    "controls": "真实模型载入后逐source核对参数和buffer hash、旧cal BF16 exact、all-slot exact；题0/64中empty R与P/S full、all R与donor/S full及首token KL精确比E156。然后全题native LL和首token KL回放，完成后restore并校验参数buffer。",
+    "integrity": "prepare与evaluate核对冻结代码proof、plan、E156 manifest与selector、输入raw、mask、canonical校准hash；manifest记录代码/plan/raw hash与身份控制。",
+    "source_order": "new数组group=Bio/Math, donor=A/B(来源index 1/2), shared=P/A/B(index 0/1/2)；native P/A/B；对应分析器schema。"
+  },
+  "limitations": [
+    "本检查是静态阅读，未运行CPU自检或GPU；真实数据身份、数值相等、运行时钩子恢复、性能与资源占用仍需正式运行验证。",
+    "题0/64的受限结构检查覆盖两个固定输入，不等同所有题目逐一重测；可报告继承算子条件，不当作新模型大样本验证。",
+    "gate参数固定不保证各条件隐藏态和实际路由轨迹固定。"
+  ],
+  "material_issue_found": false
+}
