@@ -156,8 +156,10 @@ E157完成：`~/mechpop_cache/e157_task_subbank_reintegration/scores.npz` 58,379
 
 [E157封存](results/e157/artifact_seal.json)：结果提交d8af3818精确包42,531,015 B，15个Git数值源匹配冻结ef3e70ec及运行manifest，11个外部HF代码/config/tokenizer逐SHA匹配；大权重不复制。
 
-E158的v2/v3工程预检已封存：`~/mechpop_cache/e158_factual_role_interchange/{baseline,component_cache}.npz`及`full_forward/{baseline,component_cache}.npz`保留实际原生读数/uint16承载BF16分量。v2缓存数值失败，v3全前缀数值通过但原单层网格超时估计，不含内容干预；费用6532.765952秒永久记入累计4h。v4源码1cdcb1a8的完整路径测量复用v3缓存，原始目录`.../whole_path/`，当前RUNNING；manifest/完整职责结果尚未取得。
+E158的v2/v3工程预检已封存：`~/mechpop_cache/e158_factual_role_interchange/{baseline,component_cache}.npz`及`full_forward/{baseline,component_cache}.npz`保留实际原生读数/uint16承载BF16分量。v2缓存数值失败，v3全前缀数值通过但原单层网格超时估计，不含内容干预；费用6532.765952秒永久记入累计4h。v4源码1cdcb1a8的完整路径测量复用v3缓存，原始目录`.../whole_path/`，已完成；manifest/完整职责结果见下方完成条目。
 
 E159源码050fd41f在GPU1运行，`~/mechpop_cache/e159_unchanged_function_partner_role/references.npz`仅含已封存E155/E156参考；四未知零化端点的新scores尚未完成。`results/e159/known_{border,lm_border}_posthoc.json`是旧端点组合，零新增前向；两个独立校对和已查看的`figures/e159_known_context`随Git追溯。新端点完成后再封存，不把运行中预算当完整结果。
 
 E159新端点已完成：`~/mechpop_cache/e159_unchanged_function_partner_role/scores.npz` 76,551 B，SHA `7c76a0702acbbc9018295c5c993db1f4b98fbbbab7a1961c38ee71ab988a9a76`。source050fd41f，512未知条件题读数+512 P重放、36额外来源控制；其余完整格继承E156。`e159_analyze.py --analyze`、独立audit.py `--output <report> --compare-summary <summary>`、`e159_plot.py`从raw复算。实际1.365762829 GPU·时，单卡81.835589GB，已exit0/budget complete；事前/事后source hash均通过。完整封存包在结果提交后补入。
+
+E158 v4完整路径已完成：`~/mechpop_cache/e158_factual_role_interchange/whole_path/scores.npz` 379,526 B，SHA `317dd4d6a64d3f145838cdf933c840c603362ad9ab437b1f49b08215da2c4234`；source1cdcb1a8。`e158_whole_analyze.py --analyze`、`e158_whole_independent_audit/audit.py --audit --output <report> --summary <summary>`、`e158_whole_plot.py`复算；关键内容图为content_control。新attention位缓存native_attention.npz连旧R/S缓存、输入、失败预检由plan绑定。v4 1.454306872 GPU·时，连两次失败3.268964081 GPU·时；独立26357元素误差0，过程exit0/budget complete，旧单层矩阵没有科学结果。

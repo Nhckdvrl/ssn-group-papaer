@@ -13,3 +13,5 @@
 完整 E159 汇总比较器已按预先提供的无数值 schema 接入：在正式执行命令加 `--compare-summary <汇总JSON>`。比较全部预注册主表、支撑、固定伙伴、对角与原生对比，以及 33 题点值、模式和转移；输出最大点/区间误差与计数匹配状态。合成映射自检包含故意修改一个对比以验证能检测不一致；尚未读取任何 E159 新原始数据。
 
 E150/E151 旧语言模型端点独立核对见 `known_lm_border_review.json`：所有点估计完全一致，20 文件簇 bootstrap CI 最大误差 1.78e-15；两源原生逐 token 重放、参数/buffer 哈希和有效掩码一致（30,994 个目标）。命令：`~/.venvs/mechpop/bin/python moe/results/e159_independent_audit/audit.py --known-lm-review --output moe/results/e159_independent_audit/known_lm_border_review.json`。背景包含 D/G 和另一分支，不能单独解释为伙伴作用；零新 forward。
+
+**当前真实完成状态（2026-10-28）：** E159 report.json 比较已通过：3824个数字、707项计数，点/CI最大误差3.55e−15，全部计数一致。前面未读/未接比较器措辞为准备阶段记录，以本完成条目为准；不是L3升级。

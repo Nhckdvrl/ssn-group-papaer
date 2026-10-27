@@ -171,6 +171,52 @@ def audit():
     return output
 
 
+def compare_tree(path, expected, actual, diffs, counts):
+    """Compare all numeric scalars/arrays, including None for empty subsets."""
+    if isinstance(expected,dict):
+        if not isinstance(actual,dict):diffs.append(path+': expected object');return
+        for k,v in expected.items():
+            if k not in actual:diffs.append(path+'/'+k+': missing');continue
+            compare_tree(path+'/'+k,v,actual[k],diffs,counts)
+        return
+    if isinstance(expected,str):
+        if expected!=actual:diffs.append(path+': text differs')
+        return
+    try:
+        left=np.asarray(expected,dtype=object);right=np.asarray(actual,dtype=object)
+        if left.shape!=right.shape:diffs.append(path+': shape differs');return
+        left_null=np.equal(left,None);right_null=np.equal(right,None)
+        if not np.array_equal(left_null,right_null):diffs.append(path+': null mask differs');return
+        valid=~left_null
+        if np.any(valid):
+            lv=np.asarray(left[valid],dtype=np.float64);rv=np.asarray(right[valid],dtype=np.float64)
+            if not np.isfinite(lv).all() or not np.isfinite(rv).all():diffs.append(path+': nonfinite');return
+            err=float(np.max(np.abs(lv-rv)));counts['max_absolute_error']=max(counts['max_absolute_error'],err)
+            counts['numeric_elements']+=len(lv)
+            if err>1e-10:diffs.append(f'{path}: max error {err:.12g}')
+    except (TypeError,ValueError):diffs.append(path+': malformed values')
+
+
+
+def compare_summary(result,summary,analysis_hash):
+    patch=result['status']=='recomputed'
+    for key,want in (('experiment','E158'),('status','complete' if patch else 'baseline_only'),('models',list(MODELS)),('scenarios',list(SCENARIOS)),('paths',list(COMPONENTS)),('execution_mode',result['execution_mode']),('seed',158001),('raw_sha256',result['raw_sha256']),('data_sha256',result['data_sha256']),('analysis_source_sha256',analysis_hash)):
+        if summary.get(key)!=want: raise ValueError('summary provenance mismatch '+key)
+    diffs=[];counts={'numeric_elements':0,'max_absolute_error':0.}
+    base=result['baseline'].copy(); base['floor']={**base['floor'],'kind':result['floor_kind'],'legacy_cache_field_names':True,'KV_cache_used':False}
+    compare_tree('baseline',base,summary.get('baseline'),diffs,counts)
+    if patch:
+        values=result['recomputed']
+        for key in ('all','contrasts'): compare_tree(key,values[key],summary.get(key),diffs,counts)
+        expected={'counts_by_scenario_relation':result['common_success_counts'],'country_mask':result['common_success_mask'],'metrics':values['common_success']}
+        compare_tree('common_success',expected,summary.get('common_success'),diffs,counts)
+        removal=values['matched_removal']; target={'counts_by_relation':result['common_target_success_counts'],'country_mask':result['common_target_success_mask'],'metrics':removal['common_target_success']}
+        for key in ('all','contrasts'): compare_tree('matched_removal/'+key,removal[key],summary.get('matched_removal',{}).get(key),diffs,counts)
+        compare_tree('matched_removal/common_target_success',target,summary.get('matched_removal',{}).get('common_target_success'),diffs,counts)
+        compare_tree('positive_control',result['positive_control'],summary.get('positive_control'),diffs,counts)
+    elif any(key in summary for key in ('all','contrasts','common_success','matched_removal','positive_control')): diffs.append('baseline_only contains feature summaries')
+    return {'status':'passed' if not diffs else 'failed',**counts,'tolerance':1e-10,'differences':diffs}
+
 def self_test():
     assert win_fraction(np.array([3.,2.,1.,2.]),1,[2,3])==.75
     v=np.stack([np.arange(24),np.arange(24)+10]); assert paired_country(v)['point']==16.5
@@ -185,13 +231,24 @@ def self_test():
     try: validate_ledger(plan,bad)
     except ValueError: pass
     else: raise AssertionError('incomplete ledger accepted')
-    print('CPU self-tests passed')
+    values=aggregate({'test':x},np.ones((3,2,24),bool),{'test':x[:,0]},np.ones((2,24),bool))
+    result={'status':'recomputed','execution_mode':'test','raw_sha256':'r','data_sha256':'d','floor_kind':'floor','baseline':{'floor':{'test':0}},'recomputed':values,'common_success_counts':[[24,24]]*3,'common_success_mask':np.ones((3,2,24),bool).tolist(),'common_target_success_counts':[24,24],'common_target_success_mask':np.ones((2,24),bool).tolist(),'positive_control':{'source_hit1':[True],'source_hit10':[True]}}
+    summary={'experiment':'E158','status':'complete','models':list(MODELS),'scenarios':list(SCENARIOS),'paths':list(COMPONENTS),'execution_mode':'test','seed':158001,'raw_sha256':'r','data_sha256':'d','analysis_source_sha256':'h','baseline':{'floor':{'test':0,'kind':'floor','legacy_cache_field_names':True,'KV_cache_used':False}},'all':values['all'],'contrasts':values['contrasts'],'common_success':{'counts_by_scenario_relation':result['common_success_counts'],'country_mask':result['common_success_mask'],'metrics':values['common_success']},'matched_removal':{'all':values['matched_removal']['all'],'contrasts':values['matched_removal']['contrasts'],'common_target_success':{'counts_by_relation':result['common_target_success_counts'],'country_mask':result['common_target_success_mask'],'metrics':values['matched_removal']['common_target_success']}},'positive_control':result['positive_control']}
+    assert compare_summary(result,summary,'h')['status']=='passed'
+    summary=json.loads(json.dumps(summary))
+    summary['common_success']['country_mask'][0][0][0]=False
+    assert compare_summary(result,summary,'h')['status']=='failed'
+    print('CPU self-tests and comparator corruption detection passed')
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(); p.add_argument('--self-test',action='store_true'); p.add_argument('--audit',action='store_true'); p.add_argument('--output',type=Path); args=p.parse_args()
+    p=argparse.ArgumentParser(); p.add_argument('--self-test',action='store_true'); p.add_argument('--audit',action='store_true'); p.add_argument('--output',type=Path); p.add_argument('--summary',type=Path); args=p.parse_args()
     if args.self_test: self_test()
     elif args.audit:
         if not args.output: p.error('--output required')
-        result=audit(); args.output.write_text(json.dumps(result,indent=2,allow_nan=False)+'\n'); print(result['status'])
+        result=audit()
+        if args.summary:
+            manifest=read(ROOT/'whole_path/manifest.json'); result['summary_comparison']=compare_summary(result,read(args.summary),manifest['source_sha256']['e158_whole_analyze.py'])
+        args.output.write_text(json.dumps(result,indent=2,allow_nan=False)+'\n'); print(result.get('summary_comparison',{}).get('status',result['status']))
+        if result.get('summary_comparison',{}).get('status')=='failed': raise SystemExit(1)
     else: p.error('choose --self-test or --audit')
