@@ -1,0 +1,44 @@
+{
+  "status": "complete",
+  "host": "fvcrc20",
+  "temporary_local_root": "/tmp/xiang-moe-20261028/mature_emo_pab",
+  "source_nfs_retained": true,
+  "reserve_bytes": 64000000000,
+  "source_manifests": {
+    "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e154/asset_manifest.json": "b8ef4ddd7e06591eca4be0429afbbf3bc2e54c1f624c6bb76b445abc3381f180",
+    "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e150/asset_manifest.json": "1fcd4994577134cb83a73777d52e21f73c94c9ba52c6dc0cea2d4e2ea8bb4ead"
+  },
+  "elapsed_cpu_io_seconds": 4771.658,
+  "copied_bytes": 162856907242,
+  "reused_bytes": 0,
+  "remaining_bytes": 0,
+  "final_free_bytes": 97315024896,
+  "gpu_calls": 0,
+  "models": {
+    "P": {
+      "repo_id": "allenai/StdMoE_1b14b_1T_Preanneal",
+      "revision": "d2a4949c9d4ad6cf47fbac131f7e020077332b21",
+      "source_root": "/home/xiang/mechpop_cache/hf_emo_mature/models--allenai--StdMoE_1b14b_1T_Preanneal/snapshots/d2a4949c9d4ad6cf47fbac131f7e020077332b21",
+      "verified_files": 22,
+      "execution_root": "/tmp/xiang-moe-20261028/mature_emo_pab/P"
+    },
+    "A": {
+      "repo_id": "allenai/StdMoE_1b14b_1T",
+      "revision": "b82073bb43aaaddc0f71d5ce139ad291a3948b32",
+      "source_root": "/home/xiang/mechpop_cache/hf_emo_mature/models--allenai--StdMoE_1b14b_1T/snapshots/b82073bb43aaaddc0f71d5ce139ad291a3948b32",
+      "verified_files": 22,
+      "execution_root": "/tmp/xiang-moe-20261028/mature_emo_pab/A"
+    },
+    "B": {
+      "repo_id": "allenai/StdMoE_1b14b_1T_EmoAnnealed",
+      "revision": "d18c640b39e67f89669f38c5db8b5ed22a6927ca",
+      "source_root": "/home/xiang/mechpop_cache/hf_emo_mature/models--allenai--StdMoE_1b14b_1T_EmoAnnealed/snapshots/d18c640b39e67f89669f38c5db8b5ed22a6927ca",
+      "verified_files": 22,
+      "execution_root": "/tmp/xiang-moe-20261028/mature_emo_pab/B"
+    }
+  },
+  "detailed_manifest": "/home/xiang/mechpop_cache/emo_local_staging_20261028.json",
+  "note": "Temporary NVMe staging; durable source NFS retained.",
+  "detailed_manifest_sha256": "2092d5f6a0b2d2d7b5233280db6a936fdaecca4125815bba6764b1f198c42a06",
+  "metadata_postprocess": "Renamed local_root to execution_root and added durable manifest SHA; copy/verification unchanged."
+}
