@@ -66,18 +66,20 @@ def prepare():
               "reference_manifest_sha256": n.sha(prev.RESULT / "manifest.json"),
               "source_records": old_plan["source_records"], "legacy_cal_input": old_plan["legacy_cal_input"],
               "source_names": list(SOURCES), "scenario_names": list(SCENARIOS), "component_names": list(COMPONENTS),
+              "protocol_revision": 2, "initial_protocol_commit": "3ce1179b",
               "layers": list(range(16)), "queries": 96, "targets": 48, "patch_rows": 20736,
+              "matched_removal_rows": 6912, "total_new_rows": 27648,
               "baseline_gate": {"joint_native_top10_minimum_per_relation": 8, "applied_before_patching": True},
               "cache_engineering_floor": {"uncached_to_cached_KL_max": .005, "argmax_disagreement_fraction_max": .05},
               "bootstrap": {"seed": 158001, "resamples": 1000, "unit": "target country; fixed source mapping"},
               "scope": "Within-model factual input interchange, same last input token, all fixed layers and paths, zero training."}
     n.old.immutable_json(RESULT / "plan.json", result)
-    return {"status": "prepared", "new_patch_rows": 20736}
+    return {"status": "prepared", "content_interchanges": 20736, "matched_removals": 6912}
 
 
 class Budget(n.old.Budget):
     def __init__(self):
-        self.path, self.experiment, self.phase, self.limit = RESULT / "budget.json", "e158", "factual_cached_interchange", 10800
+        self.path, self.experiment, self.phase, self.limit = RESULT / "budget.json", "e158", "factual_cached_interchange", 14400
 
 
 def top10(lp):
@@ -220,7 +222,10 @@ def evaluate(physical):
                 raw["patched_lp_selected"] = np.empty((3, 3, 3, 16, 2, 24, 38), np.float32)
                 raw["patched_top_tokens"] = np.empty((3, 3, 3, 16, 2, 24, 10), np.int64)
                 raw["patched_KL_vs_native"] = np.empty((3, 3, 3, 16, 2, 24), np.float64)
-                completed = 0
+                raw["matched_removal_lp_selected"] = np.empty((3, 3, 16, 2, 24, 38), np.float32)
+                raw["matched_removal_top_tokens"] = np.empty((3, 3, 16, 2, 24, 10), np.int64)
+                raw["matched_removal_KL_vs_native"] = np.empty((3, 3, 16, 2, 24), np.float64)
+                completed, removals = 0, 0
                 for m, (label, model) in enumerate(zip(SOURCES, models)):
                     for scenario in range(3):
                         for relation in range(2):
@@ -229,6 +234,15 @@ def evaluate(physical):
                                 target = query_sets[m][int(a["target_query_index"][relation, country])]
                                 source = query_sets[m][int(a["source_query_index"][scenario, relation, country])]
                                 for layer in range(16):
+                                    if scenario == 0:
+                                        for c, component in enumerate(COMPONENTS):
+                                            removed = engine.interchange(model, target, target, layer, "zero_" + component)
+                                            key = (m, c, layer, relation, country)
+                                            raw["matched_removal_lp_selected"][key] = removed[selected_ids].cpu().numpy()
+                                            raw["matched_removal_top_tokens"][key] = top10(removed)
+                                            raw["matched_removal_KL_vs_native"][key] = prev.kl(target.lp, removed)
+                                            del removed
+                                            removals += 1
                                     for c, component in enumerate(COMPONENTS):
                                         lp = engine.interchange(model, target, source, layer, component)
                                         key = (m, scenario, c, layer, relation, country)
@@ -240,6 +254,7 @@ def evaluate(physical):
                                 if (country + 1) % 8 == 0:
                                     n.old.emit("E158_interchange_rows", source=label, scenario=SCENARIOS[scenario],
                                                relation=relation, countries=country + 1, rows=completed, total_rows=20736,
+                                               matched_removal_rows=removals,
                                                peak_GB=torch.cuda.max_memory_allocated() / 1e9)
             for model, ph, bh in zip(models, before, before_buffers):
                 if n.old.tensor_hash(model.state_dict()) != ph or n.old.tensor_hash(n.buffers(model)) != bh:
@@ -258,8 +273,9 @@ def evaluate(physical):
                     "source_parameter_hashes": before, "source_buffer_hashes": before_buffers,
                     "joint_native_top10_counts": joint_counts.tolist(), "same_query_identity_cases": identity_count,
                     "final_residual_control_cases": positive_count, "scientific_patch_rows": 20736 if patch_obtained else 0,
+                    "matched_removal_rows": 6912 if patch_obtained else 0,
                     "controls": {"canonical_parameters_buffers_and_legacy_cal_exact": True, "all_queries_fast_vs_native_cached_exact": True,
-                                 "all_query_layers_component_reconstruction_exact": True, "native_S_zero_routed_taps_exact_fixed_queries": True,
+                                 "all_query_layers_component_reconstruction_exact": True, "native_component_removal_taps_exact_fixed_queries": True,
                                  "same_query_interchanges_exact_fixed_queries": True, "final_residual_source_distributions_exact": True,
                                  "prefix_cache_and_forward_restored": True, "source_parameters_buffers_unchanged": True},
                     "physical_gpu": physical, "visible_device_uuid": str(torch.cuda.get_device_properties(0).uuid),

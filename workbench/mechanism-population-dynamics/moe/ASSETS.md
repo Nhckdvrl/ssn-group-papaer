@@ -153,3 +153,5 @@ E156全部22条件已完成，`~/mechpop_cache/e156_common_parent_cross/scores.n
 [E156封存](results/e156/artifact_seal.json)绑定结果提交`0aa2a561`；耐久`run_metadata_0aa2a561.tar.gz` 41,935,765 B，三个raw/reference/mask文件共141,847 B。13个Git数值源码逐一匹配冻结提交`8ec5add4`和运行manifest，11个HF源码/config/tokenizer另按固定snapshot核SHA，不复制162.8GB权重。
 
 E157完成：`~/mechpop_cache/e157_task_subbank_reintegration/scores.npz` 58,379 B，SHA `ab4543351a4beb85c4e5d543f75f3e124782b9972c972e028d75c200b902449e`。source `ef3e70ec`、12新full/3native重放、30结构控制及参数buffer只读通过；`e157_analyze.py analyze`、`e157_plot.py`复算，POST-HOC direct shared差另由`e157_shared_effects.py`生成。实际2.056491230 GPU·时、单卡81.836793GB；受限值只继承E156 on-domain，不算新测量，off-domain受限未取得。
+
+[E157封存](results/e157/artifact_seal.json)：结果提交d8af3818精确包42,531,015 B，15个Git数值源匹配冻结ef3e70ec及运行manifest，11个外部HF代码/config/tokenizer逐SHA匹配；大权重不复制。

@@ -1,0 +1,19 @@
+{
+  "scope": "只读静态预检；未加载成熟模型、未读取成熟log概率、未改数值源码；非L3独立设计审计",
+  "outcome": "未发现必须修复的数值逻辑错误；CPU/GPU真实预检尚待运行结果。",
+  "checks": {
+    "cache": "e158_engine.py step对prefix_cache逐次deepcopy，position_ids/cache_position均为length-1，attention mask覆盖整个长度；每次检查原cache长度及复制cache追加后长度。capture对全部query的cached native和skip-empty cached分布精确相等，并逐层比较每个native MLP输出。",
+    "component": "single_token按原算子直接逐专家加权累计R和S，校验R+S逐位等于合成输出；routed_native_identity在固定q0/q48、所有层用原生shared-zero、全部routed-zero及both-zero进行对应核验，未用向量差分提取。",
+    "controls": "固定每模型两个query全部层R/S/RS同query替换，与cached native逐位比较；3模型×3场景×2关系×24国家最后层residual替换逐位重现对应source native分布。",
+    "inputs": "target索引r*48+c；entity循环c+11、attribute另一关系同国家、paraphrase同关系/国家另措辞；control为预先seed固定按source标签多重集匹配并排除source/target，未使用模型输出。run读取data_plan SHA，并调用validate_data。",
+    "array": "内容lp 3×3×3×16×2×24×38、top 末轴10、KL无最后词轴；移除lp 3×3×16×2×24×38。三场景循环的scenario 0仅填一次每target×layer×R/S/RS移除，各格填写恰一次；内容20736、移除6912，共27648。失败即不保存完整scores。baseline gate未过时只存baseline/正控，无patch或removal的np.empty数组。",
+    "resource": "evaluate的Budget进入及gpu_lock成功均发生于selected_ids、模型及其余CUDA tensor分配之前；gpu_lock会在文件锁、占用和映射检查后读取设备UUID。",
+    "restore": "replace_forward及fast_blocks、interchange hooks均在finally恢复；最后核对模型state_dict及registered buffers的hash、MLP/decoder hook和forward恢复。原native完整R/S判别只在固定query逐层验证，fast/native MLP输出则是所有query逐层验证。",
+    "analysis": "analysis确认来源/场景/路径、38 token映射，按source关系答案空间排除source/control/target共同distractors；matched removal读取原target对应native gold及full-vocab KL标量；每个固定国家在两关系及各条件共享seed158001的1000次重采样；输出conditional子集不计算CI并标注。"
+  },
+  "limitations": [
+    "成熟每次step只检查原prefix cache长度不变，未逐次计算原cache字节hash；CPU tiny测试会对原cache做前后hash。manifest中prefix_cache_and_forward_restored不能解释为成熟逐次cache字节哈希。",
+    "engine直接深复制使用当前缓存类；是否在实际成熟GPU、三原生实现、BF16、既定工程地板下通过以运行结果为准。",
+    "与底层代码共同使用的公式和已登记设计的静态接口核查不是独立的科学价值或因果机制判断。"
+  ]
+}

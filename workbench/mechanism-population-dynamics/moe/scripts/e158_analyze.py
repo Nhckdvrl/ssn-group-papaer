@@ -60,7 +60,7 @@ def validate_data(d):
 
 def validate_raw(a,patch):
     shapes={'source_names':(3,),'scenario_names':(3,),'component_names':(3,), 'native_lp_selected':(3,96,38),'uncached_lp_selected':(3,96,38),'native_top_tokens':(3,96,10),'uncached_top_tokens':(3,96,10),'cache_KL':(3,96)}
-    if patch:shapes.update({'patched_lp_selected':(3,3,3,16,2,24,38),'patched_top_tokens':(3,3,3,16,2,24,10),'patched_KL_vs_native':(3,3,3,16,2,24),'positive_lp_selected':(3,3,2,24,38),'positive_top_tokens':(3,3,2,24,10)})
+    if patch:shapes.update({'patched_lp_selected':(3,3,3,16,2,24,38),'patched_top_tokens':(3,3,3,16,2,24,10),'patched_KL_vs_native':(3,3,3,16,2,24),'positive_lp_selected':(3,3,2,24,38),'positive_top_tokens':(3,3,2,24,10), 'matched_removal_lp_selected':(3,3,16,2,24,38), 'matched_removal_top_tokens':(3,3,16,2,24,10), 'matched_removal_KL_vs_native':(3,3,16,2,24)})
     for k,shape in shapes.items():
         if k not in a or a[k].shape!=shape:raise ValueError(f'Invalid raw {k}')
         if k not in ('source_names','scenario_names','component_names') and not np.isfinite(a[k]).all():raise ValueError(f'Nonfinite {k}')
@@ -99,6 +99,19 @@ def compute(a,d):
         out['KL'][:,s,:,:,r,c]=a['patched_KL_vs_native'][:,s,:,:,r,c]
         mask[s,r,c]=common_success(a['native_top_tokens'],gold,tq,sq)
     return out,mask
+
+def removal_metrics(a,d):
+    target=d['target_query_index']; gold=d['gold_token'][target]; mapping={int(t):i for i,t in enumerate(d['token_union'])}
+    indices=np.array([[mapping[int(t)] for t in row] for row in gold])
+    native=a['native_lp_selected'][:,target,:]; removed=a['matched_removal_lp_selected']
+    native_gold=np.take_along_axis(native,indices[None,:,:,None],axis=-1)[...,0]
+    removed_gold=np.take_along_axis(removed,indices[None,None,None,:,:,None],axis=-1)[...,0]
+    native_hit=a['native_top_tokens'][:,target,0]==gold[None,:,:]
+    removed_hit=a['matched_removal_top_tokens'][...,0]==gold[None,None,None,:,:]
+    values={'target_NLL_increase':native_gold[:,None,None,:,:]-removed_gold,
+            'target_top1_drop':native_hit[:,None,None,:,:].astype(float)-removed_hit.astype(float),
+            'KL':a['matched_removal_KL_vs_native'].astype(float)}
+    return values,native_hit.all(axis=0)
 
 def analyze():
     plan=json.loads((ROOT/'plan.json').read_text()); manifest=json.loads((ROOT/'manifest.json').read_text());data_plan=json.loads((ROOT/'data_plan.json').read_text());budget=json.loads((ROOT/'budget.json').read_text())
@@ -140,6 +153,18 @@ def analyze():
                 'layer_mean_entity_minus_attribute_S_minus_R':summarize(feature.mean(axis=1),draws),
                 'layer_mean_entity_minus_attribute_S_minus_R_A_minus_P':summarize((feature[1]-feature[0]).mean(axis=0),draws),
                 'layer_mean_entity_minus_attribute_S_minus_R_B_minus_P':summarize((feature[2]-feature[0]).mean(axis=0),draws)})
+        removal,target_mask=removal_metrics(a,d)
+        result['matched_removal']={'definition':'same canonical target and last position; target NLL increase = native logp minus removed logp; top1 drop = native correct minus removed correct; not a knowledge fraction',
+            'all':{},'layer_mean':{},'contrasts':{},'common_target_success':{'selection':'all P/A/B native canonical target top1 correct; independent of source and removal','counts_by_relation':target_mask.sum(-1).tolist(),'country_mask':target_mask.tolist(),'ci':'not computed','metrics':{}}}
+        rem=result['matched_removal']
+        for k,x in removal.items():
+            rem['all'][k]=summarize(x,draws); rem['layer_mean'][k]=summarize(x.mean(axis=2),draws)
+            rem['common_target_success']['metrics'][k]=conditional(x,target_mask[None,None,None,:,:])
+            sr=x[:,1]-x[:,0]
+            rem['contrasts'][k]={'A_minus_P':summarize(x[1]-x[0],draws),'B_minus_P':summarize(x[2]-x[0],draws),
+                'layer_mean_A_minus_P':summarize((x[1]-x[0]).mean(axis=1),draws),'layer_mean_B_minus_P':summarize((x[2]-x[0]).mean(axis=1),draws),
+                'S_minus_R':summarize(sr,draws),'S_minus_R_A_minus_P':summarize(sr[1]-sr[0],draws),'S_minus_R_B_minus_P':summarize(sr[2]-sr[0],draws),
+                'layer_mean_S_minus_R':summarize(sr.mean(axis=1),draws),'layer_mean_S_minus_R_A_minus_P':summarize((sr[1]-sr[0]).mean(axis=0),draws),'layer_mean_S_minus_R_B_minus_P':summarize((sr[2]-sr[0]).mean(axis=0),draws)}
         result['positive_control']={'source_hit1':[], 'source_hit10':[],'description':'final residual source replacement; operator control, not a new mechanism'}
         for s in range(3):
             st=d['gold_token'][d['source_query_index'][s]]; top=a['positive_top_tokens'][:,s]
@@ -166,14 +191,19 @@ def self_test():
         'patched_lp_selected':np.broadcast_to(native[:,None,None,None,tq,:],(3,3,3,16,2,24,38)).copy(),
         'patched_top_tokens':np.broadcast_to(d['gold_token'][tq][None,None,None,None,:,:,None],(3,3,3,16,2,24,10)).copy(),
         'patched_KL_vs_native':np.zeros((3,3,3,16,2,24)), 'positive_lp_selected':np.zeros((3,3,2,24,38)),
-        'positive_top_tokens':np.zeros((3,3,2,24,10),dtype=int)}
+        'positive_top_tokens':np.zeros((3,3,2,24,10),dtype=int),
+        'matched_removal_lp_selected':np.broadcast_to(native[:,None,None,tq,:],(3,3,16,2,24,38)).copy(),
+        'matched_removal_top_tokens':np.broadcast_to(d['gold_token'][tq][None,None,None,:,:,None],(3,3,16,2,24,10)).copy(),
+        'matched_removal_KL_vs_native':np.zeros((3,3,16,2,24))}
     # Paraphrase source differs from target query: change one model's source prediction only.
     source_q=int(d['source_query_index'][2,0,0]);synthetic['native_top_tokens'][0,source_q,0]=-1
     measured,eligible=compute(synthetic,d)
     for key in ('source_rank_specificity_gain','source_control_logodds_gain','source_logprob_gain','target_logprob_change'):
         assert np.all(measured[key]==0),key
     assert not eligible[2,0,0] and eligible[1,0,0]
-    return {'status':'passed','checks':['identity_patch_end_to_end','actual_source_query_top1','rank_tie_and_temperature','known_source_control','source_query_relation_mapping','shared_country_bootstrap']}
+    rem,target_success=removal_metrics(synthetic,d)
+    assert target_success.all() and all(np.all(v==0) for v in rem.values())
+    return {'status':'passed','checks':['identity_patch_end_to_end','identity_matched_removal','actual_source_query_top1','rank_tie_and_temperature','known_source_control','source_query_relation_mapping','shared_country_bootstrap']}
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('mode',choices=('self-test','analyze'));args=p.parse_args()

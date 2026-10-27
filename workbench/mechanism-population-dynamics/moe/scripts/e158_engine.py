@@ -1,6 +1,17 @@
 """E158 cached single-position component interchange; no checkpoint loaded on import."""
+# Sparse arithmetic is adapted from the pinned EmoSparseMoeBlock.forward.
+# Copyright 2025 the HuggingFace Team. All rights reserved.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 import copy
-from contextlib import contextmanager
+from contextlib import contextmanager, ExitStack
 from dataclasses import dataclass
 import hashlib
 import numpy as np
@@ -133,6 +144,8 @@ def step(model, ids, prefix_cache):
                 past_key_values=copied, position_ids=position[None], cache_position=position,
                 use_cache=True, return_dict=True, output_router_logits=False)
     lp = out.logits[0, -1].float().log_softmax(-1)
+    if not torch.isfinite(lp).all():
+        raise ValueError("Nonfinite cached next-token distribution")
     if cache_length(prefix_cache) != length - 1 or cache_length(copied) != length:
         raise ValueError("Prefix cache mutation or incorrect append")
     del out, copied
@@ -193,6 +206,16 @@ def routed_native_identity(model, query):
             result = first(block(query.hidden[layer]))
         if not torch.equal(result, query.routed[layer]):
             raise ValueError("Direct routed tap differs from the native S-zero block")
+        with ExitStack() as stack:
+            for expert in block.experts[:-1]:
+                stack.enter_context(replace_forward(expert, lambda x: torch.zeros_like(x)))
+            shared_only = first(block(query.hidden[layer]))
+            if not torch.equal(shared_only, query.shared[layer]):
+                raise ValueError("Direct shared tap differs from the native R-zero block")
+            with replace_forward(shared, lambda x: torch.zeros_like(x)):
+                neither = first(block(query.hidden[layer]))
+            if not torch.equal(neither, torch.zeros_like(neither)):
+                raise ValueError("Native both-zero block did not return zero")
 
 
 @torch.no_grad()
@@ -205,6 +228,15 @@ def interchange(model, target, source, layer, component):
         module = model.model.layers[layer].mlp
     elif component == "RS":
         replacement = source.routed[layer] + source.shared[layer]
+        module = model.model.layers[layer].mlp
+    elif component == "zero_R":
+        replacement = target.shared[layer]
+        module = model.model.layers[layer].mlp
+    elif component == "zero_S":
+        replacement = target.routed[layer]
+        module = model.model.layers[layer].mlp
+    elif component == "zero_RS":
+        replacement = torch.zeros_like(target.mlp_output[layer])
         module = model.model.layers[layer].mlp
     elif component == "residual":
         if layer != len(model.model.layers) - 1:
@@ -251,6 +283,9 @@ def self_test():
                     changed = interchange(model, target, source, layer, component)
                     assert torch.isfinite(changed).all()
                     identities += 1
+                for component in ("zero_R", "zero_S", "zero_RS"):
+                    removed = interchange(model, target, target, layer, component)
+                    assert torch.isfinite(removed).all()
             positive = interchange(model, target, source, 1, "residual")
             assert torch.equal(positive, source.lp)
             assert cache_hash(target.prefix_cache) == prefix_hash
@@ -260,6 +295,7 @@ def self_test():
                        for d in model.model.layers)
             records[label + "/" + str(dtype)] = {"component_identities": identities,
                 "final_residual_source_distribution_exact": True, "immutable_prefix_and_source": True,
+                "matched_native_R_S_both_removal_components_exact": True,
                 "uncached_to_cached_KL": target.uncached_to_cached_KL}
     return {"status": "passed", "CPU_only": True, "native_implementations_and_precisions": records}
 
