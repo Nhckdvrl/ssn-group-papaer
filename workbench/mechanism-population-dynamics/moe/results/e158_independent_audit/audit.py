@@ -226,10 +226,22 @@ def compare_summary(recomputed,summary,patch,data_hash):
     return {'status':'passed' if not diffs else 'failed',**counts,'tolerance':1e-10,'differences':diffs}
 
 
+def validate_budget(attempts,plan,failure_path):
+    if plan.get('execution_mode')=='full_prefix_fixed_native_causal_prefix_no_KV_cache':
+        if (len(attempts)!=2 or attempts[0]!=plan.get('prior_failed_budget_attempt')
+            or attempts[0].get('status')!='failed' or attempts[1].get('status')!='complete'
+            or attempts[1].get('phase')!='factual_full_forward_interchange'):
+            raise ValueError('expected preserved failed cached attempt and completed full-prefix attempt')
+        if digest(failure_path)!=plan.get('prior_failure_sha256'):
+            raise ValueError('prior cached failure SHA mismatch')
+    elif not attempts or any(x.get('status')!='complete' for x in attempts):
+        raise ValueError('budget incomplete; scientific raw not read')
+
+
 def run(raw_path,data_path,summary_path,budget_path,manifest_path,plan_path):
     ledger=json.loads(budget_path.read_text());attempts=ledger.get('attempts',[])
-    if not attempts or any(x.get('status')!='complete' for x in attempts):raise ValueError('budget incomplete; scientific raw not read')
     manifest=json.loads(manifest_path.read_text());plan=json.loads(plan_path.read_text())
+    validate_budget(attempts,plan,ROOT/'cache_floor_failure.json')
     if manifest.get('status')!='complete' or digest(plan_path)!=manifest['plan_sha256']:raise ValueError('manifest/plan mismatch')
     if raw_path.resolve()!=Path(manifest['raw']['path']).resolve() or digest(raw_path)!=manifest['raw']['sha256']:raise ValueError('raw mismatch')
     if data_path.resolve()!=Path(plan['data']['path']).resolve() or digest(data_path)!=plan['data']['sha256']:raise ValueError('data mismatch')
@@ -251,6 +263,12 @@ def run(raw_path,data_path,summary_path,budget_path,manifest_path,plan_path):
             top=a['positive_top_tokens']
             result['positive_control']={'source_hit1':(top[...,0]==sources[None,:,:,:]).transpose(1,0,2,3).tolist(),
               'source_hit10':(top==sources[None,:,:,:,None]).any(-1).transpose(1,0,2,3).tolist()}
+    if plan.get('execution_mode')=='full_prefix_fixed_native_causal_prefix_no_KV_cache':
+        if manifest.get('execution_mode')!=plan['execution_mode'] or manifest.get('floor_kind')!=plan['floor_kind']:
+            raise ValueError('full-prefix metadata mismatch')
+        result['baseline']['floor'].update(kind=plan['floor_kind'],legacy_cache_field_names=True,KV_cache_used=False)
+        if summary.get('execution_mode')!=plan['execution_mode']:
+            raise ValueError('summary execution mode mismatch')
     check=compare_summary(result,summary,patch,plan['data']['sha256'])
     check.update(raw_sha256=manifest['raw']['sha256'],patch_data_obtained=patch,KL_limitation=result['KL_limitation'])
     return check
@@ -269,7 +287,24 @@ def self_test():
     assert not diffs and counter['numeric_elements']==2
     compare_tree('synthetic',{'x':[1.,2.,None]},{'x':[1.,3.,None]},diffs,counter)
     assert diffs
-    return {'status':'passed','CPU_only':True,'checks':['known rank ties and temperature','shared country paired CI','history difference known answer','summary comparator corruption detection']}
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        failure=Path(tmp)/'failure.json';failure.write_text('failed preflight')
+        prior={'phase':'factual_cached_interchange','status':'failed'}
+        plan={'execution_mode':'full_prefix_fixed_native_causal_prefix_no_KV_cache',
+              'prior_failed_budget_attempt':prior,'prior_failure_sha256':digest(failure)}
+        completed={'phase':'factual_full_forward_interchange','status':'complete'}
+        validate_budget([prior,completed],plan,failure)
+        for attempts in ([prior], [prior,completed,completed], [dict(prior,phase='other'),completed],
+                         [prior,dict(completed,status='failed')], [prior,dict(completed,phase='other')]):
+            try: validate_budget(attempts,plan,failure)
+            except ValueError: pass
+            else: raise AssertionError('invalid budget accepted')
+        failure.write_text('changed')
+        try: validate_budget([prior,completed],plan,failure)
+        except ValueError: pass
+        else: raise AssertionError('changed failure accepted')
+    return {'status':'passed','CPU_only':True,'checks':['known rank ties and temperature','shared country paired CI','history difference known answer','summary comparator corruption detection','full-prefix budget and prior failure integrity']}
 
 
 if __name__=='__main__':

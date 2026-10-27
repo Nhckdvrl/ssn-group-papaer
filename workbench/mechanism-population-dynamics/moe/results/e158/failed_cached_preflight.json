@@ -1,0 +1,57 @@
+{
+  "experiment": "E158",
+  "status": "failed_engineering_preflight_before_content_interventions",
+  "protocol_commit": "cc078995",
+  "attempt": {
+    "phase": "factual_cached_interchange",
+    "host": "fvcrc20",
+    "pid": 666642,
+    "started_utc": "2026-10-27T11:11:41Z",
+    "gpu_seconds": 3213.1972275711596,
+    "status": "failed",
+    "error": "ValueError: Cached execution numerical floor exceeded the preregistered engineering scale"
+  },
+  "plan": {
+    "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e158/plan.json",
+    "size_bytes": 6982,
+    "sha256": "e1410e3907176b2466cb4957779521dd232b67e8ebd3c3ff208a3fabd77e33c1"
+  },
+  "failure": {
+    "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e158/cache_floor_failure.json",
+    "size_bytes": 260,
+    "sha256": "c630fe9ae13aa4d55286293bef3813f8a0c7c6c178477bac59a11eb6bd0d03ad"
+  },
+  "data_plan": {
+    "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e158/data_plan.json",
+    "size_bytes": 4164,
+    "sha256": "a5af9c8fc67c84ca4621cb3c248042eaa112c53bc80c442609437b6a46ef1f27"
+  },
+  "baseline": {
+    "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/baseline.npz",
+    "size_bytes": 72339,
+    "sha256": "af7031f16ed7e775d4bbebafd6da58711c946a477a68ba5b90c6638037e33d4f"
+  },
+  "components": {
+    "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/component_cache.npz",
+    "size_bytes": 46341341,
+    "sha256": "ef588290d594d8c5d5dca65ba5d3660fd07f0dda8a73aba7ac40b56684922813"
+  },
+  "log": {
+    "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/evaluation.log",
+    "size_bytes": 5669,
+    "sha256": "0dff8dd2a8b80780d11bfc5ebf288a6730f2b686fbf697b58f6464cb26c463e6"
+  },
+  "observed": {
+    "max_uncached_to_cached_KL": 0.059944605400294296,
+    "argmax_changes_of_96": [
+      1,
+      0,
+      1
+    ],
+    "all_fast_cached_vs_original_cached_query_MLP_and_logprob_checks_passed": true,
+    "content_interchange_rows": 0,
+    "matched_removal_rows": 0,
+    "postrun_source_hashes_not_reached": true
+  },
+  "scientific_inference": "Engineering failure; no factual-role negative or positive claim. All failed cost remains in cumulative budget."
+}

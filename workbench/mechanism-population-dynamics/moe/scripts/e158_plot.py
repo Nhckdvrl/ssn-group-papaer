@@ -26,8 +26,10 @@ def baseline_plot(data,output):
         ax.set_xticks(pos,MODELS);ax.set_ylim(0,24);ax.set_ylabel('Canonical queries correct (of 24)');ax.set_title(('Capital','Language')[i]);ax.legend(frameon=False)
     fig.suptitle('E158 native baseline: canonical answer first token',fontsize=14)
     counts=', '.join(f'{s}: {int(v)}' for s,v in zip(MODELS,floor['top1_changed_count']))
-    fig.text(.08,.19,f"Cache vs uncached, all 96 queries: top-1 changes {counts}; max KL {floor['cache_KL_max']:.3g};\nmax absolute selected-token log-probability difference {floor['selected_logp_max_abs_difference']:.3g}.",fontsize=9,va='top',linespacing=1.5)
-    fig.text(.08,.07,'Only the predefined canonical answer first token is evaluated; model and cache numerical controls are reported separately.',fontsize=9,va='top')
+    comparison = "Full-head vs last-only readout" if data.get("execution_mode") == "full_prefix_fixed_native_causal_prefix_no_KV_cache" else "Cache vs uncached"
+    fig.text(.08,.19,f"{comparison}, all 96 queries: top-1 changes {counts}; max KL {floor['cache_KL_max']:.3g};\nmax absolute selected-token log-probability difference {floor['selected_logp_max_abs_difference']:.3g}.",fontsize=9,va='top',linespacing=1.5)
+    control = 'readout' if data.get('execution_mode') == 'full_prefix_fixed_native_causal_prefix_no_KV_cache' else 'cache'
+    fig.text(.08,.07,f'Only the predefined canonical answer first token is evaluated; model and {control} numerical controls are reported separately.',fontsize=9,va='top')
     save(fig,output,'e158_native_baseline')
 
 
