@@ -1,0 +1,18 @@
+{
+  "scope": "静态源码审阅；未执行成熟模型、GPU或下载，未修改已冻结源码",
+  "outcome": "未发现需要修复的实现错误；真实控制是否通过以运行结果为准",
+  "checks": {
+    "ordering_and_receiver": "e156_run.py SOURCES=(P,A,B), _classes映射 P/e154、A/e150 0、B/e150 1；e150_native.py assemble(models,blocks,(0,0,r,s)) 固定 P dense backbone和P gate，r/s分别为routed bank及shared。",
+    "oracle": "九格常数输出预期 S[s]+(4/7)*R[r]，验证源轴及shared权重。三个gate构造相同，不独立验证选P gate；该选择由assemble源码与元组直接确认。",
+    "KL": "first_answer_token_KL_vs_P = KL(P原生full||各格full或masked)；pruning_KL=KL(该格full||该格masked)，native相同规则；score_candidates只取首答案词全词表。analysis choice_score_KL另用四候选分数softmax。",
+    "PP_and_count": "P/P真实组合cal与P旧cal逐位比较；逐题P/P full/masked复用native P；9×2+3×2−2=22个不同条件。",
+    "selector": "e153_data.py从validation与dev构造cal，test去除dev/validation问题重合；e156只对原生P逐科运行greedy_masks并冻结用于全部source。restricted_gates与gate收集hook均finally移除。",
+    "identity_and_restoration": "逐源model.state_dict和named_buffers哈希匹配旧E155，再与对应旧native cal logits逐位比较，full mask与P/P组合cal身份；每题三native候选LL逐项重现E155；结束restore原blocks并检查hash。各控制均为条件性，是否通过须读最终执行记录。",
+    "shapes": "分析器检查cross 3×3×2×128×4、native 3×2×128×4及KL对应维度、P/A/B次序、subject各64、固定common-success 36/8；各指标有效性检查。",
+    "source_contrast": "只用A/B四格，loss异源均值减同源，accuracy反向；预算损伤按异源减同源。"
+  },
+  "risks": [
+    "常数oracle不区分gate来源，已有代码索引提供独立静态证据；不把oracle表述成单独验证P gate。",
+    "运行中任何hash/cal/重放检查的结果未由本次静态审阅确认。"
+  ]
+}

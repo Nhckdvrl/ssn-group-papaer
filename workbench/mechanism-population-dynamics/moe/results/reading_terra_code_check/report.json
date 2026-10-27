@@ -1,0 +1,47 @@
+{
+  "scope": "文献和作者源码只读核对；未执行 notebook、未训练或下载权重；不更改主张等级",
+  "myth": {
+    "paper": "arXiv:2604.09780v1，31页",
+    "figure6_readout": "更符合相同 MoE 逐层读出不同生成器的轨迹；论文正文与附录未明确写出重放实现、tokenizer、对齐方式或比较权重的算法，所以这是由 60 个轨迹生成模型、三种按读出模型分面的逐层 expert ID Jaccard 推出的解释，不是已证实的实现细节。没有看到独立 MoE 权重之间专家匹配或置换对齐的定义。",
+    "fixed_varying": [
+      "橙：同题与同 seed，不同轨迹生成模型；蓝：同生成模型与同 seed，不同题；绿：同题与同生成模型，不同 seed。以上按正文固定三轴中两轴的描述理解。",
+      "逐图固定一个 MoE 及层，三个面板分别 Qwen3-30B-A3B、ERNIE-4.5-21B-A3B、gpt-oss-20b；30 HMMT 2025题、60 reasoning 模型、4 seeds；caption称对4 seeds及三个MoE求平均但图逐MoE分面。具体配对数及遗漏样本未披露。"
+    ],
+    "unit": "单元是按层对两条 rollout 的专家访问频率作比较，而非 token 对或参数匹配；均值聚合的精确权重未说明。",
+    "formula": "p_e(s)=sum_t m_t,e/(T K)，E_P 为累计频率至少 P 的最小高频专家集；Overlap_P=|E_P(s)∩E_P(s′)|/|E_P(s)∪E_P(s′)|。图6 P=.8；图25另列 .6、.7、.8、.9、.99。",
+    "citations": [
+      "myth.pdf p.8 Figure 6与§5.1；myth.txt 453–511",
+      "myth.pdf p.9 §5.1结果；myth.txt 561–568",
+      "myth.pdf p.15 Eq.13、18、19；myth.txt 903–960",
+      "myth.pdf p.29 Figure 25；myth.txt 1635–1716"
+    ],
+    "uncertainties": [
+      "论文没有明确叙述把60模型生成的轨迹逐一输入三个读出MoE的过程，也没有明确逐层分析是否包含 prompt。",
+      "没有作者Fig.6实现或运行环境核验；不能陈述跨权重专家已对齐。"
+    ]
+  },
+  "moe_lens": {
+    "paper": "arXiv:2603.05806v1，15页",
+    "ppl": "作者pplx代码对所有具有experts的MoE层修改num_experts_per_tok及gate.top_k，重新完整前向，使用最终logits对每一文本chunk计算右移next-token CE，再 exp(各chunk token loss合并后的平均值)。其不是逐层LogitLens。",
+    "ppl_source": "moe_lens_pplx_source.py:16–28, 48–53, 114–155, 163–189, 200–208",
+    "aggregate": "每样本一个PPL；作图先对样本log(PPL)算等样本均值，再对每个domain的不同k值做min-max归一化；不是原始PPL图。source 296–319, 346–359；论文p.4 Figure 3。",
+    "full_forward_shared_residual": "依 DeepSeek 当前公开模型源码，MoE eval输出加 shared_experts，decoder 在 MLP 外加 residual；pplx代码未移除二者。配置 2 shared、64 routed、first_k_dense_replace=1；pplx 修改对象只限MoE层。",
+    "gate": "当前公开 config norm_topk_prob=false；模型gate先对64个专家softmax，再topk，归一化分支需 top_k>1 且 norm_topk_prob=true，所以此配置k=1..6均未重归一化，k=1保留其原softmax权重。当前main未锁revision，历史执行revision未确认。",
+    "local_lens": "作者另用原始完整前向hook获取层、门与专家输出；按门权截取原选中前k个加权求和，res_stream真时加入 post_attention_layernorm的输入，即post-attention residual；不加 shared_experts。该局部读出直接lm_head，无后续层传播，也未重新归一化截取后的门权。源代码在selected_experts为整数特殊分支赋权1.0，不能概括到该分支。",
+    "local_source": "moe_lens_logit_source.py:75–85, 145–152, 164–199, 303–325, 380–439",
+    "normalization_discrepancy": "论文p.3 Eq.3–4描述LayerNorm后投影；get_highest_pred_combined直接lm_head，未调用最终norm。get_top_k_tokens仅在2D输入时手工做无学习权重RMS归一化，3D路径不做；因此不要把论文公式与代码所有路径等同。",
+    "norm_source": "moe_lens_logit_source.py:26–36, 438–439",
+    "official_model_source": "https://huggingface.co/deepseek-ai/deepseek-moe-16b-base/raw/main/modeling_deepseek.py L245–280, L321–369, L802–812, L841 onward",
+    "official_config": "https://huggingface.co/deepseek-ai/deepseek-moe-16b-base/raw/main/config.json L13, L22–26, L33",
+    "author_repo": "https://github.com/MarmikChaudhari/moe-interp/tree/moe-lens；pplx.ipynb Git blob cfce62ca56d84b074b8c89cedfd6ba6f10d75937",
+    "limits": [
+      "作者 notebook 中实际使用哪一个 HF revision 未确认，故当前公开模型代码不能证明历史运行环境字节一致。",
+      "本文有 local lens 及整网PPL两个不同实验，跨读出结果不可混作同一干预。",
+      "未执行代码；未验证论文图表生成与保存CSV完全一致。"
+    ]
+  },
+  "transferable_actions": [
+    "记录完整模型与局部读出之间对 shared、残差、原门权及是否传播的处理；保持这些条件可比较。",
+    "区分序列级路由访问与函数/损伤证据，并在报告中写清生成模型和路由读出模型。"
+  ]
+}

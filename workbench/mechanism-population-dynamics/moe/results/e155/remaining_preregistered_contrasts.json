@@ -1,0 +1,605 @@
+{
+  "experiment": "E155",
+  "status": "complete",
+  "source_sha256": "d60a3651985547f06a39dbd59113d1a1023fd82b9ccbc671c9b47d2d759246ed",
+  "purpose": "Complete the preregistered KL and answer-NLL source contrasts, with unchanged questions and operators.",
+  "source_differences": {
+    "A_minus_P": {
+      "native": {
+        "first_answer_token_KL": {
+          "point": 0.0,
+          "question_ci95": [
+            0.0,
+            0.0
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        }
+      },
+      "routed_zero": {
+        "first_answer_token_KL": {
+          "point": 0.6474323628684703,
+          "question_ci95": [
+            0.4307871353529615,
+            0.8885049374246563
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -0.7470055487599863,
+              "ci95": [
+                -1.151257832195505,
+                -0.3157580171032812
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.041870274496927,
+              "ci95": [
+                1.8134903520331447,
+                2.2631968097095583
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        },
+        "true_answer_token_NLL_increase": {
+          "point": 0.5762360543578855,
+          "question_ci95": [
+            0.38287258212279346,
+            0.7612126395628164
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -0.9922930843235713,
+              "ci95": [
+                -1.286469447180071,
+                -0.7000530797290627
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.1447651930393423,
+              "ci95": [
+                1.9017261453705367,
+                2.3981395970374675
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        }
+      },
+      "shared_zero": {
+        "first_answer_token_KL": {
+          "point": 0.36513584709488917,
+          "question_ci95": [
+            0.2630821524699225,
+            0.4687437639121167
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.49115865702076356,
+              "ci95": [
+                0.3116477341946104,
+                0.6708282752911106
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.2391130371690148,
+              "ci95": [
+                0.1419970975872086,
+                0.33770139952032335
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        },
+        "true_answer_token_NLL_increase": {
+          "point": 0.4610225081001476,
+          "question_ci95": [
+            0.3212516309914144,
+            0.6060532505733511
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.3285610110461853,
+              "ci95": [
+                0.16390787817519084,
+                0.5023242803868446
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.5934840051541099,
+              "ci95": [
+                0.38176621397780913,
+                0.8101296852108305
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        }
+      },
+      "all_moe_zero": {
+        "first_answer_token_KL": {
+          "point": 0.5083711620103015,
+          "question_ci95": [
+            0.3642231290715595,
+            0.6684186011155113
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.9506456102280479,
+              "ci95": [
+                0.7225201425403279,
+                1.22122591261005
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.06609671379255519,
+              "ci95": [
+                -0.11720014019293291,
+                0.25023799362691446
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        },
+        "true_answer_token_NLL_increase": {
+          "point": 0.602757038422677,
+          "question_ci95": [
+            0.425438756654089,
+            0.7844925968841396
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.676975881121186,
+              "ci95": [
+                0.44842782069605747,
+                0.9305737758576865
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.5285381957241682,
+              "ci95": [
+                0.27523668713866584,
+                0.77542651211105
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        }
+      }
+    },
+    "B_minus_P": {
+      "native": {
+        "first_answer_token_KL": {
+          "point": 0.0,
+          "question_ci95": [
+            0.0,
+            0.0
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        }
+      },
+      "routed_zero": {
+        "first_answer_token_KL": {
+          "point": -2.4875198261500753,
+          "question_ci95": [
+            -2.7679051768571474,
+            -2.192988023199094
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -4.242984062254438,
+              "ci95": [
+                -4.768187056017474,
+                -3.6851985695652205
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": -0.7320555900457122,
+              "ci95": [
+                -0.9736024184692796,
+                -0.5393622156268778
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        },
+        "true_answer_token_NLL_increase": {
+          "point": -3.1085501197711043,
+          "question_ci95": [
+            -3.3359764552437583,
+            -2.880642435458807
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -4.7841432452395605,
+              "ci95": [
+                -5.174848163569441,
+                -4.417640164751273
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": -1.4329569943026477,
+              "ci95": [
+                -1.7234136292341111,
+                -1.1765275477802704
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        }
+      },
+      "shared_zero": {
+        "first_answer_token_KL": {
+          "point": 1.9593053935588867,
+          "question_ci95": [
+            1.7400592663931085,
+            2.195138589933058
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 3.312777884541503,
+              "ci95": [
+                2.9421216115903968,
+                3.7282991803841385
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.6058329025762704,
+              "ci95": [
+                0.37398078094661064,
+                0.8560484008868
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        },
+        "true_answer_token_NLL_increase": {
+          "point": 1.6066177129655248,
+          "question_ci95": [
+            1.3466685272479673,
+            1.855609283631151
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.3904281118800847,
+              "ci95": [
+                2.041746351458147,
+                2.7974078344997086
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.8228073140509646,
+              "ci95": [
+                0.4891093077409355,
+                1.175021515582125
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        }
+      },
+      "all_moe_zero": {
+        "first_answer_token_KL": {
+          "point": -0.4377267863799224,
+          "question_ci95": [
+            -0.6185587602905022,
+            -0.2278300940408787
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -0.015699239108938445,
+              "ci95": [
+                -0.33808180207665445,
+                0.34477362190917044
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": -0.8597543336509064,
+              "ci95": [
+                -1.0175317008306406,
+                -0.6899486543380063
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        },
+        "true_answer_token_NLL_increase": {
+          "point": -0.1359573603185764,
+          "question_ci95": [
+            -0.32657878050923894,
+            0.05968999263324525
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -0.2676417290663359,
+              "ci95": [
+                -0.5477260806350029,
+                0.06171983535120517
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": -0.004272991570816911,
+              "ci95": [
+                -0.20440160700502366,
+                0.19653035905397695
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        }
+      }
+    },
+    "B_minus_A": {
+      "native": {
+        "first_answer_token_KL": {
+          "point": 0.0,
+          "question_ci95": [
+            0.0,
+            0.0
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        }
+      },
+      "routed_zero": {
+        "first_answer_token_KL": {
+          "point": -3.134952189018545,
+          "question_ci95": [
+            -3.4221674917973286,
+            -2.872925680772061
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -3.4959785134944505,
+              "ci95": [
+                -4.003774810707349,
+                -3.009579224192615
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": -2.773925864542639,
+              "ci95": [
+                -3.0362988594077525,
+                -2.5109541922149066
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        },
+        "true_answer_token_NLL_increase": {
+          "point": -3.6847861741289893,
+          "question_ci95": [
+            -3.9408017596698732,
+            -3.4242998489092242
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -3.791850160915989,
+              "ci95": [
+                -4.240460009067539,
+                -3.359650090809572
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": -3.5777221873419895,
+              "ci95": [
+                -3.91599247582063,
+                -3.2695030644795096
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        }
+      },
+      "shared_zero": {
+        "first_answer_token_KL": {
+          "point": 1.5941695464639973,
+          "question_ci95": [
+            1.365038593340923,
+            1.853167656026185
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.8216192275207392,
+              "ci95": [
+                2.427303957291567,
+                3.23126484844369
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.3667198654072556,
+              "ci95": [
+                0.11726065557011633,
+                0.629335683176335
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        },
+        "true_answer_token_NLL_increase": {
+          "point": 1.1455952048653772,
+          "question_ci95": [
+            0.866235229689468,
+            1.4030213473121864
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.0618671008339,
+              "ci95": [
+                1.6390789553488327,
+                2.4858699353136906
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.22932330889685473,
+              "ci95": [
+                -0.10974622493998744,
+                0.5754670872174186
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        }
+      },
+      "all_moe_zero": {
+        "first_answer_token_KL": {
+          "point": -0.9460979483902241,
+          "question_ci95": [
+            -1.1711047162901038,
+            -0.7104256147572685
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -0.9663448493369865,
+              "ci95": [
+                -1.298227745076408,
+                -0.6211892970502594
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": -0.9258510474434616,
+              "ci95": [
+                -1.201309263235203,
+                -0.6582646282378675
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        },
+        "true_answer_token_NLL_increase": {
+          "point": -0.7387143987412534,
+          "question_ci95": [
+            -0.9265108053860495,
+            -0.5463688173063476
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -0.9446176101875218,
+              "ci95": [
+                -1.26442880624668,
+                -0.6434716877960264
+              ],
+              "questions": 64
+            },
+            "high_school_mathematics": {
+              "point": -0.5328111872949851,
+              "ci95": [
+                -0.7575930569702698,
+                -0.32158004865537654
+              ],
+              "questions": 64
+            }
+          },
+          "bootstrap_seed": 155001,
+          "question_count": 128
+        }
+      }
+    }
+  }
+}
