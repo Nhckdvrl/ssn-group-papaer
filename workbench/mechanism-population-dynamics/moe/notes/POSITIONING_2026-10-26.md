@@ -20,6 +20,8 @@
 
 **证据与理论的关系：** 参数来源的因果干预不等于完整训练机制已识别；而尚未证明唯一单位，也不削弱已经测到的职责组织与任务后果。C14的本设定事实已完成12项混杂审计、升至L2。更广的任务/初始化规律是要积极推进的研究目标，不是因为相邻论文存在而提前放弃的主张。
 
+**E156期间新增完整阅读：** Sparsity Moves Computation v2（33页）有真实消融/patching与active-width、random-routing强对照；Beyond Routing（21页）有跨初始化表示motif；Basic-Refinement（ACL2025，16页）有shared/routed的真实任务干预与head→expert干预。它们把架构压力、表征稳定和合作机制连接起来。我们的推进点是固定架构/每token激活数后的成熟历史可变性、同一成功决策的依赖转移、以及固定接收者下哪些函数可共同重用；不是再次认领一般“专家会合作”。全文后的具体区别与可借鉴动作见[论文卡](../../../../library/themes/moe-routing/FUNCTIONAL_ROLES_FULL_READING_2026-10-27.md)。原始全文与小型覆盖manifest共9篇193页，数据结论仍由实验给出。
+
 
 ## 本轮执行前检索补充
 

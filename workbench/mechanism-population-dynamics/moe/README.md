@@ -72,7 +72,7 @@ E153采用原任务RC逻辑：5-shot dev示例、validation全部61题逐层gree
 
 [E154](experiments/E154-native-parent-formation-boundary.md)已完成P的9个新条件，A/B读数从封存raw重建；CPU258项点复核误差0，实际.329930 GPU·时、峰值54.822GB。P公开54.28GB权重逐文件核验并缓存。公开谱系声明与严格batch/optimizer链分开；[E155](experiments/E155-native-task-branch-necessity.md)已完成D、D+R、D+S与完整计算全部12格，实际1.343427 GPU·时。
 
-当前可发展的完整科学叙事是：学习历史选择实际计算的分担与配套，预算稳定性、完整任务质量和重用条件由不同关系共同决定。关键证据已有成熟来源交叉、独立任务和父状态阶段比较；同一44道共同成功题在去S后仅保留33/31/17题，具体展示了相同成功与不同路径依赖。六篇近邻共123页已全文复核，它们提供训练/部署/补偿的连接，而非本题贡献的上限。详见[当前研究判断与完整比较](notes/POSITIONING_2026-10-26.md)。
+当前可发展的完整科学叙事是：学习历史选择实际计算的分担与配套，预算稳定性、完整任务质量和重用条件由不同关系共同决定。关键证据已有成熟来源交叉、独立任务和父状态阶段比较；同一44道共同成功题在去S后仅保留33/31/17题，具体展示了相同成功与不同路径依赖。九篇相关工作已全文复核，它们提供架构压力、表征稳定和合作机制的连接，而非本题贡献的上限。详见[当前研究判断与完整比较](notes/POSITIONING_2026-10-26.md)。
 
 ## 5. 代码、复算与资产
 
@@ -81,7 +81,7 @@ E153采用原任务RC逻辑：5-shot dev示例、validation全部61题逐层gree
 - 从本工作台执行：`~/.venvs/mechpop/bin/python moe/scripts/e144145_analyze.py e144`（E145改e145）；`... e146_grouped.py analyze`；`... e147_gate_control.py analyze`。这些从封存raw重算，模型driver拒绝覆盖既有raw。
 - 每项`results/eNNN/`的`manifest.json`锁定代码SHA、来源/输入与raw SHA；[8终点/公共模型校验](results/e144/asset_preflight.json)、[selected](results/e144/selected.json)、[来源表](results/e144/source_maps.json)可追溯。图：[预测与历史](results/e145/figures/recombination_and_history.png)、[分组与强对照](results/e147/figures/group_control.png)。
 - 大权重沿[ASSETS](ASSETS.md)原位置；新raw在`~/mechpop_cache/e144_prediction_recombination`、`e145_history_cross`、`e146_grouped_recombination`、`e147_gate_group_control`，未放入Git。没有重建71.7GB训练H/Y cache。
-- [本日日志](../logs/2026-10-26.md)、[历史阶段快照](notes/GPT_PHASE_SUMMARY_E120-E142.md)、[导师原问](notes/ADVISOR_2026-10-23.md)。当前解释以本页/方向文档/完整结果为准，历史暂停与过宽判断均保留来源。
+- [本日日志](../logs/2026-10-27.md)、[历史阶段快照](notes/GPT_PHASE_SUMMARY_E120-E142.md)、[导师原问](notes/ADVISOR_2026-10-23.md)。当前解释以本页/方向文档/完整结果为准，历史暂停与过宽判断均保留来源。
 
 **下一研究决定：** 完成[E156](experiments/E156-native-common-parent-function-cross.md)的固定P骨干/gate、R×S来源九格与统一任务mask，区分单分支可用迁移、通用共享支持、共同来源配套和接收接口约束；完整质量与预算保持同时判断。继续从母问题和竞争解释决定实验，不扫描预算/层/学习率，不默认自训多seed。独立初始化总体仍是需要寻找成熟资产来回答的目标。
 

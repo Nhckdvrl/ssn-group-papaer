@@ -1,0 +1,78 @@
+{
+  "title": "Decoding Knowledge Attribution in Mixture-of-Experts: A Framework of Basic-Refinement Collaboration and Efficiency Analysis",
+  "authors": "Junzhuo Li, Bo Wang, Xiuze Zhou, Peijie Jiang, Jia Liu, Xuming Hu",
+  "version": "ACL 2025 Main Long Papers, 22431–22446, DOI 10.18653/v1/2025.acl-long.1093; official anthology version",
+  "url": "https://aclanthology.org/2025.acl-long.1093/",
+  "pdf_url": "https://aclanthology.org/2025.acl-long.1093.pdf",
+  "pdf": "/home/xiang/mechpop_cache/moe_primary_reading_20261027/basic_refinement_acl2025.pdf",
+  "pdf_sha256": "a6874fa44556479c689f4a59b22ae89e407059699bc5e163c007e64b05e79d27",
+  "text": "/home/xiang/mechpop_cache/moe_primary_reading_20261027/basic_refinement_acl2025.txt",
+  "text_sha256": "b6a1c516806daa27f3a4d21ccd7a6a9ad25a6206e49279064344cb67f7ef0b17",
+  "coverage": "全文16页；正文、Eq.1–9、图1–4、表1–5、限制、参考文献、附录A–C、图5–7、表6–8逐项阅读；图中文字结合PDF排版复核；未运行作者代码或模型。",
+  "definition_and_granularity": {
+    "paper_claim": "basic指基础语义/实体识别等，refinement指候选、关系/属性与最终答案的细化；Qwen采用跨层shared generalist与routed specialist的工作分解（p.22432 Fig.1、22434–22437）。是作者机制解释，非独立测量并验证每个示例步骤的正式标签。",
+    "operation": "Qwen 1.5 MoE按模块接口区分always-on shared与top4 routed；比较shared-only、top1/2-only、shared加不同选中routed以及shared+2nd。不同层神经元重要性 Eq.7–9 使用残差加单神经元向量后的正确答案log概率变化，routed单元按门权加权；属于局部归因，不等同整网移除损伤（p.22433）。",
+    "another_granularity": "§5.1还把知识类型的top100重要神经元归入所在expert并排前5；比较expert层及注意力头，routed experts自身亦被描述为generalist与specialist（p.22437–22438）。OLMoE/Mixtral无shared（p.22443–22444 表6）。"
+  },
+  "predictions_and_interventions": [
+    {
+      "experiment": "Qwen配置消融",
+      "what": "表2报告Only Top1/2、Only Shared、Shared+2nd、Shared+Top1/2/4在知识预测上的HIT@10和MRR；shared-only .03/.01；shared+top1 .82/.59；shared+top4 .85/.63。",
+      "citation": "p.22435 表2, p.22436 §4.1"
+    },
+    {
+      "experiment": "无shared模型budget",
+      "what": "OLMoE top-k变化/分别单用第2/3/4（Fig.4），Mixtral只保留top1或top2（表3），指标同为HIT@10/MRR；属于对已有模型推理接口的干预报告。",
+      "citation": "p.22435–22436"
+    },
+    {
+      "experiment": "专家阻断",
+      "what": "各关系按神经元归因确定top expert，阻断top1/5/10并报告相同任务的MRR，跨Qwen/OLMoE/Mixtral含反向提高案例。按§5.1方法top5按top100 neuron归属数，表8标题称最常选，排序口径存在文本差异。",
+      "citation": "p.22437–22438, 22443–22446 表5、8"
+    },
+    {
+      "experiment": "因果章节",
+      "what": "作者称Qwen抑制H^19_12后top4平均门概率降低54%、MRR降低29%；强制E^20_59报告恢复原始MRR的85%；集成梯度归因报告28%。前两者为作者报告的推理干预，集成梯度是路径归因而非干预。",
+      "citation": "p.22437 §4.3"
+    },
+    {
+      "experiment": "activation patch",
+      "what": "全文未见显式activation patching或跨样本激活替换，强制expert不是可直接等同激活patching。",
+      "citation": "p.22437 §4.3及全文"
+    }
+  ],
+  "readout_and_reproducibility": {
+    "network_readout": "论文用全模型知识预测、正确答案排名定义HIT@10和MRR（p.22433 Eq.6、p.22443 Eq.10–11），并将表2/3、图4与表5/8称为模型推理/专家保留或阻断的任务性能。最符合整网改变后评价最终next-token输出；但全文未给出前向干预伪代码或层级实现，因此实际是否每个条件都以整网重跑、对每个层如何施加未能从论文直接逐项证实。不要把它断言为局部向量投影实验。",
+    "local_attribution": "Eq.7–9局部残差/单神经元的log正确token概率增量属于另一类归因读数，文中并列报告这两类实验；Eq.9使用门权但具体读出实现未给。",
+    "unknown": "shared+topN作用层范围、被移除专家对gate full-denominator/top-k概率归一化、shared gating系数是否恒1、block是直接zero还是重路由、强制expert如何调整其他选择与权重、头抑制精确算子与rescue设定均未明确；Qwen模型通用架构不能替代该实验代码确认。正文未给patch实验、confidence interval、足够实现细节。"
+  },
+  "numeric_tensions": [
+    {
+      "issue": "摘要声称OLMoE地理top10下降76%；表5/8 country_capital_city为1.00→0.76，是下降0.24，即24%，并非76%；country_language .96→.68下降约29%。",
+      "pages": "22431、22438、22446"
+    },
+    {
+      "issue": "§4.1说只激活单个expert的OLMoE HIT@10为0.15–0.19，而图4单独第2/3/4标注0.019/0.019/0.015；不能直接混作相同数字。",
+      "pages": "22436"
+    },
+    {
+      "issue": "§5.2称OLMoE country_capital top1–5均MRR=1.0，但表5/8 top5=.76；以表值和文字分别保留。",
+      "pages": "22438、22446"
+    },
+    {
+      "issue": "§5.1和表5说明依据top100重要神经元归属选expert；附录表8标题称top most frequently selected，排序定义需源码确认。",
+      "pages": "22437–22438、22446"
+    }
+  ],
+  "history_and_recombination": {
+    "explicit": "实验比较不同成熟架构与逐层/专家/任务位置；未见同架构不同训练历史、训练中间checkpoint的纵向比较或不同模型间替换专家/共享模块。",
+    "limit": "未见不代表其他未读作者代码未做；全文自身没有说明这一实验。没有检查作者源码。",
+    "distinction": "深浅和shared是否存在随模型家族同时改变，文中由横截面归因于depth/shared的解释不能当作受控同架构历史效应。"
+  },
+  "connection_inference": [
+    "已有Qwen任务干预直接提示shared与routed可共同支撑知识预测；E156的R/S共同依赖应先与这条实质先例对话。",
+    "研究当前成熟父/分支的固定接收者函数重组可询问历史变动后的功能重用与兼容性；是否迁移、来自单支还是配套须由实验读数决定，不能据先例直接假设语义职责。",
+    "报告各格full质量与预算影响及具体任务，将局部神经元归因和整网性能干预分开；避免把shared概括为跨任务完全通用：附录C同关系重合、不同关系重合低于5%的观察提示任务性。"
+  ],
+  "status": "纯文献接口核对；无主张等级变更、无模型运行、无新实验。"
+}
