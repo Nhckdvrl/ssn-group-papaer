@@ -91,6 +91,8 @@ E153采用原任务RC逻辑：5-shot dev示例、validation全部61题逐层gree
 - 大权重沿[ASSETS](ASSETS.md)原位置；新raw在`~/mechpop_cache/e144_prediction_recombination`、`e145_history_cross`、`e146_grouped_recombination`、`e147_gate_group_control`，未放入Git。没有重建71.7GB训练H/Y cache。
 - [本日日志](../logs/2026-10-27.md)、[历史阶段快照](notes/GPT_PHASE_SUMMARY_E120-E142.md)、[导师原问](notes/ADVISOR_2026-10-23.md)。当前解释以本页/方向文档/完整结果为准，历史暂停与过宽判断均保留来源。
 
+**同一函数的职责也依赖接收系统（E159前的旧数据POST-HOC）：** 同一套S_B权重在native B中的移除准确率损伤，比单独移入P背景时高11.72 [3.13,20.31]个百分点（固定128题）；两背景均答对的33题里，移除后保留16/28题。答案NLL损伤差1.713744 [1.489787,1.971933]。graft零化端点继承已封存P S-zero的精确算子身份，无新增前向；两背景还同时改变D/G/R，接下来[E159](experiments/E159-unchanged-function-partner-role.md)只补4个未知零化端点、固定D/G隔离伙伴作用。[全部来源与分支](results/e159/known_border_posthoc.json)。
+
 **下一研究决定：** E158把同一事实的“换实体”和“换所问属性”输入区别在native P/A/B的R/S/联合输出间交换，固定自然语言事实与对照、逐层测真实源答案特异性。先把职责落到具体传递的区别，再判断其跨历史保持或迁移；不继续围绕预算分数扩网格。独立初始化总体仍需成熟资产，尚未回答。
 
 **E150工程与范围：** 两终点各13,568,641,024参数，cal FP32→BF16 KL A/B=.000706/.000892单列，主读数统一实际BF16。全部native角逐位复现、参数/buffer只读通过；主运行峰值81.857GB，4044.6885 GPU秒=1.1235246 GPU·时，含全部预检/I/O/读数。raw点值与来源对比复核最大误差1.11e−16。[复核](results/e150/raw_verification.json)。一个作者声明同父的协议包、20输入文件簇CI，非独立seed总体；不是原论文MMLU复现或从零形成机制。

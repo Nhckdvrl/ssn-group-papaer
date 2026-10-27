@@ -1,0 +1,3276 @@
+{
+  "status": "complete_POST_HOC_inherited_only",
+  "source_sha256": "a9cd8b81a897a419a0db3dcfea1b286a97ecca783cca69a1933dc8edc9d1744b",
+  "inputs": {
+    "E155": [
+      {
+        "manifest": {
+          "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e155/manifest_P.json",
+          "sha256": "6d09670c55f5f4d2d58edda3f996b7e0ac0f1480616f28e619144f73085043ba"
+        },
+        "raw": {
+          "path": "/home/xiang/mechpop_cache/e155_native_task_branch_necessity/scores_P.npz",
+          "sha256": "94b8fd39067047df600e43ffdc6412f6f54f5cab82b6d4f02bb5262f7b4c15ec",
+          "size_bytes": 15965
+        }
+      },
+      {
+        "manifest": {
+          "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e155/manifest_A.json",
+          "sha256": "05c85376b49be0679661913485150946990d69d384737df2ffcd71cbd96e80df"
+        },
+        "raw": {
+          "path": "/home/xiang/mechpop_cache/e155_native_task_branch_necessity/scores_A.npz",
+          "sha256": "9b0c0b07ed5bf36b5c51bcbba5ceed333ec10bfe11e85c3b957a841de8673e2f",
+          "size_bytes": 15929
+        }
+      },
+      {
+        "manifest": {
+          "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e155/manifest_B.json",
+          "sha256": "649130fe3029a51f7d19429700750939ca0b33e804b98df0fb8aa9d4d0367811"
+        },
+        "raw": {
+          "path": "/home/xiang/mechpop_cache/e155_native_task_branch_necessity/scores_B.npz",
+          "sha256": "5239dd6889a34e3b22889bd2c31ccaff73dbde3ea24c4c66ab9ef3abf0338a48",
+          "size_bytes": 15803
+        }
+      }
+    ],
+    "E156": {
+      "manifest": {
+        "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e156/manifest.json",
+        "sha256": "7b77b7c7fc290e9ca423d054eb3e7f223b0973c317cac469caf66c60858d4488"
+      },
+      "raw": {
+        "path": "/home/xiang/mechpop_cache/e156_common_parent_cross/scores.npz",
+        "sha256": "17febe351a8f8e4136b4e79ed75fd88792281970c45f2b4ac9a7eceb697f67b6",
+        "size_bytes": 101431
+      }
+    }
+  },
+  "new_model_forwards": 0,
+  "interpretation": "Same source function in native versus P receiver; other branch AND D/G may differ. E159 new borders are needed to isolate partner changes with D/G fixed.",
+  "identity": "Removing the transplanted S leaves exact original P D/G/R; removing the transplanted R leaves exact original P D/G/S. Inherited endpoints, not independent observations.",
+  "cohort": {
+    "selection": "all nine E156 full source cells raw-correct, before new zeros",
+    "total": 33,
+    "per_subject": [
+      30,
+      3
+    ]
+  },
+  "metrics": {
+    "raw_accuracy": {
+      "P": {
+        "native_full_quality": {
+          "point": 0.375,
+          "question_ci95": [
+            0.3046875,
+            0.4453125
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.59375,
+              "question_ci95": [
+                0.46875,
+                0.703125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.15625,
+              "question_ci95": [
+                0.078125,
+                0.25
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "S_only_graft_full_quality": {
+          "point": 0.375,
+          "question_ci95": [
+            0.3046875,
+            0.4453125
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.59375,
+              "question_ci95": [
+                0.46875,
+                0.703125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.15625,
+              "question_ci95": [
+                0.078125,
+                0.25
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "R_only_graft_full_quality": {
+          "point": 0.375,
+          "question_ci95": [
+            0.3046875,
+            0.4453125
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.59375,
+              "question_ci95": [
+                0.46875,
+                0.703125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.15625,
+              "question_ci95": [
+                0.078125,
+                0.25
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_shared_necessity": {
+          "point": 0.0546875,
+          "question_ci95": [
+            -0.0078125,
+            0.1171875
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.140625,
+              "question_ci95": [
+                0.0625,
+                0.234375
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": -0.03125,
+              "question_ci95": [
+                -0.109375,
+                0.0625
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_S_in_P_receiver_necessity": {
+          "point": 0.0546875,
+          "question_ci95": [
+            -0.0078125,
+            0.1171875
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.140625,
+              "question_ci95": [
+                0.0625,
+                0.234375
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": -0.03125,
+              "question_ci95": [
+                -0.109375,
+                0.0625
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_S_receiver_necessity": {
+          "point": 0.0,
+          "question_ci95": [
+            0.0,
+            0.0
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_routed_necessity": {
+          "point": 0.1953125,
+          "question_ci95": [
+            0.109375,
+            0.28125
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.390625,
+              "question_ci95": [
+                0.265625,
+                0.515625
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "question_ci95": [
+                -0.109375,
+                0.109375
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_R_in_P_receiver_necessity": {
+          "point": 0.1953125,
+          "question_ci95": [
+            0.109375,
+            0.28125
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.390625,
+              "question_ci95": [
+                0.265625,
+                0.515625
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "question_ci95": [
+                -0.109375,
+                0.109375
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_R_receiver_necessity": {
+          "point": 0.0,
+          "question_ci95": [
+            0.0,
+            0.0
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        }
+      },
+      "A": {
+        "native_full_quality": {
+          "point": 0.4140625,
+          "question_ci95": [
+            0.3359375,
+            0.484375
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.59375,
+              "question_ci95": [
+                0.46875,
+                0.703125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.234375,
+              "question_ci95": [
+                0.125,
+                0.34375
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "S_only_graft_full_quality": {
+          "point": 0.375,
+          "question_ci95": [
+            0.296875,
+            0.4455078124999998
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.578125,
+              "question_ci95": [
+                0.453125,
+                0.6878906249999996
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.171875,
+              "question_ci95": [
+                0.09375,
+                0.265625
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "R_only_graft_full_quality": {
+          "point": 0.3671875,
+          "question_ci95": [
+            0.296875,
+            0.4453125
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.578125,
+              "question_ci95": [
+                0.453125,
+                0.6878906249999996
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.15625,
+              "question_ci95": [
+                0.078125,
+                0.234375
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_shared_necessity": {
+          "point": 0.078125,
+          "question_ci95": [
+            0.0,
+            0.15625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.140625,
+              "question_ci95": [
+                0.046875,
+                0.25
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.015625,
+              "question_ci95": [
+                -0.09375,
+                0.125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_S_in_P_receiver_necessity": {
+          "point": 0.0546875,
+          "question_ci95": [
+            -0.0078125,
+            0.1171875
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.125,
+              "question_ci95": [
+                0.046875,
+                0.21875
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": -0.015625,
+              "question_ci95": [
+                -0.09375,
+                0.078125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_S_receiver_necessity": {
+          "point": 0.0234375,
+          "question_ci95": [
+            -0.046875,
+            0.09375
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.015625,
+              "question_ci95": [
+                -0.078125,
+                0.109375
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.03125,
+              "question_ci95": [
+                -0.078125,
+                0.140625
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_routed_necessity": {
+          "point": 0.21875,
+          "question_ci95": [
+            0.1328125,
+            0.3046875
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.359375,
+              "question_ci95": [
+                0.234375,
+                0.48476562499999964
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.078125,
+              "question_ci95": [
+                -0.046875,
+                0.203125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_R_in_P_receiver_necessity": {
+          "point": 0.1875,
+          "question_ci95": [
+            0.1015625,
+            0.2734375
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.375,
+              "question_ci95": [
+                0.25,
+                0.5
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "question_ci95": [
+                -0.125,
+                0.109375
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_R_receiver_necessity": {
+          "point": 0.03125,
+          "question_ci95": [
+            -0.0390625,
+            0.109375
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -0.015625,
+              "question_ci95": [
+                -0.09375,
+                0.0625
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.078125,
+              "question_ci95": [
+                -0.046875,
+                0.203125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        }
+      },
+      "B": {
+        "native_full_quality": {
+          "point": 0.390625,
+          "question_ci95": [
+            0.3125,
+            0.46875
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.578125,
+              "question_ci95": [
+                0.453125,
+                0.6878906249999996
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.203125,
+              "question_ci95": [
+                0.109375,
+                0.3125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "S_only_graft_full_quality": {
+          "point": 0.390625,
+          "question_ci95": [
+            0.3125,
+            0.46875
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.578125,
+              "question_ci95": [
+                0.453125,
+                0.6878906249999996
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.203125,
+              "question_ci95": [
+                0.109375,
+                0.296875
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "R_only_graft_full_quality": {
+          "point": 0.34375,
+          "question_ci95": [
+            0.265625,
+            0.4140625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.5625,
+              "question_ci95": [
+                0.4375,
+                0.6875
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.125,
+              "question_ci95": [
+                0.046875,
+                0.203125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_shared_necessity": {
+          "point": 0.1875,
+          "question_ci95": [
+            0.09375,
+            0.2734375
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.3125,
+              "question_ci95": [
+                0.20273437500000002,
+                0.4375
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0625,
+              "question_ci95": [
+                -0.078125,
+                0.1875
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_S_in_P_receiver_necessity": {
+          "point": 0.0703125,
+          "question_ci95": [
+            0.0078125,
+            0.140625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.125,
+              "question_ci95": [
+                0.046875,
+                0.21875
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.015625,
+              "question_ci95": [
+                -0.09375,
+                0.125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_S_receiver_necessity": {
+          "point": 0.1171875,
+          "question_ci95": [
+            0.03125,
+            0.203125
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.1875,
+              "question_ci95": [
+                0.09375,
+                0.296875
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.046875,
+              "question_ci95": [
+                -0.09375,
+                0.1875
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_routed_necessity": {
+          "point": 0.1640625,
+          "question_ci95": [
+            0.0625,
+            0.25
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.3125,
+              "question_ci95": [
+                0.171875,
+                0.4375
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.015625,
+              "question_ci95": [
+                -0.10976562499999998,
+                0.15625
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_R_in_P_receiver_necessity": {
+          "point": 0.1640625,
+          "question_ci95": [
+            0.078125,
+            0.25
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.359375,
+              "question_ci95": [
+                0.234375,
+                0.48476562499999964
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": -0.03125,
+              "question_ci95": [
+                -0.140625,
+                0.078125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_R_receiver_necessity": {
+          "point": 0.0,
+          "question_ci95": [
+            -0.0859375,
+            0.09375
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -0.046875,
+              "question_ci95": [
+                -0.140625,
+                0.046875
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.046875,
+              "question_ci95": [
+                -0.109375,
+                0.203125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        }
+      }
+    },
+    "per_char_accuracy": {
+      "P": {
+        "native_full_quality": {
+          "point": 0.484375,
+          "question_ci95": [
+            0.40625,
+            0.5625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.703125,
+              "question_ci95": [
+                0.59375,
+                0.8125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.265625,
+              "question_ci95": [
+                0.15625,
+                0.375
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "S_only_graft_full_quality": {
+          "point": 0.484375,
+          "question_ci95": [
+            0.40625,
+            0.5625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.703125,
+              "question_ci95": [
+                0.59375,
+                0.8125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.265625,
+              "question_ci95": [
+                0.15625,
+                0.375
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "R_only_graft_full_quality": {
+          "point": 0.484375,
+          "question_ci95": [
+            0.40625,
+            0.5625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.703125,
+              "question_ci95": [
+                0.59375,
+                0.8125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.265625,
+              "question_ci95": [
+                0.15625,
+                0.375
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_shared_necessity": {
+          "point": 0.1015625,
+          "question_ci95": [
+            0.03886718750000001,
+            0.17207031249999982
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.140625,
+              "question_ci95": [
+                0.046875,
+                0.25
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0625,
+              "question_ci95": [
+                -0.03125,
+                0.15625
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_S_in_P_receiver_necessity": {
+          "point": 0.1015625,
+          "question_ci95": [
+            0.03886718750000001,
+            0.17207031249999982
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.140625,
+              "question_ci95": [
+                0.046875,
+                0.25
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0625,
+              "question_ci95": [
+                -0.03125,
+                0.15625
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_S_receiver_necessity": {
+          "point": 0.0,
+          "question_ci95": [
+            0.0,
+            0.0
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_routed_necessity": {
+          "point": 0.296875,
+          "question_ci95": [
+            0.1953125,
+            0.3984375
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.515625,
+              "question_ci95": [
+                0.359375,
+                0.65625
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.078125,
+              "question_ci95": [
+                -0.046875,
+                0.203125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_R_in_P_receiver_necessity": {
+          "point": 0.296875,
+          "question_ci95": [
+            0.1953125,
+            0.3984375
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.515625,
+              "question_ci95": [
+                0.359375,
+                0.65625
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.078125,
+              "question_ci95": [
+                -0.046875,
+                0.203125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_R_receiver_necessity": {
+          "point": 0.0,
+          "question_ci95": [
+            0.0,
+            0.0
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        }
+      },
+      "A": {
+        "native_full_quality": {
+          "point": 0.4921875,
+          "question_ci95": [
+            0.4140625,
+            0.5703125
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.71875,
+              "question_ci95": [
+                0.609375,
+                0.828125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.265625,
+              "question_ci95": [
+                0.15625,
+                0.375
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "S_only_graft_full_quality": {
+          "point": 0.484375,
+          "question_ci95": [
+            0.40625,
+            0.5625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.734375,
+              "question_ci95": [
+                0.625,
+                0.84375
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.234375,
+              "question_ci95": [
+                0.140625,
+                0.34375
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "R_only_graft_full_quality": {
+          "point": 0.484375,
+          "question_ci95": [
+            0.40625,
+            0.5625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.75,
+              "question_ci95": [
+                0.640625,
+                0.859375
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.21875,
+              "question_ci95": [
+                0.125,
+                0.3125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_shared_necessity": {
+          "point": 0.109375,
+          "question_ci95": [
+            0.03125,
+            0.18769531249999982
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.21875,
+              "question_ci95": [
+                0.109375,
+                0.328125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "question_ci95": [
+                -0.109375,
+                0.109375
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_S_in_P_receiver_necessity": {
+          "point": 0.1015625,
+          "question_ci95": [
+            0.0390625,
+            0.1640625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.171875,
+              "question_ci95": [
+                0.078125,
+                0.265625
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.03125,
+              "question_ci95": [
+                -0.046875,
+                0.125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_S_receiver_necessity": {
+          "point": 0.0078125,
+          "question_ci95": [
+            -0.0703125,
+            0.078125
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.046875,
+              "question_ci95": [
+                -0.0625,
+                0.140625
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": -0.03125,
+              "question_ci95": [
+                -0.140625,
+                0.078125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_routed_necessity": {
+          "point": 0.2734375,
+          "question_ci95": [
+            0.171875,
+            0.375
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.5,
+              "question_ci95": [
+                0.328125,
+                0.65625
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.046875,
+              "question_ci95": [
+                -0.0625,
+                0.15625
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_R_in_P_receiver_necessity": {
+          "point": 0.296875,
+          "question_ci95": [
+            0.203125,
+            0.390625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.5625,
+              "question_ci95": [
+                0.40625,
+                0.703125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.03125,
+              "question_ci95": [
+                -0.09375,
+                0.15625
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_R_receiver_necessity": {
+          "point": -0.0234375,
+          "question_ci95": [
+            -0.1171875,
+            0.06269531249999982
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -0.0625,
+              "question_ci95": [
+                -0.203125,
+                0.0625
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.015625,
+              "question_ci95": [
+                -0.109375,
+                0.140625
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        }
+      },
+      "B": {
+        "native_full_quality": {
+          "point": 0.46875,
+          "question_ci95": [
+            0.390625,
+            0.5390625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.71875,
+              "question_ci95": [
+                0.609375,
+                0.828125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.21875,
+              "question_ci95": [
+                0.125,
+                0.328125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "S_only_graft_full_quality": {
+          "point": 0.484375,
+          "question_ci95": [
+            0.4140625,
+            0.5625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.734375,
+              "question_ci95": [
+                0.625,
+                0.84375
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.234375,
+              "question_ci95": [
+                0.140625,
+                0.34375
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "R_only_graft_full_quality": {
+          "point": 0.3984375,
+          "question_ci95": [
+            0.3203125,
+            0.46875
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.65625,
+              "question_ci95": [
+                0.53125,
+                0.78125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.140625,
+              "question_ci95": [
+                0.046875,
+                0.234375
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_shared_necessity": {
+          "point": 0.1875,
+          "question_ci95": [
+            0.1015625,
+            0.265625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.328125,
+              "question_ci95": [
+                0.203125,
+                0.453125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.046875,
+              "question_ci95": [
+                -0.0625,
+                0.15625
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_S_in_P_receiver_necessity": {
+          "point": 0.1015625,
+          "question_ci95": [
+            0.03105468750000001,
+            0.17207031249999982
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.171875,
+              "question_ci95": [
+                0.0625,
+                0.28125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.03125,
+              "question_ci95": [
+                -0.0625,
+                0.140625
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_S_receiver_necessity": {
+          "point": 0.0859375,
+          "question_ci95": [
+            -0.0078125,
+            0.1796875
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.15625,
+              "question_ci95": [
+                0.015625,
+                0.28125
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.015625,
+              "question_ci95": [
+                -0.125,
+                0.15625
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_routed_necessity": {
+          "point": 0.2421875,
+          "question_ci95": [
+            0.1484375,
+            0.3359375
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.46875,
+              "question_ci95": [
+                0.327734375,
+                0.609375
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.015625,
+              "question_ci95": [
+                -0.09375,
+                0.125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_R_in_P_receiver_necessity": {
+          "point": 0.2109375,
+          "question_ci95": [
+            0.11699218750000001,
+            0.3046875
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.46875,
+              "question_ci95": [
+                0.3125,
+                0.6097656249999996
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": -0.046875,
+              "question_ci95": [
+                -0.171875,
+                0.078125
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_R_receiver_necessity": {
+          "point": 0.03125,
+          "question_ci95": [
+            -0.07050781249999999,
+            0.140625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.0,
+              "question_ci95": [
+                -0.171875,
+                0.15625
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0625,
+              "question_ci95": [
+                -0.0625,
+                0.1875
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        }
+      }
+    },
+    "choice_CE": {
+      "P": {
+        "native_full_quality": {
+          "point": 4.329845125980285,
+          "question_ci95": [
+            3.204977176286837,
+            5.592712937918438
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 4.934075210703905,
+              "question_ci95": [
+                2.984956957642177,
+                7.273399347351324
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.725615041256665,
+              "question_ci95": [
+                2.724290917002353,
+                4.918980395806462
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "S_only_graft_full_quality": {
+          "point": 4.329845125980285,
+          "question_ci95": [
+            3.204977176286837,
+            5.592712937918438
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 4.934075210703905,
+              "question_ci95": [
+                2.984956957642177,
+                7.273399347351324
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.725615041256665,
+              "question_ci95": [
+                2.724290917002353,
+                4.918980395806462
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "R_only_graft_full_quality": {
+          "point": 4.329845125980285,
+          "question_ci95": [
+            3.204977176286837,
+            5.592712937918438
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 4.934075210703905,
+              "question_ci95": [
+                2.984956957642177,
+                7.273399347351324
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.725615041256665,
+              "question_ci95": [
+                2.724290917002353,
+                4.918980395806462
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_shared_necessity": {
+          "point": 1.730592744654706,
+          "question_ci95": [
+            1.0813956567847423,
+            2.520137473490019
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.532297654869556,
+              "question_ci95": [
+                1.319843279464998,
+                4.006379271468944
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.9288878344398561,
+              "question_ci95": [
+                0.4415416380567583,
+                1.4952547886482652
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_S_in_P_receiver_necessity": {
+          "point": 1.730592744654706,
+          "question_ci95": [
+            1.0813956567847423,
+            2.520137473490019
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.532297654869556,
+              "question_ci95": [
+                1.319843279464998,
+                4.006379271468944
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.9288878344398561,
+              "question_ci95": [
+                0.4415416380567583,
+                1.4952547886482652
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_S_receiver_necessity": {
+          "point": 0.0,
+          "question_ci95": [
+            0.0,
+            0.0
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_routed_necessity": {
+          "point": 15.267842649331202,
+          "question_ci95": [
+            11.158511865428329,
+            19.958570564408
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 26.45703197597446,
+              "question_ci95": [
+                19.054595678211214,
+                35.340967686156624
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 4.078653322687945,
+              "question_ci95": [
+                1.4667811012639698,
+                7.462859920506535
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_R_in_P_receiver_necessity": {
+          "point": 15.267842649331202,
+          "question_ci95": [
+            11.158511865428329,
+            19.958570564408
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 26.45703197597446,
+              "question_ci95": [
+                19.054595678211214,
+                35.340967686156624
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 4.078653322687945,
+              "question_ci95": [
+                1.4667811012639698,
+                7.462859920506535
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_R_receiver_necessity": {
+          "point": 0.0,
+          "question_ci95": [
+            0.0,
+            0.0
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        }
+      },
+      "A": {
+        "native_full_quality": {
+          "point": 3.918160386437476,
+          "question_ci95": [
+            2.942045527718978,
+            5.04033422010626
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 4.458153132035568,
+              "question_ci95": [
+                2.6917474988811314,
+                6.534716597931465
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.3781676408393846,
+              "question_ci95": [
+                2.5444868907515854,
+                4.29726991150176
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "S_only_graft_full_quality": {
+          "point": 4.3864650216655345,
+          "question_ci95": [
+            3.2555063773096387,
+            5.718034156361106
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 5.091083650840796,
+              "question_ci95": [
+                3.1144585698301337,
+                7.446430150239976
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.6818463924902733,
+              "question_ci95": [
+                2.7121599293705567,
+                4.882201800585012
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "R_only_graft_full_quality": {
+          "point": 4.130077402030944,
+          "question_ci95": [
+            3.1139390158524485,
+            5.298602826795692
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 4.808583320870078,
+              "question_ci95": [
+                2.942489459853009,
+                6.932300651569836
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.45157148319181,
+              "question_ci95": [
+                2.601083222188887,
+                4.373652214733182
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_shared_necessity": {
+          "point": 2.5425313772964033,
+          "question_ci95": [
+            1.5645203688751483,
+            3.7277912915238045
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 3.500304255653761,
+              "question_ci95": [
+                1.6270714920194684,
+                5.827728119793576
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 1.5847584989390455,
+              "question_ci95": [
+                0.9995404465334529,
+                2.267004890371259
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_S_in_P_receiver_necessity": {
+          "point": 1.6739728489694563,
+          "question_ci95": [
+            1.0422422901118578,
+            2.4433041738740586
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.375289214732665,
+              "question_ci95": [
+                1.2156543367975805,
+                3.793565707833049
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.9726564832062476,
+              "question_ci95": [
+                0.5313318839199184,
+                1.5225649274500952
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_S_receiver_necessity": {
+          "point": 0.868558528326947,
+          "question_ci95": [
+            0.329582899172022,
+            1.5311753084779245
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 1.1250150409210962,
+              "question_ci95": [
+                0.10816719385034607,
+                2.4190063875972663
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.612102015732798,
+              "question_ci95": [
+                0.2077659233263368,
+                1.0389505210536105
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_routed_necessity": {
+          "point": 14.758280263030773,
+          "question_ci95": [
+            10.651802419035874,
+            19.594573598596615
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 22.834100025184277,
+              "question_ci95": [
+                16.28220726691935,
+                30.57418372000582
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 6.682460500877268,
+              "question_ci95": [
+                2.5579463005869885,
+                12.210455271225849
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_R_in_P_receiver_necessity": {
+          "point": 15.467610373280543,
+          "question_ci95": [
+            11.343910503749726,
+            20.336483000363625
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 26.582523865808284,
+              "question_ci95": [
+                19.078963848122232,
+                35.44394360619395
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 4.3526968807528,
+              "question_ci95": [
+                1.565595956912788,
+                8.031130596402653
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_R_receiver_necessity": {
+          "point": -0.7093301102497716,
+          "question_ci95": [
+            -2.216229685255651,
+            0.7946683985435244
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -3.74842384062401,
+              "question_ci95": [
+                -6.277054855939246,
+                -1.382246073517856
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.3297636201244667,
+              "question_ci95": [
+                0.8341657805093068,
+                4.215755676875543
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        }
+      },
+      "B": {
+        "native_full_quality": {
+          "point": 4.026039129768101,
+          "question_ci95": [
+            3.00335686792005,
+            5.137160956035298
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 4.549210298801713,
+              "question_ci95": [
+                2.808378018114736,
+                6.660088831731151
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.5028679607344895,
+              "question_ci95": [
+                2.5633094461302477,
+                4.530687948162777
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "S_only_graft_full_quality": {
+          "point": 4.201334211795807,
+          "question_ci95": [
+            3.093773349571787,
+            5.478392303182905
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 4.968711584074994,
+              "question_ci95": [
+                3.035337744173757,
+                7.413464187675866
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.43395683951662,
+              "question_ci95": [
+                2.5357823557716115,
+                4.487713977425258
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "R_only_graft_full_quality": {
+          "point": 4.712621028442778,
+          "question_ci95": [
+            3.521646264434638,
+            6.083081462343666
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 5.465043729504904,
+              "question_ci95": [
+                3.3211759738213296,
+                7.971107314336972
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.960198327380653,
+              "question_ci95": [
+                2.9587632968159636,
+                5.110068331508559
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_shared_necessity": {
+          "point": 6.290927531516699,
+          "question_ci95": [
+            4.452511837312873,
+            8.437812377239323
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 10.559928200359753,
+              "question_ci95": [
+                7.213375193594756,
+                14.600423369637003
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.0219268626736455,
+              "question_ci95": [
+                1.1645392856109191,
+                3.0402732502964303
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_S_in_P_receiver_necessity": {
+          "point": 1.8591036588391845,
+          "question_ci95": [
+            1.2000623762381222,
+            2.6299602518219256
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.4976612814984676,
+              "question_ci95": [
+                1.2749453452918846,
+                3.8900345330274244
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 1.2205460361799014,
+              "question_ci95": [
+                0.6776604079272162,
+                1.8396252551350685
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_S_receiver_necessity": {
+          "point": 4.4318238726775165,
+          "question_ci95": [
+            3.033585089222581,
+            5.98859011413289
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 8.062266918861289,
+              "question_ci95": [
+                5.384527528978774,
+                11.115991237428304
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.8013808264937442,
+              "question_ci95": [
+                0.08035618017063793,
+                1.6263512181469464
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_routed_necessity": {
+          "point": 8.207311782800005,
+          "question_ci95": [
+            6.059233996548491,
+            10.60366636405992
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 13.932072198530612,
+              "question_ci95": [
+                10.108086648093396,
+                18.27292477179851
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.4825513670693966,
+              "question_ci95": [
+                1.1039227271257306,
+                4.251092239340856
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_R_in_P_receiver_necessity": {
+          "point": 14.88506674686871,
+          "question_ci95": [
+            10.851910864423846,
+            19.624062115615892
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 25.92606345717346,
+              "question_ci95": [
+                18.833273125208056,
+                34.5061454350445
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.8440700365639575,
+              "question_ci95": [
+                1.143024073484393,
+                7.379173553830043
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_R_receiver_necessity": {
+          "point": -6.677754964068705,
+          "question_ci95": [
+            -9.990566582734173,
+            -4.157168469698
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -11.993991258642849,
+              "question_ci95": [
+                -17.792773674069746,
+                -7.270533035708305
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": -1.3615186694945614,
+              "question_ci95": [
+                -3.2213610451241776,
+                0.10838131582922772
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        }
+      }
+    },
+    "true_answer_token_NLL": {
+      "P": {
+        "native_full_quality": {
+          "point": 2.0667825381259046,
+          "question_ci95": [
+            1.8438022207003835,
+            2.3155547078111356
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.0223119157873937,
+              "question_ci95": [
+                1.6375586476742343,
+                2.4690368973496204
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.1112531604644156,
+              "question_ci95": [
+                1.8858093704858074,
+                2.35624200748246
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "S_only_graft_full_quality": {
+          "point": 2.0667825381259046,
+          "question_ci95": [
+            1.8438022207003835,
+            2.3155547078111356
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.0223119157873937,
+              "question_ci95": [
+                1.6375586476742343,
+                2.4690368973496204
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.1112531604644156,
+              "question_ci95": [
+                1.8858093704858074,
+                2.35624200748246
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "R_only_graft_full_quality": {
+          "point": 2.0667825381259046,
+          "question_ci95": [
+            1.8438022207003835,
+            2.3155547078111356
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.0223119157873937,
+              "question_ci95": [
+                1.6375586476742343,
+                2.4690368973496204
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.1112531604644156,
+              "question_ci95": [
+                1.8858093704858074,
+                2.35624200748246
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_shared_necessity": {
+          "point": 0.5692106548495386,
+          "question_ci95": [
+            0.47695783875133574,
+            0.6753285594918808
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.7259240566119134,
+              "question_ci95": [
+                0.5927286098633947,
+                0.8710694025889445
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.4124972530871638,
+              "question_ci95": [
+                0.2667422168844768,
+                0.563708100223184
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_S_in_P_receiver_necessity": {
+          "point": 0.5692106548495386,
+          "question_ci95": [
+            0.47695783875133574,
+            0.6753285594918808
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.7259240566119134,
+              "question_ci95": [
+                0.5927286098633947,
+                0.8710694025889445
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.4124972530871638,
+              "question_ci95": [
+                0.2667422168844768,
+                0.563708100223184
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_S_receiver_necessity": {
+          "point": 0.0,
+          "question_ci95": [
+            0.0,
+            0.0
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_routed_necessity": {
+          "point": 6.053208462890774,
+          "question_ci95": [
+            5.667161120110502,
+            6.427489163393425
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 8.953348729943748,
+              "question_ci95": [
+                8.272543658420387,
+                9.613549503402941
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.1530681958378,
+              "question_ci95": [
+                2.7839567930666664,
+                3.5511952838079925
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_R_in_P_receiver_necessity": {
+          "point": 6.053208462890774,
+          "question_ci95": [
+            5.667161120110502,
+            6.427489163393425
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 8.953348729943748,
+              "question_ci95": [
+                8.272543658420387,
+                9.613549503402941
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.1530681958378,
+              "question_ci95": [
+                2.7839567930666664,
+                3.5511952838079925
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_R_receiver_necessity": {
+          "point": 0.0,
+          "question_ci95": [
+            0.0,
+            0.0
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.0,
+              "question_ci95": [
+                0.0,
+                0.0
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        }
+      },
+      "A": {
+        "native_full_quality": {
+          "point": 1.9877384666580427,
+          "question_ci95": [
+            1.7704490604049792,
+            2.2265737841009345
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 1.9244033293990208,
+              "question_ci95": [
+                1.5660853699405681,
+                2.3252960897609487
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.0510736039170645,
+              "question_ci95": [
+                1.8151111824225858,
+                2.2976720579726315
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "S_only_graft_full_quality": {
+          "point": 2.132072279738776,
+          "question_ci95": [
+            1.8932260311384514,
+            2.3892208599492455
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.0919078367048654,
+              "question_ci95": [
+                1.6915863847903019,
+                2.526764855831297
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.1722367227726864,
+              "question_ci95": [
+                1.9526504698843203,
+                2.4160669513797526
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "R_only_graft_full_quality": {
+          "point": 2.0523415310310282,
+          "question_ci95": [
+            1.8270130509148994,
+            2.292653347395708
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.012971824029577,
+              "question_ci95": [
+                1.6433948922883852,
+                2.434641507172749
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.091711238032479,
+              "question_ci95": [
+                1.8608105934165735,
+                2.331513368320919
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_shared_necessity": {
+          "point": 1.0302331629496861,
+          "question_ci95": [
+            0.8740236444510515,
+            1.2201679824642715
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 1.0544850676580986,
+              "question_ci95": [
+                0.8557289796168825,
+                1.2990128532475882
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 1.0059812582412737,
+              "question_ci95": [
+                0.7512186814274893,
+                1.3161782413915217
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_S_in_P_receiver_necessity": {
+          "point": 0.5039209132366673,
+          "question_ci95": [
+            0.4126394210867735,
+            0.6050764550230336
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.6563281356944417,
+              "question_ci95": [
+                0.5209291844738655,
+                0.8052115997221427
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.35151369077889305,
+              "question_ci95": [
+                0.2049598071201482,
+                0.5003765216993757
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_S_receiver_necessity": {
+          "point": 0.5263122497130188,
+          "question_ci95": [
+            0.4022544033553663,
+            0.6760486924722979
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.3981569319636571,
+              "question_ci95": [
+                0.25912032224002807,
+                0.5627399579867938
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.6544675674623807,
+              "question_ci95": [
+                0.448719300775836,
+                0.9058539483429913
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_routed_necessity": {
+          "point": 6.629444517248659,
+          "question_ci95": [
+            6.2621522439747865,
+            7.031107841781939
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 7.961055645620177,
+              "question_ci95": [
+                7.274855916463806,
+                8.665933268917481
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 5.297833388877143,
+              "question_ci95": [
+                4.87255011076793,
+                5.77580778323704
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_R_in_P_receiver_necessity": {
+          "point": 6.067649469985652,
+          "question_ci95": [
+            5.689017898130331,
+            6.450530150604676
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 8.962688821701565,
+              "question_ci95": [
+                8.291554755581423,
+                9.617419686879442
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.172610118269737,
+              "question_ci95": [
+                2.8080357535685208,
+                3.5753511267890103
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_R_receiver_necessity": {
+          "point": 0.5617950472630089,
+          "question_ci95": [
+            0.38320133389102046,
+            0.753062061434732
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -1.0016331760813881,
+              "question_ci95": [
+                -1.2627800800688715,
+                -0.712512163235655
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.125223270607406,
+              "question_ci95": [
+                1.8888116916659408,
+                2.3682194344114764
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        }
+      },
+      "B": {
+        "native_full_quality": {
+          "point": 2.007793608436504,
+          "question_ci95": [
+            1.7689517388322606,
+            2.2801225816474617
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 1.9956542747188148,
+              "question_ci95": [
+                1.586397444297532,
+                2.4848385133913444
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.0199329421541927,
+              "question_ci95": [
+                1.801730607173032,
+                2.252784597125607
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "S_only_graft_full_quality": {
+          "point": 2.173909307199003,
+          "question_ci95": [
+            1.9431967716604197,
+            2.452347714665201
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.114177472315497,
+              "question_ci95": [
+                1.690716502118236,
+                2.6080869144706664
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.2336411420825097,
+              "question_ci95": [
+                2.008791641199698,
+                2.472359533918255
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "R_only_graft_full_quality": {
+          "point": 2.146961944083718,
+          "question_ci95": [
+            1.9247860987396763,
+            2.4154045188810715
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.1509161724812884,
+              "question_ci95": [
+                1.7715315027222214,
+                2.635174439660731
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 2.143007715686147,
+              "question_ci95": [
+                1.8936030566336746,
+                2.420710520274891
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_shared_necessity": {
+          "point": 2.1758283678150634,
+          "question_ci95": [
+            1.9203352928435595,
+            2.433713495248844
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 3.116352168491998,
+              "question_ci95": [
+                2.7342772792370984,
+                3.5039999888709996
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 1.2353045671381284,
+              "question_ci95": [
+                0.8953520402583791,
+                1.589475834506251
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_S_in_P_receiver_necessity": {
+          "point": 0.4620838857764399,
+          "question_ci95": [
+            0.3537913940394532,
+            0.5734657334649084
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 0.6340585000838103,
+              "question_ci95": [
+                0.4804374875618513,
+                0.7981912456655116
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.2901092714690695,
+              "question_ci95": [
+                0.12386735868647529,
+                0.4655006329876799
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_S_receiver_necessity": {
+          "point": 1.7137444820386234,
+          "question_ci95": [
+            1.4897872546824629,
+            1.9719333143154576
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 2.482293668408188,
+              "question_ci95": [
+                2.1441097084827967,
+                2.8351110746410417
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 0.9451952956690588,
+              "question_ci95": [
+                0.6313157029710605,
+                1.2805514704136662
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_routed_necessity": {
+          "point": 2.94465834311967,
+          "question_ci95": [
+            2.653322749332389,
+            3.2570993354840394
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 4.169205484704188,
+              "question_ci95": [
+                3.6268702312369006,
+                4.6715839802873536
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 1.7201112015351527,
+              "question_ci95": [
+                1.4584086588734337,
+                2.007466054659585
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "same_R_in_P_receiver_necessity": {
+          "point": 5.973029056932962,
+          "question_ci95": [
+            5.601960256329808,
+            6.339338334954106
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": 8.824744473249854,
+              "question_ci95": [
+                8.150053990613971,
+                9.461897732370247
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": 3.121313640616069,
+              "question_ci95": [
+                2.7509841583353305,
+                3.5358341240703073
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        },
+        "native_minus_same_R_receiver_necessity": {
+          "point": -3.0283707138132914,
+          "question_ci95": [
+            -3.240188375937846,
+            -2.7851244733853084
+          ],
+          "per_subject": {
+            "high_school_biology": {
+              "point": -4.655538988545667,
+              "question_ci95": [
+                -4.998244643138762,
+                -4.281810558525455
+              ],
+              "n": 64
+            },
+            "high_school_mathematics": {
+              "point": -1.4012024390809161,
+              "question_ci95": [
+                -1.7219739629671846,
+                -1.1247371093910838
+              ],
+              "n": 64
+            }
+          },
+          "bootstrap_seed": 159001,
+          "bootstrap_replicates": 1000,
+          "unit": "paired questions within fixed subjects; not model-seed or subject-population CI"
+        }
+      }
+    }
+  },
+  "same_correct_decision_counts": {
+    "P": {
+      "native_full": {
+        "total": 33,
+        "per_subject": [
+          30,
+          3
+        ]
+      },
+      "S_only_graft_full": {
+        "total": 33,
+        "per_subject": [
+          30,
+          3
+        ]
+      },
+      "native_without_S": {
+        "total": 28,
+        "per_subject": [
+          25,
+          3
+        ]
+      },
+      "same_S_graft_without_S_inherited_P": {
+        "total": 28,
+        "per_subject": [
+          25,
+          3
+        ]
+      },
+      "R_only_graft_full": {
+        "total": 33,
+        "per_subject": [
+          30,
+          3
+        ]
+      },
+      "native_without_R": {
+        "total": 11,
+        "per_subject": [
+          11,
+          0
+        ]
+      },
+      "same_R_graft_without_R_inherited_P": {
+        "total": 11,
+        "per_subject": [
+          11,
+          0
+        ]
+      }
+    },
+    "A": {
+      "native_full": {
+        "total": 33,
+        "per_subject": [
+          30,
+          3
+        ]
+      },
+      "S_only_graft_full": {
+        "total": 33,
+        "per_subject": [
+          30,
+          3
+        ]
+      },
+      "native_without_S": {
+        "total": 27,
+        "per_subject": [
+          25,
+          2
+        ]
+      },
+      "same_S_graft_without_S_inherited_P": {
+        "total": 28,
+        "per_subject": [
+          25,
+          3
+        ]
+      },
+      "R_only_graft_full": {
+        "total": 33,
+        "per_subject": [
+          30,
+          3
+        ]
+      },
+      "native_without_R": {
+        "total": 14,
+        "per_subject": [
+          13,
+          1
+        ]
+      },
+      "same_R_graft_without_R_inherited_P": {
+        "total": 11,
+        "per_subject": [
+          11,
+          0
+        ]
+      }
+    },
+    "B": {
+      "native_full": {
+        "total": 33,
+        "per_subject": [
+          30,
+          3
+        ]
+      },
+      "S_only_graft_full": {
+        "total": 33,
+        "per_subject": [
+          30,
+          3
+        ]
+      },
+      "native_without_S": {
+        "total": 16,
+        "per_subject": [
+          15,
+          1
+        ]
+      },
+      "same_S_graft_without_S_inherited_P": {
+        "total": 28,
+        "per_subject": [
+          25,
+          3
+        ]
+      },
+      "R_only_graft_full": {
+        "total": 33,
+        "per_subject": [
+          30,
+          3
+        ]
+      },
+      "native_without_R": {
+        "total": 15,
+        "per_subject": [
+          14,
+          1
+        ]
+      },
+      "same_R_graft_without_R_inherited_P": {
+        "total": 11,
+        "per_subject": [
+          11,
+          0
+        ]
+      }
+    }
+  }
+}
