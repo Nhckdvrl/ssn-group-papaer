@@ -30,6 +30,8 @@
 
 **C14归一化竞争解释更新（E152，仍L1）：** 固定旧5套mask，保留full127分母后自身prefix裁剪ΔNLL A/B=.965038/.348459，B−A=−.616580 [−.761489,−.450344]，KL差−.607907；B自身prefix仍比random低.697330 [.486551,.948480]。削弱“预算优势仅是池内重新归一化造成”的解释，但全网H/后续路由可响应幅度改变，仍不识别独立语义内容。全部pool逐token NLL精确复现E150/E151，参数/buffer只读、CPU点误差0；[卡](moe/experiments/E152-native-budget-normalizer-counterfactual.md)、`moe/results/e152/{summary,manifest,raw_verification}.json`。同模型/输入，不计独立训练重复或L3校对，不改变旧主张等级。
 
+**C14任务证据实质增强（E153）：** 独立MMLU生物/数学各64题，同selectorA/B32下B−A raw正确率+9.38 [1.54,17.21]/+10.94 [3.91,18.75]个百分点。平均B功能包来源使正确率变化改善11.72/9.77个百分点，choice CE裁剪代价降低3.744/1.989；平均B gate来源反使该CE代价增加.452/.466。B功能包与A gate的低KL伴随较差full质量，完整CE来源配对交互为−.6753 [−1.0379,−.3503]。因此预算性质已进入真实任务，且完整质量和预算稳定性的来源作用可部分分离。证据[卡](moe/experiments/E153-mmlu-domain-source-transfer.md)、`moe/results/e153/{summary,source_effects,manifest,raw_verification}.json`；数学raw基线较弱，分科与两评分口径全部保留。等级暂沿原L1；实际支持与开放问题在MoE入口明确区分，不把等级当贡献上限。
+
 - **2026-10-25纠正完成：** POS held964/48词形的正确样本标签置换，16层残差CI>0、p≤.002；L9 δ_D=.20594 [.18131,.22787]。保留组织存在的局部证据，不恢复旧错误p值；L0比例.097未达原20%尺度。无跨seed升级。
 - **2026-10-26解释撤回：** E130 order1不是纯次序干预，source/window RNG还造成曝光多重集合TV=.4041%。撤回此前汇报中的“只改纯次序”因果措辞，保留数据流RNG对照与全部结果；未有相应C##被升级。E131已用严格同batch集合和共同后缀隔离该问题，形成限定C08=L1。C06不变。
 

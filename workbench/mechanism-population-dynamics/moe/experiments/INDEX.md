@@ -46,7 +46,7 @@
 | [E150](E150-native-mature-routing-protocol-cross.md) | DONE；C14/P32 | 完整MoE互换平均+.127787 NLL；B native裁剪代价低.738449，B router单独不转移此收益，D/R/S参与 | [summary](../results/e150/summary.json) |
 | [E151](E151-native-pruning-selectivity-necessity.md) | DONE；限定C14/P32 | R-zero代价6.096/2.770，S-zero1.097/2.972；B random预算损伤.910，prefix仍优于random.433 | [summary](../results/e151/summary.json) |
 | [E152](E152-native-budget-normalizer-counterfactual.md) | DONE；限定C14/P32 | full分母下自身prefix B−A损伤−.616580，B的prefix仍优于random.697330；削弱纯归一化解释 | [summary](../results/e152/summary.json) |
-| [E153](E153-mmlu-domain-source-transfer.md) | CPU通过；C14/P32 | 独立MMLU生物/数学，逐层greedy、RC计分，G×功能包四格；128测试题结果待读取 | [data plan](../results/e153/data_plan.json) |
+| [E153](E153-mmlu-domain-source-transfer.md) | DONE；C14/P32 | 同32槽mask下B比A任务正确率高9.38/10.94个百分点；低裁剪敏感性随功能包保留，完整质量仍依赖gate配套 | [summary](../results/e153/summary.json) |
 | [E154](E154-native-parent-formation-boundary.md) | PLANNED、CPU通过；C14/P32 | 公开成熟父状态9条件，区分已有性质的保留/丢失与退火区间变化；权重获取中，无新模型读数 | [plan](../results/e154/plan.json) |
 
 E144–E147无新训练；全量来源、donor、分区均保留。新C10–C12仅L1，旧C06–C09数字与等级不变；范围与当前解释见[README](../README.md)。本轮发现并在held之前修复CUDA库导入后的可见卡缓存问题，全部预检与成本保留。E147在E146结果之后、运行前新登记，没有倒写E146预设对照。

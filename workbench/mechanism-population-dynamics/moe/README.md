@@ -1,6 +1,6 @@
 # MoE：任务、学习历史与专家职责的可组合性
 
-**状态（2026-10-27，持续执行）：** E144–E152完成；E152削弱了预算优势仅由池内归一化造成的解释。E153数学/生物MMLU RC独立任务验证正在GPU1逐层校准，尚无测试结果。继续C14/P32，零新训练；探索并发上限8卡，头线仍CLOSED，其他ACTIVE分配不变。
+**状态（2026-10-27，持续执行）：** E144–E153完成。E153把预算优势推进到真实任务正确率，并显示稳定性与完整任务质量的来源作用可以分开。E154公开成熟父权重正在完整SHA核验，CPU实现与分析已冻结，P的GPU读数尚未开始。继续C14/P32，成熟资产阶段零新训练；探索并发上限8卡，头线仍CLOSED，其他ACTIVE分配不变。
 
 **持续维护约定（用户2026-10-26）：** 本页作为唯一简明研究说明。每批获得完整结果后，先更新“数字与区间→竞争解释→主张范围→下一项决定”，链接实验卡/源码/原始文件，保留阴性和技术失败记录；随后继续已授权的高信息量研究，不以一批实验结束或整理文档为停点。README≤200行，详细过程留在原卡、results与logs。
 
@@ -20,7 +20,9 @@
 
 **E152归一化反事实：** 固定旧5份mask，保留全部127个router logit的softmax分母后，自身prefix裁剪代价A/B=.965038/.348459，B−A=**−.616580 [−.761489,−.450344]**，KL差−.607907 [−.748924,−.445529]；B的prefix相对random仍省.697330 [.486551,.948480] NLL。优势并非仅靠池内门值放大。幅度规则有实质作用：随机mask在full分母下A/B损伤3.884179/1.045789，且A的两个prefix对改规则反应方向不同，不能把它当统一校正项。[完整22条件](results/e152/summary.json)、[图](results/e152/figures/fixed_mask_denominator_counterfactual.png)。
 
-**当前最有解释力的理解：** 组织约束改变了路由专家函数及其与始终激活计算的配套；功能分工包含全模型的预测依赖配置，而非只是一张gate图或命名的专家组。整体预测兼容性、一般删减鲁棒性和输入选择价值应分别测。现有证据支持这个正面研究对象，尚未识别唯一/最小语义单位或证明形成必要条件；E152削弱了纯归一化解释，仍未隔离语义内容和全网依赖配置。
+**E153将认识推进到任务计算：** 生物/数学各64题，在相同selectorA/selectorB预算下，B比A的raw正确率高**9.38 [1.54,17.21] / 10.94 [3.91,18.75]个百分点**；完整模型A/B为41.41%/39.06%。仅移B gate时没有携带同样的预测保持性质；B的D/R/S功能包配A gate时，首答案token裁剪KL仍低（.275/.252，A为1.389/.794），但完整正确率降至35.16%。低预算敏感性与完整任务质量由不同配套共同决定，这为研究职责组织提供了直接任务证据。[12条件与分学科](results/e153/summary.json)、[来源效应](results/e153/source_effects.json)、[图](results/e153/figures/task_source_transfer.png)。数学raw基线较弱，主要正确率优势来自生物；两学科与raw/per-char口径均全报。
+
+**当前的正面科学判断：** 学到的分工包括专家函数、始终激活计算及其预测配套，训练历史会改变这套组织及其可重用边界。E144的拆来源、E150的成熟原生交叉和E153的独立任务已经共同提供实际预测证据；路由集中、选择价值、预算稳定性和完整能力质量则是相关而不同的性质。下一步要解释这些性质如何形成、哪些共同计算能够携带它们，而非停留在给某个裁剪指标找理由。唯一/最小语义单位和跨独立初始化的普遍规律仍是开放问题。
 
 ## 1. 母问题与当前窗口
 
@@ -41,6 +43,7 @@
 | [E150](experiments/E150-native-mature-routing-protocol-cross.md)：成熟协议终点16格×3预算 | 整MoE互换配对代价+.127787；native B裁剪代价较A低.738449，但B gate平均不携带这项收益 | 实际配套跨route/shared/dense；可重用边界和受限计算性质需直接测，不能由routing结构替代 |
 | [E151](experiments/E151-native-pruning-selectivity-necessity.md)：必要性与随机32槽 | R-zero代价6.096→2.770、shared-zero 1.097→2.972；B随机损伤.910仍高于自身prefix.477 | 依赖配置/一般鲁棒性变化与有用选择并存；削弱“只靠routing集中”与“R已消失”两个单一解释 |
 | [E152](experiments/E152-native-budget-normalizer-counterfactual.md)：固定mask改分母 | full分母下B−A自身prefix损伤−.616580，B选择收益.697330，两CI方向明确 | 优势不只依赖重归一化；规则效应随模型与mask而变，不能当统一尺度伪影扣除 |
+| [E153](experiments/E153-mmlu-domain-source-transfer.md)：独立任务G×功能包 | 同32槽mask下B比A正确率高9.38/10.94个百分点；B功能包保留低KL，但完整质量受gate配套影响 | 组织差异进入实际任务；预算稳定性与完整任务质量的性质来源可以部分分离 |
 
 E144为8个独立来源basis×3平移；E146/E147为4 basis×3平移，全部保留。均是同64完整序列/32768位置/22实际文件簇，旧held探索输入；文件/来源区间不代表训练seed总体。E145仅2个expert-init配对、一个共享起点与共同接收者，R/S共享同一个trained seed1。
 
@@ -59,7 +62,7 @@ E144–E147区分了真实配套、当前gate读数、历史兼容性和分组�
 
 成熟资产两终点已完整核验并缓存，共108.55GB公开FP32权重，原生127选7+1共享接口已实测。E152全部22条件完成；同层H上选择规则一致，整网H/后续路由可以因上游幅度变化而变。全部pool逐token NLL精确复现封存E150/E151，源参数/buffer只读，CPU点复核误差0；实际.486391 GPU·时、单卡81.857GB。旧结果不改，E143仍为备选。
 
-E153采用原任务RC逻辑：5-shot dev示例、validation全部61题逐层greedy选专家、test数学/生物各64题；cloze答案文本teacher forcing，报告raw/per-char accuracy、choice CE和首答案token真实KL。固定AAAA/ABAA/BABB/BBBB四格与两native task mask，不让hybrid重选。数据最长475token，无截断/下载，未读取新模型表现；不是作者全表或重划分的精确复现。
+E153采用原任务RC逻辑：5-shot dev示例、validation全部61题逐层greedy选专家、test数学/生物各64题；cloze答案文本teacher forcing，报告raw/per-char accuracy、choice CE和首答案token真实KL。固定AAAA/ABAA/BABB/BBBB四格与两native task mask，不让hybrid重选。全部12条件完成；源码/原生cal/因果前缀/候选重排/参数buffer只读通过，CPU268项点复核最大误差2.23e−16，实际1.092477 GPU·时。当前是固定两学科的任务证据。
 
 [E154](experiments/E154-native-parent-formation-boundary.md)在E153测试结果前登记：重用公开成熟preanneal父状态，比较同9条件的依赖与预算性质，区分B新变化/A丢失旧性质/两者均变化。父code/config/tokenizer与CPU原生/置零检查已通过，A/B旧raw重构误差0；新增54.28GB公开权重取回中，未执行P的GPU/cal/held，不默认自训。公开谱系声明与严格batch/optimizer链仍分开。
 

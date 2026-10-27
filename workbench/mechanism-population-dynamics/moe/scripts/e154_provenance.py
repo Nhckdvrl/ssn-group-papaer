@@ -7,6 +7,7 @@ from safetensors import safe_open
 import e154_assets as a
 
 RESULT=a.RESULT
+WB=Path(__file__).resolve().parents[1]
 
 
 def sha(path):
@@ -16,7 +17,7 @@ def sha(path):
 
 def main():
     parent=json.loads((RESULT/"asset_manifest.json").read_text())
-    descendants=json.loads((a.WB/"results/e150/asset_manifest.json").read_text())
+    descendants=json.loads((WB/"results/e150/asset_manifest.json").read_text())
     assert parent["status"]==descendants["status"]=="complete"
     records={"P":parent["model"],"A":descendants["models"]["StdMoE_1b14b_1T"],
              "B":descendants["models"]["StdMoE_1b14b_1T_EmoAnnealed"]}
@@ -42,7 +43,7 @@ def main():
         out[name]=row
     result={"experiment":"E154","status":"complete","sampled_layers":[0,8,15],"sampled_parameters":len(names),
             "source_sha256":sha(__file__),"parent_asset_manifest_sha256":sha(RESULT/"asset_manifest.json"),
-            "descendant_asset_manifest_sha256":sha(a.WB/"results/e150/asset_manifest.json"),"comparisons":out,
+            "descendant_asset_manifest_sha256":sha(WB/"results/e150/asset_manifest.json"),"comparisons":out,
             "scope":"Sampled published-weight proximity only. Cannot prove exact common starting parameters, optimizer, batches or causal protocol isolation."}
     (RESULT/"weight_provenance.json").write_text(json.dumps(result,indent=2)+"\n")
     print(json.dumps({"status":"complete","sampled_parameters":len(names),

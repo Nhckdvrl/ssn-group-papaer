@@ -108,6 +108,26 @@ def main():
             check(f"B-A/{policy}/CE_penalty",delta[3]-delta[0],pair["choice_CE_penalty"])
             check(f"B-A/{policy}/drop",drop[3]-drop[0],pair["accuracy_drop"])
             check(f"Gxbody/{policy}/CE_penalty",delta[3]-delta[2]-delta[1]+delta[0],interaction["choice_CE_penalty"])
+    supplementary=ROOT/"source_effects.json"
+    if supplementary.exists():
+        extra=read(supplementary)
+        assert extra["raw_sha256"]==manifest["raw"]["sha256"]
+        operators={"G_B_minus_G_A_in_A_body":np.array([-1,1,0,0]),
+                   "G_B_minus_G_A_in_B_body":np.array([0,0,-1,1]),
+                   "body_B_minus_body_A_with_A_gate":np.array([-1,0,1,0]),
+                   "body_B_minus_body_A_with_B_gate":np.array([0,-1,0,1]),
+                   "average_gate_source":np.array([-1,1,-1,1])/2,
+                   "average_body_source":np.array([-1,-1,1,1])/2}
+        values={k:v for k,v in metrics.items() if k!="correct_margin"}
+        values["first_answer_token_KL"]=kl
+        for p,policy in enumerate(a["policies"]):
+            for label,w in operators.items():
+                record=extra["policies"][str(policy)][label]
+                for field,v in values.items():
+                    if not (p==0 and field=="first_answer_token_KL"):
+                        check(f"source/{policy}/{label}/{field}",sum(w[i]*v[i,p] for i in range(4)),record[field])
+                    if p and field!="first_answer_token_KL":
+                        check(f"source/{policy}/{label}/{field}/change",sum(w[i]*(v[i,p]-v[i,0]) for i in range(4)),record[field+"_change_from_same_full"])
     assert max(errors.values())<1e-11,errors
     ledger=read(ROOT/"budget.json")
     assert all(x["status"]=="complete" for x in ledger["attempts"])
