@@ -1,5 +1,5 @@
 # 两篇近期压缩工作与本轮科学问题（2026-10-27）
- 
+
 证据范围：[Training-Free Halving](https://arxiv.org/html/2609.04575v1) §3、6–7；[OptEP](https://arxiv.org/html/2610.27123v1) §1–3。只读下列部分，未复现结果或核对评审；不是新颖性裁决。
 
 ## Training-Free Halving（2026-09-04，预印本）
