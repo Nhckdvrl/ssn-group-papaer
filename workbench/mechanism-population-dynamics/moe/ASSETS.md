@@ -127,4 +127,8 @@ E151已完整完成，仍复用同两native权重/输入：`~/mechpop_cache/e151
 
 E151复算：`~/.venvs/mechpop/bin/python moe/scripts/e151_native.py analyze --physical-gpu 0`，再`e151_verify_results.py`与`e151_plot.py`。原模型重新执行须另计资源；所有phase budget已结清，不能把已有raw恢复算成新实验或独立复现。
 
+E152全部22条件完成，仍复用同两权重、输入和旧5套mask。耐久`~/mechpop_cache/e152_native_normalizer_counterfactual/{metrics,masks}.npz`共8,367,550 B；raw 8,272,343 B，SHA `75e4315b05a867d45d298c9c835a6b2aa7cbca4432249b8e766e6685fcf41b8b`。`.486391099 GPU·时`单卡81.857GB，零训练；`e152_normalizer.py analyze --physical-gpu 0`、`e152_verify_results.py`与`e152_plot.py`只从raw复算。所有pool逐token NLL重现E150/E151，不能计新模型重复。
+
+[E152封存](results/e152/artifact_seal.json)绑定精确结果提交`b9d1a4f6`，源driver `0f77a1b3`、原生核心`9cd5ba33`；耐久`run_metadata_b9d1a4f6.tar.gz` 40,446,111 B含该提交workbench源码/小型结果/历史资产指针，不含大权重。raw与mask、主要proof的size/SHA均重核；E153新任务数据/读数另行管理，不覆盖E152。
+
 [E151封存](results/e151/artifact_seal.json)绑定精确结果提交`e12e82e4`；耐久`run_metadata_e12e82e4.tar.gz` 593,915 B，两份raw/mask共4,327,515 B逐项SHA复核。其原生source与E150逐token NLL完全相同，作为新干预而非新模型重复；源码/数据/结果层次在封存中分开。
