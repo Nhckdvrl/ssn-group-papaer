@@ -9,3 +9,4 @@
 - 本次仅 CPU 读既有 raw、manifest、summary 与实现；没有运行模型或更改主实验、旧结果与主张等级。可复算脚本及完整结果在同目录。
 - POST-HOC 共同成功子集仅按 P/A/B native 全答对选定，共 44 题（生物 36、数学 8）；两科等权配对 bootstrap，seed 155101。shared-zero 正确率 B−P=−0.3681 [−0.5974,−0.0970]，B−A=−0.3403 [−0.5347,−0.1736]；routed-zero 对应 +0.0417 [−0.1458,0.2292]、+0.1389 [−0.1111,0.3682]。
 - 这是看完全矩阵后提出的条件分析，不是独立确认，不能替代全样本；native 全正确的条件排除了干预纠错。各条件的正确率、翻转率、分科计数及区间见 common_success_posthoc.json。
+- E155 依赖形态独立复算入口为 dependency_patterns_review.py，结果及作者表对照见 dependency_patterns_review.json；重跑报告 SHA256 不变。

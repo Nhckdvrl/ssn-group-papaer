@@ -1,0 +1,131 @@
+{
+  "date": "2026-10-27",
+  "scope": "只读资产、论文卡、配置和代码；未下载权重、未运行模型/GPU、未安装软件",
+  "cached_base": [
+    {
+      "revision": "main",
+      "current_public_revision_sha": "6d84c48581ece794365f2b8e9cfb043c68ade9c5",
+      "path": "/home/xiang/mechpop_cache/hf_olmoe/main",
+      "shards": [
+        {
+          "path": "/home/xiang/mechpop_cache/hf_olmoe/main/model-00001-of-00003.safetensors",
+          "bytes": 4997744872
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/hf_olmoe/main/model-00002-of-00003.safetensors",
+          "bytes": 4997235176
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/hf_olmoe/main/model-00003-of-00003.safetensors",
+          "bytes": 3843741912
+        }
+      ],
+      "shard_bytes": 13838721960,
+      "total_file_bytes": 13841130907,
+      "status": "index所有三个分片路径存在、大小已stat；本次未重hash",
+      "pin_caveat": "当前公开revision SHA，不是直接从本地目录读取的当时下载commit；已记录逐文件SHA的校验范围见 evidence"
+    },
+    {
+      "revision": "step600000-tokens2516B",
+      "current_public_revision_sha": "f30d62b55159a0c2bfb5623a3ed1190009604d99",
+      "path": "/home/xiang/mechpop_cache/hf_olmoe/step600000-tokens2516B",
+      "shards": [
+        {
+          "path": "/home/xiang/mechpop_cache/hf_olmoe/step600000-tokens2516B/model-00001-of-00003.safetensors",
+          "bytes": 4997744872
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/hf_olmoe/step600000-tokens2516B/model-00002-of-00003.safetensors",
+          "bytes": 4997235176
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/hf_olmoe/step600000-tokens2516B/model-00003-of-00003.safetensors",
+          "bytes": 3843741912
+        }
+      ],
+      "shard_bytes": 13838721960,
+      "total_file_bytes": 13841130908,
+      "status": "index所有三个分片路径存在、大小已stat；本次未重hash",
+      "pin_caveat": "当前公开revision SHA，不是直接从本地目录读取的当时下载commit；已记录逐文件SHA的校验范围见 evidence"
+    },
+    {
+      "revision": "step100000-tokens419B",
+      "current_public_revision_sha": "9774e8a4aaeff0b25dd2fa7548ee3d38df7c8600",
+      "path": "/home/xiang/mechpop_cache/hf_olmoe/step100000-tokens419B",
+      "shards": [
+        {
+          "path": "/home/xiang/mechpop_cache/hf_olmoe/step100000-tokens419B/model-00001-of-00003.safetensors",
+          "bytes": 4997744872
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/hf_olmoe/step100000-tokens419B/model-00002-of-00003.safetensors",
+          "bytes": 4997235176
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/hf_olmoe/step100000-tokens419B/model-00003-of-00003.safetensors",
+          "bytes": 3843741912
+        }
+      ],
+      "shard_bytes": 13838721960,
+      "total_file_bytes": 13841130908,
+      "status": "index所有三个分片路径存在、大小已stat；本次未重hash",
+      "pin_caveat": "当前公开revision SHA，不是直接从本地目录读取的当时下载commit；已记录逐文件SHA的校验范围见 evidence"
+    },
+    {
+      "revision": "step5000-tokens20B",
+      "current_public_revision_sha": "37c50a5f4d30fba036185f57168ee8df0003f2e0",
+      "path": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B",
+      "shards": [
+        {
+          "path": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B/model-00001-of-00003.safetensors",
+          "bytes": 4997744872
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B/model-00002-of-00003.safetensors",
+          "bytes": 4997235176
+        },
+        {
+          "path": "/home/xiang/mechpop_cache/hf_olmoe/step5000-tokens20B/model-00003-of-00003.safetensors",
+          "bytes": 3843741912
+        }
+      ],
+      "shard_bytes": 13838721960,
+      "total_file_bytes": 13841130908,
+      "status": "index所有三个分片路径存在、大小已stat；本次未重hash",
+      "pin_caveat": "当前公开revision SHA，不是直接从本地目录读取的当时下载commit；已记录逐文件SHA的校验范围见 evidence"
+    }
+  ],
+  "cache_search": "常规 /home/xiang/.cache/huggingface/hub 直接子目录中未找到名称含olmoe的模型；/home/xiang/mechpop_cache/hf_olmoe 仅发现上述四个base目录。该范围未找到Instruct权重，不宣称其他位置不存在。",
+  "existing_proof": {
+    "main": "moe/results/e144/asset_preflight.json 记录3个main权重SHA，和目前HF main 6d84c48581ece794365f2b8e9cfb043c68ade9c5的3个LFS oid逐项一致；本次未重新hash文件，旧proof为/tmp副本，workbench ASSETS记载原本NFS校验。",
+    "step5000": "moe/results/e148/model_assets.json登记原NFS路径、大小和SHA；本次未重hash。",
+    "other_steps": "step100000及step600000这次只核对index、文件存在及大小，未验证内容SHA对公开pin。"
+  },
+  "public_instruct": {
+    "repo": "allenai/OLMoE-1B-7B-0924-Instruct",
+    "current_main_commit": "7f1c97f440f06ce36705e4f2b843edb5925f4498",
+    "config_url": "https://huggingface.co/allenai/OLMoE-1B-7B-0924-Instruct/raw/main/config.json",
+    "locally_complete": "在上述两个限定缓存根未找到，不涉及其他缓存目录"
+  },
+  "lineage": {
+    "base": "官方base卡声明step1200000-tokens5033B为退火起点；main再退火100B tokens，23842 steps，约5.133T累计token；该main用于SFT与Instruct adaptation。",
+    "instruct": "官方Instruct卡声明base→SFT main→DPO main；非annealed等分支是其他变体，不混入当前main。",
+    "limits": "这是一手发布的训练谱系声明；未核实原始训练batch/optimizer/检查点之间byte级父子链，未验证本地Instruct权重。step600000名称为2516B，并非final。",
+    "sources": [
+      "https://huggingface.co/allenai/OLMoE-1B-7B-0924",
+      "https://huggingface.co/allenai/OLMoE-1B-7B-0924-Instruct"
+    ]
+  },
+  "native_interface": {
+    "config": "base与线上Instruct config均为OlmoeForCausalLM，16层、64 routed、top8、norm_topk_prob=false；base hidden 2048，expert intermediate 1024。",
+    "semantics": "现装Transformers OlmoeSparseMoeBlock先对全部专家softmax，选top8；false时不对top8重归一化；源码只有gate及64个experts，无always-on shared expert，与EMO的127选7+1不同。",
+    "source": "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/models/olmoe/modeling_olmoe.py:576–617；在线base config https://huggingface.co/allenai/OLMoE-1B-7B-0924/raw/main/config.json",
+    "compatibility": "既有ASSETS记录base main E134–E147和step5000 E148在mechpop torch2.8.0/transformers4.57.6环境使用；本次只读本机源码与记录，未运行。Instruct在线config同架构不等于其权重加载/任务接口已测试。"
+  },
+  "evaluation_formats": {
+    "base": "官方base卡示例将plain文本tokenize用于续写；评测表不等同每项任务共享一套prompt配置。",
+    "instruct": "官方示例对user消息使用Instruct tokenizer.apply_chat_template(add_generation_prompt=True)，包含user/assistant标识后生成；模型卡列出不同任务不同shot设置。",
+    "comparison": "原生格式能力比较与固定相同token IDs的因果比较需分开，模板/特殊token、BOS、生成前缀与答案score mask会改变输入及route；不能将各自默认模板差当纯权重差。本次未核验tokenizer逐文件相等或评测harness完整复现。"
+  },
+  "no_experiment_or_decision": "未启动新实验；本检查不改变研究线状态。"
+}

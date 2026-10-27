@@ -143,3 +143,5 @@ E152全部22条件完成，仍复用同两权重、输入和旧5套mask。耐久
 E155已完整完成：`~/mechpop_cache/e155_native_task_branch_necessity/scores_{P,A,B}.npz`分别15,965/15,929/15,803 B，SHA/原生fingerprint在`results/e155/manifest_{P,A,B}.json`。统计`e155_native.py analyze --physical-gpu 0`，再`e155_verify_results.py`、`e155_plot.py`；独立Terra报告与POST-HOC common-success分开存档。实际1.343426979 GPU·时，每卡54.685606GB峰值，预算均complete。
 
 [E154封存](results/e154/artifact_seal.json)绑定70b2ec6f源码/结果包，`run_metadata_70b2ec6f.tar.gz` 40,813,419 B，raw/mask/cal共36,227,755 B，SHA逐项复核。E156重用同三公开模型，CPU先BF16后同卡驻留，真实匹配所有native权重/buffer/输出身份才进入新条件。
+
+**2026-10-27资源复核（非新实验）：** 限定常规HF与`hf_olmoe`两缓存根，OLMoE 0924 base main/20B/419B/2516B均有完整3分片，未找到Instruct权重；64选8、无shared、`norm_topk_prob=false`。公开卡声明base→SFT→DPO谱系不等于已核验训练字节链，plain/chat评测格式也需区分。[只读核查](results/mature_olmoe_asset_check_2026-10-27.json)供未来有实质科学动机时复用，本轮没有另开模型实验。
