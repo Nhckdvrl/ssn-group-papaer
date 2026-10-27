@@ -1,4 +1,4 @@
-# EMO: Pretraining Mixture of Experts for Emergent Modularity（2026预印本，接收/评分未核对）`[阅读：正文§1–3、Appendix B.4、发布清单与代码]`
+# EMO: Pretraining Mixture of Experts for Emergent Modularity（2026预印本，接收/评分未核对）`[阅读：25页全文、所有附录、关键图表、发布清单与选择/评测代码]`
 
 来源：[论文](https://allenai.org/papers/emo)、[作者仓库](https://github.com/allenai/EMO)、[实际模型集合](https://huggingface.co/collections/allenai/emo)。
 
@@ -13,3 +13,5 @@
 9. **对我们：** 自模型内子集可用性与跨历史组件可重用性不同。E150将共享专家单列，检验源配套是否跨越始终激活计算；不是反驳作者未声称的跨模型可移植性。
 
 **E151后补读范围：** §3.2/4.1/A.2–3确认127+1、pool内重归一化、shared与变pool大小的已有证据。预算诊断与shared重要性本身不作为我们的新颖性主张；候选增量在跨公开历史的来源转移、依赖配置与真实预测配套，且当前仍只是语言窗口。
+
+**全文复核修正：** §6已有独立微调32槽子集、再放回128槽模型的初步收益；此前将其概括为只有静态自模型内选择过窄。这个结果把本题接到模块维护与重用的实质问题：我们用来源/阶段干预测需要共同保留什么，而非仅争论“组合”一词。其具体再整合参数接口和数值未由该段完整给出，本轮不代填。

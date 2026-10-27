@@ -1,0 +1,66 @@
+{
+  "status": "complete",
+  "source_sha256": {
+    "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
+    "e150_data.py": "58e3f24c0bd10199f75cb906788818539628f414e299ca3a875e4e6c30ff0f49",
+    "e150_restricted.py": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "StdMoE_1b14b_1T/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "StdMoE_1b14b_1T/modeling_emo.py": "e10fb25a662d581b25708c7b1d640ba22c7547824a1f4f00c1fc39f08801d32b",
+    "StdMoE_1b14b_1T/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "StdMoE_1b14b_1T_EmoAnnealed/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "StdMoE_1b14b_1T_EmoAnnealed/modeling_emo.py": "26f57354940655db673b35d47e9c6b1a85900068f41d91cb08afed4ec53219d6",
+    "StdMoE_1b14b_1T_EmoAnnealed/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "e151_native.py": "37aebf802a06ac8816f37777f7f991b8db071432f0ff69875d385c5aeddb783e",
+    "e154_native.py": "aca56b8c0da5cbb1dc420eaf8edcc8b0a8818e6214def6f8abb3cfd10664878d",
+    "e154_assets.py": "888a17da9798f2ae4edd2b30f797caa2c2b77d8a5b3bd3bbe045fe93447e779c",
+    "e150_prepare_assets.py": "02be428952536e3f7ed371e3812558fda701bcab14dfdd295641be7826dc6a7a",
+    "parent/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "parent/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "parent/modeling_emo.py": "26f57354940655db673b35d47e9c6b1a85900068f41d91cb08afed4ec53219d6",
+    "parent/tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+    "parent/tokenizer_config.json": "733b2ec0f743cf206dd20335eacbd4427c85487fd6f5216bb361f92a85314315"
+  },
+  "FP32_to_BF16_metrics_per_sequence": [
+    [
+      3.2360339164733887,
+      0.000665421539451927,
+      0.000668059685267508,
+      0.96875
+    ],
+    [
+      2.9486777782440186,
+      0.0003430302604101598,
+      0.00034243788104504347,
+      0.984375
+    ]
+  ],
+  "zero_L9_metrics_per_sequence": [
+    [
+      3.3206136226654053,
+      0.04383354261517525,
+      0.04397805407643318,
+      0.8359375
+    ],
+    [
+      2.9943082332611084,
+      0.027546023949980736,
+      0.030845949426293373,
+      0.8828125
+    ]
+  ],
+  "fields": [
+    "nll",
+    "ref_to_variant_kl",
+    "variant_to_ref_kl",
+    "ref_top1_agreement"
+  ],
+  "raw": {
+    "path": "/home/xiang/mechpop_cache/e154_native_parent_boundary/cal_native_bf16.npz",
+    "sha256": "ccfdb9fede069a5a4e12916bc842bc6fa481263ee2acf42fb9f19286ac094c1a"
+  },
+  "repeat_exact": true,
+  "full_slot_exact": true,
+  "keys_strict": true
+}

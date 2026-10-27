@@ -132,3 +132,10 @@ E152全部22条件完成，仍复用同两权重、输入和旧5套mask。耐久
 [E152封存](results/e152/artifact_seal.json)绑定精确结果提交`b9d1a4f6`，源driver `0f77a1b3`、原生核心`9cd5ba33`；耐久`run_metadata_b9d1a4f6.tar.gz` 40,446,111 B含该提交workbench源码/小型结果/历史资产指针，不含大权重。raw与mask、主要proof的size/SHA均重核；E153新任务数据/读数另行管理，不覆盖E152。
 
 [E151封存](results/e151/artifact_seal.json)绑定精确结果提交`e12e82e4`；耐久`run_metadata_e12e82e4.tar.gz` 593,915 B，两份raw/mask共4,327,515 B逐项SHA复核。其原生source与E150逐token NLL完全相同，作为新干预而非新模型重复；源码/数据/结果层次在封存中分开。
+
+## E153/E154完成资产（2026-10-27）
+
+- E153固定任务raw/题目/文本/cal控制/mask共463,517 B，耐久目录`~/mechpop_cache/e153_mmlu_source_transfer/`；scores 42,960 B，SHA `a63ec36d13625c9980cf62f269c774939036dde024cf80679d7acaaa05539ec7`。源码f98566c2、精确结果提交c16fc09f，`run_metadata_c16fc09f.tar.gz` 40,627,106 B；[封存](results/e153/artifact_seal.json)给全部SHA/路径。统计复算`e153_run.py analyze --physical-gpu 1`，再`e153_source_effects.py`、`e153_verify_results.py`与`e153_plot.py`。实际1.092476982 GPU·时，单卡81.857893GB。
+- 成熟父P `allenai/StdMoE_1b14b_1T_Preanneal` pin `d2a4949c9d4ad6cf47fbac131f7e020077332b21`，公开FP32权重54,275,336,216 B已取回原NFS HF缓存一份、11分片及小型文件逐项公开Git/LFS SHA核验；`results/e154/asset_manifest.json`。三个成熟模型权重总计162,826,008,648 B，无新训练。12个张量近邻仅为资产检查，不替代原始训练状态链。
+- E154新raw `~/mechpop_cache/e154_native_parent_boundary/metrics.npz` 3,315,828 B，SHA `f36eb7b39c7932336aadba97ee2a3e020b91c6fc7e3250c4c88096385bbe54f5`；同目录保留`inherited_masks.npz`、`cal_native_bf16.npz`。9条件全部完成，原生代码bea72824；`e154_analyze.py analyze`、`e154_verify_results.py`、`e154_plot.py`从raw复算。实际.329929935 GPU·时、54.821924GB峰值；A/B只继承旧raw，不算重复实验。
+- 四篇完整一手PDF/文本/阅读记录在`~/mechpop_cache/moe_primary_reading_20261027/`，EMO25页、MirrorMoE20页、Training-Free Halving9页、OptEP23页；仅small manifest/论文卡/比较入Git，全文PDF留缓存。

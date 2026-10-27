@@ -1,0 +1,99 @@
+{
+  "claim": "C14",
+  "decision": "L1 -> L2 for the explicitly scoped endpoint and lineage facts",
+  "evidence_target": "EXECUTION section 3: >=20 samples/scenes per condition with intervals and confound audit, not a claim of >=3 training seeds",
+  "sample_units": {
+    "language_sequences": 64,
+    "language_input_file_clusters": 20,
+    "task_questions": 128,
+    "fixed_subjects": 2,
+    "declared_public_lineage_positions": 3
+  },
+  "checks": [
+    {
+      "item": "noise_floor",
+      "status": "controlled",
+      "reason": "Native, all-slot and replay controls are bit exact. BF16 program is fixed; FP32 differences reported separately. Effects substantially exceed replay noise."
+    },
+    {
+      "item": "tool_validity",
+      "status": "controlled",
+      "reason": "Constant expert R/S oracles, real zero-L9 positive controls, source provenance checks, causal RC mask and candidate-permutation tests pass."
+    },
+    {
+      "item": "sampling",
+      "status": "controlled",
+      "reason": "All fixed 64 language windows, 3 random probes, and 128 prospectively selected task questions retained. Task selectors use validation only."
+    },
+    {
+      "item": "self_calibration",
+      "status": "controlled",
+      "reason": "Absolute quality and changes from the same full model are both reported. Both native selectors are applied to every hybrid. NLL and KL are distinct."
+    },
+    {
+      "item": "prompt_defaults",
+      "status": "controlled",
+      "reason": "Standard base-model RC format from official implementation, fixed dev5, identical inputs across conditions. Physical component interventions are not prompt behavior probes."
+    },
+    {
+      "item": "input_identity",
+      "status": "controlled",
+      "reason": "Same pinned tokenizer and uint32 token bytes across lineage. Native calibration and task replay agree exactly."
+    },
+    {
+      "item": "survivorship",
+      "status": "controlled",
+      "reason": "No model, seed, mask, subject or question selected by observed performance. Three lineage positions are not counted as independent initializations."
+    },
+    {
+      "item": "compute_matching",
+      "status": "controlled_for_claim",
+      "reason": "Same architecture and 31+1 expert budget in matched pruning conditions. Zeroing tests necessity, not equal-compute method rankings. Source effects are not responsibility percentages."
+    },
+    {
+      "item": "overlap_contamination",
+      "status": "partially_controlled",
+      "reason": "Dev/validation/test exact-overlap checks passed; independent task inputs supplement exploratory language windows. Pretraining benchmark contamination is unknown, so no uncontaminated capability or population claim."
+    },
+    {
+      "item": "multiple_comparisons",
+      "status": "controlled_for_claim",
+      "reason": "Complete preregistered matrices and both metrics reported. Simple source contrasts were specified by the 2x2 card; calibration overlap is POST-HOC and does not support promotion."
+    },
+    {
+      "item": "floors_ceiling",
+      "status": "partially_controlled",
+      "reason": "Mathematics raw baseline is weak and cannot establish broad reasoning recovery. Biology baseline is above chance; paired macro and per-subject results retained. Poor hybrid full quality is explicit."
+    },
+    {
+      "item": "system_scope",
+      "status": "controlled_by_scope",
+      "reason": "Claim is within this public mature lineage, frozen interface and input conditions. Author-declared ancestry lacks byte-level optimizer/batch chain. Training mechanism, unique unit and initialization-population claims remain open."
+    }
+  ],
+  "key_evidence": [
+    "E150",
+    "E151",
+    "E152",
+    "E153",
+    "E154"
+  ],
+  "scope": "Learned computation and source compatibility in this mature lineage: routing-parameter provenance alone does not carry budget robustness; real task effects and late dependency reorganization are observed. This is not an L3 independent review or L4 formation-mechanism conclusion.",
+  "proofs": {
+    "e150/manifest.json": "05683c7eed79f3bdfb71b0fc2682977b7305fab65748731d7efb0e9f0f3d5f51",
+    "e150/summary.json": "e02a403e11e2524d9dd64498efd71a3f704816de598c97877b39e6d3338d06d8",
+    "e150/raw_verification.json": "6432afe258ce0fe858ad0d288f98755baa7b0a3c9ada2cd83caa6230544cc87f",
+    "e151/manifest.json": "f49ffdda2e744df2cf11206edee3a37da4276ad342a14ebe8418e347cb959010",
+    "e151/summary.json": "634ca5b3cc9054aa83498a1439a0c85cdc89332293c5292770bc8081fffa892c",
+    "e151/raw_verification.json": "84a9de3fb90ec7ecf1c9f178ca68c7a1dc22c011b06d6e1f165d5c89fa583a54",
+    "e152/manifest.json": "db4ff9adf773d8a72ecb6d455a610c853ae34b38072ca034962b2c5f3a8638bd",
+    "e152/summary.json": "a71f88078a9b027bd921edd6e306c356cc2c5795c475aac18ebc3755260bd4ee",
+    "e152/raw_verification.json": "36167cf4c70b0c8e49f0cd68c49f90ef15e09ab2ad78d73e356296a1f3bbe805",
+    "e153/manifest.json": "07683407dc58bfe671c4d3d08d0e135aa8441be14a497472c9790a9ec3e447de",
+    "e153/summary.json": "3d61461200b891ae50b30adf78b3b18aa51325b7ad214160c02896050547abf2",
+    "e153/raw_verification.json": "605b5b38567dc23c95691e66e3edfc090a938e22b066ffaee784632824fd54ae",
+    "e154/manifest.json": "33ef31aecf14ec342c26d27aac804923456a7714d67526769141ca17662397ef",
+    "e154/summary.json": "732844709019ec5acc07bf7267c58a5214d0479e73c909a8ba8366913db1a64d",
+    "e154/raw_verification.json": "52133a33a19ea4a031bd26552a2c72ec44afc06e68443f519b5bf36682c1eedb"
+  }
+}
