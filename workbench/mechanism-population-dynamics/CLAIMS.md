@@ -28,6 +28,8 @@
 
 **C14解释限定更新（E151完成，等级保持L1）：** 同两模型的R-zero ΔNLL A/B=6.096/2.770、shared-zero=1.097/2.972；依赖配置改变，不能当知识责任比例。B随机32预算也比A稳健（.910 vs2.708），同时B自身prefix仍比随机低.432827 [.163812,.803882] NLL。支持一般鲁棒性/依赖变化与有用选择并存，削弱“R已消失”及“只靠route集中”两个单一解释；不自动证明独立语义模块。证据[E151](moe/experiments/E151-native-pruning-selectivity-necessity.md)、`moe/results/e151/{summary,manifest,raw_verification}.json`；同研究者CPU点误差0、native逐token NLL复现E150。未升级C06–C14，也不因一次强对照新造等级。
 
+**C14归一化竞争解释更新（E152，仍L1）：** 固定旧5套mask，保留full127分母后自身prefix裁剪ΔNLL A/B=.965038/.348459，B−A=−.616580 [−.761489,−.450344]，KL差−.607907；B自身prefix仍比random低.697330 [.486551,.948480]。削弱“预算优势仅是池内重新归一化造成”的解释，但全网H/后续路由可响应幅度改变，仍不识别独立语义内容。全部pool逐token NLL精确复现E150/E151，参数/buffer只读、CPU点误差0；[卡](moe/experiments/E152-native-budget-normalizer-counterfactual.md)、`moe/results/e152/{summary,manifest,raw_verification}.json`。同模型/输入，不计独立训练重复或L3校对，不改变旧主张等级。
+
 - **2026-10-25纠正完成：** POS held964/48词形的正确样本标签置换，16层残差CI>0、p≤.002；L9 δ_D=.20594 [.18131,.22787]。保留组织存在的局部证据，不恢复旧错误p值；L0比例.097未达原20%尺度。无跨seed升级。
 - **2026-10-26解释撤回：** E130 order1不是纯次序干预，source/window RNG还造成曝光多重集合TV=.4041%。撤回此前汇报中的“只改纯次序”因果措辞，保留数据流RNG对照与全部结果；未有相应C##被升级。E131已用严格同batch集合和共同后缀隔离该问题，形成限定C08=L1。C06不变。
 
