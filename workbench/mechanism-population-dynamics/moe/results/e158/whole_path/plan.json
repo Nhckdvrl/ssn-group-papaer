@@ -1,0 +1,184 @@
+{
+  "experiment": "E158",
+  "protocol_revision": 4,
+  "status": "prepared",
+  "source_sha256": {
+    "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
+    "e150_data.py": "58e3f24c0bd10199f75cb906788818539628f414e299ca3a875e4e6c30ff0f49",
+    "e150_restricted.py": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "StdMoE_1b14b_1T/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "StdMoE_1b14b_1T/modeling_emo.py": "e10fb25a662d581b25708c7b1d640ba22c7547824a1f4f00c1fc39f08801d32b",
+    "StdMoE_1b14b_1T/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "StdMoE_1b14b_1T_EmoAnnealed/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "StdMoE_1b14b_1T_EmoAnnealed/modeling_emo.py": "26f57354940655db673b35d47e9c6b1a85900068f41d91cb08afed4ec53219d6",
+    "StdMoE_1b14b_1T_EmoAnnealed/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "e151_native.py": "37aebf802a06ac8816f37777f7f991b8db071432f0ff69875d385c5aeddb783e",
+    "e154_native.py": "aca56b8c0da5cbb1dc420eaf8edcc8b0a8818e6214def6f8abb3cfd10664878d",
+    "e154_assets.py": "888a17da9798f2ae4edd2b30f797caa2c2b77d8a5b3bd3bbe045fe93447e779c",
+    "e150_prepare_assets.py": "02be428952536e3f7ed371e3812558fda701bcab14dfdd295641be7826dc6a7a",
+    "parent/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "parent/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "parent/modeling_emo.py": "26f57354940655db673b35d47e9c6b1a85900068f41d91cb08afed4ec53219d6",
+    "parent/tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+    "parent/tokenizer_config.json": "733b2ec0f743cf206dd20335eacbd4427c85487fd6f5216bb361f92a85314315",
+    "e153_harness.py": "ae463a28e129fe3ba6a3613d9783201698b2175719c82a24a87f944ebb2c2b97",
+    "e156_run.py": "0fa128e6d34a129e308d4870818af59812a1ef517b1f3e75dcb142e4e1cebe6f",
+    "e156_loading.py": "71e537f62ffac62cf1d303a6e48330326282c991e087a57760d0252427b82127",
+    "e156_analyze.py": "cbb7f0549b01e883589c4da559f81708ff53646a28287ab4ec74d06f6e95a428",
+    "e158_data.py": "21f081a23ec548bf2fd9758dce38c99260efc22bef36db555057cd1828f821be",
+    "e158_engine.py": "6ff1e84b63d4866f6deb3d6c642df4d49b8d8fc0e76a39dd92fcbc2b88173a52",
+    "e158_run.py": "3a490f3ad6260ac611ef47fc4b6411a4aff085b1649ad7882d9c0cea41ce18fe",
+    "e158_analyze.py": "fecc072d7475cd1cd85ba9d57d5ca82e52c6bf4064b3739b50bde3f5e15f001d",
+    "e158_full_engine.py": "796ada6389824666e2e27bc5dacfc974aa4ed93ec556afac793127664ac2a171",
+    "e158_full_run.py": "312c3e1081e8d4ae9da2718c00ec86c61d7d70661403f1a37081e6376f89222f",
+    "e158_full_analyze.py": "97f993a4f5a1043ba3bbc3a9feeccb1e142e981cf32cc592ba5e82709277eaaa",
+    "e158_whole_run.py": "550502fd0bc2860e9bdbea9fdf1b5e95b82efd0c617b43c0f232a12a661e3e1f",
+    "e158_whole_engine.py": "96069d474a9db80467831ac5d708b90dff89ec25d33472269cbe04e7680c5600",
+    "e158_whole_analyze.py": "5945b485a0bafab408bc1fe055cdcebb81888707b112a33c20929538e7f35929"
+  },
+  "software": {
+    "python": "3.12.0",
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "numpy": "1.26.4",
+    "cache_library": {
+      "path": "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/cache_utils.py",
+      "sha256": "f4e11caf14c75bdefa5e3003b93ef0e8b97fb6103375705ad944b0b344d7da8a"
+    }
+  },
+  "data_plan_sha256": "a5af9c8fc67c84ca4621cb3c248042eaa112c53bc80c442609437b6a46ef1f27",
+  "data": {
+    "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/data.npz",
+    "sha256": "0a80ae850b0fef8840b95f1f5033712cb24d6c32bbfb8c1d6368517593f89344",
+    "bytes": 4467
+  },
+  "input_assets": {
+    "data.npz": {
+      "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/data.npz",
+      "sha256": "0a80ae850b0fef8840b95f1f5033712cb24d6c32bbfb8c1d6368517593f89344",
+      "bytes": 4467
+    },
+    "queries.json": {
+      "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/queries.json",
+      "sha256": "4a7c9574eec409c0cf2fa3e24f81e6a01def28bab92cc47e5d12dfb3e78cf56c",
+      "bytes": 41770
+    },
+    "corrections.json": {
+      "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/corrections.json",
+      "sha256": "6ac6023852f70ab8e0c461d4225861729dc9ba9e584d2da4d6f1706fa324bddf",
+      "bytes": 478
+    }
+  },
+  "baseline_reference": {
+    "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/full_forward/baseline.npz",
+    "sha256": "18c2f2d9598a14adee69350c1c7012d2a13707a8ab5ba140f1be5fa01f42d22c",
+    "size_bytes": 72165
+  },
+  "component_reference": {
+    "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/full_forward/component_cache.npz",
+    "sha256": "bfd3d71473bae4cfda90de7c093fb717cfd5108ee4293b1b6b2c751c62002dce",
+    "size_bytes": 46340216
+  },
+  "prior_full_preflight": {
+    "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e158/full_forward/failed_full_preflight.json",
+    "sha256": "48665acb09b9c91f573e4646bb1b7a123034e259b3e2f6d76d113436fc96f4e5",
+    "size_bytes": 2229
+  },
+  "prior_failed_budget_attempts": [
+    {
+      "phase": "factual_cached_interchange",
+      "host": "fvcrc20",
+      "pid": 666642,
+      "started_utc": "2026-10-27T11:11:41Z",
+      "gpu_seconds": 3213.1972275711596,
+      "status": "failed",
+      "error": "ValueError: Cached execution numerical floor exceeded the preregistered engineering scale"
+    },
+    {
+      "phase": "factual_full_forward_interchange",
+      "host": "fvcrc20",
+      "pid": 686815,
+      "started_utc": "2026-10-27T12:28:54Z",
+      "gpu_seconds": 3319.568723950535,
+      "status": "failed",
+      "error": "TimeoutError: Full-prefix grid does not fit the preserved total resource cap"
+    }
+  ],
+  "source_records": {
+    "P": {
+      "manifest_sha256": "6d09670c55f5f4d2d58edda3f996b7e0ac0f1480616f28e619144f73085043ba",
+      "parameter_hash": "53960ccdc0c8059aae9cf6013fc04f7aca886e352172cf814e864bd8411d4a59",
+      "buffer_hash": "d03a271a4215869f6070f196ef37450dfad6f7cdb5bc6092d3b5aacc451bfb47",
+      "calibration": {
+        "path": "/home/xiang/mechpop_cache/e154_native_parent_boundary/cal_native_bf16.npz",
+        "sha256": "ccfdb9fede069a5a4e12916bc842bc6fa481263ee2acf42fb9f19286ac094c1a"
+      }
+    },
+    "A": {
+      "manifest_sha256": "05c85376b49be0679661913485150946990d69d384737df2ffcd71cbd96e80df",
+      "parameter_hash": "b2c25adf81371253188b9c02f8ed371a15e45a05ead18104da9b3e0acb3ef91f",
+      "buffer_hash": "d03a271a4215869f6070f196ef37450dfad6f7cdb5bc6092d3b5aacc451bfb47",
+      "calibration": {
+        "path": "/home/xiang/mechpop_cache/e150_native_protocol_cube/cal_source_0.npz",
+        "sha256": "798d178cf3a1a1fb59b35f42208588bd8c0d12bd50329215d615aea2b74f94c5"
+      }
+    },
+    "B": {
+      "manifest_sha256": "649130fe3029a51f7d19429700750939ca0b33e804b98df0fb8aa9d4d0367811",
+      "parameter_hash": "efd18fc624f5a153aeffb12c724028a613a5e4c6a42210b37ca6e0021e4f79c6",
+      "buffer_hash": "d03a271a4215869f6070f196ef37450dfad6f7cdb5bc6092d3b5aacc451bfb47",
+      "calibration": {
+        "path": "/home/xiang/mechpop_cache/e150_native_protocol_cube/cal_source_1.npz",
+        "sha256": "f8ee016ff7d68b5fd00d8bfce8f06c7c0578422469740f9649f68671be7be084"
+      }
+    }
+  },
+  "legacy_cal_input": {
+    "path": "/home/xiang/mechpop_cache/e150_native_protocol_cube/plan.npz",
+    "sha256": "36c21a84b09242f2eca38613aec03c4a9bb81db1656d87e706ba43558d97984b"
+  },
+  "source_names": [
+    "P",
+    "A",
+    "B"
+  ],
+  "scenario_names": [
+    "entity",
+    "attribute",
+    "paraphrase"
+  ],
+  "component_names": [
+    "R",
+    "S",
+    "RS",
+    "A"
+  ],
+  "execution_mode": "whole_terminal_path_fixed_native_prefix_no_KV_cache",
+  "floor_kind": "inherited actual full-head vs native last-only readout, no KV cache; legacy cache_* compatibility field names",
+  "source_trace_protocol_commit": "b522db89",
+  "queries": 96,
+  "patch_rows": 1728,
+  "matched_removal_rows": 576,
+  "scientific_rows": 2304,
+  "positive_residual_rows": 432,
+  "all_query_identity_paths": [
+    "RS",
+    "A"
+  ],
+  "fixed_query_extra_identity_paths": [
+    "R",
+    "S"
+  ],
+  "baseline_gate": {
+    "joint_native_top10_minimum_per_relation": 8
+  },
+  "bootstrap": {
+    "unit": "paired target-country clusters",
+    "seed": 158001,
+    "resamples": 1000
+  },
+  "limit_gpu_seconds": 14400,
+  "scope": "Complete 16-layer terminal R/S/RS streams plus attention comparator; fixed earlier native decoder positions; current nonreplaced components endogenous; no layer localization or new training."
+}

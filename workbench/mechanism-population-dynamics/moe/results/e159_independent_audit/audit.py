@@ -311,10 +311,66 @@ def comparator_self_test():
         assert compare_summary(report,a,manifest,{},path)['status']=='mismatch'
     print('comparator synthetic mapping and mismatch detection passed')
 
+def known_lm_review():
+    report=read(WB/'results/e159/known_lm_border_posthoc.json')
+    if report['status']!='complete_POST_HOC_inherited_only' or report['new_model_forwards']!=0: raise ValueError('unexpected report')
+    data=[]; manifests=[]
+    for name in ('E150','E151'):
+        record=report['inputs'][name]; verify_record(record['manifest']); verify_record(record['raw'])
+        manifest=read(record['manifest']['path'])
+        if manifest['status']!='complete' or manifest['raw']['sha256']!=record['raw']['sha256'] or manifest['raw']['path']!=record['raw']['path']: raise ValueError('manifest identity')
+        manifests.append(manifest)
+        with np.load(record['raw']['path'],allow_pickle=False) as f: data.append({k:f[k] for k in ('metrics','valid','fields',*(['cases'] if name=='E150' else ['conditions']))})
+    cube,abl=data; c=manifests[0]; a=manifests[1]
+    if c['source_parameter_hashes']!=a['parameter_hashes'] or c['source_buffer_hashes']!=a['buffer_hashes']: raise ValueError('parameter/buffer identities differ')
+    if not np.array_equal(cube['valid'],abl['valid']) or cube['metrics'].shape!=(16,64,512,2,4) or abl['metrics'].shape!=(2,6,64,512,4) or cube['fields'][0]!='nll' or abl['fields'][0]!='nll': raise ValueError('shape or valid mask mismatch')
+    if tuple(abl['conditions'][:3])!=('native','routed_zero','shared_zero') or not np.array_equal(cube['metrics'][:,:,:,0,0],cube['metrics'][:,:,:,1,0]): raise ValueError('NLL reference or condition mismatch')
+    mask=cube['valid']; counts=mask.sum(-1)
+    if np.any(counts==0): raise ValueError('empty window')
+    case_map={tuple(row):i for i,row in enumerate(cube['cases'])}
+    if len(case_map)!=16: raise ValueError('case map')
+    for b in (0,1):
+        native=cube['metrics'][case_map[(b,b,b,b)],:,:,0,0]
+        if not np.array_equal(native[mask],abl['metrics'][b,0,:,:,0][mask]): raise ValueError('native token replay')
+    plan_path=WB/'results/e150/plan.json'
+    if sha(plan_path)!=c['input_plan_sha256']: raise ValueError('input plan hash')
+    selected=read(plan_path)['selected']
+    if len(selected)!=64 or [v['sequence'] for v in selected]!=list(range(64)): raise ValueError('window order')
+    keys=[(v['source'],v['file_id']) for v in selected]; unique=list(dict.fromkeys(keys))
+    if len(unique)!=20: raise ValueError('cluster count')
+    ids=np.array([unique.index(k) for k in keys]); rng=np.random.default_rng(159002); draws=rng.integers(0,20,size=(1000,20))
+    weights=np.stack([(ids==i).astype(int) for i in range(20)])
+    sampled=weights[draws].sum(axis=1)
+    def window(v): return np.where(mask,v,0).sum(axis=-1,dtype=np.float64)/counts
+    def stats(v):
+        replicates=(sampled @ v)/sampled.sum(axis=1)
+        return {'point':float(v.mean()),'input_file_ci95':np.percentile(replicates,[2.5,97.5]).tolist()}
+    computed={}; pe=[]; ce=[]
+    def compare(label,v,target):
+        z=stats(v); pe.append(abs(z['point']-target['point'])); ce.extend(abs(np.array(z['input_file_ci95'])-target['input_file_ci95']))
+        if target['file_clusters']!=20 or target['sequences']!=64 or target['bootstrap_seed']!=159002: raise ValueError('bootstrap metadata')
+        return z
+    for branch,axis,cond in (('shared',3,2),('routed',2,1)):
+        group=report['branches'][branch]; computed[branch]={}; damages=np.empty((2,2,64))
+        for b in (0,1):
+            for f in (0,1):
+                case=[b,b,b,b]; case[axis]=f
+                full=window(cube['metrics'][case_map[tuple(case)],:,:,0,0]); removed=window(abl['metrics'][b,cond,:,:,0]); damage=removed-full; damages[b,f]=damage
+                key=f'background_{"AB"[b]}_function_{"AB"[f]}'; target=group[key]
+                computed[branch][key]={k:compare(k,v,target[k]) for k,v in (('full_NLL',full),('removed_NLL_inherited',removed),('removal_delta_NLL',damage))}
+        diffs=damages[1]-damages[0]
+        for f in (0,1):
+            key=f'same_function_{"AB"[f]}_background_B_minus_A'; computed[branch][key]=compare(key,diffs[f],group[key])
+        key='mean_background_B_minus_A'; computed[branch][key]=compare(key,diffs.mean(axis=0),group[key])
+    return {'status':'passed' if max(pe+ce)<1e-10 else 'mismatch','scope':'POST-HOC E150/E151 inherited endpoints; zero new forwards; background includes D/G and other branch', 'report_sha256':sha(WB/'results/e159/known_lm_border_posthoc.json'),'raw_sha256':[m['raw']['sha256'] for m in manifests], 'parameter_buffer_hashes_match':True,'native_per_token_replays_exact':True,'valid_masks_match':True,'real_targets':int(mask.sum()),'file_clusters':20,'max_point_error':max(pe),'max_ci_error':max(ce),'independent_estimates':computed}
+
 def main():
-    parser=argparse.ArgumentParser(); parser.add_argument('--self-test',action='store_true'); parser.add_argument('--known-border-review',action='store_true'); parser.add_argument('--result',type=Path,default=WB/'results/e159'); parser.add_argument('--output',type=Path); parser.add_argument('--compare-summary',type=Path)
+    parser=argparse.ArgumentParser(); parser.add_argument('--self-test',action='store_true'); parser.add_argument('--known-border-review',action='store_true'); parser.add_argument('--known-lm-review',action='store_true'); parser.add_argument('--result',type=Path,default=WB/'results/e159'); parser.add_argument('--output',type=Path); parser.add_argument('--compare-summary',type=Path)
     args=parser.parse_args()
     if args.self_test: self_test(); comparator_self_test(); return
+    if args.known_lm_review:
+        if args.output is None: parser.error('--output required')
+        review=known_lm_review(); args.output.write_text(json.dumps(review,indent=2,allow_nan=False)+'\n'); print(json.dumps({k:v for k,v in review.items() if k!='independent_estimates'},indent=2)); return
     if args.known_border_review:
         if args.output is None: parser.error('--output required')
         review=known_border_review(); args.output.write_text(json.dumps(review,indent=2,allow_nan=False)+'\n'); print(json.dumps({k:v for k,v in review.items() if k!='independent_estimates'},indent=2)); return

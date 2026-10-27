@@ -11,3 +11,5 @@
 已独立复算 E155/E156 继承端点并比对 `known_border_posthoc.json`：4 指标、3 来源、完整质量及原生与移植支撑均一致；最大点误差 1.78e-15，分科点及总体/分科 CI 最大误差 3.55e-15，固定 33 题所有计数一致，三源参数和 buffer 哈希匹配。结果见 `known_border_review.json`。复现命令：`~/.venvs/mechpop/bin/python moe/results/e159_independent_audit/audit.py --known-border-review --output moe/results/e159_independent_audit/known_border_review.json`。这是事后重用旧端点，零新 forward，不能隔离固定 D/G 下伙伴替换的效应；未读取 E159 新 raw。
 
 完整 E159 汇总比较器已按预先提供的无数值 schema 接入：在正式执行命令加 `--compare-summary <汇总JSON>`。比较全部预注册主表、支撑、固定伙伴、对角与原生对比，以及 33 题点值、模式和转移；输出最大点/区间误差与计数匹配状态。合成映射自检包含故意修改一个对比以验证能检测不一致；尚未读取任何 E159 新原始数据。
+
+E150/E151 旧语言模型端点独立核对见 `known_lm_border_review.json`：所有点估计完全一致，20 文件簇 bootstrap CI 最大误差 1.78e-15；两源原生逐 token 重放、参数/buffer 哈希和有效掩码一致（30,994 个目标）。命令：`~/.venvs/mechpop/bin/python moe/results/e159_independent_audit/audit.py --known-lm-review --output moe/results/e159_independent_audit/known_lm_border_review.json`。背景包含 D/G 和另一分支，不能单独解释为伙伴作用；零新 forward。

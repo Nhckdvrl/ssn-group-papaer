@@ -1,0 +1,360 @@
+{
+  "status": "complete_POST_HOC_inherited_only",
+  "source_sha256": "6c16e9aba2e97f2ac491604eb8704b322259d6d6af212e73b1d2df8e5cb6fc08",
+  "inputs": {
+    "E150": {
+      "manifest": {
+        "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e150/manifest.json",
+        "sha256": "05683c7eed79f3bdfb71b0fc2682977b7305fab65748731d7efb0e9f0f3d5f51"
+      },
+      "raw": {
+        "path": "/home/xiang/mechpop_cache/e150_native_protocol_cube/cube_metrics.npz",
+        "sha256": "83577a3343aa7366216029ab0b4a02a75f513d39e18c6a66d0b8b0e0cb3f1d83",
+        "size_bytes": 23911964
+      }
+    },
+    "E151": {
+      "manifest": {
+        "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e151/manifest.json",
+        "sha256": "f49ffdda2e744df2cf11206edee3a37da4276ad342a14ebe8418e347cb959010"
+      },
+      "raw": {
+        "path": "/home/xiang/mechpop_cache/e151_native_selectivity_necessity/metrics.npz",
+        "sha256": "8c02187d75488219f82c20023382a0134495479f4586115a564a0602c6fb9ee7",
+        "size_bytes": 4270219
+      }
+    }
+  },
+  "new_model_forwards": 0,
+  "unit": "equal real-target token means within 64 windows; paired bootstrap of20 input files",
+  "real_targets": 30994,
+  "scope": "Same source R or S functions in native versus other-source D/G/other-branch background. Does not isolate routed partner from dense/router.",
+  "identity": "Removing the transplanted branch leaves the already-measured native zero-branch background; inherited endpoint, not a new forward.",
+  "controls": {
+    "parameters_and_buffers_match": true,
+    "native_token_replay_exact": true,
+    "input_masks_same": true
+  },
+  "branches": {
+    "shared": {
+      "background_A_function_A": {
+        "full_NLL": {
+          "point": 2.5746057927012664,
+          "input_file_ci95": [
+            2.12894056229852,
+            3.002840172056649
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removed_NLL_inherited": {
+          "point": 3.671477714455229,
+          "input_file_ci95": [
+            3.0630713206709728,
+            4.261338983127599
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removal_delta_NLL": {
+          "point": 1.0968719217539624,
+          "input_file_ci95": [
+            0.9281699600398831,
+            1.252411645742156
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        }
+      },
+      "background_A_function_B": {
+        "full_NLL": {
+          "point": 2.6961796996350285,
+          "input_file_ci95": [
+            2.237076464221026,
+            3.1275102723907175
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removed_NLL_inherited": {
+          "point": 3.671477714455229,
+          "input_file_ci95": [
+            3.0630713206709728,
+            4.261338983127599
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removal_delta_NLL": {
+          "point": 0.9752980148202006,
+          "input_file_ci95": [
+            0.8164217394614612,
+            1.1277965364931544
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        }
+      },
+      "background_B_function_A": {
+        "full_NLL": {
+          "point": 3.3723237315885326,
+          "input_file_ci95": [
+            2.9357484648491567,
+            3.8410122309596226
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removed_NLL_inherited": {
+          "point": 5.593503795906176,
+          "input_file_ci95": [
+            5.1818602701627325,
+            6.140317332745039
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removal_delta_NLL": {
+          "point": 2.221180064317643,
+          "input_file_ci95": [
+            2.059177268056916,
+            2.413942052773698
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        }
+      },
+      "background_B_function_B": {
+        "full_NLL": {
+          "point": 2.621764561276186,
+          "input_file_ci95": [
+            2.165194010201872,
+            3.0613455840413244
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removed_NLL_inherited": {
+          "point": 5.593503795906176,
+          "input_file_ci95": [
+            5.1818602701627325,
+            6.140317332745039
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removal_delta_NLL": {
+          "point": 2.9717392346299905,
+          "input_file_ci95": [
+            2.77420665926176,
+            3.2367646613921175
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        }
+      },
+      "same_function_A_background_B_minus_A": {
+        "point": 1.1243081425636807,
+        "input_file_ci95": [
+          0.8810042548780801,
+          1.4238192103207516
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 159002
+      },
+      "same_function_B_background_B_minus_A": {
+        "point": 1.9964412198097896,
+        "input_file_ci95": [
+          1.7313483825226466,
+          2.3370617018279343
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 159002
+      },
+      "mean_background_B_minus_A": {
+        "point": 1.5603746811867352,
+        "input_file_ci95": [
+          1.299944888374894,
+          1.8807272115494038
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 159002
+      }
+    },
+    "routed": {
+      "background_A_function_A": {
+        "full_NLL": {
+          "point": 2.5746057927012664,
+          "input_file_ci95": [
+            2.12894056229852,
+            3.002840172056649
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removed_NLL_inherited": {
+          "point": 8.670809583436991,
+          "input_file_ci95": [
+            8.317410672355255,
+            9.084189644303969
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removal_delta_NLL": {
+          "point": 6.096203790735723,
+          "input_file_ci95": [
+            5.56901551744744,
+            6.676915477668323
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        }
+      },
+      "background_A_function_B": {
+        "full_NLL": {
+          "point": 2.7392636164715523,
+          "input_file_ci95": [
+            2.2792655364398593,
+            3.1784534635372403
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removed_NLL_inherited": {
+          "point": 8.670809583436991,
+          "input_file_ci95": [
+            8.317410672355255,
+            9.084189644303969
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removal_delta_NLL": {
+          "point": 5.931545966965438,
+          "input_file_ci95": [
+            5.394593331829648,
+            6.530567936676174
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        }
+      },
+      "background_B_function_A": {
+        "full_NLL": {
+          "point": 2.736938066228935,
+          "input_file_ci95": [
+            2.2731853359143575,
+            3.1926639092298412
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removed_NLL_inherited": {
+          "point": 5.392264292206132,
+          "input_file_ci95": [
+            5.213585927592171,
+            5.614077938190816
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removal_delta_NLL": {
+          "point": 2.6553262259771966,
+          "input_file_ci95": [
+            2.380321073658441,
+            2.981676122967017
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        }
+      },
+      "background_B_function_B": {
+        "full_NLL": {
+          "point": 2.621764561276186,
+          "input_file_ci95": [
+            2.165194010201872,
+            3.0613455840413244
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removed_NLL_inherited": {
+          "point": 5.392264292206132,
+          "input_file_ci95": [
+            5.213585927592171,
+            5.614077938190816
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        },
+        "removal_delta_NLL": {
+          "point": 2.770499730929946,
+          "input_file_ci95": [
+            2.501946154744404,
+            3.090296505341187
+          ],
+          "file_clusters": 20,
+          "sequences": 64,
+          "bootstrap_seed": 159002
+        }
+      },
+      "same_function_A_background_B_minus_A": {
+        "point": -3.440877564758527,
+        "input_file_ci95": [
+          -3.8886323062072234,
+          -3.071112847822297
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 159002
+      },
+      "same_function_B_background_B_minus_A": {
+        "point": -3.161046236035492,
+        "input_file_ci95": [
+          -3.6134370192793694,
+          -2.7852797603423913
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 159002
+      },
+      "mean_background_B_minus_A": {
+        "point": -3.3009619003970094,
+        "input_file_ci95": [
+          -3.745046717952358,
+          -2.926956807424145
+        ],
+        "file_clusters": 20,
+        "sequences": 64,
+        "bootstrap_seed": 159002
+      }
+    }
+  }
+}

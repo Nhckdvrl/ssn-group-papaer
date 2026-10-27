@@ -1,0 +1,52 @@
+{
+  "experiment": "E158",
+  "protocol_commit": "b522db89",
+  "status": "full_native_preflight_passed_but_grid_infeasible_before_feature_interchange",
+  "attempt": {
+    "phase": "factual_full_forward_interchange",
+    "host": "fvcrc20",
+    "pid": 686815,
+    "started_utc": "2026-10-27T12:28:54Z",
+    "gpu_seconds": 3319.568723950535,
+    "status": "failed",
+    "error": "TimeoutError: Full-prefix grid does not fit the preserved total resource cap"
+  },
+  "source_plan": {
+    "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e158/full_forward/plan.json",
+    "size_bytes": 7938,
+    "sha256": "89627be26c63c4523ca33861d14b5f31e6ca05a30a3e5061a9b2b9ed10a8a384"
+  },
+  "runtime": {
+    "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e158/full_forward/runtime_feasibility.json",
+    "size_bytes": 379,
+    "sha256": "b266820c019532bdb1295a13d76f9fd1f90cc19674dc6e223ec987d0f9141f66"
+  },
+  "baseline": {
+    "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/full_forward/baseline.npz",
+    "size_bytes": 72165,
+    "sha256": "18c2f2d9598a14adee69350c1c7012d2a13707a8ab5ba140f1be5fa01f42d22c"
+  },
+  "components": {
+    "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/full_forward/component_cache.npz",
+    "size_bytes": 46340216,
+    "sha256": "bfd3d71473bae4cfda90de7c093fb717cfd5108ee4293b1b6b2c751c62002dce"
+  },
+  "log": {
+    "path": "/home/xiang/mechpop_cache/e158_factual_role_interchange/full_forward/evaluation.log",
+    "size_bytes": 5652,
+    "sha256": "e5d00147440bd96b0237f345b446fefa2869a12f41ff447b18cc6e4fddec585b"
+  },
+  "readout_floor": {
+    "full_head_to_last_only_head_KL_max": 6.124907933810052e-05,
+    "argmax_changes": [
+      0,
+      0,
+      0
+    ],
+    "kind": "actual full-head vs last-only native readout; neither uses KV cache"
+  },
+  "feature_interchange_rows": 0,
+  "matched_removal_rows": 0,
+  "postrun_parameter_hash_not_reached": true,
+  "components_provenance": "All 288 full-prefix native query fast/output checks and fixed source-component/removal/identity controls completed before timing. Cache values are real BF16 components, not scientific intervention results."
+}
