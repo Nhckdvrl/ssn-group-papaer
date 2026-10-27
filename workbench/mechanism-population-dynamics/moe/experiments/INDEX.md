@@ -46,6 +46,7 @@
 | [E150](E150-native-mature-routing-protocol-cross.md) | DONE；C14/P32 | 完整MoE互换平均+.127787 NLL；B native裁剪代价低.738449，B router单独不转移此收益，D/R/S参与 | [summary](../results/e150/summary.json) |
 | [E151](E151-native-pruning-selectivity-necessity.md) | DONE；限定C14/P32 | R-zero代价6.096/2.770，S-zero1.097/2.972；B random预算损伤.910，prefix仍优于random.433 | [summary](../results/e151/summary.json) |
 | [E152](E152-native-budget-normalizer-counterfactual.md) | CPU通过；C14/P32 | 固定5旧mask，对比保留池/full分母；22条件待读取 | [self-test](../results/e152/self_test.json) |
+| [E153](E153-mmlu-domain-source-transfer.md) | CPU通过；C14/P32 | 独立MMLU生物/数学，逐层greedy、RC计分，G×功能包四格；128测试题结果待读取 | [data plan](../results/e153/data_plan.json) |
 
 E144–E147无新训练；全量来源、donor、分区均保留。新C10–C12仅L1，旧C06–C09数字与等级不变；范围与当前解释见[README](../README.md)。本轮发现并在held之前修复CUDA库导入后的可见卡缓存问题，全部预检与成本保留。E147在E146结果之后、运行前新登记，没有倒写E146预设对照。
 

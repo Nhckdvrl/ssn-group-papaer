@@ -1,0 +1,40 @@
+{
+  "experiment": "E153",
+  "status": "prepared",
+  "source_sha256": {
+    "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
+    "e150_data.py": "58e3f24c0bd10199f75cb906788818539628f414e299ca3a875e4e6c30ff0f49",
+    "e150_restricted.py": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "StdMoE_1b14b_1T/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "StdMoE_1b14b_1T/modeling_emo.py": "e10fb25a662d581b25708c7b1d640ba22c7547824a1f4f00c1fc39f08801d32b",
+    "StdMoE_1b14b_1T/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "StdMoE_1b14b_1T_EmoAnnealed/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "StdMoE_1b14b_1T_EmoAnnealed/modeling_emo.py": "26f57354940655db673b35d47e9c6b1a85900068f41d91cb08afed4ec53219d6",
+    "StdMoE_1b14b_1T_EmoAnnealed/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "e153_run.py": "6d3aa14fe20b2902035483c94d2201009dbae664ec4a23111b66ed29c7399579",
+    "e153_harness.py": "ae463a28e129fe3ba6a3613d9783201698b2175719c82a24a87f944ebb2c2b97",
+    "e153_data.py": "1922951ba2b80d6e993b787f4daaeed243869571c9147d37f9eb54a3c97abb9d"
+  },
+  "data_plan_sha256": "cd5a4cc151eff978c8a072e0d0bc258c91cc881d242f8831522adbee5f951b1e",
+  "official_interface_review_sha256": "f8e2d5363df4c2f61d5fad7e70152317763caa9b423e7afbe9c79652710ff13a",
+  "controls": {
+    "path": "/home/xiang/mechpop_cache/e153_mmlu_source_transfer/cal_controls.json",
+    "sha256": "8c75604f56dcbafc40d54e326d37eb5c47c9cd4a9aac7762a7dbd8b97996ce9c"
+  },
+  "case_order": [
+    "AAAA",
+    "ABAA",
+    "BABB",
+    "BBBB"
+  ],
+  "policy_order": [
+    "full",
+    "selectorA32",
+    "selectorB32"
+  ],
+  "cal_batch_size": 2,
+  "test_batch_unit": "Four full answer candidates for one question",
+  "scope": "Task validation of a fixed public pair; no training or literal full-table reproduction"
+}

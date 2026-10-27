@@ -1,0 +1,43 @@
+{
+  "experiment": "E153",
+  "status": "interface_review_before_new_task_model_reads",
+  "sources": [
+    {
+      "key": "emo_greedy_code",
+      "git_blob_sha1": "40c69fe1a02221e33bf1360b5dd13043f2dcd01a",
+      "url": "https://github.com/allenai/EMO/blob/main/src/hf_training/greedy_prune_layerwise.py"
+    },
+    {
+      "key": "emo_data_utils",
+      "git_blob_sha1": "981fa167addc65bf8c7e18bd6caca20cdd667d37",
+      "url": "https://github.com/allenai/EMO/blob/main/src/hf_training/data_utils.py"
+    },
+    {
+      "key": "emo_mmlu_split_code",
+      "git_blob_sha1": "e2ea2797ff17460d464e0cc051fdf26e98326083",
+      "url": "https://github.com/allenai/EMO/blob/main/src/offline_evals/tasks/splits_mmlu.py"
+    },
+    {
+      "key": "olmes_mmlu_code",
+      "git_blob_sha1": "0794a76a9b69d6057f735c29b4eef3fd54814d12",
+      "url": "https://github.com/allenai/olmes/blob/main/oe_eval/tasks/oe_eval_tasks/mmlu.py"
+    },
+    {
+      "key": "olmes_base_task",
+      "git_blob_sha1": "f9cfd6eaab1758f1a96291080cd2155f64395bed",
+      "url": "https://github.com/allenai/olmes/blob/main/oe_eval/tasks/base_task.py"
+    },
+    {
+      "key": "olmes_task_utils",
+      "git_blob_sha1": "d1f51e10a518ba9bd1f9989a4fb3f0f8671ced4d",
+      "url": "https://github.com/allenai/olmes/blob/main/oe_eval/tasks/utils.py"
+    }
+  ],
+  "findings": {
+    "evaluation": "OLMES RC answer-text teacher forcing; raw and per-character accuracy will both be reported.",
+    "selector": "Layerwise greedy probability mean after pruning previous layers, not full-native one-pass prefix ranking.",
+    "our_data": "Official dev5 / complete validation / seeded 64 test per subject; not paper full-table resplit.",
+    "actual_code_resplit": "GenericMMLU_withsplits TEST_FRACTION=.6 uses first60% test as train, rest40% as test. This pilot does not claim exact reproduction of that split.",
+    "our_numeric_program": "BF16 masked-gate representation, FP32 probability aggregation, not literal row-pruned GEMM kernels; native controls and scope required."
+  }
+}
