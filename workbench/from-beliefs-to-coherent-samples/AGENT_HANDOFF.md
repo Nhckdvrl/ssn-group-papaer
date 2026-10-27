@@ -58,7 +58,7 @@ $$
 \mu_j(\mathbf X)=[\tilde\theta_j^\top x_{*1},\ldots,\tilde\theta_j^\top x_{*Q}],\quad
 P^*(\mathbf Y\mid D,\mathbf X)=\sum_jw_j\,N(\mu_j,\sigma^2 I_Q).
 $$
-扩散下令 v_t=a_t^2\sigma^2+s_t^2，则：
+扩散下令 $v_t=a_t^2\sigma^2+s_t^2$，则：
 $$
 \rho_j(z,t)\propto w_j N(z;a_t\mu_j,v_tI_Q),\quad
 m_j^*(z,t)=\frac{a_t\sigma^2}{v_t}z+\frac{s_t^2}{v_t}\mu_j,\quad
@@ -79,14 +79,14 @@ $$
 - **Query 均为 $v$**：A/B 的单 Query 预测边缘几乎相同（都是 $(P_-+P_+)/2$），但两个 Query 的联合分布分别近似 $(P_-\otimes P_-+P_+\otimes P_+)/2$ 与 $P_3\otimes P_3$。
 - **重要可行性提醒**：若在所有输入上都规定 $P_3=(P_1+P_2)/2$，则等先验下 $L_3(D)=\prod_i(L_{1,i}+L_{2,i})/2\geq\sqrt{L_1(D)L_2(D)}$；当任务 1/2 的后验对称时，无法仅靠“不分正负”的 Context 排除任务 3。$u/v$ 设计故意令混合等式**仅在目标 Query $v$ 上成立**，绝不可默默将其等同于任务族 A。
 - 通用 Oracle：$w_j(D)\propto\pi_j\prod_i p_j(y_i\mid x_i)$；对各 Query 定义 $q_{j,t}(z_q\mid x_q)=\int \mathcal N(z_q;a_ty,s_t^2)\,P_j(dy\mid x_q)$，$\rho_j(z,t)\propto w_j(D)\prod_q q_{j,t}(z_q\mid x_q)$，并计算单任务最优均值 $m_{j,q}^*(z_q,t)=\mathbb E[Y_q\mid Z_{q,t}=z_q,\Theta=j,D]$。总均值为 $m_q^*=\sum_j\rho_j m_{j,q}^*$；当 $a\neq b$，
-$
+$$
 J_{ab}(z,t)=\frac{a_t}{s_t^2}
 \operatorname{Cov}_{j\sim\rho(z,t)}
 \!\bigl(m_{j,a}^*(z_a,t),m_{j,b}^*(z_b,t)\bigr).
-$
+$$
 - 任务 3 的单任务 Denoiser **是两高斯分量的后验均值混合（随 $z_q$ 非线性变化）**。以 $Q=2,z=(0,0)$ 为诊断点：在 $w_A$ 下 $J_{12}>0$（共享左右模式）；在 $w_B$ 下 $J_{12}=0$（给定任务 3 后两个 Query 的模式独立）。同时检查有限样本下的近似值、Autograd 与解析一致；避免误把**任务 3 允许独立变号**标成“生成不一致”。
 
-**E0 通过条件**：两种任务族的精确 posterior 均归一化；$Q=1$ 时联合模型退化为边缘模型；Oracle 联合采样与边缘化一致；任务族 B 能通过自然 Context 得到两组目标后验；$J_{12}$ 在两组黄金对照下的表现与公式一致（含 Autograd / 有限差分）；同边缘异联合的差别确实可观测。以上均是实现测试，不是模型发现。这些是基础实现测试，不是模型发现。
+**E0 通过条件**：两种任务族的精确 posterior 均归一化；$Q=1$ 时联合模型退化为边缘模型；Oracle 联合采样与边缘化一致；任务族 B 能通过自然 Context 得到两组目标后验；$J_{12}$ 在两组黄金对照下的表现与公式一致（含 Autograd / 有限差分）；同边缘异联合的差别确实可观测。以上均是实现测试，不是模型发现。
 
 ### B. 随后设计并训练最小联合 Denoiser / DiT（E1）
 - 以 **同一 Episode 的整个 Query Sequence** 为模型输入，不要把 Q 个 Query 当成互不通信的独立 Batch 后却声称学到了联合机制。
