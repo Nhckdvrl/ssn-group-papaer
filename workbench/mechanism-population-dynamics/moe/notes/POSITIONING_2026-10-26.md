@@ -25,6 +25,9 @@ E157已完成该回插，保留P其余专家使B/P完整NLL比整bank改善.0554
 **E156期间新增完整阅读：** Sparsity Moves Computation v2（33页）有真实消融/patching与active-width、random-routing强对照；Beyond Routing（21页）有跨初始化表示motif；Basic-Refinement（ACL2025，16页）有shared/routed的真实任务干预与head→expert干预。它们把架构压力、表征稳定和合作机制连接起来。我们的推进点是固定架构/每token激活数后的成熟历史可变性、同一成功决策的依赖转移、以及固定接收者下哪些函数可共同重用；不是再次认领一般“专家会合作”。全文后的具体区别与可借鉴动作见[论文卡](../../../../library/themes/moe-routing/FUNCTIONAL_ROLES_FULL_READING_2026-10-27.md)。原始全文与小型覆盖manifest共9篇193页，数据结论仍由实验给出。
 
 
+**E158期间补足事实机制全文：** LRE正式版23页与ROME v5全35页（含完整附录）已通读。二者都有真实表示/权重干预；ROME分量恢复还使用跨10层窗口，LRE区分可读出与实际单状态干预。因此本研究不靠重新定位事实取得增量，而是在成熟历史间识别具体输入区别的职责与协作、并连接真实函数重用。[全文卡](../../../../library/themes/moe-routing/LRE_ROME_FULL_READING_2026-10-27.md)记录可借鉴动作；E158逐层窗口不是完整事实存储普查。
+
+
 ## 本轮执行前检索补充
 
 **2026-10-27更新（E152完成、E153运行中）：** 再跑venue nearest（training history / shared computation / pruning normalization），并回近期arXiv原文核对[Training-Free Halving](https://arxiv.org/html/2609.04575v1)与[OptEP](https://arxiv.org/html/2610.27123v1)；[阅读范围与距离](../../../../library/themes/moe-routing/RECENT_PRUNING_DISTANCE_2026-10-27.md)。归一化与激活选择分离、PPL和能力读数分离、子集联合重构均有明确ownership，不能当E152或Γ的新机制。当前增量仍是成熟历史来源下路由/函数/始终激活计算的性质转移与配套边界；这些近邻不等于已经回答它，也不触发关线。
