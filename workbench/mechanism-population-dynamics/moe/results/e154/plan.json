@@ -1,0 +1,564 @@
+{
+  "experiment": "E154",
+  "status": "prepared",
+  "source_sha256": {
+    "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
+    "e150_data.py": "58e3f24c0bd10199f75cb906788818539628f414e299ca3a875e4e6c30ff0f49",
+    "e150_restricted.py": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "StdMoE_1b14b_1T/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "StdMoE_1b14b_1T/modeling_emo.py": "e10fb25a662d581b25708c7b1d640ba22c7547824a1f4f00c1fc39f08801d32b",
+    "StdMoE_1b14b_1T/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "StdMoE_1b14b_1T_EmoAnnealed/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "StdMoE_1b14b_1T_EmoAnnealed/modeling_emo.py": "26f57354940655db673b35d47e9c6b1a85900068f41d91cb08afed4ec53219d6",
+    "StdMoE_1b14b_1T_EmoAnnealed/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "e151_native.py": "37aebf802a06ac8816f37777f7f991b8db071432f0ff69875d385c5aeddb783e",
+    "e154_native.py": "aca56b8c0da5cbb1dc420eaf8edcc8b0a8818e6214def6f8abb3cfd10664878d",
+    "e154_assets.py": "888a17da9798f2ae4edd2b30f797caa2c2b77d8a5b3bd3bbe045fe93447e779c",
+    "e150_prepare_assets.py": "02be428952536e3f7ed371e3812558fda701bcab14dfdd295641be7826dc6a7a",
+    "parent/config.json": "508fb6d7ae0419a27af8e9d776ba546152e89d259a80c35a9c5e3f8cfe8ee66e",
+    "parent/configuration_emo.py": "f1bd419d8dd926cf7d15131b8192938a0feda1b003586320fa56de20360e4bf2",
+    "parent/modeling_emo.py": "26f57354940655db673b35d47e9c6b1a85900068f41d91cb08afed4ec53219d6",
+    "parent/tokenizer.json": "73fd5254624f39a88e3faac6a8e11300fc3c735ed37880d4f4f08db898eaecca",
+    "parent/tokenizer_config.json": "733b2ec0f743cf206dd20335eacbd4427c85487fd6f5216bb361f92a85314315"
+  },
+  "parent_metadata_sha256": "32ce4757983e3f7c6f0def4fe9686cd89c74958720fe937b5725ff0bf2a31bb3",
+  "E150_manifest_sha256": "05683c7eed79f3bdfb71b0fc2682977b7305fab65748731d7efb0e9f0f3d5f51",
+  "E151_manifest_sha256": "f49ffdda2e744df2cf11206edee3a37da4276ad342a14ebe8418e347cb959010",
+  "input_plan_sha256": "7120393167dd55a77305664e985a89547b09f8c1ed2058715e7b54a4ffb7cdbe",
+  "input": {
+    "path": "/home/xiang/mechpop_cache/e150_native_protocol_cube/plan.npz",
+    "sha256": "36c21a84b09242f2eca38613aec03c4a9bb81db1656d87e706ba43558d97984b"
+  },
+  "masks": {
+    "path": "/home/xiang/mechpop_cache/e154_native_parent_boundary/inherited_masks.npz",
+    "sha256": "53f5262d2a3d73be71df8bbf96ae2fc11432b66c6342d74ead71dbc2c3f3c7ba"
+  },
+  "conditions": [
+    "native",
+    "own_prefix",
+    "prefixA",
+    "prefixB",
+    "random0",
+    "random1",
+    "random2",
+    "routed_zero",
+    "shared_zero"
+  ],
+  "selected": [
+    {
+      "sequence": 0,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0037.json.gz",
+      "window": 8,
+      "tokens": 414,
+      "token_sha256": "e15f086229f26027ea71ef412b38c850ab7b9db4b956364dd129e696156c8d58"
+    },
+    {
+      "sequence": 1,
+      "source": "Dolma CC",
+      "file_id": "cc_en_head/cc_en_head-0142.json.gz",
+      "window": 38,
+      "tokens": 499,
+      "token_sha256": "5e53dbc08325ffdac5c59fa174e3ae7586c0cc103ac3bfdec08c10d6a35a8166"
+    },
+    {
+      "sequence": 2,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0038.json.gz",
+      "window": 31,
+      "tokens": 433,
+      "token_sha256": "b1456691ade505d386f625eec6dda9abb3610236caf77300815c3650b6bcddcb"
+    },
+    {
+      "sequence": 3,
+      "source": "Algebraic Stack",
+      "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0010.json.gz",
+      "window": 6,
+      "tokens": 457,
+      "token_sha256": "19894278aebea348c2acfd1b29c6b32804268d33f05830f56bdb1789274562a3"
+    },
+    {
+      "sequence": 4,
+      "source": "Dolma CC",
+      "file_id": "cc_en_head/cc_en_head-0142.json.gz",
+      "window": 94,
+      "tokens": 512,
+      "token_sha256": "5e1c9369154c954cf2f34a06351e46a8f749fdb558995ee9c479797877d11598"
+    },
+    {
+      "sequence": 5,
+      "source": "Reddit",
+      "file_id": "reddit/reddit-0029.json.gz",
+      "window": 37,
+      "tokens": 474,
+      "token_sha256": "903804a4476820a19d29a0b8e99b4366eb8961ccd894ce603c8b8743f418f510"
+    },
+    {
+      "sequence": 6,
+      "source": "Semantic Scholar",
+      "file_id": "pes2o/pes2o-0014.json.gz",
+      "window": 15,
+      "tokens": 512,
+      "token_sha256": "099bacc6266b1a77435538ce39d7dbe4b01bc6ce6bb8682ff5adfdaddb64f6c4"
+    },
+    {
+      "sequence": 7,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 82,
+      "tokens": 485,
+      "token_sha256": "737d923ed5ce433fa7ffc32ada768f14fcdda2ce0bf630e3ee01d23a7f4e53af"
+    },
+    {
+      "sequence": 8,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0258.json.gz",
+      "window": 73,
+      "tokens": 491,
+      "token_sha256": "797a858fa4f53d736e244b138efef687c03b00d42f2bbe1e26a2296c36c7c598"
+    },
+    {
+      "sequence": 9,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 90,
+      "tokens": 501,
+      "token_sha256": "1ce90cb0424a7bebe260c53433b6cd040f2cd8622aa2a1d59289cfc5b5d6faac"
+    },
+    {
+      "sequence": 10,
+      "source": "Reddit",
+      "file_id": "reddit/reddit-0029.json.gz",
+      "window": 0,
+      "tokens": 497,
+      "token_sha256": "ec87844eca8b9f12c19976e5c7bb163403100c35a0d3ed8b66e36318eaba38fb"
+    },
+    {
+      "sequence": 11,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 136,
+      "tokens": 487,
+      "token_sha256": "5c0c0efc96a4a7c644b292e279f708b354f6c860c0f0b5cd78e301a89e7b8ab5"
+    },
+    {
+      "sequence": 12,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0342.json.gz",
+      "window": 97,
+      "tokens": 482,
+      "token_sha256": "ab7bf04401dc9c8ced6e79e9de99780956f98e931441ffe4d414bdd7a0fb023a"
+    },
+    {
+      "sequence": 13,
+      "source": "Semantic Scholar",
+      "file_id": "pes2o/pes2o-0014.json.gz",
+      "window": 13,
+      "tokens": 512,
+      "token_sha256": "41cdc7a27f4c8fb6a695b078543a976510049baf84d3e97ea1d130e4b4a012fc"
+    },
+    {
+      "sequence": 14,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 212,
+      "tokens": 510,
+      "token_sha256": "a8ba9c459c374eacf98f4b9ea3e6288d4dbb721de1a1b7517ed615fe916c846e"
+    },
+    {
+      "sequence": 15,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0342.json.gz",
+      "window": 105,
+      "tokens": 510,
+      "token_sha256": "4289cb06d89e7cacb6137656827d0e5b337e1b40bfe0c28e53e7b1b23b4b7e1b"
+    },
+    {
+      "sequence": 16,
+      "source": "Reddit",
+      "file_id": "reddit/reddit-0029.json.gz",
+      "window": 29,
+      "tokens": 491,
+      "token_sha256": "4f136fd9ae20dc011fc71abcc29e42266d4bad0d4193b07c80ab5671a94181ba"
+    },
+    {
+      "sequence": 17,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0038.json.gz",
+      "window": 49,
+      "tokens": 384,
+      "token_sha256": "a5c6fb9a5ae25297cac5fabc6309a84b85ca6ab6f991147722ccc915309f4ce9"
+    },
+    {
+      "sequence": 18,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 247,
+      "tokens": 487,
+      "token_sha256": "14126cea4308b6a8bf1550b13546860c271a4b033424f88ad403c298ad84432b"
+    },
+    {
+      "sequence": 19,
+      "source": "Dolma CC",
+      "file_id": "cc_en_head/cc_en_head-0142.json.gz",
+      "window": 1,
+      "tokens": 502,
+      "token_sha256": "4af3e556206b03bef01e863191d2c3b6e84522ac1d2f50fe78a02b7c2faca22b"
+    },
+    {
+      "sequence": 20,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 228,
+      "tokens": 481,
+      "token_sha256": "d211bf538d9f474e47ea69ef1a46848cc2bce606e1c3cc06da81553ecae3b14f"
+    },
+    {
+      "sequence": 21,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0337.json.gz",
+      "window": 115,
+      "tokens": 512,
+      "token_sha256": "445b3c2e2059d825728f1ac856962397c7a64a813266aaa92bd561297a41a79e"
+    },
+    {
+      "sequence": 22,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 210,
+      "tokens": 502,
+      "token_sha256": "f44d39ec12e97dee8120a6394d23a180d565eb6685f80fdd114810b9c83d7408"
+    },
+    {
+      "sequence": 23,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0342.json.gz",
+      "window": 89,
+      "tokens": 483,
+      "token_sha256": "fc2f9bf68b2b36eccd139dade6424a52475d72d5d00a3370580001f388d4d35f"
+    },
+    {
+      "sequence": 24,
+      "source": "C4",
+      "file_id": "c4-filtered/c4-0144.json.gz",
+      "window": 15,
+      "tokens": 502,
+      "token_sha256": "46489c6626063d44f9e55bba8c21a7e08cc74768c2c60724d18cf22e299b5c82"
+    },
+    {
+      "sequence": 25,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 130,
+      "tokens": 502,
+      "token_sha256": "08c2d61110db27ee972be513d1d46f7dedefd1718bd3fbaf6885c51b60aaaa63"
+    },
+    {
+      "sequence": 26,
+      "source": "C4",
+      "file_id": "c4-filtered/c4-0029.json.gz",
+      "window": 0,
+      "tokens": 479,
+      "token_sha256": "6209489fd82cda36352cbb153bdde8f475819186be5036b531e2d7c14a32c2a0"
+    },
+    {
+      "sequence": 27,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0038.json.gz",
+      "window": 110,
+      "tokens": 424,
+      "token_sha256": "e5090468d5c64cdd09c4c2ab1dda70384366ebaaba9205a4da4c78fd50c94a53"
+    },
+    {
+      "sequence": 28,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 212,
+      "tokens": 491,
+      "token_sha256": "4d6f40e9c3dc80f665b019fd9d81949c64a03dc71f8175b61d0637d4e5ef261c"
+    },
+    {
+      "sequence": 29,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0037.json.gz",
+      "window": 28,
+      "tokens": 426,
+      "token_sha256": "9a6197a7d92a2105389a1c08232111565175b8295523afb346f0734dc223aa87"
+    },
+    {
+      "sequence": 30,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0337.json.gz",
+      "window": 23,
+      "tokens": 492,
+      "token_sha256": "40c0d33db0bf880ff0965949fc093b7c06a2b96e6d384d66d9a5b3950bb31a11"
+    },
+    {
+      "sequence": 31,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 202,
+      "tokens": 510,
+      "token_sha256": "232507885b182cf5d45055a10cfefe5fa3424b349aba674255a3198a51f8619f"
+    },
+    {
+      "sequence": 32,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0258.json.gz",
+      "window": 3,
+      "tokens": 498,
+      "token_sha256": "277d7e97ee9cb0b4b9b5fe1e83ee0c036badd24d17da9f8c830d4412f6126a5f"
+    },
+    {
+      "sequence": 33,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0162.json.gz",
+      "window": 16,
+      "tokens": 510,
+      "token_sha256": "009d8718a615f0a69f527a0055e5fc4e44421ca1466051eea032541962471230"
+    },
+    {
+      "sequence": 34,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 185,
+      "tokens": 499,
+      "token_sha256": "1a45701caf77b30ac69c47bb088cf1756c9e250057ac306ab08fa2953c20c502"
+    },
+    {
+      "sequence": 35,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0037.json.gz",
+      "window": 88,
+      "tokens": 428,
+      "token_sha256": "4c3a1025ceccb154a9836e86e80636d8dd8437368d085f052fe6b1cf62d780ed"
+    },
+    {
+      "sequence": 36,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0258.json.gz",
+      "window": 22,
+      "tokens": 487,
+      "token_sha256": "dad4fd842fd2dd81ddaeed8333ffbbed96f5dd7ed0dd20b468536d7ad6fb39bf"
+    },
+    {
+      "sequence": 37,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0038.json.gz",
+      "window": 85,
+      "tokens": 434,
+      "token_sha256": "3458d9062e3495fb2f54402453e5adfcd87b05c6e1ff345eb8bda33a45b45fb2"
+    },
+    {
+      "sequence": 38,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0162.json.gz",
+      "window": 23,
+      "tokens": 509,
+      "token_sha256": "40838ddb3c42306dc5a4cf469070bb47b54d359c6af1d3c6cdcf1bd46b4387d0"
+    },
+    {
+      "sequence": 39,
+      "source": "Dolma CC",
+      "file_id": "cc_en_head/cc_en_head-0142.json.gz",
+      "window": 60,
+      "tokens": 500,
+      "token_sha256": "a2419d1c43174c6d1f34550f9a899bd932f6d942a5bce631c10de381aa9929e4"
+    },
+    {
+      "sequence": 40,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0342.json.gz",
+      "window": 40,
+      "tokens": 503,
+      "token_sha256": "0a9d4b683902bc77ce9ba3e9c93eafc6c47c9de5b12e0857033817e3ef4dec62"
+    },
+    {
+      "sequence": 41,
+      "source": "Flan",
+      "file_id": "tulu_flan/tulu_flan-0006.json.gz",
+      "window": 8,
+      "tokens": 488,
+      "token_sha256": "6f0044858397846c6028bdb877d8d9361f49d3f93b874e525c65c0458f57ee09"
+    },
+    {
+      "sequence": 42,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 256,
+      "tokens": 484,
+      "token_sha256": "bbb8dc16e2239b90346d250a42e732040281118b5e3ad7b44d6c9130e4858338"
+    },
+    {
+      "sequence": 43,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0037.json.gz",
+      "window": 85,
+      "tokens": 472,
+      "token_sha256": "254d8611da8a030329fa90fd58eae04a34de2cccc67379f487be3521db2c3d11"
+    },
+    {
+      "sequence": 44,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0037.json.gz",
+      "window": 24,
+      "tokens": 399,
+      "token_sha256": "13a70853d49d60c5ba73c796a6e0c329695bb0664256716204a4ef67cca28bb8"
+    },
+    {
+      "sequence": 45,
+      "source": "Algebraic Stack",
+      "file_id": "proof_pile_2-algebraic_stack/algebraic-stack-train-0007.json.gz",
+      "window": 6,
+      "tokens": 489,
+      "token_sha256": "6dabaac6aef35a474e7b4686457df32590e18bb19bdaa8a21cbd07075052172a"
+    },
+    {
+      "sequence": 46,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 93,
+      "tokens": 504,
+      "token_sha256": "4e0a783f754d3f2002f7ba3ef24f0eecd864ad472311237ff83ed81fe4ea388f"
+    },
+    {
+      "sequence": 47,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0162.json.gz",
+      "window": 73,
+      "tokens": 493,
+      "token_sha256": "fe136d0dd537ffe2c5b365ae5e68c0e93ebb7d71744bba8005a3adeb1fb9815e"
+    },
+    {
+      "sequence": 48,
+      "source": "StarCoder",
+      "file_id": "starcoder/starcoder-0037.json.gz",
+      "window": 98,
+      "tokens": 428,
+      "token_sha256": "07a54e4fe777cab2a450e74b98dcadefad0a02a28c21f2a7d9be073add2fa096"
+    },
+    {
+      "sequence": 49,
+      "source": "Semantic Scholar",
+      "file_id": "pes2o/pes2o-0014.json.gz",
+      "window": 32,
+      "tokens": 512,
+      "token_sha256": "0efe59c1175c1d4d62451715c934541d7b0689dcf6f321fb30651959adf73f7e"
+    },
+    {
+      "sequence": 50,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 157,
+      "tokens": 489,
+      "token_sha256": "0c86bf5839d5d28514aa6e948323e4c561573b47892bce03efe23146d5148a78"
+    },
+    {
+      "sequence": 51,
+      "source": "Semantic Scholar",
+      "file_id": "pes2o/pes2o-0024.json.gz",
+      "window": 14,
+      "tokens": 505,
+      "token_sha256": "b0c4f7c8c456f1f3a45b2749b9c0f49befbd0be234946fc9365334c55991b642"
+    },
+    {
+      "sequence": 52,
+      "source": "CC News",
+      "file_id": "cc_news_head/cc_news-0004.json.gz",
+      "window": 3,
+      "tokens": 500,
+      "token_sha256": "3359cdac3d7315a4ac2f5eeac11331063b2cb1bf3ec9b5b2ab39369f3feab94b"
+    },
+    {
+      "sequence": 53,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0084.json.gz",
+      "window": 134,
+      "tokens": 490,
+      "token_sha256": "024229556c97dc16d2c00fd60263a2b2c3def6b7a15123989413826860319e1f"
+    },
+    {
+      "sequence": 54,
+      "source": "Dolma CC",
+      "file_id": "cc_en_middle/cc_en_middle-0258.json.gz",
+      "window": 16,
+      "tokens": 498,
+      "token_sha256": "920d3f93c9e83f094194d69d92e0d271703b8d2a1f4adcbdddf530b4fd9703f1"
+    },
+    {
+      "sequence": 55,
+      "source": "Dolma CC",
+      "file_id": "cc_en_head/cc_en_head-0142.json.gz",
+      "window": 71,
+      "tokens": 486,
+      "token_sha256": "b86fcd31eaca963b687369c42135945cba6d775009533dcd3f531a8c9856ceb9"
+    },
+    {
+      "sequence": 56,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0337.json.gz",
+      "window": 97,
+      "tokens": 480,
+      "token_sha256": "c01d56e0877804d0a7ec156cf016cbc88d3cd03d952271581bb38860d9112cba"
+    },
+    {
+      "sequence": 57,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 165,
+      "tokens": 496,
+      "token_sha256": "31664b95b17af2bc56985c117ae723e00c74c485930a7a5394c676a0cab8b41b"
+    },
+    {
+      "sequence": 58,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0337.json.gz",
+      "window": 21,
+      "tokens": 496,
+      "token_sha256": "66a2d9ebdfd77af92516438c97360c78b3bdee58880f736b9c043656fef81a10"
+    },
+    {
+      "sequence": 59,
+      "source": "C4",
+      "file_id": "c4-filtered/c4-0029.json.gz",
+      "window": 32,
+      "tokens": 499,
+      "token_sha256": "0f583b580ad6b86af2e76d1b77980f25b757fbc26482e288660aeea996e199cb"
+    },
+    {
+      "sequence": 60,
+      "source": "arXiv",
+      "file_id": "redpajama-arxiv/arxiv-0041.json.gz",
+      "window": 4,
+      "tokens": 504,
+      "token_sha256": "65807e85d9240d229123fb0dfd4fb7dd8ce73165a0e99f777231de49f05d3dd9"
+    },
+    {
+      "sequence": 61,
+      "source": "Dolma CC",
+      "file_id": "cc_en_head/cc_en_head-0088.json.gz",
+      "window": 71,
+      "tokens": 496,
+      "token_sha256": "9d9c05a2f382b9fbd5f91c1b72a0804b7a8286509ee8e160eee204344853fee9"
+    },
+    {
+      "sequence": 62,
+      "source": "Dolma CC",
+      "file_id": "cc_en_tail/cc_en_tail-0337.json.gz",
+      "window": 50,
+      "tokens": 489,
+      "token_sha256": "d4260598e88439253a543597ec09ccbacbde94523ff66ea2b77f49291c5ac67d"
+    },
+    {
+      "sequence": 63,
+      "source": "Refined Web",
+      "file_id": "falcon-refinedweb-filtered/falcon-0466.json.gz",
+      "window": 139,
+      "tokens": 485,
+      "token_sha256": "4d35fcaf8354ed5d134273b656fbbad5f89afaa9fd0fab0a4a039aa0359c1b1d"
+    }
+  ],
+  "scope": "One declared public mature parent and two fixed protocol descendants; no independent initialization or strict training-batch causal chain."
+}

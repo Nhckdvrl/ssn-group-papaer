@@ -2,6 +2,8 @@
 
 ## 本轮执行前检索补充
 
+**2026-10-27更新（E152完成、E153运行中）：** 再跑venue nearest（training history / shared computation / pruning normalization），并回近期arXiv原文核对[Training-Free Halving](https://arxiv.org/html/2609.04575v1)与[OptEP](https://arxiv.org/html/2610.27123v1)；[阅读范围与距离](../../../../library/themes/moe-routing/RECENT_PRUNING_DISTANCE_2026-10-27.md)。归一化与激活选择分离、PPL和能力读数分离、子集联合重构均有明确ownership，不能当E152或Γ的新机制。当前增量仍是成熟历史来源下路由/函数/始终激活计算的性质转移与配套边界；这些近邻不等于已经回答它，也不触发关线。
+
 本轮重跑 venue corpus nearest：`MoE expert router coupling component recombination training history`。召回 ERC、PASs-MoE、FURINA 等；回一手页面核对，不把分数/接收标签用于科学判决。最新 arXiv 另查到 10-20 的 NR-SAE。当前增量必须落在**同一个原生语言接口下，跨训练历史、合法来源重组与完整预测后果的连接**，不能认领一般的 router–expert 耦合、专家复用或逐专家重构。
 
 | 近邻与本轮阅读范围 | ownership / compression risk | 与本轮的具体距离 |

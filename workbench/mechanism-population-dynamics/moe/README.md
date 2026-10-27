@@ -61,6 +61,8 @@ E144–E147区分了真实配套、当前gate读数、历史兼容性和分组�
 
 E153采用原任务RC逻辑：5-shot dev示例、validation全部61题逐层greedy选专家、test数学/生物各64题；cloze答案文本teacher forcing，报告raw/per-char accuracy、choice CE和首答案token真实KL。固定AAAA/ABAA/BABB/BBBB四格与两native task mask，不让hybrid重选。数据最长475token，无截断/下载，未读取新模型表现；不是作者全表或重划分的精确复现。
 
+[E154](experiments/E154-native-parent-formation-boundary.md)在E153测试结果前登记：重用公开成熟preanneal父状态，比较同9条件的依赖与预算性质，区分B新变化/A丢失旧性质/两者均变化。父code/config/tokenizer与CPU原生/置零检查已通过，A/B旧raw重构误差0；新增54.28GB公开权重取回中，未执行P的GPU/cal/held，不默认自训。公开谱系声明与严格batch/optimizer链仍分开。
+
 现有材料可以形成论文贡献的三个候选支点：真实预测配套、历史相关的合法兼容性、结构边界与gate-only强对照。恒等式、置换匹配和一般router–expert耦合均非新点；若不能跨自由gate/原生训练窗口重现，贡献仍是局部受控发现。详见[定位表](notes/POSITIONING_2026-10-26.md)。
 
 ## 5. 代码、复算与资产
