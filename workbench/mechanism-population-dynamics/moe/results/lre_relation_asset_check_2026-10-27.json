@@ -1,0 +1,138 @@
+{
+  "status": "read_only_asset_feasibility_check_no_model_forward",
+  "source_url": "https://github.com/evandez/relations",
+  "source_commit": "1b9ec3cf2b8368e42bde7e80fcef384312a6ec07",
+  "files": [
+    {
+      "path": "/home/xiang/mechpop_cache/moe_primary_reading_20261027/lre_official_1b9ec3cf/data/factual/country_capital_city.json",
+      "bytes": 2553,
+      "sha256": "9945d2da1fa1145c1d7e59ac61a25ebee74299c00bd53fc9308167f9e1d44fc0",
+      "git_blob_sha1": "b353e2a76acad8d370d97b46d66b776fcf6ec685"
+    },
+    {
+      "path": "/home/xiang/mechpop_cache/moe_primary_reading_20261027/lre_official_1b9ec3cf/data/factual/country_language.json",
+      "bytes": 2615,
+      "sha256": "0996525735107934f0d2e467e6fac7d2c785c42e8300ccb41ae6e9b5dfde2b76",
+      "git_blob_sha1": "a69180e3921b34e798688395c3ff45ca0cf0b768"
+    },
+    {
+      "path": "/home/xiang/mechpop_cache/moe_primary_reading_20261027/lre_official_1b9ec3cf/src/data.py",
+      "bytes": 12993,
+      "sha256": "97a74e550789e5def30c1bdf680641f7fba7906bc08a53dce367cb9f8c01a049",
+      "git_blob_sha1": "f6b107f53bd141df87cc87aef73642a29e6c896a"
+    },
+    {
+      "path": "/home/xiang/mechpop_cache/moe_primary_reading_20261027/lre_official_1b9ec3cf/src/metrics.py",
+      "bytes": 2404,
+      "sha256": "5a972a5582425c6e160e5d390012e99601aebde63188395690fe00f5c8ddeb94",
+      "git_blob_sha1": "493c829ac52eb83e0bf1573c2694127866ae213d"
+    }
+  ],
+  "source_blob_bytes_verified": true,
+  "relations": {
+    "country_capital_city": {
+      "records": 24,
+      "unique_subjects": 24,
+      "unique_objects": 24,
+      "prompt_templates": [
+        "The capital city of {} is",
+        "The capital of {} is"
+      ],
+      "prompt_templates_zs": [
+        "The capital of {} is the city of",
+        "What is the capital of {}? It is the city of"
+      ],
+      "target_type": "one canonical string per subject; no explicit aliases array",
+      "literal_unicode_escape_objects": [
+        {
+          "subject": "Brazil",
+          "object": "Bras\\u00edlia"
+        },
+        {
+          "subject": "Colombia",
+          "object": "Bogot\\u00e1"
+        }
+      ],
+      "multiword_objects": [
+        {
+          "subject": "United States",
+          "object": "Washington D.C."
+        },
+        {
+          "subject": "Mexico",
+          "object": "Mexico City"
+        },
+        {
+          "subject": "Argentina",
+          "object": "Buenos Aires"
+        },
+        {
+          "subject": "India",
+          "object": "New Delhi"
+        }
+      ]
+    },
+    "country_language": {
+      "records": 24,
+      "unique_subjects": 24,
+      "unique_objects": 14,
+      "prompt_templates": [
+        "People in {} speak",
+        "The language used in {} is",
+        "In {}, the primary language is"
+      ],
+      "prompt_templates_zs": [
+        "{}, where most people speak",
+        "In {}, people speak the language of",
+        "People in {} speak the language of"
+      ],
+      "target_type": "one canonical string per subject; no explicit aliases array",
+      "literal_unicode_escape_objects": [],
+      "multiword_objects": [
+        {
+          "subject": "China",
+          "object": "Mandarin Chinese"
+        }
+      ]
+    }
+  },
+  "paired_subject_intersection": [
+    "Argentina",
+    "Australia",
+    "Brazil",
+    "Canada",
+    "Chile",
+    "China",
+    "Colombia",
+    "Egypt",
+    "France",
+    "Germany",
+    "India",
+    "Italy",
+    "Japan",
+    "Mexico",
+    "Nigeria",
+    "Pakistan",
+    "Peru",
+    "Russia",
+    "Saudi Arabia",
+    "South Korea",
+    "Spain",
+    "Turkey",
+    "United States",
+    "Venezuela"
+  ],
+  "paired_subject_count": 24,
+  "evaluation_interface": {
+    "source": "src/metrics.py recall docstring/code; src/data.py load_relation_dict",
+    "published_recall": "case/whitespace-insensitive nontrivial prefix of canonical target, rather than full-answer exact correctness; helper itself not inspected",
+    "split": "No train/dev/test keys in these two raw JSONs; any split/ICL choices need an explicit protocol",
+    "unit": "24 paired country entities, not the number of template-expanded prompts",
+    "labels": "two capital strings retain literal Unicode escape sequences after json.load; raw preserved without correction",
+    "aliases": "canonical-only language and multiword/alias capital targets may count valid alternatives differently; no semantic alias truth set verified",
+    "paper_reproduction": "Current official commit is pinned; Basic-Refinement does not identify this exact release, so this is not a literal replication claim"
+  },
+  "existing_cache_search": "No exhaustive preexisting-cache search completed; a small official source copy was fetched via GitHub plugin and Git blob hashes verified. No old closed-heads code/data modified.",
+  "delegation_note": "Terra task hit temporary model capacity; root completed this read-only check directly.",
+  "scientific_use": "Potential paired entity/attribute probe of learned cooperation and reuse if E156 warrants it; no automatic benchmark expansion, new experiment, checkpoint or training."
+}

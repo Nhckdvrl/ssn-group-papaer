@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-27",
+  "purpose": "核对 EMO 模块独立维护与重整合的官方公开接口，不对研究贡献作决策。",
+  "paper": {
+    "url": "https://arxiv.org/html/2605.06663v1#S6",
+    "finding": "第6节报告对32专家子集微调后，替换原128专家模型中对应专家；重插全模型优于原全模型，但未达到独立子集表现。",
+    "limitations": "该段未指定本次微调的 R/S/D/G 可训练清单、具体回插参数标志、运行 commit 或对应权重资产。",
+    "version_audit": {
+      "arxiv_record": "https://arxiv.org/abs/2605.06663",
+      "v1_submitted": "2026-05-07",
+      "v2_last_revised": "2026-05-10",
+      "v1_html": "https://arxiv.org/html/2605.06663v1",
+      "v2_html": "https://arxiv.org/html/2605.06663v2",
+      "initial_read": "之前本agent打开不带版本的 https://arxiv.org/html/2605.06663 ，返回HTML标识v2（10 May 2026）；该URL是latest，不是当时显式打开v2固定URL。阅读用于本审计的第6节及邻近段落，不是全文审阅。",
+      "comparison": "本次分别打开带v1/v2的HTML，标题各明确标示版本；第6节可见正文（Future Directions及四个小节）逐段文本相同，包含32专家回插段落。未比较全文或图表，不能据此声称v1/v2全文相同。",
+      "root_scope": "主agent此前全文阅读及哈希锁定的是v1的25页PDF；本记录不表示主agent已全文阅读v2。"
+    }
+  },
+  "official_tree": {
+    "repository": "https://github.com/allenai/EMO",
+    "main_commit_checked": "246fdec72e599319c717aefe29a1d1fdad7c97a0",
+    "tree_url": "https://api.github.com/repos/allenai/EMO/git/trees/246fdec72e599319c717aefe29a1d1fdad7c97a0?recursive=1",
+    "tree_entries": 945,
+    "tree_truncated": false,
+    "scope": "只检查公开 main 的该固定树、相关源码、README 和公开模型集合；未覆盖所有历史commit/分支或作者私有实验。"
+  },
+  "implementation": {
+    "merge_url": "https://github.com/allenai/EMO/blob/246fdec72e599319c717aefe29a1d1fdad7c97a0/src/hf_training/merge_pruned_experts_back.py",
+    "finding": "发布了将微调后剪枝模型专家回填原全模型的实用工具，源码称为 Extensions。每层按 pruning_metadata.json experts_kept_per_layer 将小模型 new_pos 映射到 parent 原 orig_idx。",
+    "default": "仅覆盖所保留的可路由专家MLP（R）；共享专家S、router G、attention/norm/embedding/lm_head等非MoE D不复制。原位置替换，未选专家保持父模型。",
+    "options": "also-copy-shared 可回填S；also-copy-router-rows 可回填保留索引G行；also-copy-non-moe 可回填形状匹配的非MoE参数；默认替换，--average 可将所选参数按 (1-alpha)*parent+alpha*small 混合。",
+    "qualification": "代码接口与论文描述相符，但未发现证据将该版本工具或其默认flags绑定到第6节报告的具体运行。"
+  },
+  "finetuning": {
+    "url": "https://github.com/allenai/EMO/blob/246fdec72e599319c717aefe29a1d1fdad7c97a0/src/hf_training/finetune.py",
+    "finding": "当前通用微调器 freeze_mode=none 默认训练所有参数；routed 只训R；routed_shared 训R/S；routed_shared_router 训R/S/G。非none模式冻结D。",
+    "launcher": "https://github.com/allenai/EMO/blob/246fdec72e599319c717aefe29a1d1fdad7c97a0/scripts/selective_hf/hf_finetune_with_selective_layerwise.sh",
+    "launcher_scope": "通用选择、子模型微调与评估流水线未指定freeze-mode，因此调用当前微调器默认值；这不能证明第6节实际训练配置。",
+    "section6_actual_trainable_parameters": "未确认；不可把当前通用默认值当成论文第6节实测配置。"
+  },
+  "assets": {
+    "official_collection": "https://huggingface.co/collections/allenai/emo",
+    "finding": "公开集合列有基础、对照和退火权重；在该集合与已读README中未发现标明第6节32专家微调后及重插模型的资产或固定运行配置。",
+    "qualification": "没有证明其他公开位置不存在；未下载权重，未运行模型。"
+  },
+  "source_links": {
+    "readme": "https://github.com/allenai/EMO/blob/246fdec72e599319c717aefe29a1d1fdad7c97a0/README.md",
+    "selection": "https://github.com/allenai/EMO/blob/246fdec72e599319c717aefe29a1d1fdad7c97a0/src/hf_training/greedy_prune_layerwise.py"
+  }
+}
