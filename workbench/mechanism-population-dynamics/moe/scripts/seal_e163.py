@@ -34,7 +34,7 @@ def main():
     target=RAW/('run_metadata_'+commit+'.tar.gz')
     if target.exists() or (ROOT/'artifact_seal.json').exists():raise FileExistsError('Preserve the previous package')
     entries={}
-    for name in (*plan['source_sha256'],'e163_plot.py','e163_finish.py','seal_e163.py','reproduce.py','e163_cpu_priority.py','e163_resource_wait.py'):
+    for name in (*plan['source_sha256'],'e163_plot.py','e163_finish.py','seal_e163.py','reproduce.py','e163_cpu_priority.py','e163_resource_wait.py','e163_cross_resume.py'):
         entries['repo/moe/scripts/'+name]=WB/'moe/scripts'/name
     for path in ROOT.rglob('*'):
         if path.is_file() and path.suffix in ('.json','.log','.png','.pdf') and not path.name.endswith('.tmp'):
@@ -45,6 +45,11 @@ def main():
     for name in ('CLAIMS.md','PAIN_LOG.md','AGENTS.md'):
         entries['repo/'+name]=WB/name
     for path in RAW.glob('*.npz'):entries['raw/'+path.name]=path
+    for item in manifest['raw'].values():
+        path=Path(item['path']);entries['raw/'+path.name]=path
+    for path in (RAW/'attempt_3_hash_schema').rglob('*'):
+        if path.is_file() and path.suffix in ('.py','.npz','.json') and not path.name.startswith('native_'):
+            entries['raw/attempt_3_hash_schema/'+str(path.relative_to(RAW/'attempt_3_hash_schema'))]=path
     for path in (RAW/'attempt_1_KL_reduction').rglob('*'):
         if path.is_file() and path.suffix in ('.py','.npz','.json'):
             entries['raw/attempt_1_KL_reduction/'+str(path.relative_to(RAW/'attempt_1_KL_reduction'))]=path

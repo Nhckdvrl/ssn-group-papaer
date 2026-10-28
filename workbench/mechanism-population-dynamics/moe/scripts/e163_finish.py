@@ -45,6 +45,12 @@ def main():
         if resource['status']!='complete' or sha(resource['adapter_source'])!=resource['adapter_sha256']:
             raise ValueError('Resource adapter did not finish with its registered source')
         manifest['resource_adapter']={'path':str(ROOT/'resource_adapter.json'),'sha256':sha(ROOT/'resource_adapter.json')}
+    if (ROOT/'cross_resume.json').exists():
+        resumed=read(ROOT/'cross_resume.json')
+        if resumed['status']!='complete' or sha(resumed['source_path'])!=resumed['source_sha256']:
+            raise ValueError('Cross resume lacks its registered complete source')
+        manifest['cross_resume']={'path':str(ROOT/'cross_resume.json'),'sha256':sha(ROOT/'cross_resume.json')}
+        manifest['native_inheritance']={'path':str(ROOT/'native_inheritance.json'),'sha256':sha(ROOT/'native_inheritance.json')}
     (ROOT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     print(json.dumps({'status':'complete','experiment':'E163','gpu_seconds':manifest['gpu_seconds']}),flush=True)
 
