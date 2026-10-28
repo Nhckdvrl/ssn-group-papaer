@@ -173,3 +173,7 @@ E158结果提交37b68280的精确NFS包 `whole_path/run_metadata_37b68280.tar.gz
 E161已完成：`~/mechpop_cache/e161_crossed_entity_relation/scores.npz` 124415B，SHA `fc9135be853d3c99dd3bed59711061af994e29e96484bf481d282942cb4ae08e`，source55960d57；576交换/144正控/588身份、全部原生重放与事后参数buffer恢复通过。实际.532431455h、峰值81.737187GB；ledger/manifest complete。`e161_analyze.py --analyze`与`e161_independent_audit/audit.py --audit --summary ... --output ...`复算，4049元素误差0。E160首轮无完整raw且进程消失，原budget/log不修改，recovery.json记至少2100.608秒与未知精确成本；同源重跑的完整plan/budget/manifest/summary独立位于`results/e160/retry_1/`，不以旧running账本作为完成证据。
 
 E160 retry_1已完成：`~/mechpop_cache/e160_shared_signal_context_cross/scores.npz` 75474B，SHA `b53dfe574a649fd6900634671843798ac4a3b3ee88faab35058f72f0afac2a42`。source55960d57、恢复器967e0dfc；2560常规调用及12额外控制、三源原生cal/参数/buffer、128题自然/零化和全对角分布重放通过。6283.367706142秒=1.745379918h，峰值82.209380864GB，独立监督退出码0；首轮原样保留至少2100.608秒、精确总成本未知。复算入口见E160卡；4524数字/2869计数≤7.11e−15。S轨迹仅保存逐题BF16 SHA，不保留全大轨迹，可由固定inputs/pins重算；小raw与plan足以复算所有统计。
+
+## 2026-10-28完成结果的精确源码封存
+
+E160完整retry的源码/结果与小raw封存在`~/mechpop_cache/e160_shared_signal_context_cross/run_metadata_09903add.tar.gz`（1,184,987 B）；E161对应`~/mechpop_cache/e161_crossed_entity_relation/run_metadata_caff4266.tar.gz`（586,614 B）。逐项SHA、实际raw、输入引用和Git源码对应关系分别见`results/e160/retry_1/artifact_seal.json`与`results/e161/artifact_seal.json`。模型权重沿原始公开HF pin恢复，不重复打包。E160首轮中断和未知完整成本仍保留。CPU复现与统一校验入口见[scripts/README](scripts/README.md)。

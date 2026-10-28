@@ -1,6 +1,6 @@
 # 总函数约束、可识别性与当前实验范围（2026-10-26）
 
-> **2026-10-26 后续整理：** 本文的条件性命题与历史范围讨论保留；当前研究使用的局部跨输入算子、有限 cohort 重组关系及预测读出边界统一见 [RESEARCH_DIRECTION](../RESEARCH_DIRECTION.md)。其中有额外假设的可识别性讨论不能直接当作实际学生的全局保证或方向关闭依据。
+> **2026-10-26 后续整理：** 本文的条件性命题与历史范围讨论保留；当前研究判断见[RESEARCH_DIRECTION](../RESEARCH_DIRECTION.md)；局部跨输入算子、有限cohort重组关系及预测读出边界的完整推导保存在[2026-10-27固定版本§3–4](https://github.com/Nhckdvrl/ssn-group-papaer/blob/09903add4dd2eff8500dc30ecf7a86993de5ec86/workbench/mechanism-population-dynamics/moe/RESEARCH_DIRECTION.md#3-已核实事实以及它们尚未支持的解释)。其中有额外假设的可识别性讨论不能直接当作实际学生的全局保证或方向关闭依据。
 
 这份概念校正不新增实验/主张，不提出理论原创性。当前应问：**固定语言计算要求，在有限训练中哪些实际计算分解会重复出现，额外分配信息是否约束它们？** “sum-only监督必然不可识别”不是可用前提。
 
@@ -23,4 +23,4 @@
 - [Nguyen et al., 2402.02952v2](https://arxiv.org/html/2402.02952v2)：确定性dense softmax回归中，在紧参数域/strong identifiability等条件下联系总函数估计与expert恢复。标题不能替代假设核对。
 - [Nguyen et al., 2309.13850v2](https://arxiv.org/html/2309.13850v2)：top-K条件Gaussian混合密度的MLE理论；条件密度可识别性不能直接用于确定性神经块加权和，其激活gate也归一化。
 
-两篇只核对所记录章节，未复核全部证明；详细论文卡在根library的EXPERT_ALIGNMENT_PAPER_CARDS_2026-10-26.md。没有进行理论新颖性穷尽搜索，不称新定理。当前唯一新增GPU问题仍是E139配对free cohort。
+两篇只核对所记录章节，未复核全部证明；详细论文卡在根library的EXPERT_ALIGNMENT_PAPER_CARDS_2026-10-26.md。没有进行理论新颖性穷尽搜索，不称新定理。末句E139为2026-10-26时点的执行记录；当前实验与决定以README为准。

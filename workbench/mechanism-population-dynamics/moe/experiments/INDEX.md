@@ -1,6 +1,6 @@
-# MoE 实验索引 E120–E147（2026-10-26）
+# MoE 实验索引 E120–E162（2026-10-28）
 
-这是已有证据与新设计的导航。E120–E142 是已有结果；用户在讨论后确认 [当前方向](../RESEARCH_DIRECTION.md)，本轮用户进一步授权执行，E144–E147已完整获得新读数（E147为E146后新登记的强对照）。E143 保留备选。大模型、缓存和原始数组以原卡及归档清单中的路径为准；下列历史数字不因新设计而更改，主张等级不变。
+这是证据导航，不是自动执行队列。E120–E142是受控平台阶段；E144–E161已完成，E143未运行；E162是用户明确要求完成的当前成熟历史比较。完成本批后先归纳主张、整理代码/缓存/核心文档，不自动追加实验。当前授权与资源见[AGENTS](../../AGENTS.md)和[唯一研究说明](../README.md)，总并发上限4卡。历史数字与等级保持原范围。
 
 ## 已有实验 E120–E142
 
@@ -28,7 +28,7 @@
 | [E139](E139-matched-free-routing-cohort.md) | 配对expert初值但自由gate的三学生如何变化 → componentVar自由/固定=.072467/.031209，sumVar=.017869/.015947；CUDA RNG技术失败尝试保留，修复后固定终点全完成，限定C09=L1。 | [`readout_table.json`](../results/e139/readout_table.json)、[`independent_audit.json`](../results/e139/independent_audit.json)、[`device_setup_failure.json`](../results/e139/device_setup_failure.json) |
 | [E140](E140-native-router-warmstart-cohort.md) | 同完整native初态解冻gate是否仍稳定 → trainable cohort componentVar=.032818，接近固定组.031209；此为整套解冻协议差，不是单一gate边界效应。 | [`readout_table.json`](../results/e140/readout_table.json)、[`independent_audit.json`](../results/e140/independent_audit.json) |
 | [E141](E141-support-discordance-content-decomposition.md) | 贡献变异落在支持XOR还是共同on → free=.024964+.047503=.072467，fixed=0+.031209，trainable=.000540+.032278=.032818；三组完整、独立NumPy复算。 | [`readout_table.json`](../results/e141/readout_table.json)、[`independent_audit.json`](../results/e141/independent_audit.json) |
-| [E142](E142-shared-random-router-cohort.md) | 共享一个未训练random gate能否稳定本cohort → S组componentVar=.043262，介于R=.072467与T=.032818/F=.031209；只新增Dolma，不新增POS/A，S/R共享已观察seed1；卡片、读数、三份审计与归档均为DONE。用户要求暂停新增实验。 | [`readout_table.json`](../results/e142/readout_table.json)、[`independent_audit.json`](../results/e142/independent_audit.json)、[`archive_manifest.json`](../results/e142/archive_manifest.json) |
+| [E142](E142-shared-random-router-cohort.md) | 共享一个未训练random gate能否稳定本cohort → S组componentVar=.043262，介于R=.072467与T=.032818/F=.031209；只新增Dolma，不新增POS/A，S/R共享已观察seed1；卡片、读数、三份审计与归档均为DONE。当时暂停是历史授权记录，后已获用户明确恢复MoE执行。 | [`readout_table.json`](../results/e142/readout_table.json)、[`independent_audit.json`](../results/e142/independent_audit.json)、[`archive_manifest.json`](../results/e142/archive_manifest.json) |
 
 **解释边界：** 上列E138–142的变异是同一teacher/层/cache/有限训练预算下三个学生的有限cohort统计；文件/词形区间是输入评测不确定性，不是seed总体或协议处理效应区间。E141的XOR是观察到的支持分账，不是替换mask的因果效应。所有工作仍属已结项头线之外的人授权MoE驻留，未自动形成论文或新工作台状态。
 
@@ -49,7 +49,13 @@
 | [E153](E153-mmlu-domain-source-transfer.md) | DONE；C14/P32 | 同32槽mask下B比A任务正确率高9.38/10.94个百分点；低裁剪敏感性随功能包保留，完整质量仍依赖gate配套 | [summary](../results/e153/summary.json) |
 | [E154](E154-native-parent-formation-boundary.md) | DONE；C14/P32 | P/A/B的R-zero损伤5.928/6.096/2.770，S-zero .740/1.097/2.972；成熟退火区间出现依赖与预算性质分化 | [summary](../results/e154/summary.json) |
 | [E155](E155-native-task-branch-necessity.md) | DONE；C14/P32 | full P/A/B=37.50/41.41/39.06%，S-zero=32.03/33.59/20.31%；B额外S依赖+10.94pp，R仍必要 | [summary](../results/e155/summary.json) |
-| [E156](E156-native-common-parent-function-cross.md) | RUNNING；C14/P32 | 共同父P的D/G固定，R×S来源3×3与P task mask，检验可重用的函数整体 | [plan](../results/e156/plan.json) |
+| [E156](E156-native-common-parent-function-cross.md) | DONE；C14/P32 | R_B可转移低预算NLL敏感性，完整质量并未一起保留；固定P D/G下仍有来源配套 | [summary](../results/e156/summary.json) |
+| [E157](E157-native-task-subbank-reintegration.md) | DONE；C14 | 保留P其余96R、仅回插31R任务组，使B/P的full NLL相对整bank改善.055469；同源shared并非自动更好 | [summary](../results/e157/summary.json) |
+| [E158](E158-native-factual-role-interchange.md) | DONE；C14 | 完整末位置R流支持同国家换属性，attention传递国家/答案更强；未完成的单层网格不当数据，原失败完整保留 | [whole-path summary](../results/e158/whole_path/summary.json) |
+| [E159](E159-unchanged-function-partner-role.md) | DONE；C14 | 固定S_P与D/G换R_B，S移除NLL代价增加.338574；同函数的实际作用由伙伴共同决定 | [summary](../results/e159/summary.json) |
+| [E160](E160-fixed-shared-signal-context-cross.md) | DONE；C14 | 相同S函数的生产/消费轨迹交叉有.260527答案NLL配套代价；固定信号后伙伴效应改变，产生与使用需分开 | [complete retry summary](../results/e160/retry_1/summary.json) |
+| [E161](E161-crossed-entity-relation-composition.md) | DONE；C14 | 双因素R交换没有支持跨国家纯关系操作；多数为other，attention保留强完整donor阳性 | [summary](../results/e161/summary.json) |
+| [E162](E162-full-course-native-division.md) | IMPLEMENTING；C14 | 全程EMO与晚期EMO成熟端点，4分支条件、12 LM条件；代码/CPU及声明配方已核验，F真实预测尚未取得 | [CPU proof](../results/e162/self_test.json) |
 
 E144–E147无新训练；全量来源、donor、分区均保留。新C10–C12仅L1，旧C06–C09数字与等级不变；范围与当前解释见[README](../README.md)。本轮发现并在held之前修复CUDA库导入后的可见卡缓存问题，全部预检与成本保留。E147在E146结果之后、运行前新登记，没有倒写E146预设对照。
 

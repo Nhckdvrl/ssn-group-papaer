@@ -1,0 +1,2082 @@
+{
+  "status": "inventory_only_no_deletion_performed",
+  "user_gate": "Finish valuable E162, then consolidate solid claims; no automatic E163",
+  "resource_limit_gpus": 4,
+  "current_core": [
+    "AGENTS.md",
+    "moe/README.md",
+    "moe/RESEARCH_DIRECTION.md",
+    "CLAIMS.md",
+    "PAIN_LOG.md",
+    "moe/ASSETS.md",
+    "moe/experiments/INDEX.md",
+    "moe/scripts/README.md"
+  ],
+  "superseded_text_candidates": [
+    {
+      "path": "moe/notes/HANDOFF_2026-10-25.md",
+      "size_bytes": 39807,
+      "sha256": "82790063fa0e1adf3d02e8c64efd0f25284ffdc008eca7c35c63889c4de82112",
+      "reason": "Superseded handoff/discussion, conflicting historical pause/GPU/increment instructions; retain scientific evidence in cards, phase snapshot, current positioning and Git. Migrate useful habits and repair citations before removal."
+    },
+    {
+      "path": "moe/notes/DISCUSSION_2026-10-23.md",
+      "size_bytes": 20522,
+      "sha256": "680defa3e2b03a862c5901e865c49b0b72ef3e85f83a8cee547ae3be0a97e97e",
+      "reason": "Superseded handoff/discussion, conflicting historical pause/GPU/increment instructions; retain scientific evidence in cards, phase snapshot, current positioning and Git. Migrate useful habits and repair citations before removal."
+    }
+  ],
+  "duplicate_model_candidates": {
+    "P_A_B": {
+      "host": "fvcrc20",
+      "path": "/tmp/xiang-moe-20261028/mature_emo_pab",
+      "verified_original_stage_bytes": 162856907242,
+      "canonical_sources": {
+        "P": "/home/xiang/mechpop_cache/hf_emo_mature/models--allenai--StdMoE_1b14b_1T_Preanneal/snapshots/d2a4949c9d4ad6cf47fbac131f7e020077332b21",
+        "A": "/home/xiang/mechpop_cache/hf_emo_mature/models--allenai--StdMoE_1b14b_1T/snapshots/b82073bb43aaaddc0f71d5ce139ad291a3948b32",
+        "B": "/home/xiang/mechpop_cache/hf_emo_mature/models--allenai--StdMoE_1b14b_1T_EmoAnnealed/snapshots/d18c640b39e67f89669f38c5db8b5ed22a6927ca"
+      },
+      "deletion_gate": "After E162/verification, confirm no active consumer and intact canonical sources; preserve immutable stage manifest and document restaging without overwriting it"
+    },
+    "F": {
+      "host": "fvcrc21",
+      "path": "/tmp/xiang-moe-20261028/full_course_F",
+      "deletion_gate": "Not yet eligible. Complete public SHA verification, durable NFS publication, E162 and source/calibration/result seal first."
+    }
+  },
+  "generated_cache_candidates": [
+    "moe/scripts/__pycache__",
+    "F HTTP transport probe binaries",
+    "Abandoned F .incomplete objects only after complete same-SHA canonical objects exist and all writers exit"
+  ],
+  "script_inventory": [
+    {
+      "path": "moe/scripts/e120_synth.py",
+      "size_bytes": 9802,
+      "imports_local": [
+        "moe_measure"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e121_analyze.py",
+      "size_bytes": 9331,
+      "imports_local": [
+        "e121_olmoe",
+        "moe_measure"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e121_data.py",
+      "size_bytes": 7363,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e121_olmoe.py",
+      "size_bytes": 9300,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e121_pos_audit.py",
+      "size_bytes": 10825,
+      "imports_local": [
+        "moe_measure"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e122_function_bridge.py",
+      "size_bytes": 11530,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e122_independent_c06_audit.py",
+      "size_bytes": 5376,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e122_summarize.py",
+      "size_bytes": 3202,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e123_frozen_moe.py",
+      "size_bytes": 48778,
+      "imports_local": [],
+      "frozen_source_references": 43
+    },
+    {
+      "path": "moe/scripts/e123_prepare_assets.py",
+      "size_bytes": 6480,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e123_prepare_dolma.py",
+      "size_bytes": 11677,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e124_compare.py",
+      "size_bytes": 14877,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e124_functional_capture.py",
+      "size_bytes": 31458,
+      "imports_local": [
+        "e123_frozen_moe"
+      ],
+      "frozen_source_references": 1
+    },
+    {
+      "path": "moe/scripts/e124_kmeans_reference.py",
+      "size_bytes": 15673,
+      "imports_local": [
+        "e124_routing",
+        "moe_measure"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e124_make_permutation.py",
+      "size_bytes": 8007,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e124_routing.py",
+      "size_bytes": 18068,
+      "imports_local": [
+        "moe_measure"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e125_coverage_control.py",
+      "size_bytes": 38318,
+      "imports_local": [
+        "e123_frozen_moe",
+        "e124_functional_capture"
+      ],
+      "frozen_source_references": 1
+    },
+    {
+      "path": "moe/scripts/e125_exposure_diagnostic.py",
+      "size_bytes": 13843,
+      "imports_local": [
+        "e123_frozen_moe"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e125_prepare_data.py",
+      "size_bytes": 14224,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e125_stage_tokens.py",
+      "size_bytes": 1927,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e125_summarize.py",
+      "size_bytes": 25162,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e127_predictive_fidelity.py",
+      "size_bytes": 11558,
+      "imports_local": [
+        "e123_frozen_moe",
+        "e124_functional_capture"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e128_epoch_recovery.py",
+      "size_bytes": 20196,
+      "imports_local": [
+        "e125_coverage_control"
+      ],
+      "frozen_source_references": 1
+    },
+    {
+      "path": "moe/scripts/e128_finalize.py",
+      "size_bytes": 10558,
+      "imports_local": [
+        "e127_predictive_fidelity"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e129_summarize.py",
+      "size_bytes": 4069,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e129_teacher_distribution.py",
+      "size_bytes": 19453,
+      "imports_local": [
+        "e123_frozen_moe",
+        "e124_functional_capture",
+        "e125_coverage_control",
+        "e127_predictive_fidelity"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e130_analyze.py",
+      "size_bytes": 22955,
+      "imports_local": [
+        "e124_compare",
+        "e130_finalize"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e130_capture_anchor.py",
+      "size_bytes": 5465,
+      "imports_local": [
+        "e128_finalize",
+        "e130_cross_seed"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e130_cross_seed.py",
+      "size_bytes": 15675,
+      "imports_local": [
+        "e128_epoch_recovery"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e130_finalize.py",
+      "size_bytes": 20353,
+      "imports_local": [
+        "e124_functional_capture",
+        "e127_predictive_fidelity"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e130_initial_reference.py",
+      "size_bytes": 11836,
+      "imports_local": [
+        "e123_frozen_moe",
+        "e124_functional_capture",
+        "e130_finalize"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e130_predictor_compare.py",
+      "size_bytes": 10608,
+      "imports_local": [
+        "e123_frozen_moe",
+        "e124_functional_capture",
+        "e127_predictive_fidelity",
+        "e130_finalize"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e130_routing_batch.py",
+      "size_bytes": 4435,
+      "imports_local": [
+        "e124_routing"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e130_word_uncertainty.py",
+      "size_bytes": 9424,
+      "imports_local": [
+        "e124_compare",
+        "e130_analyze"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e131_compare_batch.py",
+      "size_bytes": 5758,
+      "imports_local": [
+        "e124_compare",
+        "e130_word_uncertainty"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e131_finalize.py",
+      "size_bytes": 23570,
+      "imports_local": [
+        "e124_functional_capture",
+        "e127_predictive_fidelity",
+        "e130_finalize"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e131_order_history.py",
+      "size_bytes": 36983,
+      "imports_local": [
+        "e128_epoch_recovery"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e131_plot_trajectory.py",
+      "size_bytes": 10510,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e131_predictor_compare.py",
+      "size_bytes": 22188,
+      "imports_local": [
+        "e123_frozen_moe",
+        "e124_functional_capture",
+        "e130_predictor_compare",
+        "e131_finalize"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e131_retain_diagnostic.py",
+      "size_bytes": 8556,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e132_bank_grafting.py",
+      "size_bytes": 28975,
+      "imports_local": [
+        "e123_frozen_moe",
+        "e124_compare",
+        "e124_functional_capture",
+        "e127_predictive_fidelity",
+        "e130_finalize"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e133_output_alignment.py",
+      "size_bytes": 28960,
+      "imports_local": [
+        "e132_bank_grafting"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e134_component_variation.py",
+      "size_bytes": 3204,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e134_plot.py",
+      "size_bytes": 9147,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e134_uniform_necessity.py",
+      "size_bytes": 26705,
+      "imports_local": [
+        "e132_bank_grafting"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e135_capture.py",
+      "size_bytes": 11901,
+      "imports_local": [
+        "e124_functional_capture",
+        "e135_common"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e135_capture_worker.py",
+      "size_bytes": 3901,
+      "imports_local": [
+        "e135_readout"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e135_common.py",
+      "size_bytes": 6374,
+      "imports_local": [
+        "e124_functional_capture",
+        "e128_epoch_recovery",
+        "e130_finalize"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e135_plot_function_roles.py",
+      "size_bytes": 6632,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e135_plot_learning.py",
+      "size_bytes": 3811,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e135_prepare_cache.py",
+      "size_bytes": 12512,
+      "imports_local": [
+        "e135_common"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e135_readout.py",
+      "size_bytes": 20180,
+      "imports_local": [
+        "e124_compare",
+        "e131_predictor_compare",
+        "e132_bank_grafting",
+        "e134_uniform_necessity",
+        "e135_capture",
+        "e135_common"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e135_train.py",
+      "size_bytes": 17780,
+      "imports_local": [
+        "e135_common"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e136_capture.py",
+      "size_bytes": 11449,
+      "imports_local": [
+        "e135_capture",
+        "e136_train"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e136_plot_comparison.py",
+      "size_bytes": 7590,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e136_readout.py",
+      "size_bytes": 16303,
+      "imports_local": [
+        "e124_compare",
+        "e135_capture",
+        "e135_readout",
+        "e136_capture",
+        "e136_train"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e136_train.py",
+      "size_bytes": 21231,
+      "imports_local": [
+        "e135_common",
+        "e135_train"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e137_components.py",
+      "size_bytes": 24251,
+      "imports_local": [
+        "e136_readout"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e137_plot_components.py",
+      "size_bytes": 10947,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e138_components.py",
+      "size_bytes": 18284,
+      "imports_local": [
+        "e137_components",
+        "e138_train"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e138_plot_cohort.py",
+      "size_bytes": 12375,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e138_readout.py",
+      "size_bytes": 23556,
+      "imports_local": [
+        "e124_compare",
+        "e135_capture",
+        "e135_readout",
+        "e136_capture",
+        "e138_components"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e138_train.py",
+      "size_bytes": 23439,
+      "imports_local": [
+        "e135_common",
+        "e135_train",
+        "e136_train"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e139_components.py",
+      "size_bytes": 31105,
+      "imports_local": [
+        "e137_components",
+        "e138_components",
+        "e139_train"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e139_plot_cohort.py",
+      "size_bytes": 14176,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e139_readout.py",
+      "size_bytes": 26109,
+      "imports_local": [
+        "e124_compare",
+        "e135_capture",
+        "e135_readout",
+        "e138_readout",
+        "e139_components"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e139_train.py",
+      "size_bytes": 23193,
+      "imports_local": [
+        "e135_common",
+        "e135_train",
+        "e138_train"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e140_components.py",
+      "size_bytes": 17502,
+      "imports_local": [
+        "e139_components",
+        "e140_train"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e140_plot_warmstart.py",
+      "size_bytes": 7772,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e140_readout.py",
+      "size_bytes": 23518,
+      "imports_local": [
+        "e124_compare",
+        "e135_capture",
+        "e135_readout",
+        "e138_readout",
+        "e140_components"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e140_train.py",
+      "size_bytes": 25889,
+      "imports_local": [
+        "e135_common",
+        "e135_train",
+        "e136_train",
+        "e138_train"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e141_independent_audit.py",
+      "size_bytes": 11724,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e141_plot_support_partition.py",
+      "size_bytes": 9062,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e141_support_partition.py",
+      "size_bytes": 26497,
+      "imports_local": [
+        "e137_components"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e142_components.py",
+      "size_bytes": 17176,
+      "imports_local": [
+        "e135_readout",
+        "e139_components",
+        "e142_train"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e142_plot_warmstart_compare.py",
+      "size_bytes": 8289,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e142_readout.py",
+      "size_bytes": 10725,
+      "imports_local": [
+        "e135_capture",
+        "e135_readout",
+        "e139_readout",
+        "e142_components"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e142_train.py",
+      "size_bytes": 28185,
+      "imports_local": [
+        "e135_common",
+        "e135_train",
+        "e139_train"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e143_capture.py",
+      "size_bytes": 6944,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e143_data.py",
+      "size_bytes": 4466,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e144145_analyze.py",
+      "size_bytes": 12551,
+      "imports_local": [
+        "e144145_common"
+      ],
+      "frozen_source_references": 6
+    },
+    {
+      "path": "moe/scripts/e144145_common.py",
+      "size_bytes": 20803,
+      "imports_local": [
+        "e123_frozen_moe"
+      ],
+      "frozen_source_references": 42
+    },
+    {
+      "path": "moe/scripts/e144145_plot.py",
+      "size_bytes": 4102,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e144145_run.py",
+      "size_bytes": 25696,
+      "imports_local": [
+        "e144145_common"
+      ],
+      "frozen_source_references": 6
+    },
+    {
+      "path": "moe/scripts/e144145_test.py",
+      "size_bytes": 7229,
+      "imports_local": [
+        "e144145_analyze",
+        "e144145_common"
+      ],
+      "frozen_source_references": 6
+    },
+    {
+      "path": "moe/scripts/e145_router_derivative_check.py",
+      "size_bytes": 2908,
+      "imports_local": [
+        "e144145_common"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e146147_plot.py",
+      "size_bytes": 4125,
+      "imports_local": [
+        "e146_grouped"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e146_grouped.py",
+      "size_bytes": 21011,
+      "imports_local": [
+        "e144145_analyze",
+        "e144145_common",
+        "e144145_run"
+      ],
+      "frozen_source_references": 4
+    },
+    {
+      "path": "moe/scripts/e146_plot.py",
+      "size_bytes": 2594,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e147_gate_control.py",
+      "size_bytes": 11823,
+      "imports_local": [
+        "e146_grouped"
+      ],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e148149_verify_results.py",
+      "size_bytes": 3413,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e148_analyze_gpu.py",
+      "size_bytes": 4104,
+      "imports_local": [
+        "e148_common",
+        "e148_readout"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e148_archive.py",
+      "size_bytes": 4853,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e148_common.py",
+      "size_bytes": 18847,
+      "imports_local": [
+        "e144145_common"
+      ],
+      "frozen_source_references": 4
+    },
+    {
+      "path": "moe/scripts/e148_execute.py",
+      "size_bytes": 3334,
+      "imports_local": [
+        "e148_common",
+        "e148_native",
+        "e148_readout"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e148_native.py",
+      "size_bytes": 12350,
+      "imports_local": [
+        "e148_common"
+      ],
+      "frozen_source_references": 4
+    },
+    {
+      "path": "moe/scripts/e148_phase_summary.py",
+      "size_bytes": 2512,
+      "imports_local": [
+        "e144145_analyze",
+        "e148_common",
+        "e148_readout"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e148_plot.py",
+      "size_bytes": 6105,
+      "imports_local": [
+        "e144145_analyze"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e148_readout.py",
+      "size_bytes": 14958,
+      "imports_local": [
+        "e144145_analyze",
+        "e148_common"
+      ],
+      "frozen_source_references": 4
+    },
+    {
+      "path": "moe/scripts/e148_test.py",
+      "size_bytes": 5196,
+      "imports_local": [
+        "e144145_analyze",
+        "e148_common"
+      ],
+      "frozen_source_references": 4
+    },
+    {
+      "path": "moe/scripts/e149_plot.py",
+      "size_bytes": 3373,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e149_source_cube.py",
+      "size_bytes": 11151,
+      "imports_local": [
+        "e144145_analyze",
+        "e148_common",
+        "e148_readout"
+      ],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e150_analyze.py",
+      "size_bytes": 3383,
+      "imports_local": [
+        "e150_native"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e150_data.py",
+      "size_bytes": 4856,
+      "imports_local": [
+        "e144145_common"
+      ],
+      "frozen_source_references": 32
+    },
+    {
+      "path": "moe/scripts/e150_execute.py",
+      "size_bytes": 5009,
+      "imports_local": [
+        "e150_native"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e150_native.py",
+      "size_bytes": 27418,
+      "imports_local": [
+        "e144145_analyze",
+        "e144145_common",
+        "e150_data",
+        "e150_restricted"
+      ],
+      "frozen_source_references": 32
+    },
+    {
+      "path": "moe/scripts/e150_partial_mask_test.py",
+      "size_bytes": 2838,
+      "imports_local": [
+        "e150_native",
+        "e150_restricted"
+      ],
+      "frozen_source_references": 7
+    },
+    {
+      "path": "moe/scripts/e150_plot.py",
+      "size_bytes": 5136,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e150_prepare_assets.py",
+      "size_bytes": 4250,
+      "imports_local": [],
+      "frozen_source_references": 20
+    },
+    {
+      "path": "moe/scripts/e150_restricted.py",
+      "size_bytes": 4096,
+      "imports_local": [],
+      "frozen_source_references": 32
+    },
+    {
+      "path": "moe/scripts/e150_verify_results.py",
+      "size_bytes": 5541,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e151_native.py",
+      "size_bytes": 14103,
+      "imports_local": [
+        "e150_native",
+        "e150_partial_mask_test"
+      ],
+      "frozen_source_references": 24
+    },
+    {
+      "path": "moe/scripts/e151_plot.py",
+      "size_bytes": 3664,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e151_verify_results.py",
+      "size_bytes": 3653,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e152_normalizer.py",
+      "size_bytes": 18683,
+      "imports_local": [
+        "e150_native",
+        "e150_partial_mask_test"
+      ],
+      "frozen_source_references": 4
+    },
+    {
+      "path": "moe/scripts/e152_plot.py",
+      "size_bytes": 2822,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e152_verify_results.py",
+      "size_bytes": 3151,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e153_data.py",
+      "size_bytes": 7182,
+      "imports_local": [
+        "e150_native"
+      ],
+      "frozen_source_references": 4
+    },
+    {
+      "path": "moe/scripts/e153_harness.py",
+      "size_bytes": 6637,
+      "imports_local": [
+        "e150_native"
+      ],
+      "frozen_source_references": 21
+    },
+    {
+      "path": "moe/scripts/e153_plot.py",
+      "size_bytes": 2642,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e153_run.py",
+      "size_bytes": 15678,
+      "imports_local": [
+        "e150_native",
+        "e153_data",
+        "e153_harness"
+      ],
+      "frozen_source_references": 3
+    },
+    {
+      "path": "moe/scripts/e153_source_effects.py",
+      "size_bytes": 4208,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e153_verify_results.py",
+      "size_bytes": 7651,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e154_analyze.py",
+      "size_bytes": 6817,
+      "imports_local": [
+        "e150_native",
+        "e151_native"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e154_assets.py",
+      "size_bytes": 3038,
+      "imports_local": [
+        "e150_prepare_assets"
+      ],
+      "frozen_source_references": 20
+    },
+    {
+      "path": "moe/scripts/e154_native.py",
+      "size_bytes": 15436,
+      "imports_local": [
+        "e150_native",
+        "e151_native",
+        "e154_assets"
+      ],
+      "frozen_source_references": 20
+    },
+    {
+      "path": "moe/scripts/e154_plot.py",
+      "size_bytes": 2485,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e154_provenance.py",
+      "size_bytes": 2734,
+      "imports_local": [
+        "e154_assets"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e154_verify_results.py",
+      "size_bytes": 4669,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e155_dependency_patterns.py",
+      "size_bytes": 8301,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e155_native.py",
+      "size_bytes": 15421,
+      "imports_local": [
+        "e150_native",
+        "e151_native",
+        "e153_harness",
+        "e154_native"
+      ],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e155_plot.py",
+      "size_bytes": 2498,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e155_verify_results.py",
+      "size_bytes": 6688,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e156_analyze.py",
+      "size_bytes": 9714,
+      "imports_local": [],
+      "frozen_source_references": 15
+    },
+    {
+      "path": "moe/scripts/e156_loading.py",
+      "size_bytes": 5104,
+      "imports_local": [
+        "e150_native",
+        "e154_native"
+      ],
+      "frozen_source_references": 15
+    },
+    {
+      "path": "moe/scripts/e156_plot.py",
+      "size_bytes": 5421,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e156_run.py",
+      "size_bytes": 17282,
+      "imports_local": [
+        "e150_native",
+        "e151_native",
+        "e153_harness",
+        "e154_native",
+        "e156_analyze",
+        "e156_loading"
+      ],
+      "frozen_source_references": 15
+    },
+    {
+      "path": "moe/scripts/e156_transfer_contrasts.py",
+      "size_bytes": 5302,
+      "imports_local": [
+        "e156_analyze"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e157_analyze.py",
+      "size_bytes": 10647,
+      "imports_local": [],
+      "frozen_source_references": 3
+    },
+    {
+      "path": "moe/scripts/e157_plot.py",
+      "size_bytes": 6146,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e157_research_chain_plot.py",
+      "size_bytes": 6098,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e157_run.py",
+      "size_bytes": 21130,
+      "imports_local": [
+        "e156_run",
+        "e157_analyze"
+      ],
+      "frozen_source_references": 3
+    },
+    {
+      "path": "moe/scripts/e157_shared_effects.py",
+      "size_bytes": 2066,
+      "imports_local": [
+        "e157_analyze"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e158_analyze.py",
+      "size_bytes": 18627,
+      "imports_local": [],
+      "frozen_source_references": 4
+    },
+    {
+      "path": "moe/scripts/e158_data.py",
+      "size_bytes": 11689,
+      "imports_local": [],
+      "frozen_source_references": 4
+    },
+    {
+      "path": "moe/scripts/e158_engine.py",
+      "size_bytes": 13828,
+      "imports_local": [
+        "e144145_common",
+        "e156_loading"
+      ],
+      "frozen_source_references": 4
+    },
+    {
+      "path": "moe/scripts/e158_full_analyze.py",
+      "size_bytes": 19501,
+      "imports_local": [],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e158_full_engine.py",
+      "size_bytes": 12446,
+      "imports_local": [
+        "e144145_common",
+        "e156_loading",
+        "e158_engine"
+      ],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e158_full_run.py",
+      "size_bytes": 22048,
+      "imports_local": [
+        "e156_run",
+        "e158_data",
+        "e158_full_analyze",
+        "e158_full_engine",
+        "e158_run"
+      ],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e158_plot.py",
+      "size_bytes": 5692,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e158_readout_diagnostic.py",
+      "size_bytes": 2261,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e158_run.py",
+      "size_bytes": 19601,
+      "imports_local": [
+        "e156_run",
+        "e158_analyze",
+        "e158_data",
+        "e158_engine"
+      ],
+      "frozen_source_references": 4
+    },
+    {
+      "path": "moe/scripts/e158_whole_analyze.py",
+      "size_bytes": 12405,
+      "imports_local": [
+        "e158_analyze"
+      ],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e158_whole_engine.py",
+      "size_bytes": 9832,
+      "imports_local": [
+        "e144145_common",
+        "e156_loading",
+        "e158_engine",
+        "e158_full_engine"
+      ],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e158_whole_key_plot.py",
+      "size_bytes": 3489,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e158_whole_plot.py",
+      "size_bytes": 6357,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e158_whole_run.py",
+      "size_bytes": 15129,
+      "imports_local": [
+        "e158_full_run",
+        "e158_whole_analyze",
+        "e158_whole_engine"
+      ],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e159_analyze.py",
+      "size_bytes": 15322,
+      "imports_local": [],
+      "frozen_source_references": 5
+    },
+    {
+      "path": "moe/scripts/e159_known_borders.py",
+      "size_bytes": 5063,
+      "imports_local": [
+        "e159_analyze"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e159_known_context_plot.py",
+      "size_bytes": 4948,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e159_known_lm_borders.py",
+      "size_bytes": 4820,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e159_plot.py",
+      "size_bytes": 6797,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e159_run.py",
+      "size_bytes": 17649,
+      "imports_local": [
+        "e156_run",
+        "e159_analyze"
+      ],
+      "frozen_source_references": 5
+    },
+    {
+      "path": "moe/scripts/e160_analyze.py",
+      "size_bytes": 13963,
+      "imports_local": [],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e160_natural_effects.py",
+      "size_bytes": 2638,
+      "imports_local": [
+        "e160_analyze"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e160_plot.py",
+      "size_bytes": 7203,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e160_retry.py",
+      "size_bytes": 4977,
+      "imports_local": [
+        "e160_run"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e160_run.py",
+      "size_bytes": 15015,
+      "imports_local": [
+        "e159_run",
+        "e160_analyze",
+        "e160_signal",
+        "mature_staged_loading"
+      ],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e160_signal.py",
+      "size_bytes": 7315,
+      "imports_local": [
+        "e156_run"
+      ],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e161_analyze.py",
+      "size_bytes": 11046,
+      "imports_local": [],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e161_decode.py",
+      "size_bytes": 3337,
+      "imports_local": [
+        "e158_data"
+      ],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e161_plot.py",
+      "size_bytes": 5047,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e161_run.py",
+      "size_bytes": 11924,
+      "imports_local": [
+        "e158_whole_run",
+        "e161_analyze",
+        "mature_staged_loading"
+      ],
+      "frozen_source_references": 2
+    },
+    {
+      "path": "moe/scripts/e162_analyze.py",
+      "size_bytes": 12453,
+      "imports_local": [],
+      "frozen_source_references": 1
+    },
+    {
+      "path": "moe/scripts/e162_finish_batch.py",
+      "size_bytes": 4515,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e162_plot.py",
+      "size_bytes": 7322,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/e162_run.py",
+      "size_bytes": 20062,
+      "imports_local": [
+        "e150_native",
+        "e151_native",
+        "e152_normalizer",
+        "e153_harness",
+        "e162_analyze",
+        "full_course_assets"
+      ],
+      "frozen_source_references": 1
+    },
+    {
+      "path": "moe/scripts/full_course_assets.py",
+      "size_bytes": 4267,
+      "imports_local": [
+        "e150_prepare_assets"
+      ],
+      "frozen_source_references": 1
+    },
+    {
+      "path": "moe/scripts/mature_staged_loading.py",
+      "size_bytes": 2539,
+      "imports_local": [
+        "e156_loading"
+      ],
+      "frozen_source_references": 4
+    },
+    {
+      "path": "moe/scripts/moe_measure.py",
+      "size_bytes": 6481,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/recompute_discussion_20261026.py",
+      "size_bytes": 10587,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/reproduce.py",
+      "size_bytes": 3101,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/stage_full_course.py",
+      "size_bytes": 5582,
+      "imports_local": [
+        "full_course_assets"
+      ],
+      "frozen_source_references": 1
+    },
+    {
+      "path": "moe/scripts/stage_mature_local.py",
+      "size_bytes": 5869,
+      "imports_local": [],
+      "frozen_source_references": 0
+    },
+    {
+      "path": "moe/scripts/supervised_process.py",
+      "size_bytes": 3052,
+      "imports_local": [],
+      "frozen_source_references": 0
+    }
+  ],
+  "frozen_numerical_source_protection": {
+    "e125_coverage_control.py": [
+      "moe/results/e130/self_test.json"
+    ],
+    "e123_frozen_moe.py": [
+      "moe/results/e130/self_test.json",
+      "moe/results/e144/manifest.json",
+      "moe/results/e145/manifest.json",
+      "moe/results/e146/manifest.json",
+      "moe/results/e146/self_test.json",
+      "moe/results/e147/manifest.json",
+      "moe/results/e147/self_test.json",
+      "moe/results/e148/plan.json",
+      "moe/results/e148/self_test.json",
+      "moe/results/e149/manifest.json",
+      "moe/results/e149/self_test.json",
+      "moe/results/e150/manifest.json",
+      "moe/results/e150/self_test.json",
+      "moe/results/e151/plan.json",
+      "moe/results/e151/manifest.json",
+      "moe/results/e151/self_test.json",
+      "moe/results/e152/plan.json",
+      "moe/results/e152/manifest.json",
+      "moe/results/e152/self_test.json",
+      "moe/results/e153/plan.json",
+      "moe/results/e153/manifest.json",
+      "moe/results/e153/self_test.json",
+      "moe/results/e154/plan.json",
+      "moe/results/e154/manifest.json",
+      "moe/results/e154/self_test.json",
+      "moe/results/e155/plan.json",
+      "moe/results/e155/self_test.json",
+      "moe/results/e156/plan.json",
+      "moe/results/e156/manifest.json",
+      "moe/results/e156/self_test.json",
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json",
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json",
+      "moe/results/e162/self_test.json"
+    ],
+    "e124_functional_capture.py": [
+      "moe/results/e130/self_test.json"
+    ],
+    "e128_epoch_recovery.py": [
+      "moe/results/e130/self_test.json"
+    ],
+    "e144145_common.py": [
+      "moe/results/e144/manifest.json",
+      "moe/results/e145/manifest.json",
+      "moe/results/e146/manifest.json",
+      "moe/results/e146/self_test.json",
+      "moe/results/e147/manifest.json",
+      "moe/results/e147/self_test.json",
+      "moe/results/e148/plan.json",
+      "moe/results/e148/self_test.json",
+      "moe/results/e149/manifest.json",
+      "moe/results/e149/self_test.json",
+      "moe/results/e150/manifest.json",
+      "moe/results/e150/self_test.json",
+      "moe/results/e151/plan.json",
+      "moe/results/e151/manifest.json",
+      "moe/results/e151/self_test.json",
+      "moe/results/e152/plan.json",
+      "moe/results/e152/manifest.json",
+      "moe/results/e152/self_test.json",
+      "moe/results/e153/plan.json",
+      "moe/results/e153/manifest.json",
+      "moe/results/e153/self_test.json",
+      "moe/results/e154/plan.json",
+      "moe/results/e154/manifest.json",
+      "moe/results/e154/self_test.json",
+      "moe/results/e155/plan.json",
+      "moe/results/e155/self_test.json",
+      "moe/results/e156/plan.json",
+      "moe/results/e156/manifest.json",
+      "moe/results/e156/self_test.json",
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json",
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json",
+      "moe/results/e162/self_test.json"
+    ],
+    "e144145_run.py": [
+      "moe/results/e144/manifest.json",
+      "moe/results/e145/manifest.json",
+      "moe/results/e146/manifest.json",
+      "moe/results/e146/self_test.json",
+      "moe/results/e147/manifest.json",
+      "moe/results/e147/self_test.json"
+    ],
+    "e144145_analyze.py": [
+      "moe/results/e144/manifest.json",
+      "moe/results/e145/manifest.json",
+      "moe/results/e146/manifest.json",
+      "moe/results/e146/self_test.json",
+      "moe/results/e147/manifest.json",
+      "moe/results/e147/self_test.json"
+    ],
+    "e144145_test.py": [
+      "moe/results/e144/manifest.json",
+      "moe/results/e145/manifest.json",
+      "moe/results/e146/manifest.json",
+      "moe/results/e146/self_test.json",
+      "moe/results/e147/manifest.json",
+      "moe/results/e147/self_test.json"
+    ],
+    "e146_grouped.py": [
+      "moe/results/e146/manifest.json",
+      "moe/results/e146/self_test.json",
+      "moe/results/e147/manifest.json",
+      "moe/results/e147/self_test.json"
+    ],
+    "e147_gate_control.py": [
+      "moe/results/e147/manifest.json",
+      "moe/results/e147/self_test.json"
+    ],
+    "e148_common.py": [
+      "moe/results/e148/plan.json",
+      "moe/results/e148/self_test.json",
+      "moe/results/e149/manifest.json",
+      "moe/results/e149/self_test.json"
+    ],
+    "e148_native.py": [
+      "moe/results/e148/plan.json",
+      "moe/results/e148/self_test.json",
+      "moe/results/e149/manifest.json",
+      "moe/results/e149/self_test.json"
+    ],
+    "e148_readout.py": [
+      "moe/results/e148/plan.json",
+      "moe/results/e148/self_test.json",
+      "moe/results/e149/manifest.json",
+      "moe/results/e149/self_test.json"
+    ],
+    "e148_test.py": [
+      "moe/results/e148/plan.json",
+      "moe/results/e148/self_test.json",
+      "moe/results/e149/manifest.json",
+      "moe/results/e149/self_test.json"
+    ],
+    "e149_source_cube.py": [
+      "moe/results/e149/manifest.json",
+      "moe/results/e149/self_test.json"
+    ],
+    "e150_native.py": [
+      "moe/results/e150/manifest.json",
+      "moe/results/e150/self_test.json",
+      "moe/results/e151/plan.json",
+      "moe/results/e151/manifest.json",
+      "moe/results/e151/self_test.json",
+      "moe/results/e152/plan.json",
+      "moe/results/e152/manifest.json",
+      "moe/results/e152/self_test.json",
+      "moe/results/e153/plan.json",
+      "moe/results/e153/manifest.json",
+      "moe/results/e153/self_test.json",
+      "moe/results/e154/plan.json",
+      "moe/results/e154/manifest.json",
+      "moe/results/e154/self_test.json",
+      "moe/results/e155/plan.json",
+      "moe/results/e155/self_test.json",
+      "moe/results/e156/plan.json",
+      "moe/results/e156/manifest.json",
+      "moe/results/e156/self_test.json",
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json",
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json",
+      "moe/results/e162/self_test.json"
+    ],
+    "e150_data.py": [
+      "moe/results/e150/manifest.json",
+      "moe/results/e150/self_test.json",
+      "moe/results/e151/plan.json",
+      "moe/results/e151/manifest.json",
+      "moe/results/e151/self_test.json",
+      "moe/results/e152/plan.json",
+      "moe/results/e152/manifest.json",
+      "moe/results/e152/self_test.json",
+      "moe/results/e153/plan.json",
+      "moe/results/e153/manifest.json",
+      "moe/results/e153/self_test.json",
+      "moe/results/e154/plan.json",
+      "moe/results/e154/manifest.json",
+      "moe/results/e154/self_test.json",
+      "moe/results/e155/plan.json",
+      "moe/results/e155/self_test.json",
+      "moe/results/e156/plan.json",
+      "moe/results/e156/manifest.json",
+      "moe/results/e156/self_test.json",
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json",
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json",
+      "moe/results/e162/self_test.json"
+    ],
+    "e150_restricted.py": [
+      "moe/results/e150/manifest.json",
+      "moe/results/e150/self_test.json",
+      "moe/results/e151/plan.json",
+      "moe/results/e151/manifest.json",
+      "moe/results/e151/self_test.json",
+      "moe/results/e152/plan.json",
+      "moe/results/e152/manifest.json",
+      "moe/results/e152/self_test.json",
+      "moe/results/e153/plan.json",
+      "moe/results/e153/manifest.json",
+      "moe/results/e153/self_test.json",
+      "moe/results/e154/plan.json",
+      "moe/results/e154/manifest.json",
+      "moe/results/e154/self_test.json",
+      "moe/results/e155/plan.json",
+      "moe/results/e155/self_test.json",
+      "moe/results/e156/plan.json",
+      "moe/results/e156/manifest.json",
+      "moe/results/e156/self_test.json",
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json",
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json",
+      "moe/results/e162/self_test.json"
+    ],
+    "e151_native.py": [
+      "moe/results/e151/plan.json",
+      "moe/results/e151/manifest.json",
+      "moe/results/e151/self_test.json",
+      "moe/results/e154/plan.json",
+      "moe/results/e154/manifest.json",
+      "moe/results/e154/self_test.json",
+      "moe/results/e155/plan.json",
+      "moe/results/e155/self_test.json",
+      "moe/results/e156/plan.json",
+      "moe/results/e156/manifest.json",
+      "moe/results/e156/self_test.json",
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json",
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json",
+      "moe/results/e162/self_test.json"
+    ],
+    "e150_partial_mask_test.py": [
+      "moe/results/e151/plan.json",
+      "moe/results/e151/manifest.json",
+      "moe/results/e151/self_test.json",
+      "moe/results/e152/plan.json",
+      "moe/results/e152/manifest.json",
+      "moe/results/e152/self_test.json",
+      "moe/results/e162/self_test.json"
+    ],
+    "e152_normalizer.py": [
+      "moe/results/e152/plan.json",
+      "moe/results/e152/manifest.json",
+      "moe/results/e152/self_test.json",
+      "moe/results/e162/self_test.json"
+    ],
+    "e153_run.py": [
+      "moe/results/e153/plan.json",
+      "moe/results/e153/manifest.json",
+      "moe/results/e153/self_test.json"
+    ],
+    "e153_harness.py": [
+      "moe/results/e153/plan.json",
+      "moe/results/e153/manifest.json",
+      "moe/results/e153/self_test.json",
+      "moe/results/e155/plan.json",
+      "moe/results/e155/self_test.json",
+      "moe/results/e156/plan.json",
+      "moe/results/e156/manifest.json",
+      "moe/results/e156/self_test.json",
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json",
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json",
+      "moe/results/e162/self_test.json"
+    ],
+    "e153_data.py": [
+      "moe/results/e153/plan.json",
+      "moe/results/e153/manifest.json",
+      "moe/results/e153/self_test.json",
+      "moe/results/e162/self_test.json"
+    ],
+    "e154_native.py": [
+      "moe/results/e154/plan.json",
+      "moe/results/e154/manifest.json",
+      "moe/results/e154/self_test.json",
+      "moe/results/e155/plan.json",
+      "moe/results/e155/self_test.json",
+      "moe/results/e156/plan.json",
+      "moe/results/e156/manifest.json",
+      "moe/results/e156/self_test.json",
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json",
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e154_assets.py": [
+      "moe/results/e154/plan.json",
+      "moe/results/e154/manifest.json",
+      "moe/results/e154/self_test.json",
+      "moe/results/e155/plan.json",
+      "moe/results/e155/self_test.json",
+      "moe/results/e156/plan.json",
+      "moe/results/e156/manifest.json",
+      "moe/results/e156/self_test.json",
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json",
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e150_prepare_assets.py": [
+      "moe/results/e154/plan.json",
+      "moe/results/e154/manifest.json",
+      "moe/results/e154/self_test.json",
+      "moe/results/e155/plan.json",
+      "moe/results/e155/self_test.json",
+      "moe/results/e156/plan.json",
+      "moe/results/e156/manifest.json",
+      "moe/results/e156/self_test.json",
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json",
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e155_native.py": [
+      "moe/results/e155/plan.json",
+      "moe/results/e155/self_test.json"
+    ],
+    "e156_run.py": [
+      "moe/results/e156/plan.json",
+      "moe/results/e156/manifest.json",
+      "moe/results/e156/self_test.json",
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json",
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e156_loading.py": [
+      "moe/results/e156/plan.json",
+      "moe/results/e156/manifest.json",
+      "moe/results/e156/self_test.json",
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json",
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e156_analyze.py": [
+      "moe/results/e156/plan.json",
+      "moe/results/e156/manifest.json",
+      "moe/results/e156/self_test.json",
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json",
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e157_run.py": [
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json"
+    ],
+    "e157_analyze.py": [
+      "moe/results/e157/plan.json",
+      "moe/results/e157/manifest.json",
+      "moe/results/e157/self_test.json"
+    ],
+    "e158_data.py": [
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e158_engine.py": [
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e158_run.py": [
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e158_analyze.py": [
+      "moe/results/e158/plan.json",
+      "moe/results/e158/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e159_run.py": [
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json"
+    ],
+    "e159_analyze.py": [
+      "moe/results/e159/plan.json",
+      "moe/results/e159/manifest.json",
+      "moe/results/e159/self_test.json",
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json"
+    ],
+    "e160_run.py": [
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json"
+    ],
+    "e160_signal.py": [
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json"
+    ],
+    "e160_analyze.py": [
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json"
+    ],
+    "mature_staged_loading.py": [
+      "moe/results/e160/plan.json",
+      "moe/results/e160/self_test.json",
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e158_full_engine.py": [
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e158_full_run.py": [
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e158_full_analyze.py": [
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e158_whole_run.py": [
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e158_whole_engine.py": [
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e158_whole_analyze.py": [
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e161_run.py": [
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e161_analyze.py": [
+      "moe/results/e161/plan.json",
+      "moe/results/e161/manifest.json"
+    ],
+    "e162_run.py": [
+      "moe/results/e162/self_test.json"
+    ],
+    "e162_analyze.py": [
+      "moe/results/e162/self_test.json"
+    ],
+    "full_course_assets.py": [
+      "moe/results/e162/self_test.json"
+    ],
+    "stage_full_course.py": [
+      "moe/results/e162/self_test.json"
+    ]
+  },
+  "never_delete_by_age": [
+    "Unique raw/results/checkpoints",
+    "Failure records",
+    "E135 unique H/Y cache without an explicit recovery decision",
+    "Other workbenches, shared libraries and unrelated HF objects"
+  ],
+  "note": "Import/SHA inventory is not by itself proof a script is unused; also inspect CLI/card/figure/hash references before deletion."
+}
