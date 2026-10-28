@@ -1,5 +1,5 @@
 {
-  "status": "consolidating_PAB_canonical_verification_remaining",
+  "status": "complete",
   "user_gate": "Finish valuable E162, then consolidate solid claims; no automatic E163",
   "resource_limit_gpus": 4,
   "current_core": [
@@ -36,7 +36,7 @@
         "A": "/home/xiang/mechpop_cache/hf_emo_mature/models--allenai--StdMoE_1b14b_1T/snapshots/b82073bb43aaaddc0f71d5ce139ad291a3948b32",
         "B": "/home/xiang/mechpop_cache/hf_emo_mature/models--allenai--StdMoE_1b14b_1T_EmoAnnealed/snapshots/d18c640b39e67f89669f38c5db8b5ed22a6927ca"
       },
-      "deletion_gate": "After E162/verification, confirm no active consumer and intact canonical sources; preserve immutable stage manifest and document restaging without overwriting it"
+      "deletion_gate": "All 66 canonical public files freshly SHA-verified; no active temporary consumer; duplicate removed and immutable original staging manifest retained."
     },
     "F": {
       "host": "fvcrc21",
@@ -2132,7 +2132,9 @@
     "report": "/home/xiang/mechpop_cache/moe_consolidation_20261028/retained_PAB_verification.json",
     "supervision": "/home/xiang/mechpop_cache/moe_consolidation_20261028/retained_verification_supervision.json",
     "GPU_calls": 0,
-    "deletion_performed": false
+    "deletion_performed": false,
+    "status": "complete",
+    "deletion_scope": "Duplicate temporary models only; retained canonical verification process itself was read-only"
   },
   "completed_cleanup_receipts": {
     "cleanup_F.json": {
@@ -2152,10 +2154,24 @@
       "bytecode_bytes": 810775,
       "canonical_model_files_removed": 0,
       "unique_experimental_assets_removed": 0
+    },
+    "cleanup_PAB.json": {
+      "status": "complete",
+      "path": "/home/xiang/mechpop_cache/moe_consolidation_20261028/cleanup_PAB.json",
+      "sha256": "8c02e701407ce32972654dd04f9e192b49849e4a89cc1aa9426d28267e3db2c7",
+      "unique_regular_file_bytes": 162856959052,
+      "allocated_file_bytes": 162857070592,
+      "canonical_model_files_removed": 0,
+      "unique_experimental_assets_removed": 0
     }
   },
   "document_cleanup": {
     "path": "moe/results/document_cleanup_2026-10-28.json",
     "sha256": "399e6ac1c25704ad1ccf7e3e336769ccf52ac0101a18b80b4fa315322b7cc1a5"
-  }
+  },
+  "final_receipt": "moe/results/cleanup_2026-10-28.json",
+  "removed_logical_file_bytes": 222466159673,
+  "frozen_source_and_CPU_replay_after_cleanup": "passed; see final receipt",
+  "temporary_duplicates_removed_after_verification": true,
+  "initial_inventory_retained_for_traceability": true
 }

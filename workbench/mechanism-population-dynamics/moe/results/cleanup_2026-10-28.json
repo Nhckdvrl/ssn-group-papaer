@@ -1,0 +1,142 @@
+{
+  "status": "complete",
+  "completed_utc": "2026-10-28T12:27:16.426354+00:00",
+  "scientific_stop": "Authorized E160/E162 batch completed; three evidence arguments consolidated, no automatic E163 or GPU successor",
+  "GPU_jobs_running": 0,
+  "max_authorized_concurrent_GPUs": 4,
+  "removed_logical_file_bytes": 222466159673,
+  "large_cache_allocated_file_bytes": 222465511424,
+  "space_note": "Summed removed file bytes/allocated blocks; not a before-after volume delta while other projects may write. Bytecode allocated blocks excluded from the latter.",
+  "duplicates_removed": [
+    {
+      "group": "PAB",
+      "host": "fvcrc20",
+      "path": "/tmp/xiang-moe-20261028/mature_emo_pab",
+      "unique_regular_file_bytes": 162856959052,
+      "allocated_file_bytes": 162857070592,
+      "canonical_model_files_removed": 0,
+      "unique_experimental_assets_removed": 0
+    },
+    {
+      "group": "F",
+      "host": "fvcrc21",
+      "path": "/tmp/xiang-moe-20261028/full_course_F",
+      "unique_regular_file_bytes": 54309366236,
+      "allocated_file_bytes": 54309412864,
+      "canonical_model_files_removed": 0,
+      "unique_experimental_assets_removed": 0
+    }
+  ],
+  "obsolete_partial_downloads": {
+    "count": 2,
+    "bytes": 5299023610
+  },
+  "generated_bytecode": {
+    "files": 43,
+    "bytes": 810775
+  },
+  "canonical_verification": {
+    "PAB": "Fresh complete SHA of all 66 retained public files, matched public/immutable original manifest; file metadata unchanged at removal",
+    "PAB_bytes_rehashed": 162856907242,
+    "PAB_CPU_io_seconds": 2816.361209552735,
+    "F": "Independent durable public SHA at publication plus fresh size/path/mtime, small-file SHA, stopped writers and experiment/result seal before removal; no redundant second 54GB pass"
+  },
+  "immutable_PAB_manifest_retained": {
+    "path": "/home/xiang/mechpop_cache/emo_local_staging_20261028.json",
+    "sha256": "2092d5f6a0b2d2d7b5233280db6a936fdaecca4125815bba6764b1f198c42a06"
+  },
+  "scientific_evidence_retained": [
+    "All canonical P/A/B/F public HF weights",
+    "All raw/input/calibration/reference/unique training checkpoints and optimizer/RNG",
+    "All old cards, negative/failed results and interrupted E160 ledger",
+    "E135 unique 71.7GB training H/Y cache and old dense-base copies",
+    "Frozen numerical source dependencies and exact source archives"
+  ],
+  "post_cleanup_verification": {
+    "status": "passed",
+    "phase": "all_temporary_model_copies_removed",
+    "E162_numeric_comparisons": 5114,
+    "E162_metadata_checks": 133,
+    "max_absolute_error": 1.4210854715202004e-14,
+    "frozen_local_source_comparisons": 59,
+    "unique_frozen_local_sources": [
+      "moe/scripts/e123_frozen_moe.py",
+      "moe/scripts/e144145_common.py",
+      "moe/scripts/e150_data.py",
+      "moe/scripts/e150_native.py",
+      "moe/scripts/e150_partial_mask_test.py",
+      "moe/scripts/e150_prepare_assets.py",
+      "moe/scripts/e150_restricted.py",
+      "moe/scripts/e151_native.py",
+      "moe/scripts/e152_normalizer.py",
+      "moe/scripts/e153_data.py",
+      "moe/scripts/e153_harness.py",
+      "moe/scripts/e154_assets.py",
+      "moe/scripts/e154_native.py",
+      "moe/scripts/e156_analyze.py",
+      "moe/scripts/e156_loading.py",
+      "moe/scripts/e156_run.py",
+      "moe/scripts/e158_analyze.py",
+      "moe/scripts/e158_data.py",
+      "moe/scripts/e158_engine.py",
+      "moe/scripts/e158_full_analyze.py",
+      "moe/scripts/e158_full_engine.py",
+      "moe/scripts/e158_full_run.py",
+      "moe/scripts/e158_run.py",
+      "moe/scripts/e158_whole_analyze.py",
+      "moe/scripts/e158_whole_engine.py",
+      "moe/scripts/e158_whole_run.py",
+      "moe/scripts/e159_analyze.py",
+      "moe/scripts/e159_run.py",
+      "moe/scripts/e160_analyze.py",
+      "moe/scripts/e160_run.py",
+      "moe/scripts/e160_signal.py",
+      "moe/scripts/e161_analyze.py",
+      "moe/scripts/e161_run.py",
+      "moe/scripts/e162_analyze.py",
+      "moe/scripts/e162_run.py",
+      "moe/scripts/full_course_assets.py",
+      "moe/scripts/mature_staged_loading.py",
+      "moe/scripts/stage_full_course.py"
+    ],
+    "GPU_calls": 0,
+    "E160_author_stats_reproduced_bit_identical": true,
+    "E160_and_E161_independent_audits_after_cleanup": "passed",
+    "elapsed_additional_CPU_seconds": 77.55010908469558,
+    "removed_PAB_root": "/tmp/xiang-moe-20261028/mature_emo_pab",
+    "all_cleanup_receipts_complete": true,
+    "PAB_deletion_completed": true
+  },
+  "document_cleanup": {
+    "path": "moe/results/document_cleanup_2026-10-28.json",
+    "sha256": "399e6ac1c25704ad1ccf7e3e336769ccf52ac0101a18b80b4fa315322b7cc1a5"
+  },
+  "restore_PAB": "On fvcrc20: ~/.venvs/mechpop/bin/python -B moe/scripts/restore_mature_staging.py --receipt ~/mechpop_cache/pab_restore_NEW_ID.json",
+  "restore_F": "E162 loader falls back to retained canonical HF snapshot; metadata/source pin unchanged",
+  "detailed_receipts_and_executed_cleanup_source": {
+    "path": "/home/xiang/mechpop_cache/moe_consolidation_20261028/cleanup_20261028.tar.gz",
+    "sha256": "f8322c46e64fb6ec7dc5b2698dfd03d8b1f30b24cb5dd2984d71264e2be54c01",
+    "size_bytes": 22939,
+    "members": 20
+  },
+  "detailed_receipts": {
+    "cleanup_F.json": {
+      "path": "/home/xiang/mechpop_cache/moe_consolidation_20261028/cleanup_F.json",
+      "sha256": "011f88a774da133f099b8857b788b26da33cb28fced173c4b79890c5cbacc7a3"
+    },
+    "cleanup_PAB.json": {
+      "path": "/home/xiang/mechpop_cache/moe_consolidation_20261028/cleanup_PAB.json",
+      "sha256": "8c02e701407ce32972654dd04f9e192b49849e4a89cc1aa9426d28267e3db2c7"
+    },
+    "cleanup_generated.json": {
+      "path": "/home/xiang/mechpop_cache/moe_consolidation_20261028/cleanup_generated.json",
+      "sha256": "61f680a597b69962f548b286e5aadf4712ea49edc1b7fa61dd1b0147b79d13e8"
+    },
+    "retained_PAB_verification.json": {
+      "path": "/home/xiang/mechpop_cache/moe_consolidation_20261028/retained_PAB_verification.json",
+      "sha256": "77c8c9de89cc108283fda05b43413d6a21362fb2e8d2252303f598337cea8887"
+    }
+  },
+  "GPU_job_scope": "This authorized MoE batch; other workbenches not included or changed",
+  "byte_count_scope": "Duplicate model/cache/download/bytecode files; tracked obsolete doc/script deletions separately inventoried"
+}
