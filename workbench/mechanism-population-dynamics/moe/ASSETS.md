@@ -1,6 +1,6 @@
 # MoE asset index (E120–E142, 2026-10-26)
 
-**当前资源约束（用户2026-10-28最新指示）：本研究总并发最多4张GPU，覆盖此前8卡授权。** E160 retry已完整结束，当前0卡；E162继续CPU权重获取/代码准备，后续单卡、完成本批后先整理再决定新增。历史费用和原实验卡当时的上限记录保留。
+**当前资源约束（用户2026-10-28最新指示）：本研究总并发最多4张GPU，覆盖此前8卡授权。** E160 retry已完整结束；E162权重23文件已核验并耐久保存，当前单卡执行，完成本批后先整理再决定新增。历史费用和原实验卡当时的上限记录保留。
 
 Read-only inventory of durable NFS assets, workspace results, and named node-local NVMe paths. Sizes come from existing manifests or `du/stat`; large files were not rehashed. No files were moved or removed.
 
@@ -177,3 +177,5 @@ E160 retry_1已完成：`~/mechpop_cache/e160_shared_signal_context_cross/scores
 ## 2026-10-28完成结果的精确源码封存
 
 E160完整retry的源码/结果与小raw封存在`~/mechpop_cache/e160_shared_signal_context_cross/run_metadata_09903add.tar.gz`（1,184,987 B）；E161对应`~/mechpop_cache/e161_crossed_entity_relation/run_metadata_caff4266.tar.gz`（586,614 B）。逐项SHA、实际raw、输入引用和Git源码对应关系分别见`results/e160/retry_1/artifact_seal.json`与`results/e161/artifact_seal.json`。模型权重沿原始公开HF pin恢复，不重复打包。E160首轮中断和未知完整成本仍保留。CPU复现与统一校验入口见[scripts/README](scripts/README.md)。
+
+E162公开F资产23文件（11权重分片54,275,336,216 B）已完成公共LFS/Git与独立副本SHA核验，来源见`results/full_course_assets_2026-10-28/asset_manifest.json`、提交e94efdec；耐久缓存`~/mechpop_cache/hf_emo_mature/models--allenai--Emo_1b14b_1T/snapshots/007852b1e3d22222f8ee03c6a53fa30e47898dcb`。fvcrc21临时NVMe只作为已核验执行副本；资产阶段未执行模型。plan冻结后在该节点GPU0单卡评测，全部结果尚未完成；CPU可见软件与引用SHA见`results/e162/plan.json`，数值源0bdb36e2。
