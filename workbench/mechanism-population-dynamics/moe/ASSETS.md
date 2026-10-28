@@ -1,6 +1,6 @@
 # MoE资产与恢复入口（2026-10-28）
 
-**当前：E162全部预定条件完成，0新成熟模型训练、0卡在运行，总并发上限4卡。** 本批不自动新增GPU实验；按用户要求整理重复副本与核心入口。科学结论只在[README](README.md)维护，本页负责位置、来源和恢复。
+**当前：E162全部预定条件与集中整理完成；新授权E163已冻结并准备真实模型，仍0新训练/下载，本项最多2卡、总上限4卡。** E163复用下列耐久源，无新增模型副本；CPU-only中断和同架构迁移见原卡与`results/e163/execution_restart.json`。科学结论只在[README](README.md)维护，本页负责位置、来源和恢复。
 
 耐久根为`/home/xiang/mechpop_cache`（NFS）；节点`/tmp`是临时NVMe，不能当唯一资产。优先已有`~/.venvs/mechpop/bin/python`（Python3.12、torch2.8.0+cu128、transformers4.57.6、numpy1.26.4）；未另装环境。CPU复算统一见[scripts/README](scripts/README.md)。
 
@@ -37,6 +37,7 @@ F=全程EMO 1T+50B，B=标准1T后EMO50B，A=标准1T+50B，P=标准1T退火前�
 | E160 | `~/mechpop_cache/e160_shared_signal_context_cross` | `results/e160/retry_1/`的plan/manifest/raw SHA；原实验卡给精确入口 |
 | E161 | `~/mechpop_cache/e161_crossed_entity_relation` | `results/e161/`的plan/manifest/raw SHA；原实验卡给精确入口 |
 | E162 | `~/mechpop_cache/e162_full_course_native` | `results/e162/`的plan/manifest/raw SHA；原实验卡给精确入口 |
+| E163（准备中） | `~/mechpop_cache/e163_message_geometry`：已冻结references；新读数待实际完成 | `results/e163/plan.json`、CPU预检、19f6f3a5冻结源码；GPU任务在fvcrc21，PAB=2/F=0。不是已获得结果 |
 
 E162新raw为4,584,469 B，SHA `89c83382c58ebb8ed864d1fa4cf73c47b86ed5ef71c830230b87e84db13394d3`；preflight/budget/summary及独立5114数字/133元数据报告都已完成。E160正式结果在`retry_1/`，父目录原running预算保存首轮中断与未知精确成本，不能拿它冒充完整结果。
 
