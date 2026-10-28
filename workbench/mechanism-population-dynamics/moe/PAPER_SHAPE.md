@@ -33,10 +33,13 @@
 | 可解释架构与语义可编辑性 | Monet有架构创新、真实域/语言删除；不是只有描述 | 固定成熟架构下，组织历史选择的分担与来源重用；不认领monosemantic新架构 |
 | 路由/几何与核心组织 | Myth、Beyond Routing、Standing Committee有真实组织测量，后者也有mask干预 | 实际路由读数、功能性质与预测依赖分开；固定函数/消息测试伙伴作用 |
 | 模块化训练和部署 | EMO有组织约束、选择部署和子集再整合；CartesianMoE/ExpertWeaver有真实性能方法 | 分析这些目标为何未唯一规定实际分担，以及不同训练来源可带走什么 |
+| Router–expert耦合训练 | ERC有3B/15B真实预训练和任务收益，已讨论专业化–合作权衡 | 成熟模型中哪个函数套件带走性质、预测使用依赖哪些伙伴；载体识别与实际路由介导分开 |
 | 跨训练表示与参数兼容 | Stitching研究低容量对齐后的功能兼容；LMC-MoE含末层/全层及shared变体 | 不从raw graft损伤断言根本不同；区分具体性质的载体、原配和局部消息接口 |
 | 因果电路与条件作用 | Hydra/Self-Repair/CoAx/Dose/WISE与新MoE审计已有真实冻结/补位/集合干预 | 一般conditional importance非新点；成熟学习历史、正常成功系统与可重用消息结构是组合增量 |
 
-本轮新增8篇全文204页，连同此前16篇429页的定位，不把相邻工作当自动天花板。逐篇对象、方法、假设、idea来源与未核对项见[全文卡](../../../library/themes/moe-routing/GLOBAL_POSITIONING_FULL_READING_2026-10-28.md)。检索由venue corpus、最新arXiv与awesome/DailyArXiv交叉；最新镜像覆盖滞后，不声称穷尽。
+本轮新增9篇全文224页，连同此前16篇429页的定位，不把相邻工作当自动天花板。逐篇对象、方法、假设、idea来源与未核对项见[全文卡](../../../library/themes/moe-routing/GLOBAL_POSITIONING_FULL_READING_2026-10-28.md)及[ERC补读](../../../library/themes/moe-routing/ERC_FULL_READING_2026-10-29.md)。检索由venue corpus、最新arXiv与awesome/DailyArXiv交叉；最新镜像覆盖滞后，不声称穷尽。
+
+ERC全文后更明确的界定：R_B在共同P gate参数下能带走选择性质，定位了受控干预中足够的参数包来源；其实际执行仍可能经过后续routing反馈。现有载体结论保留，不把它改写成“expert能力独立于真实路由”，也不因已有耦合训练方法就放弃对成熟实现与使用关系的识别。
 
 ## 论文形态与关键证据
 

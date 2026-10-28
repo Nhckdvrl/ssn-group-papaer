@@ -37,10 +37,12 @@
 
 可识别性P2、NTK、LMC-MoE、router–expert几何、Fisher merging、FlexOlmo/BAR等较早定位，以及FLEx、RRD、RouterInterp、DeepSeek等局部阅读范围，保存在[整理前固定版本](https://github.com/Nhckdvrl/ssn-group-papaer/blob/9815fbf0/workbench/mechanism-population-dynamics/moe/notes/POSITIONING_2026-10-26.md)与既有论文卡。未读全文的条目仍未读，不能据标题升级成精确撞车。数学与接口边界见[研究方向](../RESEARCH_DIRECTION.md)及[可识别性说明](IDENTIFIABILITY_SCOPE_2026-10-26.md)。
 
-最近已实际执行venue corpus nearest；ExpertWeaver、CartesianMoE随后已完成全文，详见末节新全文卡。Coupling Experts and Routers仍仅作检索线索；Basic-Refinement已有全文阅读。awesome/DailyArXiv的覆盖和日期滞后记录保留，不把镜像未命中当无人研究。
+最近已实际执行venue corpus nearest；ExpertWeaver、CartesianMoE随后已完成全文，详见末节新全文卡。Coupling Experts and Routers的arXiv v2也已于10-29全文核对，见[ERC卡](../../../../library/themes/moe-routing/ERC_FULL_READING_2026-10-29.md)；Basic-Refinement已有全文阅读。awesome/DailyArXiv的覆盖和日期滞后记录保留，不把镜像未命中当无人研究。
 
 **本批决定：完成E162后集中形成现有论证并整理，不自动扩大消融矩阵。** 相邻工作帮助提出完整科学问题；结果决定哪些解释更有力，不能为保持新颖性不断缩成一小块，也不能为了故事忽略已有直接证据。
 
 ## 2026-10-28用户授权后全局再定位
 
 新增8篇全文204页（含LMC完整86页、stitching独立附录），与此前16篇的具体主张重新对照。[当前论文形态/价值判断](../PAPER_SHAPE.md)与[新全文卡](../../../../library/themes/moe-routing/GLOBAL_POSITIONING_FULL_READING_2026-10-28.md)明确：当前正面增量在成熟历史、性质载体/必要伙伴及消息重用的连接，不认领一般conditional importance或模块删除。下一E163针对低维几何与方向结构的竞争解释，仍无新结果，不沿旧卡号自动排队。
+
+10-29补完ERC v2全部20页及关键图：本轮全文覆盖增至9篇224页。它已有实际大规模训练、专业化–合作权衡与训练期耦合方法，不能简化成相关性。我们的对象是既有成熟端点的角色/性质来源与消息使用；固定gate参数下的载体识别不等于固定真实route。E163运行状态与结果以README为准，上述“未有新结果”保留当时日期含义。
