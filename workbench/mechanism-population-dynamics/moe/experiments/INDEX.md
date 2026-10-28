@@ -56,9 +56,9 @@
 | [E160](E160-fixed-shared-signal-context-cross.md) | DONE；C14 | 相同S函数的生产/消费轨迹交叉有.260527答案NLL配套代价；固定信号后伙伴效应改变，产生与使用需分开 | [complete retry summary](../results/e160/retry_1/summary.json) |
 | [E161](E161-crossed-entity-relation-composition.md) | DONE；C14 | 双因素R交换没有支持跨国家纯关系操作；多数为other，attention保留强完整donor阳性 | [summary](../results/e161/summary.json) |
 | [E162](E162-full-course-native-division.md) | COMPLETE；C14=L2不变 | F/B完整raw都39.06%、文本NLL接近；F前缀损伤更低，同时S移除文本/任务NLL代价额外1.851/5.311；四模型同成功40题共同必要8/10/20/24。停止自动追加、转入整理 | [完整结果](../results/e162/summary.json)、[独立复算](../results/e162_independent_audit/report.json) |
+| [E163](E163-native-message-geometry-and-reuse.md) | RUNNING；C14/P33 | 保留norm/残差投影后测方向结构：四native历史R/S/合计，以及固定S_P实际轨迹跨背景校正；CPU预检通过，真实模型装载中 | [领域位置](../PAPER_SHAPE.md)、[冻结配置](../results/e163/plan.json)；未取得新读数 |
 
 E144–E147无新训练；全量来源、donor、分区均保留。新C10–C12仅L1，旧C06–C09数字与等级不变；范围与当前解释见[README](../README.md)。本轮发现并在held之前修复CUDA库导入后的可见卡缓存问题，全部预检与成本保留。E147在E146结果之后、运行前新登记，没有倒写E146预设对照。
 
 旧[摘要重算](../results/discussion_2026-10-26/reanalysis.json)仍为POST-HOC；新GPU结果和它分开。后续按证据与问题推进，不排日期或自动扩训练网格。
 
-| [E163](E163-native-message-geometry-and-reuse.md) | PLANNED；C14/P33 | 保留norm/残差投影后测方向结构：四native历史R/S/合计，以及固定S_P实际轨迹跨背景校正 | [领域位置](../PAPER_SHAPE.md)；未取得新读数 |
