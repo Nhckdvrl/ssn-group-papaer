@@ -1,0 +1,43 @@
+{
+  "status": "declarations_match",
+  "official_commit": "246fdec72e599319c717aefe29a1d1fdad7c97a0",
+  "F": {
+    "path": "/home/xiang/mechpop_cache/moe_primary_reading_20261028/recipes/F_anneal.sh",
+    "sha256": "9ea20186770dc5e26a26a56ededd864cca981cf0546c8cd9bada6727b4f87e95",
+    "git_blob_sha1": "03dad8370c646779b11ef9727a71d0dbba6830df"
+  },
+  "B": {
+    "path": "/home/xiang/mechpop_cache/moe_primary_reading_20261028/recipes/B_anneal.sh",
+    "sha256": "ce889fceb5770300d3d9afd5f02f0a186d7223b4a34bdc2306ce98211fa93d47",
+    "git_blob_sha1": "58ebaeeef3aeb5e4cbf2e53fb0bf91ceb84194b8"
+  },
+  "matching_declared_values": {
+    "min_document_expert_pool": "8",
+    "max_document_expert_pool": "128",
+    "eval_document_expert_pool": "32",
+    "lb": "1e-1",
+    "anneal_tokens": "50000000000",
+    "num_shared_experts": "1"
+  },
+  "matching_active_model_data_arguments": [
+    "--dataset.mix=OLMoE-mix-0824 \\",
+    "--model.block.feed_forward_moe.num_experts=128 \\",
+    "--dataset.generate_doc_lengths=true \\",
+    "--model.block.sequence_mixer.backend=flash_2 \\",
+    "--model-type=\"two-level_lb-batch_reduce-dp_sharedexp_randpool\" \\",
+    "--min_document_expert_pool=${min_document_expert_pool} \\",
+    "--max_document_expert_pool=${max_document_expert_pool} \\",
+    "--eval_document_expert_pool=${eval_document_expert_pool} \\",
+    "--num_shared_experts=$num_shared_experts \\",
+    "--dataset.instance_filter_config='{repetition_max_period: 13, repetition_min_period: 1, repetition_max_count: 32}' \\",
+    "--model.block.name=\"moe\" \\",
+    "--model.block.sequence_mixer.qk_norm=null \\",
+    "--model.block.feed_forward_moe.lb_loss_weight=${lb} \\",
+    "--trainer.callbacks.checkpointer.save_interval=20000 \\",
+    "--trainer.callbacks.downstream_evaluator.eval_interval=2500 \\",
+    "--anneal-tokens=${anneal_tokens} \\"
+  ],
+  "difference": "checkpoint source, run name, output/logging paths",
+  "limitations": "Current pinned public scripts, not original optimizer/batch logs or step0. Initial annealing LR is extracted from checkpoints; actual values and historical launch overrides are not verified.",
+  "public_git_blob_identity_verified": true
+}
