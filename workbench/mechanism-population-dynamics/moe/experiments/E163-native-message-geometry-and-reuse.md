@@ -1,6 +1,6 @@
 # E163：成熟职责中的消息几何、方向结构与跨背景重用（2026-10-28）
 
-- **状态：** RETRY_READY（原设计19f6f3a5；读数归约修复c31e4b0e，条件不变）。已取得真实cal/旧LM控制；尚未读新held几何条件。
+- **状态：** RUNNING（原设计19f6f3a5；读数归约修复c31e4b0e，条件不变）。F完整LM64/RC128旧条件精确重放已通过，进入新held几何条件；P/A/B来源准备中。尚无封存的全量结果。
 - **类型 / 对应：** PILOT；C14、P33。用户全局再定位后明确授权继续。
 - **问题（一句话）：** 成熟历史与伙伴改变的R/S依赖和配套，能否由消息幅度/残差投影解释，还是仍需要输入条件的其余向量方向？
 
@@ -27,7 +27,7 @@
 - `gram_random0/1`：同一构造，但d为两个预定Gaussian向量。
 - u=0、b=0及d平行b用预定有限回退，保存次数；不以目标效果选回退。计算FP32后回到原dtype。`sqrt(r²−p²)`以原正交残量的norm稳定求值（实数等价）；proposal逐向量与witness完全相同时直接保留该向量以实现精确identity，规则不依赖效果或Tensor别名。退化方向只用固定basis/现有b，不泄漏u其余方向。
 
-Gram构造在实数下保留u的norm、对背景的投影和b+u的norm；实际BF16加法次序与误差实测。它保留的是**两个输入相关标量**，仍可能承载丰富信息。即便恢复，不能称无语义/无需计算shared/信息论最小维数；本诊断仍计算原u。即便失败，也不自动证明语义独占。
+Gram构造在实数下保留u的norm、对背景的投影和b+u的norm；实际BF16加法次序与误差实测。局部参照来自当前路径的u/b，并未锁住clean全程norm轨迹或最终gain。它保留的是**两个输入相关标量**，仍可能承载丰富信息。即便恢复，不能称无语义/无需计算shared/信息论最小维数；本诊断仍计算原u。即便失败，也不自动证明语义独占或排除所有下游归一化作用。
 
 ## A：四条native历史、三种消息粒度
 
@@ -84,7 +84,7 @@ native repeat/身份与旧预测重放给程序地板；既有FP32/BF16精度参
 
 ## 结果
 
-真实模型结果尚未获得。已完成`e163_geometry/run/analyze/verify/selftest.py`与冻结plan。CPU：三源×FP32/BF16六种原生身份/zero/恢复通过；实际三源27格cross的多token、padding、严格前缀、重排与对角均精确通过；独立旧数据fixture核对29650项数值、1376项元数据，最大差7.105e−15。见`results/e163/CPU_geometry_test.json`、`CPU_statistics_fixture.json`和`plan.json`。启动前只调整了数值identity、设备放置与源码依赖清单；未读新held效果。第一次prepare读取正在更新的CPU测试字段而退出，未创建科学结果/占卡；随后重做准备、所有19份冻结源码SHA一致。配置草稿保留在耐久raw的`pre_freeze_design_draft/`，不是实验条件或科学失败。
+全量新held几何结果尚未封存。已完成`e163_geometry/run/analyze/verify/selftest.py`与冻结plan。CPU：三源×FP32/BF16六种原生身份/zero/恢复通过；实际三源27格cross的多token、padding、严格前缀、重排与对角均精确通过；独立旧数据fixture核对29650项数值、1376项元数据，最大差7.105e−15。见`results/e163/CPU_geometry_test.json`、`CPU_statistics_fixture.json`和`plan.json`。启动前只调整了数值identity、设备放置与源码依赖清单；未读新held效果。第一次prepare读取正在更新的CPU测试字段而退出，未创建科学结果/占卡；随后重做准备、所有19份冻结源码SHA一致。配置草稿保留在耐久raw的`pre_freeze_design_draft/`，不是实验条件或科学失败。
 
 **16:05 UTC工程校对：** F真实参数/buffer、cal/repeat/截获及三种zero精确通过，旧native/zero的LM64窗口全部精确重放。72条真实cal向量独立NumPy重建最大相对误差1.284e−7，BF16 norm/projection/实际残差norm最大误差.001215/.000540/.000855。进入RC旧条件q0/R-zero时精确检查退出；定位出首token KL漏用旧E155/E162的FP64归约（FP32乘积后double sum）。c31e4b0e修复这一读数，新增100352词表CPU检验：旧FP32 sum误差4.857e−7，新归约与独立NumPy之差0；原生六案例与27格cross再通过。重跑时将LL/first-KL检查分开，进一步核实是否只有该问题。
 
