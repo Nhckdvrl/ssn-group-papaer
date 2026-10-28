@@ -184,7 +184,8 @@ def self_test():
     print('CPU synthetic axes, signs, paired bootstrap, eight patterns, empty subject and budget checks passed')
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(); p.add_argument('--self-test',action='store_true'); p.add_argument('--audit',action='store_true');p.add_argument('--summary',type=Path);p.add_argument('--output',type=Path); args=p.parse_args()
+    p=argparse.ArgumentParser(); p.add_argument('--self-test',action='store_true'); p.add_argument('--audit',action='store_true');p.add_argument('--summary',type=Path);p.add_argument('--output',type=Path);p.add_argument('--root',type=Path,default=ROOT); args=p.parse_args()
+    ROOT=args.root
     if args.self_test: self_test()
     elif args.audit:
         if not args.output or not args.summary:p.error('--output and --summary required')

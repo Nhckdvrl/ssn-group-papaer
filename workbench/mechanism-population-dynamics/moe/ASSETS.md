@@ -1,5 +1,7 @@
 # MoE asset index (E120–E142, 2026-10-26)
 
+**当前资源约束（用户2026-10-28最新指示）：本研究总并发最多4张GPU，覆盖此前8卡授权。** E160 retry已完整结束，当前0卡；E162继续CPU权重获取/代码准备，后续单卡、完成本批后先整理再决定新增。历史费用和原实验卡当时的上限记录保留。
+
 Read-only inventory of durable NFS assets, workspace results, and named node-local NVMe paths. Sizes come from existing manifests or `du/stat`; large files were not rehashed. No files were moved or removed.
 
 ## Storage snapshot
@@ -169,3 +171,5 @@ E158 v4完整路径已完成：`~/mechpop_cache/e158_factual_role_interchange/wh
 E158结果提交37b68280的精确NFS包 `whole_path/run_metadata_37b68280.tar.gz` 44,778,149 B；23 Git数值源/11外部小文件及全部输入、组件、两失败记录已核验，见whole_path/artifact_seal.json。E159结果32c358e6的精确包43,935,452 B，15 Git源/11外部源及输入/raw/参考/cal核验通过，见e159/artifact_seal.json；大权重只引用既有LFS完整清单，不重复存档。
 
 E161已完成：`~/mechpop_cache/e161_crossed_entity_relation/scores.npz` 124415B，SHA `fc9135be853d3c99dd3bed59711061af994e29e96484bf481d282942cb4ae08e`，source55960d57；576交换/144正控/588身份、全部原生重放与事后参数buffer恢复通过。实际.532431455h、峰值81.737187GB；ledger/manifest complete。`e161_analyze.py --analyze`与`e161_independent_audit/audit.py --audit --summary ... --output ...`复算，4049元素误差0。E160首轮无完整raw且进程消失，原budget/log不修改，recovery.json记至少2100.608秒与未知精确成本；同源重跑的完整plan/budget/manifest/summary独立位于`results/e160/retry_1/`，不以旧running账本作为完成证据。
+
+E160 retry_1已完成：`~/mechpop_cache/e160_shared_signal_context_cross/scores.npz` 75474B，SHA `b53dfe574a649fd6900634671843798ac4a3b3ee88faab35058f72f0afac2a42`。source55960d57、恢复器967e0dfc；2560常规调用及12额外控制、三源原生cal/参数/buffer、128题自然/零化和全对角分布重放通过。6283.367706142秒=1.745379918h，峰值82.209380864GB，独立监督退出码0；首轮原样保留至少2100.608秒、精确总成本未知。复算入口见E160卡；4524数字/2869计数≤7.11e−15。S轨迹仅保存逐题BF16 SHA，不保留全大轨迹，可由固定inputs/pins重算；小raw与plan足以复算所有统计。
