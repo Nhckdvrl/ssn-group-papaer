@@ -22,3 +22,5 @@
 E160的正式结果在`results/e160/retry_1/`；父目录budget保存中断事实，不用于冒充完整结果。旧恢复器冻结版本的audit包装有接口错误，当前统一入口使用独立auditor的`--root`入口，未修改其GPU数值程序。
 
 整理时先查import、实验卡、冻结source SHA与图的生成来源，再删无用入口。原始模型、inputs、raw和唯一训练checkpoint在耐久缓存，路径/恢复见`../ASSETS.md`；这不是应塞进Git或盲删的内容。
+
+若收尾清理了fvcrc20的P/A/B临时模型，未来确需GPU重放时，在该节点运行`restore_mature_staging.py --receipt ~/mechpop_cache/pab_restore_NEW_ID.json`。它仍用原始公开pin和SHA复制、独立复核，原冻结staging manifest不改写；新receipt必须不存在。CPU结果复算不需要这些临时权重。F评测器在临时执行副本不存在时可用已核验的耐久HF缓存。
