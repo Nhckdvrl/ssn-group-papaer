@@ -41,6 +41,9 @@ def main():
         'finisher_sha256':sha(__file__),'plot_source_sha256':sha(WB/'moe/scripts/e163_plot.py'),
         'no_new_training_or_followup_experiments':True}
     if (ROOT/'resource_adapter.json').exists():
+        resource=read(ROOT/'resource_adapter.json')
+        if resource['status']!='complete' or sha(resource['adapter_source'])!=resource['adapter_sha256']:
+            raise ValueError('Resource adapter did not finish with its registered source')
         manifest['resource_adapter']={'path':str(ROOT/'resource_adapter.json'),'sha256':sha(ROOT/'resource_adapter.json')}
     (ROOT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     print(json.dumps({'status':'complete','experiment':'E163','gpu_seconds':manifest['gpu_seconds']}),flush=True)
