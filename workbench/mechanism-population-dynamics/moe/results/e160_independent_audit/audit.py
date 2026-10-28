@@ -86,6 +86,75 @@ def validate_ledger(plan,ledger):
     if not attempts or attempts[-1]['status']!='complete' or any(a['status'] not in ('complete','failed') for a in attempts): raise ValueError('budget incomplete')
     if plan['limit_gpu_seconds']!=10800 or ledger['limit_gpu_seconds']!=10800 or sum(x['gpu_seconds'] for x in attempts)>10800: raise ValueError('budget cap')
 
+def compare_summary(a,report,manifest,plan_path):
+    if report['experiment']!='E160' or report['status']!='complete' or report['consumer_order']!=list(NAMES) or report['producer_order']!=list(NAMES) or report['raw_sha256']!=manifest['raw']['sha256'] or report['plan_sha256']!=sha(plan_path) or report['analysis_source_sha256']!=manifest['source_sha256']['e160_analyze.py']: raise ValueError('summary provenance')
+    gold=a['gold'];sub=a['subject'];tok=a['answer_tokens'];chars=a['answer_chars']; f=metrics(a['clamped_candidate_loglikelihood'],gold,tok,chars); n=metrics(a['natural_candidate_loglikelihood'],gold,tok,chars); s=metrics(a['without_shared_candidate_loglikelihood'],gold,tok,chars); r=metrics(a['without_routed_fixed_shared_candidate_loglikelihood'],gold,tok,chars); rn=metrics(a['without_routed_natural_shared_candidate_loglikelihood'],gold,tok,chars); d=metrics(a['without_both_candidate_loglikelihood'],gold,tok,chars)
+    sg=np.array([-1,-1,1,1])[:,None,None,None]; shared=sg*(s[:,:,None]-f); direct=sg*(r[:,None]-f); natural=sg[:,:,0,:]*(s-n); recovery=sg[:,:,0,:]*(rn[:,None]-r)
+    cohort=(a['clamped_candidate_loglikelihood'].argmax(-1)==gold).all((0,1)); rng=np.random.default_rng(160001); idx=[rng.choice(np.flatnonzero(sub==j),size=(1000,64),replace=True) for j in (0,1)]
+    errors=[]; counts=[]
+    def eq(x,y):
+        if x is None or y is None:
+            counts.append(x is None and y is None);return
+        xx=np.asarray(x,dtype=float); yy=np.asarray(y,dtype=float)
+        if xx.shape!=yy.shape: raise ValueError('summary shape mismatch')
+        errors.extend(np.abs(xx-yy).reshape(-1).tolist())
+    def check(x,t,secondary_mode):
+        if secondary_mode:
+            per=[x[cohort&(sub==j)] for j in (0,1)]; n0=[len(z) for z in per]; means=[float(z.mean()) if len(z) else None for z in per]; macro=(means[0]+means[1])/2 if all(z is not None for z in means) else None
+            eq(macro,t['point']); eq(float(x[cohort].mean()) if cohort.any() else None,t['pooled_point']); counts.extend([t['count']==int(cohort.sum()),t['ci']=='not computed'])
+            for j,name in enumerate(('high_school_biology','high_school_mathematics')): counts.append(t['per_subject'][name]['count']==n0[j]);eq(means[j],t['per_subject'][name]['point'])
+        else:
+            z=stat(x,sub,idx);eq(z['point'],t['point']);eq(z['ci95'],t['question_ci95']);counts.extend([t['count']==128,t['bootstrap_seed']==160001])
+            for j,name in enumerate(('high_school_biology','high_school_mathematics')): counts.append(t['per_subject'][name]['count']==64);eq(z['per_subject_point'][j],t['per_subject'][name]['point']);eq(z['per_subject_ci95'][j],t['per_subject'][name]['question_ci95'])
+    def matrix(v,t,mode):
+        if v.ndim==1: check(v,t,mode)
+        else:
+            for i in range(v.shape[0]): matrix(v[i],t[i],mode)
+    for k,name in enumerate(METRICS):
+        for mode in ('primary','secondary'):
+            obj=report['metrics'][name][mode]; sec=(mode=='secondary'); cond=obj['conditions']; contrast=obj['contrasts']
+            for label,v in [('full',f[k]),('natural',n[k]),('zero_shared',s[k]),('zero_routed_fixed_shared',r[k]),('zero_routed_natural_shared',rn[k]),('zero_both',d[k])]:matrix(v,cond[label],sec)
+            fixed=shared[k,1:]-shared[k,0:1]; nat=natural[k,1:]-natural[k,0:1]
+            values={'full_fixed_producer_consumer_contrasts':f[k,1:]-f[k,0:1], 'full_fixed_consumer_producer_contrasts':f[k,:,1:]-f[k,:,0:1], 'shared_necessity':shared[k], 'direct_online_routed_necessity':direct[k], 'direct_online_fixed_producer_consumer_contrasts':direct[k,1:]-direct[k,0:1], 'direct_online_fixed_consumer_producer_contrasts':direct[k,:,1:]-direct[k,:,0:1], 'natural_shared_necessity':natural[k], 'fixed_producer_consumer_contrasts':fixed,'fixed_consumer_producer_contrasts':shared[k,:,1:]-shared[k,:,0:1], 'fixed_producer_minus_natural_consumer_contrasts':fixed-nat[:,None,:], 'recovery_under_routed_removal':recovery[k], 'off_diagonal_minus_diagonal_matching_cost':np.stack([f[k,i,j] for i in range(3) for j in range(3) if i!=j]).mean(0)-np.stack([f[k,i,i] for i in range(3)]).mean(0)}
+            for label,v in values.items():matrix(v,contrast[label],sec)
+    sec=secondary(a); other=report['all_nine_full_correct'];counts.extend([other['count']==sec['count'],other['per_subject']==sec['per_subject_count'],other['mask']==sec['mask']]); pat=other['patterns']; counts.append(pat['bits']=={'D':4,'R_with_shared_zero':2,'shared_replay_with_routed_zero':1})
+    names=('high_school_biology','high_school_mathematics')
+    for cell,value in sec['cells'].items():
+        got=pat['cells'][cell];counts.append(got['counts']==value['counts']);counts.extend(got['per_subject_counts'][name]==value['per_subject_counts'][j] for j,name in enumerate(names))
+    for axis in ('producer','consumer'):
+        for fixed in NAMES:
+            for b,e in (('P','A'),('P','B'),('A','B')):
+                value=sec['transitions'][f'fixed_{axis}_{fixed}_{b}_to_{e}'];got=pat['transitions']['fixed_'+axis][fixed+'_'+b+'_to_'+e];counts.append(got['counts']==value['counts']);counts.extend(got['per_subject_counts'][name]==value['per_subject_counts'][j] for j,name in enumerate(names))
+    maxerr=max(errors,default=0.); return {'status':'passed' if maxerr<1e-10 and all(counts) else 'failed','max_absolute_error':maxerr,'numeric_comparisons':len(errors),'count_checks':len(counts),'all_counts_match':all(counts)}
+
+def audit():
+    plan_path=ROOT/'plan.json';plan=read(plan_path);manifest=read(ROOT/'manifest.json');ledger=read(ROOT/'budget.json');validate_ledger(plan,ledger)
+    if manifest['status']!='complete' or manifest['source_sha256']!=plan['source_sha256'] or sha(plan_path)!=manifest['plan_sha256'] or manifest['regular_question_condition_calls']!=2560 or manifest['extra_source_collapse_calls']!=12 or not all(manifest['controls'].values()):raise ValueError('manifest/control')
+    if plan['bootstrap']['seed']!=160001 or plan['bootstrap']['resamples']!=1000:raise ValueError('bootstrap')
+    models=read(WB/'results/e150/metadata.json')['models'];parent=read(WB/'results/e154/metadata.json')['model']
+    for name,expected in plan['source_sha256'].items():
+        if '/' in name:
+            source,filename=name.split('/',1); asset=(parent if source=='parent' else models[source])['files'][filename];path=asset['path']
+            if asset['sha256']!=expected:raise ValueError('asset record '+name)
+        else:path=WB/'scripts'/name
+        if sha(path)!=expected:raise ValueError('source '+name)
+    def verify(item):
+        if sha(item['path'])!=item['sha256']:raise ValueError('hash '+item['path'])
+    for name in ('task_input','references','execution_manifest','legacy_cal_input'):verify(plan[name])
+    for record in plan['reference_records'].values():
+        verify(record['manifest']);verify(record['raw']); old=read(record['manifest']['path'])
+        if old['status']!='complete' or old['raw']['sha256']!=record['raw']['sha256']:raise ValueError('reference manifest')
+    for i,name in enumerate(NAMES):
+        r=plan['source_records'][name];verify(r['calibration'])
+        if r['parameter_hash']!=manifest['canonical_parameter_hashes'][i] or r['buffer_hash']!=manifest['canonical_buffer_hashes'][i]:raise ValueError('canonical identity')
+    verify(manifest['raw'])
+    with np.load(manifest['raw']['path'],allow_pickle=False) as f:a={k:f[k] for k in f.files}
+    with np.load(plan['references']['path'],allow_pickle=False) as f:ref={k:f[k] for k in f.files}
+    validate_arrays(a)
+    for k in ('natural_candidate_loglikelihood','without_shared_candidate_loglikelihood','without_routed_natural_shared_candidate_loglikelihood','without_both_candidate_loglikelihood','gold','subject','answer_tokens','answer_chars'):
+        if not np.array_equal(a[k],ref[k]):raise ValueError('reference identity '+k)
+    return a,manifest,{'status':'recomputed','raw_sha256':manifest['raw']['sha256'],'primary':aggregate(a),'secondary':secondary(a),'scope':'S replay retains producer R effects; controlled routed support is not total routed knowledge'}
+
 def self_test():
     q=128; gold=np.zeros(q,int); sub=np.repeat([0,1],64); den=np.ones((q,4)); base=np.zeros((q,4)); base[:,1:]=-2
     natural=np.stack([base.copy() for _ in range(3)]); no_s=natural.copy(); no_s[:,:,0]-=1; fixed=natural.copy(); fixed[:,:,0]-=.5
@@ -113,6 +182,10 @@ def self_test():
     print('CPU synthetic axes, signs, paired bootstrap, eight patterns, empty subject and budget checks passed')
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(); p.add_argument('--self-test',action='store_true'); args=p.parse_args()
+    p=argparse.ArgumentParser(); p.add_argument('--self-test',action='store_true'); p.add_argument('--audit',action='store_true');p.add_argument('--summary',type=Path);p.add_argument('--output',type=Path); args=p.parse_args()
     if args.self_test: self_test()
-    else: p.error('formal audit awaits frozen plan/reference schema')
+    elif args.audit:
+        if not args.output or not args.summary:p.error('--output and --summary required')
+        raw,manifest,result=audit(); result['comparison']=compare_summary(raw,read(args.summary),manifest,ROOT/'plan.json');args.output.write_text(json.dumps(result,indent=2,allow_nan=False)+'\n');print(result['comparison']);
+        if result['comparison']['status']!='passed':raise SystemExit(1)
+    else: p.error('choose --self-test or --audit')

@@ -1,0 +1,38 @@
+{
+  "experiment": "E160",
+  "kind": "operational_retry_before_any_result_read",
+  "observed_utc": "2026-10-28T06:52:40Z",
+  "parent_budget_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e160/budget.json",
+  "parent_budget_sha256": "b6200ca89f219d1d5db119d80c4b32a514954d08d2a453a4742c986a558a20e3",
+  "parent_budget_unmodified": {
+    "experiment": "e160",
+    "limit_gpu_seconds": 10800,
+    "attempts": [
+      {
+        "phase": "fixed_shared_signal_producer_consumer",
+        "host": "fvcrc20",
+        "pid": 758105,
+        "started_utc": "2026-10-27T17:36:42Z",
+        "gpu_seconds": 2100.6083865985274,
+        "status": "running"
+      }
+    ]
+  },
+  "old_log": {
+    "path": "/home/xiang/mechpop_cache/e160_shared_signal_context_cross/evaluation.log",
+    "sha256": "edce321293680535a1d1132a1f6f939af36e6a3344af141e7df6f530dfa1ee39",
+    "size_bytes": 3512
+  },
+  "parent_pid_absent": true,
+  "parent_manifest_and_scores_absent": true,
+  "last_completed_question_progress": 32,
+  "parent_recorded_gpu_seconds_lower_bound": 2100.6083865985274,
+  "parent_exact_duration_and_exit_code": "unknown; supervisor was not present",
+  "cause": "unknown; log has no traceback; no privileged kernel log available",
+  "retry_output_directory": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e160/retry_1",
+  "retry_limit_gpu_seconds": 10800,
+  "resource_amendment": "Additional execution allowance for one complete unchanged rerun. Parent cost remains separately visible and unknown above its recorded lower bound. No exact combined cost or original aggregate cap compliance is claimed.",
+  "numerical_code": "55960d57; all original source hashes unchanged",
+  "adapter_sha256": "77e23ad507958cfc66bcbc7ff9cbf8845fbe0e983974355b49dcd08d1de5d978",
+  "conditions_inputs_statistics_selection": "unchanged; no partial outcome arrays exist or were inspected"
+}

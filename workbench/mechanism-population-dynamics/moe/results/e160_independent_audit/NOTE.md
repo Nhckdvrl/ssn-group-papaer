@@ -8,4 +8,4 @@
 ~/.venvs/mechpop/bin/python -B moe/results/e160_independent_audit/audit.py --self-test
 ```
 
-合成自检覆盖轴与符号、固定信号和自然对比、八模式、空学科、预算拒绝。未读取新 E160 科学原始数据、未加载模型或运行 GPU。正式输入/继承哈希校验及汇总比较器待冻结 plan、reference 与无数值 summary 结构后接入；当前不支持正式审计调用，也未声称独立校对通过。
+合成自检覆盖轴与符号、固定信号和自然对比、八模式、空学科、预算拒绝。未读取新 E160 科学原始数据、未加载模型或运行 GPU。正式输入/继承哈希校验及无数值 summary 比较器已接入；正式运行加 `--audit --summary <summary.json> --output <report.json>`。当前尚未读取正式数据，未声称独立校对通过。

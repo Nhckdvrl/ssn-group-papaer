@@ -1,6 +1,6 @@
 # E161：国家×所问属性同时改变的计算组合（2026-10-28）
 
-- **状态：** PLANNED；已登记，尚无本卡干预结果。
+- **状态：** COMPLETE；55960d57数值源码，576新交换、144源残差正控、588同查询身份均完成；独立4049数值复算误差0。
 - **类型 / 对应：** PILOT；C14，实际信息分工与可组合计算。
 - **问题：** R流传递的是完整donor答案，还是可与recipient实体结合的所问关系/答案类别信息？
 
@@ -52,4 +52,19 @@ E158完整末位置R流在同国家换属性时，donor答案首token命中为P/
 
 ## 算力与当前结果
 
-单卡三BF16模型预计82–83GB；cap2 GPU·时含装载/预检/失败。使用已核验NFS端点的本机临时NVMe副本降低重复I/O，原始资产保留且新模型参数/cal须相等，0新下载。与E160并发至多2卡≤8；先完整代码/CPU/plan/Git冻结再读新条件。raw ~/mechpop_cache/e161_crossed_entity_relation/。C14维持L2，当前只有设计与实现准备。
+实际1916.753239714秒=.532431455h，单卡峰值81.737187328GB；budget complete、manifest complete、log末尾complete，原会话退出码未在恢复后获得，不额外声称观察到exit0。并发峰值2卡≤8，0新训练/下载。raw `~/mechpop_cache/e161_crossed_entity_relation/scores.npz` 124415B，SHA `fc9135be853d3c99dd3bed59711061af994e29e96484bf481d282942cb4ae08e`。全部原生cal/参数/buffer/旧轨迹及attention逐位重放、144整源读出正控、588身份与事后恢复通过。
+
+| P/A/B宏点 | R | S | R+S | attention |
+|---|---|---|---|---|
+| relation-hybrid | 0/.0208/.0625 | 0/0/0 | 0/0/.0625 | 0/0/0 |
+| full-donor | .0208/.0833/.1042 | 0/0/0 | .0208/.0208/.0208 | .7917/.9583/.9583 |
+| other | .9792/.8958/.8333 | .2917/.3333/.4375 | .9792/.9792/.9167 | .2083/.0417/.0417 |
+| original | 0/0/0 | .7083/.6667/.5625 | 0/0/0 | 0/0/0 |
+
+entity-hybrid全部路径/来源均0。R的relation-hybrid减full-donor为−.0208 [−.0625,0] / −.0625 [−.1458,.0208] / −.0417 [−.1458,.0833]；不能将R相对attention的正对比当R本身组合成功。统计单位是24国家×2关系，全部保留，配对国家CI及分关系点在summary。固定共同原生top1成功次集每关系8题，R的other仍1/.9375/.875，attention全donor；不是仅由原生不知道答案解释。
+
+逐项解码发现R的other主要为` a`、` the`、` called`等续接词；不改四类定义或把其他词重标阳性。四标签LP也不能省略：R给full-donor平均增益9.486/10.990/10.685 nats，relation-hybrid为3.074/3.610/4.370，而原答案下降6.780/7.681/7.264。信息倾向与首token成功不同，不能从未命中推断R不含实体信息或无语义作用。
+
+**判断与下一决定：** 双因素R流未表现为能跨国家直接重用的关系选择器，也没有表现为高保真的完整donor复制；attention在同scope保留强donor阳性。E158同国家关系切换依赖来源上下文，是有待解释的计算配套，而非独立关系模块证明。保留C14 L2和旧数值，优先完成E160的同信号/异消费者检验，再决定哪种上下文共同保留最有科学价值，不为救hybrid率追加source扫描。
+
+复算：`~/.venvs/mechpop/bin/python -B moe/scripts/e161_analyze.py --analyze`；`... moe/results/e161_independent_audit/audit.py --audit --summary moe/results/e161/summary.json --output moe/results/e161_independent_audit/report.json`。后者4049元素最大误差0；整词表KL仅保存标量，独立统计复算不冒称重新计算了未保存的整词表分布。源码/plan/raw/共同次集全可追溯，C14维持L2。

@@ -120,7 +120,7 @@ def audit():
     if sha(WB/'results/e158/whole_path/plan.json')!=old['plan_sha256'] or plan['component_reference']['sha256']!=prior['component_reference']['sha256']: raise ValueError('component lineage mismatch')
     for i,name in enumerate(MODELS):
         rec=plan['source_records'][name]
-        if rec['parameter_hash']!=old['source_parameter_hashes'][i] or rec['buffer_hash']!=old['source_buffer_hashes'][i] or sha(rec['calibration']['path'])!=rec['calibration']['sha256']: raise ValueError('canonical source '+name)
+        if rec['parameter_hash']!=old['source_parameter_hashes'][i] or rec['buffer_hash']!=old['source_buffer_hashes'][i] or rec['parameter_hash']!=manifest['canonical_parameter_hashes'][i] or rec['buffer_hash']!=manifest['canonical_buffer_hashes'][i] or sha(rec['calibration']['path'])!=rec['calibration']['sha256']: raise ValueError('canonical source '+name)
     if sha(manifest['raw']['path'])!=manifest['raw']['sha256']: raise ValueError('raw hash')
     def load(path):
         with np.load(path,allow_pickle=False) as f: return {k:f[k] for k in f.files}
@@ -131,6 +131,51 @@ def audit():
     validate_raw(a,d,True); m,eligible,gate,cat=calculate(a,d)
     if not (gate.sum(-1)>=8).all() or manifest['baseline_joint_four_query_top10']!=gate.sum(-1).tolist(): raise ValueError('baseline gate')
     return {'status':'recomputed','raw_sha256':manifest['raw']['sha256'],'data_sha256':plan['task_data']['sha256'],'query_indices':query.tolist(),'outcome_token_ids':labels.tolist(),'baseline_joint_four_query_top10_counts':gate.sum(-1).tolist(),'common_success_counts':eligible.sum(-1).tolist(),'common_success_mask':eligible.tolist(),'positive_residual_selected_lp_and_top10_exact':True,'all_category_rates_sum_one':bool((cat.sum(-1)==1).all()),'KL_limitation':'only scalar full-vocabulary KL stored','recomputed':summarize(m,eligible)}
+
+def compare_tree(path, expected, actual, diffs, counts):
+    """Compare all numeric scalars/arrays, including None for empty subsets."""
+    if isinstance(expected,dict):
+        if not isinstance(actual,dict):diffs.append(path+': expected object');return
+        for k,v in expected.items():
+            if k not in actual:diffs.append(path+'/'+k+': missing');continue
+            compare_tree(path+'/'+k,v,actual[k],diffs,counts)
+        return
+    if isinstance(expected,str):
+        if expected!=actual:diffs.append(path+': text differs')
+        return
+    try:
+        left=np.asarray(expected,dtype=object);right=np.asarray(actual,dtype=object)
+        if left.shape!=right.shape:diffs.append(path+': shape differs');return
+        left_null=np.equal(left,None);right_null=np.equal(right,None)
+        if not np.array_equal(left_null,right_null):diffs.append(path+': null mask differs');return
+        valid=~left_null
+        if np.any(valid):
+            lv=np.asarray(left[valid],dtype=np.float64);rv=np.asarray(right[valid],dtype=np.float64)
+            if not np.isfinite(lv).all() or not np.isfinite(rv).all():diffs.append(path+': nonfinite');return
+            err=float(np.max(np.abs(lv-rv)));counts['max_absolute_error']=max(counts['max_absolute_error'],err)
+            counts['numeric_elements']+=len(lv)
+            if err>1e-10:diffs.append(f'{path}: max error {err:.12g}')
+    except (TypeError,ValueError):diffs.append(path+': malformed values')
+
+
+
+
+def compare_summary(a,d,report,manifest,plan_path):
+    for k,v in [('experiment','E161'),('status','complete'),('models',list(MODELS)),('paths',list(PATHS)),('outcomes',list(CATEGORIES)),('seed',161001),('raw_sha256',manifest['raw']['sha256']),('plan_sha256',sha(plan_path)),('analysis_source_sha256',manifest['source_sha256']['e161_analyze.py'])]:
+        if report.get(k)!=v:raise ValueError('summary provenance '+k)
+    m,eligible,gate,_=calculate(a,d); remap={}
+    for category in CATEGORIES:
+        remap['top1_'+category]=m[category+'_rate'];remap['top1_change_'+category]=m[category+'_baseline_relative_change']
+    for category in CATEGORIES[:4]:remap['logprob_gain_'+category]=m[category+'_logprob_gain']
+    remap['KL']=m['KL']; diffs=[];counts={'numeric_elements':0,'max_absolute_error':0.}
+    def compare(path,x,y):compare_tree(path,x,y,diffs,counts)
+    for key,x in remap.items():
+        compare('all/'+key,paired_country(x),report['all'][key]);compare('history/'+key,{'A_minus_P':paired_country(x[1]-x[0]),'B_minus_P':paired_country(x[2]-x[0])},report['history_contrasts'][key]);compare('common/'+key,subset_stats(x,eligible[None,None]),report['common_success']['metrics'][key])
+    common=report['common_success'];compare('common/mask',eligible.tolist(),common['country_mask']);compare('common/counts',eligible.sum(-1).tolist(),common['counts_by_relation'])
+    if common['ci']!='not computed':diffs.append('common CI supplied')
+    relation=remap['top1_relation_hybrid']-remap['top1_full_donor'];entity=remap['top1_entity_hybrid']-remap['top1_full_donor'];rp=relation[:,0];ra=relation[:,0]-relation[:,3]
+    prefs={'relation_hybrid_minus_full_donor_all_paths':paired_country(relation),'entity_hybrid_minus_full_donor_all_paths':paired_country(entity),'R_minus_attention_relation_preference':paired_country(ra),'R_relation_preference_A_minus_P':paired_country(rp[1]-rp[0]),'R_relation_preference_B_minus_P':paired_country(rp[2]-rp[0]),'R_minus_attention_relation_preference_A_minus_P':paired_country(ra[1]-ra[0]),'R_minus_attention_relation_preference_B_minus_P':paired_country(ra[2]-ra[0]),'common_success_relation_preference':subset_stats(relation,eligible[None,None]),'common_success_entity_preference':subset_stats(entity,eligible[None,None])}
+    compare('preferences',prefs,report['preferences']);return {'status':'passed' if not diffs else 'failed',**counts,'differences':diffs}
 
 def self_test():
     # Each relation has 19 distinct labels across 24 countries; shifted pairs differ.
@@ -156,9 +201,16 @@ def self_test():
     print('CPU synthetic mappings, full-vocabulary categories, axes, preferences, bootstrap and budget checks passed')
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(); p.add_argument('--self-test',action='store_true'); p.add_argument('--audit',action='store_true'); p.add_argument('--output',type=Path); args=p.parse_args()
+    p=argparse.ArgumentParser(); p.add_argument('--self-test',action='store_true'); p.add_argument('--audit',action='store_true'); p.add_argument('--output',type=Path);p.add_argument('--summary',type=Path); args=p.parse_args()
     if args.self_test: self_test()
     elif args.audit:
         if args.output is None: p.error('--output required')
-        result=audit(); args.output.write_text(json.dumps(result,indent=2,allow_nan=False)+'\n'); print(result['status'])
+        result=audit()
+        if args.summary:
+            plan=read(ROOT/'plan.json'); manifest=read(ROOT/'manifest.json')
+            with np.load(plan['task_data']['path'],allow_pickle=False) as f:d={k:f[k] for k in f.files}
+            with np.load(manifest['raw']['path'],allow_pickle=False) as f:a={k:f[k] for k in f.files}
+            result['comparison']=compare_summary(a,d,read(args.summary),manifest,ROOT/'plan.json')
+        args.output.write_text(json.dumps(result,indent=2,allow_nan=False)+'\n'); print(result.get('comparison',{}).get('status',result['status']))
+        if result.get('comparison',{}).get('status')=='failed':raise SystemExit(1)
     else: p.error('choose --self-test or --audit')
