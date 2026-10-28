@@ -34,7 +34,7 @@ def main():
     target=RAW/('run_metadata_'+commit+'.tar.gz')
     if target.exists() or (ROOT/'artifact_seal.json').exists():raise FileExistsError('Preserve the previous package')
     entries={}
-    for name in (*plan['source_sha256'],'e163_plot.py','e163_finish.py','seal_e163.py','reproduce.py'):
+    for name in (*plan['source_sha256'],'e163_plot.py','e163_finish.py','seal_e163.py','reproduce.py','e163_cpu_priority.py'):
         entries['repo/moe/scripts/'+name]=WB/'moe/scripts'/name
     for path in ROOT.rglob('*'):
         if path.is_file() and path.suffix in ('.json','.log','.png','.pdf') and not path.name.endswith('.tmp'):
@@ -45,6 +45,9 @@ def main():
     for name in ('CLAIMS.md','PAIN_LOG.md','AGENTS.md'):
         entries['repo/'+name]=WB/name
     for path in RAW.glob('*.npz'):entries['raw/'+path.name]=path
+    for path in (RAW/'attempt_1_KL_reduction').rglob('*'):
+        if path.is_file() and path.suffix in ('.py','.npz','.json'):
+            entries['raw/attempt_1_KL_reduction/'+str(path.relative_to(RAW/'attempt_1_KL_reduction'))]=path
     assets=read(WB/'moe/results/e150/asset_manifest.json')['models']
     source={'P':read(WB/'moe/results/e154/asset_manifest.json')['model'],
             'A':assets['StdMoE_1b14b_1T'],'B':assets['StdMoE_1b14b_1T_EmoAnnealed'],'F':plan['F_asset']}
@@ -64,7 +67,7 @@ def main():
             if not item.isfile() or item.issym():raise AssertionError('Archive contains a nonmaterialized source')
             with archive.extractfile(item) as stream:actual=hashlib.file_digest(stream,'sha256').hexdigest()
             if actual!=records[item.name]['sha256']:raise AssertionError('Archive entry changed '+item.name)
-    seal={'experiment':'E163','status':'sealed','result_commit':commit,'frozen_numerical_commit':'19f6f3a5',
+    seal={'experiment':'E163','status':'sealed','result_commit':commit,'frozen_numerical_commit':plan.get('numerical_source_commit','19f6f3a5'),
           'plan_sha256':sha(ROOT/'plan.json'),'summary_sha256':sha(ROOT/'summary.json'),
           'source_result_package':{'path':str(target),'sha256':sha(target),'size_bytes':target.stat().st_size},
           'entries':records,'public_source_materialized_sha256':public,

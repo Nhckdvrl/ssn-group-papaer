@@ -10,6 +10,21 @@ import e151_native as removal
 import e156_loading as loading
 import e153_harness as scoring
 from e163_geometry import GeometryEngine, TARGETS, replace_message
+from e163_metrics import first_token_KL
+
+
+def KL_reduction():
+    torch.manual_seed(163)
+    a=torch.randn(100352).log_softmax(-1)
+    b=(torch.randn(100352)*3).log_softmax(-1)
+    product=(a.exp()*(a-b)).numpy()
+    expected=float(product.astype(np.float64).sum())
+    actual=first_token_KL(a,b)
+    old_wrong=float(torch.from_numpy(product).sum())
+    assert abs(actual-expected)<1e-12 and abs(old_wrong-expected)>1e-10
+    assert first_token_KL(a,a)==0.
+    return {'status':'passed','vocabulary':100352,'oracle':'FP32 products, independent NumPy FP64 reduction',
+            'corrected_absolute_error':abs(actual-expected),'rejected_FP32_sum_absolute_error':abs(old_wrong-expected)}
 
 
 def algebra():
@@ -158,12 +173,12 @@ def cross_interface():
 
 
 def main():
-    report = {'status': 'passed', 'CPU_only': True, 'algebra': algebra(), 'native_interfaces': native_interfaces(),
+    report = {'status': 'passed', 'CPU_only': True, 'KL_reduction':KL_reduction(), 'algebra': algebra(), 'native_interfaces': native_interfaces(),
               'cross_interface':cross_interface()}
     root = Path(__file__).resolve().parents[1]/'results/e163'
     root.mkdir(exist_ok=True)
     report['source_sha256'] = {name: hashlib.sha256((Path(__file__).parent/name).read_bytes()).hexdigest()
-                         for name in ('e163_geometry.py', 'e163_selftest.py')}
+                         for name in ('e163_geometry.py', 'e163_selftest.py','e163_metrics.py')}
     (root/'CPU_geometry_test.json').write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps({'status': 'passed', 'CPU_only': True, 'native_source_dtype_cases': len(report['native_interfaces'])}))
 

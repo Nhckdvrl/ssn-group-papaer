@@ -32,7 +32,7 @@ def main():
     env=dict(os.environ,OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1')
     for args in [('e163_analyze.py','analyze'),('e163_verify.py','verify'),('e163_plot.py',)]:
         subprocess.run([sys.executable,'-B',str(WB/'moe/scripts'/args[0]),*args[1:]],cwd=WB,env=env,check=True)
-    manifest={'experiment':'E163','status':'complete','numerical_source_commit':'19f6f3a5',
+    manifest={'experiment':'E163','status':'complete','numerical_source_commit':read(ROOT/'plan.json').get('numerical_source_commit','19f6f3a5'),
         'plan_sha256':sha(ROOT/'plan.json'),'summary_sha256':sha(ROOT/'summary.json'),
         'independent_audit_sha256':sha(ROOT/'independent_audit.json'),
         'raw':{name:read(ROOT/('manifest_'+name+'.json'))['raw'] for name in ('P','A','B','F','cross')},

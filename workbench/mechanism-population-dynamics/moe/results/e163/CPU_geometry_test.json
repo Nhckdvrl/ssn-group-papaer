@@ -1,6 +1,13 @@
 {
   "status": "passed",
   "CPU_only": true,
+  "KL_reduction": {
+    "status": "passed",
+    "vocabulary": 100352,
+    "oracle": "FP32 products, independent NumPy FP64 reduction",
+    "corrected_absolute_error": 0.0,
+    "rejected_FP32_sum_absolute_error": 4.85714775066981e-07
+  },
   "algebra": {
     "torch.float32": {
       "max_norm_error": 5.601815376010677e-07,
@@ -76,6 +83,7 @@
   },
   "source_sha256": {
     "e163_geometry.py": "3303cbc019720d8e6451ee43079d84a7741d1b2ff3e8e2ada31eec6536ae5214",
-    "e163_selftest.py": "de8343a98c6a4d595746c7ae81ffdf314db741ab8e964103b01b4d08a46e78df"
+    "e163_selftest.py": "2bc14690e93be8ed24e25d479911d0c7b87313425e8247f532af0708195426d7",
+    "e163_metrics.py": "5c7c6f174c1b488fbefe80a6ac70e1aa82407d5576a13e2206c216fbeaecdb3e"
   }
 }

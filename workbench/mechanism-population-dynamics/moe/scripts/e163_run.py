@@ -23,10 +23,11 @@ import e153_harness as task
 import e156_loading as loading
 import e163_geometry as geometry
 import e163_analyze as analysis
+from e163_metrics import first_token_KL
 
 ROOT, RAW = analysis.ROOT, analysis.RAW
 SOURCE_NAMES = (
-    'e163_run.py', 'e163_geometry.py', 'e163_selftest.py', 'e163_analyze.py',
+    'e163_run.py', 'e163_geometry.py', 'e163_selftest.py', 'e163_analyze.py', 'e163_metrics.py',
     'e163_verify.py', 'e150_native.py', 'e150_data.py', 'e150_restricted.py',
     'e144145_common.py', 'e144145_analyze.py', 'e123_frozen_moe.py', 'e151_native.py', 'e153_harness.py',
     'e150_partial_mask_test.py',
@@ -298,12 +299,14 @@ def native(label,model,data,a,refs,plan,budget,means,randoms):
                     else:
                         values,counts,current = score(model,seqs,q,a,plan)
                     ll[index,q] = values
-                    kl[index,q] = float((first.exp()*(first-current)).sum())
+                    kl[index,q] = first_token_KL(first,current)
                     qgeo[index,q] = diagnostics(engine)
                     if index in BASE:
                         old_index = BASE.index(index)
-                        if not np.array_equal(values,refs['native_LL'][mi,old_index,q]) or kl[index,q]!=refs['native_task_KL'][mi,old_index,q]:
-                            raise ValueError('Inherited native task/first KL replay differs '+label+'/'+analysis.CONDITIONS[index])
+                        if not np.array_equal(values,refs['native_LL'][mi,old_index,q]):
+                            raise ValueError('Inherited candidate LL differs '+label+'/'+analysis.CONDITIONS[index]+': max gap '+str(float(np.max(np.abs(values-refs['native_LL'][mi,old_index,q])))))
+                        if kl[index,q]!=refs['native_task_KL'][mi,old_index,q]:
+                            raise ValueError('Inherited first KL differs '+label+'/'+analysis.CONDITIONS[index]+': actual '+str(kl[index,q])+' expected '+str(refs['native_task_KL'][mi,old_index,q]))
                     if q==0:
                         reorder_check(model,seqs,q,a,plan,values,counts,current,engine,lambda:configure(engine,index,means,randoms))
                     if index!=0: del current
@@ -343,7 +346,7 @@ def cross(models,blocks,a,refs,plan,budget):
                         engine.configure('S',rule,directions=trajectories[producer],witnesses=trajectories[consumer])
                         values,counts,current = score(model,seqs,q,a,plan)
                         ll[ri,consumer,producer,q]=values
-                        kl[ri,consumer,producer,q]=float((firsts[consumer].exp()*(firsts[consumer]-current)).sum())
+                        kl[ri,consumer,producer,q]=first_token_KL(firsts[consumer],current)
                         diag[ri,consumer,producer,q]=diagnostics(engine)
                         if ri==0 and not np.array_equal(values,refs['cross_raw_LL'][consumer,producer,q]):
                             raise ValueError('Entire E160 raw producer-consumer replay failed')
