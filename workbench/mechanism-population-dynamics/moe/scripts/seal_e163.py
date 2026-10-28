@@ -34,7 +34,7 @@ def main():
     target=RAW/('run_metadata_'+commit+'.tar.gz')
     if target.exists() or (ROOT/'artifact_seal.json').exists():raise FileExistsError('Preserve the previous package')
     entries={}
-    for name in (*plan['source_sha256'],'e163_plot.py','e163_finish.py','seal_e163.py','reproduce.py','e163_cpu_priority.py'):
+    for name in (*plan['source_sha256'],'e163_plot.py','e163_finish.py','seal_e163.py','reproduce.py','e163_cpu_priority.py','e163_resource_wait.py'):
         entries['repo/moe/scripts/'+name]=WB/'moe/scripts'/name
     for path in ROOT.rglob('*'):
         if path.is_file() and path.suffix in ('.json','.log','.png','.pdf') and not path.name.endswith('.tmp'):
