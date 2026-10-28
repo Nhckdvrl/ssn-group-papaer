@@ -14,7 +14,8 @@
 |---|---|
 | 科学说明、证据与停点 | `../README.md`、`../../CLAIMS.md`、`../../AGENTS.md` |
 | 完整结果CPU复现 | `reproduce.py`；各`eNNN_analyze.py`及`results/*_independent_audit/` |
-| 当前E162唯一批次 | `e162_finish_batch.py`：等完整资产→准备plan→单卡评测→CPU统计/校验；不启动后继实验 |
+| 已完成E162批次 | `e162_finish_batch.py`：原完整资产→准备plan→单卡评测→CPU统计/校验；保留原入口 |
+| 新授权E163 | `e163_run.py prepare/run --group PAB/F`；先CPU装载/hash再占单卡。`e163_analyze.py analyze`、`e163_verify.py verify`从raw复算。plan/SHA与CPU预检见`results/e163/` |
 | 第四端点公开权重与校验 | `full_course_assets.py`、`stage_full_course.py`；固定HF pin/LFS SHA，原数据不变 |
 | 通用耐久退出记录 | `supervised_process.py` |
 | 冻结运行源码 | 原`eNNN_run.py`、原生模型/干预/helper；SHA在对应plan/manifest，保持以便复查 |

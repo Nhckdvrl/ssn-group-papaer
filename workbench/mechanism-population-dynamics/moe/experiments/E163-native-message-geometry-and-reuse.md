@@ -1,6 +1,6 @@
 # E163：成熟职责中的消息几何、方向结构与跨背景重用（2026-10-28）
 
-- **状态：** PLANNED（实现中）；未取得任何新模型cal/held干预结果。
+- **状态：** READY（实现、CPU原生/交叉与独立统计预检已完成）；未取得任何新模型cal/held干预结果。
 - **类型 / 对应：** PILOT；C14、P33。用户全局再定位后明确授权继续。
 - **问题（一句话）：** 成熟历史与伙伴改变的R/S依赖和配套，能否由消息幅度/残差投影解释，还是仍需要输入条件的其余向量方向？
 
@@ -25,7 +25,7 @@
 - `norm_mean`：把固定cal均值方向缩放到当前原始u的L2 norm。
 - `gram_mean`：用cal均值的b正交方向，保留r=||u||与p=<u,b/||b||>，构造`v=p*b_hat + sqrt(max(r²−p²,0))*unit(d−<d,b_hat>b_hat)`。
 - `gram_random0/1`：同一构造，但d为两个预定Gaussian向量。
-- u=0、b=0及d平行b用预定有限回退，保存次数；不以目标效果选回退。计算FP32后回到原dtype。退化方向只用固定basis/现有b，不泄漏u其余方向。
+- u=0、b=0及d平行b用预定有限回退，保存次数；不以目标效果选回退。计算FP32后回到原dtype。`sqrt(r²−p²)`以原正交残量的norm稳定求值（实数等价）；proposal逐向量与witness完全相同时直接保留该向量以实现精确identity，规则不依赖效果或Tensor别名。退化方向只用固定basis/现有b，不泄漏u其余方向。
 
 Gram构造在实数下保留u的norm、对背景的投影和b+u的norm；实际BF16加法次序与误差实测。它保留的是**两个输入相关标量**，仍可能承载丰富信息。即便恢复，不能称无语义/无需计算shared/信息论最小维数；本诊断仍计算原u。即便失败，也不自动证明语义独占。
 
@@ -53,7 +53,7 @@ norm/Gram使用消费者自身clean S轨迹的r/p，d来自指定生产者的实
 - 原生CPU tiny的P/A/B源实现、FP32/BF16：native精确复现，三种zero对照原helper，解析Gram不变量与退化情况、readonly/hooks恢复。
 - 真实GPU各native参数/buffer与旧canonical指纹、原生cal/repeat逐位复现；native及旧R/S/合计zero的实际预测对照封存E162/E155。P/A/B合计zero的LM是新条件，不伪造旧参考。
 - B块原3生产者/9raw网格完整重放E160，捕获/目标前缀与全部候选token counts严格；题0候选重排。新操作仅使用因果可见消息/标量，proposal不读目标答案。
-- Gram FP32相对norm/投影误差需≤1e−4；所有norm/Gram替代的BF16分支norm相对误差≤.01，仅Gram要求缩放投影误差≤.01、实际残差norm相对误差≤.02，实际最大/分位全保留。误差超过先修工程，不读作科学阴性。zero不要求这些不变量。
+- Gram FP32相对norm/投影误差需≤1e−4；所有norm/Gram替代的BF16分支norm相对误差≤.01，仅Gram要求缩放投影误差≤.01、实际残差norm相对误差≤.02；逐条件/层/批次或题的最大误差全保留。误差超过先修工程，不读作科学阴性。zero不要求这些不变量。
 - 实际cal消息探针保存向量切片；独立NumPy重建几何不变量。作者汇总与独立NumPy实现分别从raw复算全部主指标/区间，先过旧数据模拟fixture再读新held。
 
 ## 噪声地板 + MIE
@@ -78,8 +78,8 @@ native repeat/身份与旧预测重放给程序地板；既有FP32/BF16精度参
 
 ## 算力预算与执行边界
 
-0新训练/模型下载，已有venv与耐久P/A/B/F缓存；先代码/CPU、独立fixture与plan冻结再GPU。PAB含B块预计1.5–3 GPU·时、cap4；F预计.25–.75、cap1，合计cap5 GPU·时含失败/预检。至多2张并发卡，绝不超过用户总上限4。CPU/I/O另记，不占卡等待。PAB可保留3个BF16模型约81.4GB于97.9GB单卡，运行前检查空卡/UUID/锁；峰值实测不凭估算保证。必要时顺序载入，不启动大训练。耐久监督、退出码/账本完整；无自动后继实验。
+0新训练/模型下载，已有venv与耐久P/A/B/F缓存；先代码/CPU、独立fixture与plan冻结再GPU。PAB含B块预计1.5–3 GPU·时、cap4；F预计.25–.75、cap1，合计cap5 GPU·时含失败/预检。至多2张并发卡，绝不超过用户总上限4。CPU/I/O另记，不占卡等待。2026-10-28启动前检查发现97.9GiB节点20/21均有其他作业，改用空闲80GiB节点：native逐个上卡，B块P完整+A/B仅实际参与的routed专家上卡，原参数共78.274GB，其余源参数留CPU；不改变前向、dtype或来源。运行前检查空卡/UUID/锁，峰值实测不凭估算保证。耐久监督、退出码/账本完整；无自动后继实验。
 
 ## 结果
 
-尚未获得。代码、CPU校验、配置、真实运行与数据分别更新，不以设计当结果。
+真实模型结果尚未获得。已完成`e163_geometry/run/analyze/verify/selftest.py`与冻结plan。CPU：三源×FP32/BF16六种原生身份/zero/恢复通过；实际三源27格cross的多token、padding、严格前缀、重排与对角均精确通过；独立旧数据fixture核对29650项数值、1376项元数据，最大差7.105e−15。见`results/e163/CPU_geometry_test.json`、`CPU_statistics_fixture.json`和`plan.json`。启动前只调整了数值identity、设备放置与源码依赖清单；未读新held效果。第一次prepare读取正在更新的CPU测试字段而退出，未创建科学结果/占卡；随后重做准备、所有19份冻结源码SHA一致。配置草稿保留在耐久raw的`pre_freeze_design_draft/`，不是实验条件或科学失败。
