@@ -1,5 +1,5 @@
 {
-  "status": "inventory_only_no_deletion_performed",
+  "status": "consolidating_PAB_canonical_verification_remaining",
   "user_gate": "Finish valuable E162, then consolidate solid claims; no automatic E163",
   "resource_limit_gpus": 4,
   "current_core": [
@@ -41,7 +41,19 @@
     "F": {
       "host": "fvcrc21",
       "path": "/tmp/xiang-moe-20261028/full_course_F",
-      "deletion_gate": "Not yet eligible. Complete public SHA verification, durable NFS publication, E162 and source/calibration/result seal first."
+      "deletion_gate": "Completed E162, independent formula verification, exact result seal and stopped-writer check; duplicate removed. Canonical HF source retained.",
+      "abandoned_canonical_incomplete": [
+        {
+          "name": "b7e717ca28e080b583eb2dd6ce0e813714df613d33fe87f75b56eb060c4ed6c1.incomplete",
+          "size_bytes": 2079682934,
+          "complete_same_SHA_counterpart_exists": true
+        },
+        {
+          "name": "6c533f6d918782c976fa4d113fb2938e50de4460208cdeaab80eb69d859616fd.incomplete",
+          "size_bytes": 3219340676,
+          "complete_same_SHA_counterpart_exists": true
+        }
+      ]
     }
   },
   "generated_cache_candidates": [
@@ -2083,8 +2095,14 @@
     {
       "path": "moe/scripts/e158_plot.py",
       "sha256": "feedd8aa917817431c37fc96fd26e539feb568c2aa1269df29d65b11341387cf",
-      "action": "remove_after_current_batch",
-      "reason": "Plotter for an uncompleted cached/per-layer grid, replaced by actual whole-path plotters. No completed numerical manifest/source/import/document dependency other than this inventory. Preserve exact source in Git."
+      "action": "removed_after_completed_E162",
+      "reason": "Plotter for an uncompleted cached/per-layer grid, replaced by actual whole-path plotters. No completed numerical manifest/source/import/document dependency other than this inventory. Preserve exact source in Git.",
+      "verified_absent_outputs": [
+        "moe/results/e158/summary.json",
+        "moe/results/e158/full_forward/summary.json",
+        "moe/results/e158/figures",
+        "moe/results/e158/full_forward/figures"
+      ]
     },
     {
       "path": "moe/scripts/e146_plot.py",
@@ -2115,5 +2133,29 @@
     "supervision": "/home/xiang/mechpop_cache/moe_consolidation_20261028/retained_verification_supervision.json",
     "GPU_calls": 0,
     "deletion_performed": false
+  },
+  "completed_cleanup_receipts": {
+    "cleanup_F.json": {
+      "status": "complete",
+      "path": "/home/xiang/mechpop_cache/moe_consolidation_20261028/cleanup_F.json",
+      "sha256": "011f88a774da133f099b8857b788b26da33cb28fced173c4b79890c5cbacc7a3",
+      "unique_regular_file_bytes": 54309366236,
+      "allocated_file_bytes": 54309412864,
+      "canonical_model_files_removed": 0,
+      "unique_experimental_assets_removed": 0
+    },
+    "cleanup_generated.json": {
+      "status": "complete",
+      "path": "/home/xiang/mechpop_cache/moe_consolidation_20261028/cleanup_generated.json",
+      "sha256": "61f680a597b69962f548b286e5aadf4712ea49edc1b7fa61dd1b0147b79d13e8",
+      "partial_bytes": 5299023610,
+      "bytecode_bytes": 810775,
+      "canonical_model_files_removed": 0,
+      "unique_experimental_assets_removed": 0
+    }
+  },
+  "document_cleanup": {
+    "path": "moe/results/document_cleanup_2026-10-28.json",
+    "sha256": "399e6ac1c25704ad1ccf7e3e336769ccf52ac0101a18b80b4fa315322b7cc1a5"
   }
 }

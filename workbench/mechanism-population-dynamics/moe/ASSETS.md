@@ -44,9 +44,9 @@ E162新raw为4,584,469 B，SHA `89c83382c58ebb8ed864d1fa4cf73c47b86ed5ef71c83023
 
 ## 精确源码封存与临时副本
 
-E158–E161对应`artifact_seal.json`给精确Git源码、raw、输入及源结果包SHA。E160包为`~/mechpop_cache/e160_shared_signal_context_cross/run_metadata_09903add.tar.gz`，E161为`~/mechpop_cache/e161_crossed_entity_relation/run_metadata_caff4266.tar.gz`。不重复打包大模型权重。E162按同一方式封存；完成后本页更新。
+E158–E161对应`artifact_seal.json`给精确Git源码、raw、输入及源结果包SHA。E160包为`~/mechpop_cache/e160_shared_signal_context_cross/run_metadata_09903add.tar.gz`，E161为`~/mechpop_cache/e161_crossed_entity_relation/run_metadata_caff4266.tar.gz`。不重复打包大模型权重。E162精确源码/结果包为`~/mechpop_cache/e162_full_course_native/run_metadata_e2ef1b82.tar.gz`（48,177,862 B），seal在`results/e162/artifact_seal.json`；包内raw/reference/calibration和公共代码已逐项SHA核对，HF符号链接落为实文件。
 
-整理清单与依赖判断见`results/consolidation_inventory_2026-10-28.json`。只清理本批专用的可恢复重复副本；原始HF缓存、raw、原卡、唯一checkpoint及失败记录保留。实际删除数以最终receipt为准，目前清理尚未完成。
+整理清单与依赖判断见`results/consolidation_inventory_2026-10-28.json`。只清理本批专用的可恢复重复副本；原始HF缓存、raw、原卡、唯一checkpoint及失败记录保留。F临时副本54,309,366,236 B、过期断点5,299,023,610 B及生成bytecode810,775 B已清理；P/A/B副本仍待耐久源新鲜SHA核对，最终数以receipt为准。
 
 P/A/B临时路径在fvcrc20的`/tmp/xiang-moe-20261028/mature_emo_pab/`。未来确需GPU重放时，先在该节点运行`moe/scripts/restore_mature_staging.py --receipt ~/mechpop_cache/pab_restore_NEW_ID.json`，从保留公共源复制并独立哈希。**原冻结凭证`~/mechpop_cache/emo_local_staging_20261028.json`保持SHA2092d5…42a06不变**，新恢复记录另写；不修改旧plan以迁就新时间。CPU统计无需临时权重。
 

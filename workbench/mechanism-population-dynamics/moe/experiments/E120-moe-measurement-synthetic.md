@@ -2,7 +2,7 @@
 
 - **状态：** DONE（2026-10-23 19:10）
 - **类型：** EXPLORE（测量工具校准；不涉及任何真实模型的结论）
-- **对应：** MoE 方向的探索第 0 步（讨论见 [knowledge/research/MOE_DISCUSSION_2026-10-23.md](../notes/DISCUSSION_2026-10-23.md) 与 10-23 第三轮讨论）。人 10-23 授权开始第 0 / 1 步（只推理、不训练）。
+- **对应：** MoE 方向的探索第 0 步（讨论见 [knowledge/research/MOE_DISCUSSION_2026-10-23.md](https://github.com/Nhckdvrl/ssn-group-papaer/blob/e2ef1b82/workbench/mechanism-population-dynamics/moe/notes/DISCUSSION_2026-10-23.md) 与 10-23 第三轮讨论）。人 10-23 授权开始第 0 / 1 步（只推理、不训练）。
 - **问题（一句话）：** 我们准备用来比较 MoE 分工的几个量，在答案已知的合成路由器上，是否真的测到它们声称的东西？
   - 读取子空间重合；
   - 扣除条件零假设后的残差共路由及其跨模型相关；
