@@ -37,7 +37,7 @@
 
 可识别性P2、NTK、LMC-MoE、router–expert几何、Fisher merging、FlexOlmo/BAR等较早定位，以及FLEx、RRD、RouterInterp、DeepSeek等局部阅读范围，保存在[整理前固定版本](https://github.com/Nhckdvrl/ssn-group-papaer/blob/9815fbf0/workbench/mechanism-population-dynamics/moe/notes/POSITIONING_2026-10-26.md)与既有论文卡。未读全文的条目仍未读，不能据标题升级成精确撞车。数学与接口边界见[研究方向](../RESEARCH_DIRECTION.md)及[可识别性说明](IDENTIFIABILITY_SCOPE_2026-10-26.md)。
 
-最近已实际执行venue corpus nearest，ExpertWeaver、CartesianMoE、Coupling Experts and Routers等新命中只作检索线索；Basic-Refinement另有全文阅读，其余不作新颖性裁决。awesome/DailyArXiv的覆盖和日期滞后记录保留在旧定位，不把镜像未命中当无人研究。
+最近已实际执行venue corpus nearest；ExpertWeaver、CartesianMoE随后已完成全文，详见末节新全文卡。Coupling Experts and Routers仍仅作检索线索；Basic-Refinement已有全文阅读。awesome/DailyArXiv的覆盖和日期滞后记录保留，不把镜像未命中当无人研究。
 
 **本批决定：完成E162后集中形成现有论证并整理，不自动扩大消融矩阵。** 相邻工作帮助提出完整科学问题；结果决定哪些解释更有力，不能为保持新颖性不断缩成一小块，也不能为了故事忽略已有直接证据。
 

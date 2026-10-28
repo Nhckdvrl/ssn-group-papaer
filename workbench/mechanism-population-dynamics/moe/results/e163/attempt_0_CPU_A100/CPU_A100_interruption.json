@@ -1,0 +1,25 @@
+{
+  "status": "intentional_CPU_only_interruption",
+  "reason": "Same RTX PRO 6000 Blackwell architecture as inherited calibration became available on fvcrc21; A100 node fvcrc11 also acquired other jobs. No new cal or held effects read. Frozen scientific sources and plan retained.",
+  "GPU_seconds": 0,
+  "receipts": [
+    {
+      "host": "fvcrc11",
+      "group": "PAB",
+      "pid": 4081395,
+      "command": "/home/xiang/.venvs/mechpop/bin/python -u /home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/scripts/e163_run.py run --group PAB --physical-gpu 0 ",
+      "CPU_only_no_compute_app": true,
+      "signal": "SIGTERM",
+      "UTC": "2026-10-28T15:13:56Z"
+    },
+    {
+      "host": "fvcrc10",
+      "group": "F",
+      "pid": 2486468,
+      "command": "/home/xiang/.venvs/mechpop/bin/python -u /home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/scripts/e163_run.py run --group F --physical-gpu 0 ",
+      "CPU_only_no_compute_app": true,
+      "signal": "SIGTERM",
+      "UTC": "2026-10-28T15:13:57Z"
+    }
+  ]
+}

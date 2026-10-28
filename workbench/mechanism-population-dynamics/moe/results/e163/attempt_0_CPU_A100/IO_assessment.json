@@ -1,0 +1,23 @@
+{
+  "status": "source_IO_bound_CPU_stage",
+  "UTC": "2026-10-28T15:06:35Z",
+  "GPU_reserved": 0,
+  "probe_bytes_each": 134217728,
+  "probes": [
+    {
+      "host": "fvcrc10",
+      "label": "F",
+      "seconds": 5.433482855558395,
+      "MB_per_second": 24.70196954108297,
+      "free_tmp_bytes": 212308918272
+    },
+    {
+      "host": "fvcrc11",
+      "label": "P",
+      "seconds": 8.493165676947683,
+      "MB_per_second": 15.803027175637983,
+      "free_tmp_bytes": 242296709120
+    }
+  ],
+  "decision": "Keep the already-running CPU canonical conversion. A new full local copy would duplicate source I/O at the measured bottleneck. No GPU waits for source I/O; no dtype shortcut, source edit, or new model download."
+}
