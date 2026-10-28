@@ -40,3 +40,7 @@
 最近已实际执行venue corpus nearest，ExpertWeaver、CartesianMoE、Coupling Experts and Routers等新命中只作检索线索；Basic-Refinement另有全文阅读，其余不作新颖性裁决。awesome/DailyArXiv的覆盖和日期滞后记录保留在旧定位，不把镜像未命中当无人研究。
 
 **本批决定：完成E162后集中形成现有论证并整理，不自动扩大消融矩阵。** 相邻工作帮助提出完整科学问题；结果决定哪些解释更有力，不能为保持新颖性不断缩成一小块，也不能为了故事忽略已有直接证据。
+
+## 2026-10-28用户授权后全局再定位
+
+新增8篇全文204页（含LMC完整86页、stitching独立附录），与此前16篇的具体主张重新对照。[当前论文形态/价值判断](../PAPER_SHAPE.md)与[新全文卡](../../../../library/themes/moe-routing/GLOBAL_POSITIONING_FULL_READING_2026-10-28.md)明确：当前正面增量在成熟历史、性质载体/必要伙伴及消息重用的连接，不认领一般conditional importance或模块删除。下一E163针对低维几何与方向结构的竞争解释，仍无新结果，不沿旧卡号自动排队。

@@ -60,3 +60,5 @@
 E144–E147无新训练；全量来源、donor、分区均保留。新C10–C12仅L1，旧C06–C09数字与等级不变；范围与当前解释见[README](../README.md)。本轮发现并在held之前修复CUDA库导入后的可见卡缓存问题，全部预检与成本保留。E147在E146结果之后、运行前新登记，没有倒写E146预设对照。
 
 旧[摘要重算](../results/discussion_2026-10-26/reanalysis.json)仍为POST-HOC；新GPU结果和它分开。后续按证据与问题推进，不排日期或自动扩训练网格。
+
+| [E163](E163-native-message-geometry-and-reuse.md) | PLANNED；C14/P33 | 保留norm/残差投影后测方向结构：四native历史R/S/合计，以及固定S_P实际轨迹跨背景校正 | [领域位置](../PAPER_SHAPE.md)；未取得新读数 |

@@ -1,0 +1,388 @@
+[
+  {
+    "name": "monet",
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/file/382c35d1a57c07055dfcba58dd39e012-Paper-Conference.pdf",
+    "status": "complete_text_appendices_references",
+    "pages": 32,
+    "path": "/home/xiang/mechpop_cache/moe_primary_reassessment_20261028/monet.pdf",
+    "sha256": "714666033ae23c03390d896745c11f527bd4c53f481296f2b19a1c88192b6487",
+    "seconds": 49.734,
+    "reading": {
+      "pages_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "scope": "Complete main text, references, mathematical/implementation/training/evaluation appendices and qualitative figure text; not all figure pixels separately inspected",
+      "next": "Inspect key architecture and causal intervention heatmap figures"
+    },
+    "visually_inspected_pages": [
+      3,
+      8
+    ]
+  },
+  {
+    "name": "modularity_audit",
+    "url": "https://arxiv.org/pdf/2606.25092v1",
+    "status": "complete_text_appendices_references",
+    "pages": 8,
+    "path": "/home/xiang/mechpop_cache/moe_primary_reassessment_20261028/modularity_audit.pdf",
+    "sha256": "9b001930013a73cd532e99c150b6f2ff8860ab52f1dcfe59ea61001bcdec0378",
+    "seconds": 4.702,
+    "reading": {
+      "pages_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "scope": "Complete 8-page fixed v1 PDF; arXiv metadata says 10 pages, actual downloaded PDF has 8; counts and scope follow actual file",
+      "key_distinctions": [
+        "router mask reroutes and renormalizes; not output zeroing",
+        "routing-defined universal core is routed, not always-on shared branch",
+        "Qwen sensitivity check is routing-set separation, not an equal causal modularity effect-size test",
+        "1/3 selectivity and random mean+2sd are prescribed rules, not universal definitions"
+      ]
+    }
+  },
+  {
+    "name": "causal_audit",
+    "url": "https://arxiv.org/pdf/2606.10703v2",
+    "status": "complete_text_appendices_references",
+    "pages": 9,
+    "path": "/home/xiang/mechpop_cache/moe_primary_reassessment_20261028/causal_audit.pdf",
+    "sha256": "f329979cdfefd393a03307131bbbb39047e9d02f913ab9a5b9b9231e59e6bf51",
+    "seconds": 1.116,
+    "reading": {
+      "pages_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "scope": "Complete fixed v2 main/appendix/reference/captions/tables; not independent reproduction",
+      "notes": [
+        "Single expert at one token with unchanged gate; distinct from our whole-path interventions",
+        "Statistics are high-minus-low among currently selected experts, not group necessity",
+        "Positive control claim under dual-test rule deserves caution: Table4 Wilcoxon .019 exceeds Bonferroni .01, while Qwen .036 rejected under corrected audit; do not use threshold as our decision rule",
+        "Shared experts excluded; no direct universal shared-role conclusion"
+      ]
+    }
+  },
+  {
+    "name": "committee",
+    "url": "https://aclanthology.org/2026.acl-long.665.pdf",
+    "status": "complete_text_appendices_references",
+    "error": "n timed out after 75000 milliseconds with 5718016 out of 13421696 bytes received\ncurl: (28) Operation timed out after 75001 milliseconds with 851968 out of 13421696 bytes received\n",
+    "pages": 18,
+    "path": "/home/xiang/mechpop_cache/moe_primary_reassessment_20261028/committee.pdf",
+    "sha256": "08efd6356c30513f2e2238dfb815ed389efd2ea8188d48a81b3361783dc26043",
+    "retry_note": "First bounded 75s attempts timed out; complete official PDF retrieved with 360s bound",
+    "reading": {
+      "pages_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "scope": "Complete official ACL2026 18-page text and appendices, all tables/captions, not every image pixel",
+      "notes": [
+        "Actual masking/rerouting results are present in Section4.4 and AppendixF; never call this routing-only",
+        "Limitations explicitly lack random/frequency-matched masking controls",
+        "Universal committee consists of routed experts, excluding architecturally always-shared experts",
+        "Definition full-softmax ECI versus Table8 values needs code/scale clarification; do not reuse its numerical scale as our control",
+        "Within-depth expert indices are not the same functions across different layers"
+      ]
+    },
+    "visually_inspected_pages": [
+      14
+    ]
+  },
+  {
+    "name": "lmc_moe",
+    "url": "https://arxiv.org/pdf/2509.11348v2",
+    "status": "complete_text_appendices_references",
+    "pages": 86,
+    "path": "/home/xiang/mechpop_cache/moe_primary_reassessment_20261028/lmc_moe.pdf",
+    "sha256": "5769b5bcc0fb2a470ecdf7b0cc99a32afdd5e95e4e5990fa2fb49b6dff5f1c26",
+    "seconds": 8.959,
+    "reading": {
+      "pages_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86
+      ],
+      "scope": "Complete text including mathematical proofs, experimental appendix, captions/tables, references and checklist; not an independent formal proof audit or pixel audit of every curve",
+      "specific_findings": [
+        "Explicitly includes last-layer and all-layer replacement; not only one first-layer experiment",
+        "All-layer One Billion Word barriers after alignment about 0.57\u20131.17 nat in Table 7, so lower relative barriers are not uniformly zero",
+        "Pure SMoE theorem uses selected-softmax renormalization; shared-expert experimental formula uses full-logit softmax then truncation",
+        "Main and appendix wording about independent versus identical initialization differs; do not infer exact seed chain from prose",
+        "Dense theorem difference condition as printed depends on index order; counterexample diagnostic to be checked separately, not a verdict on empirical LMC or a basis for our novelty"
+      ]
+    },
+    "visually_inspected_pages": [
+      73
+    ]
+  },
+  {
+    "name": "stitching",
+    "url": "https://proceedings.neurips.cc/paper/2021/file/01ded4259d101feb739b06c399e9cd9c-Paper.pdf",
+    "status": "complete_text_appendices_references",
+    "pages": 12,
+    "path": "/home/xiang/mechpop_cache/moe_primary_reassessment_20261028/stitching.pdf",
+    "sha256": "53aeaa83b0c80bbc82563807a0c909db67fef680e14f6e52d69fe71f7580f426",
+    "seconds": 28.787,
+    "reading": {
+      "pages_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "scope": "Complete official 12-page main and 5-page supplementary PDFs, text/tables/captions; not independent numerical reproduction",
+      "supplement_pages_read": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  {
+    "name": "cartesian",
+    "url": "https://arxiv.org/pdf/2410.16077v2",
+    "status": "complete_text_appendices_references",
+    "pages": 16,
+    "path": "/home/xiang/mechpop_cache/moe_primary_reassessment_20261028/cartesian.pdf",
+    "sha256": "936706b0c0e6387a97c62a2be26770225462ae6835994f875bd58e7b52fe01c0",
+    "seconds": 0.706,
+    "reading": {
+      "pages_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "scope": "Complete v2 text, experiment and configuration appendix, reference/caption/tables",
+      "notes": [
+        "Sequential nonlinear MoE sublayers with separate routing and residual, not literal linear matrix-factorization equivalence",
+        "No-shared variant is a trained architecture comparison, not inference shared output deletion",
+        "Routing robustness masks top1 then reroutes, unlike output-zero contribution probes",
+        "Training count 100B/400B and matched active params; no cross-history fixed-function role test"
+      ]
+    }
+  },
+  {
+    "name": "expertweaver",
+    "url": "https://arxiv.org/pdf/2602.15521v1",
+    "status": "complete_text_appendices_references",
+    "pages": 18,
+    "path": "/home/xiang/mechpop_cache/moe_primary_reassessment_20261028/expertweaver.pdf",
+    "sha256": "3dd08119853a2780a621bf17351322f0aa968418a7b22171cfb9d08709df3373",
+    "seconds": 3.299,
+    "reading": {
+      "pages_read": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "scope": "Complete v1 main, all appendices, references/tables/caption text",
+      "notes": [
+        "Training-free conversion is distinct from 200B continued pretraining and SFT",
+        "Unweighted selected experts for structural pruning, weighted softmax after CPT",
+        "42-task calibration in main versus 48 in AppendixH not resolved; do not hardcode its count as a reproduced baseline",
+        "Universal neurons chosen by mean absolute activation after CV ratio allocation; not direct evidence of input-invariant output messages"
+      ]
+    }
+  },
+  {
+    "name": "stitching_supplement",
+    "url": "https://papers.nips.cc/paper_files/paper/2021/file/01ded4259d101feb739b06c399e9cd9c-Supplemental.pdf",
+    "path": "/home/xiang/mechpop_cache/moe_primary_reassessment_20261028/stitching_supplement.pdf",
+    "sha256": "0ac7130252b62a9dbfb3ddc8b3057cc765e88e0fd32ba6217009ae2cf3f5d920",
+    "pages": 5,
+    "reading": {
+      "pages_read": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scope": "Complete text and captions; figure pixels not all inspected"
+    },
+    "status": "complete_text_appendices_references"
+  }
+]
