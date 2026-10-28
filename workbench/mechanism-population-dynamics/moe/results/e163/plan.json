@@ -2,9 +2,9 @@
   "experiment": "E163",
   "status": "prepared",
   "source_sha256": {
-    "e163_run.py": "683d9da69c920d4efe200bb69eda5d5b489d9a071269e9b116c192031a2d6294",
+    "e163_run.py": "2eca83bffd2059a10da1ae6671083dcd7ed6e1049ffaf14acc839e97cde67163",
     "e163_geometry.py": "3303cbc019720d8e6451ee43079d84a7741d1b2ff3e8e2ada31eec6536ae5214",
-    "e163_selftest.py": "de8343a98c6a4d595746c7ae81ffdf314db741ab8e964103b01b4d08a46e78df",
+    "e163_selftest.py": "2bc14690e93be8ed24e25d479911d0c7b87313425e8247f532af0708195426d7",
     "e163_analyze.py": "2265d30dd7388504f9fd62be9a7143196276dbf512c0cf51bf08e166a568a3a7",
     "e163_verify.py": "38b4d79ef72ca84c99aa35a362ff68423405ba5aa602725f7fedba16d5698472",
     "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
@@ -20,7 +20,8 @@
     "e154_native.py": "aca56b8c0da5cbb1dc420eaf8edcc8b0a8818e6214def6f8abb3cfd10664878d",
     "e154_assets.py": "888a17da9798f2ae4edd2b30f797caa2c2b77d8a5b3bd3bbe045fe93447e779c",
     "e150_prepare_assets.py": "02be428952536e3f7ed371e3812558fda701bcab14dfdd295641be7826dc6a7a",
-    "supervised_process.py": "2f74df9331da658162a1e98393bd79db6ac636c829b7abb4c720f76ab104a086"
+    "supervised_process.py": "2f74df9331da658162a1e98393bd79db6ac636c829b7abb4c720f76ab104a086",
+    "e163_metrics.py": "5c7c6f174c1b488fbefe80a6ac70e1aa82407d5576a13e2206c216fbeaecdb3e"
   },
   "software": {
     "python": "3.12.0",
@@ -30,8 +31,8 @@
   },
   "CPU_geometry_test": {
     "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e163/CPU_geometry_test.json",
-    "sha256": "ed7303d1a339cbc03bffa84ca897f71941b643719ab7ce9e4163fe309bc91bc2",
-    "size_bytes": 3022
+    "sha256": "378e25aff87b62f518104ea413a98026f0662666becc76017f2169247d31e361",
+    "size_bytes": 3351
   },
   "CPU_statistics_fixture": {
     "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e163/CPU_statistics_fixture.json",
@@ -391,5 +392,15 @@
   "max_concurrent_gpus": 2,
   "user_gpu_cap": 4,
   "device_placement": "Native models sequential on one GPU; cross P whole + only A/B routed expert tensors on GPU, other source tensors CPU. Same original parameters, no sharding or recomputation change.",
-  "scope": "Four fixed mature public paths; one family. Same-function same-input shared reuse. Oracle scalar witnesses are a diagnostic, not compression or seed-population evidence."
+  "scope": "Four fixed mature public paths; one family. Same-function same-input shared reuse. Oracle scalar witnesses are a diagnostic, not compression or seed-population evidence.",
+  "numerical_source_commit": "c31e4b0e",
+  "source_amendment": {
+    "original_scientific_design_and_source_commit": "19f6f3a5",
+    "prior_plan_sha256": "5bfdf019d4f76bd9da871c389d9394804065e576d7278b9417dab8cb9490e149",
+    "reason": "Match inherited E155/E162 first-token KL: FP32 products followed by FP64 summation. Original FP32 sum was caught by exact inherited replay. Added 100352-vocabulary CPU stress fixture. All model interventions, scores, inputs, seeds, conditions and budgets unchanged.",
+    "held_geometry_conditions_read_before_amendment": false,
+    "failed_GPU_seconds_charged": 92.10908111999743,
+    "preserved_failure": "attempt_1_KL_reduction/failure.json",
+    "original_sources_on_NFS": "/home/xiang/mechpop_cache/e163_message_geometry/attempt_1_KL_reduction/source"
+  }
 }

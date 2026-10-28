@@ -1,6 +1,6 @@
 # E163：成熟职责中的消息几何、方向结构与跨背景重用（2026-10-28）
 
-- **状态：** RUNNING（实现、CPU原生/交叉与独立统计预检已完成并冻结）；真实模型准备中，尚无新cal/held干预结果。
+- **状态：** RETRY_READY（原设计19f6f3a5；读数归约修复c31e4b0e，条件不变）。已取得真实cal/旧LM控制；尚未读新held几何条件。
 - **类型 / 对应：** PILOT；C14、P33。用户全局再定位后明确授权继续。
 - **问题（一句话）：** 成熟历史与伙伴改变的R/S依赖和配套，能否由消息幅度/残差投影解释，还是仍需要输入条件的其余向量方向？
 
@@ -85,3 +85,7 @@ native repeat/身份与旧预测重放给程序地板；既有FP32/BF16精度参
 ## 结果
 
 真实模型结果尚未获得。已完成`e163_geometry/run/analyze/verify/selftest.py`与冻结plan。CPU：三源×FP32/BF16六种原生身份/zero/恢复通过；实际三源27格cross的多token、padding、严格前缀、重排与对角均精确通过；独立旧数据fixture核对29650项数值、1376项元数据，最大差7.105e−15。见`results/e163/CPU_geometry_test.json`、`CPU_statistics_fixture.json`和`plan.json`。启动前只调整了数值identity、设备放置与源码依赖清单；未读新held效果。第一次prepare读取正在更新的CPU测试字段而退出，未创建科学结果/占卡；随后重做准备、所有19份冻结源码SHA一致。配置草稿保留在耐久raw的`pre_freeze_design_draft/`，不是实验条件或科学失败。
+
+**16:05 UTC工程校对：** F真实参数/buffer、cal/repeat/截获及三种zero精确通过，旧native/zero的LM64窗口全部精确重放。72条真实cal向量独立NumPy重建最大相对误差1.284e−7，BF16 norm/projection/实际残差norm最大误差.001215/.000540/.000855。进入RC旧条件q0/R-zero时精确检查退出；定位出首token KL漏用旧E155/E162的FP64归约（FP32乘积后double sum）。c31e4b0e修复这一读数，新增100352词表CPU检验：旧FP32 sum误差4.857e−7，新归约与独立NumPy之差0；原生六案例与27格cross再通过。重跑时将LL/first-KL检查分开，进一步核实是否只有该问题。
+
+F失败92.109 GPU秒计入原1小时上限，PAB尚在CPU、0GPU时主动停止以统一版本。原plan/19份源码、cal/proposals、监督/退出码和迁移凭证分别保留在`results/e163/attempt_1_KL_reduction/`与耐久raw同名子目录；没有新held几何读数，不改变条件/数据/seed/统计读数/预算。新plan显式记原计划SHA及修复来源，20份当前源码冻结。CPU I/O先让F就绪的562.507秒结束后已自动恢复PAB，不是科学条件选择。

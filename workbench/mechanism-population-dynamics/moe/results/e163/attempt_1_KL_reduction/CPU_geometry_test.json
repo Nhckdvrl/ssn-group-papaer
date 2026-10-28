@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "CPU_only": true,
+  "algebra": {
+    "torch.float32": {
+      "max_norm_error": 5.601815376010677e-07,
+      "max_projection_error": 6.586776257755389e-07,
+      "max_residual_norm_error": 2.613925431660391e-07,
+      "zero_and_parallel_fallbacks": true,
+      "only_two_message_witnesses_used": true
+    },
+    "torch.float64": {
+      "max_norm_error": 8.881784197001252e-16,
+      "max_projection_error": 2.6645352591003757e-15,
+      "max_residual_norm_error": 1.7763568394002505e-15,
+      "zero_and_parallel_fallbacks": true,
+      "only_two_message_witnesses_used": true
+    }
+  },
+  "native_interfaces": {
+    "P/torch.float32": {
+      "native_program_exact": true,
+      "three_original_zero_oracles_exact": true,
+      "norm_and_Gram_finite_and_geometry_checked": true,
+      "raw_own_signal_replay_exact": true,
+      "geometric_own_signal_replay_exact": true,
+      "source_parameters_buffers_hooks_restored": true
+    },
+    "P/torch.bfloat16": {
+      "native_program_exact": true,
+      "three_original_zero_oracles_exact": true,
+      "norm_and_Gram_finite_and_geometry_checked": true,
+      "raw_own_signal_replay_exact": true,
+      "geometric_own_signal_replay_exact": true,
+      "source_parameters_buffers_hooks_restored": true
+    },
+    "A/torch.float32": {
+      "native_program_exact": true,
+      "three_original_zero_oracles_exact": true,
+      "norm_and_Gram_finite_and_geometry_checked": true,
+      "raw_own_signal_replay_exact": true,
+      "geometric_own_signal_replay_exact": true,
+      "source_parameters_buffers_hooks_restored": true
+    },
+    "A/torch.bfloat16": {
+      "native_program_exact": true,
+      "three_original_zero_oracles_exact": true,
+      "norm_and_Gram_finite_and_geometry_checked": true,
+      "raw_own_signal_replay_exact": true,
+      "geometric_own_signal_replay_exact": true,
+      "source_parameters_buffers_hooks_restored": true
+    },
+    "B/torch.float32": {
+      "native_program_exact": true,
+      "three_original_zero_oracles_exact": true,
+      "norm_and_Gram_finite_and_geometry_checked": true,
+      "raw_own_signal_replay_exact": true,
+      "geometric_own_signal_replay_exact": true,
+      "source_parameters_buffers_hooks_restored": true
+    },
+    "B/torch.bfloat16": {
+      "native_program_exact": true,
+      "three_original_zero_oracles_exact": true,
+      "norm_and_Gram_finite_and_geometry_checked": true,
+      "raw_own_signal_replay_exact": true,
+      "geometric_own_signal_replay_exact": true,
+      "source_parameters_buffers_hooks_restored": true
+    }
+  },
+  "cross_interface": {
+    "status": "passed",
+    "actual_three_source_cross_cells": 27,
+    "padded_multitoken_prefix_and_counts": true,
+    "all_diagonal_and_permutation_checks_exact": true,
+    "source_state_hooks_restored": true
+  },
+  "source_sha256": {
+    "e163_geometry.py": "3303cbc019720d8e6451ee43079d84a7741d1b2ff3e8e2ada31eec6536ae5214",
+    "e163_selftest.py": "de8343a98c6a4d595746c7ae81ffdf314db741ab8e964103b01b4d08a46e78df"
+  }
+}
