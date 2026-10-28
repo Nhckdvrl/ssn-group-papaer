@@ -1,6 +1,6 @@
 # PAIN LOG — Mechanism Population Dynamics
 
-> **当前入口（2026-10-28）：** 各痛点中的旧“下一步 / 建议 / 暂停”保留当时含义，不是执行队列。MoE已完成E144–E161，正按用户指示完成有价值的E162；随后先归纳几条实在主张、整理代码/缓存/核心文档，不自动追加实验。资源总并发上限4卡。先读[当前说明](moe/README.md)与[执行约定](AGENTS.md)。P01–P14里的路径以[`heads/`](heads/README.md)为根，P15–P32以[`moe/`](moe/README.md)为根；公开套件问题见[`suite-audits/`](suite-audits/README.md)。
+> **当前入口（2026-10-28）：** 各痛点中的旧“下一步 / 建议 / 暂停”保留当时含义，不是执行队列。MoE已完整完成E144–E162当前批；现在按用户指示归纳几条实在主张、整理代码/缓存/核心文档，不自动追加实验。资源总并发上限4卡。先读[当前说明](moe/README.md)与[执行约定](AGENTS.md)。P01–P14里的路径以[`heads/`](heads/README.md)为根，P15–P32以[`moe/`](moe/README.md)为根；公开套件问题见[`suite-audits/`](suite-audits/README.md)。
 
 
 只记录真实运行中出现的痛点、异常、失败或意外成功。不要预填“我们希望出现”的现象。

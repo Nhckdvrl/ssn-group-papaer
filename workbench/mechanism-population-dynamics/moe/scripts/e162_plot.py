@@ -67,16 +67,17 @@ def main():
             ax.bar(x+offset,p,.29,color=('#5c8d9c','#d7994e')[j],label=('Own input-prefix selector','Three fixed random probes')[j]);ax.vlines(x+offset,ci[:,0],ci[:,1],color='#222',lw=.9)
         ax.set_xticks(x,('A','B','F'));ax.set_title(('Pool denominator','Full 127-expert denominator')[r]);ax.set_ylabel('Suffix NLL increase from same complete model');ax.grid(axis='y',alpha=.2)
     axes[0].legend(frameon=False,fontsize=9)
-    fig.suptitle('Deployment sensitivity retains full quality and random controls',fontweight='bold',fontsize=14)
+    fig.suptitle('Input-based selection across both normalization rules',fontweight='bold',fontsize=14)
     fig.subplots_adjust(top=.85,bottom=.25,wspace=.3);fig.text(.5,.045,FOOT+'\n32 slots = 31 routed + shared; prefix-only selection, suffix-only scores. Both rules and all three random probes retained.\nP is absent from this common-rule figure because its full-denominator counterfactual was not measured.',ha='center',fontsize=9)
     save(fig,'prefix_and_random_budgets')
-    selected=s['all_four_full_correct'];fig,ax=plt.subplots(figsize=(11,5.5));bottom=np.zeros(4)
+    selected=s['all_four_full_correct'];fig,ax=plt.subplots(figsize=(11,6.5));bottom=np.zeros(4)
     palette=plt.get_cmap('tab20')
     for code in range(8):
         y=np.array([selected['models'][n]['counts'][code] for n in NAMES]);ax.bar(range(4),y,bottom=bottom,color=palette(2*code),label=f'{code:03b}');bottom+=y
-    ax.set_xticks(range(4),NAMES);ax.set_ylabel('Questions in fixed common-success subset');ax.legend(title='D / R-only / S-only',ncol=4,frameon=False)
+    ax.set_xticks(range(4),NAMES);ax.set_ylabel('Questions in fixed common-success subset')
+    ax.legend(title='D / D+R / D+S',ncol=4,frameon=False,loc='upper center',bbox_to_anchor=(.5,1.29))
     fig.suptitle(f"Same successful decisions, branch dependence retained · n={selected['count']}",fontweight='bold')
-    fig.subplots_adjust(top=.85,bottom=.26)
+    fig.subplots_adjust(top=.72,bottom=.24)
     fig.text(.5,.05,FOOT+f"\nSelected by all four native complete systems correct; subject counts {selected['per_subject_count']}. No CI or population claim.\nAll eight patterns, including nonmonotonic ones, remain visible; 000 means neither D nor either single path preserves the correct choice.",ha='center',fontsize=9)
     save(fig,'common_success_patterns')
     (ROOT/'figures/source.json').write_text(json.dumps({'summary_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'raw_sha256':s['raw_sha256'],

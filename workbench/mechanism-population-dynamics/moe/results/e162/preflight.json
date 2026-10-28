@@ -1,0 +1,33 @@
+{
+  "status": "complete",
+  "FP32_to_BF16_per_sequence": [
+    [
+      3.306218385696411,
+      0.0005380440270528197,
+      0.0005366572295315564,
+      0.984375
+    ],
+    [
+      2.8060519695281982,
+      0.006975303869694471,
+      0.007056406699120998,
+      0.953125
+    ]
+  ],
+  "metric_columns": [
+    "nll",
+    "ref_to_variant_kl",
+    "variant_to_ref_kl",
+    "ref_top1_agreement"
+  ],
+  "calibration": {
+    "path": "/home/xiang/mechpop_cache/e162_full_course_native/calibration_bf16.npz",
+    "sha256": "8090d0ffff4254d70b3e9623675ce2bd48bfab0227cdfea24204aac531ce86ce",
+    "size_bytes": 31850810
+  },
+  "repeat_and_both_full_slot_rules_exact": true,
+  "partial_pool_equals_old_hook_exact": true,
+  "parameter_hash": "963bff20243b895f5603b9c7990834b1207fdaccf4f9c31eb754ddcf25b6ecbd",
+  "buffer_hash": "d03a271a4215869f6070f196ef37450dfad6f7cdb5bc6092d3b5aacc451bfb47",
+  "canonical_conversion": "fresh CPU FP32 -> CPU BF16 including buffers -> GPU"
+}
