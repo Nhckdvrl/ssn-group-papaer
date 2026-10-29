@@ -10,10 +10,11 @@
 | 相同函数实际消息的原配关系 | [E160正式summary](e160/retry_1/summary.json) | [正式manifest](e160/retry_1/manifest.json)；父目录保留首轮中断费用 | [报告](e160/retry_1/independent_report.json) |
 | 局部几何能否解释实际消息重用 | [E163 summary](e163/summary.json) | [manifest](e163/manifest.json)、[继承范围](e163/native_inheritance.json) | [报告](e163/independent_audit.json) |
 | 性质来源与实际路由通路、新55学科范围 | [E164完整矩阵](e164/summary.json) | [manifest](e164/manifest.json)、[plan](e164/plan.json)、[退出/成本](e164/execution_complete.json) | [报告](e164/independent_audit.json) |
+| 另一成熟谱系的整机趋势与组件性质反向 | [E165完整矩阵](e165/summary.json) | [manifest](e165/manifest.json)、[plan](e165/plan.json)、[退出/成本](e165/execution_complete.json) | [报告](e165/independent_audit.json) |
 
 [四面板主图](e163/figures/research_spine.png)对应[逐项来源SHA/JSON路径](e163/research_spine.json)，不新增统计检验。完整任务正确率、NLL、KL、两学科、全部来源/方向和预锁成功次集仍在各summary中。
 
-E164新任务与路由结果用`reproduce.py E164 all`复现；旧四项核心spine保持原组成与来源。CPU复核：`~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py spine verify`；从本工作台根执行，说明见[scripts](../scripts/README.md)。
+E164/E165分别用`reproduce.py E164 all`、`reproduce.py E165 all`复现；E166目前只有冻结plan/CPU预检和运行监督，尚无完整科学结果。旧四项核心spine保持原组成与来源。CPU复核：`~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py spine verify`；从本工作台根执行，说明见[scripts](../scripts/README.md)。
 
 ## 读文件时的约定
 

@@ -1,0 +1,28 @@
+{
+  "status": "launched",
+  "host": "fvcrc21",
+  "supervisor_pid": 2100137,
+  "physical_gpu": 1,
+  "command": [
+    "/home/xiang/.venvs/mechpop/bin/python",
+    "-B",
+    "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/scripts/supervised_process.py",
+    "--status",
+    "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e166/supervision_chain.json",
+    "--log",
+    "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e166/run_chain.log",
+    "--cwd",
+    "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics",
+    "--timeout",
+    "43200",
+    "--",
+    "/home/xiang/.venvs/mechpop/bin/python",
+    "-B",
+    "-u",
+    "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/scripts/e166_finish.py",
+    "--physical-gpu",
+    "1"
+  ],
+  "max_concurrent_gpus": 1,
+  "user_limit": 4
+}

@@ -1,0 +1,305 @@
+{
+  "experiment": "E166",
+  "status": "prepared",
+  "numerical_source_commit": "ef8f58c8",
+  "source_sha256": {
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e144145_analyze.py": "c17ae07babdc28398b9207313dc472274169a53b81a2164a6040e67ee28b083f",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+    "e150_data.py": "58e3f24c0bd10199f75cb906788818539628f414e299ca3a875e4e6c30ff0f49",
+    "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
+    "e150_partial_mask_test.py": "f6c023eb0c43d21921d72631cec3075dd6aaedb658ba84bccf127c7266bb4891",
+    "e150_prepare_assets.py": "02be428952536e3f7ed371e3812558fda701bcab14dfdd295641be7826dc6a7a",
+    "e150_restricted.py": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c",
+    "e151_native.py": "37aebf802a06ac8816f37777f7f991b8db071432f0ff69875d385c5aeddb783e",
+    "e153_harness.py": "ae463a28e129fe3ba6a3613d9783201698b2175719c82a24a87f944ebb2c2b97",
+    "e154_assets.py": "888a17da9798f2ae4edd2b30f797caa2c2b77d8a5b3bd3bbe045fe93447e779c",
+    "e154_native.py": "aca56b8c0da5cbb1dc420eaf8edcc8b0a8818e6214def6f8abb3cfd10664878d",
+    "e156_loading.py": "71e537f62ffac62cf1d303a6e48330326282c991e087a57760d0252427b82127",
+    "e163_geometry.py": "3303cbc019720d8e6451ee43079d84a7741d1b2ff3e8e2ada31eec6536ae5214",
+    "e163_metrics.py": "5c7c6f174c1b488fbefe80a6ac70e1aa82407d5576a13e2206c216fbeaecdb3e",
+    "e164_routing.py": "9f1fd72127e84be41942dd022b57a86d73dd75865bf66c939b097d9e0142ee40",
+    "e165_analyze.py": "682791b325c3cd0304ef9314986211a387dde0bfc5dd7360ee1f9edf2bee74da",
+    "e165_common.py": "c9314a2bb11a713df3c47ad10d9ab2e327715ae9cef1686e22424b54e9ec0994",
+    "e165_core.py": "147d10fb0b32cee0a906af0e8a72c1c00862d5dbfb9554971fba641564bc68df",
+    "e166_analyze.py": "aa836eccc101f9f6af853f5a0987d10de93d1dd92ff64f62b4981a1b37d6917e",
+    "e166_common.py": "17fd03ee626bf54688122bd31715bb94d68d33bd8b31470b8698dd0ba8054fa2",
+    "e166_core.py": "864429971634ec0b763c60282f4b9d63547bfe868166061498dd4c4f18020176",
+    "e166_finish.py": "bc52d6fa06069f1d238b65f52cb699eb71a397fe5d046eaa153e852ea4a4f59f",
+    "e166_run.py": "222a448cfa57070fae0deb3ae0af06d7d77d246ddf445859fcaa0b6b5ce454a6",
+    "e166_selftest.py": "2a5b2cd267421b488b99df415ad1c07c9c59030dd3edcb4d7e16577e7f58b193",
+    "e166_verify.py": "4bc16187c8ff15ebb5ef84b7663ad6023040d1fdc8f263dea2d7d0552c6f41a5",
+    "supervised_process.py": "2f74df9331da658162a1e98393bd79db6ac636c829b7abb4c720f76ab104a086"
+  },
+  "software": {
+    "python": "3.12.0",
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "numpy": "1.26.4",
+    "native_sources": {
+      "transformers.models.olmoe.modeling_olmoe": {
+        "path": "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/models/olmoe/modeling_olmoe.py",
+        "sha256": "248717a8477fbcb4b16ce648a9ace829b6b2f4a002191a7f64ee720eb65f4c0d",
+        "size_bytes": 51495
+      },
+      "transformers.models.olmoe.configuration_olmoe": {
+        "path": "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/models/olmoe/configuration_olmoe.py",
+        "sha256": "fcd109de7bee1ea10e24d0ff8d68e9a9f57e991efe081f6552754fa039a10a9e",
+        "size_bytes": 9069
+      },
+      "transformers.modeling_rope_utils": {
+        "path": "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/modeling_rope_utils.py",
+        "sha256": "55cc0c8cb76f592ab178b4662adcbdf4ad5012bb0b4249c0a96603141f18e9ac",
+        "size_bytes": 43192
+      },
+      "transformers.modeling_attn_mask_utils": {
+        "path": "/home/xiang/miniconda3/envs/verl-clean/lib/python3.12/site-packages/transformers/modeling_attn_mask_utils.py",
+        "sha256": "a0810cef6b0d6093bfdaa349b3adde2e633fd3a6be5073d80b5e08b2f12c354b",
+        "size_bytes": 21517
+      }
+    }
+  },
+  "CPU_tests": {
+    "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e166/CPU_tests.json",
+    "sha256": "5e5c7a91326c66d3ebfc9074153a7c021c84b09778a11cf963c7e63a00be17c7",
+    "size_bytes": 4802
+  },
+  "families": {
+    "emo": {
+      "previous_plan": {
+        "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e164/plan.json",
+        "sha256": "4387761137ddfa60856f12cf1252c43e8c88f49737bdcc87f7f9c7e96e7048a7",
+        "size_bytes": 10374
+      },
+      "previous_manifest": {
+        "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e164/manifest.json",
+        "sha256": "01acfb57b91122ecaa07b6371201d2a959fa2b4c550ca9267d2c7f39163939aa",
+        "size_bytes": 962674
+      },
+      "input": {
+        "path": "/home/xiang/mechpop_cache/e164_runtime_routing/questions.npz",
+        "sha256": "b2d70450d01563ff35e421faa6426d4aa62853c78103ba83ea26bc6c5b37dbce",
+        "size_bytes": 203224
+      },
+      "selectors": {
+        "path": "/home/xiang/mechpop_cache/e164_runtime_routing/selectors.npz",
+        "sha256": "3890cc59809ee98fcd5082f8982c6817b14e00b14cae3bf8bea062bcad1100c8",
+        "size_bytes": 855109
+      },
+      "reference": {
+        "path": "/home/xiang/mechpop_cache/e164_runtime_routing/scores.npz",
+        "sha256": "36bd41e3443bfbe0a9ee13254928fa929aff6cfa0caece6b96fb272760e2b0a3",
+        "size_bytes": 988220
+      },
+      "subjects": [
+        "abstract_algebra",
+        "anatomy",
+        "astronomy",
+        "business_ethics",
+        "clinical_knowledge",
+        "college_biology",
+        "college_chemistry",
+        "college_computer_science",
+        "college_mathematics",
+        "college_medicine",
+        "college_physics",
+        "computer_security",
+        "conceptual_physics",
+        "econometrics",
+        "electrical_engineering",
+        "elementary_mathematics",
+        "formal_logic",
+        "global_facts",
+        "high_school_chemistry",
+        "high_school_computer_science",
+        "high_school_european_history",
+        "high_school_geography",
+        "high_school_government_and_politics",
+        "high_school_macroeconomics",
+        "high_school_microeconomics",
+        "high_school_physics",
+        "high_school_psychology",
+        "high_school_statistics",
+        "high_school_us_history",
+        "high_school_world_history",
+        "human_aging",
+        "human_sexuality",
+        "international_law",
+        "jurisprudence",
+        "logical_fallacies",
+        "machine_learning",
+        "management",
+        "marketing",
+        "medical_genetics",
+        "miscellaneous",
+        "moral_disputes",
+        "moral_scenarios",
+        "nutrition",
+        "philosophy",
+        "prehistory",
+        "professional_accounting",
+        "professional_law",
+        "professional_medicine",
+        "professional_psychology",
+        "public_relations",
+        "security_studies",
+        "sociology",
+        "us_foreign_policy",
+        "virology",
+        "world_religions"
+      ],
+      "pad_token_id": 100277,
+      "source_records": {
+        "P": {
+          "manifest_sha256": "6d09670c55f5f4d2d58edda3f996b7e0ac0f1480616f28e619144f73085043ba",
+          "parameter_hash": "53960ccdc0c8059aae9cf6013fc04f7aca886e352172cf814e864bd8411d4a59",
+          "buffer_hash": "d03a271a4215869f6070f196ef37450dfad6f7cdb5bc6092d3b5aacc451bfb47",
+          "calibration": {
+            "path": "/home/xiang/mechpop_cache/e154_native_parent_boundary/cal_native_bf16.npz",
+            "sha256": "ccfdb9fede069a5a4e12916bc842bc6fa481263ee2acf42fb9f19286ac094c1a"
+          }
+        },
+        "B": {
+          "manifest_sha256": "649130fe3029a51f7d19429700750939ca0b33e804b98df0fb8aa9d4d0367811",
+          "parameter_hash": "efd18fc624f5a153aeffb12c724028a613a5e4c6a42210b37ca6e0021e4f79c6",
+          "buffer_hash": "d03a271a4215869f6070f196ef37450dfad6f7cdb5bc6092d3b5aacc451bfb47",
+          "calibration": {
+            "path": "/home/xiang/mechpop_cache/e150_native_protocol_cube/cal_source_1.npz",
+            "sha256": "f8ee016ff7d68b5fd00d8bfce8f06c7c0578422469740f9649f68671be7be084"
+          }
+        }
+      }
+    },
+    "olmoe": {
+      "previous_plan": {
+        "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e165/plan.json",
+        "sha256": "9570789c43716a5f6e1241edb3c7913a1fff04bc5d41112f568f682d8e8e25a2",
+        "size_bytes": 7334
+      },
+      "previous_manifest": {
+        "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e165/manifest.json",
+        "sha256": "00a6d3ab10d91fd8304610a27ebb3dcc965c1e5cf2cc33459b7212286e438f02",
+        "size_bytes": 4844
+      },
+      "input": {
+        "path": "/home/xiang/mechpop_cache/e165_mature_olmoe_transport/questions.npz",
+        "sha256": "b979a647ae1ddb40626141f4cb936bebf362c6e8513df0346d31563a12d90204",
+        "size_bytes": 202129
+      },
+      "selectors": {
+        "path": "/home/xiang/mechpop_cache/e165_mature_olmoe_transport/selectors.npz",
+        "sha256": "8065b65f04bc441b8872cddf172576f8da8243812dcfa3db25f399d7368f68ca",
+        "size_bytes": 411165
+      },
+      "reference": {
+        "path": "/home/xiang/mechpop_cache/e165_mature_olmoe_transport/scores.npz",
+        "sha256": "85b101dd74248dfe95d8629e40eeafb5102e8e155440123eb588c10fa0de8ce3",
+        "size_bytes": 529224
+      },
+      "subjects": [
+        "abstract_algebra",
+        "anatomy",
+        "astronomy",
+        "business_ethics",
+        "clinical_knowledge",
+        "college_biology",
+        "college_chemistry",
+        "college_computer_science",
+        "college_mathematics",
+        "college_medicine",
+        "college_physics",
+        "computer_security",
+        "conceptual_physics",
+        "econometrics",
+        "electrical_engineering",
+        "elementary_mathematics",
+        "formal_logic",
+        "global_facts",
+        "high_school_chemistry",
+        "high_school_computer_science",
+        "high_school_european_history",
+        "high_school_geography",
+        "high_school_government_and_politics",
+        "high_school_macroeconomics",
+        "high_school_microeconomics",
+        "high_school_physics",
+        "high_school_psychology",
+        "high_school_statistics",
+        "high_school_us_history",
+        "high_school_world_history",
+        "human_aging",
+        "human_sexuality",
+        "international_law",
+        "jurisprudence",
+        "logical_fallacies",
+        "machine_learning",
+        "management",
+        "marketing",
+        "medical_genetics",
+        "miscellaneous",
+        "moral_disputes",
+        "moral_scenarios",
+        "nutrition",
+        "philosophy",
+        "prehistory",
+        "professional_accounting",
+        "professional_law",
+        "professional_medicine",
+        "professional_psychology",
+        "public_relations",
+        "security_studies",
+        "sociology",
+        "us_foreign_policy",
+        "virology",
+        "world_religions"
+      ],
+      "pad_token_id": 1,
+      "source_records": {
+        "P": {
+          "label": "P",
+          "parameter_hash": "6d5b8baf7f865f3f4f1b1c77df70f4a032e5bb9b0fe8b99e27bfd2402a9f1c8e",
+          "buffer_hash": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe",
+          "hooks": {
+            "modules": 5335,
+            "sha256": "1e9b13b7c743ce64ac77c06cf74beeeb83ada249b3b75d0ad648483e521b61d2",
+            "total_pre": 0,
+            "total_post": 0
+          },
+          "parameters": 6919161856
+        },
+        "A": {
+          "label": "A",
+          "parameter_hash": "1c0daa62993f675a563f4674b3f529bca563b6f9276017519ee6ecd0a6b4b7a6",
+          "buffer_hash": "4e38ec375b4068cac7a7e32321af56da081d4c4f092f66b02d8bc2a323ef21fe",
+          "hooks": {
+            "modules": 5335,
+            "sha256": "1e9b13b7c743ce64ac77c06cf74beeeb83ada249b3b75d0ad648483e521b61d2",
+            "total_pre": 0,
+            "total_post": 0
+          },
+          "parameters": 6919161856
+        }
+      },
+      "asset_manifest": {
+        "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e165/asset_manifest.json",
+        "sha256": "492ededbda6ee651a9aa3114b04544d5fb8de5a710434c58d49ba0c0942ec657",
+        "size_bytes": 7007
+      },
+      "local_stage": {
+        "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e165/local_staging.json",
+        "sha256": "eb1fc1a867d38e9771e6c0240cc3d0343426246bddf7e870bc3b76bf6646a3e6",
+        "size_bytes": 8678
+      }
+    }
+  },
+  "bootstrap_seed": 166002,
+  "resamples": 2000,
+  "calibration_batch_size": 2,
+  "gpu_limit_seconds": 14400,
+  "resource_wait_limit_seconds": 7200,
+  "max_concurrent_GPUs": 1,
+  "user_total_GPU_limit": 4,
+  "new_training": false,
+  "calibration": "Native P full, same inputs and gates; sqrt(donor/P routed energy), FP32 product FP64 sum.",
+  "scope": "Layerwise uniform output gain rival; no loss fitting, mask or gain search; source/cal/input conditional."
+}
