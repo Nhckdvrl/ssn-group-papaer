@@ -6,7 +6,7 @@
 ~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py E160 all
 ```
 
-同一入口支持E158、E159、E160、E161、E162的`stats`、`verify`、`plots`、`all`；`--show-commands`显示实际命令。只复算已完成结果，不加载模型做新前向、不训练、不下载。E162未完成时会拒绝。E150–E157及更早阶段的精确入口仍在原实验卡；不要因文件编号旧而删除其传递依赖。
+同一入口支持E158–E163的`stats`、`verify`、`plots`、`all`；`--show-commands`显示实际命令。只复算已完成结果，不加载模型做新前向、不训练、不下载；manifest未完成会拒绝。E163示例：`~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py E163 all`。E150–E157及更早阶段的精确入口仍在原实验卡；不要因文件编号旧而删除其传递依赖。
 
 当前少量职责边界：
 
@@ -15,7 +15,8 @@
 | 科学说明、证据与停点 | `../README.md`、`../../CLAIMS.md`、`../../AGENTS.md` |
 | 完整结果CPU复现 | `reproduce.py`；各`eNNN_analyze.py`及`results/*_independent_audit/` |
 | 已完成E162批次 | `e162_finish_batch.py`：原完整资产→准备plan→单卡评测→CPU统计/校验；保留原入口 |
-| 新授权E163 | `e163_run.py prepare/run --group PAB/F`；先CPU装载/hash再占单卡。`e163_analyze.py analyze`、`e163_verify.py verify`从raw复算。plan/SHA与CPU预检见`results/e163/` |
+| 已完成E163 | 数值源`e163_run.py`/`e163_geometry.py`冻结c31e4b0e；实际PAB续跑`e163_cross_resume.py`调用资源等待器，只修轨迹指纹键并复用已完成native块。失败、抽样重放与终态范围见原卡/`native_inheritance.json`，勿直接重启覆盖已有凭证 |
+| E163 CPU复现与主图 | `reproduce.py E163 all`；`e163_analyze.py`、`e163_verify.py`、`e163_plot.py`与`moe_research_spine.py`。后者只组织E156/E159/E163已得估计及原CI，sidecar记来源SHA/JSON路径，无新检验 |
 | 第四端点公开权重与校验 | `full_course_assets.py`、`stage_full_course.py`；固定HF pin/LFS SHA，原数据不变 |
 | 通用耐久退出记录 | `supervised_process.py` |
 | 冻结运行源码 | 原`eNNN_run.py`、原生模型/干预/helper；SHA在对应plan/manifest，保持以便复查 |

@@ -34,7 +34,7 @@ def main():
     target=RAW/('run_metadata_'+commit+'.tar.gz')
     if target.exists() or (ROOT/'artifact_seal.json').exists():raise FileExistsError('Preserve the previous package')
     entries={}
-    for name in (*plan['source_sha256'],'e163_plot.py','e163_finish.py','seal_e163.py','reproduce.py','e163_cpu_priority.py','e163_resource_wait.py','e163_cross_resume.py'):
+    for name in (*plan['source_sha256'],'e163_plot.py','e163_finish.py','seal_e163.py','reproduce.py','e163_cpu_priority.py','e163_resource_wait.py','e163_cross_resume.py','moe_research_spine.py'):
         entries['repo/moe/scripts/'+name]=WB/'moe/scripts'/name
     for path in ROOT.rglob('*'):
         if path.is_file() and path.suffix in ('.json','.log','.png','.pdf') and not path.name.endswith('.tmp'):
@@ -44,6 +44,17 @@ def main():
     entries['repo/moe/experiments/E163-native-message-geometry-and-reuse.md']=WB/'moe/experiments/E163-native-message-geometry-and-reuse.md'
     for name in ('CLAIMS.md','PAIN_LOG.md','AGENTS.md'):
         entries['repo/'+name]=WB/name
+    for name in ('PRIMARY_READING_REASSESSMENT_2026-10-28.json','POSITIONING_2026-10-26.md'):
+        entries['repo/moe/notes/'+name]=WB/'moe/notes'/name
+    for name in ('GLOBAL_POSITIONING_FULL_READING_2026-10-28.md','ERC_FULL_READING_2026-10-29.md'):
+        entries['repo/library/themes/moe-routing/'+name]=WB.parents[1]/'library/themes/moe-routing'/name
+    for key in ('lm_input','task_input','F_asset_manifest'):
+        item=plan[key];path=Path(item['path'])
+        if sha(path)!=item['sha256']:raise ValueError('Frozen input changed '+key)
+        entries['inputs/'+key+'/'+path.name]=path
+    for name in ('e150/asset_manifest.json','e154/asset_manifest.json',
+                 'e156/transfer_contrasts.json','e159/summary.json'):
+        entries['repo/moe/results/'+name]=WB/'moe/results'/name
     for path in RAW.glob('*.npz'):entries['raw/'+path.name]=path
     for item in manifest['raw'].values():
         path=Path(item['path']);entries['raw/'+path.name]=path

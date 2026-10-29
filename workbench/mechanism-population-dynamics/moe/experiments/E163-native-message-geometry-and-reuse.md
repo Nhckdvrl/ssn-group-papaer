@@ -1,6 +1,6 @@
 # E163：成熟职责中的消息几何、方向结构与跨背景重用（2026-10-28）
 
-- **状态：** RUNNING（原设计19f6f3a5；读数归约修复c31e4b0e，条件不变）。F完整LM64/RC128旧条件精确重放已通过，进入新held几何条件；P/A/B来源准备中。尚无封存的全量结果。
+- **状态：** COMPLETE（2026-10-29）。四端点各16条件、LM64/RC128与实际消息27格全部完成；原设计19f6f3a5，数值源c31e4b0e，科学条件不变。独立29650项数值/1376项元数据复算通过，最大差1.42e−14。完整raw与来源见[manifest](../results/e163/manifest.json)，C14保持L2。
 - **类型 / 对应：** PILOT；C14、P33。用户全局再定位后明确授权继续。
 - **问题（一句话）：** 成熟历史与伙伴改变的R/S依赖和配套，能否由消息幅度/残差投影解释，还是仍需要输入条件的其余向量方向？
 
@@ -84,8 +84,46 @@ native repeat/身份与旧预测重放给程序地板；既有FP32/BF16精度参
 
 ## 结果
 
-全量新held几何结果尚未封存。已完成`e163_geometry/run/analyze/verify/selftest.py`与冻结plan。CPU：三源×FP32/BF16六种原生身份/zero/恢复通过；实际三源27格cross的多token、padding、严格前缀、重排与对角均精确通过；独立旧数据fixture核对29650项数值、1376项元数据，最大差7.105e−15。见`results/e163/CPU_geometry_test.json`、`CPU_statistics_fixture.json`和`plan.json`。启动前只调整了数值identity、设备放置与源码依赖清单；未读新held效果。第一次prepare读取正在更新的CPU测试字段而退出，未创建科学结果/占卡；随后重做准备、所有19份冻结源码SHA一致。配置草稿保留在耐久raw的`pre_freeze_design_draft/`，不是实验条件或科学失败。
+**运行前实现记录：** 已完成`e163_geometry/run/analyze/verify/selftest.py`与冻结plan。CPU：三源×FP32/BF16六种原生身份/zero/恢复通过；实际三源27格cross的多token、padding、严格前缀、重排与对角均精确通过；独立旧数据fixture核对29650项数值、1376项元数据，最大差7.105e−15。见`results/e163/CPU_geometry_test.json`、`CPU_statistics_fixture.json`和`plan.json`。启动前只调整了数值identity、设备放置与源码依赖清单；未读新held效果。第一次prepare读取正在更新的CPU测试字段而退出，未创建科学结果/占卡；随后重做准备、所有19份冻结源码SHA一致。配置草稿保留在耐久raw的`pre_freeze_design_draft/`，不是实验条件或科学失败。
 
 **16:05 UTC工程校对：** F真实参数/buffer、cal/repeat/截获及三种zero精确通过，旧native/zero的LM64窗口全部精确重放。72条真实cal向量独立NumPy重建最大相对误差1.284e−7，BF16 norm/projection/实际残差norm最大误差.001215/.000540/.000855。进入RC旧条件q0/R-zero时精确检查退出；定位出首token KL漏用旧E155/E162的FP64归约（FP32乘积后double sum）。c31e4b0e修复这一读数，新增100352词表CPU检验：旧FP32 sum误差4.857e−7，新归约与独立NumPy之差0；原生六案例与27格cross再通过。重跑时将LL/first-KL检查分开，进一步核实是否只有该问题。
 
 F失败92.109 GPU秒计入原1小时上限，PAB尚在CPU、0GPU时主动停止以统一版本。原plan/19份源码、cal/proposals、监督/退出码和迁移凭证分别保留在`results/e163/attempt_1_KL_reduction/`与耐久raw同名子目录；没有新held几何读数，不改变条件/数据/seed/统计读数/预算。新plan显式记原计划SHA及修复来源，20份当前源码冻结。CPU I/O先让F就绪的562.507秒结束后已自动恢复PAB，不是科学条件选择。
+
+### 全量科学结果（2026-10-29）
+
+**主要识别来自实际消息，而非任意方向破坏。** 全128题的同S_P、同输入、实际生产者/消费者交叉，6个非原配−3个原配均值：
+
+| 读数 | raw | norm | Gram |
+|---|---:|---:|---:|
+| 真实答案token NLL | .260527 [.222147,.298600] | .248472 [.212989,.282988] | .245925 [.209580,.281916] |
+| choice CE | .684293 [.409607,.987217] | .676953 [.414603,.972351] | .653392 [.395101,.955933] |
+| raw准确率损伤（pp） | 3.776 [.130,7.292] | 3.125 [−.260,6.250] | 3.385 [−.130,6.771] |
+| per-char准确率损伤（pp） | 7.682 [4.167,11.068] | 7.943 [4.554,11.198] | 7.682 [3.776,11.201] |
+
+Gram−raw的NLL差−.014602 [−.024973,−.004968]，norm−raw为−.012055 [−.021626,−.002399]；Gram−norm为−.002548 [−.007525,.002677]。校正有小幅NLL收益，但保留了大部分原配代价；不能说几何完全无用，也不能说它解释了主要重用障碍。原始9格、所有384条实际S轨迹指纹与E160精确重放；本卡区间用预先冻结seed163001，与E160原CI的轻微差异来自重采样，不改旧结果。
+
+学科不能混为一谈：raw→Gram的答案NLL代价，生物.320627→.291345，数学.200427→.200504；相应差为−.029282 [−.043641,−.015659]与+.000077 [−.014455,.014342]。choice CE为生物1.103830→.998753、数学.264756→.308030，宏改善CI含0。raw准确率校正变化CI也含0，不声称任务能力恢复。不同消费者的变化方向并不一致；所有27格、首token完整词表KL、分科和两评分规则在[summary](../results/e163/summary.json)，主图为[实际消息重用](../results/e163/figures/actual_message_reuse.png)。
+
+**Native块给出必要背景。** 下表均为相对native的文本NLL损伤；Gram/mean不是唯一proposal，全部norm/两个Gaussian与区间分别在[文本图](../results/e163/figures/native_LM_geometry.png)、[任务loss图](../results/e163/figures/native_task_geometry.png)、[正确率图](../results/e163/figures/native_task_accuracy.png)及完整summary。
+
+| 端点 | R zero / Gram-mean | S zero / Gram-mean | R+S zero / Gram-mean |
+|---|---:|---:|---:|
+| P | 5.928 / 7.947 | .740 / 2.211 | 8.823 / 11.254 |
+| A | 6.096 / 8.124 | 1.097 / 5.017 | 8.673 / 10.777 |
+| B | 2.770 / 9.983 | 2.972 / 7.076 | 8.489 / 10.114 |
+| F | 2.510 / 5.451 | 4.823 / 7.750 | 10.427 / 7.556 |
+
+所测全部方向代理均未恢复原生预测；F的合计Gram/mean确有部分恢复，仍损伤7.556。不能把“所有几何保留都比zero差”写成结论。四端点S Gram/mean的任务答案NLL损伤为1.753/4.938/7.770/8.720；预锁40题共同成功次集及34/6学科构成保留，只报点/计数，未重新筛题。
+
+**解释与母问题：** 训练组织下可迁移的性质、原生必要伙伴和实际可重用消息确实可以分离；同函数甚至同输入并未消除消息使用的背景条件。E163进一步削弱“这种配套主要就是所测幅度/残差投影不匹配”的解释。它没有定位语义独占、最小维数或不可训练对齐的基本障碍；当前局部见证也不等于锁住clean全程norm/最终gain。主张的价值是识别哪些模块性读数不能相互替代，继而解释何种计算需要共同保留，不是把随机旋转损伤重新命名。
+
+### 完成核验、继承边界与费用
+
+- 每端点真实native/cal/repeat/zero与旧LM64/RC128逐项精确重放，9个新规则对角与因果候选前缀/计数/题0重排全部通过；新worker结束时源参数/buffer/hooks恢复核对通过。
+- PAB首轮完成全部native块后，cross q0因轨迹指纹键`0…`与旧E160的`layer0…`契约不同退出；PAB原worker终态参数hash**未取得**。续跑器只转换指纹键，20份数值源不变；fresh canonical/cal/所有proposal数组精确一致，并把全部16条件各4个LM窗口、RCq0及重排逐位复现，再完成全cross和新worker终态核对。三份native完整raw继承而非重跑，来源/未观测项在[native_inheritance](../results/e163/native_inheritance.json)、[cross_resume](../results/e163/cross_resume.json)及`attempt_3_hash_schema/`；不把新worker终态校验冒充旧worker的终态观测。
+- 全量独立NumPy复算29650项数值、1376项元数据，最大绝对差1.421085e−14；72条真实cal向量/模型另作独立几何重建，误差界均通过。[independent_audit](../results/e163/independent_audit.json)。这是独立公式实现，非新研究团队/初始化复现，C14仍L2。
+- PAB共5988.833854 GPU秒，F共1604.284289，合计7593.118143秒=**2.109199484 GPU·时**，含3703.446324/92.109081秒两次失败；各组末次退出0，实际运行区间无重叠、峰值79.318603GB，0新训练/下载。CPU装载、资源guard中断及等待均在CUDA前，0GPU秒单列；全部监督、失败和账本保留。
+- 数值源c31e4b0e，冻结plan SHA `7493cb8207480a2773adb3147f1295f1e872a6d71bc127f648bce5deca4870cb`；资源等待器与指纹续跑器另有源码SHA。五份raw路径/SHA和实际监督退出见[manifest](../results/e163/manifest.json)。CPU入口：`~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py E163 all`。
+
+**本批决定：** 三条核心论证已有实测与最近邻定位，本项补上了一个主要竞争解释的直接检验；先形成论文论证、关键图和可复现封存，不自动追加E164、adapter优化或另一轮层/方向网格。更广成熟谱系与形成分叉仍是实质缺口，按其能否改变核心解释决定未来动作，见[PAPER_SHAPE](../PAPER_SHAPE.md)。

@@ -1,6 +1,6 @@
-# MoE资产与恢复入口（2026-10-28）
+# MoE资产与恢复入口（2026-10-29）
 
-**当前：E162全部预定条件与集中整理完成；新授权E163的F块已完成、P/A/B正在0号卡评测，0新训练/下载，本项最多2卡、总上限4卡。** E163复用下列耐久源，无新增模型副本；源c31e4b0e，资源等待器单列SHA。CPU中断、KL读数修订与GPU占用变化均留原卡及`results/e163/attempt_*/`。科学结论只在[README](README.md)维护，本页负责位置、来源和恢复。
+**当前：E144–E163全部预定数据已得；E163四端点各16条件与27格cross完成、独立复算通过，0新训练/下载，当前0卡、总上限4卡。** E163复用下列耐久源，无新增模型副本；数值源c31e4b0e，资源等待器/指纹续跑器另列SHA。全部失败、继承范围与监督退出保留在原卡及`results/e163/attempt_*/`。科学结论在[README](README.md)，本页负责位置、来源和恢复。
 
 耐久根为`/home/xiang/mechpop_cache`（NFS）；节点`/tmp`是临时NVMe，不能当唯一资产。优先已有`~/.venvs/mechpop/bin/python`（Python3.12、torch2.8.0+cu128、transformers4.57.6、numpy1.26.4）；未另装环境。CPU复算统一见[scripts/README](scripts/README.md)。
 
@@ -37,9 +37,11 @@ F=全程EMO 1T+50B，B=标准1T后EMO50B，A=标准1T+50B，P=标准1T退火前�
 | E160 | `~/mechpop_cache/e160_shared_signal_context_cross` | `results/e160/retry_1/`的plan/manifest/raw SHA；原实验卡给精确入口 |
 | E161 | `~/mechpop_cache/e161_crossed_entity_relation` | `results/e161/`的plan/manifest/raw SHA；原实验卡给精确入口 |
 | E162 | `~/mechpop_cache/e162_full_course_native` | `results/e162/`的plan/manifest/raw SHA；原实验卡给精确入口 |
-| E163（F完成，PAB运行中） | `~/mechpop_cache/e163_message_geometry/native_F.npz`：6487603B，SHA bdd2d2b1…fdb5cd0；PAB新读数待完成 | 原设计19f6f3a5，数值修订c31e4b0e；plan/manifest_F与独立F报告已存。fvcrc21上PAB=0，原2号卡被其他任务占用后用资源等待器恢复；不是全批已完成 |
+| E163 | `~/mechpop_cache/e163_message_geometry/`：F为`native_F.npz`，P/A/B在`attempt_3_hash_schema/native_{P,A,B}.npz`，真实消息为`cross.npz` | 五raw绝对路径、SHA/bytes见`results/e163/manifest.json`；summary/独立29650数值/1376元数据完成。原设计19f6f3a5，数值源c31e4b0e，plan SHA7493cb82…4870cb；含失败2.109199484 GPU时、峰值79.318603GB、各组末次退出0 |
 
 E162新raw为4,584,469 B，SHA `89c83382c58ebb8ed864d1fa4cf73c47b86ed5ef71c830230b87e84db13394d3`；preflight/budget/summary及独立5114数字/133元数据报告都已完成。E160正式结果在`retry_1/`，父目录原running预算保存首轮中断与未知精确成本，不能拿它冒充完整结果。
+
+E163五份raw共26,716,419 B；cross为692,158 B，SHA `225cacd46f041430219e0f4aecc6bd60a7114b150a8cdf31deb5887e31d1e722`。P/A/B原native worker在指纹命名guard后退出、原终态hash未观测；fresh cal/全部16条件抽样/完整cross与新worker终态均通过，具体继承边界在`results/e163/native_inheritance.json`，不是伪称原worker终态完成。cal/proposal、原19源码及两次失败和CPU等待/中断记录全部保留；CPU重算不需要加载模型。
 
 共同输入继续保留：E150的plan/LM token数组；E153的questions.npz/questions.jsonl和task mask；E151随机mask；E158全前缀component_cache与native_attention；E160/E162继承references。F校准BF16 logits、原生日志和全部监督退出记录在E162耐久目录，清理不触及这些文件。E160完整S轨迹只保存逐题BF16 SHA，需按固定模型/输入重算，不能声称存有未保存的大轨迹。
 

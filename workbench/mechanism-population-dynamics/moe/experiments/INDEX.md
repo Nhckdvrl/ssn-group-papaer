@@ -1,6 +1,6 @@
-# MoE 实验索引 E120–E162（2026-10-28）
+# MoE 实验索引 E120–E163（2026-10-29）
 
-这是证据导航，不是自动执行队列。E120–E142是受控平台阶段；E144–E162当前批已完整完成，E143未运行。现在归纳主张、整理代码/缓存/核心文档，不自动追加实验。当前授权与资源见[AGENTS](../../AGENTS.md)和[唯一研究说明](../README.md)，总并发上限4卡。历史数字与等级保持原范围。
+这是证据导航，不是自动执行队列。E120–E142是受控平台阶段；E144–E163均已完成，E143未运行。E163来自集中整理后用户新的全局再定位授权，已取得全部数据并独立复算。现在整合核心论证/主图与封存，无自动后继。当前授权与资源见[AGENTS](../../AGENTS.md)和[唯一研究说明](../README.md)，总并发上限4卡、当前0卡。历史数字与等级保持原范围。
 
 ## 已有实验 E120–E142
 
@@ -56,7 +56,7 @@
 | [E160](E160-fixed-shared-signal-context-cross.md) | DONE；C14 | 相同S函数的生产/消费轨迹交叉有.260527答案NLL配套代价；固定信号后伙伴效应改变，产生与使用需分开 | [complete retry summary](../results/e160/retry_1/summary.json) |
 | [E161](E161-crossed-entity-relation-composition.md) | DONE；C14 | 双因素R交换没有支持跨国家纯关系操作；多数为other，attention保留强完整donor阳性 | [summary](../results/e161/summary.json) |
 | [E162](E162-full-course-native-division.md) | COMPLETE；C14=L2不变 | F/B完整raw都39.06%、文本NLL接近；F前缀损伤更低，同时S移除文本/任务NLL代价额外1.851/5.311；四模型同成功40题共同必要8/10/20/24。停止自动追加、转入整理 | [完整结果](../results/e162/summary.json)、[独立复算](../results/e162_independent_audit/report.json) |
-| [E163](E163-native-message-geometry-and-reuse.md) | RUNNING；C14/P33 | F完整16条件：S Gram/mean文本损伤7.750，所测局部几何代理未恢复原计算；P/A/B及同函数实际消息27格cross继续，未有跨模型新结论 | [F完整块](../results/e163/F_completed_block.json)、[冻结配置](../results/e163/plan.json)、[领域位置](../PAPER_SHAPE.md) |
+| [E163](E163-native-message-geometry-and-reuse.md) | COMPLETE；C14/P33，仍L2 | 四端点各16条件和真实消息27格完整；raw/norm/Gram原配NLL代价.260527/.248472/.245925，几何校准只解除小部分，准确率改善未区分；独立29650数值/1376元数据通过，含失败2.109199 GPU时 | [完整结果](../results/e163/summary.json)、[主图](../results/e163/figures/actual_message_reuse.png)、[独立复算](../results/e163/independent_audit.json)、[领域位置](../PAPER_SHAPE.md) |
 
 E144–E147无新训练；全量来源、donor、分区均保留。新C10–C12仅L1，旧C06–C09数字与等级不变；范围与当前解释见[README](../README.md)。本轮发现并在held之前修复CUDA库导入后的可见卡缓存问题，全部预检与成本保留。E147在E146结果之后、运行前新登记，没有倒写E146预设对照。
 

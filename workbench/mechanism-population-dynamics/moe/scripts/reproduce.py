@@ -35,7 +35,7 @@ def commands(experiment,action):
         'E160':[['moe/scripts/e160_plot.py']],
         'E161':[['moe/scripts/e161_plot.py']],
         'E162':[['moe/scripts/e162_plot.py']],
-        'E163':[['moe/scripts/e163_plot.py']]}
+        'E163':[['moe/scripts/e163_plot.py'],['moe/scripts/moe_research_spine.py']]}
     stages={'stats':stats,'verify':verify,'plots':plots}
     chosen=('stats','verify','plots') if action=='all' else (action,)
     return [[python,'-B',*command] for stage in chosen for command in stages[stage][experiment]]

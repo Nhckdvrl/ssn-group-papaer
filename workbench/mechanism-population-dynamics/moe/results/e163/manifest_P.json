@@ -1,0 +1,110 @@
+{
+  "experiment": "E163",
+  "status": "complete",
+  "label": "P",
+  "source_sha256": {
+    "e163_run.py": "2eca83bffd2059a10da1ae6671083dcd7ed6e1049ffaf14acc839e97cde67163",
+    "e163_geometry.py": "3303cbc019720d8e6451ee43079d84a7741d1b2ff3e8e2ada31eec6536ae5214",
+    "e163_selftest.py": "2bc14690e93be8ed24e25d479911d0c7b87313425e8247f532af0708195426d7",
+    "e163_analyze.py": "2265d30dd7388504f9fd62be9a7143196276dbf512c0cf51bf08e166a568a3a7",
+    "e163_metrics.py": "5c7c6f174c1b488fbefe80a6ac70e1aa82407d5576a13e2206c216fbeaecdb3e",
+    "e163_verify.py": "38b4d79ef72ca84c99aa35a362ff68423405ba5aa602725f7fedba16d5698472",
+    "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
+    "e150_data.py": "58e3f24c0bd10199f75cb906788818539628f414e299ca3a875e4e6c30ff0f49",
+    "e150_restricted.py": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+    "e144145_analyze.py": "c17ae07babdc28398b9207313dc472274169a53b81a2164a6040e67ee28b083f",
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e151_native.py": "37aebf802a06ac8816f37777f7f991b8db071432f0ff69875d385c5aeddb783e",
+    "e153_harness.py": "ae463a28e129fe3ba6a3613d9783201698b2175719c82a24a87f944ebb2c2b97",
+    "e150_partial_mask_test.py": "f6c023eb0c43d21921d72631cec3075dd6aaedb658ba84bccf127c7266bb4891",
+    "e156_loading.py": "71e537f62ffac62cf1d303a6e48330326282c991e087a57760d0252427b82127",
+    "e154_native.py": "aca56b8c0da5cbb1dc420eaf8edcc8b0a8818e6214def6f8abb3cfd10664878d",
+    "e154_assets.py": "888a17da9798f2ae4edd2b30f797caa2c2b77d8a5b3bd3bbe045fe93447e779c",
+    "e150_prepare_assets.py": "02be428952536e3f7ed371e3812558fda701bcab14dfdd295641be7826dc6a7a",
+    "supervised_process.py": "2f74df9331da658162a1e98393bd79db6ac636c829b7abb4c720f76ab104a086"
+  },
+  "plan_sha256": "7493cb8207480a2773adb3147f1295f1e872a6d71bc127f648bce5deca4870cb",
+  "raw": {
+    "path": "/home/xiang/mechpop_cache/e163_message_geometry/attempt_3_hash_schema/native_P.npz",
+    "sha256": "2f41f1411c7db2448fe5368c00c37e74b6131cd5a18c388ba7724829088f5319",
+    "size_bytes": 6535873
+  },
+  "host": "fvcrc21",
+  "physical_gpu": 0,
+  "peak_GPU_GB": 79.318603264,
+  "source_parameters_buffers_hooks_restored": true,
+  "source_hashes": {
+    "P": [
+      "53960ccdc0c8059aae9cf6013fc04f7aca886e352172cf814e864bd8411d4a59",
+      "d03a271a4215869f6070f196ef37450dfad6f7cdb5bc6092d3b5aacc451bfb47"
+    ],
+    "A": [
+      "b2c25adf81371253188b9c02f8ed371a15e45a05ead18104da9b3e0acb3ef91f",
+      "d03a271a4215869f6070f196ef37450dfad6f7cdb5bc6092d3b5aacc451bfb47"
+    ],
+    "B": [
+      "efd18fc624f5a153aeffb12c724028a613a5e4c6a42210b37ca6e0021e4f79c6",
+      "d03a271a4215869f6070f196ef37450dfad6f7cdb5bc6092d3b5aacc451bfb47"
+    ]
+  },
+  "preflight": {
+    "status": "complete",
+    "native_calibration_repeat_interception_and_zero_exact": true,
+    "legacy_calibration": {
+      "path": "/home/xiang/mechpop_cache/e154_native_parent_boundary/cal_native_bf16.npz",
+      "sha256": "ccfdb9fede069a5a4e12916bc842bc6fa481263ee2acf42fb9f19286ac094c1a"
+    },
+    "proposals": {
+      "path": "/home/xiang/mechpop_cache/e163_message_geometry/proposals_P.npz",
+      "sha256": "85a4549112755e6e3b23ac45c813f0872e17a41cedc112df70c9aa1997011cd8",
+      "size_bytes": 1074991
+    },
+    "geometry_probes": {
+      "path": "/home/xiang/mechpop_cache/e163_message_geometry/geometry_probes_P.npz",
+      "sha256": "711a132e1e05dd6cecc8765b29e1fc5336f44293415fe870c502b5ddb809f50f",
+      "size_bytes": 2435885
+    }
+  },
+  "CPU_readiness": {
+    "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e163/CPU_readiness_PAB.json",
+    "sha256": "264c607e1b18ea53fd8cae4b723fc3309936f9901d7855336e6412de8810f0e0",
+    "size_bytes": 666
+  },
+  "budget": {
+    "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e163/budget_PAB.json",
+    "sha256": "7692fb0d0528866d314460f98b8d279a347f2ee1f9d5df53905dabee4ea70bdd",
+    "size_bytes": 562
+  },
+  "native_score_provenance": {
+    "raw": {
+      "path": "/home/xiang/mechpop_cache/e163_message_geometry/attempt_3_hash_schema/native_P.npz",
+      "sha256": "2f41f1411c7db2448fe5368c00c37e74b6131cd5a18c388ba7724829088f5319",
+      "size_bytes": 6535873
+    },
+    "calibration": {
+      "geometry_probes_P.npz": {
+        "path": "/home/xiang/mechpop_cache/e163_message_geometry/attempt_3_hash_schema/geometry_probes_P.npz",
+        "sha256": "711a132e1e05dd6cecc8765b29e1fc5336f44293415fe870c502b5ddb809f50f"
+      },
+      "proposals_P.npz": {
+        "path": "/home/xiang/mechpop_cache/e163_message_geometry/attempt_3_hash_schema/proposals_P.npz",
+        "sha256": "85a4549112755e6e3b23ac45c813f0872e17a41cedc112df70c9aa1997011cd8"
+      }
+    },
+    "complete_native_conditions": 16,
+    "LM_windows": 64,
+    "RC_questions": 128,
+    "legacy_native_and_zero_guards_passed": true,
+    "fresh_replay": {
+      "status": "passed",
+      "all_conditions": 16,
+      "LM_windows": 4,
+      "RC_questions": 1,
+      "all_candidate_permutation_prefix_count_checks_exact": true,
+      "cal_and_all_proposal_arrays_exact": true,
+      "prediction_code_unchanged": "c31e4b0e"
+    }
+  },
+  "restoration_scope": "Fresh canonical models: calibration, all-condition sample replay and full cross; original native forward scores inherited."
+}

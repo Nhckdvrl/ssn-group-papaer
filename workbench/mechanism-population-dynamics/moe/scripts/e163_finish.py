@@ -50,6 +50,11 @@ def main():
         if resumed['status']!='complete' or sha(resumed['source_path'])!=resumed['source_sha256']:
             raise ValueError('Cross resume lacks its registered complete source')
         manifest['cross_resume']={'path':str(ROOT/'cross_resume.json'),'sha256':sha(ROOT/'cross_resume.json')}
+        inherited=read(ROOT/'native_inheritance.json')
+        if any(inherited['blocks'][name].get('fresh_replay',{}).get('status')!='passed' for name in ('P','A','B')):
+            raise ValueError('Inherited native predictions lack complete registered replay checks')
+        inherited['status']='native_blocks_inherited_and_fresh_replay_complete'
+        (ROOT/'native_inheritance.json').write_text(json.dumps(inherited,indent=2)+'\n')
         manifest['native_inheritance']={'path':str(ROOT/'native_inheritance.json'),'sha256':sha(ROOT/'native_inheritance.json')}
     (ROOT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     print(json.dumps({'status':'complete','experiment':'E163','gpu_seconds':manifest['gpu_seconds']}),flush=True)

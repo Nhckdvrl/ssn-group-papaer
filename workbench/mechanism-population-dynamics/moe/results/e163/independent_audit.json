@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "numeric_comparisons": 29650,
+  "metadata_comparisons": 1376,
+  "maximum_absolute_difference": 1.4210854715202004e-14,
+  "geometry_probes": {
+    "P": {
+      "status": "passed",
+      "vectors": 72,
+      "maxima": {
+        "precise_norm_relative": 1.3137576382942066e-07,
+        "precise_projection_scaled": 5.166865069901188e-08,
+        "BF16_norm_relative": 0.0013883712199805785,
+        "BF16_projection_scaled": 0.0005840218780754369,
+        "actual_residual_norm_relative": 0.0027154538598399506,
+        "numpy_reconstruction_relative": 1.3520344823641482e-07
+      }
+    },
+    "A": {
+      "status": "passed",
+      "vectors": 72,
+      "maxima": {
+        "precise_norm_relative": 1.0198047937823681e-07,
+        "precise_projection_scaled": 1.12015291141856e-07,
+        "BF16_norm_relative": 0.000948004705602143,
+        "BF16_projection_scaled": 0.000631238349669509,
+        "actual_residual_norm_relative": 0.0009401681390813365,
+        "numpy_reconstruction_relative": 1.3334321633497037e-07
+      }
+    },
+    "B": {
+      "status": "passed",
+      "vectors": 72,
+      "maxima": {
+        "precise_norm_relative": 1.8467903077577462e-07,
+        "precise_projection_scaled": 1.8748558423113762e-07,
+        "BF16_norm_relative": 0.0015863371153221905,
+        "BF16_projection_scaled": 0.001600325287276261,
+        "actual_residual_norm_relative": 0.001078191712910163,
+        "numpy_reconstruction_relative": 1.9324271361953895e-07
+      }
+    },
+    "F": {
+      "status": "passed",
+      "vectors": 72,
+      "maxima": {
+        "precise_norm_relative": 1.2310361336664924e-07,
+        "precise_projection_scaled": 1.0183572655016071e-07,
+        "BF16_norm_relative": 0.0012153071431395626,
+        "BF16_projection_scaled": 0.0005399477539415346,
+        "actual_residual_norm_relative": 0.0008552011979686887,
+        "numpy_reconstruction_relative": 1.2840143682762187e-07
+      }
+    }
+  },
+  "source_sha256": "38b4d79ef72ca84c99aa35a362ff68423405ba5aa602725f7fedba16d5698472",
+  "plan_sha256": "7493cb8207480a2773adb3147f1295f1e872a6d71bc127f648bce5deca4870cb",
+  "summary_sha256": "95f4c7ae713445d32ba69a02981e8f4d45df9e9876b90b86bd38af2cb29c63e0",
+  "raw_sha256": {
+    "P": "2f41f1411c7db2448fe5368c00c37e74b6131cd5a18c388ba7724829088f5319",
+    "A": "a2ec4ffb27c5c16aa03e05b1a80859b8a5213c11547ee612cb1b8b2d4feb5556",
+    "B": "e0b267223be274c3109f75e85b9150e232ddba8e47c72ef692d877ca024f1120",
+    "F": "bdd2d2b174ef10b18fcaca1c7f320f73f6d80eea337d3f3f42bcc1620fdb5cd0",
+    "cross": "225cacd46f041430219e0f4aecc6bd60a7114b150a8cdf31deb5887e31d1e722"
+  },
+  "independent_implementation": "NumPy candidate row loop, window selection means and explicit cluster concatenation. Same fixed draws, no author implementation imported."
+}
