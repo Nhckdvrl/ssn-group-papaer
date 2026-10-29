@@ -1,0 +1,8 @@
+{
+  "experiment": "E164",
+  "independent_formula_scope": "Candidate-row raw/per-char choices, normalized choiceCE, true-answer tokenNLL, all predeclared contrasts and paired subject/within-subject intervals recomputed independently from raw.",
+  "first_answer_vocabulary_KL_scope": "Full-vocabulary KL computed by frozen e163_metrics on GPU (FP32 product, FP64 sum). Raw stores the scalar, not full vocabulary distributions. NumPy verifier checks its aggregation/CI; old all-question E156 scalar guards validate exact reuse. It does not independently recompute vocabulary KL for new conditions.",
+  "model_interface_scope": "Actual canonical hashes/calibration, old predictions, routing diagonals, causal prefixes/counts/permutations and first-layer identity are GPU controls, not independent initialization repeats.",
+  "source_terminal_scope": "Only successful worker terminal parameter/buffer/hook checks count as observed; partial outputs cannot imply completion.",
+  "evidence_grade": "No automatic L3 upgrade from formula or interface checks."
+}

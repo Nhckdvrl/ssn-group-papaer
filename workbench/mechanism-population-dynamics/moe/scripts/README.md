@@ -8,7 +8,7 @@
 
 `spine`依次覆盖E156（性质来源）、E159（伙伴作用）、E162（成熟路径分担）、E163（消息几何/重用）。`verify`执行原有独立公式校验；`stats`从raw重算统计，`plots`重绘，`all`依次执行三项；`--show-commands`列出实际命令。只复算已完成结果，不加载模型前向、训练或下载；任一manifest未完成会拒绝。
 
-单实验还支持E156、E158–E163，例如`reproduce.py E156 stats`、`reproduce.py E163 all`。E150–E155/E157和早期窗口的精确入口保留在各原卡；[结果导航](../results/README.md)给出了当前证据路径。
+单实验还支持E156、E158–E164，例如`reproduce.py E156 stats`、`reproduce.py E163 all`。E164在未完成时会拒绝CPU复现；现有`spine`仍只覆盖四项已完成核心证据，不因在途实验阻断旧结果复核。E150–E155/E157和早期窗口的精确入口保留在各原卡；[结果导航](../results/README.md)给出了当前证据路径。
 
 ## 当前少量使用入口
 

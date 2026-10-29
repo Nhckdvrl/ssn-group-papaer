@@ -1,6 +1,6 @@
 # MoE论文形态与领域位置（2026-10-29：再定位及E163完成）
 
-本页回答当前价值、贡献和下一决定，不改变正式工作台状态或代替人的投稿品味。当前C14=L2；E163已完成。用户本轮要求的全目录整理已完成，现从三条结果推进E164的预注册/代码预检；尚无E164模型读数，当前0卡。E163含失败2.109199 GPU·时，成熟阶段0新训练。
+本页记录C14三条已完成证据的价值、领域位置与论证中心，不改变正式状态或代替人的投稿品味。当前等级与运行阶段统一见[README](README.md)。用户本轮要求的目录整理已完成，E164据此进行了预注册和冻结执行；完整结果取得前，其运行路径解释仍是假说。
 
 ## 走到了哪里
 
@@ -57,6 +57,12 @@ ERC全文后更明确的界定：R_B在共同P gate参数下能带走选择性�
 - 证据标准：现有一个公开成熟谱系与全程路径扩展；64语言窗口/20文件簇、固定两学科128题；各项输入CI条件于模型，不是seed总体。全部条件、失败与来源只读保留。
 - 目标：优先ICML/ICLR/NeurIPS主会的机制/理解形态；语言计算内容若成为中心，可考虑ACL/EMNLP主会。不参考EACL、不投Findings，不据未核截止日排日程。
 
+## 已有结果可支持的中心段落（英文草稿）
+
+以下只依据已完成E150–E163，不包含E164未知结果：
+
+> We ask how learning history shapes the division of computation in sparse MoE models. Using mature, architecture-matched checkpoints, we find that better selective execution can coexist with stronger dependence on shared computation, even at similar intact quality. Cross-source interventions show that the function package carrying a low-budget predictive advantage need not be the component most necessary in its native model. Holding shared-expert functions and then their realized messages fixed reveals that predictive roles depend on production and use, with substantial mismatch costs remaining after local geometric correction. These findings separate selective deployment, transportable properties, and reusable computation.
+
 ## E163怎样改变判断，为什么此时收束
 
 E159/E160同时允许“配套主要是幅度/残差投影关系”与“还需要输入条件的其余方向结构”。E163的真实消息交叉给出区别：norm/Gram有小幅NLL收益，但代价绝大部分保留；Gram相对norm的总体额外收益CI含0，生物改善、数学不改善，choice CE和正确率不提供同等恢复。支持剩余方向—背景约束，不支持把两标量当足够接口。
@@ -65,11 +71,27 @@ Native块同时保留全部模型、R/S/合计、mean与两个固定Gaussian，�
 
 现在增加更多方向、层、相似性或donor不会显著提升核心解释。当前优先把三条论证写清、给出可追溯主图与复现入口；E158/E161作为内容组合的真实边界，E144/E147作为受控分解及强对照，放在支持位置，不强行把所有历史卡拼成同一机制。
 
-## 最新选择：参数来源与实际运行通路（E164，尚无模型结果）
+## 最新选择：参数来源与实际运行通路（E164，尚无完整主结果）
 
 三条结果共同留下一个更有解释力的问题：**R_B这个参数包能带走预测性质，究竟是其专家响应本身，还是它改变的后续实际路由实现了该性质？** 固定G_P权重没有固定gate输出；这正是现有参数来源干预尚未分解的通路。这里指前向层间作用，不是层内循环或训练期反馈。
 
-新增全文核对把“可对齐、可用特征、原生使用关系”进一步分开，见[四篇阅读卡](../../../library/themes/moe-routing/FUNCTIONAL_TRANSFER_AND_ROUTING_2026-10-29.md)。不据相邻工作存在压缩已有发现，也不把adapter修复本身当新机制。特别是同S_P的写入基底已经固定，任意学习一个补偿映射成功并不会单独解释原职责如何实现。
+新增全文核对把“可对齐、可用特征、原生使用关系”进一步分开，见[本轮全文比较](../../../library/themes/moe-routing/FUNCTIONAL_TRANSFER_AND_ROUTING_2026-10-29.md)。不据相邻工作存在压缩已有发现，也不把adapter修复本身当新机制。特别是同S_P的写入基底已经固定，任意学习一个补偿映射成功并不会单独解释原职责如何实现。
+
+“固定路由时的函数来源作用”仍允许S_P、attention和其他响应随hidden state改变，并不是孤立expert的直接效应。两种真实轨迹都要保留：在某一条轨迹下收益消失，并不能单独证明收益由路由携带；完整2×2及交互才能区分来源作用与配合。
+
+```mermaid
+flowchart LR
+  W["R参数来源 P / B"] --> R0["当前层专家输出"]
+  R0 --> H["后续hidden state"]
+  H -. "自然通路；回放时覆盖" .-> G["P gate的实际输出"]
+  T["P / B背景的真实轨迹"] --> G
+  H --> R1["后续专家响应"]
+  W --> R1
+  G --> R1
+  H --> S["S_P、attention和其余计算"]
+  R1 --> Y["真实预测与任务"]
+  S --> Y
+```
 
 本轮优先[E164](experiments/E164-runtime-routing-property-transport.md)：共同P D/G/S_P，交叉R_P/R_B与两种R背景产生的实际gate轨迹；比较完整品质、预算性质及固定轨迹下S_P伙伴作用。无需新训练，所有函数/轨迹来源保留，支持与门值合为一个明确通道，不把效应差叫唯一中介比例。
 

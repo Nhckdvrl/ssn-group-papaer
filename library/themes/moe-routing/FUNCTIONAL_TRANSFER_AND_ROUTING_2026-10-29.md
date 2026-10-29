@@ -1,6 +1,6 @@
 # 功能迁移与实际使用：全文核对及下一问题（2026-10-29）
 
-新增完整PDF四篇共78页，含可取得的附录；AAAI论文提及的独立Supplementary未在出版页面/作者README找到，未冒称已读。版本/PDF SHA/逐页覆盖及关键图在[阅读凭证](../../../workbench/mechanism-population-dynamics/moe/notes/PRIMARY_READING_TRANSFER_2026-10-29.json)。Multi-Way Representation Alignment仅核对摘要/版本，未用于作全文判断。
+新增完整PDF五篇共100页，含可取得的附录；AAAI出版PDF未附补充；后续从arXiv v1源包取得并完整读了补充LaTeX及12张表源码，不称独立出版的camera-ready附录。版本/PDF SHA/逐页覆盖及关键图在[阅读凭证](../../../workbench/mechanism-population-dynamics/moe/notes/PRIMARY_READING_TRANSFER_2026-10-29.json)。Multi-Way v2随后在E164冻结运行期间补完22页，不改变已注册干预或读数。
 
 ## Transferring Linear Features Across Language Models With Model Stitching（NeurIPS 2025，33页）
 
@@ -24,7 +24,7 @@
 6. 实证：真实精度、OOD检测、层身份/低rank检验；不是只有几何推测。
 7. 界限：图像范围；DM/Procrustes也依赖目标与评价，不提供普遍相同计算的oracle。
 8. 可借动作：修复性能和识别原计算分开，不把新任务训练当原职责恢复。
-9. 对我们：不因此放弃重用问题；优先做无需学习修复器的运行路径干预。独立Supplementary未取得，作者README已核对。
+9. 对我们：不因此放弃重用问题；优先做无需学习修复器的运行路径干预。arXiv v1补充源码已读，含同空间尺寸控制和逐层完整统计；作者README也已核对。
 
 ## Grounding Functional Similarity by Invariance-Aware Model Stitching（ICML 2026，arXiv v2，22页）
 
@@ -49,6 +49,18 @@
 7. 前提：masked routing的未选行零梯度不能照搬native full127分母；共有输入方向的观察不因此取消。
 8. 可借动作：把训练耦合与推理时某条通路对预测性质的作用分开检验。
 9. 对我们：一般router–expert共同演化已有ownership；需要识别R_B迁移收益究竟经专家响应还是后续实际gate输出实现。
+
+## Multi-Way Representation Alignment（2026预印本v2，22页）
+
+1. 形态：共同坐标对齐方法与多任务验证。[实际全文](https://arxiv.org/pdf/2602.06205v2)。
+2. 压力：成对映射的数量和组合不一致。
+3. 改变前提：GPA共同正交参考，加共享非线性方向修正GCPA。
+4. 来源DOCUMENTED：经典GPA、GCCA、共享latent spaces。
+5. 距离：多编码器/语言/模态；分类“stitching”读数是线性probe迁移，并非固定原生LM整段替换。
+6. 实证：真实分类、聚类、跨语言/相机/模态检索、增量与噪声对照，非只给恒等式。
+7. 界限：GCPA修正不保留严格正交cycle保证；理论约束在retained/orthonormal子空间内，不能当神经计算等价保证。
+8. 可借动作：几何保留、组合一致与下游效用分别验证，保留弱consensus下的失败。
+9. 对我们：共同参考/一般兼容与质量–跨模型效用分离已有先例；C14增量仍是成熟MoE的参数来源、必要伙伴与实际使用通路干预。
 
 ## 从三条结果到下一项：本轮自主推理
 

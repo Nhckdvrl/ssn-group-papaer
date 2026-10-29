@@ -1,6 +1,6 @@
 # MoE资产与恢复入口（2026-10-29）
 
-**当前：E144–E163全部预定数据已得；E163四端点各16条件与27格cross完成、独立复算通过，0新训练/下载，当前0卡、总上限4卡。** E163复用下列耐久源，无新增模型副本；数值源c31e4b0e，资源等待器/指纹续跑器另列SHA。全部失败、继承范围与监督退出保留在原卡及`results/e163/attempt_*/`。科学结论在[README](README.md)，本页负责位置、来源和恢复。
+**当前：E144–E163全部预定数据已得；E163四端点各16条件与27格cross完成、独立复算通过，0新训练/下载；在途E164与实时资源见README，总上限4卡。** E163复用下列耐久源，无新增模型副本；数值源c31e4b0e，资源等待器/指纹续跑器另列SHA。全部失败、继承范围与监督退出保留在原卡及`results/e163/attempt_*/`。科学结论在[README](README.md)，本页负责位置、来源和恢复。
 
 耐久根为`/home/xiang/mechpop_cache`（NFS）；节点`/tmp`是临时NVMe，不能当唯一资产。优先已有`~/.venvs/mechpop/bin/python`（Python3.12、torch2.8.0+cu128、transformers4.57.6、numpy1.26.4）；未另装环境。CPU复算统一见[scripts/README](scripts/README.md)。
 
@@ -38,6 +38,8 @@ F=全程EMO 1T+50B，B=标准1T后EMO50B，A=标准1T+50B，P=标准1T退火前�
 | E161 | `~/mechpop_cache/e161_crossed_entity_relation` | `results/e161/`的plan/manifest/raw SHA；原实验卡给精确入口 |
 | E162 | `~/mechpop_cache/e162_full_course_native` | `results/e162/`的plan/manifest/raw SHA；原实验卡给精确入口 |
 | E163 | `~/mechpop_cache/e163_message_geometry/`：F为`native_F.npz`，P/A/B在`attempt_3_hash_schema/native_{P,A,B}.npz`，真实消息为`cross.npz` | 五raw绝对路径、SHA/bytes见`results/e163/manifest.json`；summary/独立29650数值/1376元数据完成。原设计19f6f3a5，数值源c31e4b0e，plan SHA7493cb82…4870cb；含失败2.109199484 GPU时、峰值79.318603GB、各组末次退出0 |
+
+**E164在途资产（尚无完整主结果）：** 数值源43aee97a、plan43877611…048a7；输入/CPU控制及真实P预检/57个选择器完成，当前21/0单卡执行。耐久根`~/mechpop_cache/e164_runtime_routing/`保存`questions.npz/jsonl`、旧参考`references.npz`、冻结`selectors.npz`；`partial_scores.npz`每8题原子更新，只作在途恢复/取证，不能当完整结果。最终`scores.npz`及manifest/independent_audit/execution_complete须全量成功后才出现。P/B原始HF权重仍用上表，未新增训练/模型副本；gate完整轨迹只在单题内存，保存其整体/首层指纹和原代码/输入，未声称持久保存全部轨迹。
 
 E162新raw为4,584,469 B，SHA `89c83382c58ebb8ed864d1fa4cf73c47b86ed5ef71c830230b87e84db13394d3`；preflight/budget/summary及独立5114数字/133元数据报告都已完成。E160正式结果在`retry_1/`，父目录原running预算保存首轮中断与未知精确成本，不能拿它冒充完整结果。
 
