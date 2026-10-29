@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "CPU_only": true,
+  "source_sha256": {
+    "e164_selftest.py": "ebae3b34e63309b09e6333128319b0fd995f5bad700b780d453107fcfa6218e3",
+    "e164_routing.py": "9f1fd72127e84be41942dd022b57a86d73dd75865bf66c939b097d9e0142ee40",
+    "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
+    "e150_restricted.py": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c",
+    "e151_native.py": "37aebf802a06ac8816f37777f7f991b8db071432f0ff69875d385c5aeddb783e",
+    "e153_harness.py": "ae463a28e129fe3ba6a3613d9783201698b2175719c82a24a87f944ebb2c2b97",
+    "e156_loading.py": "71e537f62ffac62cf1d303a6e48330326282c991e087a57760d0252427b82127",
+    "e154_native.py": "aca56b8c0da5cbb1dc420eaf8edcc8b0a8818e6214def6f8abb3cfd10664878d",
+    "e154_assets.py": "888a17da9798f2ae4edd2b30f797caa2c2b77d8a5b3bd3bbe045fe93447e779c"
+  },
+  "native_interfaces": [
+    {
+      "dtype": "torch.float32",
+      "all_native_diagonals_exact": true,
+      "all_mask_zero_permutation_prefix_count_checks_exact": true,
+      "first_layer_R_source_gate_identity": true,
+      "constant_gate_no_false_route_effect": true,
+      "wrong_mask_hook_order_rejected": true,
+      "sources_and_hooks_restored": true,
+      "observed_foreign_trace_score_difference": 8.392333984375e-05
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "all_native_diagonals_exact": true,
+      "all_mask_zero_permutation_prefix_count_checks_exact": true,
+      "first_layer_R_source_gate_identity": true,
+      "constant_gate_no_false_route_effect": true,
+      "wrong_mask_hook_order_rejected": true,
+      "sources_and_hooks_restored": true,
+      "observed_foreign_trace_score_difference": 0.0004944801330566406
+    }
+  ],
+  "known_route_oracle": {
+    "status": "passed",
+    "native_output": 11.142857551574707,
+    "counterfactual_output": 12.285714149475098,
+    "known_route_intervention_detected": true
+  },
+  "CUDA_initialized": false
+}

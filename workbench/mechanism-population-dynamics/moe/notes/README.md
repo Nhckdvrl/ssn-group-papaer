@@ -5,6 +5,7 @@
 | 文件 | 角色 |
 |---|---|
 | [POSITIONING_2026-10-26](POSITIONING_2026-10-26.md) | 累积定位表；最近邻的对象、主张、干预和实际增量。最新科学决定见[PAPER_SHAPE](../PAPER_SHAPE.md) |
+| [功能迁移与路由全文卡](../../../../library/themes/moe-routing/FUNCTIONAL_TRANSFER_AND_ROUTING_2026-10-29.md) | 从三条结果选择E164的最近邻比较与自主推理；当前仍无E164结果 |
 | `PRIMARY_READING*.json` | 阅读版本、PDF路径/SHA和覆盖凭证；不把摘要阅读标为全文 |
 | [CONTROLLED_E120_E142](CONTROLLED_E120_E142.md) | 受控阶段的有效证据与原生研究的连接；旧组F与成熟端点F分开 |
 | [IDENTIFIABILITY_SCOPE](IDENTIFIABILITY_SCOPE_2026-10-26.md) | 条件数学命题和有限模型接口边界，非原创定理或关线依据 |

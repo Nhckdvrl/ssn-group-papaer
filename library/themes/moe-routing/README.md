@@ -59,3 +59,5 @@ Good diagnostic signal → endless loss search.
 
 - [MoE preference-vs-execution 关闭结果](MOE_ROUTE_CLOSEOUT.md)（已从 workbench 删除）
 - `archive/candidates/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING/`
+
+- [功能迁移、实际使用与后续路由：2026-10-29全文核对](FUNCTIONAL_TRANSFER_AND_ROUTING_2026-10-29.md)。
