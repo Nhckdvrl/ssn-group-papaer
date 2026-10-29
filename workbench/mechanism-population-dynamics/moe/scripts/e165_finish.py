@@ -30,7 +30,7 @@ def main():
         subprocess.run([sys.executable,'-B',str(WB/'moe/scripts/supervised_process.py'),
                         '--status',str(status),'--log',str(ROOT/('run_'+phase+'.log')),
                         '--cwd',str(WB),'--timeout','28800','--',sys.executable,'-B','-u',
-                        str(WB/'moe/scripts/e165_run.py'),phase,'--physical-gpu',str(args.physical_gpu)],
+                        str(WB/'moe/scripts/e165_local_adapter.py'),phase,'--physical-gpu',str(args.physical_gpu)],
                        cwd=WB,check=True)
         state=read(status)
         if state['status']!='complete' or state['returncode']!=0:raise ValueError('Phase did not exit successfully')

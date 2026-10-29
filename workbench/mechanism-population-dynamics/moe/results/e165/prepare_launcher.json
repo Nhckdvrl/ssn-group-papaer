@@ -1,0 +1,26 @@
+{
+  "host": "fvcrc21",
+  "pid": 1945130,
+  "command": [
+    "/home/xiang/.venvs/mechpop/bin/python",
+    "-B",
+    "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/scripts/supervised_process.py",
+    "--status",
+    "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e165/supervision_prepare.json",
+    "--log",
+    "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e165/prepare.log",
+    "--cwd",
+    "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics",
+    "--timeout",
+    "3600",
+    "--",
+    "/home/xiang/.venvs/mechpop/bin/python",
+    "-B",
+    "-u",
+    "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/scripts/e165_run.py",
+    "prepare",
+    "--physical-gpu",
+    "0"
+  ],
+  "CPU_only": true
+}
