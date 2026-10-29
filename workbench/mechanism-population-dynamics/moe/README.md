@@ -90,7 +90,7 @@ E165含预检.953168 GPU时、最多1卡、峰值32.875GB、0新权重训练；2
 
 **主线推进：** 学习历史同时组织可选择的函数、响应接口和协作使用。E164排开路由唯一路径解释；E165表明整机曲线能掩盖组件性质；E166进一步用建设性干预把性质与依赖分开。这是一条关于MoE计算组织的机制论文主线。概率质量、choice CE、正确率和输出KL在[EMO矩阵](results/e166/emo_summary.json)及[OLMoE矩阵](results/e166/olmoe_summary.json)分别报告；不把部署性质等同于所有实际计算。
 
-E166计时1.073925 GPU时、最多1卡、峰值55.024GB，16356数值/16938元数据独立复算最大差1.07e−14，两个worker及恢复监督exit0。原CPU慢读中断/费用、NVMe适配及所有来源只读记录保留，原数值27文件未变。[完成凭证](results/e166/execution_complete.json)、[分析性描述](paper/e166_descriptive_patterns.json)、[资产恢复](ASSETS.md)。
+E166计时1.073925 GPU时、最多1卡、峰值55.024GB，16356数值/16938元数据独立复算最大差1.07e−14，两个worker及恢复监督exit0。原CPU慢读中断/费用、NVMe适配及所有来源只读记录保留，原数值27文件未变。[完成凭证](results/e166/execution_complete.json)、[143文件封存](results/e166/artifact_seal.json)、[分析性描述](paper/e166_descriptive_patterns.json)、[资产恢复](ASSETS.md)。
 
 ```bash
 ~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py E166 all

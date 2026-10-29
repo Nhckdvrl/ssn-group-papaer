@@ -130,3 +130,5 @@ E166完成：GPU工作计时3866.130493秒=1.073925137 GPU时，max1卡，峰值
 
 - emo raw：`/home/xiang/mechpop_cache/e166_gain_transport/emo/scores.npz`，198730 B，SHA `e50c24cd4f6e0e222d6f3e596ffb33a2537a1115538b547815fc27573fda86a1`；[summary](results/e166/emo_summary.json)、[manifest](results/e166/emo_manifest.json)。
 - olmoe raw：`/home/xiang/mechpop_cache/e166_gain_transport/olmoe/scores.npz`，121042 B，SHA `66b1d82fdf3fd15bd6d1b887956caa29f0e7c86810e842cba7c375045078477a`；[summary](results/e166/olmoe_summary.json)、[manifest](results/e166/olmoe_manifest.json)。
+
+[E166封存凭证](results/e166/artifact_seal.json)：`/home/xiang/mechpop_cache/e166_gain_transport/run_metadata_f5d4040e.tar.gz`，71616234 B，SHA `a1024e10c55ce10893cf8882a0c25c01313d0bbc9c41a79e2aea403a9b4881fa`。结果提交f5d4040e、冻结数值源ef8f58c8，143个实文件逐项解包核SHA，无未解析HF链接/大权重。包内保存原CPU-only失败、有效恢复链、完整raw/cal、公开/安装源码、原生class discovery所需的旧metadata、论文与五图；当前文档的后续变化不改写封存快照。
