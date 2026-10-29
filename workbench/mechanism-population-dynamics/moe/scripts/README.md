@@ -1,28 +1,30 @@
-# 代码入口与冻结边界
+# 代码使用：从三个结果到复算
 
-从工作台根`workbench/mechanism-population-dynamics/`使用已有环境：
+从工作台根`workbench/mechanism-population-dynamics/`使用已有`~/.venvs/mechpop`环境。复核三条核心结果的统一入口：
 
+```bash
+~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py spine verify
 ```
-~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py E160 all
-```
 
-同一入口支持E158–E163的`stats`、`verify`、`plots`、`all`；`--show-commands`显示实际命令。只复算已完成结果，不加载模型做新前向、不训练、不下载；manifest未完成会拒绝。E163示例：`~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py E163 all`。E150–E157及更早阶段的精确入口仍在原实验卡；不要因文件编号旧而删除其传递依赖。
+`spine`依次覆盖E156（性质来源）、E159（伙伴作用）、E162（成熟路径分担）、E163（消息几何/重用）。`verify`执行原有独立公式校验；`stats`从raw重算统计，`plots`重绘，`all`依次执行三项；`--show-commands`列出实际命令。只复算已完成结果，不加载模型前向、训练或下载；任一manifest未完成会拒绝。
 
-当前少量职责边界：
+单实验还支持E156、E158–E163，例如`reproduce.py E156 stats`、`reproduce.py E163 all`。E150–E155/E157和早期窗口的精确入口保留在各原卡；[结果导航](../results/README.md)给出了当前证据路径。
 
-| 职责 | 入口 |
+## 当前少量使用入口
+
+| 用途 | 入口/边界 |
 |---|---|
-| 科学说明、证据与停点 | `../README.md`、`../../CLAIMS.md`、`../../AGENTS.md` |
-| 完整结果CPU复现 | `reproduce.py`；各`eNNN_analyze.py`及`results/*_independent_audit/` |
-| 已完成E162批次 | `e162_finish_batch.py`：原完整资产→准备plan→单卡评测→CPU统计/校验；保留原入口 |
-| 已完成E163 | 数值源`e163_run.py`/`e163_geometry.py`冻结c31e4b0e；实际PAB续跑`e163_cross_resume.py`调用资源等待器，只修轨迹指纹键并复用已完成native块。失败、抽样重放与终态范围见原卡/`native_inheritance.json`，勿直接重启覆盖已有凭证 |
-| E163 CPU复现与主图 | `reproduce.py E163 all`；`e163_analyze.py`、`e163_verify.py`、`e163_plot.py`与`moe_research_spine.py`。后者只组织E156/E159/E163已得估计及原CI，sidecar记来源SHA/JSON路径，无新检验 |
-| 第四端点公开权重与校验 | `full_course_assets.py`、`stage_full_course.py`；固定HF pin/LFS SHA，原数据不变 |
-| 通用耐久退出记录 | `supervised_process.py` |
-| 冻结运行源码 | 原`eNNN_run.py`、原生模型/干预/helper；SHA在对应plan/manifest，保持以便复查 |
+| 所有当前论证的CPU复核 | `reproduce.py spine verify`；原审计器不变，不提高证据等级 |
+| 论文总览图 | `moe_research_spine.py`；只组织E156/E159/E163已有估计及原CI，sidecar给来源SHA和JSON路径 |
+| E163原始数值程序 | `e163_run.py`、`e163_geometry.py`、`e163_metrics.py`等20文件冻结c31e4b0e；不以目录整理改数值代码 |
+| E163实际续跑 | `e163_cross_resume.py`调用`e163_resource_wait.py`，只转换轨迹指纹键并有检查地继承native块；原worker终态未得与fresh范围见原卡 |
+| 成熟权重/源码恢复 | [ASSETS](../ASSETS.md)；`full_course_assets.py`、`restore_mature_staging.py`，固定HF pin/SHA |
+| 耐久监督 | `supervised_process.py`；监督退出码、心跳、费用账本，进程消失不等于成功 |
 
-E160的正式结果在`results/e160/retry_1/`；父目录budget保存中断事实，不用于冒充完整结果。旧恢复器冻结版本的audit包装有接口错误，当前统一入口使用独立auditor的`--root`入口，未修改其GPU数值程序。
+## 为什么保留旧脚本
 
-整理时先查import、实验卡、冻结source SHA与图的生成来源，再删无用入口。原始模型、inputs、raw和唯一训练checkpoint在耐久缓存，路径/恢复见`../ASSETS.md`；这不是应塞进Git或盲删的内容。
+当前198个Python文件中，88个被现存plan/manifest/封存来源直接引用；其他还包括生成、作图、失败方案与传递依赖。[目录核查](../results/directory_cleanup_2026-10-29.json)记录逐文件SHA、直接引用及本地imports。引用数不是自动删文件的判据；以日期搬动或删除会破坏动态import和旧source恢复。日常从上表进入，无需逐个浏览全部文件。
 
-若收尾清理了fvcrc20的P/A/B临时模型，未来确需GPU重放时，在该节点运行`restore_mature_staging.py --receipt ~/mechpop_cache/pab_restore_NEW_ID.json`。它仍用原始公开pin和SHA复制、独立复核，原冻结staging manifest不改写；新receipt必须不存在。CPU结果复算不需要这些临时权重。F评测器在临时执行副本不存在时可用已核验的耐久HF缓存。
+E160正式结果在`results/e160/retry_1/`，统一入口使用独立auditor的正确`--root`接口；旧恢复器的audit包装错误保留为历史，不改GPU数值程序。E158只有`whole_path/`完成；旧单层扫描/原失败入口不能当有结果的复现路线。
+
+确需GPU重放时，先读[AGENTS](../../AGENTS.md)、原卡和新鲜资源状态，最多4卡；现有完成目录和凭证不可覆盖。大权重、raw、唯一checkpoint和失败记录按ASSETS恢复，源码封存包内的旧文档是当时快照。

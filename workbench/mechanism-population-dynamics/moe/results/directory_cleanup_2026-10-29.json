@@ -1,0 +1,3245 @@
+{
+  "date": "2026-10-29",
+  "status": "complete",
+  "scope": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics",
+  "base_commit": "6ccee4ea29323657244e2a57fc809a0425623a1e",
+  "claim": "C14",
+  "pain": "P33",
+  "intent": "Clarify current evidence and separate closed heads history before next scientific decision; no numerical changes or GPU work",
+  "tracked_files": 7734,
+  "tracked_by_top": {
+    ".gitignore": 1,
+    "AGENTS.md": 1,
+    "CLAIMS.md": 1,
+    "PAIN_LOG.md": 1,
+    "README.md": 1,
+    "heads": 6526,
+    "knowledge": 66,
+    "logs": 17,
+    "moe": 1114,
+    "suite-audits": 6
+  },
+  "documents_before": {
+    "README.md": {
+      "sha256": "29be0445fe3bf5312731b47b6568e8616f1b5529559ab78f465071cd84e3529c",
+      "size_bytes": 4121
+    },
+    "CLAIMS.md": {
+      "sha256": "910efa87ae05941e632bf9faa88b7cc44dfc16d9bed1697357fe6fd5a72b208a",
+      "size_bytes": 45685
+    },
+    "PAIN_LOG.md": {
+      "sha256": "ddd9bc5a39f96aef683d3c033a93b185cb31d25bddd725f26cc6f1e7aba296eb",
+      "size_bytes": 37035
+    },
+    "AGENTS.md": {
+      "sha256": "3c22b4483dfe798febf4ff5cb51e316ead1921fd05624b967e0d85141fc826d2",
+      "size_bytes": 7418
+    },
+    "moe/README.md": {
+      "sha256": "0d9c13b28e865b6f32c35b5360421407ee79ba28331e7a79a68920cd83559bcc",
+      "size_bytes": 12065
+    },
+    "moe/notes/GPT_PHASE_SUMMARY_E120-E142.md": {
+      "sha256": "1a37b734c4cab2dd6de2a7b7da11fcf64e86b55db77e0d78f168a7589cb1c4e6",
+      "size_bytes": 17686
+    }
+  },
+  "scripts": [
+    {
+      "path": "moe/scripts/e120_synth.py",
+      "sha256": "98c06697142c5fca8489ff84e9cd48062f4699aa9f7506ab02d01b9590936dce",
+      "size_bytes": 9802,
+      "local_imports": [
+        "moe_measure.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e121_analyze.py",
+      "sha256": "ceeec3fa12841298baa35b3c41308235b72c3b89b78874b9bb3f0e5451f5ce4d",
+      "size_bytes": 9331,
+      "local_imports": [
+        "e121_olmoe.py",
+        "moe_measure.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e121_data.py",
+      "sha256": "eec13f15e81753dc28070575d07a1df1e7bcc915fb47a4145b091311d957c6f4",
+      "size_bytes": 7363,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e121_olmoe.py",
+      "sha256": "fcee118ef0c5ed439a1436eaf8e8eec6b6c3dd906b7c4fa575b2816c2de52fca",
+      "size_bytes": 9300,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e121_pos_audit.py",
+      "sha256": "99b1c1a742a8eed4595951685b568d1285714e4db1ac5c90a94447e5ff490d9d",
+      "size_bytes": 10825,
+      "local_imports": [
+        "moe_measure.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e122_function_bridge.py",
+      "sha256": "d3ca5df7fcdccd9ea2a107de865f3dd30996f530534bb296f72ed21941e343b6",
+      "size_bytes": 11530,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e122_independent_c06_audit.py",
+      "sha256": "19cf84e9a5f0f728d467ab205559ea3337dd48c6f63b8f8129f67dadf0b6c69a",
+      "size_bytes": 5376,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e122_summarize.py",
+      "sha256": "1bc070f9acd54e1e2b3fe07cc2648cfd1e5344df511318c17e889a12d4e32cec",
+      "size_bytes": 3202,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e123_frozen_moe.py",
+      "sha256": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+      "size_bytes": 48778,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e131/preflight/ordered/provenance.json",
+        "moe/results/e131/preflight/permuted/provenance.json",
+        "moe/results/e131/pulse_plan_manifest.json",
+        "moe/results/e131/pulse_stage/ordered/provenance.json",
+        "moe/results/e131/pulse_stage/permuted/provenance.json",
+        "moe/results/e133/asset_archive_manifest.json",
+        "moe/results/e135/cache_manifest.json",
+        "moe/results/e144/manifest.json",
+        "moe/results/e145/manifest.json",
+        "moe/results/e146/manifest.json",
+        "moe/results/e147/manifest.json",
+        "moe/results/e148/plan.json",
+        "moe/results/e149/manifest.json",
+        "moe/results/e150/manifest.json",
+        "moe/results/e151/manifest.json",
+        "moe/results/e151/plan.json",
+        "moe/results/e152/manifest.json",
+        "moe/results/e152/plan.json",
+        "moe/results/e153/manifest.json",
+        "moe/results/e153/plan.json",
+        "moe/results/e154/manifest.json",
+        "moe/results/e154/plan.json",
+        "moe/results/e155/manifest_A.json",
+        "moe/results/e155/manifest_B.json",
+        "moe/results/e155/manifest_P.json",
+        "moe/results/e155/plan.json",
+        "moe/results/e156/artifact_seal.json",
+        "moe/results/e156/manifest.json",
+        "moe/results/e156/plan.json",
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json",
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json",
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json",
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e123_prepare_assets.py",
+      "sha256": "c79147533c6791612480d73524faf4d70e00a38148b8f58e56bdd213b1da97ab",
+      "size_bytes": 6480,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e123_prepare_dolma.py",
+      "sha256": "b9f4b99305a16eeaf64c7f70af5cab9934fc695b47a5e823ac35092bb1c9a828",
+      "size_bytes": 11677,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e124_compare.py",
+      "sha256": "1cd3df24aea09e1fb2db86d9e4db52fe53ca42d7564141a0987ff6ccd7313671",
+      "size_bytes": 14877,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e124_functional_capture.py",
+      "sha256": "4b4f861990e3e17dd6dd3fb98bb4aa69b6ee488d63d75b871276ef257d68dbae",
+      "size_bytes": 31458,
+      "local_imports": [
+        "e123_frozen_moe.py"
+      ],
+      "frozen_references": [
+        "moe/results/e131/preflight/ordered/provenance.json",
+        "moe/results/e131/preflight/permuted/provenance.json",
+        "moe/results/e131/pulse_plan_manifest.json",
+        "moe/results/e131/pulse_stage/ordered/provenance.json",
+        "moe/results/e131/pulse_stage/permuted/provenance.json",
+        "moe/results/e135/cache_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e124_kmeans_reference.py",
+      "sha256": "f534284c206d4deb21e436b1a32b05a174e3e53c9b99292800dd3be7596b64df",
+      "size_bytes": 15673,
+      "local_imports": [
+        "e124_routing.py",
+        "moe_measure.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e124_make_permutation.py",
+      "sha256": "14657ff13b970ae5bea77b75d82931ccbdf7c6fedbe866c2121ac70b705f319c",
+      "size_bytes": 8007,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e124_routing.py",
+      "sha256": "40d38a96d0fb041675c9cf11fbdd1cc20210f21b0c24687adf9f29755425b547",
+      "size_bytes": 18068,
+      "local_imports": [
+        "moe_measure.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e125_coverage_control.py",
+      "sha256": "7bda110b67453f9642ec9e100b9e308fc7d0583abfe98876980184e28044b0b1",
+      "size_bytes": 38318,
+      "local_imports": [
+        "e123_frozen_moe.py",
+        "e124_functional_capture.py"
+      ],
+      "frozen_references": [
+        "moe/results/e131/preflight/ordered/provenance.json",
+        "moe/results/e131/preflight/permuted/provenance.json",
+        "moe/results/e131/pulse_plan_manifest.json",
+        "moe/results/e131/pulse_stage/ordered/provenance.json",
+        "moe/results/e131/pulse_stage/permuted/provenance.json",
+        "moe/results/e135/cache_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e125_exposure_diagnostic.py",
+      "sha256": "30807b46eb8e7779d79126eefd5f52c4ac2884fd7d7ef2d72fdab46d954c9368",
+      "size_bytes": 13843,
+      "local_imports": [
+        "e123_frozen_moe.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e125_prepare_data.py",
+      "sha256": "c5d3206895c0b0ba866b64585e3c6c22e11fc695f67d3d30b3282e87a914fbbf",
+      "size_bytes": 14224,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e125_stage_tokens.py",
+      "sha256": "c5966e49de8c3da9857fdabaac6c29b2e401be583c5f7408389c9ec344078e90",
+      "size_bytes": 1927,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e125_summarize.py",
+      "sha256": "255312134eb3838dad62a3ebcd949a25e7c47a9e70475733b64c1d1436ab2939",
+      "size_bytes": 25162,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e127_predictive_fidelity.py",
+      "sha256": "ac37934d55891db7ab9ff873f04e9b7e4592de590917a477d0d84d9f83d1675c",
+      "size_bytes": 11558,
+      "local_imports": [
+        "e123_frozen_moe.py",
+        "e124_functional_capture.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e128_epoch_recovery.py",
+      "sha256": "754dd5fca994b15839c38eccdd5f9f156dc747bfa3be8a2f2b7f3f61d65b505f",
+      "size_bytes": 20196,
+      "local_imports": [
+        "e125_coverage_control.py"
+      ],
+      "frozen_references": [
+        "moe/results/e131/preflight/ordered/provenance.json",
+        "moe/results/e131/preflight/permuted/provenance.json",
+        "moe/results/e131/pulse_plan_manifest.json",
+        "moe/results/e131/pulse_stage/ordered/provenance.json",
+        "moe/results/e131/pulse_stage/permuted/provenance.json",
+        "moe/results/e135/cache_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e128_finalize.py",
+      "sha256": "2350df750ba59a7870393c136ad5143fce629af66b0aa861dbff94a9f30dcfae",
+      "size_bytes": 10558,
+      "local_imports": [
+        "e127_predictive_fidelity.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e129_summarize.py",
+      "sha256": "7ccd801cec565b861ba4faa3fc1f1fe4be15191ec81aab09e2225123c43729c8",
+      "size_bytes": 4069,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e129_teacher_distribution.py",
+      "sha256": "944af52e46092e03b7e6a3814249cae08e36ce22368f9796c8128614152a0746",
+      "size_bytes": 19453,
+      "local_imports": [
+        "e123_frozen_moe.py",
+        "e124_functional_capture.py",
+        "e125_coverage_control.py",
+        "e127_predictive_fidelity.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e130_analyze.py",
+      "sha256": "aee65b4521d86558ca79b20f0d5951ef4406f1b9d1dbc72f8f3ffc94e166268c",
+      "size_bytes": 22955,
+      "local_imports": [
+        "e124_compare.py",
+        "e130_finalize.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e130_capture_anchor.py",
+      "sha256": "e9d846f67126fa83b3629519b58c1760777322f0d3370e0e1b70669890e3c855",
+      "size_bytes": 5465,
+      "local_imports": [
+        "e128_finalize.py",
+        "e130_cross_seed.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e130_cross_seed.py",
+      "sha256": "9446b337e084bdef19abfe46119058fe76fcb9ab3ef818a6ce9e7fcaac882167",
+      "size_bytes": 15675,
+      "local_imports": [
+        "e128_epoch_recovery.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e130_finalize.py",
+      "sha256": "2b1bed11f13fc0cd2dbb658383b7d9c973da41760e4ec1236e7f18a10a76039f",
+      "size_bytes": 20353,
+      "local_imports": [
+        "e124_functional_capture.py",
+        "e127_predictive_fidelity.py"
+      ],
+      "frozen_references": [
+        "moe/results/e135/cache_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e130_initial_reference.py",
+      "sha256": "1ee511886eb5842d037fb36b22539fce0c3267e55d9f9a344cf8b0c3c894d935",
+      "size_bytes": 11836,
+      "local_imports": [
+        "e123_frozen_moe.py",
+        "e124_functional_capture.py",
+        "e130_finalize.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e130_predictor_compare.py",
+      "sha256": "886cebfc51521fb8873a12aa4ee8db38838c20ba712c9c7dbb75ffd8ac4ea9a4",
+      "size_bytes": 10608,
+      "local_imports": [
+        "e123_frozen_moe.py",
+        "e124_functional_capture.py",
+        "e127_predictive_fidelity.py",
+        "e130_finalize.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e130_routing_batch.py",
+      "sha256": "fd89670a07ce431c9591c6f99966161de0df6869d5d708a21e5f98972994fcb7",
+      "size_bytes": 4435,
+      "local_imports": [
+        "e124_routing.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e130_word_uncertainty.py",
+      "sha256": "56f97a8881b1b97771e00941894eb980b996f38a0a34f250b9c403f468507658",
+      "size_bytes": 9424,
+      "local_imports": [
+        "e124_compare.py",
+        "e130_analyze.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e131_compare_batch.py",
+      "sha256": "37eb589612f62c51812462850c7752c512ce56da591d456dc674660dba7e6ee9",
+      "size_bytes": 5758,
+      "local_imports": [
+        "e124_compare.py",
+        "e130_word_uncertainty.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e131_finalize.py",
+      "sha256": "8d545eae5f01190e1fea8f7d4382b02d8cb897754db2cc62132bbf887bd99c57",
+      "size_bytes": 23570,
+      "local_imports": [
+        "e124_functional_capture.py",
+        "e127_predictive_fidelity.py",
+        "e130_finalize.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e131_order_history.py",
+      "sha256": "455f90e6202da01bce1f4586d0912620f52e2ed7b3dd424c86353887237e1a78",
+      "size_bytes": 36983,
+      "local_imports": [
+        "e128_epoch_recovery.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e131_plot_trajectory.py",
+      "sha256": "babe06931e2031dc76fc24ad5144f87ad1de1cbaeeafb02cc8cb59405c60bc82",
+      "size_bytes": 10510,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e131_predictor_compare.py",
+      "sha256": "ff594800990f15389250869704840602e806240058c29eeda9ded9f59dde5c14",
+      "size_bytes": 22188,
+      "local_imports": [
+        "e123_frozen_moe.py",
+        "e124_functional_capture.py",
+        "e130_predictor_compare.py",
+        "e131_finalize.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e131_retain_diagnostic.py",
+      "sha256": "f751ef530d1936664b7c83caf4e49aaad285ea2a26afea4abd7a95a899078e79",
+      "size_bytes": 8556,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e132_bank_grafting.py",
+      "sha256": "ed269682c2ad7e62f8fc5bac407e1834e8de304125e6c7d0794c414d6441e8e0",
+      "size_bytes": 28975,
+      "local_imports": [
+        "e123_frozen_moe.py",
+        "e124_compare.py",
+        "e124_functional_capture.py",
+        "e127_predictive_fidelity.py",
+        "e130_finalize.py"
+      ],
+      "frozen_references": [
+        "moe/results/e133/asset_archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e133_output_alignment.py",
+      "sha256": "974853fcdca842a0fe7fca7ad897d07eead6e1816f8c45c5b90dae500ba30968",
+      "size_bytes": 28960,
+      "local_imports": [
+        "e132_bank_grafting.py"
+      ],
+      "frozen_references": [
+        "moe/results/e133/asset_archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e134_component_variation.py",
+      "sha256": "e4ba0e3b2d714d4ee97ff94443cf23f0c2877c1e8a98d07c97c6b52f2e6adb9c",
+      "size_bytes": 3204,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e134_plot.py",
+      "sha256": "f54ae2577c5b5a955727408bbe708c2aca2542a54b9f46969d45dd22e89f856e",
+      "size_bytes": 9147,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e134_uniform_necessity.py",
+      "sha256": "b5e7e55d39142f69ff0c3ce145eaf725d25323fc4a6c7d19f4519fca1a8da177",
+      "size_bytes": 26705,
+      "local_imports": [
+        "e132_bank_grafting.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e135_capture.py",
+      "sha256": "d528f12afabad26a503bcedd02f8192bd243dc8edd22113ace65970e2dfaf9f4",
+      "size_bytes": 11901,
+      "local_imports": [
+        "e124_functional_capture.py",
+        "e135_common.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e135_capture_worker.py",
+      "sha256": "da4214a771f6a67494841849159245369c971e2fbfec4a92ca885581c9ef5c04",
+      "size_bytes": 3901,
+      "local_imports": [
+        "e135_readout.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e135_common.py",
+      "sha256": "2a84af164ad55853f171effd345c2719c760219119b9200e8cb47768d435a989",
+      "size_bytes": 6374,
+      "local_imports": [
+        "e124_functional_capture.py",
+        "e128_epoch_recovery.py",
+        "e130_finalize.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e135_plot_function_roles.py",
+      "sha256": "c43837e94828973b7e3467325930d1fe2f0a84bb73a0628aaa34ce662afd57c5",
+      "size_bytes": 6632,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e135_plot_learning.py",
+      "sha256": "f7e4b378d011ab016fc4434ad9294021fbe9e515ba7626300945e28f08c73b3b",
+      "size_bytes": 3811,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e135_prepare_cache.py",
+      "sha256": "47db49fcca8e2d2443741baded5b8fc85d3a0bfe7cb20573aa69009f443df034",
+      "size_bytes": 12512,
+      "local_imports": [
+        "e135_common.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e135_readout.py",
+      "sha256": "70274a65f532097cd4dfd017c4ce5f3def9496bb08d87e6b77b3267fc8e5690c",
+      "size_bytes": 20180,
+      "local_imports": [
+        "e124_compare.py",
+        "e131_predictor_compare.py",
+        "e132_bank_grafting.py",
+        "e134_uniform_necessity.py",
+        "e135_capture.py",
+        "e135_common.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e135_train.py",
+      "sha256": "8343f7e87b7ec8a1e027d3ec83bb3d2d7bfd649424a453ba9cc3e53ae3368cb7",
+      "size_bytes": 17780,
+      "local_imports": [
+        "e135_common.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e136_capture.py",
+      "sha256": "bee7d9144e8e620e855f40f8c8890f0746d4c5aa27f6e5944c45a675adc73a1e",
+      "size_bytes": 11449,
+      "local_imports": [
+        "e135_capture.py",
+        "e136_train.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e136_plot_comparison.py",
+      "sha256": "c06bbaf7d253e38d0bd133d7c35fa636ddfaf9eef02a4b31db1a6127dc2993c5",
+      "size_bytes": 7590,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e136_readout.py",
+      "sha256": "276d7042fa8e82ead3b8a32cc65514ee7a4e362a6b7bc2ac300e0612ae7a4421",
+      "size_bytes": 16303,
+      "local_imports": [
+        "e124_compare.py",
+        "e135_capture.py",
+        "e135_readout.py",
+        "e136_capture.py",
+        "e136_train.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e136_train.py",
+      "sha256": "8c620871df90c2a10ea9be5b629727ce063164483ab8a0d22cb846e6f6841b55",
+      "size_bytes": 21231,
+      "local_imports": [
+        "e135_common.py",
+        "e135_train.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e137_components.py",
+      "sha256": "86c57c0bc40c14d7778c036e92380e97ef3a071feeba4be484b2b45cc39bee63",
+      "size_bytes": 24251,
+      "local_imports": [
+        "e136_readout.py"
+      ],
+      "frozen_references": [
+        "moe/results/e138/archive_manifest.json",
+        "moe/results/e139/archive_manifest.json",
+        "moe/results/e140/archive_manifest.json",
+        "moe/results/e141/archive_manifest.json",
+        "moe/results/e142/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e137_plot_components.py",
+      "sha256": "82cf074c6e47d5afad5d6b59c3d97b75fcd9019b090a82dbb2fd1aeb27f09add",
+      "size_bytes": 10947,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e138_components.py",
+      "sha256": "b177c4daedc480c271fa41d4fd8c1b3b581887667cb741dc6b9cf543a9d297f8",
+      "size_bytes": 18284,
+      "local_imports": [
+        "e137_components.py",
+        "e138_train.py"
+      ],
+      "frozen_references": [
+        "moe/results/e138/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e138_plot_cohort.py",
+      "sha256": "bca3225516555b7269aa1d3382e132e2c7643ddec2f94c86368fad04cfd0e541",
+      "size_bytes": 12375,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e138_readout.py",
+      "sha256": "42ee1f86e0cf59cec5c9a097fba675bb6be8d7496c97e5c36c829ff19d812dcd",
+      "size_bytes": 23556,
+      "local_imports": [
+        "e124_compare.py",
+        "e135_capture.py",
+        "e135_readout.py",
+        "e136_capture.py",
+        "e138_components.py"
+      ],
+      "frozen_references": [
+        "moe/results/e138/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e138_train.py",
+      "sha256": "65840e0c3befd7ac4c68ccbf9fdd3bdee946f4e3b8067074b9e5c2d632716200",
+      "size_bytes": 23439,
+      "local_imports": [
+        "e135_common.py",
+        "e135_train.py",
+        "e136_train.py"
+      ],
+      "frozen_references": [
+        "moe/results/e138/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e139_components.py",
+      "sha256": "ce8e7029f707b735770a4915bbca4e53406033867bea4d4683a0b0c7fe7342b2",
+      "size_bytes": 31105,
+      "local_imports": [
+        "e137_components.py",
+        "e138_components.py",
+        "e139_train.py"
+      ],
+      "frozen_references": [
+        "moe/results/e139/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e139_plot_cohort.py",
+      "sha256": "47a634fd75af1819761e7b9592c97577f718629cf5ad4bc761224a401d8fd01f",
+      "size_bytes": 14176,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e139_readout.py",
+      "sha256": "6ac6444b6b61dfc7b4380e8d4ad05c81286dbd6bfec9d6bac386060ff2e359e9",
+      "size_bytes": 26109,
+      "local_imports": [
+        "e124_compare.py",
+        "e135_capture.py",
+        "e135_readout.py",
+        "e138_readout.py",
+        "e139_components.py"
+      ],
+      "frozen_references": [
+        "moe/results/e139/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e139_train.py",
+      "sha256": "93ac8504e21364ca94d6dd5ca18c22493850c41e74b7f0d1cfe12b398e3bcbac",
+      "size_bytes": 23193,
+      "local_imports": [
+        "e135_common.py",
+        "e135_train.py",
+        "e138_train.py"
+      ],
+      "frozen_references": [
+        "moe/results/e139/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e140_components.py",
+      "sha256": "0b1222fb78634f9bd70b3762082158295cf47c626a2404bf5dd03782f4ba96a1",
+      "size_bytes": 17502,
+      "local_imports": [
+        "e139_components.py",
+        "e140_train.py"
+      ],
+      "frozen_references": [
+        "moe/results/e140/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e140_plot_warmstart.py",
+      "sha256": "245f0d12814df4ba9edbd3b65fc31b12596f83def0be834ce0633f945f10a088",
+      "size_bytes": 7772,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e140_readout.py",
+      "sha256": "1b69db4bf36d8a0780a295ea9e89970e4bb77e6cea5e31b21f4e5e573ed5ceec",
+      "size_bytes": 23518,
+      "local_imports": [
+        "e124_compare.py",
+        "e135_capture.py",
+        "e135_readout.py",
+        "e138_readout.py",
+        "e140_components.py"
+      ],
+      "frozen_references": [
+        "moe/results/e140/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e140_train.py",
+      "sha256": "1b1c81afa1e2177029c3296324bc6be3dd7c53ad304fcde694ecbd5d81c02f07",
+      "size_bytes": 25889,
+      "local_imports": [
+        "e135_common.py",
+        "e135_train.py",
+        "e136_train.py",
+        "e138_train.py"
+      ],
+      "frozen_references": [
+        "moe/results/e140/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e141_independent_audit.py",
+      "sha256": "baf25d4f7ae37c16b3f3a33aac7ebd96336cad787a389cb802c4af994c276432",
+      "size_bytes": 11724,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e141/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e141_plot_support_partition.py",
+      "sha256": "5339a24884d45c040fb9e96915f28319e1d7c96e072111bd3dd54e19b67b9d45",
+      "size_bytes": 9062,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e141_support_partition.py",
+      "sha256": "9aa007be4c1dbaa50967f74010adf4a16ad75b71b84890942d8dbf11e7eb48a2",
+      "size_bytes": 26497,
+      "local_imports": [
+        "e137_components.py"
+      ],
+      "frozen_references": [
+        "moe/results/e141/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e142_components.py",
+      "sha256": "227fa7864c5f99ddd9c48e6a49894d7edb053bc6305d19c317e6a000c570e9f2",
+      "size_bytes": 17176,
+      "local_imports": [
+        "e135_readout.py",
+        "e139_components.py",
+        "e142_train.py"
+      ],
+      "frozen_references": [
+        "moe/results/e142/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e142_plot_warmstart_compare.py",
+      "sha256": "a3e1ca2923663a568d27cfa6e2fcf937f10c1da127a36da97586c40112a44a55",
+      "size_bytes": 8289,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e142_readout.py",
+      "sha256": "3680818bbca98249660016f0c188b0e888de2c82db812bafaf805ca7f80af999",
+      "size_bytes": 10725,
+      "local_imports": [
+        "e135_capture.py",
+        "e135_readout.py",
+        "e139_readout.py",
+        "e142_components.py"
+      ],
+      "frozen_references": [
+        "moe/results/e142/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e142_train.py",
+      "sha256": "155001f774c76ad906e40f5571163411243d9f260c9575a5f6d992c2b1e12829",
+      "size_bytes": 28185,
+      "local_imports": [
+        "e135_common.py",
+        "e135_train.py",
+        "e139_train.py"
+      ],
+      "frozen_references": [
+        "moe/results/e142/archive_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e143_capture.py",
+      "sha256": "8f34d96b4cbdea9418b60b5a66b1e5a2002fcd5b6f26d20866f16eb08e7ca321",
+      "size_bytes": 6944,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e143_data.py",
+      "sha256": "94646f0b55a86907a0cba040680d89d2f8dfe6e335be59811d5b7fb0e432912c",
+      "size_bytes": 4466,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e144145_analyze.py",
+      "sha256": "c17ae07babdc28398b9207313dc472274169a53b81a2164a6040e67ee28b083f",
+      "size_bytes": 12551,
+      "local_imports": [
+        "e144145_common.py"
+      ],
+      "frozen_references": [
+        "moe/results/e144/manifest.json",
+        "moe/results/e145/manifest.json",
+        "moe/results/e146/manifest.json",
+        "moe/results/e147/manifest.json",
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e144145_common.py",
+      "sha256": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+      "size_bytes": 20803,
+      "local_imports": [
+        "e123_frozen_moe.py"
+      ],
+      "frozen_references": [
+        "moe/results/e144/manifest.json",
+        "moe/results/e145/manifest.json",
+        "moe/results/e146/manifest.json",
+        "moe/results/e147/manifest.json",
+        "moe/results/e148/plan.json",
+        "moe/results/e149/manifest.json",
+        "moe/results/e150/manifest.json",
+        "moe/results/e151/manifest.json",
+        "moe/results/e151/plan.json",
+        "moe/results/e152/manifest.json",
+        "moe/results/e152/plan.json",
+        "moe/results/e153/manifest.json",
+        "moe/results/e153/plan.json",
+        "moe/results/e154/manifest.json",
+        "moe/results/e154/plan.json",
+        "moe/results/e155/manifest_A.json",
+        "moe/results/e155/manifest_B.json",
+        "moe/results/e155/manifest_P.json",
+        "moe/results/e155/plan.json",
+        "moe/results/e156/artifact_seal.json",
+        "moe/results/e156/manifest.json",
+        "moe/results/e156/plan.json",
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json",
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json",
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json",
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e144145_plot.py",
+      "sha256": "7b92f3bc534196ad69989de2a0fc154c5af950f8557981296a669800e95e55ac",
+      "size_bytes": 4102,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e144145_run.py",
+      "sha256": "e52275aec98269e9f8fc9b0476027dd251f65234f8ca91dbeb1792e24087a566",
+      "size_bytes": 25696,
+      "local_imports": [
+        "e144145_common.py"
+      ],
+      "frozen_references": [
+        "moe/results/e144/manifest.json",
+        "moe/results/e145/manifest.json",
+        "moe/results/e146/manifest.json",
+        "moe/results/e147/manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e144145_test.py",
+      "sha256": "b43a997114e4d95d72feaab8a083da36b134a055dcc2e75511e3c4a79670586d",
+      "size_bytes": 7229,
+      "local_imports": [
+        "e144145_analyze.py",
+        "e144145_common.py"
+      ],
+      "frozen_references": [
+        "moe/results/e144/manifest.json",
+        "moe/results/e145/manifest.json",
+        "moe/results/e146/manifest.json",
+        "moe/results/e147/manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e145_router_derivative_check.py",
+      "sha256": "9871346e5308e8a7f208f31d2c55224909c1e333c01525a28698c1aa185ff21b",
+      "size_bytes": 2908,
+      "local_imports": [
+        "e144145_common.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e146147_plot.py",
+      "sha256": "3c368570d5b82ea0bfbb8cb82d534a1a5c45e98ff8bb8a66a6dcd2804cd92eea",
+      "size_bytes": 4125,
+      "local_imports": [
+        "e146_grouped.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e146_grouped.py",
+      "sha256": "b04d90c81feb1fbdaa54b7caf2f9330b14f8804878db8b088f4f8e63a3cea57e",
+      "size_bytes": 21011,
+      "local_imports": [
+        "e144145_analyze.py",
+        "e144145_common.py",
+        "e144145_run.py"
+      ],
+      "frozen_references": [
+        "moe/results/e146/manifest.json",
+        "moe/results/e147/manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e146_plot.py",
+      "sha256": "42a79dd55630779b10cbae4e116d75e380b555db07e9651753837abe84ca6277",
+      "size_bytes": 2594,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e147_gate_control.py",
+      "sha256": "8b9212a4d071cbe8a31fdb2012f6a92563c30ec58405cb20b6be2dc96dddca51",
+      "size_bytes": 11823,
+      "local_imports": [
+        "e146_grouped.py"
+      ],
+      "frozen_references": [
+        "moe/results/e147/manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e148149_verify_results.py",
+      "sha256": "fbd14734503e35c072330e331626f6dd76ea2cfb16fbf45e32c012d5b3385b1a",
+      "size_bytes": 3413,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e148_analyze_gpu.py",
+      "sha256": "7cf26f9702931984651c27acec6bb503581a516fb64850c3207b96b23ad016f0",
+      "size_bytes": 4104,
+      "local_imports": [
+        "e148_common.py",
+        "e148_readout.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e148_archive.py",
+      "sha256": "d777c49abb76a88f8cc1c22050b16155e9aab196a49f9c4c4874e3e6653bb674",
+      "size_bytes": 4853,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e148_common.py",
+      "sha256": "5c5687d669fe54bccae1184e89d20e1e7f710ca5027c327f8179a448ca37e55b",
+      "size_bytes": 18847,
+      "local_imports": [
+        "e144145_common.py"
+      ],
+      "frozen_references": [
+        "moe/results/e148/plan.json",
+        "moe/results/e149/manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e148_execute.py",
+      "sha256": "ff267c08bbfeb2c9e59b68c599e61609242c4adbec40da7cf0f9f2c16fd27da8",
+      "size_bytes": 3334,
+      "local_imports": [
+        "e148_common.py",
+        "e148_native.py",
+        "e148_readout.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e148_native.py",
+      "sha256": "8c0e1fe261908e2b7cf0a1287500e9405d1507397f15d0aeb8034f0432b9662b",
+      "size_bytes": 12350,
+      "local_imports": [
+        "e148_common.py"
+      ],
+      "frozen_references": [
+        "moe/results/e148/plan.json",
+        "moe/results/e149/manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e148_phase_summary.py",
+      "sha256": "85b9211ed45994f6b3f7fe323045157d159adcedcc9c2246f6c618ad55fc2d6c",
+      "size_bytes": 2512,
+      "local_imports": [
+        "e144145_analyze.py",
+        "e148_common.py",
+        "e148_readout.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e148_plot.py",
+      "sha256": "1c652639cf158919b3db0013a6681cce0d078b27d51381ce5d005f35a072a5f8",
+      "size_bytes": 6105,
+      "local_imports": [
+        "e144145_analyze.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e148_readout.py",
+      "sha256": "e210b8d5ec4084fdd2289b19443874559afc10deda32357ac3d082c346c43732",
+      "size_bytes": 14958,
+      "local_imports": [
+        "e144145_analyze.py",
+        "e148_common.py"
+      ],
+      "frozen_references": [
+        "moe/results/e148/plan.json",
+        "moe/results/e149/manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e148_test.py",
+      "sha256": "740179228220287140fc521a90a9520428a80a4d5a43e024fb2e2d702b3845ef",
+      "size_bytes": 5196,
+      "local_imports": [
+        "e144145_analyze.py",
+        "e148_common.py"
+      ],
+      "frozen_references": [
+        "moe/results/e148/plan.json",
+        "moe/results/e149/manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e149_plot.py",
+      "sha256": "c05ec4af0cffec7d27e505ed0d2f20bc09680fe543120de20a241e8654ca70cc",
+      "size_bytes": 3373,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e149_source_cube.py",
+      "sha256": "9c8d86c48a0c57320909b38e169f4a08997ea39784ce1ff796249e9146665792",
+      "size_bytes": 11151,
+      "local_imports": [
+        "e144145_analyze.py",
+        "e148_common.py",
+        "e148_readout.py"
+      ],
+      "frozen_references": [
+        "moe/results/e149/manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e150_analyze.py",
+      "sha256": "a280d1d92de96953995167e4b69222630904d86d67b817461cd1861ca503ab45",
+      "size_bytes": 3383,
+      "local_imports": [
+        "e150_native.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e150_data.py",
+      "sha256": "58e3f24c0bd10199f75cb906788818539628f414e299ca3a875e4e6c30ff0f49",
+      "size_bytes": 4856,
+      "local_imports": [
+        "e144145_common.py"
+      ],
+      "frozen_references": [
+        "moe/results/e150/manifest.json",
+        "moe/results/e151/manifest.json",
+        "moe/results/e151/plan.json",
+        "moe/results/e152/manifest.json",
+        "moe/results/e152/plan.json",
+        "moe/results/e153/manifest.json",
+        "moe/results/e153/plan.json",
+        "moe/results/e154/manifest.json",
+        "moe/results/e154/plan.json",
+        "moe/results/e155/manifest_A.json",
+        "moe/results/e155/manifest_B.json",
+        "moe/results/e155/manifest_P.json",
+        "moe/results/e155/plan.json",
+        "moe/results/e156/artifact_seal.json",
+        "moe/results/e156/manifest.json",
+        "moe/results/e156/plan.json",
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json",
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json",
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json",
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e150_execute.py",
+      "sha256": "d4887b09ab2e34b7bc4bebea6da8680cde9737c9bd43a7dfe89850e1f748f2d6",
+      "size_bytes": 5009,
+      "local_imports": [
+        "e150_native.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e150_native.py",
+      "sha256": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
+      "size_bytes": 27418,
+      "local_imports": [
+        "e144145_analyze.py",
+        "e144145_common.py",
+        "e150_data.py",
+        "e150_restricted.py"
+      ],
+      "frozen_references": [
+        "moe/results/e150/manifest.json",
+        "moe/results/e151/manifest.json",
+        "moe/results/e151/plan.json",
+        "moe/results/e152/manifest.json",
+        "moe/results/e152/plan.json",
+        "moe/results/e153/manifest.json",
+        "moe/results/e153/plan.json",
+        "moe/results/e154/manifest.json",
+        "moe/results/e154/plan.json",
+        "moe/results/e155/manifest_A.json",
+        "moe/results/e155/manifest_B.json",
+        "moe/results/e155/manifest_P.json",
+        "moe/results/e155/plan.json",
+        "moe/results/e156/artifact_seal.json",
+        "moe/results/e156/manifest.json",
+        "moe/results/e156/plan.json",
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json",
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json",
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json",
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e150_partial_mask_test.py",
+      "sha256": "f6c023eb0c43d21921d72631cec3075dd6aaedb658ba84bccf127c7266bb4891",
+      "size_bytes": 2838,
+      "local_imports": [
+        "e150_native.py",
+        "e150_restricted.py"
+      ],
+      "frozen_references": [
+        "moe/results/e151/manifest.json",
+        "moe/results/e151/plan.json",
+        "moe/results/e152/manifest.json",
+        "moe/results/e152/plan.json",
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json",
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e150_plot.py",
+      "sha256": "7336d421f609a42c2bb91b5f9bf8ea5899fa96365e650cabd6ca26d23d7d3ea0",
+      "size_bytes": 5136,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e150_prepare_assets.py",
+      "sha256": "02be428952536e3f7ed371e3812558fda701bcab14dfdd295641be7826dc6a7a",
+      "size_bytes": 4250,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e154/manifest.json",
+        "moe/results/e154/plan.json",
+        "moe/results/e155/manifest_A.json",
+        "moe/results/e155/manifest_B.json",
+        "moe/results/e155/manifest_P.json",
+        "moe/results/e155/plan.json",
+        "moe/results/e156/artifact_seal.json",
+        "moe/results/e156/manifest.json",
+        "moe/results/e156/plan.json",
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json",
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json",
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e150_restricted.py",
+      "sha256": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c",
+      "size_bytes": 4096,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e150/manifest.json",
+        "moe/results/e151/manifest.json",
+        "moe/results/e151/plan.json",
+        "moe/results/e152/manifest.json",
+        "moe/results/e152/plan.json",
+        "moe/results/e153/manifest.json",
+        "moe/results/e153/plan.json",
+        "moe/results/e154/manifest.json",
+        "moe/results/e154/plan.json",
+        "moe/results/e155/manifest_A.json",
+        "moe/results/e155/manifest_B.json",
+        "moe/results/e155/manifest_P.json",
+        "moe/results/e155/plan.json",
+        "moe/results/e156/artifact_seal.json",
+        "moe/results/e156/manifest.json",
+        "moe/results/e156/plan.json",
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json",
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json",
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json",
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e150_verify_results.py",
+      "sha256": "88844d4fdddf915615b1a8d51197567db8b34c9f2f5d0cbc81737a3680a17f5f",
+      "size_bytes": 5541,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e151_native.py",
+      "sha256": "37aebf802a06ac8816f37777f7f991b8db071432f0ff69875d385c5aeddb783e",
+      "size_bytes": 14103,
+      "local_imports": [
+        "e150_native.py",
+        "e150_partial_mask_test.py"
+      ],
+      "frozen_references": [
+        "moe/results/e151/manifest.json",
+        "moe/results/e151/plan.json",
+        "moe/results/e154/manifest.json",
+        "moe/results/e154/plan.json",
+        "moe/results/e155/manifest_A.json",
+        "moe/results/e155/manifest_B.json",
+        "moe/results/e155/manifest_P.json",
+        "moe/results/e155/plan.json",
+        "moe/results/e156/artifact_seal.json",
+        "moe/results/e156/manifest.json",
+        "moe/results/e156/plan.json",
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json",
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json",
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json",
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e151_plot.py",
+      "sha256": "01fb3263ec4c41446399510cdfa9def9c0ae4da0478c6eae6db78af615244a7c",
+      "size_bytes": 3664,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e151_verify_results.py",
+      "sha256": "96a14a4cb10a93b433e55fbbde603690785a2700f3b08bad87707f02c4d7d884",
+      "size_bytes": 3653,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e152_normalizer.py",
+      "sha256": "17dc54c33df75d0414e8eb91737e5bad67a1dbd56f9df4f77379de54ec88235d",
+      "size_bytes": 18683,
+      "local_imports": [
+        "e150_native.py",
+        "e150_partial_mask_test.py"
+      ],
+      "frozen_references": [
+        "moe/results/e152/manifest.json",
+        "moe/results/e152/plan.json",
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e152_plot.py",
+      "sha256": "3e2e1abb358b6f445cf3c4b1df4e2d3b4c02bb44873e2518eb4154e34fa1e012",
+      "size_bytes": 2822,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e152_verify_results.py",
+      "sha256": "6784b0c72cb6a307a3841bf0068d30d8262ad47dbfba3bf3a36543e407c6eaa7",
+      "size_bytes": 3151,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e153_data.py",
+      "sha256": "1922951ba2b80d6e993b787f4daaeed243869571c9147d37f9eb54a3c97abb9d",
+      "size_bytes": 7182,
+      "local_imports": [
+        "e150_native.py"
+      ],
+      "frozen_references": [
+        "moe/results/e153/manifest.json",
+        "moe/results/e153/plan.json",
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e153_harness.py",
+      "sha256": "ae463a28e129fe3ba6a3613d9783201698b2175719c82a24a87f944ebb2c2b97",
+      "size_bytes": 6637,
+      "local_imports": [
+        "e150_native.py"
+      ],
+      "frozen_references": [
+        "moe/results/e153/manifest.json",
+        "moe/results/e153/plan.json",
+        "moe/results/e155/manifest_A.json",
+        "moe/results/e155/manifest_B.json",
+        "moe/results/e155/manifest_P.json",
+        "moe/results/e155/plan.json",
+        "moe/results/e156/artifact_seal.json",
+        "moe/results/e156/manifest.json",
+        "moe/results/e156/plan.json",
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json",
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json",
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json",
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e153_plot.py",
+      "sha256": "f463c7ac0ea9cb969e63391067233d3f07a5e87e20e8b880b925479518ab871d",
+      "size_bytes": 2642,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e153_run.py",
+      "sha256": "6d3aa14fe20b2902035483c94d2201009dbae664ec4a23111b66ed29c7399579",
+      "size_bytes": 15678,
+      "local_imports": [
+        "e150_native.py",
+        "e153_data.py",
+        "e153_harness.py"
+      ],
+      "frozen_references": [
+        "moe/results/e153/manifest.json",
+        "moe/results/e153/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e153_source_effects.py",
+      "sha256": "96ec6cf3e98622370d9cf025d360eee05acefaefcc6439af54876cccb261505f",
+      "size_bytes": 4208,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e153_verify_results.py",
+      "sha256": "59f6e19734d6728179a41a666144bec9f296acebdc79f220af37ae7d0ccf46ed",
+      "size_bytes": 7651,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e154_analyze.py",
+      "sha256": "6094be90211d1dd061752e22e7c56a098d385e0eeb98ec027b024fe917d17626",
+      "size_bytes": 6817,
+      "local_imports": [
+        "e150_native.py",
+        "e151_native.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e154_assets.py",
+      "sha256": "888a17da9798f2ae4edd2b30f797caa2c2b77d8a5b3bd3bbe045fe93447e779c",
+      "size_bytes": 3038,
+      "local_imports": [
+        "e150_prepare_assets.py"
+      ],
+      "frozen_references": [
+        "moe/results/e154/manifest.json",
+        "moe/results/e154/plan.json",
+        "moe/results/e155/manifest_A.json",
+        "moe/results/e155/manifest_B.json",
+        "moe/results/e155/manifest_P.json",
+        "moe/results/e155/plan.json",
+        "moe/results/e156/artifact_seal.json",
+        "moe/results/e156/manifest.json",
+        "moe/results/e156/plan.json",
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json",
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json",
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e154_native.py",
+      "sha256": "aca56b8c0da5cbb1dc420eaf8edcc8b0a8818e6214def6f8abb3cfd10664878d",
+      "size_bytes": 15436,
+      "local_imports": [
+        "e150_native.py",
+        "e151_native.py",
+        "e154_assets.py"
+      ],
+      "frozen_references": [
+        "moe/results/e154/manifest.json",
+        "moe/results/e154/plan.json",
+        "moe/results/e155/manifest_A.json",
+        "moe/results/e155/manifest_B.json",
+        "moe/results/e155/manifest_P.json",
+        "moe/results/e155/plan.json",
+        "moe/results/e156/artifact_seal.json",
+        "moe/results/e156/manifest.json",
+        "moe/results/e156/plan.json",
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json",
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json",
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e154_plot.py",
+      "sha256": "1e5c7ca449d2700468fa5c63ae40850060157bd5295e24c7dfc7de92e5981745",
+      "size_bytes": 2485,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e154_provenance.py",
+      "sha256": "b381a9aa3607be48e4e047c6106f475a8893ec72f3f4cd9ce335ab7c94345995",
+      "size_bytes": 2734,
+      "local_imports": [
+        "e154_assets.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e154_verify_results.py",
+      "sha256": "b7df5a4dc21eb1b5ffcb9864b84ce39d6cd961b9f61a96f7dc4bac196a679bed",
+      "size_bytes": 4669,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e155_dependency_patterns.py",
+      "sha256": "d033e2a43dd6447a295887cc949fe321d1662db63c627d2bec4ada0835c95ebb",
+      "size_bytes": 8301,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e155_native.py",
+      "sha256": "e44191ee3f659a81c09efda56a1921a0ad59338e75807cd37b125729ad8f6b9a",
+      "size_bytes": 15421,
+      "local_imports": [
+        "e150_native.py",
+        "e151_native.py",
+        "e153_harness.py",
+        "e154_native.py"
+      ],
+      "frozen_references": [
+        "moe/results/e155/manifest_A.json",
+        "moe/results/e155/manifest_B.json",
+        "moe/results/e155/manifest_P.json",
+        "moe/results/e155/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e155_plot.py",
+      "sha256": "26be5dc8fdd3d94c6cdff5652d5184c489fdce65ff32c42ecb31ad84da3bf971",
+      "size_bytes": 2498,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e155_verify_results.py",
+      "sha256": "d60a3651985547f06a39dbd59113d1a1023fd82b9ccbc671c9b47d2d759246ed",
+      "size_bytes": 6688,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e156_analyze.py",
+      "sha256": "cbb7f0549b01e883589c4da559f81708ff53646a28287ab4ec74d06f6e95a428",
+      "size_bytes": 9714,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e156/artifact_seal.json",
+        "moe/results/e156/manifest.json",
+        "moe/results/e156/plan.json",
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json",
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e156_loading.py",
+      "sha256": "71e537f62ffac62cf1d303a6e48330326282c991e087a57760d0252427b82127",
+      "size_bytes": 5104,
+      "local_imports": [
+        "e150_native.py",
+        "e154_native.py"
+      ],
+      "frozen_references": [
+        "moe/results/e156/artifact_seal.json",
+        "moe/results/e156/manifest.json",
+        "moe/results/e156/plan.json",
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json",
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json",
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e156_plot.py",
+      "sha256": "1325f38b04a19935721063dfee8dac701d3951d3fb988e7407975b561489f228",
+      "size_bytes": 5421,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e156_run.py",
+      "sha256": "0fa128e6d34a129e308d4870818af59812a1ef517b1f3e75dcb142e4e1cebe6f",
+      "size_bytes": 17282,
+      "local_imports": [
+        "e150_native.py",
+        "e151_native.py",
+        "e153_harness.py",
+        "e154_native.py",
+        "e156_analyze.py",
+        "e156_loading.py"
+      ],
+      "frozen_references": [
+        "moe/results/e156/artifact_seal.json",
+        "moe/results/e156/manifest.json",
+        "moe/results/e156/plan.json",
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json",
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e156_transfer_contrasts.py",
+      "sha256": "9b9a06a745d92d4f945f326ecfa5e7d39ba237bacdde325f2aa216d91c49c3cc",
+      "size_bytes": 5302,
+      "local_imports": [
+        "e156_analyze.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e157_analyze.py",
+      "sha256": "667e2f2b3f7460e7c1060815f0ed1598b5ffbdc046adf23d6b883af2085f220e",
+      "size_bytes": 10647,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e157_plot.py",
+      "sha256": "f87c9a1a9b0ffd1797f31114819480f3007aeb37283650872e6381c47f8a819c",
+      "size_bytes": 6146,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e157_research_chain_plot.py",
+      "sha256": "59e17219955333fd54b5e06c332b8f9777c86a354ee02ac2efca2ea9094c0671",
+      "size_bytes": 6098,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e157_run.py",
+      "sha256": "a4fb5c529dcc4199449589f7aead045cb9c0bdbc770162059085f95cdd2e5fa3",
+      "size_bytes": 21130,
+      "local_imports": [
+        "e156_run.py",
+        "e157_analyze.py"
+      ],
+      "frozen_references": [
+        "moe/results/e157/artifact_seal.json",
+        "moe/results/e157/manifest.json",
+        "moe/results/e157/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e157_shared_effects.py",
+      "sha256": "b1e83b5b9f826bd05b32b897222067e7c00ef01ccdd152ba9b7636b91b0317a7",
+      "size_bytes": 2066,
+      "local_imports": [
+        "e157_analyze.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e158_analyze.py",
+      "sha256": "fecc072d7475cd1cd85ba9d57d5ca82e52c6bf4064b3739b50bde3f5e15f001d",
+      "size_bytes": 18627,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e158_data.py",
+      "sha256": "21f081a23ec548bf2fd9758dce38c99260efc22bef36db555057cd1828f821be",
+      "size_bytes": 11689,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e158_engine.py",
+      "sha256": "6ff1e84b63d4866f6deb3d6c642df4d49b8d8fc0e76a39dd92fcbc2b88173a52",
+      "size_bytes": 13828,
+      "local_imports": [
+        "e144145_common.py",
+        "e156_loading.py"
+      ],
+      "frozen_references": [
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e158_full_analyze.py",
+      "sha256": "97f993a4f5a1043ba3bbc3a9feeccb1e142e981cf32cc592ba5e82709277eaaa",
+      "size_bytes": 19501,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e158_full_engine.py",
+      "sha256": "796ada6389824666e2e27bc5dacfc974aa4ed93ec556afac793127664ac2a171",
+      "size_bytes": 12446,
+      "local_imports": [
+        "e144145_common.py",
+        "e156_loading.py",
+        "e158_engine.py"
+      ],
+      "frozen_references": [
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e158_full_run.py",
+      "sha256": "312c3e1081e8d4ae9da2718c00ec86c61d7d70661403f1a37081e6376f89222f",
+      "size_bytes": 22048,
+      "local_imports": [
+        "e156_run.py",
+        "e158_data.py",
+        "e158_full_analyze.py",
+        "e158_full_engine.py",
+        "e158_run.py"
+      ],
+      "frozen_references": [
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e158_readout_diagnostic.py",
+      "sha256": "e91a1401bdbb3fa12766d7058df754e0291d2e8e187574769338fd2becdb7c1f",
+      "size_bytes": 2261,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e158_run.py",
+      "sha256": "3a490f3ad6260ac611ef47fc4b6411a4aff085b1649ad7882d9c0cea41ce18fe",
+      "size_bytes": 19601,
+      "local_imports": [
+        "e156_run.py",
+        "e158_analyze.py",
+        "e158_data.py",
+        "e158_engine.py"
+      ],
+      "frozen_references": [
+        "moe/results/e158/full_forward/plan.json",
+        "moe/results/e158/plan.json",
+        "moe/results/e158/plan_v1_before_matched_removal.json",
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e158_whole_analyze.py",
+      "sha256": "5945b485a0bafab408bc1fe055cdcebb81888707b112a33c20929538e7f35929",
+      "size_bytes": 12405,
+      "local_imports": [
+        "e158_analyze.py"
+      ],
+      "frozen_references": [
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e158_whole_engine.py",
+      "sha256": "96069d474a9db80467831ac5d708b90dff89ec25d33472269cbe04e7680c5600",
+      "size_bytes": 9832,
+      "local_imports": [
+        "e144145_common.py",
+        "e156_loading.py",
+        "e158_engine.py",
+        "e158_full_engine.py"
+      ],
+      "frozen_references": [
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e158_whole_key_plot.py",
+      "sha256": "b83882485160bed33dd5af7972c52fd10d07e91830f2a56f1eace9b4769844e4",
+      "size_bytes": 3489,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e158_whole_plot.py",
+      "sha256": "63c5197ebdca529c51602674044da8f10e9b1df109f16736030e747dc093c093",
+      "size_bytes": 6357,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e158_whole_run.py",
+      "sha256": "550502fd0bc2860e9bdbea9fdf1b5e95b82efd0c617b43c0f232a12a661e3e1f",
+      "size_bytes": 15129,
+      "local_imports": [
+        "e158_full_run.py",
+        "e158_whole_analyze.py",
+        "e158_whole_engine.py"
+      ],
+      "frozen_references": [
+        "moe/results/e158/whole_path/artifact_seal.json",
+        "moe/results/e158/whole_path/manifest.json",
+        "moe/results/e158/whole_path/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e159_analyze.py",
+      "sha256": "a8e6c2fed12564abcd0233923f3539abb1f5b0b12b2107cae7f77a3afc0fc5c9",
+      "size_bytes": 15322,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e159_known_borders.py",
+      "sha256": "a9cd8b81a897a419a0db3dcfea1b286a97ecca783cca69a1933dc8edc9d1744b",
+      "size_bytes": 5063,
+      "local_imports": [
+        "e159_analyze.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e159_known_context_plot.py",
+      "sha256": "58a67ae2c1a290a4b2b524b03ff8d5caf47838daa35c5ea5f5fe6302d17fba03",
+      "size_bytes": 4948,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e159_known_lm_borders.py",
+      "sha256": "6c16e9aba2e97f2ac491604eb8704b322259d6d6af212e73b1d2df8e5cb6fc08",
+      "size_bytes": 4820,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e159_plot.py",
+      "sha256": "b8b18fa0177050e1e475e87f0f825d3e7d213c844fd4c4fa06df34ee2c4c3e1e",
+      "size_bytes": 6797,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e159_run.py",
+      "sha256": "3f2877dc68f48381f96e65305363c60750f071fb76080b30d21b6d0a2c491323",
+      "size_bytes": 17649,
+      "local_imports": [
+        "e156_run.py",
+        "e159_analyze.py"
+      ],
+      "frozen_references": [
+        "moe/results/e159/artifact_seal.json",
+        "moe/results/e159/manifest.json",
+        "moe/results/e159/plan.json",
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e160_analyze.py",
+      "sha256": "089809b5cab1db93101cc08b0873e4027b936625ff4d8482038e07b8256875a0",
+      "size_bytes": 13963,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e160_natural_effects.py",
+      "sha256": "1ba414b248a2248d167d73f09c14d6130cedf3f5a1d5ca08c86f9972e92b01cf",
+      "size_bytes": 2638,
+      "local_imports": [
+        "e160_analyze.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e160_plot.py",
+      "sha256": "3c0dc77997fad31612e032d5ce39d902d3e6f42e8a8121bad0fc91217cb1e7f1",
+      "size_bytes": 7203,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e160_retry.py",
+      "sha256": "77e23ad507958cfc66bcbc7ff9cbf8845fbe0e983974355b49dcd08d1de5d978",
+      "size_bytes": 4977,
+      "local_imports": [
+        "e160_run.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e160_run.py",
+      "sha256": "1a20a4e4eda83ca87231440d40d83f95d8241dab21e68b8baf85c83b6be06f74",
+      "size_bytes": 15015,
+      "local_imports": [
+        "e159_run.py",
+        "e160_analyze.py",
+        "e160_signal.py",
+        "mature_staged_loading.py"
+      ],
+      "frozen_references": [
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e160_signal.py",
+      "sha256": "e4b8163aba1bef35cb7fcc5c7408a269c7d401d42a187eec74d9eb477e6024d1",
+      "size_bytes": 7315,
+      "local_imports": [
+        "e156_run.py"
+      ],
+      "frozen_references": [
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e161_analyze.py",
+      "sha256": "476e64db353938c29d3ad06f0dd2be6427ebbec9d087827dd6cae45d32fc9af2",
+      "size_bytes": 11046,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e161_decode.py",
+      "sha256": "47ca21672e47250e940565af35a57dbbfe7e1389ac98f1a5680c5079be89946e",
+      "size_bytes": 3337,
+      "local_imports": [
+        "e158_data.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e161_plot.py",
+      "sha256": "780068865eefb9614423ef524d4b4ab6d6fab9432cc73593e1ab87ce7875f27f",
+      "size_bytes": 5047,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e161_run.py",
+      "sha256": "85b8155620278279a9b59ed7f2ba04a34f38ef7770ed0d50546bf6446f4d131a",
+      "size_bytes": 11924,
+      "local_imports": [
+        "e158_whole_run.py",
+        "e161_analyze.py",
+        "mature_staged_loading.py"
+      ],
+      "frozen_references": [
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e162_analyze.py",
+      "sha256": "f66f01853ac2ad5a129932c67d580d81cc879e1c8a691b19f3b17c7145786b42",
+      "size_bytes": 12453,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e162_finish_batch.py",
+      "sha256": "ce838ba03ac557903db92f0668ade50c4fc8694961070342a71bc183fbd654a4",
+      "size_bytes": 4515,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e162_plot.py",
+      "sha256": "08730d541bb145d345584d2c5bac6375984d0ce8b973041b83a0731f20a912f9",
+      "size_bytes": 7354,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e162_run.py",
+      "sha256": "db6e271ad50e1b7dd1fddfce4b59e9571e443ab0242a4563874b02ba0d943562",
+      "size_bytes": 20062,
+      "local_imports": [
+        "e150_native.py",
+        "e151_native.py",
+        "e152_normalizer.py",
+        "e153_harness.py",
+        "e162_analyze.py",
+        "full_course_assets.py"
+      ],
+      "frozen_references": [
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e163_analyze.py",
+      "sha256": "2265d30dd7388504f9fd62be9a7143196276dbf512c0cf51bf08e166a568a3a7",
+      "size_bytes": 13873,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e163_cpu_priority.py",
+      "sha256": "f0e94a488161ea6f54146ea758cb56e4f2db422908d084eccafd2338ec99a7b5",
+      "size_bytes": 2645,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e163_cross_resume.py",
+      "sha256": "e29b08cd6b6f145e83581789b567a62469dbef154bb02e7f60097a1504da8f89",
+      "size_bytes": 9563,
+      "local_imports": [
+        "e160_signal.py",
+        "e163_resource_wait.py"
+      ],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e163_finish.py",
+      "sha256": "d2f7dad3c3f5e378eefed96217b1ee8edb094efea1eaee5b7e28ba2ef20b9cd7",
+      "size_bytes": 3596,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e163_geometry.py",
+      "sha256": "3303cbc019720d8e6451ee43079d84a7741d1b2ff3e8e2ada31eec6536ae5214",
+      "size_bytes": 13132,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e163_metrics.py",
+      "sha256": "5c7c6f174c1b488fbefe80a6ac70e1aa82407d5576a13e2206c216fbeaecdb3e",
+      "size_bytes": 492,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e163_plot.py",
+      "sha256": "d51cdf1cd73a58f6896b12f3d8737562ba72de25a6ff122e9d7eb9bb2f132e16",
+      "size_bytes": 5226,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e163_resource_wait.py",
+      "sha256": "af6c276bce898aaebf82e54ad5f678011cf654b26b8bf8972130b1fd3d89425b",
+      "size_bytes": 3684,
+      "local_imports": [
+        "e163_run.py"
+      ],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e163_run.py",
+      "sha256": "2eca83bffd2059a10da1ae6671083dcd7ed6e1049ffaf14acc839e97cde67163",
+      "size_bytes": 26560,
+      "local_imports": [
+        "e150_native.py",
+        "e151_native.py",
+        "e153_harness.py",
+        "e156_loading.py",
+        "e163_analyze.py",
+        "e163_geometry.py",
+        "e163_metrics.py",
+        "e163_verify.py"
+      ],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e163_selftest.py",
+      "sha256": "2bc14690e93be8ed24e25d479911d0c7b87313425e8247f532af0708195426d7",
+      "size_bytes": 10727,
+      "local_imports": [
+        "e150_native.py",
+        "e151_native.py",
+        "e153_harness.py",
+        "e156_loading.py",
+        "e163_geometry.py",
+        "e163_metrics.py"
+      ],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/e163_verify.py",
+      "sha256": "38b4d79ef72ca84c99aa35a362ff68423405ba5aa602725f7fedba16d5698472",
+      "size_bytes": 15652,
+      "local_imports": [
+        "e163_analyze.py"
+      ],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/full_course_assets.py",
+      "sha256": "add38f9df7bb37e91114df878266168d3c89a9a04970e1d1629029dc41e7689e",
+      "size_bytes": 4267,
+      "local_imports": [
+        "e150_prepare_assets.py"
+      ],
+      "frozen_references": [
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/mature_staged_loading.py",
+      "sha256": "6cdf3b4237710703862eab38ea0110c9dea58d2a5eff8a75e1b91e1c1c02b6dc",
+      "size_bytes": 2539,
+      "local_imports": [
+        "e156_loading.py"
+      ],
+      "frozen_references": [
+        "moe/results/e160/plan.json",
+        "moe/results/e160/retry_1/artifact_seal.json",
+        "moe/results/e160/retry_1/manifest.json",
+        "moe/results/e160/retry_1/plan.json",
+        "moe/results/e161/artifact_seal.json",
+        "moe/results/e161/manifest.json",
+        "moe/results/e161/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/moe_measure.py",
+      "sha256": "799e37406b3b639766830bfdda1756a29f0e8aa1e10bf066b2c19ed09cc0bbe0",
+      "size_bytes": 6481,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/moe_research_spine.py",
+      "sha256": "c502ca52259bb44842acfbfbc1f8ecde280a7e23337328e35b420e7a4b35b858",
+      "size_bytes": 7330,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/recompute_discussion_20261026.py",
+      "sha256": "fa5dce23d4d934da32094225e07782158002ef6369d9e3a5ff4f58d216a9b39a",
+      "size_bytes": 10587,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/reproduce.py",
+      "sha256": "1286469ea170b00a88b96d2f4255e697289cbfed0e32c0946337435d2a425220",
+      "size_bytes": 3443,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/restore_mature_staging.py",
+      "sha256": "17829498508c76f217ed1a0cead10dcbc29428990c139aa7e70948ba20a8de67",
+      "size_bytes": 1254,
+      "local_imports": [
+        "stage_mature_local.py"
+      ],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/seal_e163.py",
+      "sha256": "4ccb8e8c60e9e9d03caeb2c5840b5b2b8b6962f00d92ebafb2928c1b6e5b6cf7",
+      "size_bytes": 6315,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/stage_full_course.py",
+      "sha256": "7e003c6b54721c1a5668979d90401d98b8ba8166571116af4404038dd44fa7c3",
+      "size_bytes": 5582,
+      "local_imports": [
+        "full_course_assets.py"
+      ],
+      "frozen_references": [
+        "moe/results/e162/artifact_seal.json",
+        "moe/results/e162/manifest.json",
+        "moe/results/e162/plan.json",
+        "moe/results/full_course_assets_2026-10-28/asset_manifest.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/stage_mature_local.py",
+      "sha256": "a08e11fc8e59f6914760a63b08e0caf76a062ced9a2d300903b633a954bc9426",
+      "size_bytes": 5869,
+      "local_imports": [],
+      "frozen_references": [],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    },
+    {
+      "path": "moe/scripts/supervised_process.py",
+      "sha256": "2f74df9331da658162a1e98393bd79db6ac636c829b7abb4c720f76ab104a086",
+      "size_bytes": 3052,
+      "local_imports": [],
+      "frozen_references": [
+        "moe/results/e163/artifact_seal.json",
+        "moe/results/e163/attempt_1_KL_reduction/plan.json",
+        "moe/results/e163/manifest_A.json",
+        "moe/results/e163/manifest_B.json",
+        "moe/results/e163/manifest_F.json",
+        "moe/results/e163/manifest_P.json",
+        "moe/results/e163/manifest_cross.json",
+        "moe/results/e163/plan.json"
+      ],
+      "decision": "KEEP: scientific source, dependency or historical reproduction"
+    }
+  ],
+  "script_count": 198,
+  "scripts_with_frozen_reference": 88,
+  "deletion_candidates": [
+    {
+      "path": "moe/scripts/__pycache__/e123_frozen_moe.cpython-312.pyc",
+      "size_bytes": 78527,
+      "sha256": "3e1fdd30d0c987f428a0666811c1a5118dbb53e2969a6e17016034c1876152ea",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e144145_analyze.cpython-312.pyc",
+      "size_bytes": 22726,
+      "sha256": "dd941249faf14322222389ffea28f2c2062d78de0fd0080efcc0ec0379fc65d7",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e144145_common.cpython-312.pyc",
+      "size_bytes": 36662,
+      "sha256": "b87ec736c2eef773ee663e122b877a842e91ae188eec62b5e1fb6c746936275f",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e150_data.cpython-312.pyc",
+      "size_bytes": 8950,
+      "sha256": "251928c4429027e03b8da68239c97e69a03dcc61e80d7caed56511fc0b545300",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e150_native.cpython-312.pyc",
+      "size_bytes": 49674,
+      "sha256": "4a3f26f6dfa1ca3c53d0c50f08d1f4a72b5199d83d94a6e91df64affb0668a8b",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e150_partial_mask_test.cpython-312.pyc",
+      "size_bytes": 5941,
+      "sha256": "5bc0fa5a85d4e0d6036678462f634cf2b55dcfefb70de4a51cbda265ded65509",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e150_prepare_assets.cpython-312.pyc",
+      "size_bytes": 6885,
+      "sha256": "41dd9ce7617509643810972f4b22722cabcb70603b88921f4021ff0fe1ea409f",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e150_restricted.cpython-312.pyc",
+      "size_bytes": 9663,
+      "sha256": "8ce7978901cdd1044e0c8c3f599d67b04284cbc0734f8444910cb0ff20272bdd",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e151_native.cpython-312.pyc",
+      "size_bytes": 30396,
+      "sha256": "3dd5ec19171db7d119281ead26f66a52033d734114e5a1aba0de019ef7d16e56",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e153_harness.cpython-312.pyc",
+      "size_bytes": 14220,
+      "sha256": "1198a97ff4a94fb027880c1c60daead277c6e8c314d3ba673be8808709e0624a",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e154_assets.cpython-312.pyc",
+      "size_bytes": 5446,
+      "sha256": "765f3c90f570d6c6368cc97c0d5c40798872dddb2a212220a82d9c4591421064",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e154_native.cpython-312.pyc",
+      "size_bytes": 30652,
+      "sha256": "dd865935a357f448643cbf27e19d63a2fab95e7da130255275481dcbd2592731",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e156_loading.cpython-312.pyc",
+      "size_bytes": 7812,
+      "sha256": "a14613c55226f26408581a116eaa449a1265b3aa47df11d4ad76c4026816a8c4",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e160_signal.cpython-312.pyc",
+      "size_bytes": 13849,
+      "sha256": "0786b85a155b9f2fbd2e9bcfb9b675c12a537aafe125060678402ac758bb5596",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e163_analyze.cpython-312.pyc",
+      "size_bytes": 26518,
+      "sha256": "df3b8d236481945ee0281f25a1acf8d3ef2293e7d84e88a80a094016bceac3cf",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e163_geometry.cpython-312.pyc",
+      "size_bytes": 21044,
+      "sha256": "4b7e07c1c8b98cb59bce859d2792c283131506cb080a654cda1fe75bd68c015d",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e163_metrics.cpython-312.pyc",
+      "size_bytes": 1016,
+      "sha256": "b7dfe03d0b24389c8d904540b1f01e08f7e9e5467fb8eb25e07b509ea5577b2b",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e163_resource_wait.cpython-312.pyc",
+      "size_bytes": 6041,
+      "sha256": "b62654f2c7726381b1310a71353bd94fd3c954f8e0d8372c528959ccd5881418",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e163_run.cpython-312.pyc",
+      "size_bytes": 44288,
+      "sha256": "84749b9b8cc1caff54751c01edc0f34e653e94f769b6ef206a6b606e8d5d7d7b",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e163_verify.cpython-312.pyc",
+      "size_bytes": 31319,
+      "sha256": "b231597b089804b5a991e809ca141e8d7c873cb8cab5a16b6088a9bf1c0b0abb",
+      "replacement": "moe/scripts/*.py"
+    }
+  ],
+  "empty_directory_candidate": "experiments/",
+  "protected": "All checkpoints, HF cache, raw arrays, original experiment/failure cards, frozen numerical sources and public-source archives",
+  "E163_all20_numerical_sources_unchanged": true,
+  "changes": [
+    {
+      "action": "MOVE sections",
+      "source": "CLAIMS.md historical heads table and pre-E136 retractions",
+      "target": "heads/CLAIMS.md",
+      "reason": "Separate closed heads evidence from current MoE claim; numeric values/grades/retractions preserved; C14 shown first"
+    },
+    {
+      "action": "MOVE sections",
+      "source": "PAIN_LOG.md P01–P14 and historical suite audit",
+      "target": "heads/PAIN_LOG.md",
+      "reason": "Current MoE pain log contains P15–P33 only; old failures/retractions preserved"
+    },
+    {
+      "action": "REWRITE entry",
+      "path": "moe/README.md",
+      "reason": "Three claims first; define symbols and model paths; move detailed process/numerics to original cards; one navigation table"
+    },
+    {
+      "action": "REPLACE obsolete snapshot",
+      "removed": "moe/notes/GPT_PHASE_SUMMARY_E120-E142.md",
+      "replacement": "moe/notes/CONTROLLED_E120_E142.md",
+      "preserved_original": "Git 6ccee4ea:moe/notes/GPT_PHASE_SUMMARY_E120-E142.md",
+      "reason": "Retain distinct controlled windows, four-cohort tables, variance/fit/support distinctions and corrections; remove obsolete pause/current/next-step duplication; incoming links repaired"
+    },
+    {
+      "action": "ADD navigation",
+      "path": "moe/notes/README.md",
+      "reason": "Separate current positioning, reading provenance and historical scientific inputs"
+    },
+    {
+      "action": "REORDER navigation",
+      "path": "moe/experiments/INDEX.md",
+      "reason": "Current native C14 evidence first, bridge second, controlled history last; all44 original rows retained"
+    },
+    {
+      "action": "CONSOLIDATE rules",
+      "path": "AGENTS.md",
+      "reason": "Remove repeated E160/E162/E163 chronology, retain user authorization, scientific habits,4-GPU budget and numerical/cache lessons"
+    },
+    {
+      "action": "REPAIR link",
+      "path": "logs/2026-10-23.md",
+      "reason": "Deleted handoff cited from historical log now links to exact pre-deletion Git version"
+    },
+    {
+      "action": "SYNC registry progress",
+      "path": "workbench/README.md",
+      "reason": "Update only MoE progress description and date; formal PROPOSED status and other ACTIVE assignments unchanged"
+    },
+    {
+      "action": "ADD CPU evidence entry",
+      "path": "moe/scripts/reproduce.py",
+      "reason": "Add E156 and spine group (E156/E159/E162/E163) with the existing frozen analyzers/auditors; no model work"
+    },
+    {
+      "action": "ADD evidence navigation",
+      "path": "moe/results/README.md",
+      "reason": "Map each core claim to complete summary/raw provenance/audit and explain actual retry/inheritance scope"
+    }
+  ],
+  "deleted_regenerable_files": [
+    {
+      "path": "moe/scripts/__pycache__/e123_frozen_moe.cpython-312.pyc",
+      "size_bytes": 78527,
+      "sha256": "3e1fdd30d0c987f428a0666811c1a5118dbb53e2969a6e17016034c1876152ea",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e144145_analyze.cpython-312.pyc",
+      "size_bytes": 22726,
+      "sha256": "dd941249faf14322222389ffea28f2c2062d78de0fd0080efcc0ec0379fc65d7",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e144145_common.cpython-312.pyc",
+      "size_bytes": 36662,
+      "sha256": "b87ec736c2eef773ee663e122b877a842e91ae188eec62b5e1fb6c746936275f",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e150_data.cpython-312.pyc",
+      "size_bytes": 8950,
+      "sha256": "251928c4429027e03b8da68239c97e69a03dcc61e80d7caed56511fc0b545300",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e150_native.cpython-312.pyc",
+      "size_bytes": 49674,
+      "sha256": "4a3f26f6dfa1ca3c53d0c50f08d1f4a72b5199d83d94a6e91df64affb0668a8b",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e150_partial_mask_test.cpython-312.pyc",
+      "size_bytes": 5941,
+      "sha256": "5bc0fa5a85d4e0d6036678462f634cf2b55dcfefb70de4a51cbda265ded65509",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e150_prepare_assets.cpython-312.pyc",
+      "size_bytes": 6885,
+      "sha256": "41dd9ce7617509643810972f4b22722cabcb70603b88921f4021ff0fe1ea409f",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e150_restricted.cpython-312.pyc",
+      "size_bytes": 9663,
+      "sha256": "8ce7978901cdd1044e0c8c3f599d67b04284cbc0734f8444910cb0ff20272bdd",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e151_native.cpython-312.pyc",
+      "size_bytes": 30396,
+      "sha256": "3dd5ec19171db7d119281ead26f66a52033d734114e5a1aba0de019ef7d16e56",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e153_harness.cpython-312.pyc",
+      "size_bytes": 14220,
+      "sha256": "1198a97ff4a94fb027880c1c60daead277c6e8c314d3ba673be8808709e0624a",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e154_assets.cpython-312.pyc",
+      "size_bytes": 5446,
+      "sha256": "765f3c90f570d6c6368cc97c0d5c40798872dddb2a212220a82d9c4591421064",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e154_native.cpython-312.pyc",
+      "size_bytes": 30652,
+      "sha256": "dd865935a357f448643cbf27e19d63a2fab95e7da130255275481dcbd2592731",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e156_loading.cpython-312.pyc",
+      "size_bytes": 7812,
+      "sha256": "a14613c55226f26408581a116eaa449a1265b3aa47df11d4ad76c4026816a8c4",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e160_signal.cpython-312.pyc",
+      "size_bytes": 13849,
+      "sha256": "0786b85a155b9f2fbd2e9bcfb9b675c12a537aafe125060678402ac758bb5596",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e163_analyze.cpython-312.pyc",
+      "size_bytes": 26518,
+      "sha256": "df3b8d236481945ee0281f25a1acf8d3ef2293e7d84e88a80a094016bceac3cf",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e163_geometry.cpython-312.pyc",
+      "size_bytes": 21044,
+      "sha256": "4b7e07c1c8b98cb59bce859d2792c283131506cb080a654cda1fe75bd68c015d",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e163_metrics.cpython-312.pyc",
+      "size_bytes": 1016,
+      "sha256": "b7dfe03d0b24389c8d904540b1f01e08f7e9e5467fb8eb25e07b509ea5577b2b",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e163_resource_wait.cpython-312.pyc",
+      "size_bytes": 6041,
+      "sha256": "b62654f2c7726381b1310a71353bd94fd3c954f8e0d8372c528959ccd5881418",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e163_run.cpython-312.pyc",
+      "size_bytes": 44288,
+      "sha256": "84749b9b8cc1caff54751c01edc0f34e653e94f769b6ef206a6b606e8d5d7d7b",
+      "replacement": "moe/scripts/*.py"
+    },
+    {
+      "path": "moe/scripts/__pycache__/e163_verify.cpython-312.pyc",
+      "size_bytes": 31319,
+      "sha256": "b231597b089804b5a991e809ca141e8d7c873cb8cab5a16b6088a9bf1c0b0abb",
+      "replacement": "moe/scripts/*.py"
+    }
+  ],
+  "deleted_bytes": 451629,
+  "removed_empty_experiments_directory": true,
+  "markdown_files_checked": 279,
+  "broken_markdown_links": [],
+  "numerical_sources_after_unchanged": true,
+  "changed_python_files": [
+    "moe/scripts/reproduce.py"
+  ],
+  "core_documents_after": {
+    "README.md": {
+      "bytes": 4235,
+      "lines": 40
+    },
+    "moe/README.md": {
+      "bytes": 5290,
+      "lines": 57
+    },
+    "CLAIMS.md": {
+      "bytes": 31076,
+      "lines": 85
+    },
+    "PAIN_LOG.md": {
+      "bytes": 20881,
+      "lines": 114
+    },
+    "AGENTS.md": {
+      "bytes": 7048,
+      "lines": 55
+    },
+    "moe/notes/CONTROLLED_E120_E142.md": {
+      "bytes": 4697,
+      "lines": 54
+    }
+  },
+  "claim_grades_before_after_equal": true,
+  "reproduction_receipt": "moe/results/directory_reproduction_2026-10-29.json",
+  "current_gpu_jobs": 0
+}

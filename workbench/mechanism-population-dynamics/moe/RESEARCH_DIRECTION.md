@@ -68,7 +68,7 @@ EMO已经有文档专家池、域级选择与子集再整合；MirrorMoE/OptEP�
 
 ## 6. 历史平台、数学边界与证据保存
 
-E120–E142提供真实接口、残差必要性、组件与总输出稳定性分离的起点。E144真实重组NLL损伤+.002061，E145历史相关bank兼容性，E146分组收益被E147强gate-only对照解释；不把几何抵消当预测因果，也不声称发现超路由内容联盟。E148/E149短程原生次序分叉有预测响应，未检出强配套破坏；它与成熟EMO的差别不能只归于成熟度，因为架构/协议同时不同。完整[实验索引](experiments/INDEX.md)与[旧阶段证据](notes/GPT_PHASE_SUMMARY_E120-E142.md)保留。
+E120–E142提供真实接口、残差必要性、组件与总输出稳定性分离的起点。E144真实重组NLL损伤+.002061，E145历史相关bank兼容性，E146分组收益被E147强gate-only对照解释；不把几何抵消当预测因果，也不声称发现超路由内容联盟。E148/E149短程原生次序分叉有预测响应，未检出强配套破坏；它与成熟EMO的差别不能只归于成熟度，因为架构/协议同时不同。完整[实验索引](experiments/INDEX.md)与[旧阶段证据](notes/CONTROLLED_E120_E142.md)保留。
 
 数学上，固定gate的跨输入局部算子A=SB、有限cohort的C−V重组关系与共同参考KL二阶近似各有不同假设；它们不自动推出真实NLL、合法自由gate重组、唯一模块或训练规律。原完整公式与接口推导以[整理前固定版本§3–4](https://github.com/Nhckdvrl/ssn-group-papaer/blob/09903add4dd2eff8500dc30ecf7a86993de5ec86/workbench/mechanism-population-dynamics/moe/RESEARCH_DIRECTION.md#3-已核实事实以及它们尚未支持的解释)保留；[可识别性范围](notes/IDENTIFIABILITY_SCOPE_2026-10-26.md)、E145实际router梯度核对及原结果不改。OLMoE的64选8全分母接口与EMO的127选7+shared接口分别处理。
 

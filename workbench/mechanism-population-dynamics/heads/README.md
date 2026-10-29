@@ -7,3 +7,5 @@
 
 - 来龙去脉、站得住与撤回的结论、“为什么反复不够好”的诊断：[HISTORY.md](HISTORY.md)。
 - 两个主题共用 [scripts/](scripts/) 与 [results/](results/)（按 `eNN` 命名；脚本以本目录为根）。
+
+- [历史主张与撤回](CLAIMS.md)、[历史痛点](PAIN_LOG.md)：从工作台总账迁移，保留原数字与结项状态。
