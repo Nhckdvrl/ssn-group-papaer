@@ -58,7 +58,7 @@ E120–E142是受控可重复分解的起点，摘要见[历史受控窗口](not
 
 低预算choice CE同向改善1.1386 [.8431,1.4676]；正确率单列，不把概率质量收益说成已提高答题能力。新旧面板同时改变任务与validation校准样本数，不能把幅度差单归任务；区间不是训练seed总体。
 
-[完整矩阵与逐学科结果](results/e164/summary.json)；[全部来源对比图](results/e164/figures/source_effects_NLL.png)；[固定路由的共享作用图](results/e164/figures/shared_partner_role.png)。13238数值/13548元数据独立公式复算最大差7.99e−15，旧LL/KL、回放对角、因果前缀及来源终态全部通过。1.444648 GPU·时，峰值55.112GB，最多1卡，监督exit0，0新训练/下载。源码43aee97a、plan43877611…048a7与raw SHA见[manifest](results/e164/manifest.json)、[资产入口](ASSETS.md)。
+[完整矩阵与逐学科结果](results/e164/summary.json)；[全部来源对比图](results/e164/figures/source_effects_NLL.png)；[固定路由的共享作用图](results/e164/figures/shared_partner_role.png)。13238数值/13548元数据独立公式复算最大差7.99e−15，旧LL/KL、回放对角、因果前缀及来源终态全部通过。1.444648 GPU·时，峰值55.112GB，最多1卡，监督exit0，0新训练/下载。源码43aee97a、plan43877611…048a7与raw SHA见[manifest](results/e164/manifest.json)、[资产入口](ASSETS.md)。结果提交48f30265，[封存凭证](results/e164/artifact_seal.json)逐项核对90个实文件，保留精确源码/输入与原始结果。
 
 ```bash
 ~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py E164 all
