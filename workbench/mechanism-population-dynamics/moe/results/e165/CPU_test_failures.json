@@ -1,0 +1,18 @@
+{
+  "stage": "before numerical freeze and any mature-model forward",
+  "GPU_seconds": 0,
+  "failures": [
+    {
+      "kind": "source_syntax",
+      "file": "e165_selftest.py",
+      "error": "unmatched parenthesis in native oracle assertion",
+      "fixed": "split known expected scalar from allclose assertion"
+    },
+    {
+      "kind": "actual_native_hook_interface",
+      "file": "e165_core.py",
+      "error": "TypeError: cannot create weak reference to dict object",
+      "fixed": "copy.copy preserves the original hook registry container type; real zero hook exercised by CPU native test"
+    }
+  ]
+}

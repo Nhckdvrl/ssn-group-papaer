@@ -15,6 +15,7 @@
 | 用途 | 入口/边界 |
 |---|---|
 | 所有当前论证的CPU复核 | `reproduce.py spine verify`；原审计器不变，不提高证据等级 |
+| 本轮论文关键图 | `moe_paper_figures.py`；35项既有估计/原CI的三幅图，逐项来源在`paper/figures/figure_sources.json`；无新检验，英文论证在`paper/main.tex` |
 | 论文总览图 | `moe_research_spine.py`；只组织E156/E159/E163已有估计及原CI，sidecar给来源SHA和JSON路径 |
 | E164当前数值程序 | `e164_run.py`的prepare/preflight/run、`e164_routing.py`及统计/校验；21份源码冻结43aee97a，plan/source不随运行修改。CPU入口只读完整结果，真实GPU任务由`e164_finish.py`的耐久链监督且已exit0；不得覆盖完成目录 |
 | E163原始数值程序 | `e163_run.py`、`e163_geometry.py`、`e163_metrics.py`等20文件冻结c31e4b0e；不以目录整理改数值代码 |

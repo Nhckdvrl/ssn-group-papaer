@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "CUDA_initialized": false,
+  "native_controls": [
+    {
+      "dtype": "torch.float32",
+      "source_cube_and_native_corners_exact": true,
+      "real_route_identity_mask_permutation_and_prefix_exact": true,
+      "constant_gate_no_false_route_effect": true,
+      "wrong_hook_order_rejected": true,
+      "native_known_answer_before": 0.5482940077781677,
+      "native_known_answer_after": 1.0965880155563354
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "source_cube_and_native_corners_exact": true,
+      "real_route_identity_mask_permutation_and_prefix_exact": true,
+      "constant_gate_no_false_route_effect": true,
+      "wrong_hook_order_rejected": true,
+      "native_known_answer_before": 0.546875,
+      "native_known_answer_after": 1.09375
+    }
+  ],
+  "independent_statistics_fixture": {
+    "status": "passed",
+    "numeric_comparisons": 24940,
+    "metadata_comparisons": 25383,
+    "maximum_absolute_difference": 1.7763568394002505e-15,
+    "independent_implementation": "Logaddexp candidate scoring; explicit26-condition coefficient vectors; subject draw lookup.",
+    "scope": "KL scalar aggregation checked; vocabulary distribution validated by native interface and original numerical program, not reconstructed here."
+  },
+  "source_sha256": {
+    "e123_frozen_moe.py": "f874f0675ab4423173a542c6765d2504aab33cd2a28c7aa412b71f9308936c80",
+    "e144145_analyze.py": "c17ae07babdc28398b9207313dc472274169a53b81a2164a6040e67ee28b083f",
+    "e144145_common.py": "997d1266260a86e3d0b86a353a9f3b1980cbff353986a4ee81a5de0c09697c92",
+    "e150_data.py": "58e3f24c0bd10199f75cb906788818539628f414e299ca3a875e4e6c30ff0f49",
+    "e150_native.py": "4e9c157e5b4cb61bf7ba0428df0967c09260cdda9a9a3e19f01762f810fba1e5",
+    "e150_restricted.py": "275a4c43150eb07e7ce8b7307ca8ebaeaa7d1dbe9fc9307877f4983f4d6d622c",
+    "e153_harness.py": "ae463a28e129fe3ba6a3613d9783201698b2175719c82a24a87f944ebb2c2b97",
+    "e163_metrics.py": "5c7c6f174c1b488fbefe80a6ac70e1aa82407d5576a13e2206c216fbeaecdb3e",
+    "e164_routing.py": "9f1fd72127e84be41942dd022b57a86d73dd75865bf66c939b097d9e0142ee40",
+    "e165_analyze.py": "682791b325c3cd0304ef9314986211a387dde0bfc5dd7360ee1f9edf2bee74da",
+    "e165_assets.py": "4950e01c21f23be90096f9d7b266652d4e8985b3352b309ac3ef8f7e7f2de2e3",
+    "e165_common.py": "c9314a2bb11a713df3c47ad10d9ab2e327715ae9cef1686e22424b54e9ec0994",
+    "e165_core.py": "147d10fb0b32cee0a906af0e8a72c1c00862d5dbfb9554971fba641564bc68df",
+    "e165_data.py": "df0c8b0c8f6af2dad5ded05c78e858bb4ef16cfa1e9e68a02e7eca929d26a712",
+    "e165_run.py": "3fc1f9e88d307457145697062472faea2400527479a5f1122157bcf3ef7f4f41",
+    "e165_selftest.py": "c989c87ef35fc2c8d659388c11e360c98428db74dfac5477dba249bcc72973d6",
+    "e165_verify.py": "ceeb3e4385d514698db5af74be443c41c0cdfabc317c9eba7cf7847a37814409",
+    "supervised_process.py": "2f74df9331da658162a1e98393bd79db6ac636c829b7abb4c720f76ab104a086"
+  },
+  "scope": "Synthetic native-interface and scoring controls only; no mature-model prediction results."
+}

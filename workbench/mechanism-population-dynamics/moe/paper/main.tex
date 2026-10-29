@@ -1,0 +1,153 @@
+\documentclass[10pt,twocolumn]{article}
+\usepackage[letterpaper,margin=0.75in]{geometry}
+\usepackage{amsmath,amssymb,graphicx,booktabs,hyperref,microtype}
+\setlength{\columnsep}{0.24in}
+\hypersetup{colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue}
+\title{Selectable Experts and Contextual Computation\\
+\large An evidence-based argument about learning history and MoE reuse}
+\author{Research argument draft --- not a submission}
+\date{29 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+What does learning to select expert subsets establish about the division of computation in a mixture-of-experts model?
+We distinguish three relationships: executing a useful subset inside a trained model, transporting a predictive property with a parameter package, and reusing that package's realized computation in another context.
+Across mature, architecture-matched public training paths, better selective execution coexists with stronger dependence on shared computation at similar intact quality.
+Source interventions identify routed functions that transport a low-budget likelihood advantage without transporting intact quality.
+On a fixed panel of 55 additional subjects, this advantage persists after clamping realized routes, while the removal cost of unchanged shared functions also increases.
+Thus, these effects cannot be explained solely by the routing changes induced by the transported functions.
+Cross-context replay of actual shared messages then reveals a prediction cost that largely survives local norm and projection correction.
+Together, the results characterize selectable computation through its learned production and use relationships, rather than through expert identity alone.
+The transported advantage concerns probability quality; an accuracy advantage remains unresolved.
+\end{abstract}
+
+\section{The question: what becomes modular?}
+Sparse activation makes a large function bank computationally affordable, but does not by itself specify how that bank divides a task.
+Training can constrain expert selection, and selective execution can retain useful task performance~\cite{emo}.
+The scientific question is what kind of computational organization this success identifies.
+Does a successful subset behave as an independently reusable collection of functions, or does its utility depend on relationships with the rest of the learned system?
+
+This question is compatible with cooperation being useful for deployment.
+Interaction-aware pruning already exploits cooperative structure~\cite{hope}, and retaining shared computation can preserve substantial performance during condensation~\cite{cdmoe}.
+Our target is therefore not a generic claim that experts interact.
+We ask how learning history changes the relationship between \emph{selection}, \emph{property transport}, and \emph{predictive dependence}, and use interventions to locate where these relationships are implemented.
+
+The evidence supports three connected statements.
+First, improved selective execution can coexist with greater reliance on shared computation.
+Second, the parameter package carrying the selective-execution advantage need not be the partner whose native deletion is most damaging.
+Third, unchanged functions---and even their realized messages---can have different predictive roles in different computational contexts.
+The realized-route intervention connects the second and third statements by excluding a routing-only explanation within the controlled receiver.
+
+\section{Objects, interventions, and evidence}
+We study four public mature paths from the EMO release~\cite{emo}: a standard pre-annealing parent $P$, standard annealing $A$, EMO annealing $B$, and full-course EMO $F$.
+These are architecture-matched public histories, not a verified population of independent initializations or an isolated timing treatment.
+Let $D$ denote backbone, attention and readout, $G$ the gate parameters, $R$ the routed expert functions, and $S$ the always-active shared functions.
+An $R/S$ intervention covers the corresponding suites in all 16 layers; it is not evidence for a smallest single-expert unit.
+
+For an intact loss $L$, we measure selection by the loss increase under a calibration-defined expert pool, alongside fixed random pools of the same size.
+We measure property transport by changing a parameter source while holding a common receiver fixed.
+We measure a function's predictive role by its removal effect in the specified system.
+These are operationally different questions, not alternative names for one modularity score.
+
+Gate parameters held fixed do not imply realized routing held fixed: changed expert outputs can change later hidden states and gate outputs.
+We therefore capture actual gate logits before the common pool mask and replay them while preserving the original softmax, top-$k$, multiplication, and accumulation program.
+This clamps both support and weights.
+If $z$ denotes a replayed trajectory, the shared role in that condition is
+\begin{equation}
+\Delta_S(R,z)=L(D_P,G_P,R,0;z)-L(D_P,G_P,R,S_P;z).
+\end{equation}
+Other responses remain endogenous.
+These interventions do not identify an isolated expert direct effect or a unique mediation percentage.
+
+Language-model measurements use 64 windows and 20 file clusters.
+The initial task panel contains 128 biology and mathematics questions.
+The route experiment adds a fixed 440-question panel: eight questions in each of the other 55 MMLU subjects, with separate validation calibration.
+The panels use different calibration sample counts, so between-panel magnitude differences cannot be assigned solely to task content.
+We report answer-token NLL, choice CE, accuracy, and output KL separately.
+Confidence intervals are paired input resampling intervals conditional on the models; they are not training-seed intervals.
+
+\section{Three results and their connection}
+\subsection{Selection improves while shared dependence grows}
+The late- and full-course EMO endpoints $B/F$ have intact text NLL $2.6218/2.6212$ and identical task raw accuracy $39.06\%$.
+Yet $F$ has lower selected-pool damage, while removing shared computation adds $1.8509$ more text NLL damage than in $B$ (95\% CI $[1.3311,2.3010]$).
+The corresponding task answer-NLL difference is $5.3112$; the raw-accuracy damage difference remains unresolved.
+Random-pool controls show that general robustness and useful selection coexist.
+The result is a measured coexistence of selectability and cooperation, not an assertion that cooperation obstructs selection (Figure~\ref{fig:native}).
+
+\begin{figure*}[t]
+\centering\includegraphics[width=\textwidth]{figures/01_selection_and_dependence.pdf}
+\caption{All three post-annealing paths, with intact quality, selected and random pool damage, and routed/shared removal effects separated. The groups are not connected as a training trajectory. Original paired file-cluster intervals are retained. Source estimates: E162/E163.}
+\label{fig:native}
+\end{figure*}
+
+\subsection{A property carrier also changes the role of an unchanged partner}
+In the common $P$ receiver, replacing $R_P$ by $R_B$ transfers a low-budget answer-NLL advantage on the original panel, whereas replacing shared functions alone does not transfer the same property.
+Full-quality transport fails: the original-panel full NLL increases $0.0802$ while low-budget NLL decreases $0.1882$.
+Holding $S_P$ fixed and changing $R$ increases its removal effect by $0.3386$.
+The function package that carries a useful operating property and the native necessary partner must therefore be identified separately.
+
+The larger subject panel strengthens this statement and locates its runtime implementation (Figure~\ref{fig:routes}).
+The natural low-budget NLL advantage is $0.4207$ ($[0.3221,0.5234]$).
+At fixed $P/B$ routes, the routed-function source effect remains an improvement of $0.2937/0.3824$, while the unchanged shared suite's removal cost increases $0.2891/0.1840$; all four intervals exclude zero.
+Routing still matters: the $B$ trajectory improves $R_B$ by a further $0.1270$, and the function--trajectory interaction is $-0.0887$ ($[-0.1242,-0.0500]$).
+The data support neither a routing-only explanation nor route-independent autonomous components.
+
+The choice CE advantage is $1.1386$ ($[0.8431,1.4676]$), but the raw accuracy difference is $+1.14$ percentage points ($[-2.27,4.55]$).
+Importantly, shared dependence here is measured in the full regime and the transported advantage in the low-budget regime.
+Their coexistence does not yet establish shared compensation as the cause of the budget advantage.
+
+\begin{figure*}[t]
+\centering\includegraphics[width=\textwidth]{figures/02_property_and_partner_under_fixed_routes.pdf}
+\caption{Two effects survive realized-route fixation on all 55 subjects. Left: changing only the routed function source improves low-budget likelihood while worsening full likelihood. Right: the same change increases the removal cost of unchanged shared functions. The actual support and weights are clamped; other response paths remain endogenous. Original subject-cluster intervals and accuracy boundary are shown. Source: E164.}
+\label{fig:routes}
+\end{figure*}
+
+\subsection{Realized messages retain context-dependent value}
+Function identity leaves production and use entangled.
+We therefore fix shared functions and cross their actual messages between routed-function contexts on the same input.
+Foreign messages have an average answer-NLL cost of $0.2605$ relative to their original pairing.
+Correcting the consumer's clean norm and residual projection reduces this cost only to $0.2459$ ($[0.2096,0.2819]$).
+The improvement is $0.0146$ ($[0.0050,0.0250]$), concentrated in biology rather than mathematics; choice CE and accuracy do not show equivalent recovery (Figure~\ref{fig:messages}).
+The tested local scalar interface does not account for most of the prediction mismatch.
+This is not a proof against richer learned alignment, nor does arbitrary direction destruction identify semantic content.
+
+\begin{figure*}[t]
+\centering\includegraphics[width=\textwidth]{figures/03_actual_message_reuse.pdf}
+\caption{Actual-message reuse after local correction. All 27 source--consumer--correction cells are retained in the underlying results. Norm and Gram corrections give modest answer-NLL recovery; the subject and choice-CE panels retain the heterogeneous outcomes. Source: E163.}
+\label{fig:messages}
+\end{figure*}
+
+\section{Position in the literature and next discriminating test}
+Expert specialization, cooperation, and reusable features have substantive precedents.
+EMO establishes a training route to selective deployment~\cite{emo}; HOPE demonstrates a deployment benefit from retaining cooperative expert structure~\cite{hope}; CD-MoE demonstrates effective condensation that retains shared computation~\cite{cdmoe}.
+Spectral decoupling changes parameter and gradient sharing and improves training~\cite{sdmoe}; its common matrices are not the same object as a replayed shared-expert message.
+Basic--refinement attribution already supplies real shared/routed ablations~\cite{basic}.
+Stitching provides genuine functional-feature transport after alignment~\cite{stitch}, while direct and invariance-aware matching clarify what successful alignment establishes~\cite{howstitch,invariance}.
+Our contribution is the combined identification of \emph{which function package carries a deployment property}, \emph{how an unchanged partner's role changes}, and \emph{which realized routes and message interfaces account for these effects} in mature MoE histories.
+
+The appropriate scale is a causal study of these relationships in mature systems, not a universal theory of single-expert semantic identities.
+The next registered test uses a second mature public lineage: OLMoE's 5.033T checkpoint and its ordinary 100B annealing endpoint~\cite{olmoe}.
+It compares intact and selected-pool quality with a full backbone--gate--expert source cross and a targeted realized-route cross.
+This architecture has no always-active shared expert, so the test does not invent a shared group to reproduce the original result.
+A compatible outcome is scientifically informative: it would weaken the hypothesis that any mature training change necessarily breaks component reuse.
+No result from this registered test is included in the present draft.
+
+\section{Traceability and remaining scope}
+All plots copy existing audited point estimates and original confidence intervals; their sidecar gives JSON paths and SHA256 for every value.
+The complete grids, reverse directions, accuracy results, failed attempts and numerical-source packages remain available.
+Identity replays, causal-prefix checks, source read-only checks and independent formula recomputation validate the measurement program; they do not substitute for an independent training population.
+The native formation trajectories, smallest reusable units, and the scope across mature lineages remain questions to investigate.
+This argument is anchored in observed separations and controlled pathways, without requiring them to be universal or treating a nearby method as a reason to abandon the scientific question.
+
+\begin{thebibliography}{9}
+\bibitem{emo} R. Wang et al. \emph{EMO: Pretraining Mixture of Experts for Emergent Modularity}. 2026. \url{https://arxiv.org/abs/2605.06663}.
+\bibitem{hope} A. M. Tseng et al. \emph{Higher-order pruning of experts in mixture-of-experts language models}. arXiv:2609.18916v3, 2026.
+\bibitem{cdmoe} M. Cao et al. \emph{Condense, Don't Just Prune}. TMLR, 2025; reading version arXiv:2412.00069v3.
+\bibitem{sdmoe} R. Huang et al. \emph{SD-MoE: Spectral Decomposition for Effective Expert Specialization}. ICML, 2026.
+\bibitem{basic} J. Li et al. \emph{Decoding Knowledge Attribution in Mixture-of-Experts: A Framework of Basic-Refinement Collaboration and Efficiency Analysis}. ACL, 2025.
+\bibitem{stitch} \emph{Transferring Linear Features Across Language Models With Model Stitching}. NeurIPS, 2025.
+\bibitem{howstitch} \emph{How Not to Stitch Representations to Measure Similarity}. AAAI, 2025.
+\bibitem{invariance} \emph{Grounding Functional Similarity by Invariance-Aware Model Stitching}. ICML, 2026; reading version arXiv:2505.20142v2.
+\bibitem{olmoe} N. Muennighoff et al. \emph{OLMoE: Open Mixture-of-Experts Language Models}. ICLR, 2025. \url{https://huggingface.co/allenai/OLMoE-1B-7B-0924}.
+\end{thebibliography}
+\end{document}

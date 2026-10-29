@@ -1,0 +1,574 @@
+{
+  "kind": "Post-hoc organization; no new model runs, scoring or statistical tests",
+  "sources": {
+    "e162": {
+      "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e162/summary.json",
+      "sha256": "ed0862013bcc1017161990187facfe0fb4006a6d7f324b6a054ec036da9cb7b3"
+    },
+    "e163": {
+      "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e163/summary.json",
+      "sha256": "95f4c7ae713445d32ba69a02981e8f4d45df9e9876b90b86bd38af2cb29c63e0",
+      "audit_sha256": "a8a32ce1f28c5ef121e8afcd7a2c6f805edaaf3e20c6a7811638f27a229448ba"
+    },
+    "e164": {
+      "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e164/summary.json",
+      "sha256": "b4f88e0aa60ef32c4b7c5e88c9d3049fc56498c562488b8151012005d4ea7d66",
+      "audit_sha256": "31247a7b15aa1689d3cc0f34391f78516f05c0b3a527dda135556cdac7b42806"
+    }
+  },
+  "estimates": {
+    "intact_A": {
+      "point": 2.5746057927012664,
+      "ci95": [
+        2.148304805119453,
+        2.970727007441342
+      ],
+      "source": "e163",
+      "json_path": [
+        "native",
+        "LM",
+        "nll",
+        "A",
+        "absolute",
+        "native"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "own_prefix_delta_NLL_A": {
+      "point": 1.2151486438890926,
+      "ci95": [
+        0.8699768193834173,
+        1.5030705169652208
+      ],
+      "source": "e162",
+      "json_path": [
+        "budget",
+        "A",
+        "pool",
+        "own_prefix_delta_NLL"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "random_mean_delta_NLL_A": {
+      "point": 2.707940838874116,
+      "ci95": [
+        2.5557433983659115,
+        2.8869833801824956
+      ],
+      "source": "e162",
+      "json_path": [
+        "budget",
+        "A",
+        "pool",
+        "random_mean_delta_NLL"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "R_zero_A": {
+      "point": 6.096203790735723,
+      "ci95": [
+        5.59015372700913,
+        6.712672882298546
+      ],
+      "source": "e163",
+      "json_path": [
+        "native",
+        "LM",
+        "nll",
+        "A",
+        "damage",
+        "R_zero"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "S_zero_A": {
+      "point": 1.0968719217539624,
+      "ci95": [
+        0.9371000652768788,
+        1.2497000850611621
+      ],
+      "source": "e163",
+      "json_path": [
+        "native",
+        "LM",
+        "nll",
+        "A",
+        "damage",
+        "S_zero"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "intact_B": {
+      "point": 2.621764561276186,
+      "ci95": [
+        2.1877534564906487,
+        3.0201241943543833
+      ],
+      "source": "e163",
+      "json_path": [
+        "native",
+        "LM",
+        "nll",
+        "B",
+        "absolute",
+        "native"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "own_prefix_delta_NLL_B": {
+      "point": 0.4766994702028415,
+      "ci95": [
+        0.32229281084831146,
+        0.5959296318560247
+      ],
+      "source": "e162",
+      "json_path": [
+        "budget",
+        "B",
+        "pool",
+        "own_prefix_delta_NLL"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "random_mean_delta_NLL_B": {
+      "point": 0.9095265850116316,
+      "ci95": [
+        0.7589785653690223,
+        1.1079544412948257
+      ],
+      "source": "e162",
+      "json_path": [
+        "budget",
+        "B",
+        "pool",
+        "random_mean_delta_NLL"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "R_zero_B": {
+      "point": 2.770499730929946,
+      "ci95": [
+        2.511178711635187,
+        3.062961146078349
+      ],
+      "source": "e163",
+      "json_path": [
+        "native",
+        "LM",
+        "nll",
+        "B",
+        "damage",
+        "R_zero"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "S_zero_B": {
+      "point": 2.9717392346299905,
+      "ci95": [
+        2.777032810885118,
+        3.2378779739440358
+      ],
+      "source": "e163",
+      "json_path": [
+        "native",
+        "LM",
+        "nll",
+        "B",
+        "damage",
+        "S_zero"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "intact_F": {
+      "point": 2.621217753703273,
+      "ci95": [
+        2.190432866988157,
+        3.0238313401525376
+      ],
+      "source": "e163",
+      "json_path": [
+        "native",
+        "LM",
+        "nll",
+        "F",
+        "absolute",
+        "native"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "own_prefix_delta_NLL_F": {
+      "point": 0.3278002085595138,
+      "ci95": [
+        0.23317265033990978,
+        0.40364628647756856
+      ],
+      "source": "e162",
+      "json_path": [
+        "budget",
+        "F",
+        "pool",
+        "own_prefix_delta_NLL"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "random_mean_delta_NLL_F": {
+      "point": 0.9338237939440907,
+      "ci95": [
+        0.7783742922162088,
+        1.135912075987663
+      ],
+      "source": "e162",
+      "json_path": [
+        "budget",
+        "F",
+        "pool",
+        "random_mean_delta_NLL"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "R_zero_F": {
+      "point": 2.509625087913159,
+      "ci95": [
+        2.165006420288938,
+        2.9749190206161673
+      ],
+      "source": "e163",
+      "json_path": [
+        "native",
+        "LM",
+        "nll",
+        "F",
+        "damage",
+        "R_zero"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "S_zero_F": {
+      "point": 4.822595622492317,
+      "ci95": [
+        4.424509389126691,
+        5.218767339367909
+      ],
+      "source": "e163",
+      "json_path": [
+        "native",
+        "LM",
+        "nll",
+        "F",
+        "damage",
+        "S_zero"
+      ],
+      "original_CI_field": "file_ci95"
+    },
+    "full_natural_B_minus_P": {
+      "point": 0.17460196605578568,
+      "ci95": [
+        0.11961294765768396,
+        0.23247457157176576
+      ],
+      "source": "e164",
+      "json_path": [
+        "fresh_primary",
+        "true_answer_token_NLL",
+        "full/natural_B_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "P32_natural_B_minus_P": {
+      "point": -0.4206985522932949,
+      "ci95": [
+        -0.523391113564534,
+        -0.3220819642731727
+      ],
+      "source": "e164",
+      "json_path": [
+        "fresh_primary",
+        "true_answer_token_NLL",
+        "P32/natural_B_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "full_R_B_minus_P_at_route_P": {
+      "point": 0.21167871857813417,
+      "ci95": [
+        0.15195288821919048,
+        0.2697730211652544
+      ],
+      "source": "e164",
+      "json_path": [
+        "fresh_primary",
+        "true_answer_token_NLL",
+        "full/R_B_minus_P_at_route_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "P32_R_B_minus_P_at_route_P": {
+      "point": -0.29367260906343956,
+      "ci95": [
+        -0.39038033167463826,
+        -0.2027232245540936
+      ],
+      "source": "e164",
+      "json_path": [
+        "fresh_primary",
+        "true_answer_token_NLL",
+        "P32/R_B_minus_P_at_route_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "full_R_B_minus_P_at_route_B": {
+      "point": 0.15020184061105138,
+      "ci95": [
+        0.08636265832512552,
+        0.2117319327654096
+      ],
+      "source": "e164",
+      "json_path": [
+        "fresh_primary",
+        "true_answer_token_NLL",
+        "full/R_B_minus_P_at_route_B"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "P32_R_B_minus_P_at_route_B": {
+      "point": -0.3823967598493752,
+      "ci95": [
+        -0.4746140777901851,
+        -0.2903667965735076
+      ],
+      "source": "e164",
+      "json_path": [
+        "fresh_primary",
+        "true_answer_token_NLL",
+        "P32/R_B_minus_P_at_route_B"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "shared_natural": {
+      "point": 0.36275446141948514,
+      "ci95": [
+        0.2703133847046287,
+        0.4611923474098409
+      ],
+      "source": "e164",
+      "json_path": [
+        "fresh_primary",
+        "true_answer_token_NLL",
+        "S_partner_change/natural"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "shared_fixed_route_P": {
+      "point": 0.2891017253674262,
+      "ci95": [
+        0.21036291352640546,
+        0.3645103144897959
+      ],
+      "source": "e164",
+      "json_path": [
+        "fresh_primary",
+        "true_answer_token_NLL",
+        "S_partner_change/fixed_route_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "shared_fixed_route_B": {
+      "point": 0.18397117284636724,
+      "ci95": [
+        0.11689473262623232,
+        0.24608714091958098
+      ],
+      "source": "e164",
+      "json_path": [
+        "fresh_primary",
+        "true_answer_token_NLL",
+        "S_partner_change/fixed_route_B"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "P32_accuracy": {
+      "point": 0.011363636363636364,
+      "ci95": [
+        -0.022727272727272728,
+        0.045454545454545456
+      ],
+      "source": "e164",
+      "json_path": [
+        "fresh_primary",
+        "raw_accuracy",
+        "P32/natural_B_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "P32_choice_CE": {
+      "point": -1.1385538725661108,
+      "ci95": [
+        -1.4676006987420913,
+        -0.843066881334106
+      ],
+      "source": "e164",
+      "json_path": [
+        "fresh_primary",
+        "choice_CE",
+        "P32/natural_B_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "message_raw": {
+      "point": 0.26052704313112274,
+      "ci95": [
+        0.2221468923355766,
+        0.2986000630172766
+      ],
+      "source": "e163",
+      "json_path": [
+        "cross",
+        "true_answer_token_NLL",
+        "matching_cost",
+        "raw"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "message_norm": {
+      "point": 0.24847228686484266,
+      "ci95": [
+        0.21298898572234962,
+        0.2829879000826289
+      ],
+      "source": "e163",
+      "json_path": [
+        "cross",
+        "true_answer_token_NLL",
+        "matching_cost",
+        "norm"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "message_gram": {
+      "point": 0.24592460372464414,
+      "ci95": [
+        0.20958041637593744,
+        0.28191618055545714
+      ],
+      "source": "e163",
+      "json_path": [
+        "cross",
+        "true_answer_token_NLL",
+        "matching_cost",
+        "gram"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "true_answer_token_NLL_gram_minus_raw_high_school_biology": {
+      "point": -0.029282039854967024,
+      "ci95": [
+        -0.04364133327586841,
+        -0.015658601457026064
+      ],
+      "source": "e163",
+      "json_path": [
+        "cross",
+        "true_answer_token_NLL",
+        "rule_contrasts",
+        "gram_minus_raw",
+        "per_subject",
+        "high_school_biology"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "true_answer_token_NLL_gram_minus_raw_high_school_mathematics": {
+      "point": 7.71610420098063e-05,
+      "ci95": [
+        -0.014454625251090735,
+        0.014341953116388464
+      ],
+      "source": "e163",
+      "json_path": [
+        "cross",
+        "true_answer_token_NLL",
+        "rule_contrasts",
+        "gram_minus_raw",
+        "per_subject",
+        "high_school_mathematics"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "true_answer_token_NLL_gram_minus_raw_None": {
+      "point": -0.014602439406478608,
+      "ci95": [
+        -0.024973313311094276,
+        -0.004967720116526391
+      ],
+      "source": "e163",
+      "json_path": [
+        "cross",
+        "true_answer_token_NLL",
+        "rule_contrasts",
+        "gram_minus_raw"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "choice_CE_gram_minus_raw_high_school_biology": {
+      "point": -0.10507626523371835,
+      "ci95": [
+        -0.1983412896995297,
+        -0.012332736100089827
+      ],
+      "source": "e163",
+      "json_path": [
+        "cross",
+        "choice_CE",
+        "rule_contrasts",
+        "gram_minus_raw",
+        "per_subject",
+        "high_school_biology"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "choice_CE_gram_minus_raw_high_school_mathematics": {
+      "point": 0.04327313948281357,
+      "ci95": [
+        -0.002306432108567968,
+        0.08828689388789228
+      ],
+      "source": "e163",
+      "json_path": [
+        "cross",
+        "choice_CE",
+        "rule_contrasts",
+        "gram_minus_raw",
+        "per_subject",
+        "high_school_mathematics"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "choice_CE_gram_minus_raw_None": {
+      "point": -0.030901562875452395,
+      "ci95": [
+        -0.08332719661619724,
+        0.017047884997219036
+      ],
+      "source": "e163",
+      "json_path": [
+        "cross",
+        "choice_CE",
+        "rule_contrasts",
+        "gram_minus_raw"
+      ],
+      "original_CI_field": "ci95"
+    }
+  },
+  "status": "complete",
+  "source_code_sha256": "83a4ae42a258941808a563878d048ecc1624d8be68cf573cc910aa7eb0038c83",
+  "no_new_model_runs": true,
+  "no_new_statistical_tests": true,
+  "scope": "Conditional input intervals; no initialization population or universal modularity claim.",
+  "figures": {
+    "01_selection_and_dependence.png": "a26d25f61cdfce65c33be08bc51b5bc55d3c57d888b6d1cbd5420bfcf276405b",
+    "01_selection_and_dependence.pdf": "524592cc53bb78585d3452e9f97a3148e810cec87254df46d47a19ded8c17c27",
+    "02_property_and_partner_under_fixed_routes.png": "b8875661a100fd2b83e600448c94f7f62c941aba83b2db78a2042b6b24753deb",
+    "02_property_and_partner_under_fixed_routes.pdf": "7354581d00d40c1ce4594a0143f2f958f3cf9ff51e96405a058b498fe7258d25",
+    "03_actual_message_reuse.png": "46a7bf20fc416af2c4f46fb06a7995f2521173636160199fa1664839d4a86c47",
+    "03_actual_message_reuse.pdf": "f54a309d6fea6af81de076905859990c76b5eebc76e1cf1cb11e4cc2ccb9e343"
+  }
+}

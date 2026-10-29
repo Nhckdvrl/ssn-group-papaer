@@ -17,6 +17,12 @@
 
 F=全程EMO 1T+50B，B=标准1T后EMO50B，A=标准1T+50B，P=标准1T退火前；原始初始化/优化链未核实。若恢复公共缓存，按上述repo/revision用现有huggingface_hub下载至`~/mechpop_cache/hf_emo_mature`，逐文件对照manifest SHA；不使用浮动main代替固定版本。
 
+## E165新增成熟谱系资产（准备完成，尚无模型结果）
+
+`allenai/OLMoE-1B-7B-0924`成熟父pin b99743a400844e532bec7ce4575d97a3a39dcd4d（step1200000-tokens5033B）与退火终点6d84c48581ece794365f2b8e9cfb043c68ade9c5。`results/e165/asset_manifest.json`逐片核对公开LFS；父新增BF16分片逻辑13,838,721,960 B，终点复用原`~/mechpop_cache/hf_olmoe/main/`。耐久视图在`~/mechpop_cache/hf_olmoe_mature/view_{P_b99743a4,A_6d84c485}/`；权重为指向耐久源的链接，没有另复制A权重，metadata是实文件。源码封存时需物化小文件，权重仍依manifest恢复。
+
+新全7节点cache/config清单在`~/mechpop_cache/cross_lineage_inventory_20261029.json`；它确认完整Qwen3-30B-A3B、OLMoE四旧端点及EMO，跨节点同NFS副本不算多个训练重复。范围为已查用户HF/研究缓存，不声称全机器文件系统无其他模型。E165原始输入在`~/mechpop_cache/e165_mature_olmoe_transport/questions.npz`，同E164的55科文本重新编码；全部440题/440cal保留，最大2736、不截断。预算/运行状态见唯一README，不把资产准备当科学结果。
+
 ## 耐久raw与冻结记录（按状态）
 
 | 实验 | 耐久读数 | 结果/来源与恢复 |
