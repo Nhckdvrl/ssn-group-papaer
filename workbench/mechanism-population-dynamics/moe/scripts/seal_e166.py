@@ -22,8 +22,9 @@ def main():
     if end['status']!='complete' or audit['status']!='passed' or end['plan_sha256']!=sha(ROOT/'plan.json'):
         raise ValueError('Completed, audited two-family result required')
     if sha(ROOT/'independent_audit.json')!=end['independent_audit_sha256']:raise ValueError('Audit changed')
-    for phase in ('chain','emo','olmoe'):
-        s=read(ROOT/('supervision_'+phase+'.json'))
+    supervision=end.get('supervision',{phase:'supervision_'+phase+'.json' for phase in ('chain','emo','olmoe')})
+    for name in supervision.values():
+        s=read(ROOT/name)
         if s['status']!='complete' or s['returncode']!=0:raise ValueError('Successful terminal exit missing')
     for f in ('emo','olmoe'):
         for kind in ('manifest','summary'):
@@ -38,7 +39,8 @@ def main():
         p=Path(item['path']).resolve()
         if sha(p)!=item['sha256']:raise ValueError('Pinned bytes changed: '+name)
         entries[name]=p
-    for name in (*plan['source_sha256'],'seal_e166.py','moe_paper_figures.py','reproduce.py'):
+    for name in (*plan['source_sha256'],'seal_e166.py','moe_paper_figures.py','reproduce.py',
+                 'e166_stage_emo.py','e166_emo_local.py','e166_resume.py'):
         entries['repo/moe/scripts/'+name]=WB/'moe/scripts'/name
     for p in ROOT.rglob('*'):
         if p.is_file() and p.suffix in ('.json','.log') and p.name!='artifact_seal.json':

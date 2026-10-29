@@ -55,6 +55,12 @@ NLL .1 nat/准确率5pp沿既有解释量级，仅是参考而非自动科学判
 
 fvcrc21物理1，外层监督PID2100137，先OLMoE再EMO；4GPU时累计cap含失败。GPU0已有他人作业，未使用。CPU准备和占用等待不占卡；实际参数/缓冲核对后才取得GPU。完成由两个worker exit0、完整矩阵、来源终态与独立复算共同确认。
 
+### 装载恢复（条件和数值27文件不变）
+
+OLMoE6格×440题完成并exit0，原生旧LL/KL及终态只读通过，GPU计时1056.54秒。随后EMO在canonical NFS的FP32→BF16按页读中阻塞，10:46:05 UTC确认PID2126323/PGID、无EMO GPU ledger/校准/预测后定向SIGTERM；原worker -15、原chain1完整保留，不追认为成功。该CPU尝试监督648.2秒，GPU0秒。
+
+`e166_stage_emo.py`对既有两份公开FP32源做节点NVMe实文件复制及全文件SHA；256MiB有界顺读probe为3.083秒，最多2个复制worker。`e166_emo_local.py`仅改`e156_loading._classes`返回的checkpoint目录，原生类、from_pretrained kwargs、CPU转换、参数/buffer指纹和旧预测精确guard不变。`e166_resume.py`只恢复未得到新读数的EMO并保留完整OLMoE，完成后调用冻结分析/校验。三份适配源码和新监督单列SHA；失败和CPU成本进入封存，不重跑已完成OLMoE。
+
 ## 结果（尚未取得）
 
 代码、CPU预检、输入冻结及监督已实际完成；新S-zero P32及GainP科学矩阵尚未完成。C14仍L2。
