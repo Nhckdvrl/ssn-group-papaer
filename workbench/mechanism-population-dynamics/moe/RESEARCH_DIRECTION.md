@@ -72,4 +72,4 @@ E120–E142提供真实接口、残差必要性、组件与总输出稳定性分
 
 数学上，固定gate的跨输入局部算子A=SB、有限cohort的C−V重组关系与共同参考KL二阶近似各有不同假设；它们不自动推出真实NLL、合法自由gate重组、唯一模块或训练规律。原完整公式与接口推导以[整理前固定版本§3–4](https://github.com/Nhckdvrl/ssn-group-papaer/blob/09903add4dd2eff8500dc30ecf7a86993de5ec86/workbench/mechanism-population-dynamics/moe/RESEARCH_DIRECTION.md#3-已核实事实以及它们尚未支持的解释)保留；[可识别性范围](notes/IDENTIFIABILITY_SCOPE_2026-10-26.md)、E145实际router梯度核对及原结果不改。OLMoE的64选8全分母接口与EMO的127选7+shared接口分别处理。
 
-本轮对象是一个公开成熟谱系及一项声明训练路径扩展。LM区间按文件簇、任务区间按学科内配对题，均非初始化总体；重复前向是地板而非训练重复。C10–C13仍L1，C14本设定内L2，独立NumPy复算不冒充L3新团队科学复现。新结果逐项追到[CLAIMS](../CLAIMS.md)、[ASSETS](ASSETS.md)、原卡、冻结source/plan/SHA、raw、失败费用与[日志](../logs/2026-10-28.md)；CPU重算统一见[scripts入口](scripts/README.md)。
+本轮对象是一个公开成熟谱系及一项声明训练路径扩展。LM区间按文件簇、任务区间按学科内配对题，均非初始化总体；重复前向是地板而非训练重复。C10–C13仍L1，C14本设定内L2，独立NumPy复算不冒充L3新团队科学复现。新结果逐项追到[CLAIMS](../CLAIMS.md)、[ASSETS](ASSETS.md)、原卡、冻结source/plan/SHA、raw、失败费用与[日志](../logs/2026-10-29.md)；CPU重算统一见[scripts入口](scripts/README.md)。

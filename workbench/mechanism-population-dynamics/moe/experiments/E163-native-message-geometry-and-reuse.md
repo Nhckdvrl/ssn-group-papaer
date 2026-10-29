@@ -125,5 +125,6 @@ Gram−raw的NLL差−.014602 [−.024973,−.004968]，norm−raw为−.012055 
 - 全量独立NumPy复算29650项数值、1376项元数据，最大绝对差1.421085e−14；72条真实cal向量/模型另作独立几何重建，误差界均通过。[independent_audit](../results/e163/independent_audit.json)。这是独立公式实现，非新研究团队/初始化复现，C14仍L2。
 - PAB共5988.833854 GPU秒，F共1604.284289，合计7593.118143秒=**2.109199484 GPU·时**，含3703.446324/92.109081秒两次失败；各组末次退出0，实际运行区间无重叠、峰值79.318603GB，0新训练/下载。CPU装载、资源guard中断及等待均在CUDA前，0GPU秒单列；全部监督、失败和账本保留。
 - 数值源c31e4b0e，冻结plan SHA `7493cb8207480a2773adb3147f1295f1e872a6d71bc127f648bce5deca4870cb`；资源等待器与指纹续跑器另有源码SHA。五份raw路径/SHA和实际监督退出见[manifest](../results/e163/manifest.json)。CPU入口：`~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py E163 all`。
+- 结果提交44b9e1ed；[封存凭证](../results/e163/artifact_seal.json)记录60,388,837 B源码/配置/输入/结果包，209个实文件逐项核对SHA，四个公共模型的Python/config/index均物化，权重按固定pin恢复。主图[research_spine](../results/e163/figures/research_spine.png)只组织既有估计及原CI，[sidecar](../results/e163/research_spine.json)逐项给来源，不新增统计检验。
 
 **本批决定：** 三条核心论证已有实测与最近邻定位，本项补上了一个主要竞争解释的直接检验；先形成论文论证、关键图和可复现封存，不自动追加E164、adapter优化或另一轮层/方向网格。更广成熟谱系与形成分叉仍是实质缺口，按其能否改变核心解释决定未来动作，见[PAPER_SHAPE](../PAPER_SHAPE.md)。
