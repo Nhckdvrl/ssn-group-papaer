@@ -10,7 +10,7 @@ import subprocess
 import sys
 
 WB=Path(__file__).resolve().parents[2]
-RESULTS={'E156':'e156','E158':'e158/whole_path','E159':'e159','E160':'e160/retry_1','E161':'e161','E162':'e162','E163':'e163','E164':'e164','E165':'e165'}
+RESULTS={'E156':'e156','E158':'e158/whole_path','E159':'e159','E160':'e160/retry_1','E161':'e161','E162':'e162','E163':'e163','E164':'e164','E165':'e165','E166':'e166'}
 SPINE=('E156','E159','E162','E163')
 
 
@@ -26,7 +26,8 @@ def commands(experiment,action):
         'E162':[['moe/scripts/e162_analyze.py','--analyze']],
         'E163':[['moe/scripts/e163_analyze.py','analyze']],
         'E164':[['moe/scripts/e164_analyze.py','analyze']],
-        'E165':[['moe/scripts/e165_analyze.py']]}
+        'E165':[['moe/scripts/e165_analyze.py']],
+        'E166':[['moe/scripts/e166_analyze.py']]}
     verify={
         'E156':[['moe/results/e156_independent_audit/audit.py','--raw',raw156,'--summary',r+'/summary.json']],
         'E158':[['moe/results/e158_whole_independent_audit/audit.py','--audit','--summary',r+'/summary.json','--output','moe/results/e158_whole_independent_audit/report.json']],
@@ -36,7 +37,8 @@ def commands(experiment,action):
         'E162':[['moe/results/e162_independent_audit/audit.py','--summary',r+'/summary.json','--output','moe/results/e162_independent_audit/report.json']],
         'E163':[['moe/scripts/e163_verify.py','verify']],
         'E164':[['moe/scripts/e164_verify.py','verify']],
-        'E165':[['moe/scripts/e165_verify.py']]}
+        'E165':[['moe/scripts/e165_verify.py']],
+        'E166':[['moe/scripts/e166_verify.py']]}
     plots={
         'E156':[['moe/scripts/e156_plot.py']],
         'E158':[['moe/scripts/e158_whole_plot.py'],['moe/scripts/e158_whole_key_plot.py']],
@@ -46,7 +48,8 @@ def commands(experiment,action):
         'E162':[['moe/scripts/e162_plot.py']],
         'E163':[['moe/scripts/e163_plot.py'],['moe/scripts/moe_research_spine.py']],
         'E164':[['moe/scripts/e164_plot.py']],
-        'E165':[['moe/scripts/moe_paper_figures.py']]}
+        'E165':[['moe/scripts/moe_paper_figures.py']],
+        'E166':[['moe/scripts/moe_paper_figures.py']]}
     stages={'stats':stats,'verify':verify,'plots':plots}
     chosen=('stats','verify','plots') if action=='all' else (action,)
     return [[python,'-B',*command] for stage in chosen for command in stages[stage][experiment]]
@@ -58,13 +61,13 @@ def main():
     p.add_argument('--show-commands',action='store_true');args=p.parse_args()
     experiments=SPINE if args.experiment=='spine' else (args.experiment,)
     for experiment in experiments:
-        path=WB/'moe/results'/RESULTS[experiment]/'manifest.json'
+        path=WB/'moe/results'/RESULTS[experiment]/('execution_complete.json' if experiment=='E166' else 'manifest.json')
         if not path.exists() or json.loads(path.read_text()).get('status')!='complete':
             raise SystemExit(experiment+' has no complete result. This entrypoint will not run or download a model.')
     selected=[command for experiment in experiments for command in commands(experiment,args.action)]
     if args.show_commands:
         print(json.dumps(selected,indent=2));return
-    env=dict(os.environ,OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1') if any(e in ('E163','E164','E165') for e in experiments) else None
+    env=dict(os.environ,OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1') if any(e in ('E163','E164','E165','E166') for e in experiments) else None
     for command in selected:subprocess.run(command,cwd=WB,env=env,check=True)
     print(args.experiment+' '+args.action+' complete; no model forward or training was launched')
 

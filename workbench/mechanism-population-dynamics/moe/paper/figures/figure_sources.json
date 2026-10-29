@@ -17,7 +17,8 @@
     },
     "e165": {
       "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e165/summary.json",
-      "sha256": "d763c3595a7dd3199de4409885854a90e727260d0952c9e11f4106d010c49d4b"
+      "sha256": "d763c3595a7dd3199de4409885854a90e727260d0952c9e11f4106d010c49d4b",
+      "audit_sha256": "abbf4661646d45c3ceaf58df4abb6aa12b89fb1ef2641afb59587a29238b92e5"
     }
   },
   "estimates": {
@@ -263,6 +264,62 @@
         "S_zero"
       ],
       "original_CI_field": "file_ci95"
+    },
+    "same_facts_joint_P": {
+      "source": "e162",
+      "json_path": [
+        "all_four_full_correct",
+        "models",
+        "P",
+        "joint_necessary"
+      ],
+      "point": 8,
+      "denominator": 40,
+      "original_pooled_point": 0.2,
+      "kind": "Selected common-full-success count; no confidence interval computed",
+      "selection": "All four native models answer correctly; all40 retained, 34 biology and6 mathematics."
+    },
+    "same_facts_joint_A": {
+      "source": "e162",
+      "json_path": [
+        "all_four_full_correct",
+        "models",
+        "A",
+        "joint_necessary"
+      ],
+      "point": 10,
+      "denominator": 40,
+      "original_pooled_point": 0.25,
+      "kind": "Selected common-full-success count; no confidence interval computed",
+      "selection": "All four native models answer correctly; all40 retained, 34 biology and6 mathematics."
+    },
+    "same_facts_joint_B": {
+      "source": "e162",
+      "json_path": [
+        "all_four_full_correct",
+        "models",
+        "B",
+        "joint_necessary"
+      ],
+      "point": 20,
+      "denominator": 40,
+      "original_pooled_point": 0.5,
+      "kind": "Selected common-full-success count; no confidence interval computed",
+      "selection": "All four native models answer correctly; all40 retained, 34 biology and6 mathematics."
+    },
+    "same_facts_joint_F": {
+      "source": "e162",
+      "json_path": [
+        "all_four_full_correct",
+        "models",
+        "F",
+        "joint_necessary"
+      ],
+      "point": 24,
+      "denominator": 40,
+      "original_pooled_point": 0.6,
+      "kind": "Selected common-full-success count; no confidence interval computed",
+      "selection": "All four native models answer correctly; all40 retained, 34 biology and6 mathematics."
     },
     "full_natural_B_minus_P": {
       "point": 0.17460196605578568,
@@ -797,18 +854,18 @@
     }
   },
   "status": "complete",
-  "source_code_sha256": "9592568903b8f1637846a6b73dc8513597238b86e34276bcf753d8edf7dc5b15",
+  "source_code_sha256": "8940b798648c117abe60b0f52935782bb2a43fcd62311e39a8b5d6fc9405476a",
   "no_new_model_runs": true,
   "no_new_statistical_tests": true,
   "scope": "Conditional input intervals; no initialization population or universal modularity claim.",
   "figures": {
-    "01_selection_and_dependence.png": "a26d25f61cdfce65c33be08bc51b5bc55d3c57d888b6d1cbd5420bfcf276405b",
-    "01_selection_and_dependence.pdf": "45e1c09933230f4fca19c8a532aa294cafe931ed328818cd69f848e07a315d5e",
+    "01_selection_and_dependence.png": "352e488b0d4ed5fb8fbd6575f83b59306659ccad2750fc3608918078efde6517",
+    "01_selection_and_dependence.pdf": "395ff0bb1fdef365524bd439daa35696771f309111733aa4d23d82190f886626",
     "02_property_and_partner_under_fixed_routes.png": "b8875661a100fd2b83e600448c94f7f62c941aba83b2db78a2042b6b24753deb",
-    "02_property_and_partner_under_fixed_routes.pdf": "36845634bc7de58d850e5219ed0ef8662956bb51c278ba583d4fe118079f0016",
+    "02_property_and_partner_under_fixed_routes.pdf": "f88bd502e60c3e12f6e864c4f129e4189e27f6c99bfbdc21036cf4ccae3f860a",
     "03_actual_message_reuse.png": "46a7bf20fc416af2c4f46fb06a7995f2521173636160199fa1664839d4a86c47",
-    "03_actual_message_reuse.pdf": "a6160c014c164a1ccfb58423968489b35af9e557db77bfbb1e4544d63c168102",
+    "03_actual_message_reuse.pdf": "95c1596873904152a778c389a2757d2add2e45af66f7127d72f7b02bb8541c43",
     "04_native_trends_and_transport.png": "e8e30a6eae6a1e57c586718fcc85bb6f9f917fb48de58aec356e654f40d1a9a8",
-    "04_native_trends_and_transport.pdf": "408f498d853b14801fc1e408b86688519b0d779ba2cec6727d2fc5325dd976b3"
+    "04_native_trends_and_transport.pdf": "046531e8284c65bcfa122706e6f7d061b1d3e499e517ec0695ed0659b79bd121"
   }
 }

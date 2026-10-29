@@ -1,6 +1,6 @@
 # 选择部署、合作与历史重用：本轮全文定位
 
-本轮新增完整阅读7篇164页，含附录/参考；另读OLMoE正式全文Appendix L两页，不声称读完61页。PDF版本、SHA、逐页覆盖及403边界见[阅读凭证](../../../workbench/mechanism-population-dynamics/moe/notes/PRIMARY_READING_ARGUMENT_2026-10-29.json)。未执行作者代码；DeepSeek v1仅下载，未计入全文阅读。
+本轮新增完整阅读8篇197页，含附录/参考；另读OLMoE正式全文Appendix L两页，不声称读完61页。PDF版本、SHA、逐页覆盖及403边界见[阅读凭证](../../../workbench/mechanism-population-dynamics/moe/notes/PRIMARY_READING_ARGUMENT_2026-10-29.json)。未执行作者代码；DeepSeek v1在E166冻结运行时补读完整33页。
 
 ## HOPE：Higher-order pruning of experts（2026-09-29，v3，32页）
 
@@ -87,6 +87,8 @@
 9. **增量/ownership：** conditioning干预的真实收益已有owner；本研究选择跨两个成熟谱系的同一预锁增益解释。
 
 ## 尺度选择与下一实验
+
+DeepSeekMoE v1的补读（[全文](https://arxiv.org/pdf/2401.06066v1)，33页）明确了另一重要owner。其idea是细粒度expert组合+shared隔离，目标为降低知识混杂/冗余；源于稀疏路由及DeepSpeed-MoE共享架构。2B/100B受控训练、16B/2T、SFT和145B初步训练均有真实任务证据。§4.5不是只描述：移除shared并增加一个routed后Pile loss1.808→2.414；逐token排除最高概率expert更敏感；减少active k及另训half-active模型也有实测。它支持共享作用与参数使用效率，未识别跨历史性质载体、同函数作用变化或实际消息背景。其per-token最高概率删除与我们的cal定义任务池是不同干预，不能把两条敏感性趋势直接叫矛盾。可借鉴的是同时报告完整质量、受限执行和真实替代；“shared不可替代”“低激活参数仍有效”不是我们新点。增量保持在学习历史选择的来源—使用关系，而不从删除损失推知识百分比。全文图13/14及附录训练曲线33已视觉核对；原文本图字形含伪formfeed，阅读按PDF实际页逐页提取，没有把95个控制字符分段冒充95页。
 
 三篇共同提示的主线是：**选择部署可以由合作支持，但选择成功没有唯一指定可迁移的性质载体或可重用的实际计算。** 当前证据连接成熟历史→参数来源→实际路由→消息使用；不改写成一般“专家有交互”，也不将三种关系定义成一条互斥坐标轴。
 

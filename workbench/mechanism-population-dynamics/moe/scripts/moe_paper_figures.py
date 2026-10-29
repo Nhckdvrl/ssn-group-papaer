@@ -1,4 +1,4 @@
-"""Organize existing audited estimates into three paper figures; no new tests."""
+"""Organize complete audited estimates into paper figures; no new tests."""
 import hashlib
 import json
 from pathlib import Path
@@ -24,7 +24,7 @@ def source(experiment):
     data = json.loads(path.read_text())
     assert data['status'] == 'complete'
     RECORD['sources'][experiment] = {'path': str(path), 'sha256': sha(path)}
-    if experiment in ('e163', 'e164'):
+    if experiment in ('e163', 'e164', 'e165'):
         audit_path = path.parent / 'independent_audit.json'
         audit = json.loads(audit_path.read_text())
         assert audit['status'] == 'passed' and audit['summary_sha256'] == sha(path)
@@ -58,12 +58,13 @@ def dot(ax, value, position, color, *, offset=0, label=None, horizontal=False):
 def save(fig, name, footer):
     fig.text(.5, .015, footer, ha='center', va='bottom', fontsize=9)
     fig.savefig(OUT / (name + '.png'), dpi=210, bbox_inches='tight')
-    fig.savefig(OUT / (name + '.pdf'), bbox_inches='tight')
+    fig.savefig(OUT / (name + '.pdf'), bbox_inches='tight', metadata={'CreationDate': None, 'ModDate': None})
     plt.close(fig)
 
 
 def native(s162, s163):
-    fig, axes = plt.subplots(1, 3, figsize=(11.6, 3.8))
+    fig, grid = plt.subplots(2, 2, figsize=(11.6, 7.3))
+    axes=list(grid.flat)
     names = ('A', 'B', 'F')
     labels = ('Std anneal\nA', 'Late EMO\nB', 'Full EMO\nF')
     for i, name in enumerate(names):
@@ -79,17 +80,34 @@ def native(s162, s163):
                                       ('S_zero', RED, .11, 'Remove shared suite')]:
             v = get(s163, 'e163', ['native', 'LM', 'nll', name, 'damage', key], key + '_' + name)
             dot(axes[2], v, i, color, offset=off, label=lab if i == 0 else None)
-    for ax, title, ylabel in zip(axes,
+    for ax, title, ylabel in zip(axes[:3],
             ('A  Intact prediction', 'B  Selective execution: 31R + S', 'C  Predictive dependence'),
             ('Text NLL (nats)', 'Budget NLL damage (nats)', 'Removal NLL damage (nats)')):
         ax.set(title=title, ylabel=ylabel, xticks=range(3), xticklabels=labels, xlim=(-.5, 2.5))
         ax.grid(axis='y', alpha=.18)
     axes[1].set_ylim(bottom=0); axes[2].set_ylim(bottom=0)
     axes[1].legend(frameon=False, fontsize=10); axes[2].legend(frameon=False, fontsize=10)
-    fig.subplots_adjust(left=.065, right=.99, bottom=.24, top=.88, wspace=.34)
+    counts=[]
+    for label in ('P','A','B','F'):
+        keys=['all_four_full_correct','models',label,'joint_necessary'];row=s162
+        for key in keys:row=row[key]
+        denominator=int(row['count']);value=int(round(row['pooled_point']*denominator))
+        assert denominator==40 and row['ci']=='not computed'
+        counts.append(value)
+        RECORD['estimates']['same_facts_joint_'+label]={'source':'e162','json_path':keys,
+            'point':value,'denominator':denominator,'original_pooled_point':row['pooled_point'],
+            'kind':'Selected common-full-success count; no confidence interval computed',
+            'selection':'All four native models answer correctly; all40 retained, 34 biology and6 mathematics.'}
+    axes[3].bar(range(4),counts,color=[GRAY,DARK,BLUE,RED],width=.58)
+    for i,value in enumerate(counts):axes[3].text(i,value+.6,str(value)+'/40',ha='center',fontsize=11)
+    axes[3].set(title='D  Same facts, different cooperation',ylabel='Both R and S necessary (count)',
+                xticks=range(4),xticklabels=['Parent\nP','Std anneal\nA','Late EMO\nB','Full EMO\nF'],ylim=(0,29))
+    axes[3].grid(axis='y',alpha=.18)
+    fig.subplots_adjust(left=.075, right=.99, bottom=.14, top=.93, hspace=.5, wspace=.32)
     save(fig, '01_selection_and_dependence',
-         'All three published post-annealing paths; no connecting training trajectory is implied.\n'
-         '64 language windows / 20 file clusters; original 95% input intervals. R/S denote all 16 layers.')
+         'A-C: all three post-annealing paths; 64 language windows /20 file clusters, original95% input CIs.\n'
+         'D: fixed40 questions correct in all four models; selected-set counts, no CI. R/S cover all16 layers.\n'
+         'B/F intact text NLL2.6218 /2.6212; task raw accuracy39.06% each.')
 
 
 def transport(s):
@@ -183,18 +201,64 @@ def external_lineage(s):
          'P16 accuracy is only22.05% /21.14%: this is a probability-quality property, not a deployable compressed model. C fixes G_P parameters, not realized routes.')
 
 
+def gain_source(family):
+    root=MOE/'results/e166';path=root/(family+'_summary.json')
+    end=json.loads((root/'execution_complete.json').read_text())
+    audit_path=root/'independent_audit.json';audit=json.loads(audit_path.read_text())
+    assert end['status']=='complete' and audit['status']=='passed'
+    assert audit['families'][family]['summary_sha256']==end['summary_sha256'][family]==sha(path)
+    label='e166_'+family
+    RECORD['sources'][label]={'path':str(path),'sha256':sha(path),'audit_sha256':sha(audit_path)}
+    return json.loads(path.read_text())
+
+
+def gain_transport(emo,olmoe):
+    fig,axes=plt.subplots(2,2,figsize=(11.7,7.6))
+    for ax,data,family,title in [(axes[0,0],emo,'emo','A  EMO: source and gain'),
+                                 (axes[0,1],olmoe,'olmoe','B  OLMoE: source and gain')]:
+        for p,policy in enumerate(('full','pool')):
+            for name,color,off,lab in [('donor_minus_P',BLUE,-.09,'Donor minus P'),
+                                       ('GainP_minus_P',RED,.09,'GainP minus P')]:
+                row=get(data,'e166_'+family,['true_answer_token_NLL',policy+'/S1/'+name],family+'_'+policy+'_'+name)
+                dot(ax,row,p,color,offset=off,label=lab if p==0 else None)
+        ax.set(title=title,ylabel='Answer NLL change (nats)',xticks=[0,1],xticklabels=['Full','P32' if family=='emo' else 'P16'])
+        ax.legend(frameon=False,fontsize=9)
+    ax=axes[1,0]
+    for p,policy in enumerate(('full','pool')):
+        for name,color,off,lab in [('donor_minus_P',BLUE,-.09,'Donor minus P'),('GainP_minus_P',RED,.09,'GainP minus P')]:
+            value=get(emo,'e166_emo',['true_answer_token_NLL',policy+'/S_role/'+name],'S_role_'+policy+'_'+name)
+            dot(ax,value,p,color,offset=off,label=lab if p==0 else None)
+    ax.set(title='C  EMO: change in unchanged S role',ylabel='Extra S-removal NLL cost',xticks=[0,1],xticklabels=['Full','P32'])
+    ax.legend(frameon=False,fontsize=9)
+    ax=axes[1,1]
+    for p,policy in enumerate(('full','pool')):
+        for s,color,off,lab in [('S1',BLUE,-.09,'Shared functions active'),('S0',DARK,.09,'Shared outputs zero')]:
+            value=get(emo,'e166_emo',['true_answer_token_NLL',policy+'/'+s+'/donor_minus_P'],'S_contribution_'+policy+'_'+s)
+            dot(ax,value,p,color,offset=off,label=lab if p==0 else None)
+    ax.set(title='D  EMO: same-budget shared intervention',ylabel='Donor minus P answer NLL',xticks=[0,1],xticklabels=['Full','P32'])
+    ax.legend(frameon=False,fontsize=9)
+    for ax in axes.flat:ax.axhline(0,color='.6',ls='--',lw=1);ax.grid(axis='y',alpha=.16);ax.set_xlim(-.4,1.4)
+    fig.subplots_adjust(left=.08,right=.99,top=.94,bottom=.12,hspace=.55,wspace=.35)
+    save(fig,'05_gain_and_partner_interventions',
+         'Same realized parent routes within each policy; all55 subjects /440 questions, paired95% subject-cluster CIs.\n'
+         'GainP: 16 fixed layer scalars from native P calibration responses; no predictive-loss fit. Tokenizers analyzed separately.')
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update({'font.size': 12, 'axes.titlesize': 13, 'axes.spines.top': False,
                          'axes.spines.right': False, 'pdf.fonttype': 42})
     s162, s163, s164, s165 = (source(e) for e in ('e162', 'e163', 'e164', 'e165'))
     native(s162, s163); transport(s164); message(s163); external_lineage(s165)
+    count=4
+    if (MOE/'results/e166/execution_complete.json').exists():
+        gain_transport(gain_source('emo'),gain_source('olmoe'));count=5
     RECORD.update(status='complete', source_code_sha256=sha(__file__),
                   no_new_model_runs=True, no_new_statistical_tests=True,
                   scope='Conditional input intervals; no initialization population or universal modularity claim.',
                   figures={p.name: sha(p) for p in OUT.glob('*') if p.suffix in ('.pdf', '.png')})
     (OUT / 'figure_sources.json').write_text(json.dumps(RECORD, indent=2) + '\n')
-    print(json.dumps({'status': 'complete', 'figures': 4, 'estimates': len(RECORD['estimates']),
+    print(json.dumps({'status': 'complete', 'figures': count, 'estimates': len(RECORD['estimates']),
                       'source_sidecar': str(OUT / 'figure_sources.json')}))
 
 

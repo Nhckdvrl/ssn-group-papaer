@@ -12,11 +12,11 @@
 | **性质载体与必要伙伴可以分离** | 共同P骨干/gate中，R_B单独使低预算答案NLL改善.1882 [.1155,.2641]，但完整NLL恶化.0802 [.0144,.1473]；S_B单独没有携带同样性质 | 原生删除最重要的组件，未必承载希望迁移的性质；性质迁移与完整能力重用需要分别验证。见[E156](experiments/E156-native-common-parent-function-cross.md) |
 | **同函数消息仍需合适的使用背景** | 固定S_P换R_B，其移除代价增加.3386 [.2354,.4439]；实际消息跨背景重用有.2605 NLL代价，norm/残差投影校正后仍为.2459 [.2096,.2819] | 函数身份、产生的消息及其使用关系是不同对象；所测局部几何校准只解除小部分配套代价。见[E159](experiments/E159-unchanged-function-partner-role.md)、[E160](experiments/E160-fixed-shared-signal-context-cross.md)、[E163](experiments/E163-native-message-geometry-and-reuse.md) |
 
-**论证中心：** 训练形成的不只是一张可选函数表，还包括这些函数如何产生消息、其他计算如何使用消息。可选择性、性质可迁移性和实际计算可重用性可以分离；研究要解释这份分离怎样形成、在什么条件下重复。
+**论证中心：学习历史塑造MoE的计算组织。** 可选择的函数怎样产生有用计算、性质由谁携带、预测依赖谁，构成同一个分工问题。三条结果、固定实际路由与跨成熟谱系的反向趋势，连接了部署、性质来源和协作使用；这份组织是进一步研究分工形成与重复性的直接入口。
 
 ![性质迁移与未改伙伴的作用](paper/figures/02_property_and_partner_under_fixed_routes.png)
 
-新主图有53项既有估计及原CI的[逐项来源](paper/figures/figure_sources.json)，无新统计检验。[英文论证稿](paper/main.pdf)连接三条结果、E164与E165；[选择与依赖图](paper/figures/01_selection_and_dependence.png)、[实际消息图](paper/figures/03_actual_message_reuse.png)补全证据顺序。
+新主图有57项既有估计及共同成功计数的[逐项来源](paper/figures/figure_sources.json)，CI沿用原统计，共同成功计数不补造CI；无新检验。[英文论证稿](paper/main.pdf)连接三条结果、E164与E165；[选择与依赖图](paper/figures/01_selection_and_dependence.png)、[实际消息图](paper/figures/03_actual_message_reuse.png)补全证据顺序。
 
 ## 模型和符号
 

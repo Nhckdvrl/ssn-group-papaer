@@ -15,7 +15,7 @@
 | 用途 | 入口/边界 |
 |---|---|
 | 所有当前论证的CPU复核 | `reproduce.py spine verify`；原审计器不变，不提高证据等级 |
-| 本轮论文关键图 | `moe_paper_figures.py`；53项既有估计/原CI的四幅图，逐项来源在`paper/figures/figure_sources.json`；无新检验，英文论证在`paper/main.tex` |
+| 本轮论文关键图 | `moe_paper_figures.py`；57项既有估计/共同成功计数的四幅图，逐项来源在`paper/figures/figure_sources.json`；无新检验，英文论证在`paper/main.tex` |
 | E165数值与复核 | `e165_run.py`及18份原源码冻结0fb295d6；`e165_local_adapter.py`只改已核SHA的NVMe路径。耐久链全部exit0，`reproduce.py E165 all`不运行模型 |
 | E166当前执行 | `e166_run.py`与`e166_finish.py`；27份数值/辅助源码冻结ef8f58c8。两谱系顺序单卡、plan累计cap4GPU时；完成目录不可覆盖，不以中途格更新科学结论 |
 | 论文总览图 | `moe_research_spine.py`；只组织E156/E159/E163已有估计及原CI，sidecar给来源SHA和JSON路径 |
