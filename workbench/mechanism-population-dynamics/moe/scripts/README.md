@@ -8,7 +8,7 @@
 
 `spine`依次覆盖E156（性质来源）、E159（伙伴作用）、E162（成熟路径分担）、E163（消息几何/重用）。`verify`执行原有独立公式校验；`stats`从raw重算统计，`plots`重绘，`all`依次执行三项；`--show-commands`列出实际命令。只复算已完成结果，不加载模型前向、训练或下载；任一manifest未完成会拒绝。
 
-单实验还支持E156、E158–E164，例如`reproduce.py E156 stats`、`reproduce.py E163 all`。E164在未完成时会拒绝CPU复现；现有`spine`仍只覆盖四项已完成核心证据，不因在途实验阻断旧结果复核。E150–E155/E157和早期窗口的精确入口保留在各原卡；[结果导航](../results/README.md)给出了当前证据路径。
+单实验还支持E156、E158–E164，例如`reproduce.py E156 stats`、`reproduce.py E163 all`。E164已完整完成，可用`reproduce.py E164 all`；现有`spine`保持四项原核心证据，不因新实验改变旧复核组成。E150–E155/E157和早期窗口的精确入口保留在各原卡；[结果导航](../results/README.md)给出了当前证据路径。
 
 ## 当前少量使用入口
 
@@ -16,6 +16,7 @@
 |---|---|
 | 所有当前论证的CPU复核 | `reproduce.py spine verify`；原审计器不变，不提高证据等级 |
 | 论文总览图 | `moe_research_spine.py`；只组织E156/E159/E163已有估计及原CI，sidecar给来源SHA和JSON路径 |
+| E164当前数值程序 | `e164_run.py`的prepare/preflight/run、`e164_routing.py`及统计/校验；21份源码冻结43aee97a，plan/source不随运行修改。CPU入口只读完整结果，真实GPU任务由`e164_finish.py`的耐久链监督且已exit0；不得覆盖完成目录 |
 | E163原始数值程序 | `e163_run.py`、`e163_geometry.py`、`e163_metrics.py`等20文件冻结c31e4b0e；不以目录整理改数值代码 |
 | E163实际续跑 | `e163_cross_resume.py`调用`e163_resource_wait.py`，只转换轨迹指纹键并有检查地继承native块；原worker终态未得与fresh范围见原卡 |
 | 成熟权重/源码恢复 | [ASSETS](../ASSETS.md)；`full_course_assets.py`、`restore_mature_staging.py`，固定HF pin/SHA |
@@ -23,7 +24,7 @@
 
 ## 为什么保留旧脚本
 
-当前198个Python文件中，88个被现存plan/manifest/封存来源直接引用；其他还包括生成、作图、失败方案与传递依赖。[目录核查](../results/directory_cleanup_2026-10-29.json)记录逐文件SHA、直接引用及本地imports。引用数不是自动删文件的判据；以日期搬动或删除会破坏动态import和旧source恢复。日常从上表进入，无需逐个浏览全部文件。
+2026-10-29整理快照中的198个Python文件，有88个被当时plan/manifest/封存来源直接引用；随后新增E164的研究、复核与封存入口。其他还包括生成、作图、失败方案与传递依赖。[目录核查](../results/directory_cleanup_2026-10-29.json)记录逐文件SHA、直接引用及本地imports。引用数不是自动删文件的判据；以日期搬动或删除会破坏动态import和旧source恢复。日常从上表进入，无需逐个浏览全部文件。
 
 E160正式结果在`results/e160/retry_1/`，统一入口使用独立auditor的正确`--root`接口；旧恢复器的audit包装错误保留为历史，不改GPU数值程序。E158只有`whole_path/`完成；旧单层扫描/原失败入口不能当有结果的复现路线。
 

@@ -128,7 +128,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 | workbench | 状态 | 目标会议 | 截稿 | 主张账本 | 上次人审 | 备注 |
 |---|---|---|---|---|---|---|
-| `mechanism-population-dynamics` | PROPOSED | — | — | `CLAIMS.md` | 2026-10-29 | **用户授权MoE研究：E144–E163已完成，目录整理与统一CPU复核已完成；E164数值源/输入冻结后在21/0单卡运行，检验函数来源与实际路由通路，55个新MMLU学科440题为主。真实预检及旧128题精确guard已过，尚无完整新主结果。总并发最多4卡，成熟阶段零新训练。** [唯一当前说明](mechanism-population-dynamics/moe/README.md)。头线仍CLOSED，其他ACTIVE不变。 |
+| `mechanism-population-dynamics` | PROPOSED | — | — | `CLAIMS.md` | 2026-10-29 | **用户授权MoE研究：E144–E164已完成，目录整理、全文再定位、统一CPU复核及新55学科440题实际路由交叉完成。固定实际路由仍保留低预算性质迁移与同函数伙伴作用差；当前整合三条论证，无自动GPU后继、0新成熟训练。** 总并发最多4卡，当前资源与结论见[唯一当前说明](mechanism-population-dynamics/moe/README.md)。头线CLOSED，PROPOSED及其他ACTIVE不变。 |
 | `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有原生GPU测量与训练**：R1–R5持续开放；固定数据充分训练seed0/1/2为38/19/36（各48）；当前方法入口按RESEARCH_PLAN与I14/E20执行，尚无已成立科学主张；不改变ACTIVE分配 |
 | `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有真实GPU底座**：E12四静态策略完整八任务评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审；I01/I02/I03仍为候选，主张均L0；实时数字见workbench状态页，不改变ACTIVE调度 |
 | `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | 继续保持正式探索线；截至 2026-10-11 已完成 E103，E104 的运行前设计已建立，尚未形成新机制主张；本次清理不改变其研究状态。 |

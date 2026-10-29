@@ -1,6 +1,6 @@
-# MoE论文形态与领域位置（2026-10-29：再定位及E163完成）
+# MoE论文形态与领域位置（2026-10-29：再定位及E164完成）
 
-本页记录C14三条已完成证据的价值、领域位置与论证中心，不改变正式状态或代替人的投稿品味。当前等级与运行阶段统一见[README](README.md)。用户本轮要求的目录整理已完成，E164据此进行了预注册和冻结执行；完整结果取得前，其运行路径解释仍是假说。
+本页记录C14三条已完成证据的价值、领域位置与论证中心，不改变正式状态或代替人的投稿品味。当前等级与运行阶段统一见[README](README.md)。用户要求的目录整理、五篇新增全文核对（100页及补充源码）与E164冻结执行/独立复算均完成。当前论证从分离的发现推进到实际路由通路的识别。
 
 ## 走到了哪里
 
@@ -11,6 +11,7 @@
 | E148/E149 | 原生短历史响应但无强配套断裂 | 区分预测变化与组织兼容；保留阴性，不追加剂量救结果 |
 | E150–E162 | 成熟训练路径的R/S实际依赖重排，任务成功次集、性质载体转移，固定函数/信号的伙伴作用 | 已进入原生系统的因果解释研究；仍非完整形成动力学/独立初始化总体 |
 | E163 | 同函数/同输入真实消息交叉，norm/Gram校正后仍保留大部分预测代价；四native方向代理全量保留 | 把消息配套推进到特征干预，削弱所测局部几何主解释；不是任意方向破坏即机制 |
+| E164 | 全部55个新MMLU学科440题，函数来源×实际路由交叉；固定路由仍保留预算NLL收益与同函数伙伴作用差 | 排除这两份分离仅由诱发的路由变化实现，同时保留函数–轨迹交互；并非孤立expert自治 |
 | 更高层缺口 | 其他成熟训练谱系是否重复这些分离，真正分叉中关系何时形成 | 不用更多同端点importance、层或方向网格冒充一般性/形成过程 |
 
 ## 价值与可认领的增量
@@ -40,7 +41,7 @@
 | 跨训练表示与参数兼容 | Stitching研究低容量对齐后的功能兼容；LMC-MoE含末层/全层及shared变体 | 不从raw graft损伤断言根本不同；区分具体性质的载体、原配和局部消息接口 |
 | 因果电路与条件作用 | Hydra/Self-Repair/CoAx/Dose/WISE与新MoE审计已有真实冻结/补位/集合干预 | 一般conditional importance非新点；成熟学习历史、正常成功系统与可重用消息结构是组合增量 |
 
-本轮新增9篇全文224页，连同此前16篇429页的定位，不把相邻工作当自动天花板。逐篇对象、方法、假设、idea来源与未核对项见[全文卡](../../../library/themes/moe-routing/GLOBAL_POSITIONING_FULL_READING_2026-10-28.md)及[ERC补读](../../../library/themes/moe-routing/ERC_FULL_READING_2026-10-29.md)。检索由venue corpus、最新arXiv与awesome/DailyArXiv交叉；最新镜像覆盖滞后，不声称穷尽。
+前批新增9篇全文224页，连同更早16篇429页的定位；本次再核对5篇100页及AAAI补充源码，不把相邻工作当自动天花板。逐篇对象、方法、假设、idea来源与未核对项见[全文卡](../../../library/themes/moe-routing/GLOBAL_POSITIONING_FULL_READING_2026-10-28.md)及[ERC补读](../../../library/themes/moe-routing/ERC_FULL_READING_2026-10-29.md)。检索由venue corpus、最新arXiv与awesome/DailyArXiv交叉；最新镜像覆盖滞后，不声称穷尽。
 
 ERC全文后更明确的界定：R_B在共同P gate参数下能带走选择性质，定位了受控干预中足够的参数包来源；其实际执行仍可能经过后续routing反馈。现有载体结论保留，不把它改写成“expert能力独立于真实路由”，也不因已有耦合训练方法就放弃对成熟实现与使用关系的识别。
 
@@ -53,15 +54,15 @@ ERC全文后更明确的界定：R_B在共同P gate参数下能带走选择性�
 - 主图1：E151/E152/E155/E162，同架构成熟历史、完整品质、随机/两分母、相同成功分担；完整主样本与次集并列。
 - 主图2：E156/E159，函数来源与必要伙伴的交叉，完整品质和受限性质分别画，不只展示有利格。
 - 主图3：E160/E163，固定函数/实际消息的原配、norm/Gram校正后保留的代价；实际27格完整获得。分科NLL/choice CE及正确率并列，不能只画有利的宏NLL。
-- 最强竞争解释：路由选择/一般鲁棒、局部幅度/投影、可学习坐标接口、原生共同适应。前两项已有直接区分；更丰富的坐标对齐与任务计算差异仍未区分，不能把raw或Gram失败称固有不相容。实际route反馈仍可参与性质迁移。
-- 证据标准：现有一个公开成熟谱系与全程路径扩展；64语言窗口/20文件簇、固定两学科128题；各项输入CI条件于模型，不是seed总体。全部条件、失败与来源只读保留。
+- 最强竞争解释：路由选择/一般鲁棒、局部幅度/投影、可学习坐标接口、原生共同适应。路由选择、实际路由响应、一般鲁棒和所测局部几何已有直接区分；更丰富的坐标对齐与任务计算差异仍未区分，不能把raw或Gram失败称固有不相容。实际路由响应参与、但不是性质迁移或伙伴作用变化的全部解释。
+- 证据标准：现有一个公开成熟谱系与全程路径扩展；64语言窗口/20文件簇、旧两学科128题，加E164新55学科440题；各项输入CI条件于模型，不是seed总体。全部条件、失败与来源只读保留。
 - 目标：优先ICML/ICLR/NeurIPS主会的机制/理解形态；语言计算内容若成为中心，可考虑ACL/EMNLP主会。不参考EACL、不投Findings，不据未核截止日排日程。
 
 ## 已有结果可支持的中心段落（英文草稿）
 
-以下只依据已完成E150–E163，不包含E164未知结果：
+以下依据已完成E150–E164；其中新任务扩展和实际路由控制由E164提供：
 
-> We ask how learning history shapes the division of computation in sparse MoE models. Using mature, architecture-matched checkpoints, we find that better selective execution can coexist with stronger dependence on shared computation, even at similar intact quality. Cross-source interventions show that the function package carrying a low-budget predictive advantage need not be the component most necessary in its native model. Holding shared-expert functions and then their realized messages fixed reveals that predictive roles depend on production and use, with substantial mismatch costs remaining after local geometric correction. These findings separate selective deployment, transportable properties, and reusable computation.
+> We ask how learning history shapes the division of computation in sparse MoE models. Using mature, architecture-matched checkpoints, we find that better selective execution can coexist with stronger dependence on shared computation, even at similar intact quality. Cross-source interventions show that the function package carrying a low-budget predictive advantage need not be the component most necessary in its native model. Holding shared-expert functions and then their realized messages fixed reveals that predictive roles depend on production and use, with substantial mismatch costs remaining after local geometric correction. On a predeclared panel of 55 additional subjects, both the low-budget probability-quality advantage and the increased reliance on unchanged shared functions persist when realized routes are held fixed, while route-source interactions further shape the advantage. These findings separate selective deployment, transportable properties, and reusable computation. Accuracy gains from the transported property remain unresolved.
 
 ## E163怎样改变判断，为什么此时收束
 
@@ -71,38 +72,26 @@ Native块同时保留全部模型、R/S/合计、mean与两个固定Gaussian，�
 
 现在增加更多方向、层、相似性或donor不会显著提升核心解释。当前优先把三条论证写清、给出可追溯主图与复现入口；E158/E161作为内容组合的真实边界，E144/E147作为受控分解及强对照，放在支持位置，不强行把所有历史卡拼成同一机制。
 
-## 最新选择：参数来源与实际运行通路（E164，尚无完整主结果）
+## E164后的论证中心与下一决定
 
-三条结果共同留下一个更有解释力的问题：**R_B这个参数包能带走预测性质，究竟是其专家响应本身，还是它改变的后续实际路由实现了该性质？** 固定G_P权重没有固定gate输出；这正是现有参数来源干预尚未分解的通路。这里指前向层间作用，不是层内循环或训练期反馈。
+**最强的新陈述：在固定实际路由的共同接收者中，迁入的R_B既携带更稳健的低预算预测，又提高对未改共享函数的依赖。** 更容易选择部署和更依赖伙伴可以在同一受控系统中共存，不只是比较两个checkpoint的重要性分数。
 
-新增全文核对把“可对齐、可用特征、原生使用关系”进一步分开，见[本轮全文比较](../../../library/themes/moe-routing/FUNCTIONAL_TRANSFER_AND_ROUTING_2026-10-29.md)。不据相邻工作存在压缩已有发现，也不把adapter修复本身当新机制。特别是同S_P的写入基底已经固定，任意学习一个补偿映射成功并不会单独解释原职责如何实现。
+55个新MMLU学科全部440题中，P32答案NLL自然改善.420699 [.322082,.523391]；固定P/B实际路由后仍改善.293673 [.202723,.390380] / .382397 [.290367,.474614]。因此该性质不要求R_B先改变后续实际路由才能实现。与此同时，同S_P的移除代价差自然为+.362754，固定P/B路由仍为+.289102 [.210363,.364510] / +.183971 [.116895,.246087]。不能再用“只是gate选了不同expert”解释全部伙伴作用变化。
 
-“固定路由时的函数来源作用”仍允许S_P、attention和其他响应随hidden state改变，并不是孤立expert的直接效应。两种真实轨迹都要保留：在某一条轨迹下收益消失，并不能单独证明收益由路由携带；完整2×2及交互才能区分来源作用与配合。
+路由并非无关或天然通用：B轨迹在R_B上额外改善P32 NLL .127026 [.087709,.166712]，在R_P上改善.038302 [−.004178,.081169]；交互−.088724 [−.124167,−.050014]。完整质量的自然NLL反而增加.174602 [.119613,.232475]。性质载体、完整品质与伙伴关系仍是不同对象。固定路由仍允许S、attention和hidden-state响应改变，不把剩余效应单归孤立expert或换算唯一中介比例。
 
-```mermaid
-flowchart LR
-  W["R参数来源 P / B"] --> R0["当前层专家输出"]
-  R0 --> H["后续hidden state"]
-  H -. "自然通路；回放时覆盖" .-> G["P gate的实际输出"]
-  T["P / B背景的真实轨迹"] --> G
-  H --> R1["后续专家响应"]
-  W --> R1
-  G --> R1
-  H --> S["S_P、attention和其余计算"]
-  R1 --> Y["真实预测与任务"]
-  S --> Y
-```
+P32 choice CE改善1.138554 [.843067,1.467601]，表明不只是真实答案绝对似然读数；raw准确率+1.14pp [−2.27,4.55]、per-char+1.36pp [−2.50,5.23]均未区分优势。主张围绕预测概率质量、选择部署和依赖关系，不写成已经提升任务准确率。所有逐科反向结果保留；新旧面板同时改变任务和cal样本数，不能把效应幅度变化单归于任务。
 
-本轮优先[E164](experiments/E164-runtime-routing-property-transport.md)：共同P D/G/S_P，交叉R_P/R_B与两种R背景产生的实际gate轨迹；比较完整品质、预算性质及固定轨迹下S_P伙伴作用。无需新训练，所有函数/轨迹来源保留，支持与门值合为一个明确通道，不把效应差叫唯一中介比例。
+### 与最近邻的具体距离
 
-同时把主分析放到此前未使用的55个MMLU学科，各8题，共440题；原两科128题只作旧接口精确guard与次分析。新mask仍用native P的validation逐层greedy算法，各科预锁8条cal，所有消费者共用；没有按held选择mask/学科。最长输入2667，不截断。配对学科簇区间条件于这些模型，不冒充新初始化。
+[五篇完整比较](../../../library/themes/moe-routing/FUNCTIONAL_TRANSFER_AND_ROUTING_2026-10-29.md)确认：stitching确有特征迁移/steering/任务表现，直接匹配与invariance约束确有强反例，router–expert训练耦合也已有方法与性能证据。我们不认领这些一般概念。增量是**在同一成熟MoE研究中，识别选择性质的参数来源、未改函数的伙伴作用，以及实际路由/消息使用怎样实现二者的分离**。E164无需训练adapter，改变的是已运行通路；它补的是现有参数移植不能识别的环节，而非另造对齐方法。
 
-| 候选动作 | 本轮判断 |
-|---|---|
-| 参数来源×实际路由轨迹，并加入新任务面板 | 直接区分响应、诱发的后续路由与来源配合；同时检验既有性质的任务范围。本轮选择，预计1.5–3 GPU时、cap4，计划单卡 |
-| 更广成熟模型谱系 | 仍是扩大形成/重复性范围的关键方向；当前未有第二谱系新结果，不以从头多seed代替成熟资产 |
-| 受限的无标签对齐 | 可研究哪些信息经变换后能用；暂不用于解释原生使用通路，不扫容量/层/超参来修复旧128题 |
+同S_P的写入基底已经固定，学习任意补偿映射可以回答可对齐/可利用性，却不单独解释原职责；这不否定对齐本身的科学价值。一般共同适应已有先例，我们的可检验论证是成熟组织目标下这些性质怎样分离、哪些分离经控制实际路由后保留。
 
-若收益在新面板不保留，完整报告其任务条件；若两个交叉格都损伤，保留交互而不挑最好格称迁移。实验的结果应改变对性质如何实现的解释，而不是只改变一个loss。真正形成分叉仍需可追溯中间状态，当前不由端点反推。正式候选/投稿、L3与工作台状态均未改变。
+### 当前优先级
 
-完整[E163卡](experiments/E163-native-message-geometry-and-reuse.md)、[结果](results/e163/summary.json)、[实际消息主图](results/e163/figures/actual_message_reuse.png)与[独立复算](results/e163/independent_audit.json)均已取得。Dose附录I的最终归一化增益控制、Self-Repair的归一化作用是实质先例；本项对应成熟来源的逐层消息干预与重用，不认领一般归一化控制。
+1. **形成紧凑论文论证与主图。** 用E162的选择–依赖、E156/E164的性质来源–运行通路、E160/E163的实际消息重用构成主干。三个预定指标层次并列，完整矩阵及失败放可复核附录；不把每张历史卡都升级为独立贡献。
+2. **下一实质实验瞄准重复性或形成。** 更广成熟公开谱系、或有可追溯共同父状态/中间快照的真实分叉，才能显著推进“任务约束与历史选择”的一般性。先核查资产/接口与要检验的相反预测；缓存名可行性扫描不是不存在第二谱系的证明，也不默认自训多seed。当前没有第二成熟谱系新结果。
+3. **不自动新增同端点网格。** E164已区分路由唯一路径解释，E163已检验局部幅度/投影。再扫层、方向、selector或adapter容量不能代替更高层问题。本批GPU队列为空，仍继续写作、复核和研究判断。
+
+[完整E164协议/结果](experiments/E164-runtime-routing-property-transport.md)、[来源主图](results/e164/figures/source_effects_NLL.png)、[固定路由伙伴图](results/e164/figures/shared_partner_role.png)及[独立复算](results/e164/independent_audit.json)均完成；1.444648 GPU时，最多1卡、0新训练，C14保持L2。真正形成分叉与独立初始化总体尚未获得，端点不反推完整动力学。正式候选、投稿与工作台状态仍由人决定。

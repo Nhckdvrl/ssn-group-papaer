@@ -1,17 +1,12 @@
 # MoE 实验索引 E120–E164（2026-10-29）
 
-这是证据导航，不是自动执行队列。E120–E142是受控平台阶段；E144–E163均已完成，E143未运行。E163来自集中整理后用户新的全局再定位授权，已取得全部数据并独立复算。现在整合核心论证/主图与封存，无自动后继。当前授权与资源见[AGENTS](../../AGENTS.md)和[唯一研究说明](../README.md)，总并发上限4卡、当前1卡。历史数字与等级保持原范围。
+这是证据导航，不是自动执行队列。E120–E142为受控阶段，E144–E164已完成，E143未运行。目录整理/全文再定位后，E164完成新55学科与实际路由通路检验。当前整合论文论证，无自动GPU后继；总上限4卡、当前0卡，旧数字与等级不改。执行前读[AGENTS](../../AGENTS.md)及[唯一研究说明](../README.md)。
 
-## 当前预注册：没有新模型结果
-
-| 实验 | 状态 | 识别目标 | 准备 |
-|---|---|---|---|
-| [E164](E164-runtime-routing-property-transport.md) | RUNNING；真实P预检通过、完整交叉中，C14不升级 | 函数参数来源与实际路由通路能否分开；55个未使用MMLU学科440题为主面板、旧128为guard/次分析 | 输入/CPU控制已冻结，最长2667；21/0单卡实际运行、0新训练、cap4 GPU时，总并发≤4 |
-
-## 当前核心证据：成熟原生路径 E150–E163
+## 当前核心证据：成熟原生路径 E150–E164
 
 | 实验 | 状态 / 对应 | 主结果 | 直接证据 |
 |---|---|---|---|
+| [E164](E164-runtime-routing-property-transport.md) | DONE；C14/P33 | 新55科固定P/B实际路由仍保留R_B低预算NLL改善.293673/.382397及同S_P伙伴差+.289102/+.183971；保留来源交互，正确率收益未区分 | [summary](../results/e164/summary.json)、[manifest](../results/e164/manifest.json)、[复算](../results/e164/independent_audit.json) |
 | [E150](E150-native-mature-routing-protocol-cross.md) | DONE；C14/P32 | 完整MoE互换平均+.127787 NLL；B native裁剪代价低.738449，B router单独不转移此收益，D/R/S参与 | [summary](../results/e150/summary.json) |
 | [E151](E151-native-pruning-selectivity-necessity.md) | DONE；限定C14/P32 | R-zero代价6.096/2.770，S-zero1.097/2.972；B random预算损伤.910，prefix仍优于random.433 | [summary](../results/e151/summary.json) |
 | [E152](E152-native-budget-normalizer-counterfactual.md) | DONE；限定C14/P32 | full分母下自身prefix B−A损伤−.616580，B的prefix仍优于random.697330；削弱纯归一化解释 | [summary](../results/e152/summary.json) |
