@@ -1,0 +1,11 @@
+{
+  "scope": "Before numerical freeze, CPU only, zero GPU work and no mature model readout.",
+  "attempts": [
+    {
+      "error": "GPU visibility differs during old helper import",
+      "cause": "New worker import default1 differed from inherited default0 when no CLI argument was supplied.",
+      "fix": "Import-time default0; explicit runtime physical-gpu1 retained in finisher and launch.",
+      "new_scientific_results": false
+    }
+  ]
+}

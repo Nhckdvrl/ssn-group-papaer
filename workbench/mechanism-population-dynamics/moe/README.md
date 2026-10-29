@@ -2,7 +2,7 @@
 
 > 母问题：相近任务为什么可以由不同的专家职责与协作实现？哪些关系由任务约束，哪些由学习历史选择；这些关系怎样影响预测和组件重用？
 
-**截至2026-10-29：E144–E164已完成，当前0卡、总并发上限4卡，成熟资产阶段0新训练。** 三条核心论证及实际路由通路检验已有直接干预；C14维持本设定内L2。目录整理、统一CPU入口、全文再定位与新55学科440题均完成。本轮已形成英文论证稿及三幅新主图；用户新授权的E165数值/输入已冻结，即将受监督单卡执行。头线仍CLOSED，正式ACTIVE登记不变。
+**截至2026-10-29：E144–E165已完成，当前0卡、总并发上限4卡，成熟资产阶段0新训练。** 三条核心论证及实际路由通路检验已有直接干预；C14维持本设定内L2。目录整理、统一CPU入口、全文再定位与新55学科440题均完成。本轮已形成英文论证稿及三幅新主图；用户新授权的E165也已全量完成并独立复算；E166增益竞争解释已重新设计，尚未运行。头线仍CLOSED，正式ACTIVE登记不变。
 
 ## 当前最值得讲清的发现
 
@@ -16,7 +16,7 @@
 
 ![性质迁移与未改伙伴的作用](paper/figures/02_property_and_partner_under_fixed_routes.png)
 
-新三幅主图有35项既有估计及原CI的[逐项来源](paper/figures/figure_sources.json)，无新统计检验。[英文4页论证稿](paper/main.pdf)连接三条结果和E164；[选择与依赖图](paper/figures/01_selection_and_dependence.png)、[实际消息图](paper/figures/03_actual_message_reuse.png)补全证据顺序。
+新主图有53项既有估计及原CI的[逐项来源](paper/figures/figure_sources.json)，无新统计检验。[英文4页论证稿](paper/main.pdf)连接三条结果和E164；[选择与依赖图](paper/figures/01_selection_and_dependence.png)、[实际消息图](paper/figures/03_actual_message_reuse.png)补全证据顺序。
 
 ## 模型和符号
 
@@ -66,8 +66,16 @@ E120–E142是受控可重复分解的起点，摘要见[历史受控窗口](not
 
 E163的局部几何结论与29650项独立复算保持不变；完整结果/失败/源码包均由[结果导航](results/README.md)进入。E143未运行；E158原逐层扫描未取得。下一步先将三条实证与E164组织成清楚的论文论证；更广成熟谱系及真实形成分叉是后续重要缺口，不用同端点层/方向/selector扫描代替。
 
-## 本轮下一项：E165，尚无新模型结果
+## 另一成熟谱系的新结果：整机曲线会掩盖函数性质
 
-新增全文67页与[定位比较](../../../library/themes/moe-routing/SELECTABLE_COMPUTATION_AND_HISTORY_2026-10-29.md)后，主线聚焦成熟组织中选择、性质载体和实际使用的关系，不讲成选择与合作互相矛盾。E164的预算收益与full下S作用不在同一运行条件，尚未证明预算收益由shared补偿造成。
+[E165](experiments/E165-mature-olmoe-selection-transport.md)的OLMoE成熟父→100B普通退火，26条件×55科440题全量完成。使用同一个父校准16/64池，native预算NLL损伤A−P为+.1050 [.0021,.2059]；但把E_A单独移入共同P接收者，固定实际P/A路由后仍分别改善.2230 [.1459,.3021] / .2357 [.1545,.3248]。只换D_A则在G_P/E_P或G_P/E_A下使P16 NLL恶化.3575 [.2640,.4602] / .3176 [.2343,.3975]。
 
-[E165](experiments/E165-mature-olmoe-selection-transport.md)选另一成熟OLMoE谱系的明确5.033T父状态→100B普通退火，26个来源/选择/实际路由条件；不将无shared架构伪造为S/R组。资产LFS、440题重新编码（最大2736）及CPU真实接口/独立公式fixture均完成；18份数值源0fb295d6、plan9570789c…e25a2已冻结，NVMe装载adapter单列SHA，受监督单卡执行，cap4 GPU时、总并发≤4，0新训练。P/A为该卡内部标签，不是EMO的P/A端点。
+**解释推进：** 原生预算曲线不能单调追踪专家函数在共同背景下的预算性质；骨干变化能够抵消函数来源带来的改善。这将来源—使用分离扩展到无常驻shared的另一成熟谱系，不是原三条结论全部跨架构复现。
+
+必须并列：OLMoE P16本身严重损伤，P/A完整raw43.64/43.18%，P16仅22.05/21.14%；这里确认概率质量的可迁移变化，不包装成可部署压缩。固定P路由的choice CE改善.4876 [.0844,.8817]，正确率差仍未区分；不换预算/selector救结果。[关键图](paper/figures/04_native_trends_and_transport.png)与[完整矩阵](results/e165/summary.json)保留所有来源/反向条件。
+
+E165含预检.953168 GPU时、最多1卡、峰值32.875GB、0新权重训练；24940数值/25383元数据独立复算最大差1.42e−14，监督均exit0。source0fb295d6/plan9570789c…e25a2和raw85b101dd…0de8ce3见[manifest](results/e165/manifest.json)。
+
+## 当前下一决定：一项统一解释，尚未运行
+
+旧[E163 native几何的POST-HOC描述](paper/native_geometry_posthoc.json)显示早层R/S幅度重新分配，但不提供位置或同输入因果证据。补读outlier/conditioning全文后，一个能改变整篇解释的竞争模型是：这些性质迁移/角色签名能否由简单的逐层R增益复制？[E166](experiments/E166-gain-matched-property-transport.md)将在两个谱系只用预定cal响应闭式匹配16个增益，固定实际路由对比原生P、donor和GainP，并把EMO S-zero扩到P32。无预测损失拟合，不扫增益/预算/mask；代码和配置冻结后才校准/评测，最多4卡。

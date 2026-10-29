@@ -1,10 +1,12 @@
-# MoE 实验索引 E120–E165（2026-10-29）
+# MoE 实验索引 E120–E166（2026-10-29）
 
 这是证据导航，不是自动执行队列。E120–E142为受控阶段，E144–E164已完成，E143未运行。目录整理/全文再定位后，E164完成新55学科与实际路由通路检验。当前整合论文论证，无自动GPU后继；总上限4卡、当前0卡，旧数字与等级不改。执行前读[AGENTS](../../AGENTS.md)及[唯一研究说明](../README.md)。
 
 ## 本轮已预注册、尚无模型结果
 
-[E165](E165-mature-olmoe-selection-transport.md)：另一成熟OLMoE谱系的选择—来源重用，26条件、55科440题；资产/重新编码/CPU控制完成，待冻结后单卡执行。无shared不制造伪分组，不据旧“暂停”阻断用户新授权，也不自动追加E166。
+[E165](E165-mature-olmoe-selection-transport.md) DONE：另一成熟OLMoE谱系26条件×55科440题；native预算损伤+.105 [.002,.206]，专家单独移入P、固定P路由仍改善.223 [.146,.302]，D来源变化抵消改善。P16正确率仅约22%，不包装部署收益。[summary](../results/e165/summary.json)、[manifest](../results/e165/manifest.json)、[独立复算](../results/e165/independent_audit.json)。
+
+[E166](E166-gain-matched-property-transport.md) PLANNED：两谱系16个逐层R增益能否复制性质及伙伴作用；同时补EMO P32 S-zero，CPU预检后冻结运行。无新结果；不自动E167。
 
 ## 当前核心证据：成熟原生路径 E150–E164
 

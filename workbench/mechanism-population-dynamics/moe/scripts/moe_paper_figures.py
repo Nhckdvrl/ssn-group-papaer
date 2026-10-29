@@ -145,18 +145,56 @@ def message(s):
          '128 biology / mathematics questions, original paired 95% input intervals. Norm/Gram use consumer clean scalar witnesses.')
 
 
+def external_lineage(s):
+    fig, axes = plt.subplots(1, 3, figsize=(12.3, 4.1))
+    for i, label in enumerate(('P', 'A')):
+        for policy, color, off in [('full', DARK, -.10), ('P16', BLUE, .10)]:
+            key = 'absolute/D_'+label+'_G_'+label+'_E_'+label+'_'+policy
+            value = get(s, 'e165', ['true_answer_token_NLL', key], 'OL_'+key)
+            dot(axes[0], value, i, color, offset=off, label=policy if i == 0 else None)
+    axes[0].set(title='A  Intact and restricted quality', ylabel='Answer NLL (nats)',
+                xticks=[0, 1], xticklabels=('Mature parent\nP', 'Ordinary anneal\nA'), xlim=(-.5, 1.5))
+    axes[0].legend(frameon=False, fontsize=10)
+    keys = ('natural_A_minus_P', 'E_A_minus_P_at_route_P', 'E_A_minus_P_at_route_A')
+    for i, key in enumerate(keys):
+        for policy, color, off in [('full', DARK, -.075), ('P16', BLUE, .075)]:
+            value = get(s, 'e165', ['true_answer_token_NLL', policy+'/actual_route/'+key], 'OL_'+policy+'_'+key)
+            dot(axes[1], value, i, color, offset=off, horizontal=True)
+    axes[1].set(title='B  Expert bank A minus P', xlabel='NLL change (negative = better)',
+                yticks=range(3), yticklabels=('Natural routes', 'Fixed P routes', 'Fixed A routes'), ylim=(2.4, -.4))
+    for i, context in enumerate(('00', '01')):
+        for policy, color, off in [('full', DARK, -.075), ('P16', BLUE, .075)]:
+            key = policy+'/D_A_minus_P_fixed_'+context
+            value = get(s, 'e165', ['true_answer_token_NLL', key], 'OL_'+key)
+            dot(axes[2], value, i, color, offset=off, horizontal=True)
+    axes[2].set(title='C  Backbone A minus P', xlabel='NLL change (positive = worse)',
+                yticks=[0, 1], yticklabels=('With E_P', 'With E_A'), ylim=(1.5, -.5))
+    for ax in axes[1:]:
+        ax.axvline(0, color='.6', ls='--', lw=1)
+    for ax in axes:
+        ax.grid(alpha=.16)
+    for label in ('P', 'A'):
+        for policy in ('full', 'P16'):
+            key='absolute/D_'+label+'_G_'+label+'_E_'+label+'_'+policy
+            get(s,'e165',['raw_accuracy',key],'OL_accuracy_'+label+'_'+policy)
+    fig.subplots_adjust(left=.065, right=.99, top=.87, bottom=.25, wspace=.65)
+    save(fig, '04_native_trends_and_transport',
+         'OLMoE: fixed parent-calibrated pool16/64. Full (dark) and P16 (blue); all55 subjects /440 questions, original95% CIs.\n'
+         'P16 accuracy is only22.05% /21.14%: this is a probability-quality property, not a deployable compressed model. C fixes G_P parameters, not realized routes.')
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update({'font.size': 12, 'axes.titlesize': 13, 'axes.spines.top': False,
                          'axes.spines.right': False, 'pdf.fonttype': 42})
-    s162, s163, s164 = (source(e) for e in ('e162', 'e163', 'e164'))
-    native(s162, s163); transport(s164); message(s163)
+    s162, s163, s164, s165 = (source(e) for e in ('e162', 'e163', 'e164', 'e165'))
+    native(s162, s163); transport(s164); message(s163); external_lineage(s165)
     RECORD.update(status='complete', source_code_sha256=sha(__file__),
                   no_new_model_runs=True, no_new_statistical_tests=True,
                   scope='Conditional input intervals; no initialization population or universal modularity claim.',
                   figures={p.name: sha(p) for p in OUT.glob('*') if p.suffix in ('.pdf', '.png')})
     (OUT / 'figure_sources.json').write_text(json.dumps(RECORD, indent=2) + '\n')
-    print(json.dumps({'status': 'complete', 'figures': 3, 'estimates': len(RECORD['estimates']),
+    print(json.dumps({'status': 'complete', 'figures': 4, 'estimates': len(RECORD['estimates']),
                       'source_sidecar': str(OUT / 'figure_sources.json')}))
 
 

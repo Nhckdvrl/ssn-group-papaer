@@ -17,7 +17,7 @@ Source interventions identify routed functions that transport a low-budget likel
 On a fixed panel of 55 additional subjects, this advantage persists after clamping realized routes, while the removal cost of unchanged shared functions also increases.
 Thus, these effects cannot be explained solely by the routing changes induced by the transported functions.
 Cross-context replay of actual shared messages then reveals a prediction cost that largely survives local norm and projection correction.
-Together, the results characterize selectable computation through its learned production and use relationships, rather than through expert identity alone.
+In a second mature lineage without shared experts, ordinary annealing produces an opposite trend: native restricted damage increases while the annealed expert bank improves restricted likelihood in the parent receiver. Thus, native deployment curves can conceal transportable component properties. Together, the results characterize selectable computation through its learned production and use relationships, rather than through expert identity alone.
 The transported advantage concerns probability quality; an accuracy advantage remains unresolved.
 \end{abstract}
 
@@ -72,7 +72,7 @@ The late- and full-course EMO endpoints $B/F$ have intact text NLL $2.6218/2.621
 Yet $F$ has lower selected-pool damage, while removing shared computation adds $1.8509$ more text NLL damage than in $B$ (95\% CI $[1.3311,2.3010]$).
 The corresponding task answer-NLL difference is $5.3112$; the raw-accuracy damage difference remains unresolved.
 Random-pool controls show that general robustness and useful selection coexist.
-The result is a measured coexistence of selectability and cooperation, not an assertion that cooperation obstructs selection (Figure~\ref{fig:native}).
+The result is a measured coexistence of selectability and cooperation, not an assertion that cooperation obstructs selection (Figure~\ref{fig:native}). On the previously specified set of 40 questions answered correctly by all four endpoints, both suites are jointly necessary in 8/10/20/24 cases for P/A/B/F. These are selected-set counts, reported alongside the full panel without population confidence claims.
 
 \begin{figure*}[t]
 \centering\includegraphics[width=\textwidth]{figures/01_selection_and_dependence.pdf}
@@ -126,11 +126,34 @@ Stitching provides genuine functional-feature transport after alignment~\cite{st
 Our contribution is the combined identification of \emph{which function package carries a deployment property}, \emph{how an unchanged partner's role changes}, and \emph{which realized routes and message interfaces account for these effects} in mature MoE histories.
 
 The appropriate scale is a causal study of these relationships in mature systems, not a universal theory of single-expert semantic identities.
-The next registered test uses a second mature public lineage: OLMoE's 5.033T checkpoint and its ordinary 100B annealing endpoint~\cite{olmoe}.
-It compares intact and selected-pool quality with a full backbone--gate--expert source cross and a targeted realized-route cross.
-This architecture has no always-active shared expert, so the test does not invent a shared group to reproduce the original result.
-A compatible outcome is scientifically informative: it would weaken the hypothesis that any mature training change necessarily breaks component reuse.
-No result from this registered test is included in the present draft.
+\subsection{A second lineage reveals an opposite native trend}
+We evaluate OLMoE's public 5.033T checkpoint and its ordinary 100B annealing endpoint~\cite{olmoe}, crossing backbone, gate and expert sources under full computation and one fixed parent-calibrated pool of 16/64 experts.
+This architecture has no always-active shared expert; we do not invent one.
+All 26 predeclared conditions cover the same 55 subjects and 440 question texts, re-encoded by the OLMoE tokenizer.
+
+After annealing, native restricted NLL damage increases by $0.1050$ ($[0.0021,0.2059]$).
+Yet the annealed expert bank improves restricted NLL in the common parent receiver by $0.2230$ at fixed parent routes ($[0.1459,0.3021]$), with a choice-CE improvement of $0.4876$ ($[0.0844,0.8817]$).
+Backbone changes oppose this property: at fixed parent gate parameters, changing only the backbone increases restricted NLL by $0.3575$ with the parent bank and $0.3176$ with the annealed bank (Figure~\ref{fig:lineage}).
+Native deployment curves therefore need not monotonically track a component's property in a controlled receiver.
+
+The restricted regime is severely impaired: raw accuracy is only $22.05/21.14\%$ compared to intact $43.64/43.18\%$.
+We identify a probability-quality property, not a deployable compressed model, and do not change the pool to rescue performance.
+This extends the source--context separation to another mature lineage; it does not replicate all shared-message claims in an architecture without shared experts.
+Different tokenizers also preclude directly subtracting the two lineages' absolute NLL values.
+
+\begin{figure*}[t]
+\centering\includegraphics[width=\textwidth]{figures/04_native_trends_and_transport.pdf}
+\caption{Native curves can conceal component properties. OLMoE expert-source changes improve restricted likelihood in the common parent receiver, including after realized-route fixation, while backbone changes oppose the improvement. Intact and restricted quality remain separate. The native restricted model is severely damaged; all source corners and accuracy boundaries are retained. Source: E165.}
+\label{fig:lineage}
+\end{figure*}
+
+\paragraph{The next explanatory comparison.}
+A compact rival is output-gain calibration: expert-source changes may adjust routed amplitude while the surrounding system compensates.
+Prior work establishes real global-conditioning effects from massive activations and super experts~\cite{massive,super,melayer}; self-selection based on internal activation is also a substantive training approach~\cite{aoe}.
+Neither a transferred likelihood advantage nor local shared-message correction by itself excludes a gain account of the routed property.
+The next registered comparison therefore fits one positive RMS-matching factor per layer on fixed calibration responses, without optimizing predictive loss, then evaluates parent, donor and gain-adjusted parent under identical realized routes in both lineages.
+For EMO, shared removal is also evaluated in the restricted regime to test whether that online partner is required for the advantage.
+No result from this comparison is included here.
 
 \section{Traceability and remaining scope}
 All plots copy existing audited point estimates and original confidence intervals; their sidecar gives JSON paths and SHA256 for every value.
@@ -139,7 +162,7 @@ Identity replays, causal-prefix checks, source read-only checks and independent 
 The native formation trajectories, smallest reusable units, and the scope across mature lineages remain questions to investigate.
 This argument is anchored in observed separations and controlled pathways, without requiring them to be universal or treating a nearby method as a reason to abandon the scientific question.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 \bibitem{emo} R. Wang et al. \emph{EMO: Pretraining Mixture of Experts for Emergent Modularity}. 2026. \url{https://arxiv.org/abs/2605.06663}.
 \bibitem{hope} A. M. Tseng et al. \emph{Higher-order pruning of experts in mixture-of-experts language models}. arXiv:2609.18916v3, 2026.
 \bibitem{cdmoe} M. Cao et al. \emph{Condense, Don't Just Prune}. TMLR, 2025; reading version arXiv:2412.00069v3.
@@ -149,5 +172,9 @@ This argument is anchored in observed separations and controlled pathways, witho
 \bibitem{howstitch} \emph{How Not to Stitch Representations to Measure Similarity}. AAAI, 2025.
 \bibitem{invariance} \emph{Grounding Functional Similarity by Invariance-Aware Model Stitching}. ICML, 2026; reading version arXiv:2505.20142v2.
 \bibitem{olmoe} N. Muennighoff et al. \emph{OLMoE: Open Mixture-of-Experts Language Models}. ICLR, 2025. \url{https://huggingface.co/allenai/OLMoE-1B-7B-0924}.
+\bibitem{massive} M. Sun et al. \emph{Massive Activations in Large Language Models}. COLM, 2024; arXiv:2402.17762v2.
+\bibitem{super} Z. Su et al. \emph{Unveiling Super Experts in Mixture-of-Experts Large Language Models}. ICLR, 2026.
+\bibitem{melayer} Z. Shi et al. \emph{A Single Layer to Explain Them All: Understanding Massive Activations in Large Language Models}. ICML, 2026.
+\bibitem{aoe} A. Lv et al. \emph{Autonomy-of-Experts Models}. ICML, 2025.
 \end{thebibliography}
 \end{document}

@@ -1,6 +1,6 @@
 # MoE资产与恢复入口（2026-10-29）
 
-**当前：E144–E164全部预定数据已得；E164新55学科/旧精确guard、14条件实际路由交叉及独立复算完成，0新训练/权重下载。** 实时资源及下一决定见[README](README.md)，总上限4卡。全部原始源、失败与继承范围保留；本页负责位置、来源和恢复。
+**当前：E144–E165全部预定数据已得；E164新55学科/旧精确guard、14条件实际路由交叉及独立复算完成，0新训练/权重下载。** 实时资源及下一决定见[README](README.md)，总上限4卡。全部原始源、失败与继承范围保留；本页负责位置、来源和恢复。
 
 耐久根为`/home/xiang/mechpop_cache`（NFS）；节点`/tmp`是临时NVMe，不能当唯一资产。优先已有`~/.venvs/mechpop/bin/python`（Python3.12、torch2.8.0+cu128、transformers4.57.6、numpy1.26.4）；未另装环境。CPU复算统一见[scripts/README](scripts/README.md)。
 
@@ -17,11 +17,11 @@
 
 F=全程EMO 1T+50B，B=标准1T后EMO50B，A=标准1T+50B，P=标准1T退火前；原始初始化/优化链未核实。若恢复公共缓存，按上述repo/revision用现有huggingface_hub下载至`~/mechpop_cache/hf_emo_mature`，逐文件对照manifest SHA；不使用浮动main代替固定版本。
 
-## E165新增成熟谱系资产（准备完成，尚无模型结果）
+## E165新增成熟谱系资产（全量已完成）
 
 `allenai/OLMoE-1B-7B-0924`成熟父pin b99743a400844e532bec7ce4575d97a3a39dcd4d（step1200000-tokens5033B）与退火终点6d84c48581ece794365f2b8e9cfb043c68ade9c5。`results/e165/asset_manifest.json`逐片核对公开LFS；父新增BF16分片逻辑13,838,721,960 B，终点复用原`~/mechpop_cache/hf_olmoe/main/`。耐久视图在`~/mechpop_cache/hf_olmoe_mature/view_{P_b99743a4,A_6d84c485}/`；权重为指向耐久源的链接，没有另复制A权重，metadata是实文件。源码封存时需物化小文件，权重仍依manifest恢复。
 
-新全7节点cache/config清单在`~/mechpop_cache/cross_lineage_inventory_20261029.json`；它确认完整Qwen3-30B-A3B、OLMoE四旧端点及EMO，跨节点同NFS副本不算多个训练重复。范围为已查用户HF/研究缓存，不声称全机器文件系统无其他模型。E165原始输入在`~/mechpop_cache/e165_mature_olmoe_transport/questions.npz`，同E164的55科文本重新编码；全部440题/440cal保留，最大2736、不截断。预算/运行状态见唯一README，不把资产准备当科学结果。
+新全7节点cache/config清单在`~/mechpop_cache/cross_lineage_inventory_20261029.json`；它确认完整Qwen3-30B-A3B、OLMoE四旧端点及EMO，跨节点同NFS副本不算多个训练重复。范围为已查用户HF/研究缓存，不声称全机器文件系统无其他模型。E165原始输入在`~/mechpop_cache/e165_mature_olmoe_transport/questions.npz`，同E164的55科文本重新编码；全部440题/440cal保留，最大2736、不截断。完整26×440结果、终态、独立24940数字/25383元数据已完成；raw为`~/mechpop_cache/e165_mature_olmoe_transport/scores.npz`，529224 B，SHA85b101dd74248dfe95d8629e40eeafb5102e8e155440123eb588c10fa0de8ce3。数值源0fb295d6、plan9570789c…e25a2；含预检.953168332 GPU时、torch峰值32.875388GB、最多1卡、各阶段exit0。CPU/NFS→NVMe适配单列SHA，不改数值18文件。下一实验状态见唯一README。
 
 ## 耐久raw与冻结记录（按状态）
 
