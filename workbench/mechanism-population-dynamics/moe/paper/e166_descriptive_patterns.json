@@ -1,0 +1,521 @@
+{
+  "kind": "POST-HOC description of complete frozen results; no new hypotheses, CIs or model runs",
+  "status": "complete",
+  "source_script_sha256": "97f9c2824e8205a20febde383a343dc730032ae73831de30f709179d41efd3c1",
+  "families": {
+    "emo": {
+      "summary_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e166/emo_summary.json",
+      "summary_sha256": "77319ce71e5fa6d12f33cc1d337677cd910352acd27dab3329272f4807a8cfe8",
+      "raw_sha256": "e50c24cd4f6e0e222d6f3e596ffb33a2537a1115538b547815fc27573fda86a1",
+      "calibration": {
+        "path": "/home/xiang/mechpop_cache/e166_gain_transport/emo/calibration.npz",
+        "sha256": "ab31a5ebb834c43c9b79be44442c17e3fab2b73e9d168df6d93bf40b62bd957c",
+        "size_bytes": 2448
+      },
+      "calibration_arrays": {
+        "gain": [
+          0.3004818260669708,
+          0.6496713757514954,
+          0.20482012629508972,
+          0.7625683546066284,
+          0.9618316888809204,
+          0.9575427174568176,
+          0.8980004191398621,
+          0.8106992840766907,
+          0.7584372162818909,
+          0.754647433757782,
+          0.7616985440254211,
+          0.7297236323356628,
+          0.7448468208312988,
+          0.7329598665237427,
+          0.71734219789505,
+          0.5710824131965637
+        ],
+        "gain_FP64": [
+          0.3004818400776614,
+          0.6496713866804165,
+          0.20482013054644238,
+          0.762568332388829,
+          0.9618316618546139,
+          0.9575427419898647,
+          0.8980004346135612,
+          0.8106992844376041,
+          0.7584372361988408,
+          0.7546474062814126,
+          0.7616985614542018,
+          0.7297236077877396,
+          0.7448468181856881,
+          0.7329598459131373,
+          0.717342221144148,
+          0.571082442027679
+        ],
+        "cosine": [
+          0.7708697945799093,
+          0.8387360220285789,
+          0.9698037963769077,
+          0.850328078167182,
+          0.6882131320392014,
+          0.8087677576564665,
+          0.7867183838902867,
+          0.8583412250541544,
+          0.8438879731166086,
+          0.8439371454274098,
+          0.8565721063553242,
+          0.8601851472429417,
+          0.8648167552270477,
+          0.875755270960116,
+          0.8399253256825014,
+          0.9679449602567569
+        ],
+        "scalar_residual_fraction": [
+          0.4582603894726863,
+          0.32252795051720284,
+          0.06039240599264871,
+          0.2993438523871653,
+          0.6235737534432658,
+          0.38246447488800733,
+          0.4265632248691954,
+          0.28331754976556156,
+          0.3122240455676202,
+          0.312125720509537,
+          0.2868557807256704,
+          0.27962971492086885,
+          0.2703664905062154,
+          0.2484894650672162,
+          0.3201493382589413,
+          0.06411007624988879
+        ],
+        "tokens": [
+          174182,
+          174182,
+          174182,
+          174182,
+          174182,
+          174182,
+          174182,
+          174182,
+          174182,
+          174182,
+          174182,
+          174182,
+          174182,
+          174182,
+          174182,
+          174182
+        ]
+      },
+      "patterns": {
+        "true_answer_token_NLL/full": {
+          "summary_json_paths": [
+            [
+              "true_answer_token_NLL",
+              "full/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "true_answer_token_NLL",
+              "full/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 6,
+          "gain_improves": 6,
+          "both_improve": 2,
+          "subject_effect_correlation": 0.7813120978541168
+        },
+        "true_answer_token_NLL/pool": {
+          "summary_json_paths": [
+            [
+              "true_answer_token_NLL",
+              "pool/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "true_answer_token_NLL",
+              "pool/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 42,
+          "gain_improves": 9,
+          "both_improve": 9,
+          "subject_effect_correlation": 0.1457819039389019
+        },
+        "choice_CE/full": {
+          "summary_json_paths": [
+            [
+              "choice_CE",
+              "full/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "choice_CE",
+              "full/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 8,
+          "gain_improves": 11,
+          "both_improve": 5,
+          "subject_effect_correlation": 0.5950653731521495
+        },
+        "choice_CE/pool": {
+          "summary_json_paths": [
+            [
+              "choice_CE",
+              "pool/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "choice_CE",
+              "pool/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 41,
+          "gain_improves": 14,
+          "both_improve": 13,
+          "subject_effect_correlation": -0.14263683546305447
+        },
+        "raw_accuracy/full": {
+          "summary_json_paths": [
+            [
+              "raw_accuracy",
+              "full/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "raw_accuracy",
+              "full/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 11,
+          "gain_improves": 8,
+          "both_improve": 5,
+          "subject_effect_correlation": 0.5642023993591505
+        },
+        "raw_accuracy/pool": {
+          "summary_json_paths": [
+            [
+              "raw_accuracy",
+              "pool/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "raw_accuracy",
+              "pool/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 13,
+          "gain_improves": 15,
+          "both_improve": 7,
+          "subject_effect_correlation": 0.4523490919497238
+        },
+        "per_char_accuracy/full": {
+          "summary_json_paths": [
+            [
+              "per_char_accuracy",
+              "full/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "per_char_accuracy",
+              "full/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 12,
+          "gain_improves": 11,
+          "both_improve": 6,
+          "subject_effect_correlation": 0.5943986952885056
+        },
+        "per_char_accuracy/pool": {
+          "summary_json_paths": [
+            [
+              "per_char_accuracy",
+              "pool/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "per_char_accuracy",
+              "pool/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 19,
+          "gain_improves": 13,
+          "both_improve": 8,
+          "subject_effect_correlation": 0.32423939865441864
+        }
+      },
+      "interpretation": "Descriptive subject correspondence, not causal mediation or equivalence testing."
+    },
+    "olmoe": {
+      "summary_path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e166/olmoe_summary.json",
+      "summary_sha256": "91aa92e60afb66604e376d44111af483b785d4cea9edd08d29812adff96fb470",
+      "raw_sha256": "66b1d82fdf3fd15bd6d1b887956caa29f0e7c86810e842cba7c375045078477a",
+      "calibration": {
+        "path": "/home/xiang/mechpop_cache/e166_gain_transport/olmoe/calibration.npz",
+        "sha256": "493eeff5a4ac9ea4e24e889fc59848d4278294352a6ad2b2b73624b96d20dcaf",
+        "size_bytes": 2448
+      },
+      "calibration_arrays": {
+        "gain": [
+          0.9311603903770447,
+          0.9562609195709229,
+          0.9997013211250305,
+          0.9302778840065002,
+          0.9325212836265564,
+          0.9334211945533752,
+          0.9416847229003906,
+          0.9314461946487427,
+          0.944445013999939,
+          0.9491556882858276,
+          0.9487786293029785,
+          0.9356887340545654,
+          0.9344096183776855,
+          0.9343652129173279,
+          0.9334842562675476,
+          0.9339895248413086
+        ],
+        "gain_FP64": [
+          0.9311603997708154,
+          0.9562609451102416,
+          0.9997013034067211,
+          0.9302778632523124,
+          0.9325212609734789,
+          0.9334211877661008,
+          0.9416847114247913,
+          0.9314461801703645,
+          0.9444449950653325,
+          0.9491556783102509,
+          0.9487786380323572,
+          0.9356887511495456,
+          0.9344096020916374,
+          0.9343652036182648,
+          0.9334842345452216,
+          0.9339895412339685
+        ],
+        "cosine": [
+          0.982414400483178,
+          0.9975014954679555,
+          0.9997378504390078,
+          0.9943539313884978,
+          0.991251739676899,
+          0.9774352234163041,
+          0.9811057152561108,
+          0.9779943964984643,
+          0.9837245094525588,
+          0.9885626714122576,
+          0.9859586740092194,
+          0.9869020490518344,
+          0.9863550766111318,
+          0.9850915399451837,
+          0.9875851062660291,
+          0.9898815317929237
+        ],
+        "scalar_residual_fraction": [
+          0.035171198678828626,
+          0.0049970089306322525,
+          0.0005242991312775625,
+          0.011292137474928292,
+          0.01749652107123331,
+          0.04512955349554689,
+          0.03778856994827924,
+          0.04401120768718122,
+          0.0325509817474778,
+          0.022874657415896223,
+          0.028082651723182403,
+          0.02619590141773355,
+          0.02728984725337824,
+          0.02981692040637884,
+          0.024829788045735098,
+          0.02023693605896971
+        ],
+        "tokens": [
+          180034,
+          180034,
+          180034,
+          180034,
+          180034,
+          180034,
+          180034,
+          180034,
+          180034,
+          180034,
+          180034,
+          180034,
+          180034,
+          180034,
+          180034,
+          180034
+        ]
+      },
+      "patterns": {
+        "true_answer_token_NLL/full": {
+          "summary_json_paths": [
+            [
+              "true_answer_token_NLL",
+              "full/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "true_answer_token_NLL",
+              "full/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 29,
+          "gain_improves": 18,
+          "both_improve": 11,
+          "subject_effect_correlation": 0.30541913423289674
+        },
+        "true_answer_token_NLL/pool": {
+          "summary_json_paths": [
+            [
+              "true_answer_token_NLL",
+              "pool/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "true_answer_token_NLL",
+              "pool/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 45,
+          "gain_improves": 54,
+          "both_improve": 44,
+          "subject_effect_correlation": 0.29602623540829687
+        },
+        "choice_CE/full": {
+          "summary_json_paths": [
+            [
+              "choice_CE",
+              "full/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "choice_CE",
+              "full/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 35,
+          "gain_improves": 21,
+          "both_improve": 13,
+          "subject_effect_correlation": -0.009981986959199659
+        },
+        "choice_CE/pool": {
+          "summary_json_paths": [
+            [
+              "choice_CE",
+              "pool/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "choice_CE",
+              "pool/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 34,
+          "gain_improves": 43,
+          "both_improve": 27,
+          "subject_effect_correlation": 0.0472296759975534
+        },
+        "raw_accuracy/full": {
+          "summary_json_paths": [
+            [
+              "raw_accuracy",
+              "full/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "raw_accuracy",
+              "full/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 8,
+          "gain_improves": 1,
+          "both_improve": 1,
+          "subject_effect_correlation": 0.5562148865321749
+        },
+        "raw_accuracy/pool": {
+          "summary_json_paths": [
+            [
+              "raw_accuracy",
+              "pool/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "raw_accuracy",
+              "pool/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 13,
+          "gain_improves": 12,
+          "both_improve": 4,
+          "subject_effect_correlation": 0.38727393249523295
+        },
+        "per_char_accuracy/full": {
+          "summary_json_paths": [
+            [
+              "per_char_accuracy",
+              "full/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "per_char_accuracy",
+              "full/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 6,
+          "gain_improves": 2,
+          "both_improve": 1,
+          "subject_effect_correlation": 0.28148057610512683
+        },
+        "per_char_accuracy/pool": {
+          "summary_json_paths": [
+            [
+              "per_char_accuracy",
+              "pool/S1/donor_minus_P",
+              "per_subject"
+            ],
+            [
+              "per_char_accuracy",
+              "pool/S1/GainP_minus_P",
+              "per_subject"
+            ]
+          ],
+          "subjects": 55,
+          "donor_improves": 13,
+          "gain_improves": 14,
+          "both_improve": 8,
+          "subject_effect_correlation": 0.4067146914951068
+        }
+      },
+      "interpretation": "Descriptive subject correspondence, not causal mediation or equivalence testing."
+    }
+  }
+}

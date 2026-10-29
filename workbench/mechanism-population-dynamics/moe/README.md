@@ -2,7 +2,7 @@
 
 > 母问题：相近任务为什么可以由不同的专家职责与协作实现？哪些关系由任务约束，哪些由学习历史选择；这些关系怎样影响预测和组件重用？
 
-**截至2026-10-29：E144–E165已完成，E166两谱系顺序单卡监督链运行，总并发上限4卡，成熟资产阶段0新训练。** 三条核心论证及实际路由通路检验已有直接干预；C14维持本设定内L2。目录整理、统一CPU入口、全文再定位与新55学科440题均完成。本轮已形成英文论证稿及四幅新主图；E165全量完成并独立复算；E166增益竞争解释已冻结源码/输入，通过CPU控制后启动，尚无完整结果。头线仍CLOSED，正式ACTIVE登记不变。
+**截至2026-10-29：E144–E166已完成，当前0卡，总并发上限4卡，成熟阶段0新训练。** 三条结果、实际路由交叉、另一成熟谱系和增益/同预算伙伴干预已形成完整论证。C14保持L2；英文论文与五幅关键图可审阅，全部完整矩阵及独立复算可追溯。本批GPU实验收束，自动队列为空；下一工作集中在论文论证、复现和研究判断。头线CLOSED、正式ACTIVE登记不变。
 
 ## 当前最值得讲清的发现
 
@@ -16,7 +16,7 @@
 
 ![性质迁移与未改伙伴的作用](paper/figures/02_property_and_partner_under_fixed_routes.png)
 
-新主图有57项既有估计及共同成功计数的[逐项来源](paper/figures/figure_sources.json)，CI沿用原统计，共同成功计数不补造CI；无新检验。[英文论证稿](paper/main.pdf)连接三条结果、E164与E165；[选择与依赖图](paper/figures/01_selection_and_dependence.png)、[实际消息图](paper/figures/03_actual_message_reuse.png)补全证据顺序。
+五幅主图有73项估计及共同成功计数的[逐项来源](paper/figures/figure_sources.json)，CI沿用原统计，共同成功计数不补造CI；无新检验。[英文论证稿](paper/main.pdf)连接三条结果、E164与E165；[选择与依赖图](paper/figures/01_selection_and_dependence.png)、[实际消息图](paper/figures/03_actual_message_reuse.png)补全证据顺序。
 
 ## 模型和符号
 
@@ -76,6 +76,24 @@ E163的局部几何结论与29650项独立复算保持不变；完整结果/失�
 
 E165含预检.953168 GPU时、最多1卡、峰值32.875GB、0新权重训练；24940数值/25383元数据独立复算最大差1.42e−14，监督均exit0。source0fb295d6/plan9570789c…e25a2和raw85b101dd…0de8ce3见[manifest](results/e165/manifest.json)。
 
-## 当前下一决定：一项统一解释，已冻结运行
+## E166：把部署性质与合作依赖分开干预
 
-旧[E163 native几何的POST-HOC描述](paper/native_geometry_posthoc.json)显示早层R/S幅度重新分配，但不提供位置或同输入因果证据。补读outlier/conditioning全文后，一个能改变整篇解释的竞争模型是：这些性质迁移/角色签名能否由简单的逐层R增益复制？[E166](experiments/E166-gain-matched-property-transport.md)只用预定cal响应闭式匹配16个增益，固定实际路由对比P、donor和GainP，并把EMO S-zero扩到P32。无预测损失拟合，不扫增益/预算/mask。源码ef8f58c8、plan ae9d5cc6…102fc及16356项独立CPU统计fixture已冻结；fvcrc21/1顺序运行两个谱系，累计cap4GPU时，无自动E167。
+[E166](experiments/E166-gain-matched-property-transport.md)在同55科440题、同真实P路由下，用cal上闭式匹配的16个逐层R增益，与原父/真实donor比较，并在EMO P32加入shared-zero。两谱系18格完整完成，无损失优化、增益或mask扫描。
+
+| 关键干预（答案NLL；95%配对学科簇区间） | 实际结果 | 对计算组织的解释 |
+|---|---|---|
+| EMO增益调整 | full下S移除代价额外+.8628 [.7596,.9696]；P32反而恶化+.3943 [.2375,.5941]，真实R_B改善.2937 [.2043,.3849] | 更强伙伴依赖可以在没有预算收益时出现；统一RMS增益没有复制EMO的函数性质 |
+| EMO同P32关闭S | R_B仍改善.3557 [.1480,.5531]；共享本身仍有1.333/1.271 NLL移除成本 | 性质由R来源携带，其相对优势在固定路由下不要求该在线S输出通路继续开启；伙伴重要性与性质实现分开识别 |
+| OLMoE增益调整 | P16改善.2760 [.2407,.3147]，donor改善.2230 [.1396,.3081]；gain完整NLL仅+.0042，首token KL=.0037 | 同一预算性质可以由不同函数变化实现；响应接口是可操作的组织因素 |
+
+![增益、性质与伙伴作用的干预分离](paper/figures/05_gain_and_partner_interventions.png)
+
+**主线推进：** 学习历史同时组织可选择的函数、响应接口和协作使用。E164排开路由唯一路径解释；E165表明整机曲线能掩盖组件性质；E166进一步用建设性干预把性质与依赖分开。这是一条关于MoE计算组织的机制论文主线。概率质量、choice CE、正确率和输出KL在[EMO矩阵](results/e166/emo_summary.json)及[OLMoE矩阵](results/e166/olmoe_summary.json)分别报告；不把部署性质等同于所有实际计算。
+
+E166计时1.073925 GPU时、最多1卡、峰值55.024GB，16356数值/16938元数据独立复算最大差1.07e−14，两个worker及恢复监督exit0。原CPU慢读中断/费用、NVMe适配及所有来源只读记录保留，原数值27文件未变。[完成凭证](results/e166/execution_complete.json)、[分析性描述](paper/e166_descriptive_patterns.json)、[资产恢复](ASSETS.md)。
+
+```bash
+~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py E166 all
+```
+
+**下一决定：** 优先完成论文论证与关键图的集中审阅；不自动E167、gain/层/selector扫描。若进一步扩实验，选择能回答协作何时形成的成熟公开分叉或中间状态，不默认自训多seed。

@@ -40,7 +40,7 @@ def main():
         if sha(p)!=item['sha256']:raise ValueError('Pinned bytes changed: '+name)
         entries[name]=p
     for name in (*plan['source_sha256'],'seal_e166.py','moe_paper_figures.py','reproduce.py',
-                 'e166_stage_emo.py','e166_emo_local.py','e166_resume.py'):
+                 'e166_stage_emo.py','e166_emo_local.py','e166_resume.py','moe_paper_patterns.py'):
         entries['repo/moe/scripts/'+name]=WB/'moe/scripts'/name
     for p in ROOT.rglob('*'):
         if p.is_file() and p.suffix in ('.json','.log') and p.name!='artifact_seal.json':
@@ -64,6 +64,11 @@ def main():
                 for name,item in model['files'].items():
                     if not name.endswith('.safetensors'):verified(item,'public_source/olmoe/'+label+'/'+name)
     for module,item in plan['software']['native_sources'].items():verified(item,'native_software/'+module+'.py')
+    # Native EMO class discovery reads both metadata and complete asset records,
+    # even when the checkpoint directory itself is redirected to node NVMe.
+    for experiment in ('e150','e154'):
+        for name in ('metadata.json','asset_manifest.json'):
+            entries['repo/moe/results/'+experiment+'/'+name]=WB/'moe/results'/experiment/name
     data=read(WB/'moe/results/e164/data_plan.json');verified(data['texts'],'inputs/original_text/questions.jsonl')
     for p in (WB/'moe/paper').rglob('*'):
         if p.is_file() and p.suffix in ('.tex','.pdf','.png','.json'):

@@ -27,7 +27,7 @@ def commands(experiment,action):
         'E163':[['moe/scripts/e163_analyze.py','analyze']],
         'E164':[['moe/scripts/e164_analyze.py','analyze']],
         'E165':[['moe/scripts/e165_analyze.py']],
-        'E166':[['moe/scripts/e166_analyze.py']]}
+        'E166':[['moe/scripts/e166_analyze.py'],['moe/scripts/moe_paper_patterns.py']]}
     verify={
         'E156':[['moe/results/e156_independent_audit/audit.py','--raw',raw156,'--summary',r+'/summary.json']],
         'E158':[['moe/results/e158_whole_independent_audit/audit.py','--audit','--summary',r+'/summary.json','--output','moe/results/e158_whole_independent_audit/report.json']],

@@ -1,6 +1,6 @@
 # MoE资产与恢复入口（2026-10-29）
 
-**当前：E144–E165全部预定数据已得；E164新55学科/旧精确guard、14条件实际路由交叉及独立复算完成，0新训练/权重下载。** 实时资源及下一决定见[README](README.md)，总上限4卡。全部原始源、失败与继承范围保留；本页负责位置、来源和恢复。
+**当前：E144–E166全部预定数据已得；E164新55学科/旧精确guard、14条件实际路由交叉及独立复算完成，0新训练/权重下载。** 实时资源及下一决定见[README](README.md)，总上限4卡。全部原始源、失败与继承范围保留；本页负责位置、来源和恢复。
 
 耐久根为`/home/xiang/mechpop_cache`（NFS）；节点`/tmp`是临时NVMe，不能当唯一资产。优先已有`~/.venvs/mechpop/bin/python`（Python3.12、torch2.8.0+cu128、transformers4.57.6、numpy1.26.4）；未另装环境。CPU复算统一见[scripts/README](scripts/README.md)。
 
@@ -120,6 +120,13 @@ F临时执行目录是fvcrc21的`/tmp/xiang-moe-20261028/full_course_F/`；清�
 Machine-readable companion: `results/asset_inventory_2026-10-26.json`.
 
 
-## E166：两谱系增益竞争模型（运行中）
+## E166：两谱系增益与伙伴干预（全量完成）
 
-复用上述E164/E165的输入、selector与完整旧分数，来源指纹不变。冻结source ef8f58c8、27文件，plan ae9d5cc6983f8d2dcc9575f893ca011200cbe90990d414fd1627c3f3f60102fc；[plan](results/e166/plan.json)给所有绝对路径/SHA。新cal系数和预测位于`~/mechpop_cache/e166_gain_transport/{emo,olmoe}/`，完成凭证尚未取得，不能从文件存在猜测完成。fvcrc21/1顺序执行，CPU/NFS准备不计占卡，累计cap4 GPU时，总并发≤4；当前实时进度只见README。
+复用上述E164/E165的输入、selector与完整旧分数，来源指纹不变。冻结source ef8f58c8、27文件，plan ae9d5cc6983f8d2dcc9575f893ca011200cbe90990d414fd1627c3f3f60102fc；[plan](results/e166/plan.json)给所有绝对路径/SHA。新cal系数和预测位于`~/mechpop_cache/e166_gain_transport/{emo,olmoe}/`，[完成凭证](results/e166/execution_complete.json)及两个family manifest确认全矩阵、来源终态/独立复算和恢复监督exit0。fvcrc21/1顺序执行，CPU/NFS准备不计占卡，累计cap4 GPU时，总并发≤4；当前实时进度只见README。
+
+E166的EMO节点副本在fvcrc21 `/tmp/xiang-moe-20261029/e166_emo/{P,B}/`，108,571,271,688 B，均为原公开FP32源的实文件；`results/e166/emo_local_staging.json`逐文件SHA，stage636.891秒/0GPU。第一次NFS CPU读取中断的worker/chain失败及648.2秒CPU费用保留；0EMO校准/预测、0GPU。新CPU装载121.235秒，P/B参数/buffer指纹与旧canonical相同，再取得物理1卡。`e166_emo_local.py`只替换locator，原数值27文件保持ef8f58c8；恢复由`e166_resume.py`及`supervision_resume_chain.json`监督，不重跑已完成OLMoE。副本当前仍用于精确重放，耐久HF源保留。
+
+E166完成：GPU工作计时3866.130493秒=1.073925137 GPU时，max1卡，峰值EMO55.024348GB/OLMoE31.920098GB。独立16356数值/16938元数据最大差1.0658e−14。source ef8f58c8、plan ae9d5cc6…102fc和27文件未变；资源源码0fe1553c。完整CPU入口`reproduce.py E166 all`已通过。
+
+- emo raw：`/home/xiang/mechpop_cache/e166_gain_transport/emo/scores.npz`，198730 B，SHA `e50c24cd4f6e0e222d6f3e596ffb33a2537a1115538b547815fc27573fda86a1`；[summary](results/e166/emo_summary.json)、[manifest](results/e166/emo_manifest.json)。
+- olmoe raw：`/home/xiang/mechpop_cache/e166_gain_transport/olmoe/scores.npz`，121042 B，SHA `66b1d82fdf3fd15bd6d1b887956caa29f0e7c86810e842cba7c375045078477a`；[summary](results/e166/olmoe_summary.json)、[manifest](results/e166/olmoe_manifest.json)。

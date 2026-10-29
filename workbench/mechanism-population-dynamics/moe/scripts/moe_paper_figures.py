@@ -100,14 +100,14 @@ def native(s162, s163):
             'selection':'All four native models answer correctly; all40 retained, 34 biology and6 mathematics.'}
     axes[3].bar(range(4),counts,color=[GRAY,DARK,BLUE,RED],width=.58)
     for i,value in enumerate(counts):axes[3].text(i,value+.6,str(value)+'/40',ha='center',fontsize=11)
-    axes[3].set(title='D  Same facts, different cooperation',ylabel='Both R and S necessary (count)',
+    axes[3].set(title='D  Same answers, different cooperation',ylabel='Both R and S necessary (count)',
                 xticks=range(4),xticklabels=['Parent\nP','Std anneal\nA','Late EMO\nB','Full EMO\nF'],ylim=(0,29))
     axes[3].grid(axis='y',alpha=.18)
     fig.subplots_adjust(left=.075, right=.99, bottom=.14, top=.93, hspace=.5, wspace=.32)
     save(fig, '01_selection_and_dependence',
-         'A-C: all three post-annealing paths; 64 language windows /20 file clusters, original95% input CIs.\n'
-         'D: fixed40 questions correct in all four models; selected-set counts, no CI. R/S cover all16 layers.\n'
-         'B/F intact text NLL2.6218 /2.6212; task raw accuracy39.06% each.')
+         'A-C: 64 language windows /20 file clusters, original 95% input CIs; B uses each model’s 128-token prefix pool.\n'
+         'D: fixed 40 questions correct in all four models; selected-set counts, no CI. R/S cover all 16 layers.\n'
+         'B/F intact text NLL 2.6218 /2.6212; task raw accuracy 39.06% each.')
 
 
 def transport(s):
@@ -197,8 +197,8 @@ def external_lineage(s):
             get(s,'e165',['raw_accuracy',key],'OL_accuracy_'+label+'_'+policy)
     fig.subplots_adjust(left=.065, right=.99, top=.87, bottom=.25, wspace=.65)
     save(fig, '04_native_trends_and_transport',
-         'OLMoE: fixed parent-calibrated pool16/64. Full (dark) and P16 (blue); all55 subjects /440 questions, original95% CIs.\n'
-         'P16 accuracy is only22.05% /21.14%: this is a probability-quality property, not a deployable compressed model. C fixes G_P parameters, not realized routes.')
+         'OLMoE: fixed parent-calibrated pool 16/64. Full (dark) and P16 (blue); all 55 subjects / 440 questions, original 95% CIs.\n'
+         'P16 accuracy is only 22.05% /21.14%: this is a probability-quality property, not a deployable compressed model. C fixes G_P parameters, not realized routes.')
 
 
 def gain_source(family):
@@ -240,7 +240,7 @@ def gain_transport(emo,olmoe):
     for ax in axes.flat:ax.axhline(0,color='.6',ls='--',lw=1);ax.grid(axis='y',alpha=.16);ax.set_xlim(-.4,1.4)
     fig.subplots_adjust(left=.08,right=.99,top=.94,bottom=.12,hspace=.55,wspace=.35)
     save(fig,'05_gain_and_partner_interventions',
-         'Same realized parent routes within each policy; all55 subjects /440 questions, paired95% subject-cluster CIs.\n'
+         'Same realized parent routes within each policy; all 55 subjects / 440 questions, paired95% subject-cluster CIs.\n'
          'GainP: 16 fixed layer scalars from native P calibration responses; no predictive-loss fit. Tokenizers analyzed separately.')
 
 

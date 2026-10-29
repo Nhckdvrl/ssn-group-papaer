@@ -10,14 +10,16 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Training sparse MoE models for selective execution raises a fundamental question: what computational organization makes their expert subsets useful?
-We show that selectability can improve while dependence on shared computation grows, even at similar intact quality.
-Cross-source interventions then separate the functions carrying a useful deployment property from the partners supporting its predictive use.
-Changing routed functions transfers a low-budget likelihood advantage and changes the predictive role of unchanged shared functions; both effects persist when actual expert support and weights are clamped on a 55-subject panel.
-Cross-context replay of realized shared messages identifies learned production--use relationships whose prediction cost largely survives local geometric correction.
-A second mature lineage reveals a complementary reversal: native restricted performance worsens while the transported expert bank improves restricted likelihood in a common receiver, with backbone changes opposing that improvement.
-Together, these results show how learning history organizes selectable functions into context-dependent computations: the boundary of a useful expert subset need not coincide with the boundary of reusable computation.
-The transported property improves probability quality; accuracy is reported separately.
+Training MoE models for selective execution raises a scientific question about how expert functions divide computation.
+Across six mature public checkpoints in two lineages, we show that selectability can improve while shared dependence grows at similar intact quality.
+Among four architecture-matched paths, the same 40 correctly answered questions require routed and shared computation jointly in 8--24 cases.
+Source, realized-route and message interventions identify the functions carrying a low-budget likelihood advantage, while showing how unchanged partners and actual messages acquire value through their computational context.
+Local geometric correction leaves most message-replay cost intact.
+A second lineage reveals an opposite native trend: budget sensitivity increases while the transported expert bank improves restricted likelihood in a common receiver, with backbone changes opposing that improvement.
+Gain and shared-path interventions make these separations constructive.
+Sixteen calibrated response gains produce a budget benefit in OLMoE; in EMO they increase shared dependence but worsen restricted quality, while the routed bank's advantage survives shared removal.
+Together, these results characterize MoE modularity as a learned organization of selectable functions, response interfaces and cooperative use, with different boundaries for a property carrier and reusable computation.
+Probability quality and accuracy are reported separately.
 \end{abstract}
 
 \section{What organization does modularity learn?}
@@ -44,7 +46,8 @@ These architecture-matched public paths provide mature endpoints with documented
 Let $D$ denote backbone, attention and readout, $G$ the gate parameters, $R$ the routed expert functions, and $S$ the always-active shared functions.
 An $R/S$ intervention covers the corresponding function suites in all 16 layers, defining the unit of the present comparison.
 
-For an intact loss $L$, we measure selection by the loss increase under a calibration-defined expert pool, alongside fixed random pools of the same size.
+For an intact loss $L$, native language-model selection uses each model's expert pool derived from the first 128 observed input tokens, and scores subsequent targets alongside fixed random pools of the same size.
+Property-transport experiments instead use a common parent pool derived from separate task calibration, preserving the selector across all compared sources.
 We measure property transport by changing a parameter source while holding a common receiver fixed.
 We measure a function's predictive role by its removal effect in the specified system.
 These measurements connect deployment behavior, parameter sources, and predictive roles.
@@ -82,7 +85,7 @@ Selectability and cooperation increase together in these endpoints (Figure~\ref{
 
 \subsection{A property carrier also changes the role of an unchanged partner}
 In the common $P$ receiver, replacing $R_P$ by $R_B$ transfers a low-budget answer-NLL advantage on the original panel, whereas replacing shared functions alone does not transfer the same property.
-Full-quality transport fails: the original-panel full NLL increases $0.0802$ while low-budget NLL decreases $0.1882$.
+The routed source carries a specific operating advantage: original-panel low-budget NLL decreases $0.1882$, while full NLL increases $0.0802$. Intact quality therefore depends on a broader assembly than the transferred property.
 Holding $S_P$ fixed and changing $R$ increases its removal effect by $0.3386$.
 The function package that carries a useful operating property and the native necessary partner must therefore be identified separately.
 
@@ -92,7 +95,7 @@ At fixed $P/B$ routes, the routed-function source effect remains an improvement 
 Routing still matters: the $B$ trajectory improves $R_B$ by a further $0.1270$, and the function--trajectory interaction is $-0.0887$ ($[-0.1242,-0.0500]$).
 Routed-function responses preserve the advantage under fixed execution, and their interaction with the trajectory further shapes its size.
 
-The choice CE advantage is $1.1386$ ($[0.8431,1.4676]$), but the raw accuracy difference is $+1.14$ percentage points ($[-2.27,4.55]$).
+Under natural routing, the choice CE advantage is $1.1386$ ($[0.8431,1.4676]$), but the raw accuracy difference is $+1.14$ percentage points ($[-2.27,4.55]$).
 The full-regime role and low-budget property establish two parts of the organization; the same-budget shared intervention below tests their causal connection.
 
 \begin{figure*}[t]
@@ -137,13 +140,44 @@ Different tokenizers also preclude directly subtracting the two lineages' absolu
 \label{fig:lineage}
 \end{figure*}
 
-\paragraph{The next explanatory comparison.}
-A compact rival is output-gain calibration: expert-source changes may adjust routed amplitude while the surrounding system compensates.
-Prior work establishes real global-conditioning effects from massive activations and super experts~\cite{massive,super,melayer}; self-selection based on internal activation is also a substantive training approach~\cite{aoe}.
-Neither a transferred likelihood advantage nor local shared-message correction by itself excludes a gain account of the routed property.
-The next registered comparison therefore fits one positive RMS-matching factor per layer on fixed calibration responses, without optimizing predictive loss, then evaluates parent, donor and gain-adjusted parent under identical realized routes in both lineages.
-For EMO, shared removal is also evaluated in the restricted regime to test whether that online partner is required for the advantage.
-No result from this comparison is included here.
+\section{Interventions separate properties and partner dependence}
+The separation between a deployment property and its underlying computation also allows a constructive test.
+We match donor routed-response energy on native full-parent calibration inputs using one fixed positive scalar per layer, then apply these 16 gains to the parent's routed functions.
+Both the original parent functions and their shared partner are retained; actual routes are held fixed within each operating policy.
+The coefficients use full-computation calibration responses and no predictive-loss fitting or restricted-policy tuning.
+
+In OLMoE, the resulting gains range from $0.931$ to $1.000$.
+The gain-adjusted parent improves restricted answer NLL by $0.276$ ($[0.241,0.315]$), compared to $0.223$ ($[0.140,0.308]$) from the annealed expert bank.
+Choice CE improves $0.697$ ($[0.467,0.915]$), compared to $0.488$ ($[0.069,0.920]$) from the bank.
+The gain-adjusted model remains close to full parent prediction: full answer NLL changes $+0.0042$ and first-answer vocabulary KL is $0.0037$, versus $0.0831$ for the donor bank.
+Descriptively, gains improve restricted NLL in 54 of the 55 subjects, and the bank improves it in 45; all subjects remain in the analysis.
+
+These results provide an alternative functional implementation of the operating property.
+An energy-calibrated parent and an annealed bank can both improve restricted execution while making different changes to full prediction.
+The property is consequently understood through its response interface and operating context, alongside the parameter package that carries it.
+This connects the native reversal in Figure~\ref{fig:lineage} to a controllable factor in the computational organization.
+
+The EMO cross reveals a complementary separation.
+Gain calibration increases the full-regime removal cost of unchanged shared functions by $0.863$ ($[0.760,0.970]$), compared to $0.289$ ($[0.210,0.371]$) from the donor bank.
+Yet gains worsen restricted answer NLL by $0.394$ ($[0.237,0.594]$), while the bank improves it by $0.294$ ($[0.204,0.385]$).
+The direct gain-minus-bank difference is $+0.688$ ($[0.520,0.898]$).
+Choice CE also changes in opposite directions: gains worsen it by $0.919$, while the bank improves it by $0.725$.
+Full-regime NLL changes are $+0.153/+0.212$ for gains/bank, so the gain construction has less intact-NLL damage while failing to reproduce the restricted advantage.
+
+The same-budget shared intervention connects the property and cooperation questions directly.
+With shared outputs zeroed, the routed bank still improves restricted answer NLL by $0.356$ ($[0.148,0.553]$), compared to $0.294$ with shared computation active.
+The shared pathway remains useful for prediction: its absolute removal costs are $1.333/1.271$ for parent/donor in this policy.
+Thus, the routed-source NLL advantage survives removal of that online pathway, while increased full-regime dependence can be produced without the advantage (Figure~\ref{fig:gains}).
+
+\begin{figure*}[t]
+\centering\includegraphics[width=\textwidth]{figures/05_gain_and_partner_interventions.pdf}
+\caption{Interventions connect the computational-organization account. A--B: gain calibration produces a restricted-likelihood benefit in OLMoE, but has the opposite effect to the transported bank in EMO. C: gains nevertheless increase dependence on unchanged shared functions in EMO's full regime. D: the bank's restricted NLL advantage survives shared-output removal. Actual parent support and weights are fixed within each policy; all 55 subjects are retained. Source: E166.}
+\label{fig:gains}
+\end{figure*}
+
+These constructions separate an operating property from the cooperation that accompanies it in a mature model.
+They identify response gains as a controllable interface factor and show why the same factor need not reproduce the organization learned by another history.
+Combined with the source, route and message interventions, they explain why selective deployment, the carrier of a property, and reusable computation can have different boundaries.
 
 \section{Connection to MoE and interpretability research}
 \paragraph{Training and deployment.}
@@ -183,4 +217,54 @@ Understanding their relationship provides a basis for studying how computational
 \bibitem{melayer} Z. Shi et al. \emph{A Single Layer to Explain Them All: Understanding Massive Activations in Large Language Models}. ICML, 2026.
 \bibitem{aoe} A. Lv et al. \emph{Autonomy-of-Experts Models}. ICML, 2025.
 \end{thebibliography}
+
+\appendix
+\section{Intervention and reproduction details}
+\paragraph{Mature paths.}
+The EMO release provides four 16-layer, 128-expert checkpoints with 127 routed experts and one always-active shared expert; each token activates seven routed experts plus the shared expert.
+The parent is \texttt{StdMoE\_1b14b\_1T\_Preanneal}; standard and EMO annealing produce \texttt{StdMoE\_1b14b\_1T} and \texttt{StdMoE\_1b14b\_1T\_EmoAnnealed}; the full-course path is \texttt{Emo\_1b14b\_1T}.
+The paths use 1T pretraining and 50B annealing tokens.
+OLMoE uses 16 layers, 64 routed experts, top-8 activation and no shared expert.
+Its comparison follows the public step-1,200,000 checkpoint at 5.033T tokens to the ordinary 100B annealing endpoint.
+Exact public revisions, file SHA256, native code, model fingerprints, configurations and raw inputs are registered in the repository manifests.
+
+\paragraph{Source crosses and runtime fixation.}
+In the EMO common receiver, $D_P$, $G_P$ and $S_P$ are retained while the routed functions in every layer come from $P$ or $B$.
+The $P/B$ route origins refer to these two receiver computations.
+For each candidate continuation and policy, gate logits are captured before the pool mask, then replayed with the original softmax, top-$k$, gate multiplication and accumulation.
+The routed support and weights therefore agree across the compared function sources, while the downstream hidden states and shared responses evolve naturally.
+The same-budget shared intervention zeros shared outputs under the trajectory captured with shared computation active.
+Its paired source interaction measures how the shared pathway contributes in that execution condition.
+
+\paragraph{Inputs and selection.}
+The broader panel contains all 55 MMLU subjects outside the original biology/mathematics pair, with eight held-out questions and eight validation calibration texts per subject.
+Five fixed development examples provide the few-shot prefix.
+The text population is shared between the two lineages and encoded separately by their native tokenizers, with no truncation.
+For source transport and gain experiments, a parent-calibrated sequential greedy selector fixes the task pool in every consumer: 31 routed experts plus $S$ for EMO and 16/64 experts for OLMoE.
+The native language-model experiment uses each endpoint's own 128-token context-prefix selector instead, evaluating only subsequent targets. Its random-pool controls and both pool/full-denominator programs are retained in the complete results.
+Pool masking precedes the native softmax; the original top-$k$ width and normalization convention are retained.
+Native random pools provide a separate selection-value control.
+
+\paragraph{Gain comparison.}
+On native full-$P$ calibration trajectories, the parent and donor routed suites are evaluated on the same layer inputs with the same parent gate.
+EMO shared outputs are excluded from this energy measurement.
+For layer $l$, the fixed coefficient is
+\begin{equation}
+ a_l=\sqrt{\frac{\sum_{\mathrm{cal}}\lVert r_{D,l}\rVert_2^2}
+                         {\sum_{\mathrm{cal}}\lVert r_{P,l}\rVert_2^2}}.
+\end{equation}
+The 16 coefficients are common to every expert, subject and execution policy in that lineage.
+Calibration texts include the original correct continuations; the procedure fits activation energy and uses no predictive-loss optimization or held-out tuning.
+Each routed-expert output is multiplied in FP32 and cast back to BF16 before the original gate multiplication and summation; shared outputs retain the native program.
+Full and restricted policies are evaluated for parent, donor and gain-adjusted parent; EMO additionally crosses each with shared-output removal.
+
+\paragraph{Statistics and numerical program.}
+Candidate log likelihoods sum all answer-token scores.
+Answer-token NLL, normalized four-choice CE, raw accuracy, per-character accuracy and first-answer full-vocabulary KL are reported separately.
+The 55-subject analysis uses equally weighted paired subject clusters, 2,000 bootstrap draws and frozen seeds; tokenizers are analyzed separately. Replayed source conditions have identical point estimates; intervals retain each experiment's predeclared draws and their small Monte Carlo differences.
+KL uses FP32 products and FP64 reduction.
+Canonical parameter/buffer fingerprints, exact old-condition LL/KL replays, causal-prefix and permutation controls, unit/zero gain identities and terminal source checks preserve the native interface.
+A separate coefficient-vector/logaddexp program recomputes the score contrasts and intervals.
+The reproduction entrypoint executes statistics, verification and plots from durable raw arrays without a model forward.
+
 \end{document}

@@ -19,6 +19,16 @@
       "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e165/summary.json",
       "sha256": "d763c3595a7dd3199de4409885854a90e727260d0952c9e11f4106d010c49d4b",
       "audit_sha256": "abbf4661646d45c3ceaf58df4abb6aa12b89fb1ef2641afb59587a29238b92e5"
+    },
+    "e166_emo": {
+      "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e166/emo_summary.json",
+      "sha256": "77319ce71e5fa6d12f33cc1d337677cd910352acd27dab3329272f4807a8cfe8",
+      "audit_sha256": "4aecafe8a602443933b403a8238bfce47966de222e762b52e52d1608352cd5a1"
+    },
+    "e166_olmoe": {
+      "path": "/home/xiang/ssn-group-papaer/workbench/mechanism-population-dynamics/moe/results/e166/olmoe_summary.json",
+      "sha256": "91aa92e60afb66604e376d44111af483b785d4cea9edd08d29812adff96fb470",
+      "audit_sha256": "4aecafe8a602443933b403a8238bfce47966de222e762b52e52d1608352cd5a1"
     }
   },
   "estimates": {
@@ -851,21 +861,231 @@
         "absolute/D_A_G_A_E_A_P16"
       ],
       "original_CI_field": "ci95"
+    },
+    "emo_full_donor_minus_P": {
+      "point": 0.21167871857813417,
+      "ci95": [
+        0.14879908839306233,
+        0.2708432407975783
+      ],
+      "source": "e166_emo",
+      "json_path": [
+        "true_answer_token_NLL",
+        "full/S1/donor_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "emo_full_GainP_minus_P": {
+      "point": 0.15325652285742947,
+      "ci95": [
+        0.11703832040686472,
+        0.19026124572063483
+      ],
+      "source": "e166_emo",
+      "json_path": [
+        "true_answer_token_NLL",
+        "full/S1/GainP_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "emo_pool_donor_minus_P": {
+      "point": -0.29367260906343956,
+      "ci95": [
+        -0.3849080625367382,
+        -0.20428553307651218
+      ],
+      "source": "e166_emo",
+      "json_path": [
+        "true_answer_token_NLL",
+        "pool/S1/donor_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "emo_pool_GainP_minus_P": {
+      "point": 0.394300970330335,
+      "ci95": [
+        0.23748216187213578,
+        0.5940565470114331
+      ],
+      "source": "e166_emo",
+      "json_path": [
+        "true_answer_token_NLL",
+        "pool/S1/GainP_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "olmoe_full_donor_minus_P": {
+      "point": -0.009035373957096362,
+      "ci95": [
+        -0.028554451415940815,
+        0.009686747205961608
+      ],
+      "source": "e166_olmoe",
+      "json_path": [
+        "true_answer_token_NLL",
+        "full/S1/donor_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "olmoe_full_GainP_minus_P": {
+      "point": 0.004246159874688046,
+      "ci95": [
+        0.0005685631556595704,
+        0.0074467286296237825
+      ],
+      "source": "e166_olmoe",
+      "json_path": [
+        "true_answer_token_NLL",
+        "full/S1/GainP_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "olmoe_pool_donor_minus_P": {
+      "point": -0.22302264975113945,
+      "ci95": [
+        -0.3080897488250712,
+        -0.13962828994774656
+      ],
+      "source": "e166_olmoe",
+      "json_path": [
+        "true_answer_token_NLL",
+        "pool/S1/donor_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "olmoe_pool_GainP_minus_P": {
+      "point": -0.2759505029176124,
+      "ci95": [
+        -0.31466421951105905,
+        -0.2406947942852331
+      ],
+      "source": "e166_olmoe",
+      "json_path": [
+        "true_answer_token_NLL",
+        "pool/S1/GainP_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "S_role_full_donor_minus_P": {
+      "point": 0.2891017253674262,
+      "ci95": [
+        0.21034412154307475,
+        0.37069540877641666
+      ],
+      "source": "e166_emo",
+      "json_path": [
+        "true_answer_token_NLL",
+        "full/S_role/donor_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "S_role_full_GainP_minus_P": {
+      "point": 0.862786914818477,
+      "ci95": [
+        0.7596248192268144,
+        0.9696475475107084
+      ],
+      "source": "e166_emo",
+      "json_path": [
+        "true_answer_token_NLL",
+        "full/S_role/GainP_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "S_role_pool_donor_minus_P": {
+      "point": -0.062069311354390116,
+      "ci95": [
+        -0.25691368764861233,
+        0.1346379101650013
+      ],
+      "source": "e166_emo",
+      "json_path": [
+        "true_answer_token_NLL",
+        "pool/S_role/donor_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "S_role_pool_GainP_minus_P": {
+      "point": 0.09452445807372217,
+      "ci95": [
+        -0.11370261411806033,
+        0.25984562515785553
+      ],
+      "source": "e166_emo",
+      "json_path": [
+        "true_answer_token_NLL",
+        "pool/S_role/GainP_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "S_contribution_full_S1": {
+      "point": 0.21167871857813417,
+      "ci95": [
+        0.14879908839306233,
+        0.2708432407975783
+      ],
+      "source": "e166_emo",
+      "json_path": [
+        "true_answer_token_NLL",
+        "full/S1/donor_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "S_contribution_full_S0": {
+      "point": 0.5007804439455602,
+      "ci95": [
+        0.40664287176710145,
+        0.5956780032519038
+      ],
+      "source": "e166_emo",
+      "json_path": [
+        "true_answer_token_NLL",
+        "full/S0/donor_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "S_contribution_pool_S1": {
+      "point": -0.29367260906343956,
+      "ci95": [
+        -0.3849080625367382,
+        -0.20428553307651218
+      ],
+      "source": "e166_emo",
+      "json_path": [
+        "true_answer_token_NLL",
+        "pool/S1/donor_minus_P"
+      ],
+      "original_CI_field": "ci95"
+    },
+    "S_contribution_pool_S0": {
+      "point": -0.3557419204178296,
+      "ci95": [
+        -0.5531358780102718,
+        -0.14796276810853715
+      ],
+      "source": "e166_emo",
+      "json_path": [
+        "true_answer_token_NLL",
+        "pool/S0/donor_minus_P"
+      ],
+      "original_CI_field": "ci95"
     }
   },
   "status": "complete",
-  "source_code_sha256": "8940b798648c117abe60b0f52935782bb2a43fcd62311e39a8b5d6fc9405476a",
+  "source_code_sha256": "f6abd4691a569876aca0eaf55fe32ad677910ac0d32b39f376a9beb67c9d97bb",
   "no_new_model_runs": true,
   "no_new_statistical_tests": true,
   "scope": "Conditional input intervals; no initialization population or universal modularity claim.",
   "figures": {
-    "01_selection_and_dependence.png": "352e488b0d4ed5fb8fbd6575f83b59306659ccad2750fc3608918078efde6517",
-    "01_selection_and_dependence.pdf": "395ff0bb1fdef365524bd439daa35696771f309111733aa4d23d82190f886626",
+    "01_selection_and_dependence.png": "e110449178488d33fbe80e0964f3f24d7f6fe0aaf1fcc0f625521f95c1b8a8f2",
+    "01_selection_and_dependence.pdf": "5ba36cfa698ca7f821c6932ab169dc137a64a731415bcd427e82a8da3b3e7403",
     "02_property_and_partner_under_fixed_routes.png": "b8875661a100fd2b83e600448c94f7f62c941aba83b2db78a2042b6b24753deb",
     "02_property_and_partner_under_fixed_routes.pdf": "f88bd502e60c3e12f6e864c4f129e4189e27f6c99bfbdc21036cf4ccae3f860a",
     "03_actual_message_reuse.png": "46a7bf20fc416af2c4f46fb06a7995f2521173636160199fa1664839d4a86c47",
     "03_actual_message_reuse.pdf": "95c1596873904152a778c389a2757d2add2e45af66f7127d72f7b02bb8541c43",
-    "04_native_trends_and_transport.png": "e8e30a6eae6a1e57c586718fcc85bb6f9f917fb48de58aec356e654f40d1a9a8",
-    "04_native_trends_and_transport.pdf": "046531e8284c65bcfa122706e6f7d061b1d3e499e517ec0695ed0659b79bd121"
+    "04_native_trends_and_transport.png": "991139a7b39fcb9c0ced4591b0657950918dcd9b04911d3217ea16a819790e7d",
+    "04_native_trends_and_transport.pdf": "42d97061fe6006033507cf625534165d5e670d1fe99eda931128486cea5a2078",
+    "05_gain_and_partner_interventions.png": "b9e97cf9a36a8b693903e52931585764a28dd6d162af681c6b4ff2e6f732d484",
+    "05_gain_and_partner_interventions.pdf": "7ff8c2d26da97142475a282825e8a5990887ad7f9a60f8896c2b3b8eaffab3c2"
   }
 }

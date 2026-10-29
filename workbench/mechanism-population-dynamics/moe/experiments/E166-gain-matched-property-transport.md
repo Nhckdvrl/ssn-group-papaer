@@ -1,6 +1,6 @@
 # E166：增益匹配能否解释跨历史性质迁移与伙伴作用（2026-10-29）
 
-- **状态：** RUNNING；源码及输入冻结，双谱系顺序单卡耐久监督已启动。尚无完整结果，不据中途条件更新解释。
+- **状态：** DONE；两谱系18格×440题、独立复算、来源终态及恢复监督exit0全部完成。
 - **类型 / 对应：** CLAIM；C14/P33。用户持续授权高信息量研究，总并发最多4卡。
 - **重要问题：** E164/E165的专家函数包带走低预算概率质量、且未改共享函数的作用改变，是否主要由简单的逐层输出增益校准实现，而不是需要函数响应中的其余结构？
 
@@ -61,6 +61,30 @@ OLMoE6格×440题完成并exit0，原生旧LL/KL及终态只读通过，GPU计�
 
 `e166_stage_emo.py`对既有两份公开FP32源做节点NVMe实文件复制及全文件SHA；256MiB有界顺读probe为3.083秒，最多2个复制worker。`e166_emo_local.py`仅改`e156_loading._classes`返回的checkpoint目录，原生类、from_pretrained kwargs、CPU转换、参数/buffer指纹和旧预测精确guard不变。`e166_resume.py`只恢复未得到新读数的EMO并保留完整OLMoE，完成后调用冻结分析/校验。三份适配源码和新监督单列SHA；失败和CPU成本进入封存，不重跑已完成OLMoE。
 
-## 结果（尚未取得）
+## 结果与解释（全部已取得）
 
-代码、CPU预检、输入冻结及监督已实际完成；新S-zero P32及GainP科学矩阵尚未完成。C14仍L2。
+| 预定读数 | 估计 [95%配对55学科簇CI] |
+|---|---|
+| EMO P32：真实donor−P / GainP−P | −.293673 [−.384908,−.204286] / +.394301 [.237482,.594057] |
+| EMO P32：GainP−donor直接差 | +.687974 [.520068,.897586] |
+| EMO full：S角色变化donor−P / GainP−P | +.289102 [.210344,.370695] / +.862787 [.759625,.969648] |
+| EMO P32 S-zero：donor−P | −.355742 [−.553136,−.147963] |
+| EMO P32的S角色变化donor−P | −.062069 [−.256914,.134638]；不作角色等价/符号反转结论 |
+| EMO full：donor−P / GainP−P完整NLL | +.211679 [.148799,.270843] / +.153257 [.117038,.190261] |
+| OLMoE P16：donor−P / GainP−P | −.223023 [−.308090,−.139628] / −.275951 [−.314664,−.240695] |
+| OLMoE P16：GainP−donor直接差 | −.052928 [−.132099,.026407]；不当等价检验 |
+| OLMoE gain full：NLL变化 / 首答案KL | +.004246 [.000569,.007447] / .003706 |
+
+EMO P32 choice CE donor−P=−.725434 [−1.024036,−.419082]，GainP−P=+.918719 [.519563,1.356419]；S-zero donor的CE区间跨0，NLL优势保留。OLMoE P16 GainP的CE改善.696603 [.467075,.915067]，donor改善.487595 [.068763,.920151]。所有raw/per-char准确率、输出KL及逐学科数据在完整summary；未将NLL改善称准确率提升。
+
+**科学推进：** 统一RMS增益能在OLMoE产生预算性质，却在EMO增强full共享依赖、同时让P32变差；这将伙伴重要性与选择性质分开干预。真实R_B的P32 NLL优势在固定P路由、关闭在线S输出后仍保留，共享本身仍有明显预测作用。这排开“预算优势只是shared在线补位”解释，并支持函数来源、响应接口与合作使用是需要分别识别的组织变量。不扫描更好的gain来挽救该竞争模型。
+
+cal同输入响应：OLMoE gain=.9303–.9997、cos=.9774–.9997；EMO gain=.2048–.9618、cos=.6882–.9698，均为预定规则的观测，未据held调整。POST-HOC完整学科描述：OLMoE gain/donor改善54/45科NLL；这是描述计数，无额外CI或训练seed结论。
+
+## 完成与复算
+
+总GPU工作计时3866.130493秒=1.073925137 GPU时；OLMoE1056.54秒，EMO余量，最多1卡，峰值31.920098/55.024348GB。原CPU-only中断648.2秒、stage636.891秒/0GPU、新CPU准备121.235秒分列。原链失败保持原事实；有效完成入口为[execution_complete](../results/e166/execution_complete.json)中列出的OLMoE及EMO恢复worker和恢复chain，均exit0。
+
+[EMO完整summary](../results/e166/emo_summary.json)、[OLMoE完整summary](../results/e166/olmoe_summary.json)、[独立审计](../results/e166/independent_audit.json)、[主图](../paper/figures/05_gain_and_partner_interventions.png)。16356数值/16938元数据独立复算最大差1.0658e−14。raw在`~/mechpop_cache/e166_gain_transport/{emo,olmoe}/scores.npz`，198730/121042 B，SHA分别e50c24cd…da86a1 /66b1d82f…78477a。manifest逐项绑定完整SHA；source ef8f58c8 /plan ae9d5cc6…102fc、27数值文件未变。CPU统一入口`reproduce.py E166 all`已完整通过，0模型前向。
+
+C14维持L2。该批后集中形成论文、复现和封存；自动GPU队列为空，无E167。
