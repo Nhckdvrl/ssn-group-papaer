@@ -1,40 +1,27 @@
 # Mechanism Population Dynamics
 
-**状态（2026-10-29）：** MoE E144–E166完成，三条核心结果、固定实际路由、第二成熟谱系及增益/伙伴干预已整合成“学习历史塑造计算组织”的论文主线。E166在EMO分开了共享依赖与预算性质，OLMoE给出增益构造的替代实现。英文论文和五幅关键图/完整复算已形成；本批GPU实验收束、当前0卡、总并发上限4卡，0新成熟训练。结论与资源统一见[MoE说明](moe/README.md)，领域位置见[论文形态](moe/PAPER_SHAPE.md)。头线CLOSED、正式状态不变。
+当前研究是**MoE的计算组织与功能分工**：从导师关于自发分工跨训练重复的建议，推进到性质载体、响应接口和协作使用关系的干预研究。E144–E166已完成，当前无GPU任务，总并发上限4卡。MoE由用户授权独立推进；正式登记保持PROPOSED，头线保持CLOSED。
 
-这个工作台前后做了三件事，外加一个副产品。按时间顺序分成四块，每块有自己的说明页：
+## 从这里开始
 
-| # | 主题 | 时间 | 实验 | 状态 | 从这里读 |
-|---|---|---|---|---|---|
-| 1 | **最初的研究：头的分工从哪里来、能否跨训练对应**（含四版论文） | 09-30 – 10-11 | E01–E88 | 结项 | [heads/1-original/](heads/1-original/README.md) |
-| 2 | **结项后的找补：分工可重现性、损伤修复、遗忘可逆性** | 10-15 – 10-17 | E89–E119 | 停止 | [heads/2-after-closure/](heads/2-after-closure/README.md) |
-| 3 | **MoE：任务、学习历史与专家职责的可组合性** | 10-23 – 持续 | E144–E166完成；计算组织论文与五幅主图 | 用户授权持续执行 | [moe/](moe/README.md) |
-| 4 | 副产品：公开模型套件的数据完整性问题（已对外提交） | 10-03 – 10-25 | — | 完成 | [suite-audits/](suite-audits/README.md) |
+| 想了解什么 | 入口 |
+|---|---|
+| 当前结论、五幅关键图、下一决定 | [moe/README.md](moe/README.md) |
+| 导师最初建议的原文 | [10-22日语会议录](moe/notes/MEETING_10-22_JA.md) |
+| 如何从原始问题推进到当前题目 | [研究主线与演进](moe/RESEARCH_DIRECTION.md) |
+| 论文论证与领域位置 | [PAPER_SHAPE](moe/PAPER_SHAPE.md)、[英文论文](moe/paper/main.pdf) |
+| 主张、等级、校正与失败 | [CLAIMS](CLAIMS.md)、[PAIN_LOG](PAIN_LOG.md) |
+| 模型、checkpoint、raw及恢复 | [ASSETS](moe/ASSETS.md) |
+| 实验协议与全部结果 | [实验索引](moe/experiments/INDEX.md)、[结果导航](moe/results/README.md) |
+| 当前代码与CPU复算 | [scripts](moe/scripts/README.md) |
+| 执行约定与过程 | [AGENTS](AGENTS.md)、[logs](logs/) |
 
-主题 1、2 共用一套代码和结果目录，总的来龙去脉与“为什么反复不够好”的诊断在 [heads/HISTORY.md](heads/HISTORY.md)。
+## 已结项的历史与共有资料
 
-## 一句话结论
-1. **头：** 层内由哪个头担任角色跟随初始化，不跟随语料；分配在训练早期形成；抽象的分工结构（任务深度顺序、哪些任务共用关键头）跨种子重现，具体是哪个头不重现。对象（头的编号）本身是坐标，so what 回答不了，结项。
-2. **找补：** 写出接口的对准决定一个头的角色能否回来；遗忘落在读取侧比写出侧更容易被良性训练撤回。都是组件层面的细化，不足以改变同行认知，停止。
-3. **MoE：** 固定gate重组有真实预测代价，Γ分组未胜过gate-only强对照；短程原生历史响应不等于配套断裂。成熟谱系显示相近成功有不同R/S依赖，预算性质载体与必要伙伴可分离；相同函数乃至相同信号的作用随伙伴改变。E163进一步发现，实际消息norm/投影校正仅把原配NLL代价.260527降至.245925；E164又在新55科固定实际路由后保留性质与伙伴差；E165将来源—使用分离扩展到另一成熟谱系；E166已完成增益/伙伴干预的性质—依赖分离；本批GPU收束，最多4卡。见[当前证据与判断](moe/README.md)。
-4. **审计：** 五个公开套件问题，三个已在 Hugging Face 提交，两个已有他人报告。
+| 区域 | 内容与状态 |
+|---|---|
+| [heads](heads/README.md) | E01–E88及四版论文、E89–E119；均已结项，不自动恢复。结论/撤回见[HISTORY](heads/HISTORY.md) |
+| [suite-audits](suite-audits/README.md) | 公开模型套件完整性报告、核查证据与已提交链接 |
+| [knowledge](knowledge/PAPER_CATALOG.md) | 按主题组织的论文卡与可复用研究教训 |
 
-## 目录
-```
-README.md            本页
-CLAIMS.md            当前MoE主张、解释修订与证据链；头线移至 heads/CLAIMS.md
-PAIN_LOG.md          当前MoE痛点 P15–P33；头线 P01–P14 移至 heads/PAIN_LOG.md
-logs/                每日记录（不分主题，按日期）
-knowledge/           共享：论文卡（PAPER_CATALOG.md）、方法教训、概念综述
-heads/               主题 1、2
-  HISTORY.md         研究总档（五个阶段、诊断、教训）
-  1-original/        E01–E88 实验卡、四版论文 papers/
-  2-after-closure/   E89–E119 实验卡
-  scripts/  results/ 共用代码与结果（按 eNN 命名）
-moe/                 主题 3：README、RESEARCH_DIRECTION.md、experiments/、scripts/、results/、notes/（历史讨论与审计）、ASSETS.md
-suite-audits/        主题 4：报告原文、提交链接、核查数据
-```
-
-## 资产提醒
-- 大文件不进 Git。本地缓存 `~/mechpop_cache`：OLMoE 四个检查点、MoE 实验的检查点与数组（清单见 [moe/ASSETS.md](moe/ASSETS.md)）。头线的 Pythia 检查点与 Pile 分词数据已不在。
-- 2026-10-26 整理：按主题分目录；删除运行日志、作业清单、冒烟测试、过期的文件清单，以及人 10-10 决定放弃的 Flan 支线（E25–E34、E47–E50、E53、E65、E76）的结果与专用脚本。删掉的已跟踪文件可从 Git 历史恢复。
+历史执行脚本退出日常目录，固定Git快照及逐文件SHA由统一入口按需恢复；原数值程序、原卡、结果和失败记录保留。结项头线的未跟踪本地资产和已结束实验console迁入耐久归档，位置与核验见ASSETS。没有清理公共HF缓存、唯一checkpoint或其他workbench。

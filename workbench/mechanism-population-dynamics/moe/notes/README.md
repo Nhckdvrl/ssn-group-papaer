@@ -1,15 +1,13 @@
-# 背景、定位与阅读来源
+# 研究起点、背景与来源
 
-当前研究从[MoE入口](../README.md)开始；这里保存必要背景，不是额外的当前状态页。
+当前结论从[MoE入口](../README.md)进入；从起点到当前题目的科学转折统一维护在[研究主线与演进](../RESEARCH_DIRECTION.md)。
 
-| 文件 | 角色 |
+| 材料 | 角色 |
 |---|---|
-| [POSITIONING_2026-10-26](POSITIONING_2026-10-26.md) | 累积定位表；最近邻的对象、主张、干预和实际增量。最新科学决定见[PAPER_SHAPE](../PAPER_SHAPE.md) |
-| [功能迁移与路由全文卡](../../../../library/themes/moe-routing/FUNCTIONAL_TRANSFER_AND_ROUTING_2026-10-29.md) | 从三条结果选择E164的最近邻比较与自主推理；实际结果统一见MoE入口和原卡 |
-| `PRIMARY_READING*.json` | 阅读版本、PDF路径/SHA和覆盖凭证；不把摘要阅读标为全文 |
-| [CONTROLLED_E120_E142](CONTROLLED_E120_E142.md) | 受控阶段的有效证据与原生研究的连接；旧组F与成熟端点F分开 |
-| [IDENTIFIABILITY_SCOPE](IDENTIFIABILITY_SCOPE_2026-10-26.md) | 条件数学命题和有限模型接口边界，非原创定理或关线依据 |
-| [ADVISOR_2026-10-23](ADVISOR_2026-10-23.md) | 导师原话及当时讨论；第2节起包含旧agent判断/计划，不能作当前文献结论或自动队列 |
-| [audits](audits/) | 当时的审读与校正记录，数值/失败保留；其中下一步是历史措辞 |
+| [10-22日语会议录全文](MEETING_10-22_JA.md) | 用户提供的研究起点原始材料；独立保留，后续叙事不改写原文 |
+| [10-16口述的早期转述](ADVISOR_2026-10-23.md) | 保留另一来源的导师原问；旧agent调研/计划已退出当前文本 |
+| [受控E120–E142](CONTROLLED_E120_E142.md) | 受控窗口的有效证据、限制和与原生研究的联系 |
+| `PRIMARY_READING*.json` | 阅读版本、PDF路径/SHA和实际覆盖；不以摘要冒充全文 |
+| [audits](audits/) | 原审读、校正与证据；其中的下一步保持当时含义 |
 
-论文全文卡在仓库[library/themes/moe-routing](../../../../library/themes/moe-routing/)，当前主张在[CLAIMS](../../CLAIMS.md)，所有原始结果与失败留在各实验卡和[results](../results/)。
+当前领域位置见[PAPER_SHAPE](../PAPER_SHAPE.md)；全文卡集中在[library/themes/moe-routing](../../../../library/themes/moe-routing/)。较早定位和条件数学命题保留在[10-26定位历史](https://github.com/Nhckdvrl/ssn-group-papaer/blob/d581ed4b/workbench/mechanism-population-dynamics/moe/notes/POSITIONING_2026-10-26.md)、[可识别性历史](https://github.com/Nhckdvrl/ssn-group-papaer/blob/d581ed4b/workbench/mechanism-population-dynamics/moe/notes/IDENTIFIABILITY_SCOPE_2026-10-26.md)，不再作为当前队列或额外状态页。

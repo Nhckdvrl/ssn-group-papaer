@@ -1,34 +1,36 @@
-# 代码使用：从三个结果到复算
+# 代码入口
 
-从工作台根`workbench/mechanism-population-dynamics/`使用已有`~/.venvs/mechpop`环境。复核三条核心结果的统一入口：
+从本workbench根目录运行，使用已有`~/.venvs/mechpop/bin/python`。日常入口只有下列几项：
+
+| 文件 | 用途 |
+|---|---|
+| [reproduce.py](reproduce.py) | 已完成实验的CPU统计、独立校验及作图；不做模型前向、训练或下载 |
+| [moe_paper_figures.py](moe_paper_figures.py) | 五幅论文主图；73项估计/共同成功计数逐项绑定JSON路径与SHA |
+| [moe_paper_patterns.py](moe_paper_patterns.py) | E166完整逐学科模式和cal的POST-HOC描述，无新推断或模型运行 |
+| [moe_native_geometry_posthoc.py](moe_native_geometry_posthoc.py) | 既有E163 native几何的描述性汇总 |
+| [source_snapshot.py](source_snapshot.py) / [frozen_sources.json](frozen_sources.json) | 固定历史源码的离线查阅、导出与临时原路径恢复 |
+
+## 复核结果
 
 ```bash
 ~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py spine verify
+~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py E166 all
 ```
 
-`spine`依次覆盖E156（性质来源）、E159（伙伴作用）、E162（成熟路径分担）、E163（消息几何/重用）。`verify`执行原有独立公式校验；`stats`从raw重算统计，`plots`重绘，`all`依次执行三项；`--show-commands`列出实际命令。只复算已完成结果，不加载模型前向、训练或下载；任一manifest未完成会拒绝。
+`spine`保持原四项E156/E159/E162/E163；单项支持E156及E158–E166。`stats`从raw重算，`verify`使用原独立实现，`plots`重绘，`all`依次执行；`--show-commands`先列实际命令。未完成结果会拒绝。E165/E166的plots生成当前五幅论文图，原实验自身的图仍可按其他条目复算。
 
-单实验还支持E156、E158–E166，例如`reproduce.py E156 stats`、`reproduce.py E166 all`。E165/E166的plots生成论文五图，E164保持原图入口；现有`spine`仍是四项原核心证据，不因新实验改变旧复核组成。E150–E155/E157和早期窗口的精确入口保留在各原卡；[结果导航](../results/README.md)给出当前证据路径。
+## 查阅冻结实现
 
-## 当前少量使用入口
+原229份MoE及170份头线执行/分析源码保留在固定Git版本`d581ed4b9636319da8e8467930f716ab651f38c4`，不再平铺为当前入口。
 
-| 用途 | 入口/边界 |
-|---|---|
-| 所有当前论证的CPU复核 | `reproduce.py spine verify`；原审计器不变，不提高证据等级 |
-| 本轮论文关键图 | `moe_paper_figures.py`；73项估计/共同成功计数的五幅图，逐项来源在`paper/figures/figure_sources.json`；无新检验，英文论证在`paper/main.tex` |
-| E165数值与复核 | `e165_run.py`及18份原源码冻结0fb295d6；`e165_local_adapter.py`只改已核SHA的NVMe路径。耐久链全部exit0，`reproduce.py E165 all`不运行模型 |
-| E166完成程序 | `e166_run.py`与`e166_finish.py`；27份数值/辅助源码冻结ef8f58c8。两谱系全量18格/440题完成；资源适配只改FP32 NVMe locator，原CPU中断与恢复全保留。`e166_resume.py`完成链与独立复算exit0，`reproduce.py E166 all`含描述性patterns与五图，无模型前向 |
-| 论文总览图 | `moe_research_spine.py`；只组织E156/E159/E163已有估计及原CI，sidecar给来源SHA和JSON路径 |
-| E164当前数值程序 | `e164_run.py`的prepare/preflight/run、`e164_routing.py`及统计/校验；21份源码冻结43aee97a，plan/source不随运行修改。CPU入口只读完整结果，真实GPU任务由`e164_finish.py`的耐久链监督且已exit0；不得覆盖完成目录 |
-| E163原始数值程序 | `e163_run.py`、`e163_geometry.py`、`e163_metrics.py`等20文件冻结c31e4b0e；不以目录整理改数值代码 |
-| E163实际续跑 | `e163_cross_resume.py`调用`e163_resource_wait.py`，只转换轨迹指纹键并有检查地继承native块；原worker终态未得与fresh范围见原卡 |
-| 成熟权重/源码恢复 | [ASSETS](../ASSETS.md)；`full_course_assets.py`、`restore_mature_staging.py`，固定HF pin/SHA |
-| 耐久监督 | `supervised_process.py`；监督退出码、心跳、费用账本，进程消失不等于成功 |
+```bash
+python3 -B moe/scripts/reproduce.py sources
+python3 -B moe/scripts/reproduce.py sources --name e166_core.py
+python3 -B moe/scripts/reproduce.py sources --export /tmp/mechpop-frozen-source
+```
 
-## 为什么保留旧脚本
+查阅命令给出原路径、Git链接、SHA与大小；导出需放在当前仓库之外。关键实现包括`e163_geometry.py`（消息接口）、`e164_routing.py`（真实路由）、`e166_core.py`（增益）及各实验analyze/verify。旧训练、资产准备、失败恢复与封存工具均能按名字找到。
 
-2026-10-29整理快照中的198个Python文件，有88个被当时plan/manifest/封存来源直接引用；随后新增E164的研究、复核与封存入口。其他还包括生成、作图、失败方案与传递依赖。[目录核查](../results/directory_cleanup_2026-10-29.json)记录逐文件SHA、直接引用及本地imports。引用数不是自动删文件的判据；以日期搬动或删除会破坏动态import和旧source恢复。日常从上表进入，无需逐个浏览全部文件。
+复算时，入口持有跨节点共享锁，临时将**原字节恢复到原路径**，执行原程序，最后只收回自己创建且SHA未变的文件。已有冲突文件不会覆盖。这样保留`__file__`、动态import和冻结源码guard的契约，数值程序不做目录迁移或改写；仅替换了日常入口的组织方式。历史训练程序不会自动执行。
 
-E160正式结果在`results/e160/retry_1/`，统一入口使用独立auditor的正确`--root`接口；旧恢复器的audit包装错误保留为历史，不改GPU数值程序。E158只有`whole_path/`完成；旧单层扫描/原失败入口不能当有结果的复现路线。
-
-确需GPU重放时，先读[AGENTS](../../AGENTS.md)、原卡和新鲜资源状态，最多4卡；现有完成目录和凭证不可覆盖。大权重、raw、唯一checkpoint和失败记录按ASSETS恢复，源码封存包内的旧文档是当时快照。
+若是浅克隆缺少该Git对象，先取得上述固定版本；封存包是另一精确恢复来源。历史完整环境/GPU程序按[ASSETS](../ASSETS.md)和原卡在独立checkout恢复；旧源中的准备命令不是当前实验队列。

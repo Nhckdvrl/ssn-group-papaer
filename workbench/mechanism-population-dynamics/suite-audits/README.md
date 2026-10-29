@@ -20,5 +20,5 @@ GitHub 上未同步提交（`gh` 登录令牌失效）。
 ## 文件
 - [reports/](reports/)：三份提交报告原文、[提交链接](reports/submitted_links.json)、DataDecide 复核数据。
 - 早期核查输出留在头线结果目录 [../heads/results/](../heads/results/)（`audit_step0_1b.json`、`audit_outlier_runs.json`、`r0_hf_metadata_*.json`、`artifact_manifest_*.json`），因为头线公共代码直接读取它们。
-- 核查脚本与头线共用代码，在 [../heads/scripts/](../heads/scripts/)：`audit_polypythias_reset.py`、`audit_init_start*.py`、`audit_step0_all.py`、`audit_weight_retention.py`、`e95_reset_audit.py`、`e67_audit_sizes.py`、`r0_*.py`。
-- 每个问题的发现经过与教训：[../PAIN_LOG.md](../PAIN_LOG.md) P09–P14；E95 卡：[../heads/2-after-closure/experiments/E95-polypythias-reset-audit.md](../heads/2-after-closure/experiments/E95-polypythias-reset-audit.md)。
+- 核查脚本与头线共用代码，从 [历史源码入口](../heads/scripts/README.md)查询固定Git版本：`audit_polypythias_reset.py`、`audit_init_start*.py`、`audit_step0_all.py`、`audit_weight_retention.py`、`e95_reset_audit.py`、`e67_audit_sizes.py`、`r0_*.py`。
+- 每个问题的发现经过与教训：[heads/PAIN_LOG.md](../heads/PAIN_LOG.md) P09–P14；E95 卡：[../heads/2-after-closure/experiments/E95-polypythias-reset-audit.md](../heads/2-after-closure/experiments/E95-polypythias-reset-audit.md)。

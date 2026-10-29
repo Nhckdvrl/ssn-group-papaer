@@ -51,4 +51,4 @@ R−F额外分量方差.041258包含XOR .024964和共同调用.016294，后者�
 
 E134/E135说明测量接口/目标影响专家特异分量的预测必要性；原始A=0的未承担列经row-centering仍可能继承共同均值，不变成独立内容证据。E144–E147随后实际测到拆来源的小预测代价，但Γ分组未胜过gate-only强对照。E148/E149短程原生分叉未检出强配套障碍；E150–E163才在成熟原生路径上识别不同实际依赖、性质来源与消息使用关系。不能把这些不同窗口串成已成立的单因素训练机制。
 
-C06–C09仍保持[账本](../../CLAIMS.md)中的限定等级；[可识别性说明](IDENTIFIABILITY_SCOPE_2026-10-26.md)只给有额外假设的条件命题。完整协议/核验见[实验索引](../experiments/INDEX.md)，资产见[ASSETS](../ASSETS.md)。
+C06–C09仍保持[账本](../../CLAIMS.md)中的限定等级；[可识别性说明](https://github.com/Nhckdvrl/ssn-group-papaer/blob/d581ed4b9636319da8e8467930f716ab651f38c4/workbench/mechanism-population-dynamics/moe/notes/IDENTIFIABILITY_SCOPE_2026-10-26.md)只给有额外假设的条件命题。完整协议/核验见[实验索引](../experiments/INDEX.md)，资产见[ASSETS](../ASSETS.md)。

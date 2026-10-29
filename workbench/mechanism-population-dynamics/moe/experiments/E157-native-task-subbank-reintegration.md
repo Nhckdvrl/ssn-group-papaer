@@ -77,7 +77,7 @@ on-domain按已知subject分别使用Bio/Math固定回插模型，不是按held�
 
 on-domain并没有自动胜过off-domain。B/P的off-domain full NLL相对P为−.010522 [−.040760,.019447]，on-domain为+.024710；off-domain受限值未测，不能把它重新挑成更好的双预算方案。当前任务组由routing校准定义，不能据此宣布天然语义单元。
 
-**POST-HOC配对S来源补充：** 看完全表后补算每个partial组的外国S−S_P，全部A/B与group/on/off都保留，原摘要/读数不改。on-domain A/A−A/P=.079005 [.050955,.105871]，B/B−B/P=.039216 [−.005938,.080844]；前者明确有代价，后者区间包含0。不能仅凭点值称B/S_B有确定损伤。[代码](../scripts/e157_shared_effects.py)、[完整配对差](../results/e157/shared_source_effects_posthoc.json)。
+**POST-HOC配对S来源补充：** 看完全表后补算每个partial组的外国S−S_P，全部A/B与group/on/off都保留，原摘要/读数不改。on-domain A/A−A/P=.079005 [.050955,.105871]，B/B−B/P=.039216 [−.005938,.080844]；前者明确有代价，后者区间包含0。不能仅凭点值称B/S_B有确定损伤。[代码](https://github.com/Nhckdvrl/ssn-group-papaer/blob/d581ed4b9636319da8e8467930f716ab651f38c4/workbench/mechanism-population-dynamics/moe/scripts/e157_shared_effects.py)、[完整配对差](../results/e157/shared_source_effects_posthoc.json)。
 
 **当前研究判断：** 已知部署组可以携带某些预测性质，完整重用的代价还由未移植函数和共享背景决定；必要性、内容职责和可组合性需分别识别。下一步E158直接测同一事实的实体/属性区别经哪些路径传递，推进真正的职责问题；不继续扫组大小、层或D/G来追回一个分数。C14维持L2，旧数字/等级不变。
 

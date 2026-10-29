@@ -13,7 +13,7 @@
 
 ## 2. 关键实施级不一致：E81 → v3 Table lineage
 
-来源：[scripts/e81_analyze.py](../../heads/scripts/e81_analyze.py)、[scripts/figs_v3.py](../../heads/scripts/figs_v3.py)、[v3 main.tex](../../heads/1-original/papers/paper-acl-v3/main.tex)。
+来源：[scripts/e81_analyze.py](https://github.com/Nhckdvrl/ssn-group-papaer/blob/d581ed4b9636319da8e8467930f716ab651f38c4/workbench/mechanism-population-dynamics/heads/scripts/e81_analyze.py)、[scripts/figs_v3.py](https://github.com/Nhckdvrl/ssn-group-papaer/blob/d581ed4b9636319da8e8467930f716ab651f38c4/workbench/mechanism-population-dynamics/heads/scripts/figs_v3.py)、[v3 main.tex](../../heads/1-original/papers/paper-acl-v3/main.tex)。
 
 代码定义：
 

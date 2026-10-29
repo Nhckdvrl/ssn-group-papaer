@@ -1,13 +1,12 @@
-"""One CPU entrypoint for the completed MoE evidence.
-
-Never trains or evaluates a model. Older frozen experiment drivers remain intact.
-"""
+"""CPU reproduction and exact historical source access; no model forward or training."""
 import argparse
 import json
 import os
 from pathlib import Path
 import subprocess
 import sys
+sys.dont_write_bytecode=True
+import source_snapshot
 
 WB=Path(__file__).resolve().parents[2]
 RESULTS={'E156':'e156','E158':'e158/whole_path','E159':'e159','E160':'e160/retry_1','E161':'e161','E162':'e162','E163':'e163','E164':'e164','E165':'e165','E166':'e166'}
@@ -56,9 +55,17 @@ def commands(experiment,action):
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('experiment',choices=(*RESULTS,'spine'))
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('experiment',choices=(*RESULTS,'spine','sources'))
     p.add_argument('action',choices=('stats','verify','plots','all'),default='all',nargs='?')
-    p.add_argument('--show-commands',action='store_true');args=p.parse_args()
+    p.add_argument('--show-commands',action='store_true')
+    p.add_argument('--name',help='Look up a historical source filename (sources only)')
+    p.add_argument('--export',type=Path,help='Export exact historical code outside the repository (sources only)')
+    args=p.parse_args()
+    if args.experiment=='sources':
+        print(json.dumps(source_snapshot.export(args.export) if args.export else source_snapshot.describe(args.name),indent=2))
+        return
+    if args.name or args.export:
+        p.error('--name and --export require the sources command')
     experiments=SPINE if args.experiment=='spine' else (args.experiment,)
     for experiment in experiments:
         path=WB/'moe/results'/RESULTS[experiment]/('execution_complete.json' if experiment=='E166' else 'manifest.json')
@@ -68,7 +75,8 @@ def main():
     if args.show_commands:
         print(json.dumps(selected,indent=2));return
     env=dict(os.environ,OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1') if any(e in ('E163','E164','E165','E166') for e in experiments) else None
-    for command in selected:subprocess.run(command,cwd=WB,env=env,check=True)
+    with source_snapshot.restored():
+        for command in selected:subprocess.run(command,cwd=WB,env=env,check=True)
     print(args.experiment+' '+args.action+' complete; no model forward or training was launched')
 
 
