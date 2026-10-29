@@ -21,7 +21,7 @@ F=全程EMO 1T+50B，B=标准1T后EMO50B，A=标准1T+50B，P=标准1T退火前�
 
 `allenai/OLMoE-1B-7B-0924`成熟父pin b99743a400844e532bec7ce4575d97a3a39dcd4d（step1200000-tokens5033B）与退火终点6d84c48581ece794365f2b8e9cfb043c68ade9c5。`results/e165/asset_manifest.json`逐片核对公开LFS；父新增BF16分片逻辑13,838,721,960 B，终点复用原`~/mechpop_cache/hf_olmoe/main/`。耐久视图在`~/mechpop_cache/hf_olmoe_mature/view_{P_b99743a4,A_6d84c485}/`；权重为指向耐久源的链接，没有另复制A权重，metadata是实文件。源码封存时需物化小文件，权重仍依manifest恢复。
 
-新全7节点cache/config清单在`~/mechpop_cache/cross_lineage_inventory_20261029.json`；它确认完整Qwen3-30B-A3B、OLMoE四旧端点及EMO，跨节点同NFS副本不算多个训练重复。范围为已查用户HF/研究缓存，不声称全机器文件系统无其他模型。E165原始输入在`~/mechpop_cache/e165_mature_olmoe_transport/questions.npz`，同E164的55科文本重新编码；全部440题/440cal保留，最大2736、不截断。完整26×440结果、终态、独立24940数字/25383元数据已完成；raw为`~/mechpop_cache/e165_mature_olmoe_transport/scores.npz`，529224 B，SHA85b101dd74248dfe95d8629e40eeafb5102e8e155440123eb588c10fa0de8ce3。数值源0fb295d6、plan9570789c…e25a2；含预检.953168332 GPU时、torch峰值32.875388GB、最多1卡、各阶段exit0。CPU/NFS→NVMe适配单列SHA，不改数值18文件。下一实验状态见唯一README。
+新全7节点cache/config清单在`~/mechpop_cache/cross_lineage_inventory_20261029.json`；它确认完整Qwen3-30B-A3B、OLMoE四旧端点及EMO，跨节点同NFS副本不算多个训练重复。范围为已查用户HF/研究缓存，不声称全机器文件系统无其他模型。E165原始输入在`~/mechpop_cache/e165_mature_olmoe_transport/questions.npz`，同E164的55科文本重新编码；全部440题/440cal保留，最大2736、不截断。完整26×440结果、终态、独立24940数字/25383元数据已完成；raw为`~/mechpop_cache/e165_mature_olmoe_transport/scores.npz`，529224 B，SHA85b101dd74248dfe95d8629e40eeafb5102e8e155440123eb588c10fa0de8ce3。数值源0fb295d6、plan9570789c…e25a2；含预检.953168332 GPU时、torch峰值32.875388GB、最多1卡、各阶段exit0。CPU/NFS→NVMe适配单列SHA，不改数值18文件。下一实验状态见唯一README。 [E165封存凭证](results/e165/artifact_seal.json)绑定`~/mechpop_cache/e165_mature_olmoe_transport/run_metadata_5ba79500.tar.gz`，4,429,405 B，SHA10f6b80e612258b3b742ce1a9e2caa4b669e7b4471475d0f7f5adfff681254ed，110个实文件，源码/输入/结果/原生安装源码与公开小文件均逐项核SHA，无大权重。
 
 ## 耐久raw与冻结记录（按状态）
 
@@ -119,3 +119,7 @@ F临时执行目录是fvcrc21的`/tmp/xiang-moe-20261028/full_course_F/`；清�
 
 Machine-readable companion: `results/asset_inventory_2026-10-26.json`.
 
+
+## E166：两谱系增益竞争模型（运行中）
+
+复用上述E164/E165的输入、selector与完整旧分数，来源指纹不变。冻结source ef8f58c8、27文件，plan ae9d5cc6983f8d2dcc9575f893ca011200cbe90990d414fd1627c3f3f60102fc；[plan](results/e166/plan.json)给所有绝对路径/SHA。新cal系数和预测位于`~/mechpop_cache/e166_gain_transport/{emo,olmoe}/`，完成凭证尚未取得，不能从文件存在猜测完成。fvcrc21/1顺序执行，CPU/NFS准备不计占卡，累计cap4 GPU时，总并发≤4；当前实时进度只见README。
