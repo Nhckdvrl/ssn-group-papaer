@@ -35,7 +35,8 @@ PASSAGES = Path(__file__).resolve().parents[1] / "results/e167/passages.json"
 UPOS = ["ADJ", "ADP", "ADV", "AUX", "CCONJ", "DET", "INTJ", "NOUN", "NUM", "PART", "PRON", "PROPN",
         "PUNCT", "SCONJ", "SYM", "VERB", "X"]
 CATS = [f"{u}:{p}" for u in UPOS for p in ("init", "cont")] + ["NONE"]
-EOS, BATCH = 50279, 64
+EOS = 50279
+BATCH = int(__import__("os").environ.get("E167_BATCH", 64))
 
 
 def build_text(tok):

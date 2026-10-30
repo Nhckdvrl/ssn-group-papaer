@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """E167: run analyze_functional for one fingerprint kind at one token count over the pre-registered groups.
 
-Usage: summarize_functional.py KIND TOKENS     (KIND: drop | route | habl)
+Usage: summarize_functional.py KIND TOKENS     (KIND: drop | route | habl | hattn)
 """
 import itertools
 import json
@@ -12,7 +12,7 @@ from pathlib import Path
 import numpy as np
 
 kind, tok = sys.argv[1], int(float(sys.argv[2]))
-D = Path("/home/xiang/mechpop_cache/e167_analysis") / ("heads" if kind == "habl" else "functional")
+D = Path("/home/xiang/mechpop_cache/e167_analysis") / {"habl": "heads", "hattn": "heads_attn"}.get(kind, "functional")
 OUT = Path(__file__).resolve().parents[1] / "results/e167"
 
 

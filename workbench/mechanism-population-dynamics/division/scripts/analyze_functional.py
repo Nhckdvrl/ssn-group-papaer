@@ -12,6 +12,7 @@ Fingerprint kinds:
   drop  : expert drop dNLL per category   (functional/*.npz drop_fp)
   route : P(expert | category)            (functional/*.npz route_fp, per split)
   habl  : head ablation dNLL per category (heads/*.npz abl_fp)
+  hattn : head attention-pattern features per category (heads_attn/*.npz attn_fp; z-scored per column)
 Categories with < MIN_TOK tokens in either split are dropped; vectors are centred across units.
 
 Usage: analyze_functional.py KIND DIR OUT_JSON A.npz:B.npz [...]
@@ -48,6 +49,13 @@ def load(kind, path):
         keep = (z["cat_counts"] >= MIN_TOK).all(0)
         r = r[..., keep]
         return r[:, 1], r[:, 0], int(z["tokens"])
+    if kind == "hattn":
+        fp = z["attn_fp"]  # L,H,2,F*nc ; columns z-scored across heads with cal-split statistics
+        nc = z["cat_counts"].shape[1]
+        keep = np.tile((z["cat_counts"] >= MIN_TOK).all(0), fp.shape[-1] // nc)
+        fp = fp[..., keep]
+        mu, sd = fp[:, :, 1].mean(1, keepdims=True), fp[:, :, 1].std(1, keepdims=True) + 1e-6
+        return (fp[:, :, 1] - mu) / sd, (fp[:, :, 0] - mu) / sd, int(z["tokens"])
     raise ValueError(kind)
 
 
