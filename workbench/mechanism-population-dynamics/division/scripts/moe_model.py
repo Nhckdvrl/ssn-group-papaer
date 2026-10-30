@@ -66,6 +66,7 @@ class Attention(nn.Module):
         self.qkv = nn.Linear(d, 3 * d, bias=False)
         self.o = nn.Linear(d, d, bias=False)
         self.q_norm, self.k_norm = RMSNorm(d), RMSNorm(d)
+        self.capture = None  # analysis: dict receiving post-RoPE q, k
 
     def forward(self, x, cos, sin, head_mask=None):
         B, T, d = x.shape
@@ -74,6 +75,8 @@ class Attention(nn.Module):
         q = apply_rope(q.view(B, T, self.h, self.hd), cos, sin)
         k = apply_rope(k.view(B, T, self.h, self.hd), cos, sin)
         v = v.view(B, T, self.h, self.hd)
+        if self.capture is not None:
+            self.capture["q"], self.capture["k"] = q.detach(), k.detach()
         y = flash_attn_func(q, k, v, causal=True)  # B,T,H,hd
         if head_mask is not None:  # analysis hook: per-head multiplicative mask [H]
             y = y * head_mask.view(1, 1, -1, 1).to(y.dtype)
@@ -114,8 +117,19 @@ class MoE(nn.Module):
             self.s_in = nn.Linear(d, 2 * f * cfg.n_shared, bias=False)
             self.s_out = nn.Linear(f * cfg.n_shared, d, bias=False)
         # analysis hooks (None during training)
-        self.expert_override = None   # callable(topi, topv, probs) -> (topi, topv)
+        self.expert_override = None   # callable(topi, topv, probs, scores) -> (topi, topv)
+        self.mean_replace = False     # analysis: replace routed output by (sum of gates) x mean over all experts
         self.record = None            # dict to receive routing stats
+
+    @torch.no_grad()
+    def _all_expert_mean(self, xin, chunk=2048):
+        outs = []
+        w_in, w_out = self.w_in.to(xin.dtype), self.w_out.to(xin.dtype)
+        for i in range(0, xin.shape[0], chunk):
+            xc = xin[i:i + chunk]
+            o = _expert_mlp_eager(xc.unsqueeze(0).expand(self.E, -1, -1), w_in, w_out)
+            outs.append(o.float().mean(0).to(xin.dtype))
+        return torch.cat(outs)
 
     def forward(self, x):
         B, T, d = x.shape
@@ -123,10 +137,11 @@ class MoE(nn.Module):
         N = xf.shape[0]
         logits = F.linear(xf.float(), self.router.weight.float())
         probs = logits.softmax(-1)
-        topi = (logits + self.sel_bias).topk(self.k, -1).indices
+        scores = logits + self.sel_bias
+        topi = scores.topk(self.k, -1).indices
         topv = probs.gather(-1, topi)
         if self.expert_override is not None:
-            topi, topv = self.expert_override(topi, topv, probs)
+            topi, topv = self.expert_override(topi, topv, probs, scores)
         e = topi.reshape(-1)
         counts = torch.bincount(e, minlength=self.E)
         # Bucket experts by load rank so each padded bmm wastes little (dropless, exact).
@@ -162,7 +177,12 @@ class MoE(nn.Module):
             outs.append(o[loc, pparts[b]])
         out = torch.cat(outs)
         w = topv.reshape(-1)[order].to(out.dtype)
-        y = out.new_zeros(N, d).index_add_(0, tok, out * w[:, None])
+        if self.training:
+            y = out.new_zeros(N, d).index_add_(0, tok, out * w[:, None])
+        else:  # analysis: fp32 accumulation so repeated passes agree (bf16 atomics are order-dependent)
+            y = xf.new_zeros(N, d, dtype=torch.float32).index_add_(0, tok, out.float() * w.float()[:, None]).to(out.dtype)
+        if self.mean_replace:
+            y = self._all_expert_mean(xin) * topv.sum(-1, keepdim=True).to(y.dtype)
         if self.n_shared:
             g, u = self.s_in(xf).chunk(2, -1)
             y = y + self.s_out(F.silu(g) * u)
