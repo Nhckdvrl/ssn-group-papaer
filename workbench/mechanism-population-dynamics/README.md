@@ -1,6 +1,6 @@
 # Mechanism Population Dynamics
 
-当前研究是**MoE的计算组织与功能分工**：从导师关于自发分工跨训练重复的建议，推进到性质载体、响应接口和协作使用关系的干预研究。E144–E166已完成，当前无GPU任务，总并发上限4卡。MoE由用户授权独立推进；正式登记保持PROPOSED，头线保持CLOSED。
+当前研究是**分别训练的 MoE 是否自发形成同一套专家分工**（[division/](division/README.md)，2026-10-31 起，自训多 seed，最多 8 卡）。此前的 MoE 计算组织线（E144–E166）已由人决定摒弃，结果存档于 [moe/](moe/README.md)，理由见[复盘](moe/notes/RETROSPECTIVE_2026-10-31.md)。头线保持 CLOSED。
 
 ## 从这里开始
 
