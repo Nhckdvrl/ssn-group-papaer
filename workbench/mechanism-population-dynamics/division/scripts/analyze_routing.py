@@ -19,7 +19,8 @@ from pathlib import Path
 
 import numpy as np
 
-N_BOOT, N_PERM = 1000, 100
+import os
+N_BOOT, N_PERM = 1000, int(os.environ.get("E167_NPERM", 100))
 
 
 def centre_within(x, t, n_types):
@@ -92,7 +93,7 @@ def main():
             MB = np.zeros((n_words, E), np.float32)
             np.put_along_axis(MB, SB.astype(np.int64), 1.0, 1)
             xa = centre_within(A[f"C{la}"].astype(np.float64), t, n_types)
-            row["T_ctx_perm95"] = perm_null(xa, lambda p: (MB[p[i]] * MB[p[j]]).sum(1) / k, t, n_types, wtype, rng)
+            row["T_ctx_perm95"] = None if N_PERM == 0 else perm_null(xa, lambda p: (MB[p[i]] * MB[p[j]]).sum(1) / k, t, n_types, wtype, rng)
             # lexical agreement between types (label-free)
             def type_means(S):
                 M = np.zeros((n_words, E), np.float32)
