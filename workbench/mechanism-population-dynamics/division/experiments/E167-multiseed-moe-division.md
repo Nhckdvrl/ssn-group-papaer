@@ -138,7 +138,7 @@
   - 深层比值轨迹（L11，全量）：400M .54 → 800M .62 → 1.6B .66 → 3.2B .67。**比例已走平在约 2/3**；两者的绝对一致都还在缓慢上升。中层（L4–L9）稳定在 .46–.63，浅层 L2–L3 约 .4–.5。
 - **中途记录 13（2026-11-01 00:40）：** I0D0、I0D1、I1D0 训练完成，终点留出 CE 2.9606 / 2.9618 / 2.9691（I2D0/I3D0 为 2.9696 / 2.9702）。
   - **I1D1 中断与续训：** 10-31 23:37 在 3,801,088,000 token（第 14500 步）报 `CUDA error: the launch timed out and was terminated`（反向传播中；原因未查明，当时该卡只有这一个训练），进程退出。8 分钟后另一用户（hamdi）的任务占用了该卡（fvcrc20 GPU3），未抢占。11-01 00:36 从 23:19 的续训状态（第 14260 步）在 fvcrc20 GPU2 上恢复；数据顺序由步数决定，续训后的批次与原计划相同，14260–14500 步被重算（train_log 里这段步数重复出现，以后出现的为准）。硬件从 GPU3 换到同型号 GPU2。分析进程同步移到 GPU2。
-- **中途记录 14（2026-11-01 01:30）：初步结果已整理为 [PRELIM_FINDINGS](../PRELIM_FINDINGS.md) 与四联图 `results/e167/prelim_figure.png`（`scripts/prelim_figure.py` 从结果 JSON 生成）。** 用户要求初步结果确认后释放资源：A100 的 I4D0/I5D0 于 01:12 停止（约 35.1/34.8 亿 token；32 亿及以前的读数完整；续训状态保留在 fvcrc11:/tmp/xiang-e167/resume/），对应分析进程一并停止；fvcrc21 已无本线进程。I1D1 在 fvcrc20 GPU2 续训至终点（补第二个天花板对），I0D0/I0D1/I1D0 的终点 R4 在 GPU0–2 收尾，完成后释放 fvcrc20。
+- **中途记录 14（2026-11-01 01:15）：初步结果已整理为 [PRELIM_FINDINGS](../PRELIM_FINDINGS.md) 与四联图 `results/e167/prelim_figure.png`（`scripts/prelim_figure.py` 从结果 JSON 生成）。** 用户要求初步结果确认后释放资源：A100 的 I4D0/I5D0 于 01:12 停止（约 35.1/34.8 亿 token；32 亿及以前的读数完整；续训状态保留在 fvcrc11:/tmp/xiang-e167/resume/），对应分析进程一并停止；fvcrc21 已无本线进程。I1D1 在 fvcrc20 GPU2 续训至终点（补第二个天花板对），I0D0/I0D1/I1D0 的终点 R4 在 GPU0–2 收尾，完成后释放 fvcrc20。
 - 数字（含 CI / 种子方差）：
 - 结果文件：`division/results/e167/`
 - 按决策表执行了什么：
