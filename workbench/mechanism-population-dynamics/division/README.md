@@ -1,6 +1,6 @@
 # 分工重现：分别训练的 MoE 会不会自发分出同一套专家分工
 
-**状态（2026-10-31）：** 用户决定摒弃 E144–E166 的计算组织线，回到导师最初的问题，自训多 seed 小型 MoE。当前在准备数据和训练代码，尚无跨 seed 结果，也没有主张。最多 8 卡（fvcrc10/11/12/15/20/21 的空闲卡）。
+**状态（2026-11-01）：** 8 个 run（6 个只换初始化 + 2 个只换数据顺序）已训练并读完，初步结果见 [PRELIM_FINDINGS](PRELIM_FINDINGS.md)：扣掉自然一致后，深层分工跨初始化重现约为天花板的 60–73%，但只在粗粒度（词类层面 .83–.90，逐 token 只有 .28）；头和专家的深度规律相反。已释放全部 GPU；未登记主张，等人决定是否带给导师、是否继续条件地图。
 
 ## 问题
 同架构、同数据、只换初始化训练的 MoE 语言模型，扣掉“同一个词去同一个专家”（词知识一致）和“同样的隐状态几何怎么切都相似”（几何一致）之后，专家的语言分工是否仍跨 seed 重现？在训练的什么时候定下来？同一把尺子量注意力头，结果是否一样？
@@ -14,6 +14,7 @@
 | 内容 | 位置 |
 |---|---|
 | 实验卡 | [E167 多 seed MoE 分工](experiments/E167-multiseed-moe-division.md) |
+| 初步结果 | [PRELIM_FINDINGS](PRELIM_FINDINGS.md)、四联图 `results/e167/prelim_figure.png`；逐 token 角色 [E168](experiments/E168-matched-expert-transplant.md) |
 | 模型与训练 | [moe_model.py](scripts/moe_model.py)、[train_moe.py](scripts/train_moe.py) |
 | 数据准备 | [prepare_data.py](scripts/prepare_data.py)（Dolma v1.7，约 60 亿 token，`~/mechpop_cache/e167_dolma_6b`） |
 | 结果 | `results/e167/`（小文件进 git；checkpoint 只在本地，见下） |

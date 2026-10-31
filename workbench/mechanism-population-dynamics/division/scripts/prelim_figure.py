@@ -80,7 +80,7 @@ ax.set_ylabel("T_D (corr. of context partition, null-removed)", fontsize=8, colo
 # B
 ax = axs[0, 1]
 style(ax, "B  Formation over training (L5 dotted, L11 solid)")
-toks = [25e6, 200e6, 400e6, 800e6, 1.6e9, 3.2e9]
+toks = [25e6, 200e6, 400e6, 800e6, 1.6e9, 3.2e9, 3999793152]
 for layer, ls in ((11, "-"), (5, ":")):
     vi, vo = [], []
     for t in toks:
@@ -89,29 +89,31 @@ for layer, ls in ((11, "-"), (5, ":")):
         vo.append(s["order"]["T_D"][layer])
     ax.plot(toks, vi, color=BLUE, lw=2, ls=ls, marker="o", ms=4)
     ax.plot(toks, vo, color=ORANGE, lw=2, ls=ls, marker="o", ms=4)
-    ax.text(3.6e9, vi[-1], f"diff. init, L{layer}", color=INK, fontsize=8, va="center")
-    ax.text(3.6e9, vo[-1], f"same init, L{layer}", color=INK, fontsize=8, va="center")
+    nudge = 0.014 if layer == 11 else -0.014  # L11 different-init and L5 same-init end at the same height
+    ax.text(4.6e9, vi[-1] + (nudge if layer == 11 else 0), f"diff. init, L{layer}", color=INK, fontsize=8, va="center")
+    ax.text(4.6e9, vo[-1] + (nudge if layer == 5 else 0), f"same init, L{layer}", color=INK, fontsize=8, va="center")
 ax.set_xscale("log")
-ax.set_xlim(2e7, 1.4e10)
+ax.set_xlim(2e7, 1.8e10)
 ax.set_xlabel("training tokens", fontsize=8, color=INK2)
 ax.set_ylabel("T_D", fontsize=8, color=INK2)
 
 # C
 ax = axs[1, 0]
-style(ax, "C  What repeats across inits? (L6-11, ratio to ceiling)")
-rs = j("e167/functional_route_summary_800000000.json")
-dr = j("e167/functional_drop_summary_800000000.json")
+style(ax, "C  What repeats across inits? (L6-11, ratio to ceiling, 4.0B)")
+rs = j("e167/functional_route_summary_3999793152.json")
+dr = j("e167/functional_drop_summary_3999793152.json")
 td = j("e167/routing_summary_3200000000.json")
-tk = j("e168/token_roles_final_partial.json")["results"]
+tdf = j("e167/routing_summary_3999793152.json")
+tk = j("e168/token_roles_final.json")["results"]
 tk_o = [r for r in tk if r["A"][:2] == r["B"][:2]]
-tk_i = [r for r in tk if r["A"][:2] != r["B"][:2]]
+tk_i = [r for r in tk if r["A"][:2] != r["B"][:2] and r["A"][2:4] == "D0" and r["B"][2:4] == "D0"]
 lay = lambda r: {x["layer"]: x["matched"] for x in r["layers"]}
-tk_ratio = np.mean([np.mean([lay(r)[l] for r in tk_i]) / lay(tk_o[0])[l] for l in DEEP])
+tk_ratio = np.mean([np.mean([lay(r)[l] for r in tk_i]) / np.mean([lay(r)[l] for r in tk_o]) for l in DEEP])
 items = [
-    ("which word classes an expert serves\n(routing profile, 800M)", np.mean([rs["init"]["matched"][l] / rs["order"]["matched"][l] for l in DEEP])),
-    ("how contexts of a word are split\n(T_D, null-removed, 3.2B)", np.mean([td["init"]["T_D"][l] / td["order"]["T_D"][l] for l in DEEP])),
-    ("damage profile over word classes\n(expert drop, 800M; 3 vs 1 pairs)", np.mean([dr["init"]["matched"][l] / dr["order"]["matched"][l] for l in DEEP])),
-    ("which exact predictions need it\n(token-level drop, final; 6 vs 1 pairs)", tk_ratio),
+    ("which word classes an expert serves\n(routing profile)", np.mean([rs["init"]["matched"][l] / rs["order"]["matched"][l] for l in DEEP])),
+    ("how contexts of a word are split\n(T_D, null-removed)", np.mean([tdf["init"]["T_D"][l] / tdf["order"]["T_D"][l] for l in DEEP])),
+    ("damage profile over word classes\n(expert drop)", np.mean([dr["init"]["matched"][l] / dr["order"]["matched"][l] for l in DEEP])),
+    (f"which exact predictions need it\n(token-level drop)", tk_ratio),
 ]
 y = np.arange(len(items))[::-1]
 ax.barh(y, [v for _, v in items], color=BLUE, height=0.55)
@@ -144,9 +146,10 @@ ax.set_xlabel("layer (L0 omitted: near-zero denominators)", fontsize=8, color=IN
 ax.set_ylabel("ratio", fontsize=8, color=INK2)
 
 fig.text(0.01, 0.008, "Small OLMoE-style MoE (12 layers, 64 experts, top-8, ~150M active); 6 independent inits + 2 same-init/different-order runs; Dolma v1.7.\n"
-         "T_D: within-word-type co-routing correlation after removing an expert-geometry-preserving null (N1). Ceiling = same init, data order only.",
+         "T_D: within-word-type co-routing correlation after removing an expert-geometry-preserving null (N1). Ceiling = same init, data order only.\n"
+         "A, D use 3.2B (15 different-init pairs); C and the last point of B use the 4.0B endpoint (6 different-init pairs, 2 ceiling pairs).",
          fontsize=7, color=INK2)
-fig.tight_layout(rect=(0, 0.045, 1, 1), h_pad=2.5, w_pad=3)
+fig.tight_layout(rect=(0, 0.06, 1, 1), h_pad=2.5, w_pad=3)
 fig.savefig(OUT, dpi=170, facecolor=SURF)
 print(OUT)
 print({lab.split("\n")[0]: round(float(v), 3) for lab, v in items})
