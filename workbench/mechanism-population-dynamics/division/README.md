@@ -1,6 +1,6 @@
 # 分工重现：分别训练的 MoE 会不会自发分出同一套专家分工
 
-**状态（2026-11-01）：** 8 个 run（6 个只换初始化 + 2 个只换数据顺序）已训练并读完，初步结果见 [PRELIM_FINDINGS](PRELIM_FINDINGS.md)：扣掉自然一致后，深层分工跨初始化重现约为天花板的 60–73%，但只在粗粒度（词类层面 .83–.90，逐 token 只有 .28）；头和专家的深度规律相反。已释放全部 GPU；未登记主张，等人决定是否带给导师、是否继续条件地图。
+**状态（2026-11-03）：** 8 个 run 训练完并读完；审阅后结论见 [PRELIM_FINDINGS_v2](PRELIM_FINDINGS_v2.md)：扣掉自然一致后深层分工跨初始化重现约 2/3（seed 刀切 ± .04），重现的部分沿语言区分组织（格层面 .71–.85，残差 .55），深层初始化印记持久（.12–.17），路由器不是几何的自然聚类；头的“方向相反”撤回。GPU 已释放；未登记主张；待人决定同配置重跑与是否带给导师。
 
 ## 问题
 同架构、同数据、只换初始化训练的 MoE 语言模型，扣掉“同一个词去同一个专家”（词知识一致）和“同样的隐状态几何怎么切都相似”（几何一致）之后，专家的语言分工是否仍跨 seed 重现？在训练的什么时候定下来？同一把尺子量注意力头，结果是否一样？
@@ -18,7 +18,8 @@
 | 审阅与规划（11-03：逐条核对、含义缺口、定位表、下一步） | [REVIEW_2026-11-03](REVIEW_2026-11-03.md) |
 | 给导师的文稿（11-03 改订版；11-02 版保留） | [SLACK_TO_SASANO_2026-11-03](SLACK_TO_SASANO_2026-11-03.md)、图 `results/e167/prelim_figure_v2_ja.png` |
 | 对照与分解（11-03 起） | [E169 簇零假设](experiments/E169-cluster-null-for-routing-agreement.md)、[E170 语言学分解](experiments/E170-linguistic-decomposition-of-reproducible-division.md) |
-| 初步结果 | [PRELIM_FINDINGS](PRELIM_FINDINGS.md)、四联图 `results/e167/prelim_figure.png`；逐 token 角色 [E168](experiments/E168-matched-expert-transplant.md) |
+| 初步结果 v2（11-03：解释修正 + 语言学内容） | [PRELIM_FINDINGS_v2](PRELIM_FINDINGS_v2.md)、六联图 `results/e167/prelim_figure_v3(_ja).png` |
+| 初步结果 11-01 版（数字保留，解释已被 v2 取代） | [PRELIM_FINDINGS](PRELIM_FINDINGS.md)、四联图 `results/e167/prelim_figure.png`；逐 token 角色 [E168](experiments/E168-matched-expert-transplant.md) |
 | 模型与训练 | [moe_model.py](scripts/moe_model.py)、[train_moe.py](scripts/train_moe.py) |
 | 数据准备 | [prepare_data.py](scripts/prepare_data.py)（Dolma v1.7，约 60 亿 token，`~/mechpop_cache/e167_dolma_6b`） |
 | 结果 | `results/e167/`（小文件进 git；checkpoint 只在本地，见下） |
