@@ -1,0 +1,192 @@
+Token-level damage correspondence (eval = windows 64..127) under three matchings: own token-level (fit on windows 0..63), route-fingerprint (cal split), drop-fingerprint (cal split)
+pair kind L | own route drop | random95hi | frac of experts with r>.2 under route-matching
+I0D0:I1D0 init  L 6 | 0.041 0.015 0.018 | 0.006 | 0.00 | match agreement route-vs-drop 0.11, route-vs-own 0.16
+I0D0:I1D0 init  L 7 | 0.042 0.025 0.013 | 0.007 | 0.00 | match agreement route-vs-drop 0.11, route-vs-own 0.16
+I0D0:I1D0 init  L 8 | 0.047 0.021 0.014 | 0.006 | 0.00 | match agreement route-vs-drop 0.11, route-vs-own 0.20
+I0D0:I1D0 init  L 9 | 0.072 0.033 0.017 | 0.009 | 0.03 | match agreement route-vs-drop 0.16, route-vs-own 0.20
+I0D0:I1D0 init  L10 | 0.080 0.047 0.039 | 0.009 | 0.05 | match agreement route-vs-drop 0.20, route-vs-own 0.31
+I0D0:I1D0 init  L11 | 0.113 0.073 0.054 | 0.014 | 0.09 | match agreement route-vs-drop 0.16, route-vs-own 0.16
+I0D0:I2D0 init  L 6 | 0.035 0.015 0.008 | 0.007 | 0.02 | match agreement route-vs-drop 0.06, route-vs-own 0.11
+I0D0:I2D0 init  L 7 | 0.047 0.017 0.017 | 0.007 | 0.00 | match agreement route-vs-drop 0.12, route-vs-own 0.16
+I0D0:I2D0 init  L 8 | 0.042 0.018 0.013 | 0.006 | 0.00 | match agreement route-vs-drop 0.11, route-vs-own 0.16
+I0D0:I2D0 init  L 9 | 0.064 0.022 0.018 | 0.007 | 0.00 | match agreement route-vs-drop 0.12, route-vs-own 0.19
+I0D0:I2D0 init  L10 | 0.085 0.039 0.026 | 0.009 | 0.06 | match agreement route-vs-drop 0.12, route-vs-own 0.17
+I0D0:I2D0 init  L11 | 0.119 0.065 0.059 | 0.012 | 0.06 | match agreement route-vs-drop 0.22, route-vs-own 0.27
+I2D0:I3D0 init  L 6 | 0.042 0.017 0.011 | 0.008 | 0.00 | match agreement route-vs-drop 0.06, route-vs-own 0.16
+I2D0:I3D0 init  L 7 | 0.048 0.028 0.019 | 0.008 | 0.02 | match agreement route-vs-drop 0.08, route-vs-own 0.27
+I2D0:I3D0 init  L 8 | 0.051 0.020 0.012 | 0.006 | 0.00 | match agreement route-vs-drop 0.06, route-vs-own 0.14
+I2D0:I3D0 init  L 9 | 0.074 0.034 0.022 | 0.008 | 0.03 | match agreement route-vs-drop 0.08, route-vs-own 0.22
+I2D0:I3D0 init  L10 | 0.059 0.028 0.023 | 0.006 | 0.03 | match agreement route-vs-drop 0.05, route-vs-own 0.16
+I2D0:I3D0 init  L11 | 0.112 0.056 0.052 | 0.013 | 0.06 | match agreement route-vs-drop 0.16, route-vs-own 0.20
+I1D0:I3D0 init  L 6 | 0.028 0.012 0.009 | 0.005 | 0.00 | match agreement route-vs-drop 0.08, route-vs-own 0.09
+I1D0:I3D0 init  L 7 | 0.043 0.017 0.012 | 0.006 | 0.00 | match agreement route-vs-drop 0.11, route-vs-own 0.16
+I1D0:I3D0 init  L 8 | 0.060 0.032 0.015 | 0.007 | 0.02 | match agreement route-vs-drop 0.05, route-vs-own 0.23
+I1D0:I3D0 init  L 9 | 0.059 0.033 0.035 | 0.007 | 0.03 | match agreement route-vs-drop 0.20, route-vs-own 0.25
+I1D0:I3D0 init  L10 | 0.071 0.033 0.029 | 0.009 | 0.00 | match agreement route-vs-drop 0.12, route-vs-own 0.23
+I1D0:I3D0 init  L11 | 0.133 0.082 0.064 | 0.013 | 0.09 | match agreement route-vs-drop 0.09, route-vs-own 0.22
+I0D0:I0D1 order L 6 | 0.119 0.112 0.047 | 0.010 | 0.20 | match agreement route-vs-drop 0.22, route-vs-own 0.70
+I0D0:I0D1 order L 7 | 0.209 0.162 0.072 | 0.015 | 0.47 | match agreement route-vs-drop 0.31, route-vs-own 0.77
+I0D0:I0D1 order L 8 | 0.208 0.170 0.108 | 0.016 | 0.44 | match agreement route-vs-drop 0.38, route-vs-own 0.69
+I0D0:I0D1 order L 9 | 0.241 0.204 0.111 | 0.016 | 0.55 | match agreement route-vs-drop 0.36, route-vs-own 0.80
+I0D0:I0D1 order L10 | 0.287 0.227 0.139 | 0.017 | 0.58 | match agreement route-vs-drop 0.34, route-vs-own 0.73
+I0D0:I0D1 order L11 | 0.319 0.273 0.210 | 0.021 | 0.72 | match agreement route-vs-drop 0.50, route-vs-own 0.80
+I1D0:I1D1 order L 6 | 0.131 0.095 0.044 | 0.008 | 0.12 | match agreement route-vs-drop 0.17, route-vs-own 0.66
+I1D0:I1D1 order L 7 | 0.189 0.160 0.054 | 0.012 | 0.41 | match agreement route-vs-drop 0.20, route-vs-own 0.75
+I1D0:I1D1 order L 8 | 0.239 0.183 0.104 | 0.015 | 0.52 | match agreement route-vs-drop 0.28, route-vs-own 0.73
+I1D0:I1D1 order L 9 | 0.249 0.237 0.141 | 0.017 | 0.61 | match agreement route-vs-drop 0.44, route-vs-own 0.91
+I1D0:I1D1 order L10 | 0.262 0.209 0.143 | 0.018 | 0.56 | match agreement route-vs-drop 0.33, route-vs-own 0.69
+I1D0:I1D1 order L11 | 0.307 0.264 0.138 | 0.022 | 0.64 | match agreement route-vs-drop 0.30, route-vs-own 0.72
+
+ratios init/order of mean token-level corr (deep L6-11) under: own / route / drop matching
+L 6 own 0.29  route 0.14  drop 0.25   (init [0.037 0.015 0.012], order [0.125 0.104 0.046])
+L 7 own 0.23  route 0.14  drop 0.24   (init [0.045 0.022 0.015], order [0.199 0.161 0.063])
+L 8 own 0.22  route 0.13  drop 0.13   (init [0.05  0.023 0.013], order [0.224 0.176 0.106])
+L 9 own 0.27  route 0.14  drop 0.18   (init [0.067 0.031 0.023], order [0.245 0.22  0.126])
+L10 own 0.27  route 0.17  drop 0.21   (init [0.074 0.037 0.029], order [0.275 0.218 0.141])
+L11 own 0.38  route 0.26  drop 0.33   (init [0.119 0.069 0.057], order [0.313 0.268 0.174])
+
+== Which experts correspond at token level? (init pairs, route matching, L9/L11) ==
+
+I0D0:I1D0 L9: corr(pu, importance)=-0.00  corr(pu, maxP(e|cat))=0.10  corr(pu, -entropy)=0.36  corr(pu, damage-sparsity)=-0.04
+  top-8 corresponding experts: (e, r, topcat, maxP, imp)
+    e49 r=0.34 NONE         maxP=0.32 imp=-0.0001
+    e17 r=0.26 AUX:init     maxP=0.56 imp=0.0028
+    e52 r=0.21 PROPN:init   maxP=0.70 imp=0.0042
+    e34 r=0.13 DET:init     maxP=0.85 imp=0.0029
+    e27 r=0.11 ADV:init     maxP=0.53 imp=0.0012
+    e12 r=0.10 PROPN:cont   maxP=0.11 imp=0.0002
+    e41 r=0.08 NUM:cont     maxP=0.40 imp=0.0008
+    e29 r=0.07 PROPN:init   maxP=0.44 imp=0.0020
+  bottom-5:
+    e18 r=-0.00 DET:init     maxP=0.75 imp=0.0014
+    e 2 r=-0.00 DET:init     maxP=0.64 imp=0.0012
+    e23 r=-0.01 NONE         maxP=0.39 imp=0.0046
+    e20 r=-0.01 VERB:init    maxP=0.67 imp=0.0018
+    e14 r=-0.01 NOUN:init    maxP=0.56 imp=0.0018
+  mean r by expert top UPOS: {'ADV': (0.11, 1), 'NONE': (0.08, 4), 'AUX': (0.07, 4), 'PROPN': (0.04, 11), 'CCONJ': (0.03, 1), 'ADJ': (0.03, 4), 'PART': (0.03, 3), 'SCONJ': (0.03, 4), 'DET': (0.02, 5), 'PRON': (0.02, 2), 'NUM': (0.02, 8), 'ADP': (0.01, 4), 'NOUN': (0.01, 7), 'PUNCT': (0.01, 5), 'VERB': (-0.01, 1)}
+
+I0D0:I1D0 L11: corr(pu, importance)=0.16  corr(pu, maxP(e|cat))=0.05  corr(pu, -entropy)=-0.20  corr(pu, damage-sparsity)=0.22
+  top-8 corresponding experts: (e, r, topcat, maxP, imp)
+    e26 r=0.39 SCONJ:init   maxP=0.73 imp=0.0019
+    e24 r=0.33 NUM:init     maxP=0.59 imp=0.0009
+    e 0 r=0.33 PROPN:init   maxP=0.29 imp=0.0010
+    e25 r=0.30 PUNCT:init   maxP=0.48 imp=0.0079
+    e18 r=0.25 ADP:init     maxP=0.56 imp=0.0041
+    e29 r=0.20 NUM:init     maxP=0.34 imp=0.0006
+    e46 r=0.19 PRON:init    maxP=0.64 imp=0.0023
+    e11 r=0.17 ADP:init     maxP=0.60 imp=0.0010
+  bottom-5:
+    e62 r=-0.00 NOUN:init    maxP=0.47 imp=0.0017
+    e52 r=-0.01 PRON:init    maxP=0.52 imp=0.0012
+    e49 r=-0.01 NONE         maxP=0.32 imp=-0.0000
+    e13 r=-0.01 SCONJ:init   maxP=0.50 imp=0.0012
+    e51 r=-0.01 PUNCT:init   maxP=0.54 imp=0.0007
+  mean r by expert top UPOS: {'ADP': (0.13, 5), 'SCONJ': (0.13, 3), 'PUNCT': (0.1, 5), 'PROPN': (0.1, 8), 'NUM': (0.09, 8), 'PRON': (0.07, 3), 'AUX': (0.07, 3), 'PART': (0.05, 4), 'DET': (0.05, 11), 'NOUN': (0.05, 7), 'NONE': (0.02, 3), 'CCONJ': (0.01, 1), 'VERB': (0.01, 2), 'ADJ': (-0.0, 1)}
+
+I0D0:I2D0 L9: corr(pu, importance)=0.25  corr(pu, maxP(e|cat))=0.30  corr(pu, -entropy)=-0.08  corr(pu, damage-sparsity)=0.22
+  top-8 corresponding experts: (e, r, topcat, maxP, imp)
+    e14 r=0.13 NOUN:init    maxP=0.56 imp=0.0018
+    e62 r=0.11 ADJ:init     maxP=0.51 imp=0.0014
+    e60 r=0.09 PROPN:init   maxP=0.43 imp=0.0014
+    e28 r=0.07 AUX:init     maxP=0.83 imp=0.0036
+    e45 r=0.07 SCONJ:init   maxP=0.47 imp=-0.0000
+    e52 r=0.07 PROPN:init   maxP=0.70 imp=0.0042
+    e33 r=0.07 NUM:cont     maxP=0.90 imp=0.0163
+    e13 r=0.07 AUX:init     maxP=0.82 imp=0.0028
+  bottom-5:
+    e15 r=-0.01 NOUN:init    maxP=0.49 imp=0.0021
+    e 7 r=-0.01 ADJ:init     maxP=0.65 imp=0.0024
+    e59 r=-0.01 NUM:init     maxP=0.23 imp=0.0001
+    e11 r=-0.01 PUNCT:init   maxP=0.21 imp=0.0001
+    e12 r=-0.02 PROPN:cont   maxP=0.11 imp=0.0002
+  mean r by expert top UPOS: {'PRON': (0.05, 2), 'ADJ': (0.04, 4), 'AUX': (0.04, 4), 'NOUN': (0.03, 7), 'DET': (0.03, 5), 'SCONJ': (0.03, 4), 'PART': (0.02, 3), 'PROPN': (0.02, 11), 'NUM': (0.02, 8), 'ADV': (0.01, 1), 'NONE': (0.01, 4), 'PUNCT': (0.01, 5), 'ADP': (0.0, 4), 'VERB': (0.0, 1), 'CCONJ': (-0.01, 1)}
+
+I0D0:I2D0 L11: corr(pu, importance)=0.24  corr(pu, maxP(e|cat))=0.12  corr(pu, -entropy)=-0.16  corr(pu, damage-sparsity)=0.20
+  top-8 corresponding experts: (e, r, topcat, maxP, imp)
+    e16 r=0.34 DET:init     maxP=0.42 imp=0.0021
+    e56 r=0.33 AUX:init     maxP=0.64 imp=0.0029
+    e54 r=0.26 DET:init     maxP=0.44 imp=0.0035
+    e51 r=0.25 PUNCT:init   maxP=0.54 imp=0.0007
+    e46 r=0.20 PRON:init    maxP=0.64 imp=0.0023
+    e27 r=0.19 NOUN:init    maxP=0.45 imp=0.0016
+    e35 r=0.18 PROPN:init   maxP=0.67 imp=0.0089
+    e 2 r=0.18 PROPN:cont   maxP=0.39 imp=0.0014
+  bottom-5:
+    e42 r=-0.00 PUNCT:init   maxP=0.84 imp=0.0004
+    e12 r=-0.00 PRON:init    maxP=0.59 imp=0.0023
+    e37 r=-0.00 NUM:cont     maxP=0.52 imp=0.0004
+    e50 r=-0.00 DET:init     maxP=0.42 imp=0.0005
+    e30 r=-0.00 DET:init     maxP=0.09 imp=0.0003
+  mean r by expert top UPOS: {'AUX': (0.15, 3), 'NOUN': (0.1, 7), 'PROPN': (0.09, 8), 'PUNCT': (0.08, 5), 'DET': (0.08, 11), 'PRON': (0.08, 3), 'PART': (0.07, 4), 'VERB': (0.07, 2), 'ADP': (0.03, 5), 'NONE': (0.03, 3), 'NUM': (0.02, 8), 'CCONJ': (0.02, 1), 'SCONJ': (0.0, 3), 'ADJ': (-0.0, 1)}
+
+I2D0:I3D0 L9: corr(pu, importance)=0.24  corr(pu, maxP(e|cat))=0.42  corr(pu, -entropy)=0.09  corr(pu, damage-sparsity)=0.20
+  top-8 corresponding experts: (e, r, topcat, maxP, imp)
+    e56 r=0.29 NUM:cont     maxP=0.75 imp=0.0010
+    e31 r=0.25 PART:init    maxP=0.87 imp=0.0033
+    e37 r=0.23 NONE         maxP=0.44 imp=0.0038
+    e19 r=0.17 NUM:init     maxP=1.00 imp=0.0037
+    e 7 r=0.16 VERB:init    maxP=0.63 imp=0.0032
+    e58 r=0.13 NUM:init     maxP=0.80 imp=0.0010
+    e45 r=0.10 CCONJ:init   maxP=0.99 imp=0.0021
+    e20 r=0.10 AUX:init     maxP=0.76 imp=0.0029
+  bottom-5:
+    e 0 r=-0.00 PART:init    maxP=0.84 imp=0.0044
+    e47 r=-0.00 PART:init    maxP=0.67 imp=0.0020
+    e50 r=-0.00 ADP:init     maxP=0.57 imp=0.0056
+    e25 r=-0.00 NUM:cont     maxP=0.25 imp=-0.0001
+    e54 r=-0.01 SCONJ:init   maxP=0.48 imp=0.0002
+  mean r by expert top UPOS: {'VERB': (0.09, 2), 'PRON': (0.08, 2), 'PART': (0.08, 3), 'ADV': (0.07, 1), 'NUM': (0.07, 9), 'NONE': (0.05, 5), 'AUX': (0.04, 3), 'CCONJ': (0.03, 4), 'ADP': (0.02, 4), 'NOUN': (0.02, 9), 'DET': (0.02, 5), 'PROPN': (0.01, 10), 'SCONJ': (0.01, 4), 'ADJ': (0.01, 1), 'PUNCT': (-0.0, 2)}
+
+I2D0:I3D0 L11: corr(pu, importance)=0.35  corr(pu, maxP(e|cat))=0.10  corr(pu, -entropy)=-0.24  corr(pu, damage-sparsity)=0.33
+  top-8 corresponding experts: (e, r, topcat, maxP, imp)
+    e 7 r=0.38 DET:init     maxP=0.35 imp=0.0036
+    e50 r=0.35 AUX:init     maxP=0.61 imp=0.0046
+    e39 r=0.20 PUNCT:init   maxP=0.54 imp=0.0024
+    e59 r=0.20 DET:init     maxP=0.46 imp=0.0090
+    e32 r=0.17 PUNCT:init   maxP=0.12 imp=0.0000
+    e29 r=0.17 PUNCT:init   maxP=0.71 imp=0.0029
+    e58 r=0.16 DET:init     maxP=0.45 imp=0.0033
+    e35 r=0.15 PART:init    maxP=0.38 imp=0.0028
+  bottom-5:
+    e60 r=-0.00 PART:init    maxP=0.36 imp=0.0015
+    e47 r=-0.00 PUNCT:init   maxP=0.24 imp=0.0001
+    e51 r=-0.01 CCONJ:init   maxP=0.03 imp=-0.0000
+    e14 r=-0.01 PROPN:cont   maxP=0.24 imp=0.0001
+    e56 r=-0.01 NUM:cont     maxP=0.28 imp=0.0001
+  mean r by expert top UPOS: {'AUX': (0.2, 2), 'PUNCT': (0.13, 4), 'DET': (0.1, 9), 'PRON': (0.06, 1), 'PART': (0.06, 7), 'VERB': (0.06, 2), 'ADP': (0.05, 2), 'NOUN': (0.04, 8), 'NUM': (0.03, 12), 'PROPN': (0.03, 8), 'SCONJ': (0.02, 3), 'NONE': (0.01, 3), 'CCONJ': (0.01, 2), 'ADJ': (0.0, 1)}
+
+I1D0:I3D0 L9: corr(pu, importance)=0.17  corr(pu, maxP(e|cat))=0.20  corr(pu, -entropy)=-0.18  corr(pu, damage-sparsity)=0.14
+  top-8 corresponding experts: (e, r, topcat, maxP, imp)
+    e 1 r=0.31 ADV:init     maxP=0.54 imp=0.0041
+    e42 r=0.23 AUX:init     maxP=0.12 imp=0.0019
+    e25 r=0.14 PUNCT:init   maxP=0.79 imp=0.0049
+    e50 r=0.12 PART:init    maxP=0.85 imp=0.0013
+    e62 r=0.11 NUM:init     maxP=0.88 imp=0.0012
+    e 2 r=0.09 AUX:init     maxP=0.85 imp=0.0047
+    e59 r=0.09 CCONJ:init   maxP=0.99 imp=0.0021
+    e39 r=0.08 NOUN:init    maxP=0.54 imp=0.0028
+  bottom-5:
+    e14 r=-0.01 PROPN:cont   maxP=0.25 imp=0.0001
+    e18 r=-0.01 NOUN:init    maxP=0.56 imp=0.0036
+    e31 r=-0.01 NOUN:init    maxP=0.31 imp=0.0018
+    e24 r=-0.01 PROPN:cont   maxP=0.10 imp=-0.0000
+    e56 r=-0.03 NOUN:cont    maxP=0.05 imp=0.0000
+  mean r by expert top UPOS: {'ADV': (0.31, 1), 'PART': (0.09, 2), 'AUX': (0.08, 5), 'CCONJ': (0.05, 4), 'PUNCT': (0.05, 3), 'VERB': (0.04, 1), 'SCONJ': (0.04, 3), 'NUM': (0.03, 8), 'ADP': (0.03, 4), 'PRON': (0.02, 2), 'NOUN': (0.02, 8), 'ADJ': (0.01, 2), 'DET': (0.01, 5), 'NONE': (0.01, 4), 'PROPN': (0.0, 12)}
+
+I1D0:I3D0 L11: corr(pu, importance)=-0.03  corr(pu, maxP(e|cat))=0.20  corr(pu, -entropy)=-0.15  corr(pu, damage-sparsity)=0.36
+  top-8 corresponding experts: (e, r, topcat, maxP, imp)
+    e39 r=0.49 DET:init     maxP=0.20 imp=0.0011
+    e52 r=0.38 CCONJ:init   maxP=0.33 imp=0.0009
+    e26 r=0.34 PRON:init    maxP=0.63 imp=0.0033
+    e40 r=0.33 SCONJ:init   maxP=0.74 imp=0.0016
+    e36 r=0.30 PUNCT:init   maxP=0.57 imp=0.0009
+    e 7 r=0.29 DET:init     maxP=0.92 imp=0.0040
+    e38 r=0.16 VERB:init    maxP=0.76 imp=0.0017
+    e47 r=0.16 DET:init     maxP=0.28 imp=0.0011
+  bottom-5:
+    e34 r=-0.00 ADP:init     maxP=0.14 imp=0.0003
+    e23 r=-0.00 PUNCT:init   maxP=0.64 imp=0.0001
+    e 2 r=-0.00 NONE         maxP=0.32 imp=0.0007
+    e21 r=-0.00 PRON:init    maxP=0.30 imp=0.0025
+    e 1 r=-0.01 DET:init     maxP=0.19 imp=0.0000
+  mean r by expert top UPOS: {'CCONJ': (0.38, 1), 'SCONJ': (0.21, 2), 'PRON': (0.17, 2), 'DET': (0.12, 11), 'PUNCT': (0.11, 4), 'PART': (0.09, 5), 'VERB': (0.08, 2), 'NOUN': (0.08, 4), 'PROPN': (0.04, 12), 'AUX': (0.04, 5), 'NUM': (0.04, 8), 'ADJ': (0.03, 2), 'NONE': (0.02, 4), 'ADP': (0.0, 2)}
