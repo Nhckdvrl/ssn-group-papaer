@@ -14,6 +14,7 @@
 | 内容 | 位置 |
 |---|---|
 | 实验卡 | [E167 多 seed MoE 分工](experiments/E167-multiseed-moe-division.md) |
+| 转交说明（坑、导师建议、相关工作、进展、薄弱点） | [HANDOFF_2026-11-03](HANDOFF_2026-11-03.md) |
 | 初步结果 | [PRELIM_FINDINGS](PRELIM_FINDINGS.md)、四联图 `results/e167/prelim_figure.png`；逐 token 角色 [E168](experiments/E168-matched-expert-transplant.md) |
 | 模型与训练 | [moe_model.py](scripts/moe_model.py)、[train_moe.py](scripts/train_moe.py) |
 | 数据准备 | [prepare_data.py](scripts/prepare_data.py)（Dolma v1.7，约 60 亿 token，`~/mechpop_cache/e167_dolma_6b`） |
