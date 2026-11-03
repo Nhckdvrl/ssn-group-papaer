@@ -75,7 +75,10 @@ for r in runs + ["I0D0@0", "I1D0@0"]:
     store[r] = {"Z": Z, "sel": sel, "cal": np.arange(n_anchor, len(Z["word_idx"])), "R": R}
     print("loaded", r, flush=True)
 
-for l in range(12):
+import os
+LAYERS = [int(x) for x in os.environ.get("E169_LAYERS", ",".join(map(str, range(12)))).split(",")]
+SUFFIX = os.environ.get("E169_SUFFIX", "")
+for l in LAYERS:
     t0 = time.time()
     per = {}
     for r in runs + ["I0D0@0", "I1D0@0"]:
@@ -117,5 +120,5 @@ for l in range(12):
     s = row["raw"]; t = row["readout"]
     print(f"L{l:2d} ({time.time()-t0:.0f}s) check {np.mean(list(row['recompute_check'].values())):.3f} | raw: km_self {s['T_km_self']:.3f} km_cross init {s['T_km_cross_init']:.3f} order {s['T_km_cross_order']:.3f} floor {s['T_km_cross_floor']:.3f} | router_km {s['T_router_km']:.3f} | T_ctx init {s['T_ctx_init']:.3f} order {s['T_ctx_order']:.3f} | T_D init {s['T_D_init']:.3f} order {s['T_D_order']:.3f} | T_Dkm init {s['T_Dkm_init']:.3f} order {s['T_Dkm_order']:.3f} floor {s['T_Dkm_floor']:.3f} || readout: km_self {t['T_km_self']:.3f} km_cross init {t['T_km_cross_init']:.3f} order {t['T_km_cross_order']:.3f} router_km {t['T_router_km']:.3f} T_Dkm init {t['T_Dkm_init']:.3f} order {t['T_Dkm_order']:.3f}", flush=True)
     (WB / "results/e169").mkdir(exist_ok=True)
-    (WB / f"results/e169/cluster_null_{tok}.json").write_text(json.dumps(out))
+    (WB / f"results/e169/cluster_null_{tok}{SUFFIX}.json").write_text(json.dumps(out))
 print("saved")
