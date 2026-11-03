@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""E170 stage 2: "the representation has it" vs "the division of labour uses it".
+"""E170 stage 2 (ridge classifier version, 2026-11-03 evening; the logistic version did not finish one layer in 90 min under load): "the representation has it" vs "the division of labour uses it".
 
 For every multi-function form (same selection as e170_ambiguous_words.py), layer and model:
   dec_h    : balanced accuracy (5-fold CV, logistic regression) of decoding the function label
@@ -19,7 +19,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 import numpy as np
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import RidgeClassifier
 from sklearn.metrics import balanced_accuracy_score
 from sklearn.model_selection import StratifiedKFold, cross_val_predict
 from sklearn.pipeline import make_pipeline
@@ -31,7 +31,7 @@ AN = Path.home() / "mechpop_cache/e167_analysis"
 tok = int(float(sys.argv[1])) if len(sys.argv) > 1 else 3999793152
 LAYERS = [int(x) for x in sys.argv[2].split(",")] if len(sys.argv) > 2 else [2, 5, 8, 11]
 TOPK, MIN_OCC, MAX_OCC = 8, 15, 300
-runs = ["I0D0", "I1D0", "I2D0", "I3D0", "I0D1", "I1D1", "I0D0@0", "I1D0@0"]
+runs = ["I0D0", "I1D0", "I2D0", "I3D0", "I0D1", "I1D1", "I0D0@0"]
 ann = json.loads((WB / "results/e167/ud_annotations.json").read_text())
 
 
@@ -64,7 +64,8 @@ print(len(selected), "forms", flush=True)
 
 
 def dec(X, y):
-    clf = make_pipeline(StandardScaler(), LogisticRegression(max_iter=1000, C=0.5, class_weight="balanced"))
+    # ridge classifier (closed form): linear decodability without iterative fitting cost
+    clf = make_pipeline(StandardScaler(), RidgeClassifier(alpha=10.0, class_weight="balanced"))
     pred = cross_val_predict(clf, X, y, cv=StratifiedKFold(5, shuffle=True, random_state=0))
     return float(balanced_accuracy_score(y, pred))
 
@@ -84,7 +85,7 @@ for l in LAYERS:
             logits = X @ W.T + b
             S = np.argpartition(-logits, TOPK, axis=1)[:, :TOPK]
             M = np.zeros((len(rows), W.shape[0]), np.float32); np.put_along_axis(M, S, 1.0, 1)
-            rec[r] = {"dec_h": dec(X, labs) - chance, "dec_r": dec(M, labs) - chance, "dec_l": dec(logits, labs) - chance}
+            rec[r] = {"dec_h": dec(X, labs) - chance, "dec_r": dec(M, labs) - chance}
         out["forms"][f]["layers"][l] = rec
     del cache
     # summary for this layer
