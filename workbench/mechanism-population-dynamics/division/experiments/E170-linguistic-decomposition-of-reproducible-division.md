@@ -45,7 +45,6 @@
 | upos+next_upos | .231 (.146) | .442 (.157) | .369 | .44 / .60 = .72 | .17 / .31 = .54 |
 
   - 未训练地板：各变量 cell .04、resid .015。
-  - **32 亿 token、15 对复核（`results/e170/decomp_3200000000.json`）：** cell 比值 upos .84、feats .83、deprel .73、next_upos .72、head_upos .71、prev_upos .71、genre .63；resid .55–.60；share 逐项与终点相差 ≤ .02。结论不依赖终点那 6 对。
   - **复核（32 亿 token，6 个初始化、15 对；`results/e170/decomp_3200000000.json`）：** 全部变量的数字与终点 6 对的在 .01–.02 内一致（upos cell .685 / .813、deprel .446 / .609、prev_upos .406 / .574、feats .640 / .775、genre .333 / .525；resid .18–.22 / .31–.37；share 同样）。不是 4 个初始化的偶然。
   - 分层（deprel 的 cell 比值 / resid 比值）：L1–4 .64 / .49，L5–8 .71 / .51，L6–11 .74 / .55，L11 .85 / .68；prev_upos 同趋势。
   - 对 C（只扣词身份）同样分解：cell 比值 .88–.95、resid .80–.84，区分度低，所以主读数用 D。
