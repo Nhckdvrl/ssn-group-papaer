@@ -93,8 +93,11 @@ def load(run, t):
     return {l: {"D": cw(Z[f"C{l}"].astype(float) - Z[f"B{l}"].astype(float)), "C": cw(Z[f"C{l}"].astype(float))} for l in range(12)}
 
 
-groups = {"init": [("I0D0", "I1D0"), ("I0D0", "I2D0"), ("I0D0", "I3D0"), ("I1D0", "I2D0"), ("I1D0", "I3D0"), ("I2D0", "I3D0")],
-          "order": [("I0D0", "I0D1"), ("I1D0", "I1D1")]}
+import itertools
+_d0 = [f"I{i}D0" for i in range(6) if (CAP / f"I{i}D0__ckpt_{tok}.npz").exists()]
+groups = {"init": list(itertools.combinations(_d0, 2)),
+          "order": [(f"I{i}D0", f"I{i}D1") for i in (0, 1) if (CAP / f"I{i}D1__ckpt_{tok}.npz").exists()]}
+print("groups:", {k: len(v) for k, v in groups.items()}, flush=True)
 runs = sorted({r for g in groups.values() for p in g for r in p})
 M = {r: load(r, tok) for r in runs}
 F = {r: load(r, 0) for r in ("I0D0", "I1D0")}
