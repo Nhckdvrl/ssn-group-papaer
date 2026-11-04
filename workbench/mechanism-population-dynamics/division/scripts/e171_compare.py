@@ -3,7 +3,7 @@
 (I0D0, I1D0) pairs, on every E167 / E168 readout, from the analysis caches. Writes results/e171/*.json and
 prints the tables. Re-uses analyze_routing.py, analyze_functional.py and token_roles.py compare unchanged.
 
-Usage: e171_compare.py
+Usage: e171_compare.py [RUN BASE END [routing_only]]   (default I4D0R I4D0 3200000000; 11-04 generalised)
 """
 import json
 import os
@@ -19,8 +19,16 @@ A = Path.home() / "mechpop_cache/e167_analysis"
 PY = str(Path.home() / ".venvs/mechpop/bin/python")
 OUT = WB / "results/e171"
 OUT.mkdir(parents=True, exist_ok=True)
+RUN = sys.argv[1] if len(sys.argv) > 1 else "I4D0R"
+BASE = sys.argv[2] if len(sys.argv) > 2 else "I4D0"
+END = int(sys.argv[3]) if len(sys.argv) > 3 else 3200000000
+ROUTING_ONLY = len(sys.argv) > 4 and sys.argv[4] == "routing_only"
 TOKS = [25000000, 50000000, 100000000, 200000000, 400000000, 800000000, 1600000000, 3200000000, 3999793152]
-PAIRS = {"rerun": ("I0D0", "I0D0R"), "order": ("I0D0", "I0D1"), "init": ("I0D0", "I1D0"), "init_R": ("I0D0R", "I1D0"), "order_R": ("I0D0R", "I0D1")}
+# rerun pair, the two only-order pairs, the only-init pairs that share BASE, and the rerun model against another init
+PAIRS = {"rerun": (BASE, RUN), "order": ("I0D0", "I0D1"), "order2": ("I1D0", "I1D1"), "init": (BASE, "I0D0"), "init2": (BASE, "I1D0"),
+         "init_R": (RUN, "I0D0"), "init_R2": (RUN, "I1D0")}
+if BASE == "I0D0":
+    PAIRS["init"] = ("I0D0", "I1D0"); PAIRS["init2"] = ("I0D0", "I4D0"); PAIRS["init_R"] = (RUN, "I1D0"); PAIRS["init_R2"] = (RUN, "I4D0")
 
 
 def have(d, r, t):
@@ -42,19 +50,22 @@ for (name, t), r in zip(idx, R):
     L = r["layers"]
     print(f"{name:8s} {t:>11d} " + " ".join(f"{l['T_D']:.3f}" for l in L) + f" | {L[11]['T_ctx']:.3f} {L[11]['T_h']:.3f}")
 # ratios at the endpoint and 3.2B
-for t in (3200000000, 3999793152):
+for t in sorted({END, 3200000000, 3999793152}):
     d = {name: r for (name, tt), r in zip(idx, R) if tt == t}
-    if "rerun" in d:
+    if "rerun" in d and "order" in d and "init" in d:
         deep = lambda n: np.mean([d[n]["layers"][l]["T_D"] for l in range(6, 12)])
         print(f"\n{t}: deep T_D rerun {deep('rerun'):.3f} | order {deep('order'):.3f} | init {deep('init'):.3f} -> init/rerun {deep('init')/deep('rerun'):.2f}, order/rerun {deep('order')/deep('rerun'):.2f}, init/order {deep('init')/deep('order'):.2f}"
-              + (f" | init_R {deep('init_R'):.3f} order_R {deep('order_R'):.3f}" if "init_R" in d else ""))
+              + "".join(f" | {n} {deep(n):.3f}" for n in ("order2", "init2", "init_R", "init_R2") if n in d))
 
+if ROUTING_ONLY:
+    print("\nsaved to", OUT); sys.exit(0)
 # ---- functional fingerprints at the endpoint
-t = 3999793152
+t = END
 for kind in ("route", "drop"):
     specs2, idx2 = [], []
     for name, (a, b) in PAIRS.items():
-        if have("functional", a, t) and have("functional", b, t):
+        if have("functional", a, t) and have("functional", b, t) and (kind == "route" or all(
+                "drop_fp" in np.load(A / "functional" / f"{r}__ckpt_{t}.npz").files for r in (a, b))):
             specs2.append(f"{a}__ckpt_{t}.npz:{b}__ckpt_{t}.npz"); idx2.append(name)
     if not specs2:
         continue
