@@ -187,7 +187,7 @@ def draw(lang):
         ax.text(v + 0.02, yi + 0.17, f"{v:.2f}", va="center", fontsize=8.5, color=INK, fontweight="bold")
     for yi, v in zip(y, C_rerun):
         if v is None:
-            ax.text(0.02, yi - 0.17, "(re-run damage pattern pending)" if lang == "en" else "（再実行の損傷パターンは計算中）", va="center", fontsize=7, color=INK2)
+            ax.text(0.02, yi - 0.17, "(re-run denominator not computed)" if lang == "en" else "（再実行の分母は未計算）", va="center", fontsize=7, color=INK2)
             continue
         ax.barh(yi - 0.17, v, color=ORANGE, height=0.32)
         ax.text(v + 0.02, yi - 0.17, f"{v:.2f}", va="center", fontsize=8.5, color=INK, fontweight="bold")
