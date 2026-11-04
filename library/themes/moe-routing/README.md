@@ -61,3 +61,4 @@ Good diagnostic signal → endless loss search.
 - `archive/candidates/CT03_COUNTERFACTUAL_CREDIT_MOE_ROUTING/`
 
 - [功能迁移、实际使用与后续路由：2026-10-29全文核对](FUNCTIONAL_TRANSFER_AND_ROUTING_2026-10-29.md)。
+- [MoE 专精与跨训练普遍性精读笔记 2026-11-05](SURVEY_SPECIALIZATION_UNIVERSALITY_2026-11-05.md)（52 篇；配合 division 线调研文档）
