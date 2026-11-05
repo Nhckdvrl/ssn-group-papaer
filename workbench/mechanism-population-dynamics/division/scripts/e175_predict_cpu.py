@@ -6,7 +6,9 @@ CPU forward of one checkpoint over all UD passages; at every valid word's word-f
 Rows follow capture_hidden's word_idx order (valid anchor words, then valid cal words).
 Output (per-item, kept local, not in git): ~/mechpop_cache/e175_predict/<run>__ckpt_<t>.npz
 
-Usage: e175_predict_cpu.py RUN TOKENS [--limit N_PASSAGES] [--threads K]
+Usage: e175_predict_cpu.py RUN TOKENS [--limit N_PASSAGES] [--threads K] [--subset N]
+  --subset N: only N anchor-split passages (that contain cached anchor words), drawn with seed 175; all valid
+  words of those passages are kept; output name gets suffix __subN (2026-11-06 reduced run, main-session request).
 """
 import argparse
 import json
@@ -43,6 +45,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("run"); ap.add_argument("tokens")
     ap.add_argument("--limit", type=int, default=0); ap.add_argument("--threads", type=int, default=6)
+    ap.add_argument("--subset", type=int, default=0)
     a = ap.parse_args()
     torch.set_num_threads(a.threads)
     t0 = time.time()
@@ -54,6 +57,11 @@ def main():
     anchor = [n for n, w in enumerate(words) if w[5] == "anchor" and valid[n]]
     cal = [n for n, w in enumerate(words) if w[5] == "cal" and valid[n]]
     word_idx = np.array(anchor + cal)
+    if a.subset:
+        sel_pids = sorted({words[n][0] for n in P["sel"] if valid[n]})
+        keep_pids = set(np.random.default_rng(175).choice(sel_pids, a.subset, replace=False).tolist())
+        word_idx = np.array([n for n in word_idx if words[n][0] in keep_pids])
+        anchor = [n for n in anchor if words[n][0] in keep_pids]
     by_pid = {}
     for row, n in enumerate(word_idx):
         by_pid.setdefault(words[n][0], []).append((row, int(pos[n])))
@@ -99,7 +107,7 @@ def main():
         hh.remove()
     if not a.limit:
         OUT.mkdir(parents=True, exist_ok=True)
-        np.savez(OUT / f"{a.run}__ckpt_{a.tokens}.npz", word_idx=word_idx, pred=pred, top1=top1,
+        np.savez(OUT / f"{a.run}__ckpt_{a.tokens}{'__sub%d' % a.subset if a.subset else ''}.npz", word_idx=word_idx, pred=pred, top1=top1,
                  n_anchor=np.int64(len(anchor)), tokens=np.int64(int(a.tokens)))
     print(json.dumps({"done": True, "n_passages": len(pids), "tok": ntok, "fwd_sec": round(time.time() - t1, 1),
                       "total_sec": round(time.time() - t0, 1)}), flush=True)

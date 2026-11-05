@@ -92,7 +92,7 @@ if A:
                 ax.fill_between(x, v.min(0), v.max(0), color=c, alpha=.22, lw=0)
             tl = {END: "end", "800000000": "800M", "200000000": "200M"}[t]
             ax.plot(x, v.mean(0), color=c, lw=1.8 if t == END else 1.1, ls=ls, alpha=alpha, label=f"{lab} ({tl})")
-    ax.set_title("A: predicted vs true next token (CPU forward, all words)", fontsize=10)
+    ax.set_title("A: predicted vs true next token (CPU fwd, 200 anchor passages, endpoint)", fontsize=10)
     ax.legend(fontsize=6.5, ncol=3, loc="upper right")
 else:
     ax.text(.5, .5, "A (predicted next token) not run:\nCPU forward estimate > 2 h per checkpoint\n(stopped per request)",

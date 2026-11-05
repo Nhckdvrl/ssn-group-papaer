@@ -82,7 +82,7 @@ def main():
                  "I0D0__ckpt_0", "I1D0__ckpt_0", "I4D0__ckpt_3200000000", "I4D0R__ckpt_3200000000"]
         src = {f: HID / f"{f}.npz" for f in files}
     else:
-        src = {f.stem: f for f in sorted(PRED.glob("*.npz"))}
+        src = {f.stem.split("__sub")[0]: f for f in sorted(PRED.glob("*__sub200.npz"))}
     res = {"mode": mode, "A_smooth": A, "seed": SEED, "ckpts": {}}
     word_idx = None
     for name, path in src.items():
@@ -113,6 +113,14 @@ def main():
             conds += [("pred_tok", "in_tok"), ("in_tok", "pred_tok"), ("pred_tok", "next_tok"), ("next_tok", "pred_tok")]
             extra["top1_pred_acc"] = float((pr == tnx_arr).mean())
             extra["n_types_pred"] = int(X["pred_tok"].max() + 1)
+            # sanity: CPU fp32 top-1 vs top-1 recomputed from the GPU(bf16)-captured hidden cache, same words
+            hz = HID / f"{name}.npz"
+            if hz.exists():
+                Hz = np.load(hz)
+                rowof = {int(n): r for r, n in enumerate(Hz["word_idx"])}
+                rows = np.array([rowof[int(n)] for n in word_idx[keep]])
+                extra["top1_agree_with_hidden"] = [float(((Hz[f"H{l}"][rows].astype(np.float32) @ Hz[f"W{l}"].T + Hz[f"b{l}"]).argmax(1)
+                                                          == Z["top1"][l][keep]).mean()) for l in range(NL)]
         per = []
         for l in range(NL):
             if mode == "B":
