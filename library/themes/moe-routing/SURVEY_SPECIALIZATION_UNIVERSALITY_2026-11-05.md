@@ -14,6 +14,7 @@
 - 证据类型：5 个公开 MoE，观察性；一个不等式；无训练实验（自己承认 footnote 1）。
 - 结论尺度：标题级否定（"Myth"），但正文是"至少和理解隐状态几何一样难"。
 - 关键漏洞（我们可打）：Prop.1 只说"相似⇒相似"，三角形右侧（隐状态不同、路由可同可不同）正是切法自由度；他们没有跨 seed 同几何对照。我们 E169：几何 .95 相同而切法 .28–.50。但他们的"不同模型 60% ≈ 不同题"与我们"跨 init 具体实现 .06"同向。
+- **11-06 更正 `[节 §5.1]`：**"不同模型 ~60%"里的"不同模型"是 60 个生成 HMMT 解答的模型，解答喂进同一个 MoE（三个 MoE、4 个采样 seed 取均值）；比的是同一 MoE 里不同文本的专家集 Jaccard，**不是跨训练**。上面"与我们跨 init .06 同向"一句作废。
 - 他们点名的开放问题："unless an explicit objective is introduced, we should not expect hidden state / router logit space to have a metric aligned with human standards" ——我们的 E170 恰好说：对齐的是语法功能（线性可读的左文脉功能），不是语义/领域。这是一条可用的反题。
 
 ## 2604.14419 Equifinality in MoE (Uzhhorod, Apr 2026, preprint)
@@ -97,7 +98,7 @@
 - **2501.11873 Demons in the Detail (Qwen, ACL 2025)**：负载均衡在 micro-batch 内算 ≈ 序列级均衡 → 抑制领域专精；改为 global-batch → PPL 更好且出现领域专精（SFT-Math 有专家频率 >.2）。micro-batch 下"只有 token 级专精"。**又一个决定分工粒度的训练旋钮（均衡作用域）。**
 - **2401.04088 Mixtral §5**：按 Pile 子集没有主题专精；"self"/"Question"/缩进 token 固定专家；连续 token 常同专家；"更像句法而非领域"。
 - **2412.16971 POS sensitivity (Antoine et al.)**：6 个公开 MoE，按 POS 专精高于均匀 +25%（Mixtral）到 +36%（OLMoE）；路由路径预测 POS 准确率 .79–.91。
-- **2604.14434 Geometric Routing（Equifinality 的姊妹篇）**：rank-1 专家 + cosine 路由；15% 专家单义；**早层按频率、深层按句法类分（控制 Zipf 后仍成立）**；steering 实验。
+- **2604.14434 Geometric Routing（Equifinality 的姊妹篇）**：rank-1 专家 + cosine 路由；15% 专家单义；**早层按频率、深层按句法类分（控制 Zipf 后仍成立）**；steering 实验。 **11-06 更正 `[全文]`：**这是摘要措辞；正文 §5 是句法分组在全部 8 层都优于频率分组（深度趋势 ρ = .81）；全部分析在单个收敛 checkpoint 上，无跨 seed 主张。详见 `READOUT_CATALOGUE_AND_SEED_ROBUSTNESS_2026-11-06.md` §4。
 - **2502.10928 Olson et al. 语义路由**：WiC 同词不同义 → 专家重叠显著更低（p<.001），效应随规模增大，中层最强（DeepSeek-R1 671B 最明显）。即**语义专精随规模出现**——小模型（我们 7.5 亿）上几乎只能看到语法专精，这是我们尺度的边界，必须写明。
 - **2406.18219 A Closer Look (Lo et al., NAACL 2025 Findings)**：神经元是细粒度专家；router 选大输出范数的专家；专家多样性随层数增加，末层例外。
 - **2510.04694 Multilingual Routing (ICLR 2026)** / **2601.14050** / **2605.29714**：早晚层语言特异、中层跨语言对齐（U 形）；与英语路由相似度预测该语言性能；steering 中层 +1–2%。持续预训练下语言专精出现在末层。
