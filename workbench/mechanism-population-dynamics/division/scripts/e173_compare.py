@@ -42,6 +42,8 @@ RECIPES = {  # name -> (run A, run B, label)
     "g256": ("G256_I0", "G256_I1", "(d) 256 专家 top-32"),
     "lb01": ("LB01_I0", "LB01_I1", "(b) lb=0.1"),
 }
+WINDOWS = [(500, 1000), (1000, 2000), (2000, 2500), (2500, 3000)]
+HELD_STEPS = [500, 1000, 1500, 2000, 2500, 3000]
 VAR_ORDER = ["upos", "feats", "deprel", "head_upos", "prev_upos", "next_upos", "sentpos", "genre", "doc"]
 
 
@@ -219,7 +221,11 @@ def health(run):
     h3000 = next((r["held_ce"] for r in steps if r["step"] == 3000 and "held_ce" in r), None)
     fin = json.loads((d / "DONE.json").read_text()) if (d / "DONE.json").exists() and "_" in run else None
     late = [r for r in steps if r["step"] >= 2500]
-    return {"held_ce_3000": h3000, "held_ce_end": fin["held_ce"] if fin else None, "last_step": steps[-1]["step"] if steps else 0,
+    held_by_step = {r["step"]: r["held_ce"] for r in steps if "held_ce" in r}  # every 500 steps (lcm of log 20, eval 250)
+    # same data_seed -> identical batches at identical steps, so windowed train CE is batch-matched across runs
+    win = {f"{a}-{b}": float(np.mean([r["ce"] for r in steps if a < r["step"] <= b])) for a, b in WINDOWS
+           if steps and steps[-1]["step"] >= b}
+    return {"held_ce_3000": h3000, "held_by_step": held_by_step, "train_ce_window": win, "held_ce_end": fin["held_ce"] if fin else None, "last_step": steps[-1]["step"] if steps else 0,
             "dead_max": max((r["dead"] for r in steps), default=None), "dead_late_max": max((r["dead"] for r in late), default=None),
             "maxload_late_mean": float(np.mean([np.mean(r["maxload"]) for r in late])) if late else None,
             "tok_s_median": float(np.median([r["tok_s"] for r in steps if r.get("tok_s")])) if steps else None,
@@ -264,6 +270,23 @@ def main():
     r8 = rule.get(END)
     if r8:
         lines.append(f"\n尺子：基线 15 个只换初始化对在 8 亿处 L11 {r8['L11'][0]:.3f}–{r8['L11'][2]:.3f}（均值 {r8['L11'][1]:.3f}），深层 {r8['deep'][0]:.3f}–{r8['deep'][2]:.3f}（均值 {r8['deep'][1]:.3f}）。")
+    # held-out CE aligned by step, and batch-matched train CE windows (seed0 / seed1)
+    lines += ["", "按步对齐的留出 CE（同一 128 个留出窗口；seed0 / seed1）：", "",
+              "| 配方 | " + " | ".join(f"{s_} 步" for s_ in HELD_STEPS) + " |", "|---|" + "---|" * len(HELD_STEPS)]
+    for name, r in summary["recipes"].items():
+        cells = []
+        for s_ in HELD_STEPS:
+            v = [r["health"][x]["held_by_step"].get(s_) if r["health"][x] else None for x in r["runs"]]
+            cells.append(" / ".join(f2(x) for x in v))
+        lines.append(f"| {r['label']} | " + " | ".join(cells) + " |")
+    lines += ["", "同批训练 CE 窗口均值（同 data_seed，同一步看到同一批数据；seed0 / seed1）：", "",
+              "| 配方 | " + " | ".join(f"{a}–{b} 步" for a, b in WINDOWS) + " |", "|---|" + "---|" * len(WINDOWS)]
+    for name, r in summary["recipes"].items():
+        cells = []
+        for a, b in WINDOWS:
+            v = [r["health"][x]["train_ce_window"].get(f"{a}-{b}") if r["health"][x] else None for x in r["runs"]]
+            cells.append(" / ".join(f2(x) for x in v))
+        lines.append(f"| {r['label']} | " + " | ".join(cells) + " |")
     (OUT / "table.md").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
     print("\nT_D curves (L11 / deep):")
