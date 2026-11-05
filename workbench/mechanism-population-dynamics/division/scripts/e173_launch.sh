@@ -16,9 +16,10 @@ case $RECIPE in
   G256)   R="--n-experts 256 --top-k 32 --expert-ffn 96" ;;
   LB01)   R="--lb 0.1" ;;
   BASE)   R="" ;;
+  S6)     R="--n-layers 6 --d-model 512 --n-heads 8 --expert-ffn 256" ;;   # E177 small-scale point
   *) echo "unknown recipe $RECIPE"; exit 2 ;;
 esac
-RUN=${RECIPE}_I${SEED}
+RUN=${RUN_NAME:-${RECIPE}_I${SEED}}   # RUN_NAME overrides (E177: S6_I0R = exact rerun of S6_I0)
 EXTRA="$R --tokens 4e9 --max-steps 3052 --ckpt-tokens 0,1e8,2e8,4e8,8e8 $*"
 SRC=/home/xiang/mechpop_cache/e167_dolma_6b
 OUT=/home/xiang/mechpop_cache/e173_runs/$RUN

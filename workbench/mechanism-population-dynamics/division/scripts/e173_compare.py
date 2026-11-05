@@ -76,9 +76,10 @@ def routing(skip):
             L = r["layers"]
             out.setdefault(name, {})[t] = {"T_D": [l["T_D"] for l in L], "T_D_ci": [l["T_D_ci"] for l in L],
                                           "T_ctx": [l["T_ctx"] for l in L], "T_h": [l["T_h"] for l in L],
-                                          "L11": L[11]["T_D"], "L11_ci": L[11]["T_D_ci"],
-                                          "deep": float(np.mean([L[l]["T_D"] for l in DEEP])),
-                                          "shallow": float(np.mean([L[l]["T_D"] for l in range(6)]))}
+                                          # "L11" = last layer (layer 11 for 12-layer models; layer 5 for E177's 6-layer models)
+                                          "L11": L[-1]["T_D"], "L11_ci": L[-1]["T_D_ci"], "n_layers": len(L),
+                                          "deep": float(np.mean([L[l]["T_D"] for l in range(len(L) // 2, len(L))])),
+                                          "shallow": float(np.mean([L[l]["T_D"] for l in range(len(L) // 2)]))}
     return out
 
 
@@ -116,10 +117,11 @@ def route_fp():
     out = {}
     for name, r in zip(names, F):
         L = r["layers"]
-        out[name] = {"matched": [l["matched"] for l in L], "deep_matched": float(np.mean([L[l]["matched"] for l in DEEP])),
-                     "deep_random97.5": float(np.mean([l["random95"][1] for l in L[6:]])),
-                     "deep_reliab": [float(np.mean([l["reliab_A"] for l in L[6:]])), float(np.mean([l["reliab_B"] for l in L[6:]]))],
-                     "deep_ratio": float(np.mean([l["ratio"] for l in L[6:]]))}
+        h = len(L) // 2  # deep half (L6-11 for 12 layers, L3-5 for 6 layers)
+        out[name] = {"matched": [l["matched"] for l in L], "deep_matched": float(np.mean([l["matched"] for l in L[h:]])),
+                     "deep_random97.5": float(np.mean([l["random95"][1] for l in L[h:]])),
+                     "deep_reliab": [float(np.mean([l["reliab_A"] for l in L[h:]])), float(np.mean([l["reliab_B"] for l in L[h:]]))],
+                     "deep_ratio": float(np.mean([l["ratio"] for l in L[h:]]))}
     return out
 
 
@@ -168,7 +170,8 @@ def decomp(skip):
 
     def loadD(run):
         Z = np.load(A / "routing" / f"{run}__ckpt_{END}.npz")
-        return {l: cw(Z[f"C{l}"].astype(float) - Z[f"B{l}"].astype(float)) for l in DEEP}
+        nL = sum(1 for k in Z.files if k.startswith("C"))
+        return {l: cw(Z[f"C{l}"].astype(float) - Z[f"B{l}"].astype(float)) for l in range(nL // 2, nL)}  # deep half
 
     rng = np.random.default_rng(173)
     wtype = np.unique(P["anchor_type"], return_inverse=True)[1]
@@ -183,14 +186,14 @@ def decomp(skip):
             pcs.append(cells_for(lab[perm]))
         perm_cells[k] = pcs
     cells = {k: cells_for(ENC[k]) for k in VAR_ORDER}
-    out = {"tokens": END, "min_cell": MIN_CELL, "n_perm": N_PERM, "layers": DEEP, "pairs": {}}
+    out = {"tokens": END, "min_cell": MIN_CELL, "n_perm": N_PERM, "layers": "deep half (L//2 .. L-1)", "pairs": {}}
     for name, (a, b) in pairs.items():
         DA, DB = loadD(a), loadD(b)
         rec = {}
         for k in VAR_ORDER:
             cid, cnt = cells[k]
             sh, cc, rc, tot, p95 = [], [], [], [], []
-            for l in DEEP:
+            for l in sorted(DA):
                 xa, xb = DA[l], DB[l]
                 ma, mb = cell_mean(xa, cid, cnt), cell_mean(xb, cid, cnt)
                 cab = cov(xa, xb)

@@ -24,8 +24,10 @@ SLOTS = [("fvcrc11", g) for g in range(4)] + [("fvcrc15", g) for g in range(4)] 
 BATCH1 = [("FRZ", 0), ("LB0", 0), ("G16", 0), ("G256", 0)]
 # 01:05: batch 2 reduced to the seed-1 runs still missing; LB01 (lb=0.1) held for a human decision
 BATCH2 = [("FRZ", 1), ("LB0", 1), ("G16", 1), ("G256", 1),
-          ("BASE", 0)]  # 11-06 06:05 main session: exact-config rerun of I0D0 to 8e8 (run BASE_I0)
-MAXALIVE = 4  # 01:05: never launch while >= 4 E173 runs are alive (running runs are not stopped)
+          ("BASE", 0),  # 11-06 06:05 main session: exact-config rerun of I0D0 to 8e8 (run BASE_I0)
+          ("S6", 0), ("S6", 1), ("S6", 0, "S6_I0R")]  # 11-06 08:45 E177 small-scale point (6L d512); S6_I0R = rerun of S6_I0
+MAXALIVE = 3  # 11-06 08:45: E177 may only use slots freed by G256_I0 / BASE_I0 (was 4).
+# 01:05: never launch while >= 4 E173 runs are alive (running runs are not stopped)
 INTERVAL = 600
 STABLE_STEP = 500
 QLOG = LOGS / "queue.log"
@@ -37,7 +39,7 @@ def log(msg):
 
 
 def name(r):
-    return f"{r[0]}_I{r[1]}"
+    return r[2] if len(r) > 2 else f"{r[0]}_I{r[1]}"
 
 
 def started(r):
@@ -115,7 +117,8 @@ def main():
             if not pending or n_alive >= cap:
                 break
             r = pending[0]
-            p = subprocess.run(["bash", str(LAUNCH), host, str(g), r[0], str(r[1])], capture_output=True, text=True, timeout=1800)
+            env = dict(__import__("os").environ, RUN_NAME=name(r))
+            p = subprocess.run(["bash", str(LAUNCH), host, str(g), r[0], str(r[1])], capture_output=True, text=True, timeout=1800, env=env)
             log(f"launch {name(r)} on {host}:{g} rc={p.returncode} {p.stdout.strip()} {p.stderr.strip()[-300:]}")
             if p.returncode == 0:
                 pending.pop(0); n_alive += 1; launched.add((host, g))
