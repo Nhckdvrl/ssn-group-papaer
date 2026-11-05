@@ -37,7 +37,9 @@
 | E173 配方对比轴（5 配方 × 2 seed × 8 亿 token） | Opus 会话 e173-contrast-axis | 第一批 4 个在跑、第二批已开 2 个 | 配方 × {ce, L11/深层 T_D, 指纹, UD 前三} 表 + 曲线 |
 | 文献 v2：分析史核原文、现成读数目录、相邻领域 | Opus 会话 lit-v2 | 2026-11-06 启动 | `library/themes/moe-routing/READOUT_CATALOGUE_AND_SEED_ROBUSTNESS_2026-11-06.md` + 分析史 §5 清零 |
 | 核对、FINDINGS、定位、导师汇报 | 主会话 | 持续 | FINDINGS §、MEETING 记录、日志 |
-| E174 第二尺度（导师读数 3：专家几何 / 功能相似，路由配对后） | 待 lit-v2 给出度量目录后定义 | 未开 | CPU，用现有 checkpoint |
+| E174 A2 重述零假设（格内置换 + N1 替代零假设，三个粒度） | Opus 会话 e174-cpu | T_D 级、词类级已出，token 级跑中 | 扣零假设前后的阶梯图 + CLAIMS / FINDINGS §4.5 降级草稿 |
+| E175 D1 试探（深层路由按输入词还是下一词，沿训练） | Opus 会话 e175-d1-pilot | DONE（0ace5a06）；POST-HOC 两项补做中 | 无交叉、深层比值 .31→.53 走平；预测下一 token 版与自然流复核 |
+| E176 已发表读数的跨 seed 重现表（F4；目录表 1 的 #1 #2 #3 #6 #7 #13 + E172 的 #8） | Opus 会话 lit-v2 | 2026-11-06 05:50 启动 | 读数 × {模型级 / 类别级 / 专家级} 表与图；"逐 seed 几/9 得同一结论" |
 | 语言轴（5–10 语）/ 规模轴（2 seed × 更大模型 ≈ 16 GPU h） | 待 E173 出结果后决定 | 未开 | — |
 
 ## 4. 不做
