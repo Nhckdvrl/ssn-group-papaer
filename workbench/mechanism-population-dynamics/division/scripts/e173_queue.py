@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """E173 GPU queue (started 2026-11-05 with the main session's OK; rules from its message):
-  1. Allowed slots only: fvcrc11 GPU0-3, fvcrc15 GPU0-3, fvcrc10 GPU0-3 (GPU0/2/3 added 2026-11-06 on the user's word).
-     Never fvcrc12/13/20/21.
+  1. Allowed slots only: fvcrc11 GPU0-3, fvcrc15 GPU0-3, fvcrc10 GPU1 (fvcrc10 GPU0/2/3 added 11-06 00:45, withdrawn 01:05).
+     Never fvcrc12/13/20/21. At most 4 E173 runs alive (11-06 01:05); LB01 is not queued (waiting for a human decision).
   2. A slot is launched on only after two consecutive checks INTERVAL apart both saw it with no compute process and
      memory.used < 1000 MiB (e173_launch.sh re-checks at launch time).
   3. Batch 1 = seed 0 of (e) FRZ, (a) LB0, (c) G16, (d) G256, at most 4 alive. Batch 2 (seed 1 of those four, then (b)
@@ -19,10 +19,12 @@ WB = Path(__file__).resolve().parents[1]
 LOGS = WB / "results/e173/_logs"
 RUNS = Path.home() / "mechpop_cache/e173_runs"
 LAUNCH = WB / "scripts/e173_launch.sh"
-# 2026-11-06 00:45: fvcrc10 GPU0/2/3 added (user via main session: "你随便找个空卡"; they are freed vLLM cards of our own line)
-SLOTS = [("fvcrc11", g) for g in range(4)] + [("fvcrc15", g) for g in range(4)] + [("fvcrc10", g) for g in range(4)]
+# 2026-11-06 00:45 fvcrc10 GPU0/2/3 were added; 01:05 withdrawn (user via main session: "暂时不要扩卡，只用少数卡先做关键的实验")
+SLOTS = [("fvcrc11", g) for g in range(4)] + [("fvcrc15", g) for g in range(4)] + [("fvcrc10", 1)]
 BATCH1 = [("FRZ", 0), ("LB0", 0), ("G16", 0), ("G256", 0)]
-BATCH2 = [("FRZ", 1), ("LB0", 1), ("G16", 1), ("G256", 1), ("LB01", 0), ("LB01", 1)]
+# 01:05: batch 2 reduced to the seed-1 runs still missing; LB01 (lb=0.1) held for a human decision
+BATCH2 = [("FRZ", 1), ("LB0", 1), ("G16", 1), ("G256", 1)]
+MAXALIVE = 4  # 01:05: never launch while >= 4 E173 runs are alive (running runs are not stopped)
 INTERVAL = 600
 STABLE_STEP = 500
 QLOG = LOGS / "queue.log"
@@ -98,7 +100,7 @@ def main():
             log(f"batch-1 run(s) died without DONE.json: {dead_b1}; batch 2 blocked until a human decides")
             blocked_noted = True
         pending = [r for r in BATCH1 if not started(r)] + ([r for r in BATCH2 if not started(r)] if b2_open else [])
-        cap = 8 if b2_open else 4
+        cap = MAXALIVE
         n_alive = sum(alive(r) for r in BATCH1 + BATCH2)
         if not pending and all(started(r) for r in BATCH1 + BATCH2):
             log("all runs launched; queue exits")
