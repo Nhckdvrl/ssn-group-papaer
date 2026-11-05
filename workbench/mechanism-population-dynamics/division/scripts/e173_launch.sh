@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # E173: launch one recipe x init-seed run on HOST:GPU, only if that GPU is idle right now (same check as launch_run.sh).
 # Usage: e173_launch.sh HOST GPU RECIPE SEED [extra train_moe.py args...]
-#   RECIPE in FRZ | LB0 | LB0001 | G16 | G256 | LB01   (see experiments/E173-recipe-contrast-axis.md)
+#   RECIPE in FRZ | LB0 | LB0001 | G16 | G256 | LB01 | BASE   (see experiments/E173-recipe-contrast-axis.md)
+#   BASE = the E167 baseline config unchanged (BASE_I0 = exact-config rerun of I0D0, added 11-06)
 # The node-side job (e173_job.sh) trains, then captures routing / route fingerprints on the same GPU.
 # Every run: data_seed 0, cosine schedule over 4e9 tokens stopped at step 3052 (= 8e8 tokens, same lr as the
 # E167 baseline's 8e8 checkpoint), checkpoints 0/1e8/2e8/4e8/8e8.
@@ -14,6 +15,7 @@ case $RECIPE in
   G16)    R="--n-experts 16 --top-k 2 --expert-ffn 1536" ;;
   G256)   R="--n-experts 256 --top-k 32 --expert-ffn 96" ;;
   LB01)   R="--lb 0.1" ;;
+  BASE)   R="" ;;
   *) echo "unknown recipe $RECIPE"; exit 2 ;;
 esac
 RUN=${RECIPE}_I${SEED}

@@ -23,7 +23,8 @@ LAUNCH = WB / "scripts/e173_launch.sh"
 SLOTS = [("fvcrc11", g) for g in range(4)] + [("fvcrc15", g) for g in range(4)] + [("fvcrc10", 1)]
 BATCH1 = [("FRZ", 0), ("LB0", 0), ("G16", 0), ("G256", 0)]
 # 01:05: batch 2 reduced to the seed-1 runs still missing; LB01 (lb=0.1) held for a human decision
-BATCH2 = [("FRZ", 1), ("LB0", 1), ("G16", 1), ("G256", 1)]
+BATCH2 = [("FRZ", 1), ("LB0", 1), ("G16", 1), ("G256", 1),
+          ("BASE", 0)]  # 11-06 06:05 main session: exact-config rerun of I0D0 to 8e8 (run BASE_I0)
 MAXALIVE = 4  # 01:05: never launch while >= 4 E173 runs are alive (running runs are not stopped)
 INTERVAL = 600
 STABLE_STEP = 500
