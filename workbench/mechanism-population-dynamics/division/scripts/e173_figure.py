@@ -34,7 +34,8 @@ for i, (k, v) in enumerate(rec.items()):
         a1.plot([i, i], [lo, hi], color="#0b0b0b", lw=1, zorder=3)
     if "0" in v["routing"]:
         a1.plot([i - 0.3, i + 0.3], [v["routing"]["0"][KEY]] * 2, color="#0b0b0b", lw=1.5, ls=":", zorder=3)
-    a1.text(i, t8[KEY] + 0.005, f"{t8[KEY]:.2f}", ha="center", va="bottom", fontsize=7.5, color="#0b0b0b")
+    top = max(t8[KEY], t8["L11_ci"][1]) if KEY == "L11" else t8[KEY]
+    a1.text(i, top + 0.005, f"{t8[KEY]:.2f}", ha="center", va="bottom", fontsize=7.5, color="#0b0b0b")
 a1.set_xticks(range(len(rec)), [NAME[k] for k in rec], rotation=25, ha="right")
 a1.axhline(0, color="#0b0b0b", lw=0.6)
 a1.set_ylabel(f"T_D ({'layer 11' if KEY == 'L11' else 'deep mean L6-11'}), 8e8 tokens")

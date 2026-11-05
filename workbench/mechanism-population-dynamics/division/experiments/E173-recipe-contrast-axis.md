@@ -64,6 +64,7 @@
 
 ## 算力预算
 - 单卡 A100 约 4.8 万 token/s（基线配方）→ 8 亿 token 约 4.6 小时；(c)(d) 吞吐未测（(d) 的 gather/scatter 行数 4 倍，可能慢 1.5–2 倍）。10 个 run 约 50–65 GPU 小时；同时 ≤ 8 卡时墙钟约 1–2 轮。分析每 run 约 20 分钟 GPU。
+- **排队（2026-11-05 19:47 起，主会话同意）：** `scripts/e173_queue.py` 在 fvcrc20 后台运行，pid 583821（只做 ssh 查询，不占 GPU），每次决策写 `results/e173/_logs/queue.log`。规则：(1) 只取 fvcrc11 GPU0–3、fvcrc15 GPU0–3、fvcrc10 GPU1；fvcrc10 GPU0/2/3 是 cvis 线占位卡，释放了也不拿；(2) 同一张卡连续两次检查（间隔 10 分钟）都无进程且显存 < 1GB 才启动，启动时 `e173_launch.sh` 再查一次；(3) 第一批最多 4 张卡：(e)→(a)→(c)→(d) 各 seed 0；4 个 run 都稳定（训练日志到第 500 步且 CE 有限，或已完成）后，再按同规则补 seed 1 与 (b)，总数 ≤ 8。第一批有 run 中途死掉则第二批不开，等人决定。停止：`kill 583821`（不影响已启动的 run）。
 - **实际：**
 
 ## 资产位置
@@ -73,7 +74,7 @@
 - 进 git：`results/e173/*.json`、表、图。
 
 ## 实施记录（训练开始前）
-- **2026-11-05 19:2x 等卡：** fvcrc10 四卡（GPU0/2/3 为 cvis 线显存占位、GPU1 hamdi 训练）、fvcrc11 四卡（vla sft + hamdi）、fvcrc15 四卡（hamdi + vla sft）全部被占，无空卡；未启动任何 run，未抢占任何进程。已给主会话发消息，询问是否后台启动排队脚本 `scripts/e173_queue.sh`（有真空卡才按优先级启动，总数 ≤ 8）。
+- **2026-11-05 19:2x 等卡：** fvcrc10 四卡（GPU0/2/3 为 cvis 线显存占位、GPU1 hamdi 训练）、fvcrc11 四卡（vla sft + hamdi）、fvcrc15 四卡（hamdi + vla sft）全部被占，无空卡；未启动任何 run，未抢占任何进程。已给主会话发消息；主会话同意后改用 `scripts/e173_queue.py` 排队（规则见"算力预算"）。
 - **冻结开关自检（CPU）：** `--freeze-router` 下路由器不在优化器参数里，AdamW 一步后路由器逐位不变；训练中每存一个 checkpoint 都断言路由器与初始化逐位相同。默认关闭，E167 / E171 的 run 不受影响。
 - **读数脚本调通（阳性对照通过）：** `e173_compare.py` 在已有缓存上复算基线对 I0D0–I1D0 在 8 亿处：L11 T_D .236 [.223, .248]、深层 .164、浅层 .062、route 指纹深层 .791——与 `results/e167/routing_800000000.json`、`functional_route_800000000.json` 逐位一致。基线对 UD 分解（深层 share 前三）：prev_upos .40、next_upos .36、deprel .30，与 FINDINGS §4.6 终点的排序相同。基线 15 对在 1 亿处的范围此前没有，已补算（`results/e173/baseline15_routing_100000000.json`）：基线对的形成曲线 L11 / 深层 = 1e8 .055/.054、2e8 .097/.077、4e8 .178/.113、8e8 .236/.164。
 
