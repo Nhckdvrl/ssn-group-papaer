@@ -112,3 +112,58 @@
 - **2412.04139 Monet** / **2503.07639 MoE-X**：把专家数推到 26 万 / 强制稀疏，专家单义；说明"粒度越细越单义"是架构可控的。
 - **2607.08499 跨 seed SAE（BERT）**：Procrustes 对齐后联合训练 SAE，跨 seed r ≥ .70。
 - **2509.05291 Crosscoding 结果**：Pythia 1B→4B→286B：token 级检测器消退，群体级抽象（动名词化、复数名词类、介词）涌现；OLMo 更长视界同样。
+
+---
+
+# 第二部分（同日晚）：相邻领域——训练早期决定论、普适性/欠定、涌现模块性、专精理论、神经科学、语言发育
+
+> 对应 `workbench/mechanism-population-dynamics/division/SURVEY_V2_ADJACENT_FIELDS_2026-11-05.md`。每条：主张（带原文数字）→ 与我们最近邻的距离 → 可借的 idea。
+
+## 训练早期决定论
+- **Frankle, Dziugaite, Roy, Carbin 2020（1912.05671, ICML）** instability analysis：第 k 步复制两份、换数据顺序/增广训到底、线性插值误差壁垒 < 2% 即"对 SGD 噪声稳定"。ResNet-20 第 2000 步（3%）、VGG-16 1.5%、ResNet-50 第 18 epoch（20%）、Inception-v3 16%。Fig.4：把拷贝训满 T 步（重置 lr）结果一样——稳定与剩余训练时长无关。→ 我们缺的正是这个范式的 MoE 路由版；读数换成 T_D。
+- **Frankle, Schwab, Morcos 2020（2002.10365, ICLR）** 早期几百步权重分布已高度非独立。
+- **Achille, Rovere, Soatto 2019（1711.08856, ICLR）** critical period：早期模糊输入造成永久损伤；Fisher 信息先升后降（information plasticity 丧失）；深网更明显。→ "锁定"的经典机制语言。
+- **Zhang, Zeng, Lin 等 2023（2305.18390, ACL Findings）** T5 pre-MoE / post-MoE（MoEfication）：功能专家存在；扰动按功能选的 3% 专家 → 接近随机；**专家功能约 15% 步处定型，神经元约 75%**（"先粗模块后细功能"）。只有同 run 时间稳定性。→ 与我们"分工早锁、功能慢长"同构，但没有跨 run。
+- **OpenMoE（2402.01739）§4**：token-ID 路由（context-independent）、warmup 左右定下并保持、换数据配比与目标都不变；drop-towards-the-end 由此而来；Mixtral（升级自稠密）没有 token-ID 专精。→ "token 去哪个专家早定"≠"哪些 token 共享专家早定"，我们第 0 层数据显示后者直到 20% 训练仍在变。
+- **Ban&Pick（2509.06346）§2.1** 转述 OLMoE：1% 训练后约 60% 路由决策饱和；OpenMoE 40% 处 80%；均衡损失把激活频率冻在早期水平。
+- **StableMoE（2204.08396, ACL 2022）** routing fluctuation：训练 20% 时 40.9% 的 token 的"最后一次换专家"还在后面；解法：蒸馏并冻结路由器。
+- **Dhir, Cevher, Vankadara 2026（NeurIPS/ICML，无 arXiv）** Tensor Programs 无限宽：SP 下路由器一步后冻结；μP+soft routing 专家对称、不专精；**top-K 靠有限宽度涨落决定选谁 = 隐式对称破缺**。→ "谁拿哪块由噪声决定"的理论来源。
+- **Ahrac, Hochwald, Geva 2026（2605.12476, NeurIPS）** 路由器方向与所选专家的输入权重沿同一 token 方向累积梯度（耦合累加器）；1B 模型中路由分数预测专家神经元激活；aux 均衡损失给所有路由器方向发同向梯度，路由器方向余弦相似度约 .2 → .6（近 3 倍）；在线 K-means 路由器负载最均衡、PPL 略升。→ 锁定的机制候选；bias 平衡（我们用）不给路由器梯度。
+- **Wang 等 2024（2408.15664）Loss-free balancing**：aux 损失的梯度与 LM 目标干扰；bias 更新不产生干扰梯度。
+- **Kiselev 2026（2605.29121）** 两专家 softmax 路由器的 pitchfork/fold 分岔与滞后——负载失衡的局部正规形。
+
+## 普适性 / 个体性 / 欠定
+- **Maheswaranathan, Williams, Golub, Ganguli, Sussillo 2019（1907.08549, NeurIPS）** 数千 RNN：表示几何随架构大变（CCA/CKA 警示）；不动点拓扑、转移、线性化动力学跨架构普适。→ 我们的反例形态：几何普适、离散划分个体。
+- **Fehlauer, Mahowald, Pimentel 2025（2509.26643）** PolyPythia 跨 seed 期望 KL：均匀（≤16 步）→ 急剧收敛（16–256，均匀→一元）→ **急剧分歧（256–2k，开始用上下文）** → 缓慢回合（2k 起，与 ICL/induction 同时）；小模型不回合；高频词、功能词先收敛；BLiMP 与 MultiBERT 同样四阶段。→ 我们分工时间线逐段对应。
+- **Git Re-Basin（2209.04836, ICLR 2023）**；**LMC of MoE（2509.11348, NeurIPS 2025 oral）**：MoE 对称 = 专家置换 + 门置换，给匹配算法。→ T_D 已置换不变，重跑差距是真实划分差异。
+- **Clock and Pizza（2306.17844, NeurIPS 2023）** 同任务两种算法；attention rate × 宽度的相图与尖锐相变。
+- **McCoy, Min, Linzen 2020（1911.02969）** 100 个微调 seed：MNLI 83.6–84.8%，HANS 主宾互换 0–66.2%。
+- **D'Amour 等 2020（2011.03395, JMLR 2022）** 欠定：iid 等价的预测器在压力测试上差异大，seed 就能产生。
+- **MultiBERTs（2106.16163, ICLR 2022）** 25 个 seed + 5×28 中间 checkpoint；Multi-Bootstrap。
+- **Dodge 等 2020（2002.06305）** 微调：初始化与数据顺序对方差贡献相当。
+- **Jordan 2024（2304.01910, ICLR）** run 间测试集方差是类校准的必然后果，近乎无害。→ 回应"训练不稳定"。
+
+## 涌现模块性 / 专精理论 / 路由是否重要
+- **Crosscoders MoE vs dense（2603.05805）** 5 层小模型：MoE 特征更少更专一。弱。
+- **Mittal, Bengio, Lajoie 2022（2206.02713, NeurIPS）** 已知模块化数据：GT 完美专精有益；端到端训练**找不到**完美专精，规则越多坍缩越重；需要额外归纳偏置。
+- **Jarvis, Klein, Rosman, Saxe 2023（2409.14981, ICLR）** 线性模块专精的学习动力学；系统性的数学定义。
+- **Hash Layers（2106.04426, NeurIPS 2021）** 固定哈希（随机/平衡）≥ Switch / BASE（Reddit 困惑度 Switch 5×16 23.0 vs Hash 更优或持平）；局部特征的哈希最好。
+- **Fan, Messmer, Jaggi 2024（2402.13089）** GPT-2 small 从头训：**冻结随机初始化的路由器 ≈ 学习路由器**（层级 token 路由，Wiki 10.60 vs 9.81 等量级）；序列级路由有弱主题专精。→ 与 Hash layers 一起：划分内容不重要，有固定划分就行——S1 的推论。
+- **Lepori, Serre, Pavlick 2023（2301.10884）** 剪枝找子程序子网络；预训练让组合结构更一致。
+- **X-MoE（2204.09179, NeurIPS 2022）** 路由让 token 向专家中心聚集 → 表示坍缩；低维超球路由更一致。
+- **Mod-Squad（2212.08066）** 多任务 MoE 用专家减少任务干扰。
+
+## 神经科学：功能分区从哪来
+- **Dobs, Martinez, Kell, Kanwisher 2022（Sci. Adv. 8:eabl8913）** 双任务 VGG16 与单任务一样好；按任务损伤排序前 20% 滤波器只伤本任务（任务分离指数随层加深上升；共享的顶级滤波器比例随层下降）；车/食物等类别分离程度不一；"为什么分区 = 多任务优化的自然结果"，"为什么的为什么"开放。
+- **Kanwisher, Khosla, Dobs 2023（TINS）** 用 ANN 问脑组织的 "why"。
+- **TDANN（Margalit 等）、Lee 2018、NeurIPS 2022 流分离、TOPO-OMNI 2026（2606.09770）** 布线成本 → 位置拓扑。
+- **Yang 等 2019（Nat. Neurosci.）** 20 任务 RNN 自发功能簇、组合性；**Driscoll, Shenoy, Sussillo 2024（Nat. Neurosci.）** 动力学 motif 跨任务复用，簇可分离损伤。
+
+## 语言发育
+- **Chen, Shwartz-Ziv, Cho, Leavitt, Saphra 2024（2309.07311, ICLR）** SAS 在 20–30k 步窗口突现、与损失陡降同时；句法正则项（λ 正抑制/负促进）证明必要；短暂抑制更好；3 seed 窗口一致；25 个 MultiBERT 上 SAS 与能力不相关。
+- **Hoogland 等 2025（2402.02364, TMLR）** LLC 阶段 LM1–LM5；**Wang 等 2024（2410.02984）** rLLC 看注意力头分化。
+- **Bietti 等 2023（2306.00802）** 全局二元快、induction 慢。
+- **Evanson, Lakretz, King 2023（ACL Findings）** 48 个 GPT-2 习得顺序一致，与 54 名儿童部分重合。
+- **ST-MoE（2202.08906）§7** 编码器专家：哨兵、标点、连词冠词、动词、专名；解码器几乎不专精；多语专家不按语言分。
+- **多语路由（2510.04694, ICLR 2026；2601.14050）** 语言特异路由在首尾层，中间层跨语言对齐。
+- **失语症损伤 OLMoE（2508.04749）**；**Voita 等 2023 神经元（2309.04827）**；**Curriculum phases（2601.21698）**：不同数据顺序下潜在阶段结构一致。
