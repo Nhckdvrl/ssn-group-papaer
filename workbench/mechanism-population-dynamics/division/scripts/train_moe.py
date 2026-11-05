@@ -72,6 +72,8 @@ def main():
     ap.add_argument("--resume-minutes", type=float, default=40)
     ap.add_argument("--eval-every", type=int, default=250)
     ap.add_argument("--no-compile", action="store_true")
+    ap.add_argument("--freeze-router", action="store_true",
+                    help="E173: keep every router weight at its init value (not in the optimizer); sel_bias balancing unchanged")
     ap.add_argument("--max-steps", type=int, default=0, help="stop early (benchmark)")
     for k, v in Config().to_dict().items():
         ap.add_argument(f"--{k.replace('_', '-')}", type=type(v), default=v)
@@ -104,10 +106,15 @@ def main():
         model.load_state_dict(st["model"])
         step = st["step"]
         print(f"resumed at step {step}", flush=True)
+    if a.freeze_router:
+        for blk in model.blocks:
+            blk.moe.router.weight.requires_grad_(False)
+    router0 = [blk.moe.router.weight.detach().clone() for blk in model.blocks] if a.freeze_router else None
     if not a.no_compile:
         enable_compile(model)
-    decay = [p for n, p in model.named_parameters() if p.dim() >= 2 and "emb" not in n]
-    nodecay = [p for n, p in model.named_parameters() if p.dim() < 2 or "emb" in n]
+    trainable = [(n, p) for n, p in model.named_parameters() if p.requires_grad]
+    decay = [p for n, p in trainable if p.dim() >= 2 and "emb" not in n]
+    nodecay = [p for n, p in trainable if p.dim() < 2 or "emb" in n]
     opt = torch.optim.AdamW([{"params": decay, "weight_decay": a.wd},
                              {"params": nodecay, "weight_decay": 0.0}],
                             lr=a.lr, betas=(0.9, 0.95), eps=1e-8, fused=True)
@@ -132,6 +139,8 @@ def main():
     warm = a.warmup
 
     def save_ckpt(tok):
+        if router0 is not None:  # E173 sanity: frozen routers must be bit-identical to init
+            assert all(torch.equal(r0, blk.moe.router.weight) for r0, blk in zip(router0, model.blocks)), "router moved"
         sd = {k: v.detach().to(torch.bfloat16).cpu() for k, v in clean_sd().items()}
         tmp = a.out / f".ckpt_{tok}.tmp"
         torch.save({"model": sd, "config": cfg.to_dict(), "step": step, "tokens": tok,
