@@ -64,3 +64,4 @@ Good diagnostic signal → endless loss search.
 - [MoE 专精与跨训练普遍性精读笔记 2026-11-05](SURVEY_SPECIALIZATION_UNIVERSALITY_2026-11-05.md)（52 篇；配合 division 线调研文档）
 - [MoE 专家分析史 1991–2026 与度量目录](MOE_EXPERT_ANALYSIS_HISTORY_2026-11-05.md)（11-06 v2：逐篇核原文，§5 剩 3 条拿不到原文；7 处更正）
 - [现成读数目录 + 专家几何度量 + 相邻领域对照 2026-11-06](READOUT_CATALOGUE_AND_SEED_ROBUSTNESS_2026-11-06.md)（21 种读数、能否 CPU 复算；Equifinality / Geometric Routing 压缩风险精读与中日回答）
+- [R-A 方法学主旨定位表 2026-11-06](POSITIONING_RA_2026-11-06.md)（seed 稳健性 / MoE 跨 run / 冻结·hash 路由三类近邻；FRZ 损失结果已被 own 到 4.5B hash；未训练地板先例）
