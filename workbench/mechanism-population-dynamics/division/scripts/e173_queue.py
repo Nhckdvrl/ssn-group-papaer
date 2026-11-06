@@ -25,8 +25,11 @@ BATCH1 = [("FRZ", 0), ("LB0", 0), ("G16", 0), ("G256", 0)]
 # 01:05: batch 2 reduced to the seed-1 runs still missing; LB01 (lb=0.1) held for a human decision
 BATCH2 = [("FRZ", 1), ("LB0", 1), ("G16", 1), ("G256", 1),
           ("BASE", 0),  # 11-06 06:05 main session: exact-config rerun of I0D0 to 8e8 (run BASE_I0)
-          ("S6", 0), ("S6", 1), ("S6", 0, "S6_I0R")]  # 11-06 08:45 E177 small-scale point (6L d512); S6_I0R = rerun of S6_I0
-MAXALIVE = 3  # 11-06 08:45: E177 may only use slots freed by G256_I0 / BASE_I0 (was 4).
+          ("S6", 0), ("S6", 1), ("S6", 0, "S6_I0R"),  # 11-06 08:45 E177 small-scale point (6L d512); S6_I0R = rerun of S6_I0
+          # 11-06 16:50 main session: exact reruns giving the 16- and 256-expert recipes their own rerun ceilings.
+          # G256_I0 trained with micro 8 (OOM at 16), so G256_I0R starts at micro 8 directly (4th field = extra train args).
+          ("G16", 0, "G16_I0R"), ("G256", 0, "G256_I0R", ["--micro", "8"])]
+MAXALIVE = 4  # 11-06 16:50: back to 4 for the two rerun runs (was 3 for E177 at 08:45; 4 since 01:05).
 # 01:05: never launch while >= 4 E173 runs are alive (running runs are not stopped)
 INTERVAL = 600
 STABLE_STEP = 500
@@ -118,7 +121,7 @@ def main():
                 break
             r = pending[0]
             env = dict(__import__("os").environ, RUN_NAME=name(r))
-            p = subprocess.run(["bash", str(LAUNCH), host, str(g), r[0], str(r[1])], capture_output=True, text=True, timeout=1800, env=env)
+            p = subprocess.run(["bash", str(LAUNCH), host, str(g), r[0], str(r[1])] + (list(r[3]) if len(r) > 3 else []), capture_output=True, text=True, timeout=1800, env=env)
             log(f"launch {name(r)} on {host}:{g} rc={p.returncode} {p.stdout.strip()} {p.stderr.strip()[-300:]}")
             if p.returncode == 0:
                 pending.pop(0); n_alive += 1; launched.add((host, g))
