@@ -42,6 +42,9 @@ RECIPES = {  # name -> (run A, run B, label)
     "g256": ("G256_I0", "G256_I1", "(d) 256 专家 top-32"),
     "lb01": ("LB01_I0", "LB01_I1", "(b) lb=0.1"),
     "rerun": ("I0D0", "BASE_I0", "I0D0 精确配置重跑 BASE_I0（I0D0 RTX / BASE_I0 A100）"),  # 11-06: second rerun ceiling at 8e8
+    # 11-06 run 2: each expert-count recipe's own exact-rerun ceiling (rows appear once the rerun's captures exist)
+    "g16r": ("G16_I0", "G16_I0R", "16 专家精确重跑 G16_I0R（A100 / A100）"),
+    "g256r": ("G256_I0", "G256_I0R", "256 专家精确重跑 G256_I0R（A100 同卡）"),
 }
 WINDOWS = [(500, 1000), (1000, 2000), (2000, 2500), (2500, 3000)]
 HELD_STEPS = [500, 1000, 1500, 2000, 2500, 3000]
@@ -49,7 +52,8 @@ VAR_ORDER = ["upos", "feats", "deprel", "head_upos", "prev_upos", "next_upos", "
 
 
 def have(sub, run, t):
-    return (A / sub / f"{run}__ckpt_{t}.npz").exists()
+    f = A / sub / f"{run}__ckpt_{t}.npz"
+    return f.exists() and f.stat().st_size > 0  # skip captures still being written
 
 
 def run_dir(run):
@@ -250,7 +254,7 @@ def main():
     DC = decomp("--skip-decomp" in sys.argv)
     summary = {"ruler_15pairs": rule, "recipes": {}}
     for name, (a, b, label) in RECIPES.items():
-        if name not in T and health(a) is None:
+        if name not in T:  # no routing captures for this pair yet (e.g. a rerun still training)
             continue
         hA, hB = health(a), health(b)
         rec = {"label": label, "runs": [a, b], "routing": T.get(name, {}), "route_fp": RF.get(name),
@@ -296,6 +300,8 @@ def main():
     print("\nT_D curves (L11 / deep):")
     for name, r in summary["recipes"].items():
         print(f"{name:7s} " + "  ".join(f"{t/1e8:.0f}e8 {v['L11']:.3f}/{v['deep']:.3f}" for t, v in sorted(r["routing"].items())))
+    # recipe axis as init ÷ own rerun ceiling (needs rerun_ceiling.json; also rewrites its section of table.md)
+    subprocess.run([PY, "-B", str(S / "e173_recipe_ratio.py")], check=True)
 
 
 if __name__ == "__main__":
