@@ -41,7 +41,7 @@ RECIPES = {  # name -> (run A, run B, label)
     "g16": ("G16_I0", "G16_I1", "(c) 16 专家 top-2"),
     "g256": ("G256_I0", "G256_I1", "(d) 256 专家 top-32"),
     "lb01": ("LB01_I0", "LB01_I1", "(b) lb=0.1"),
-    "rerun": ("I0D0", "BASE_I0", "I0D0 精确配置重跑（A100）"),  # 11-06: second rerun ceiling at 8e8
+    "rerun": ("I0D0", "BASE_I0", "I0D0 精确配置重跑 BASE_I0（I0D0 RTX / BASE_I0 A100）"),  # 11-06: second rerun ceiling at 8e8
 }
 WINDOWS = [(500, 1000), (1000, 2000), (2000, 2500), (2500, 3000)]
 HELD_STEPS = [500, 1000, 1500, 2000, 2500, 3000]
