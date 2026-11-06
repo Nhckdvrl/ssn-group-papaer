@@ -40,11 +40,13 @@ RECIPES = {  # name -> (run A, run B, label)
     "lb0001": ("LB0001_I0", "LB0001_I1", "(a') lb=0.001"),
     "g16": ("G16_I0", "G16_I1", "(c) 16 专家 top-2"),
     "g256": ("G256_I0", "G256_I1", "(d) 256 专家 top-32"),
+    "g64k2": ("G64K2_I0", "G64K2_I1", "(f) 64 专家 top-2（对照：只改 k）"),  # 11-06 21:40 run 3, single-variable control
     "lb01": ("LB01_I0", "LB01_I1", "(b) lb=0.1"),
     "rerun": ("I0D0", "BASE_I0", "I0D0 精确配置重跑 BASE_I0（I0D0 RTX / BASE_I0 A100）"),  # 11-06: second rerun ceiling at 8e8
     # 11-06 run 2: each expert-count recipe's own exact-rerun ceiling (rows appear once the rerun's captures exist)
     "g16r": ("G16_I0", "G16_I0R", "16 专家精确重跑 G16_I0R（A100 / A100）"),
     "g256r": ("G256_I0", "G256_I0R", "256 专家精确重跑 G256_I0R（A100 同卡）"),
+    "g64k2r": ("G64K2_I0", "G64K2_I0R", "64 专家 top-2 精确重跑 G64K2_I0R（A100 / A100）"),  # 11-06 run 3
 }
 WINDOWS = [(500, 1000), (1000, 2000), (2000, 2500), (2500, 3000)]
 HELD_STEPS = [500, 1000, 1500, 2000, 2500, 3000]

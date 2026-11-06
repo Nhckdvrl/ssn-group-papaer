@@ -3,7 +3,8 @@
 Pairs: (I0D0, I0D0R) [both RTX, stopped at 4e8], (I4D0, I4D0R) [both A100, E171], and (I0D0, BASE_I0)
 [I0D0 on RTX, BASE_I0 on A100: same config, different GPU model; added 11-06 11:00], and (11-06 20:40, E173 run 2)
 (G16_I0, G16_I0R) [A100 80GB PCIe fvcrc15:3 / fvcrc11:0], (G256_I0, G256_I0R) [both fvcrc11:1]; each pair appears at every token
-count where both captures exist (G256 lands when G256_I0R's captures do). Readouts unchanged:
+count where both captures exist (G256 lands when G256_I0R's captures do). 11-06 21:40 (run 3): (G64K2_I0, G64K2_I0R) [fvcrc11:0 / fvcrc11:3],
+the 64-expert top-2 single-variable control. Readouts unchanged:
 T_D per layer (analyze_routing.py) -> L11, deep L6-11 mean; route fingerprint (analyze_functional.py route) -> deep matched.
 Writes results/e173/rerun_ceiling.{json,md}. Usage: e173_rerun_ceiling.py
 """
@@ -21,9 +22,11 @@ PY = str(Path.home() / ".venvs/mechpop/bin/python")
 OUT = WB / "results/e173"
 TOKS = [0, 100000000, 200000000, 400000000, 800000000]
 PAIRS = {"I0D0-I0D0R": ("I0D0", "I0D0R"), "I4D0-I4D0R": ("I4D0", "I4D0R"), "I0D0-BASE_I0": ("I0D0", "BASE_I0"),
-         "G16_I0-G16_I0R": ("G16_I0", "G16_I0R"), "G256_I0-G256_I0R": ("G256_I0", "G256_I0R")}
+         "G16_I0-G16_I0R": ("G16_I0", "G16_I0R"), "G256_I0-G256_I0R": ("G256_I0", "G256_I0R"),
+         "G64K2_I0-G64K2_I0R": ("G64K2_I0", "G64K2_I0R")}  # 11-06 21:40 run 3: single-variable control (64 experts top-2)
 HW = {"I0D0-I0D0R": "RTX / RTX", "I4D0-I4D0R": "A100 / A100", "I0D0-BASE_I0": "RTX / A100",
-      "G16_I0-G16_I0R": "A100 / A100，fvcrc15 / fvcrc11", "G256_I0-G256_I0R": "A100 / A100，同卡 fvcrc11:1"}
+      "G16_I0-G16_I0R": "A100 / A100，fvcrc15 / fvcrc11", "G256_I0-G256_I0R": "A100 / A100，同卡 fvcrc11:1",
+      "G64K2_I0-G64K2_I0R": "A100 / A100，fvcrc11:0 / fvcrc11:3"}
 
 _f = lambda d, r, t: A / d / f"{r}__ckpt_{t}.npz"
 have = lambda d, r, t: _f(d, r, t).exists() and _f(d, r, t).stat().st_size > 0  # skip captures still being written

@@ -20,7 +20,9 @@ LOGS = WB / "results/e173/_logs"
 RUNS = Path.home() / "mechpop_cache/e173_runs"
 LAUNCH = WB / "scripts/e173_launch.sh"
 # 2026-11-06 00:45 fvcrc10 GPU0/2/3 were added; 01:05 withdrawn (user via main session: "暂时不要扩卡，只用少数卡先做关键的实验")
-SLOTS = [("fvcrc11", g) for g in range(4)] + [("fvcrc15", g) for g in range(4)] + [("fvcrc10", 1)]
+# 11-06 21:40 (追加 run 3, G64K2): slots narrowed to fvcrc11 GPU0/2/3 only; GPU1 holds G256_I0R (~66 GB) and is excluded.
+# Previous list: fvcrc11 GPU0-3 + fvcrc15 GPU0-3 + fvcrc10 GPU1.
+SLOTS = [("fvcrc11", 0), ("fvcrc11", 2), ("fvcrc11", 3)]
 BATCH1 = [("FRZ", 0), ("LB0", 0), ("G16", 0), ("G256", 0)]
 # 01:05: batch 2 reduced to the seed-1 runs still missing; LB01 (lb=0.1) held for a human decision
 BATCH2 = [("FRZ", 1), ("LB0", 1), ("G16", 1), ("G256", 1),
@@ -28,8 +30,10 @@ BATCH2 = [("FRZ", 1), ("LB0", 1), ("G16", 1), ("G256", 1),
           ("S6", 0), ("S6", 1), ("S6", 0, "S6_I0R"),  # 11-06 08:45 E177 small-scale point (6L d512); S6_I0R = rerun of S6_I0
           # 11-06 16:50 main session: exact reruns giving the 16- and 256-expert recipes their own rerun ceilings.
           # G256_I0 trained with micro 8 (OOM at 16), so G256_I0R starts at micro 8 directly (4th field = extra train args).
-          ("G16", 0, "G16_I0R"), ("G256", 0, "G256_I0R", ["--micro", "8"])]
-MAXALIVE = 4  # 11-06 16:50: back to 4 for the two rerun runs (was 3 for E177 at 08:45; 4 since 01:05).
+          ("G16", 0, "G16_I0R"), ("G256", 0, "G256_I0R", ["--micro", "8"]),
+          # 11-06 21:40 main session (DIRECTION §14): single-variable control G64K2 = baseline with top-k 8 -> 2
+          ("G64K2", 0), ("G64K2", 1), ("G64K2", 0, "G64K2_I0R")]
+MAXALIVE = 4  # 11-06 21:40: unchanged for G64K2 (G256_I0R + 3 = 4). 11-06 16:50: back to 4 for the two rerun runs (was 3 for E177 at 08:45; 4 since 01:05).
 # 01:05: never launch while >= 4 E173 runs are alive (running runs are not stopped)
 INTERVAL = 600
 STABLE_STEP = 500
