@@ -1,0 +1,761 @@
+{
+ "qwen3": {
+  "1_flores": {
+   "verdict": "survives",
+   "counts": {
+    "above": 42,
+    "below": 0,
+    "within": 6,
+    "split": 0
+   },
+   "halves": [
+    "survives",
+    "survives"
+   ],
+   "ratio": 1.4606251344127315
+  },
+  "2_ud": {
+   "verdict": "survives",
+   "counts": {
+    "above": 48,
+    "below": 0,
+    "within": 0,
+    "split": 0
+   },
+   "halves": [
+    "survives",
+    "survives"
+   ],
+   "ratio": 1.8507499140450459
+  },
+  "3_flores": {
+   "verdict": "survives",
+   "counts": {
+    "above": 45,
+    "below": 2,
+    "within": 1,
+    "split": 0
+   },
+   "halves": [
+    "survives",
+    "survives"
+   ],
+   "ratio": 1.4678687493447948
+  },
+  "4_flores": {
+   "verdict": "below-null",
+   "counts": {
+    "above": 1,
+    "below": 40,
+    "within": 7,
+    "split": 0
+   },
+   "halves": [
+    "below-null",
+    "below-null"
+   ],
+   "ratio": NaN
+  },
+  "2w_ud": {
+   "verdict": "survives",
+   "counts": {
+    "above": 47,
+    "below": 0,
+    "within": 1,
+    "split": 0
+   },
+   "halves": [
+    "survives",
+    "survives"
+   ]
+  },
+  "4n_flores": {
+   "verdict": "below-null",
+   "counts": {
+    "above": 0,
+    "below": 43,
+    "within": 5,
+    "split": 0
+   },
+   "halves": [
+    "below-null",
+    "below-null"
+   ]
+  },
+  "1_ud": {
+   "verdict": "survives",
+   "counts": {
+    "above": 48,
+    "below": 0,
+    "within": 0,
+    "split": 0
+   },
+   "halves": [
+    "survives",
+    "survives"
+   ]
+  },
+  "3_ud": {
+   "verdict": "survives",
+   "counts": {
+    "above": 43,
+    "below": 2,
+    "within": 3,
+    "split": 0
+   },
+   "halves": [
+    "survives",
+    "survives"
+   ]
+  },
+  "4_ud": {
+   "verdict": "below-null",
+   "counts": {
+    "above": 1,
+    "below": 46,
+    "within": 1,
+    "split": 0
+   },
+   "halves": [
+    "below-null",
+    "below-null"
+   ]
+  },
+  "cross_4_flores": {
+   "T": [
+    null,
+    null
+   ],
+   "NA": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "NB": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "rel": "T no crossover"
+  },
+  "cross_4n_flores": {
+   "T": [
+    null,
+    null
+   ],
+   "NA": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "NB": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "rel": "T no crossover"
+  },
+  "cross_4_ud": {
+   "T": [
+    null,
+    null
+   ],
+   "NA": [
+    null,
+    null,
+    null,
+    47,
+    null,
+    null,
+    null,
+    null
+   ],
+   "NB": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "rel": "T no crossover"
+  },
+  "cross_4n_ud": {
+   "T": [
+    null,
+    null
+   ],
+   "NA": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "NB": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "rel": "T no crossover"
+  },
+  "controls": {
+   "det": 1.0,
+   "hook": 0.9930844106720998,
+   "tv_cal": 0.010478760506581844,
+   "tv_meas_flores": 0.10671790442693456,
+   "maxload_T_flores": 6.548086078842125,
+   "shuffle_frac": [
+    "1.000",
+    "1.000",
+    "1.000",
+    "1.000"
+   ],
+   "G_shuffle_max": [
+    -0.14795764311904414,
+    -0.16293858584946785
+   ],
+   "ntok": {
+    "flores": 26255,
+    "ud": 59392
+   },
+   "wall_s": 402.6135723590851
+  }
+ },
+ "gptoss": {
+  "1_flores": {
+   "verdict": "survives",
+   "counts": {
+    "above": 17,
+    "below": 0,
+    "within": 7,
+    "split": 0
+   },
+   "halves": [
+    "survives",
+    "survives"
+   ],
+   "ratio": 1.351812080536913
+  },
+  "2_ud": {
+   "verdict": "null-family-dependent",
+   "counts": {
+    "above": 13,
+    "below": 0,
+    "within": 11,
+    "split": 0
+   },
+   "halves": [
+    "null-family-dependent",
+    "null-family-dependent"
+   ],
+   "ratio": NaN
+  },
+  "3_flores": {
+   "verdict": "null-family-dependent",
+   "counts": {
+    "above": 11,
+    "below": 3,
+    "within": 10,
+    "split": 0
+   },
+   "halves": [
+    "null-family-dependent",
+    "null-family-dependent"
+   ],
+   "ratio": NaN
+  },
+  "4_flores": {
+   "verdict": "below-null",
+   "counts": {
+    "above": 2,
+    "below": 16,
+    "within": 6,
+    "split": 0
+   },
+   "halves": [
+    "null-family-dependent",
+    "null-family-dependent"
+   ],
+   "ratio": NaN
+  },
+  "2w_ud": {
+   "verdict": "null-family-dependent",
+   "counts": {
+    "above": 12,
+    "below": 0,
+    "within": 11,
+    "split": 1
+   },
+   "halves": [
+    "null-family-dependent",
+    "null-family-dependent"
+   ]
+  },
+  "4n_flores": {
+   "verdict": "below-null",
+   "counts": {
+    "above": 0,
+    "below": 17,
+    "within": 7,
+    "split": 0
+   },
+   "halves": [
+    "below-null",
+    "below-null"
+   ]
+  },
+  "1_ud": {
+   "verdict": "null-family-dependent",
+   "counts": {
+    "above": 15,
+    "below": 0,
+    "within": 9,
+    "split": 0
+   },
+   "halves": [
+    "null-family-dependent",
+    "null-family-dependent"
+   ]
+  },
+  "3_ud": {
+   "verdict": "geometry",
+   "counts": {
+    "above": 7,
+    "below": 1,
+    "within": 16,
+    "split": 0
+   },
+   "halves": [
+    "geometry",
+    "geometry"
+   ]
+  },
+  "4_ud": {
+   "verdict": "below-null",
+   "counts": {
+    "above": 1,
+    "below": 18,
+    "within": 5,
+    "split": 0
+   },
+   "halves": [
+    "below-null",
+    "below-null"
+   ]
+  },
+  "cross_4_flores": {
+   "T": [
+    21,
+    23
+   ],
+   "NA": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "NB": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    23,
+    null
+   ],
+   "rel": "same"
+  },
+  "cross_4n_flores": {
+   "T": [
+    null,
+    null
+   ],
+   "NA": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "NB": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "rel": "T no crossover"
+  },
+  "cross_4_ud": {
+   "T": [
+    21,
+    21
+   ],
+   "NA": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "NB": [
+    23,
+    23,
+    22,
+    23,
+    21,
+    21,
+    22,
+    21
+   ],
+   "rel": "same"
+  },
+  "cross_4n_ud": {
+   "T": [
+    null,
+    null
+   ],
+   "NA": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "NB": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "rel": "T no crossover"
+  },
+  "controls": {
+   "det": 1.0,
+   "hook": 0.998324742790841,
+   "tv_cal": 0.008450910932576031,
+   "tv_meas_flores": 0.06254619703555765,
+   "maxload_T_flores": 4.609962406015038,
+   "shuffle_frac": [
+    "1.000",
+    "1.000",
+    "1.000",
+    "1.000"
+   ],
+   "G_shuffle_max": [
+    -0.043312394328457904,
+    -0.04235404144111221
+   ],
+   "ntok": {
+    "flores": 25536,
+    "ud": 56628
+   },
+   "wall_s": 542.048344373703
+  }
+ },
+ "olmoe": {
+  "1_flores": {
+   "verdict": "survives",
+   "counts": {
+    "above": 15,
+    "below": 0,
+    "within": 1,
+    "split": 0
+   },
+   "halves": [
+    "survives",
+    "survives"
+   ],
+   "ratio": 1.5378716831246206
+  },
+  "2_ud": {
+   "verdict": "survives",
+   "counts": {
+    "above": 16,
+    "below": 0,
+    "within": 0,
+    "split": 0
+   },
+   "halves": [
+    "survives",
+    "survives"
+   ],
+   "ratio": 1.8681184472361911
+  },
+  "3_flores": {
+   "verdict": "survives (marginal)",
+   "counts": {
+    "above": 12,
+    "below": 1,
+    "within": 2,
+    "split": 1
+   },
+   "halves": [
+    "survives (marginal)",
+    "survives (marginal)"
+   ],
+   "ratio": 1.2327142609870252
+  },
+  "4_flores": {
+   "verdict": "below-null",
+   "counts": {
+    "above": 0,
+    "below": 14,
+    "within": 1,
+    "split": 1
+   },
+   "halves": [
+    "below-null",
+    "below-null"
+   ],
+   "ratio": NaN
+  },
+  "2w_ud": {
+   "verdict": "survives",
+   "counts": {
+    "above": 16,
+    "below": 0,
+    "within": 0,
+    "split": 0
+   },
+   "halves": [
+    "survives",
+    "survives"
+   ]
+  },
+  "4n_flores": {
+   "verdict": "below-null",
+   "counts": {
+    "above": 0,
+    "below": 15,
+    "within": 0,
+    "split": 1
+   },
+   "halves": [
+    "below-null",
+    "below-null"
+   ]
+  },
+  "1_ud": {
+   "verdict": "survives",
+   "counts": {
+    "above": 15,
+    "below": 0,
+    "within": 0,
+    "split": 1
+   },
+   "halves": [
+    "survives",
+    "survives"
+   ]
+  },
+  "3_ud": {
+   "verdict": "null-family-dependent",
+   "counts": {
+    "above": 10,
+    "below": 0,
+    "within": 4,
+    "split": 2
+   },
+   "halves": [
+    "null-family-dependent",
+    "null-family-dependent"
+   ]
+  },
+  "4_ud": {
+   "verdict": "below-null",
+   "counts": {
+    "above": 0,
+    "below": 15,
+    "within": 0,
+    "split": 1
+   },
+   "halves": [
+    "below-null",
+    "below-null"
+   ]
+  },
+  "cross_4_flores": {
+   "T": [
+    null,
+    null
+   ],
+   "NA": [
+    14,
+    14,
+    14,
+    14,
+    null,
+    14,
+    14,
+    null
+   ],
+   "NB": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "rel": "T no crossover"
+  },
+  "cross_4n_flores": {
+   "T": [
+    null,
+    null
+   ],
+   "NA": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "NB": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "rel": "T no crossover"
+  },
+  "cross_4_ud": {
+   "T": [
+    null,
+    null
+   ],
+   "NA": [
+    null,
+    null,
+    null,
+    15,
+    null,
+    15,
+    null,
+    null
+   ],
+   "NB": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "rel": "T no crossover"
+  },
+  "cross_4n_ud": {
+   "T": [
+    null,
+    null
+   ],
+   "NA": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "NB": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "rel": "T no crossover"
+  },
+  "controls": {
+   "det": 1.0,
+   "hook": 0.9992890038478737,
+   "tv_cal": 0.005393490943788493,
+   "tv_meas_flores": 0.07710820122360201,
+   "maxload_T_flores": 2.470123797478058,
+   "shuffle_frac": [
+    "1.000",
+    "1.000",
+    "1.000",
+    "1.000"
+   ],
+   "G_shuffle_max": [
+    -0.2364771711550917,
+    -0.22560117619633768
+   ],
+   "ntok": {
+    "flores": 26091,
+    "ud": 58891
+   },
+   "wall_s": 194.565367937088
+  }
+ }
+}
