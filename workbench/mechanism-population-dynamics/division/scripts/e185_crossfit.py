@@ -28,7 +28,8 @@ def cond_table(code, e, mask, ncode, E, p0):
     return np.log((C + A_SMOOTH * p0[None]) / (n + A_SMOOTH))
 
 
-FREQ_MIN = 20   # 补登记 2 (11-09 20:20): evaluation restricted to tokens whose input id has >= 20 training-fold occurrences
+FREQ_ONLY = os.environ.get("E185_FREQ_ONLY") == "1"
+FREQ_MIN = 20   # 补登记 2 (11-09 20:08): evaluation restricted to tokens whose input id has >= 20 training-fold occurrences
 
 
 def G_one(e, S, X, fold, par, E, chunk=200_000):
@@ -46,7 +47,10 @@ def G_one(e, S, X, fold, par, E, chunk=200_000):
         LS = cond_table(S, e, m_tr, nS, E, p0)
         LX = cond_table(X, e, m_tr, nX, E, p0)
         te = np.where(m_te)[0]
-        ll = np.zeros((len(WGRID), te.size))
+        if FREQ_ONLY:   # speed-up for the large D180 store: only the G_freq subset is scored (G_freq unchanged)
+            te = te[np.bincount(S[m_tr], minlength=nS)[S[te]] >= FREQ_MIN]
+            LS, LX, lp0 = LS.astype(np.float32), LX.astype(np.float32), lp0.astype(np.float32)
+        ll = np.zeros((len(WGRID), te.size), np.float32 if FREQ_ONLY else np.float64)
         for c0 in range(0, te.size, chunk):
             t = te[c0:c0 + chunk]
             a = LS[S[t]]

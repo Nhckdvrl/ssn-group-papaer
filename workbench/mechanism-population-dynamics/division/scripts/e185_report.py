@@ -400,7 +400,30 @@ for part, models in (("b182", M4), ("b180", M3)):
                               f"{f('d_obs'):+.4f} | {f('d_lex'):+.4f} | {f('d_ctx'):+.4f} | {f'{npos}/{nneg}' if i == 0 else ''} | "
                               f"{rows['ov1'][0]:.2f} / {rows['ov2'][0]:.2f} |")
 P("")
-jdump(f"{RES}/summary.json", summary)
+import gzip  # noqa: E402
+with gzip.open(f"{RES}/summary.json.gz", "wt") as fz:
+    json.dump(summary, fz, ensure_ascii=False, default=float)
+head = {"gpu_hours": 0, "full_arrays": "summary.json.gz",
+        "qwen3_inst_vs_base": summary.get("qwen3_inst_vs_base"),
+        "residual_a_strata": summary.get("residual_a_strata"),
+        "tokens_overall": {k: v["overall"] for k, v in summary.get("tokens", {}).items()}}
+mb = {}
+for m, d in summary.get("d184", {}).items():
+    from e185_lib import BANDS as _B
+    mid = _B[m][1]
+    mb[m] = {k: {"T_mid": float(np.mean(np.array(v["T"])[mid])), "NB_mid": float(np.mean(np.array(v["NB"])[mid])),
+                 "above": v["above"], "below": v["below"], "half_sign_agree": v["half_sign_agree"]}
+             for k, v in d.items() if isinstance(v, dict) and "T" in v}
+head["d184_mid_shares"] = mb
+cf = {}
+for k, v in summary.get("crossfit_Gfreq", {}).items():
+    data, m, f = k.split(":")
+    from e185_lib import BANDS as _B
+    mid = _B[m][1]
+    cf[k] = {"T_mid": float(np.mean(np.array(v["T"])[mid])), "NB_mid": float(np.mean(np.array(v["NB"])[mid])),
+             "T_last": v["T"][-1], "NB_last": v["NB"][-1], "hi": v["hi"], "lo": v["lo"]}
+head["crossfit_Gfreq_mid"] = cf
+jdump(f"{RES}/summary.json", head)
 open(f"{RES}/tables.md", "w").write("\n".join(md) + "\n")
 open(f"{RES}/tables_layers.md", "w").write("# E185 逐层表（自动生成）\n\n" + "\n".join(mdl) + "\n")
 print("written")

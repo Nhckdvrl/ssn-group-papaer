@@ -95,7 +95,7 @@ for j, m in enumerate(M3):
         im = a.imshow(Z, aspect="auto", cmap=DIV, norm=TwoSlopeNorm(0, -lim, lim), interpolation="nearest")
         a.set_yticks(range(len(facs)))
         a.set_yticklabels([lab(f) + " | input id" for f in facs])
-        a.set_title(f"{NAMES[m]} — {'English, N_B mean of 8' if data == 'd184' else '20 FLORES sides, N_B0 single draw'}",
+        a.set_title(f"{NAMES[m]} — {'English, N_B mean of 8' if data == 'd184' else '20 sides, N_B0 x1'}",
                     color=INK)
         a.set_xlabel("layer")
         fig.colorbar(im, ax=a, shrink=.8, label="G_freq,T − G_freq,NB (bit)")
@@ -124,14 +124,14 @@ for j, m in enumerate(M4):
         a.axhline(0, color=MUTED, lw=.8)
         a.set_title(f"{NAMES[m]} · {'Serbian' if g == 'S' else 'Uzbek'} · {c}", color=INK)
         if j == 0:
-            a.set_ylabel("Δ = D(same lang, other script) − D(same script, other lang)")
+            a.set_ylabel("Δ = D(P1) − D(P2)")
         if i == 3:
             a.set_xlabel("layer")
 for a in ax.ravel():
     if a.lines:
         a.legend(frameon=False, fontsize=6)
         break
-fig.suptitle("E185 residual (b): script-vs-language contrast split into a token-id-only part and a context part "
+fig.suptitle("E185 residual (b): script-vs-language contrast split into a token-id-only part and a context part; P1 = same language, other script; P2 = same script, other language "
              "(T, E182 balanced tokens, 95% sentence bootstrap)", color=INK)
 fig.savefig(f"{RES}/fig_residual_b.png", dpi=150)
 plt.close(fig)
@@ -160,7 +160,7 @@ for j, m in enumerate(M3):
             a.annotate(repr(x["str"]), (HB[k], HT[k]), fontsize=7, color=INK, xytext=(3, 2), textcoords="offset points")
     a.set_xlabel("H(e | id), N_B mean (bit)")
     a.set_ylabel("H(e | id), T (bit)")
-    a.set_title(f"{NAMES[m]}: {len(ids)} ids with ≥30 occurrences, mid band", color=INK)
+    a.set_title(f"{NAMES[m]}: {len(ids)} ids (n≥30), mid band", color=INK)
 fig.suptitle("E185 context dependence of routing per token id (equal n = 30); below the diagonal = T more lexical "
              "than geometry", color=INK)
 fig.savefig(f"{RES}/fig_tokens.png", dpi=150)
