@@ -76,3 +76,18 @@
 **4b. 两个最大的科学风险：**
 1. **常数倍可能是门的锐度 / 对齐，而非"路由器学到的语言信息"。** Haar 旋转保奇异值但不保与隐状态主方向的对齐；训练路由器行若对齐高方差方向，logit 方差更大、softmax 更尖，同一几何就读出更高 JSD——这会产生一个与深度无关的倍数，且与语言无关。E179(a) 的温度 / 锐度匹配零模型是这条的直接检验；若匹配后倍数消失，句 2 不成立。另：隐状态与路由器共同训练（Routers Learn Geometry 2605.12476，见 NULLAUDIT 风险 1），"几何"本身部分可能是路由塑造的，零模型分不开。
 2. **稠密文献 + Bandarkar 原文已经蕴含句 1，贡献可能只是"把这个蕴含说明白并检验它"。** 直说：稠密 U 形（Tang、Kojima、Wendler、Zhao）+ 线性路由器读隐状态（Myth 的命题）⇒ 路由 U 形，这一推理链在 2025 年就齐了，Bandarkar 自己写出了后半句。句 1 单独成文的增量是检验与数字，不是新现象；有新内容的是句 2（倍数与深度无关）和句 3（判决随零模型翻转），而句 2 又悬在风险 1 上。附带：Holmström / Bayazit 显示"稠密 U 形"本身依赖读数（全维探针各层 >.9），若 E179(b) 的全维探针不呈 U、只有方差加权读数呈 U，"来自几何"须改写为"来自各向异性的主方向"，这会改变句 1 的措辞而不一定改变其成立。
+
+## 5. 补：已发表的逐模型层剖面 vs E179（11-09，E179 = `division/results/e179/tables.md`，c6ba1a51）
+
+E179 训练路由器 U 对比（首尾 ÷ 中层，FLORES-200 dev 20 语，全对全 JSD）：Qwen3-30B-A3B 2.35、GPT-OSS-20B 3.16、OLMoE-1B-7B-0125-Instruct 1.11。Bandarkar 2510.04694 `[全文 HTML]` 的设置：FLORES-200（split 未写）、12 语 + 英语（语言清单在附录表 A.2，抽取乱码，未核对）、句数未写；读数 = 逐句平均 softmax 路由权重与**英文配对句**的熵归一 JSD（F = log E − ½(H₁+H₂)）。原文正文**不给逐层数值**，只有图（主文图 2 只画 Qwen3，其余三模型在附录 A.2）。
+
+| 模型 | Bandarkar 原文（§4.3 / 附录图注） | 与 E179 |
+|---|---|---|
+| Qwen3-30B-A3B | U 形"the most pronounced and least noisy for Qwen3"；中层干预区 8–35 层（1 起） | 一致（2.35） |
+| GPT-OSS-20B | 趋势清楚；"the only one where divergence is higher in the first layers than the last"；干预区 4–19 层；中层散度与 Belebele 相关最弱 r ∈ [−0.60, −0.40] | 一致（3.16；首层高于末层是否在 E179 复现，未核对） |
+| OLMoE-1B-7B-0125-Instruct | OLMoE 多语能力差"could explain why the big majority of languages studied do not exhibit this U-shape"；图 A.2 注 "We note OLMoE's poor multilingual capabilities"；法、中两语仍有 U（转述，未逐字核对） | **一致**（1.11，近平）；原文自己就说 OLMoE 多数语言无 U |
+| Phi-3.5-MoE | 图 A.4 注 "Phi-3.5-MoE does not display the same U-shape"；去掉前两层才见 U，第一层 "perplexingly activates the same few experts … for all languages"；干预区 8–17 层 | E179 未测 |
+
+注意：§4.3 仍写 U 形 "common to all four models evaluated"，但同节附了 OLMoE 与 Phi 两个例外——"四个模型都有 U"在原文里只对 Qwen3、GPT-OSS 干净成立。
+**Khandelwal 2605.29714** `[节]`："只有末层分语言"指续训后的 **OLMoE-M7**，不是底座；底座只报了"OLMoE has a dedicated routing pattern for English"、非英语走大体共享的专家、非英语路由熵明显更低，逐层 JSD 只给第 15 层（其余在附录 D，未读）；底座 checkpoint（0924 / 0125）未写。
+**Zheng 2604.03592** `[节]`：表 2 只有 Qwen3-30B-A3B，读数 = 与英语 top-K 专家集 Jaccard（数据 MGSM，K 与层组边界在附录未见）：浅 / 中 / 深 = 孟 .12/.22/.05、斯瓦希里 .04/.19/.04、泰 .25/.33/.12、俄 .41/.43/.17、日 .37/.37/.10——中层重叠最高、深层最低（深层分离强于浅层，与 Bandarkar 的 Qwen3 一致方向）。Phi-3.5-MoE 的逐层数在附录 E 表 7–10，未读到。
