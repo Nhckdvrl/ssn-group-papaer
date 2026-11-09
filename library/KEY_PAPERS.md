@@ -18,7 +18,7 @@ This is not a comprehensive bibliography. These are papers worth rereading becau
 | AR | AR01–AR09（9 条） | [`themes/architecture-memory/KEY_PAPERS.md`](themes/architecture-memory/KEY_PAPERS.md) |
 | MI | MI01–MI33（33 条） | [`themes/interpretability-representation/KEY_PAPERS.md`](themes/interpretability-representation/KEY_PAPERS.md) |
 | ML | ML01–ML76（76 条，含不同研究角度的复用条目） | [`themes/multilingual/KEY_PAPERS.md`](themes/multilingual/KEY_PAPERS.md) |
-| MOE | MOE01–MOE03（3 条） | [`themes/moe-routing/KEY_PAPERS.md`](themes/moe-routing/KEY_PAPERS.md) |
+| MOE | MOE01–MOE32（32 条） | [`themes/moe-routing/KEY_PAPERS.md`](themes/moe-routing/KEY_PAPERS.md) |
 | NPC | NPC01–NPC21（21 条） | [`themes/game-npc-social/KEY_PAPERS.md`](themes/game-npc-social/KEY_PAPERS.md) |
 | PT | PT01–PT09（9 条） | [`themes/training-post-training/KEY_PAPERS.md`](themes/training-post-training/KEY_PAPERS.md) |
 | RC | RC01–RC01（1 条） | [`themes/research-craft/KEY_PAPERS.md`](themes/research-craft/KEY_PAPERS.md) |

@@ -42,7 +42,7 @@ Good diagnostic signal → endless loss search.
 
 ## 3. 关键论文与本目录文件
 
-- [`KEY_PAPERS.md`](KEY_PAPERS.md)
+- [`KEY_PAPERS.md`](KEY_PAPERS.md)：**单一入口**（认知现状、关键论文表、claim ownership、全部文件索引与取代关系）
 - [成熟公开EMO资产与本题距离](EMO_MATURE_ASSET_CARD_2026-10-27.md)
 - [归一化与联合重构裁剪的近期ownership](RECENT_PRUNING_DISTANCE_2026-10-27.md)
 
