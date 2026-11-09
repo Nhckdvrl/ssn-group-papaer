@@ -66,6 +66,7 @@ Melton《Rotate the Router》（Zenodo 2026-10，单作者未评审）首次在�
 ## 4. 文件索引（代号 · 日期 · 一行内容 · 状态）
 
 **现主旨（division §15 零模型审计 / 语言几何）直接用：**
+- BC = [BRIDGES_AND_CONTRADICTIONS_2026-11-09](BRIDGES_AND_CONTRADICTIONS_2026-11-09.md) · 11-09 · 11 座推理桥 + 8 组文献矛盾、可测性排序（division §17 选下一座桥用） · 现行
 - NA = [POSITIONING_NULLAUDIT_2026-11-09](POSITIONING_NULLAUDIT_2026-11-09.md) · 11-09 · Melton 撞车检查、14 条待审计已发表结论、公开 MoE checkpoint 可用性、相邻领域零模型先例 · 现行
 - LG = [POSITIONING_LANGUAGE_GEOMETRY_2026-11-09](POSITIONING_LANGUAGE_GEOMETRY_2026-11-09.md) · 11-09 · 稠密多语逐层几何、MoE 语言路由文献、E179 与原文逐模型对账 · 现行（§2 "四模型皆 U" 以 §5 为准）
 - ROC = [READOUT_CATALOGUE_AND_SEED_ROBUSTNESS_2026-11-06](READOUT_CATALOGUE_AND_SEED_ROBUSTNESS_2026-11-06.md) · 11-06 · 21 种现成读数（能否 CPU 复算）、专家几何度量、Equifinality / Geometric Routing 精读 · 现行
