@@ -16,9 +16,10 @@ WB = Path(__file__).resolve().parents[1]
 S = json.loads((WB / "results/e173/summary.json").read_text())
 KEY = "L11" if len(sys.argv) > 1 and sys.argv[1] == "L11" else "deep"
 COL = {"rerun": "#008300", "base": "#52514e", "frz": "#2a78d6", "lb0": "#eb6834", "lb0001": "#e87ba4", "g16": "#1baf7a", "g256": "#eda100", "lb01": "#6250d6",
-       "g16r": "#7fd4b5", "g256r": "#f5cd73"}
+       "g16r": "#7fd4b5", "g256r": "#f5cd73", "g64k2": "#9b2f6e", "g64k2r": "#d79ac0"}  # 11-09: G64K2 control pair + its rerun
 NAME = {"rerun": "I0D0 rerun (A100)", "base": "baseline", "frz": "(e) frozen router", "lb0": "(a) lb=0", "lb0001": "(a') lb=1e-3", "g16": "(c) 16e top-2",
-        "g256": "(d) 256e top-32", "lb01": "(b) lb=0.1", "g16r": "16e rerun", "g256r": "256e rerun"}
+        "g256": "(d) 256e top-32", "lb01": "(b) lb=0.1", "g16r": "16e rerun", "g256r": "256e rerun",
+        "g64k2": "(f) 64e top-2 (control)", "g64k2r": "64e top-2 rerun"}
 rec = {k: v for k, v in S["recipes"].items() if "800000000" in v["routing"]}
 rule = S["ruler_15pairs"]
 plt.rcParams.update({"font.size": 9, "axes.spines.top": False, "axes.spines.right": False})
