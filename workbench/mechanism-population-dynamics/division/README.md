@@ -1,5 +1,6 @@
 # 分工重现：分别训练的 MoE 会不会自发分出同一套专家分工
 
+- **状态（2026-11-10 12:00，主会话）：** 11-09 起本线改在**公开 MoE 上只做推理**（自训平台冻结，DIRECTION §17）：用同一隐状态上的随机路由器族（N_A / N_B / N_C）读训练路由器。已出：E185 路由方差分解图谱（§21）、E186 七家族 + OLMoE-0924 九个 checkpoint 的同格式采集与追加（§22，1.35 + 0.76 GPU h）、E187 Qwen3-30B-A3B 复制层的路由分歧分解（§21.1）、领域地图 [`FIELD_MAP_2026-11-09.md`](../../../library/themes/moe-routing/FIELD_MAP_2026-11-09.md)。一句话：训练路由器 = 几何读出 × 词表锐化 + 给定 token 后少量局部序列信息；语言 / 文字 / 词类 / 位置都不在训练新增里；模型依赖的只有中层跨语内容；训练轴与复制层两条线索都指向"路由器权重先于几何定型、并携带来源记忆"（候选叙事 N4，未锁）。主张 C24–C27（L1）。**11-10 全部文件因 NFS 故障未提交**；原始存储 160 GB 与 OLMoE 逐 token 隐状态 13 GB 在节点 /tmp（见各卡"资产位置"）。
 - **状态（2026-11-06 06:50，主会话）：** E173（配方轴三对）、E174（零假设）、E175（D1 试探）、E176（已发表读数三级重现表）均已出首批结果；判断见 [`DIRECTION_2026-11-06.md`](DIRECTION_2026-11-06.md) §9–§11——候选主线改为 R-A 方法学（扣零假设阶梯 .56 / .45 / .20；冻结路由器 T_D ≈ 0 而 CE 不变；已发表结论 9/9 或 0/9、专家级不重现），锁定条件已达成，待人确认；主张登记 CLAIMS C15–C21。
 - **E172 纯 CPU 三项读数（2026-11-05 夜，Opus 会话执行，主会话核对）：** [实验卡](experiments/E172-token-class-agreement-and-standard-readouts.md)、FINDINGS §4.9——词类与词频不是一致度的对比轴（内容词 .233 / 功能词 .229；各词类初始化÷重跑都≈ .5）；Antoine 式专精度的大头是负载集中（未训练已 +26 / 训练后 +32），其词类排序换 seed 只重现 .73（重跑 .97）；语法骨架两段式出现（词类 / 形态先，依存与上下文同档，2500 万 token 时最早共享的是体裁 / 位置、随后丢弃）。
 - **面谈记录与解读（2026-11-05 16:00）：** [`MEETING_2026-11-05_RECORD.md`](MEETING_2026-11-05_RECORD.md)——导师：单个一致度数字不成论文，要"こういうモデルでは低い、こういうモデルでは高い"的对比轴 / 第二尺度 / token 类别 / 语言 / 借现成分析法看其结论的跨模型一致；偏好路由分配一致与几何，不偏好消融；作业 = 查清 MoE 专家分析史（我们当场答"几乎没有"是错的，已写 [`历史综述`](../../../library/themes/moe-routing/MOE_EXPERT_ANALYSIS_HISTORY_2026-11-05.md)）。行动项 A1–A5 按成本排，模型类型对比轴（2 seed × 若干配方，每 run 约 4 GPU 小时）是导师首选。
@@ -17,7 +18,8 @@
 | 内容 | 位置 |
 |---|---|
 | **总结（唯一的汇报文档）** | [FINDINGS_2026-11-04](FINDINGS_2026-11-04.md)；总图 `results/e167/prelim_figure_v4(_ja).png`（`scripts/prelim_figure_v4.py`） |
-| 实验卡 | [E167 多 seed 训练与主读数](experiments/E167-multiseed-moe-division.md)、[E168 逐 token 因果角色 / 移植](experiments/E168-matched-expert-transplant.md)、[E169 簇零假设](experiments/E169-cluster-null-for-routing-agreement.md)、[E170 语言学分解](experiments/E170-linguistic-decomposition-of-reproducible-division.md)、[E171 完全相同配置重跑](experiments/E171-exact-config-rerun.md) |
+| **公开模型零模型审计（11-09 起）** | DIRECTION §17–§22；实验卡 [E185 图谱](experiments/E185-routing-variance-atlas.md)、[E186 广度采集](experiments/E186-atlas-capture-breadth.md)、[E187 复制层](experiments/E187-copied-layer-routing-divergence.md)；结果 `results/e185/`–`results/e187/`（`tables.md` 为完整表，不写判决表）；定位 `library/themes/moe-routing/{FIELD_MAP,POSITIONING_COPIED_LAYERS,RESIDUALS_E185}_2026-11-09.md` |
+| 实验卡（自训平台，已冻结） | [E167 多 seed 训练与主读数](experiments/E167-multiseed-moe-division.md)、[E168 逐 token 因果角色 / 移植](experiments/E168-matched-expert-transplant.md)、[E169 簇零假设](experiments/E169-cluster-null-for-routing-agreement.md)、[E170 语言学分解](experiments/E170-linguistic-decomposition-of-reproducible-division.md)、[E171 完全相同配置重跑](experiments/E171-exact-config-rerun.md) |
 | 模型与训练 | [moe_model.py](scripts/moe_model.py)、[train_moe.py](scripts/train_moe.py)、[launch_run.sh](scripts/launch_run.sh) |
 | 数据准备 | [prepare_data.py](scripts/prepare_data.py)（Dolma v1.7，约 60 亿 token，`~/mechpop_cache/e167_dolma_6b`） |
 | 结果 | `results/e167/`–`results/e171/`（小文件进 git；checkpoint 与分析缓存只在本地，见下） |
