@@ -1,10 +1,10 @@
-# Why Routers Freeze: Infinite Width Learning Dynamics for Mixture of Experts（NeurIPS 2026 poster，OpenReview TccaEvFVmc；Dhir, Cevher, Vankadara；arXiv 未找到）`[证据级别：会议页摘要（经抓取工具转述）]`
+# Why Routers Freeze: Infinite Width Learning Dynamics for Mixture of Experts（NeurIPS 2026 poster，OpenReview TccaEvFVmc；另有 ICML 2026 *High Dimensional Learning Dynamics* workshop 版，OpenReview AhwB471ARJ；Dhir, Cevher, Vankadara；arXiv 未找到，OpenReview 正文被验证页挡住）`[证据级别：两个会议页摘要（经抓取工具转述）]`
 
 1. 论文形态：理论（无限宽极限）+ 有限宽验证。
 2. 背景与压力：MoE 训练依赖辅助损失、路由器冻结 / 塌缩现象缺理论解释。
 3. 改变的前提：路由器"冻结"是参数化方式的必然结果，而不是数据或优化偶然。
 4. idea 来源（RECONSTRUCTED）：把 µP / 标准参数化（SP）的无限宽分析搬到固定专家数的 MoE（soft 与 top-k，SGD 与 Adam）。
-5. 与最近邻的距离：相对 OLMoE / FLAME 的经验"早饱和"，它给出一个机制预测（SP 下路由器更新一步后冻结；µP 下 softmax 门控专家塌缩、路由器梯度消失；sigmoid 门让路由器能动但不防塌缩；top-k 是对称破缺、使特征学习与专精可能）；相对 Routers Learn Geometry 2605.12476（有限宽经验耦合），它是极限理论。
+5. 与最近邻的距离：相对 OLMoE / FLAME 的经验"早饱和"，它给出一个机制预测（Tensor Programs、固定专家数、宽度 → ∞：SP 下路由器 logits 一步特征学习后发散、门饱和、路由器梯度消失，NeurIPS 版措辞为"router updates freeze after one step"；µP 下 softmax 门控专家塌缩、路由器梯度消失；sigmoid 门让路由器能动但不防塌缩；top-k 是对称破缺：logits 收敛到对称极限时，选哪个专家由有限宽涨落决定）；相对 Routers Learn Geometry 2605.12476（有限宽经验耦合），它是极限理论。
 6. 方法 / 数据：理论 + 有限宽实验"closely"符合预测的标度（规模未核对）。
 7. 证据强度与短板：无限宽结论能否迁移到 OLMoE / Qwen3 量级未知；它说的是路由器**权重更新**冻结，不是路由**分配**稳定（分配还受隐状态变化影响）。
 8. 可迁移的研究动作：把经验现象（早饱和）换成参数化下的标度预测，再用有限宽实验验证。
