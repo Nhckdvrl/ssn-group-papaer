@@ -20,8 +20,8 @@ ap.add_argument("--data", required=True, choices=["d184", "d180"])
 ap.add_argument("--model", required=True)
 args = ap.parse_args()
 NMIN, NSUB = 30, 5
-OUT = os.path.expanduser("~/mechpop_cache/atlas_e185")
-RES = os.path.join(os.path.dirname(__file__), "..", "results", "e185")
+OUT = os.environ.get("E185_OUT", os.path.expanduser("~/mechpop_cache/atlas_e185"))
+RES = os.environ.get("E185_RES", os.path.join(os.path.dirname(__file__), "..", "results", "e185"))
 src = {"d184": "e184", "d180": "e180"}[args.data]
 base = f"{CACHE}/{src}/{args.model}"
 meta = json.load(open(f"{base}/meta.json"))

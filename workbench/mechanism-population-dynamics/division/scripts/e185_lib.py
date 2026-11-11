@@ -6,9 +6,11 @@ I_hat(e;X|S) = I_plugin(e;X|S) - mean_r I_plugin(e; pi^S_r X | S)  (permutation 
 X values with < 3 occurrences (inside the view) are pooled into one 'rare' bucket; strata S are never pooled.
 """
 import json
+import os
 import numpy as np
 
-CACHE = "/home/xiang/mechpop_cache"
+# E186 (11-09): E185_CACHE overrides the store root (E186 views); default = the E185 stores, behaviour unchanged
+CACHE = os.environ.get("E185_CACHE", "/home/xiang/mechpop_cache")
 SEED = 185
 NSHUF = 3
 RARE = 3
@@ -16,10 +18,22 @@ BANDS = {"qwen3": ((list(range(0, 4)) + list(range(44, 48))), list(range(7, 35))
          "qwen3base": ((list(range(0, 4)) + list(range(44, 48))), list(range(7, 35))),
          "gptoss": ([0, 1, 22, 23], list(range(4, 18))),
          "olmoe": ([0, 1, 14, 15], list(range(2, 12)))}
+# E186 additions (bands pre-registered in E186 card; old entries unchanged)
+BANDS.update({"phimoe": ([0, 1, 30, 31], list(range(5, 24))), "mixtral": ([0, 1, 30, 31], list(range(5, 24))),
+              "dsv2lite": ([0, 1, 24, 25], list(range(4, 19)))})
+E186_OLMOE = ["olmoe0924_s5k", "olmoe0924_s20k", "olmoe0924_s80k", "olmoe0924_s320k", "olmoe0924_s1220k",
+              "olmoe0924_main"]
+BANDS.update({k: ([0, 1, 14, 15], list(range(2, 12))) for k in E186_OLMOE})
 HF = {"qwen3": "Qwen/Qwen3-30B-A3B", "qwen3base": "Qwen/Qwen3-30B-A3B-Base",
       "gptoss": "openai/gpt-oss-20b", "olmoe": "allenai/OLMoE-1B-7B-0125-Instruct"}
+HF.update({"phimoe": "/home/xiang/mechpop_cache/e186/_cfg/phimoe", "mixtral": "/home/xiang/mechpop_cache/e186/_cfg/mixtral", "dsv2lite": "/home/xiang/mechpop_cache/e186/_cfg/dsv2lite"})
+HF.update({k: "/home/xiang/mechpop_cache/e186/_cfg/olmoe0924" for k in E186_OLMOE})
 NAMES = {"qwen3": "Qwen3-30B-A3B", "qwen3base": "Qwen3-30B-A3B-Base", "gptoss": "GPT-OSS-20B",
          "olmoe": "OLMoE-1B-7B-0125-Inst"}
+NAMES.update({"phimoe": "Phi-3.5-MoE-Inst", "mixtral": "Mixtral-8x7B-Inst", "dsv2lite": "DeepSeek-V2-Lite",
+              "olmoe0924_s5k": "OLMoE-0924 20B", "olmoe0924_s20k": "OLMoE-0924 83B", "olmoe0924_s80k": "OLMoE-0924 335B",
+              "olmoe0924_s320k": "OLMoE-0924 1.34T", "olmoe0924_s1220k": "OLMoE-0924 5.1T (pre-anneal)",
+              "olmoe0924_main": "OLMoE-0924 (release)"})
 
 
 # ---------------------------------------------------------------- entropy helpers

@@ -18,8 +18,8 @@ from e185_lib import CACHE, dense, jdump  # noqa: E402
 
 A_SMOOTH = 8.0
 WGRID = np.array([0, .25, .5, .75, 1, 1.5])
-OUT = os.path.expanduser("~/mechpop_cache/atlas_e185")
-RES = os.path.join(os.path.dirname(__file__), "..", "results", "e185")
+OUT = os.environ.get("E185_OUT", os.path.expanduser("~/mechpop_cache/atlas_e185"))
+RES = os.environ.get("E185_RES", os.path.join(os.path.dirname(__file__), "..", "results", "e185"))
 
 
 def cond_table(code, e, mask, ncode, E, p0):

@@ -7,9 +7,12 @@ Corpora (one sequence each, add_special_tokens=False):
   FLORES-200 dev, 21 sides: the 20 E180 sides (srp_Latn = e180_translit.py output) + eng_Latn (side 20; the E184
   English corpus); 997 sentences per side.   UD English EWT dev+test passages (<= 400 words; gold UPOS on word-final
   token; same rules as E184).
-Calibration (N_B bias refit only): a random subset of the MEASUREMENT sequences (seed 186) with >= --cal-tokens tokens.
-Routers on the same hidden states: T | N_A (Haar O(d) rotation of W, 8) | N_B (N1 = W_c V Q V^T, bias refit to T's
-loads on the calibration subset, 8).  Router index 0 T | N_A 1..D | N_B D+1..2D.  RNG per MoE layer j:
+Calibration (N_B bias refit only) on random subsets of the MEASUREMENT sequences (补登记 11-09 22:20, after the smoke:
+one bias fitted on the pooled corpus left the English subset at load TV .46-.73, so there are two calibrations):
+  N_B   : bias refit to T's loads on the 20 non-English FLORES sides (seed 186, >= --cal-tokens)   -> multilingual view
+  N_Ben : the SAME N1 matrices, bias refit on FLORES eng + UD (seed 1186, >= --cal-en-tokens)       -> English view
+Routers on the same hidden states: T | N_A (Haar O(d) rotation of W, 8) | N_B (N1 = W_c V Q V^T, 8) | N_Ben (8).
+Router index 0 T | N_A 1..D | N_B D+1..2D | N_Ben 2D+1..3D.  RNG per MoE layer j:
 torch.Generator().manual_seed(186000 + j), draw order N_A then N_B.
 Saved in --out:
   topk.npy   uint8   [L, NTOK, NR, K]  top-k expert ids, descending ([..., 0] = top-1); routed experts only
@@ -18,6 +21,7 @@ Saved in --out:
   topk_fix.npy uint8 [L, NTOK, 2, K]  N_F: two FIXED Gaussian routers (seed 186500 + j, independent of the model's
                                        weights, no bias) -- the same matrices for every checkpoint of one architecture;
                                        null for the training-time saturation readout (bridge B3)
+  wT.npy     float32 [L, E, d]         the trained router weights (readout-subspace geometry)
   hmean.npy  float16 [L, NSEQ, d]      per-sequence mean of the router input h (geometry readouts, E179 G1/G2 style)
   tokmeta.npz  corpus (0 FLORES, 1 UD), side (-1 for UD), sid (sentence / passage id), seq (global), pos, inp,
                pred (lm_head argmax), nxt (true next id, -1 at sequence end), pent (prediction entropy, bits, fp16),
@@ -35,9 +39,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import moe_measure as mm  # noqa: E402
 from ud_passages import sentences  # noqa: E402
 
-FLORES = "/home/xiang/mechpop_cache/flores200/flores200_dataset"
-SRP_LATN = "/home/xiang/mechpop_cache/e180/srp_Latn"
-UD = "/home/xiang/mechpop_cache/lingdata"
+# E186_DATA: node-local copy of the three corpus folders (NFS stalled on 11-10 00:00); default = the NFS originals
+_DR = os.environ.get("E186_DATA")
+FLORES = f"{_DR}/flores200_dataset" if _DR else "/home/xiang/mechpop_cache/flores200/flores200_dataset"
+SRP_LATN = f"{_DR}/srp_Latn" if _DR else "/home/xiang/mechpop_cache/e180/srp_Latn"
+UD = f"{_DR}/lingdata" if _DR else "/home/xiang/mechpop_cache/lingdata"
 UPOS = ["ADJ", "ADP", "ADV", "AUX", "CCONJ", "DET", "INTJ", "NOUN", "NUM", "PART", "PRON", "PROPN", "PUNCT",
         "SCONJ", "SYM", "VERB", "X"]
 GROUPS = {"slavic": ["srp_Cyrl", "srp_Latn", "hrv_Latn", "bos_Latn", "slv_Latn", "ces_Latn", "pol_Latn",
@@ -54,6 +60,7 @@ ap.add_argument("--out", required=True)
 ap.add_argument("--attn", default="sdpa")
 ap.add_argument("--draws", type=int, default=8)
 ap.add_argument("--cal-tokens", type=int, default=60000)
+ap.add_argument("--cal-en-tokens", type=int, default=40000)
 ap.add_argument("--batch-tokens", type=int, default=16384)
 ap.add_argument("--n-sent", type=int, default=997)
 ap.add_argument("--n-ud", type=int, default=0, help="0 = all UD passages")
@@ -62,10 +69,10 @@ ap.add_argument("--tiny", action="store_true", help="architecture check: random-
                 "layers (+ dense first layers) and small width; numbers meaningless")
 args = ap.parse_args()
 if args.smoke or args.tiny:
-    args.n_sent, args.n_ud, args.cal_tokens = 20, 8, 3000
+    args.n_sent, args.n_ud, args.cal_tokens, args.cal_en_tokens = 20, 8, 3000, 2000
 os.makedirs(args.out, exist_ok=True)
 D = args.draws
-NR = 1 + 2 * D
+NR = 1 + 3 * D
 t0 = time.time()
 
 
@@ -171,14 +178,21 @@ META = {"corpus": np.repeat(CORP_A.astype(np.int8), lens), "side": np.repeat(SID
         "word": np.concatenate([np.full(len(x), -1, np.int32) for x in SEQS[:NFL]] + ud_word)}
 # token group for the load diagnostics: 0 FLORES non-English, 1 FLORES eng, 2 UD
 GRP = np.where(META["corpus"] == 1, 2, np.where(META["side"] == SIDES.index("eng_Latn"), 1, 0)).astype(np.int64)
-# calibration subset = random measurement sequences (seed 186) until >= cal_tokens
-rs = np.random.default_rng(186)
-perm = rs.permutation(NSEQ)
-ncum = np.cumsum(lens[perm])
-CAL_SEQ = np.sort(perm[:int(np.searchsorted(ncum, args.cal_tokens)) + 1])
+# calibration subsets = random measurement sequences until >= the token target (ML: 20 non-English sides; EN: eng + UD)
+
+
+def cal_subset(pool, ntok, seed):
+    perm = np.random.default_rng(seed).permutation(pool)
+    return np.sort(perm[:int(np.searchsorted(np.cumsum(lens[perm]), ntok)) + 1])
+
+
+ENG = SIDES.index("eng_Latn")
+CAL_ML = cal_subset(np.where((CORP_A == 0) & (SIDE_A != ENG))[0], args.cal_tokens, 186)
+CAL_EN = cal_subset(np.where((CORP_A == 1) | (SIDE_A == ENG))[0], args.cal_en_tokens, 1186)
+CAL_SEQ = np.concatenate([CAL_ML, CAL_EN])
 log(f"sequences {NSEQ} (FLORES {NFL} = {len(SIDES)} sides x {args.n_sent}, UD {NSEQ - NFL}); tokens {NTOK}; "
     f"per side {ntok_side}; UD words {len(ud_words)}, word-final {n_wf}, past end {n_bad}, collisions {n_coll}; "
-    f"calibration {len(CAL_SEQ)} seqs / {int(lens[CAL_SEQ].sum())} tokens")
+    f"calibration ML {len(CAL_ML)} seqs / {int(lens[CAL_ML].sum())} tokens, EN {len(CAL_EN)} / {int(lens[CAL_EN].sum())}")
 
 # ---------------------------------------------------------- model
 log("loading model", args.model_path)
@@ -186,9 +200,11 @@ cfg = AutoConfig.from_pretrained(args.model_path)
 if args.tiny:
     for k, v in dict(hidden_size=256, intermediate_size=512, moe_intermediate_size=128, num_attention_heads=2,
                      num_key_value_heads=1, head_dim=128).items():
-        if hasattr(cfg, k):
+        if hasattr(cfg, k) and not (k in ("head_dim", "num_key_value_heads") and cfg.model_type == "deepseek_v2"):
             setattr(cfg, k, v)
     cfg.num_hidden_layers = 2 + getattr(cfg, "first_k_dense_replace", 0)
+    if cfg.model_type == "deepseek_v2":
+        cfg.num_key_value_heads = cfg.num_attention_heads
     torch.manual_seed(0)
     model = AutoModelForCausalLM.from_config(cfg, dtype=torch.bfloat16, attn_implementation=args.attn).to("cuda:0")
 else:
@@ -256,7 +272,7 @@ def make_inputs(b):
 
 
 ST = {"mode": None}
-CAL_H = [[] for _ in range(L)]
+CAL_H = {"ml": [[] for _ in range(L)], "en": [[] for _ in range(L)]}
 DET = {}
 WALL, BALL = [None] * L, [None] * L
 
@@ -289,7 +305,7 @@ def make_hook(j):
         m = on(dv, "mask")
         h = inp[0].reshape(-1, d)[m]
         if mode == "cal":
-            CAL_H[j].append(h.detach().to("cpu"))
+            CAL_H[ST["calgrp"]][j].append(h.detach().to("cpu"))
             return
         lt, Smod = t_logits_sel(mod, h, out, m)
         if mode == "det":
@@ -320,11 +336,11 @@ for j, g in enumerate(GATES):
 
 
 @torch.no_grad()
-def run(b, mode):
+def run(b, mode, calgrp=None):
     ids, am = make_inputs(b)
     m = am.reshape(-1).bool()
     ST.clear()
-    ST.update(mode=mode, mask=m)
+    ST.update(mode=mode, mask=m, calgrp=calgrp)
     if mode == "meas":
         gidx = np.concatenate([np.arange(off[i], off[i + 1]) for i in b])
         ST["gidx"] = gidx
@@ -351,22 +367,25 @@ def run(b, mode):
 
 # ---------------------------------------------------------- 1. calibration (subset of the measurement corpus)
 log("calibration pass")
-for b in batches(CAL_SEQ):
-    run(b, "cal")
-log("calibration captured", sum(x.shape[0] for x in CAL_H[0]), "tokens/layer")
+for g, seqs in (("ml", CAL_ML), ("en", CAL_EN)):
+    for b in batches(seqs):
+        run(b, "cal", g)
+log("calibration captured", {g: sum(x.shape[0] for x in CAL_H[g][0]) for g in CAL_H}, "tokens/layer")
 
 # ---------------------------------------------------------- 2. null routers
-diag = {"loadtv_B_cal": np.zeros((L, D)), "cal_maxload": np.zeros((L, NR))}
+diag = {"loadtv_B_cal": np.zeros((L, D)), "loadtv_Ben_cal": np.zeros((L, D)), "cal_maxload": np.zeros((L, NR))}
 for j in range(L):
     dv = DEV[j]
-    Hc = torch.cat(CAL_H[j]).to(dv).double()
-    CAL_H[j] = None
+    Hc = torch.cat(CAL_H["ml"][j]).to(dv).double()
+    He = torch.cat(CAL_H["en"][j]).to(dv).double()
+    CAL_H["ml"][j] = CAL_H["en"][j] = None
     Wd = GATES[j].weight.detach().double()
     bT = torch.zeros(E, dtype=torch.float64, device=dv)
     target = mm.loads(mm.topk(Hc @ Wd.T + bT, K), E)
-    st = mm.null_stats(Wd, Hc)
+    target_en = mm.loads(mm.topk(He @ Wd.T + bT, K), E)
+    st = mm.null_stats(Wd, Hc)   # readout basis V depends only on W (row-centred SVD); the stats' covariance is unused by N1
     gen = torch.Generator().manual_seed(186000 + j)
-    WA, WB, bB = [], [], []
+    WA, WB, bB, bBe = [], [], [], []
     for _ in range(D):
         A = torch.randn(d, d, generator=gen, dtype=torch.float64).to(dv)
         Q, R = torch.linalg.qr(A)
@@ -378,19 +397,22 @@ for j in range(L):
         bn = mm.fit_bias(Hc, Wn, K, target)
         lc = mm.loads(mm.topk(Hc @ Wn.T + bn, K), E)
         diag["loadtv_B_cal"][j, i] = float((lc / lc.sum() - target / target.sum()).abs().sum() / 2)
-        WB.append(Wn); bB.append(bn)
-    WALL[j] = torch.cat(WA + WB).float().contiguous()
-    BALL[j] = torch.cat([bT] * D + bB).float().contiguous()
+        be = mm.fit_bias(He, Wn, K, target_en)
+        lc = mm.loads(mm.topk(He @ Wn.T + be, K), E)
+        diag["loadtv_Ben_cal"][j, i] = float((lc / lc.sum() - target_en / target_en.sum()).abs().sum() / 2)
+        WB.append(Wn); bB.append(bn); bBe.append(be)
+    WALL[j] = torch.cat(WA + WB + WB).float().contiguous()
+    BALL[j] = torch.cat([bT] * D + bB + bBe).float().contiguous()
     allW = torch.cat([Wd, WALL[j].double()]).view(NR, E, d)
     allb = torch.cat([bT, BALL[j].double()]).view(NR, E)
     for r in range(NR):
-        lc = mm.loads(mm.topk(Hc @ allW[r].T + allb[r], K), E)
+        lc = mm.loads(mm.topk((He if r > 2 * D else Hc) @ allW[r].T + allb[r], K), E)
         diag["cal_maxload"][j, r] = float(lc.max() / (K / E))
-    del Hc, st, allW, WA, WB
+    del Hc, He, st, allW, WA, WB
     torch.cuda.empty_cache()
     if j % 8 == 0 or j == L - 1:
         log(f"nulls MoE layer {j}: loadtv_B_cal mean {diag['loadtv_B_cal'][j].mean():.4f} "
-            f"max {diag['loadtv_B_cal'][j].max():.4f}")
+            f"max {diag['loadtv_B_cal'][j].max():.4f}; N_Ben {diag['loadtv_Ben_cal'][j].mean():.4f}")
 
 # ---------------------------------------------------------- 3. determinism (same FLORES batch twice)
 b0 = next(batches(range(args.n_sent)))
@@ -415,6 +437,12 @@ tot = load.sum(1)                                             # [L, NR, E]
 pT = tot[:, :1] / tot[:, :1].sum(-1, keepdims=True)
 pR = tot / tot.sum(-1, keepdims=True)
 tv_meas = 0.5 * np.abs(pR - pT).sum(-1)                      # [L, NR]
+def tv_of(cnt):   # cnt [L, NR, E] -> TV of every router's load vs T's
+    p = cnt / cnt.sum(-1, keepdims=True)
+    return 0.5 * np.abs(p - p[:, :1]).sum(-1)
+
+
+tv_ml, tv_en = tv_of(load[:, 0]), tv_of(load[:, 1] + load[:, 2])
 tv_grp = 0.5 * np.abs(load / load.sum(-1, keepdims=True) - load[:, :, :1] / load[:, :, :1].sum(-1, keepdims=True)).sum(-1)
 hmean = np.stack([(HSUM[j] / torch.from_numpy(lens).to(DEV[j], torch.float32)[:, None]).half().cpu().numpy()
                   for j in range(L)])
@@ -425,31 +453,39 @@ np.save(os.path.join(args.out, "topv.npy"), TOPV)
 np.save(os.path.join(args.out, "lse.npy"), LSE)
 np.save(os.path.join(args.out, "topk_fix.npy"), TOPKF)
 np.save(os.path.join(args.out, "hmean.npy"), hmean)
+np.save(os.path.join(args.out, "wT.npy"), np.stack([g.weight.detach().float().cpu().numpy() for g in GATES]))
 np.savez(os.path.join(args.out, "tokmeta.npz"), **META)
 hk = HOOK.numpy()
 np.savez(os.path.join(args.out, "diag.npz"), det_exact=np.array(det), hook_fp32=hk[:, 0] / hk[:, 2],
-         t_vs_model=hk[:, 1] / hk[:, 2], load_meas=load, tv_meas=tv_meas, tv_grp=tv_grp, **diag)
+         t_vs_model=hk[:, 1] / hk[:, 2], load_meas=load, tv_meas=tv_meas, tv_grp=tv_grp, tv_ml=tv_ml, tv_en=tv_en, **diag)
 dl = os.path.join(args.model_path, "_download.json")
 meta = {"model_path": args.model_path, "key": args.key, "arch": ARCH,
         "download": json.load(open(dl)) if os.path.exists(dl) else None,
         "draws": D, "K": K, "E": E, "L": L, "d": d, "moe_layers": MOE_LAYERS, "n_layers_total": len(model.model.layers),
         "n_shared_experts": SHARED, "routed_only": True,
-        "router_index": {"T": [0], "N_A": [1, D], "N_B": [1 + D, 2 * D]},
-        "routers": ["T"] + [f"N_A{i}" for i in range(D)] + [f"N_B{i}" for i in range(D)],
+        "router_index": {"T": [0], "N_A": [1, D], "N_B": [1 + D, 2 * D], "N_Ben": [1 + 2 * D, 3 * D]},
+        "routers": ["T"] + [f"N_A{i}" for i in range(D)] + [f"N_B{i}" for i in range(D)] + [f"N_Ben{i}" for i in range(D)],
         "sides": SIDES, "groups": GROUPS, "upos": UPOS, "n_sent": args.n_sent, "ntok": NTOK, "ntok_side": ntok_side,
         "nseq": {"flores": NFL, "ud": NSEQ - NFL}, "ud_words": len(ud_words), "ud_word_final": n_wf,
         "ud_run_past_end": n_bad, "ud_collisions": n_coll,
-        "cal": {"n_seq": int(len(CAL_SEQ)), "n_tok": int(lens[CAL_SEQ].sum()), "seed": 186},
+        "cal": {"ml": {"n_seq": int(len(CAL_ML)), "n_tok": int(lens[CAL_ML].sum()), "seed": 186},
+                "en": {"n_seq": int(len(CAL_EN)), "n_tok": int(lens[CAL_EN].sum()), "seed": 1186}},
         "hook_agreement_min": float((hk[:, 0] / hk[:, 2]).min()), "hook_agreement": float(hk[:, 0].sum() / hk[:, 2].sum()),
         "t_vs_model_min": float((hk[:, 1] / hk[:, 2]).min()), "det_exact_min": min(det),
         "loadtv_B_cal_mean": float(diag["loadtv_B_cal"].mean()), "loadtv_B_cal_max": float(diag["loadtv_B_cal"].max()),
-        "loadtv_B_meas_mean": float(tv_meas[:, 1 + D:].mean()), "loadtv_B_meas_max": float(tv_meas[:, 1 + D:].max()),
-        "loadtv_B_meas_grp_mean": [float(tv_grp[:, g, 1 + D:].mean()) for g in range(3)],
+        "loadtv_Ben_cal_mean": float(diag["loadtv_Ben_cal"].mean()), "loadtv_Ben_cal_max": float(diag["loadtv_Ben_cal"].max()),
+        # measurement-corpus TV of each N_B family on the corpus it was calibrated for (N_B: 20 non-English sides;
+        # N_Ben: eng + UD pooled), and every family on every group
+        "loadtv_B_meas_mean": float(tv_ml[:, 1 + D:1 + 2 * D].mean()), "loadtv_B_meas_max": float(tv_ml[:, 1 + D:1 + 2 * D].max()),
+        "loadtv_Ben_meas_mean": float(tv_en[:, 1 + 2 * D:].mean()), "loadtv_Ben_meas_max": float(tv_en[:, 1 + 2 * D:].max()),
+        "loadtv_B_meas_grp_mean": [float(tv_grp[:, g, 1 + D:1 + 2 * D].mean()) for g in range(3)],
+        "loadtv_Ben_meas_grp_mean": [float(tv_grp[:, g, 1 + 2 * D:].mean()) for g in range(3)],
         "next_token_acc_eng": acc_eng, "next_token_acc_all": acc_all,
         "smoke": args.smoke, "tiny": args.tiny, "wall_s": time.time() - t0, "host": os.uname().nodename,
         "attn": args.attn, "gpus": [torch.cuda.get_device_name(i) for i in range(torch.cuda.device_count())],
         "transformers": __import__("transformers").__version__, "torch": torch.__version__}
 json.dump(meta, open(os.path.join(args.out, "meta.json"), "w"), indent=1)
 log("done", json.dumps({k: meta[k] for k in ("hook_agreement_min", "t_vs_model_min", "det_exact_min",
-                                             "loadtv_B_cal_mean", "loadtv_B_meas_mean", "loadtv_B_meas_grp_mean",
+                                             "loadtv_B_cal_mean", "loadtv_Ben_cal_mean", "loadtv_B_meas_mean",
+                                             "loadtv_Ben_meas_mean", "loadtv_B_meas_grp_mean", "loadtv_Ben_meas_grp_mean",
                                              "next_token_acc_eng", "wall_s")}))

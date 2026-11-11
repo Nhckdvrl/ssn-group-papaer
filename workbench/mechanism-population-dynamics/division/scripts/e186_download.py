@@ -24,10 +24,12 @@ def get(s):
     if os.path.exists(dst) and s.size and os.path.getsize(dst) == s.size:
         return s.rfilename, "cached"
     url = f"https://huggingface.co/{a.repo}/resolve/{info.sha}/{s.rfilename}"
-    cmd = ["curl", "-sSL", "--retry", "20", "--retry-delay", "5", "--retry-all-errors", "-C", "-", "-o", dst, url]
+    # HTTP/1.1 and no curl-internal --retry: curl's own retry truncated partial files after HTTP/2 stream CANCELs
+    # (seen 11-09 21:40); every attempt below resumes with -C - from the bytes already on disk
+    cmd = ["curl", "--http1.1", "-sSL", "-C", "-", "-o", dst, url]
     if TOKEN:
         cmd[1:1] = ["-H", f"Authorization: Bearer {TOKEN}"]
-    for attempt in range(5):
+    for attempt in range(60):
         r = subprocess.run(cmd)
         if r.returncode == 0 and (not s.size or os.path.getsize(dst) == s.size):
             break

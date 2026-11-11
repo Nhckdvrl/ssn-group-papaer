@@ -22,7 +22,7 @@ ap.add_argument("--part", required=True, choices=["a", "b182", "b180", "nullagg"
 ap.add_argument("--model", required=True)
 ap.add_argument("--boot", type=int, default=200)
 args = ap.parse_args()
-RES = os.path.join(os.path.dirname(__file__), "..", "results", "e185")
+RES = os.environ.get("E185_RES", os.path.join(os.path.dirname(__file__), "..", "results", "e185"))
 rng = np.random.default_rng(185)
 
 

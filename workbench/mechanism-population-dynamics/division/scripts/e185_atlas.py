@@ -16,7 +16,7 @@ import numpy as np
 sys.path.insert(0, os.path.dirname(__file__))
 from e185_lib import CACHE, Plan, mi_marg, mi_cond, tokclass_table  # noqa: E402
 
-OUT = os.path.expanduser("~/mechpop_cache/atlas_e185")
+OUT = os.environ.get("E185_OUT", os.path.expanduser("~/mechpop_cache/atlas_e185"))
 SCRIPT = {"Cyrl": "Cyrl", "Latn": "Latn", "Deva": "Deva", "Arab": "Arab", "Hans": "Hans", "Hant": "Hant"}
 
 ap = argparse.ArgumentParser()
