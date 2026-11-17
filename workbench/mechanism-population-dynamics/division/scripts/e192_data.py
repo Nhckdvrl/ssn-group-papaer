@@ -88,6 +88,18 @@ def main():
         ids = np.array(tk.encode(text, add_special_tokens=False).ids, np.uint16)
         ids.tofile(f"{D}/eval_wikitext.u16")
         print("wikitext-103 test", len(lines), "lines", len(ids), "tokens")
+    elif a.cmd == "evalshard3":
+        # p6 check (11-18, card 追加臂): held-out stream from a third DCLM global shard (not 03 = official training, not
+        # 10 = our pools / eval): global-shard_05_of_10/local-shard_0_of_10/shard_00000000, same tokenisation + EOD
+        import subprocess
+        raw = f"{D}/raw3/shard_00000000_processed.jsonl.zst"; os.makedirs(os.path.dirname(raw), exist_ok=True)
+        if not os.path.exists(raw):
+            url = "https://huggingface.co/datasets/mlfoundations/dclm-baseline-1.0/resolve/main/global-shard_05_of_10/local-shard_0_of_10/shard_00000000_processed.jsonl.zst"
+            assert subprocess.run(["curl", "-sSL", "--retry", "5", "--max-time", "3600", "-o", raw + ".part", url]).returncode == 0
+            os.replace(raw + ".part", raw)
+        out, n = tok_shard((raw, f"{D}/tok3_gs05_ls0_s0.u16", f"{R}/tok/pythia12b"))
+        x = np.fromfile(out, np.uint16)[:EVAL_TOK]; assert len(x) == EVAL_TOK
+        x.tofile(f"{D}/eval_dclm3.u16"); print("eval_dclm3", len(x), "of", n)
     else:
         raise SystemExit(a.cmd)
 

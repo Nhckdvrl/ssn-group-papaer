@@ -114,7 +114,8 @@ class Layer(nn.Module):
             z = torch.logsumexp(logits, -1).pow(2).mean() * st["z_coeff"]
             st["aux"].append(aux.mean()); st["z"].append(z)
         if st.get("stats") is not None:
-            st["stats"].append((topv.sum(-1).mean().detach(), torch.bincount(topi.reshape(-1), minlength=E).detach()))
+            st["stats"].append((topv.sum(-1).mean().detach(), torch.bincount(topi.reshape(-1), minlength=E).detach(),
+                                torch.logsumexp(logits, -1).pow(2).mean().detach()))   # logging only (11-18): per-layer z (unscaled)
         flat = topi.reshape(-1); order = flat.argsort(stable=True); tok = order // K
         counts = torch.bincount(flat, minlength=E).tolist()
         xs = h[tok]; ws = topv.reshape(-1)[order]
@@ -457,6 +458,8 @@ def main():
     if not a.smoke and it0 == 0 and not os.path.exists(f"{a.out}/nll_c0000.npz"):
         checkpoint_point(0)
     h0 = router_hash(model)
+    # router-only arm (F): fp32 snapshot of every non-router parameter, compared exactly every --ckpt-every iters
+    snap = {n: p.detach().clone() for n, p in model.named_parameters() if not n.endswith("mlp.router.weight")} if a.router == "only" else None
     t_start = time.time(); n_iter = a.smoke or a.n_iter
     for it in range(it0, n_iter):
         t0 = time.time()
@@ -473,7 +476,9 @@ def main():
             ((lm + auxl + zl) / n_micro).backward()
             tot["lm"] += lm.item() / n_micro; tot["aux"] += auxl.item() / n_micro; tot["z"] += zl.item() / n_micro
             if m == 0:
-                load = [(float(ps), (cnt.float() / cnt.sum()).max().item() * c["E"]) for ps, cnt in st["stats"]]
+                load = [(float(ps), (cnt.float() / cnt.sum()).max().item() * c["E"],
+                         float(-((cnt.float() / cnt.sum()).clamp_min(1e-12) * (cnt.float() / cnt.sum()).clamp_min(1e-12).log2()).sum()),
+                         float(lse2)) for ps, cnt, lse2 in st["stats"]]
             del x
         params = [p for _, p in named]
         gn = torch.nn.utils.clip_grad_norm_(params, hp["clip"]).item()
@@ -485,10 +490,14 @@ def main():
         rec = {"it": it + 1, "official_iter": start_iter + it + 1, "lm": tot["lm"], "aux": tot["aux"], "z": tot["z"], "gn": gn,
                "lr": lr_at(it), "dt": dt, "tok_s": GB * SEQ / dt, "router_hash": rh,
                "router_unchanged": rh == h0, "top6_psum_l": [round(x[0], 4) for x in load],
-               "maxload_l": [round(x[1], 3) for x in load], "mem_gb": torch.cuda.max_memory_allocated() / 1e9}
+               "maxload_l": [round(x[1], 3) for x in load],
+               "loadent_l": [round(x[2], 4) for x in load], "lse2_l": [round(x[3], 4) for x in load], "mem_gb": torch.cuda.max_memory_allocated() / 1e9}
+        if snap is not None and (it == it0 or (it + 1) % a.ckpt_every == 0):
+            rec["nonrouter_unchanged"] = all(torch.equal(p, snap[n]) for n, p in model.named_parameters() if n in snap)
         LOG.write(json.dumps(rec) + "\n"); LOG.flush()
         print(f"[{a.arm}] it {it + 1} lm {tot['lm']:.4f} aux {tot['aux']:.4f} z {tot['z']:.4f} gn {gn:.3f} {dt:.1f}s "
-              f"{GB * SEQ / dt / 1e3:.1f}k tok/s mem {rec['mem_gb']:.1f}G router_unchanged {rh == h0}", flush=True)
+              f"{GB * SEQ / dt / 1e3:.1f}k tok/s mem {rec['mem_gb']:.1f}G router_unchanged {rh == h0}"
+              + (f" nonrouter_unchanged {rec['nonrouter_unchanged']}" if "nonrouter_unchanged" in rec else ""), flush=True)
         if a.smoke:
             continue
         done = it + 1
