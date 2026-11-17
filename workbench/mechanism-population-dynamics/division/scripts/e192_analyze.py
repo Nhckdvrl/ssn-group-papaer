@@ -872,5 +872,7 @@ if S["p6"]:
     for k, v in S["p6"].items():
         fm = f3s if "−" in k else f3
         T.append(f"| {k} | {fm(v['dclm_gs10'])} | {fm(v['dclm_gs05'])} |")
+if os.path.exists(f"{a.root}/p6/p6_diag.md"):                 # e192_p6diag.py output (POST-HOC, 11-18)
+    T.append("\n" + open(f"{a.root}/p6/p6_diag.md").read())
 open(f"{a.out}/tables.md", "w").write("\n".join(T) + "\n")
 log("wrote", a.out)
