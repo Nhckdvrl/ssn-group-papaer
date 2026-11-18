@@ -244,15 +244,18 @@ def load_official(model, d, master=True):
 
 # ---------------------------------------------------------------- data
 class Pools:
-    def __init__(self, root, seed):
-        self.root, self.seed, self.mm, self.perm = root, seed, {}, {}
+    def __init__(self, root, seed, names=("P1", "P2")):
+        self.root, self.seed, self.names, self.mm, self.perm = root, seed, list(names), {}, {}
 
     def batch(self, it):
-        """Continuation iteration `it` -> uint16 array [GB, SEQ + 1]."""
-        p = 1 + it // NIT_POOL
+        """Continuation iteration `it` -> uint16 array [GB, SEQ + 1].  Pool = names[it // 540]; window order = permutation
+        of the pool's windows from default_rng(1000 + seed) (for P1 / P2, 552,960 windows: identical to the original code)."""
+        p = self.names[it // NIT_POOL]
         if p not in self.mm:
-            self.mm[p] = np.memmap(f"{self.root}/dclm/pool_P{p}.u16", np.uint16, "r")
-            self.perm[p] = np.random.default_rng(1000 + self.seed).permutation(NIT_POOL * GB)
+            self.mm[p] = np.memmap(f"{self.root}/dclm/pool_{p}.u16", np.uint16, "r")
+            nwin = min(NIT_POOL * GB, (len(self.mm[p]) - 1) // SEQ)
+            self.perm[p] = np.random.default_rng(1000 + self.seed).permutation(nwin)
+        assert (it % NIT_POOL + 1) * GB <= len(self.perm[p]), f"pool {p} too small for iter {it}"
         w = np.sort(self.perm[p][(it % NIT_POOL) * GB:(it % NIT_POOL + 1) * GB])
         mm = self.mm[p]
         return np.stack([mm[j * SEQ:j * SEQ + SEQ + 1] for j in w])
@@ -361,6 +364,58 @@ def save_routers(model, path):
              gain=np.stack([lay[l].pre_mlp_layernorm.weight.detach().float().cpu().numpy() for l in moe]))
 
 
+# ---------------------------------------------------------------- router treatment (round 3: per-layer control)
+def router_plan(router, moe_layers, freeze_layers=None, reset_layers=None):
+    """-> (frozen layer set, reset layer list in MoE-layer order).  Layer numbers are decoder-layer indices = MoE layer
+    numbers (1..8).  All-layer modes reproduce the original bookkeeping exactly."""
+    frozen = set(moe_layers) if router == "frozen" else set()
+    reset = list(moe_layers) if router == "reset" else []
+    if freeze_layers:
+        assert router == "free", "per-layer flags only with --router free"
+        frozen = set(freeze_layers)
+    if reset_layers:
+        assert router == "free", "per-layer flags only with --router free"
+        reset = [l for l in moe_layers if l in set(reset_layers)]
+    assert not (frozen & set(reset)), "a layer cannot be both frozen and reset"
+    return frozen, reset
+
+
+def apply_router_plan(model, router, frozen, reset, init_seed, init_std, device, fresh_start=True):
+    """Re-draw the reset layers' router weights (one generator, layers in order: identical to the original all-layer
+    reset), set requires_grad; returns the fqn set of reset router weights (their Adam state starts at zero, step 0)."""
+    if fresh_start and reset:
+        g = torch.Generator(device=device).manual_seed(init_seed)
+        with torch.no_grad():
+            for l in reset:
+                w = model.decoder.layers[l].mlp.router.weight
+                w.copy_(torch.randn(w.shape, generator=g, device=device) * init_std)
+    for n, p in model.named_parameters():
+        is_r = n.endswith("mlp.router.weight")
+        if router == "only":
+            p.requires_grad_(is_r)
+        else:
+            p.requires_grad_(not (is_r and int(n.split(".")[2]) in frozen))
+    return {f"decoder.layers.{l}.mlp.router.weight" for l in reset}
+
+
+def init_opt_state(opt, named, adam, step0, reset_names, device):
+    n_loaded = 0
+    for n, p in named:
+        if adam and n in adam and n not in reset_names:
+            opt.state[p] = {"step": torch.tensor(step0, dtype=torch.float32, device=device), "exp_avg": adam[n][0].to(device), "exp_avg_sq": adam[n][1].to(device)}
+            n_loaded += 1
+        else:
+            opt.state[p] = {"step": torch.tensor(0.0, dtype=torch.float32, device=device), "exp_avg": torch.zeros_like(p), "exp_avg_sq": torch.zeros_like(p)}
+    return n_loaded
+
+
+def router_hashes(model):
+    out = []
+    for l in model.moe_layers():
+        h = hashlib.sha1(); h.update(model.decoder.layers[l].mlp.router.weight.detach().cpu().numpy().tobytes()); out.append(h.hexdigest()[:12])
+    return out
+
+
 # ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
@@ -374,6 +429,9 @@ def main():
     ap.add_argument("--full-every", type=int, default=270); ap.add_argument("--no-master", action="store_true")
     ap.add_argument("--smoke", type=int, default=0, help="run only this many iters, no saves except a timing json")
     ap.add_argument("--fresh-adam-warmup", type=int, default=0)
+    ap.add_argument("--freeze-layers", default="", help="round 3: comma list of MoE layers (1..8) whose router is frozen (--router free)")
+    ap.add_argument("--reset-layers", default="", help="round 3: comma list of MoE layers whose router is re-initialised (--router free)")
+    ap.add_argument("--pools", default="P1,P2", help="training pools by stage (pool_<name>.u16)")
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     torch.backends.cuda.matmul.allow_tf32 = True; torch.backends.cudnn.allow_tf32 = True
@@ -401,15 +459,10 @@ def main():
         src, adam, chk = load_official(model, a.start_ckpt, master=not a.no_master)
         print("loaded", src, chk, flush=True)
         R = None
-    routers = [model.decoder.layers[l].mlp.router.weight for l in model.moe_layers()]
-    if R is None and a.router == "reset":
-        g = torch.Generator(device="cuda").manual_seed(a.init_seed if a.init_seed is not None else 100 + a.seed)
-        with torch.no_grad():
-            for w in routers:
-                w.copy_(torch.randn(w.shape, generator=g, device="cuda") * hp["init_std"])
-    for n, p in model.named_parameters():
-        is_r = n.endswith("mlp.router.weight")
-        p.requires_grad_(not is_r if a.router == "frozen" else (is_r if a.router == "only" else True))
+    fl = [int(x) for x in a.freeze_layers.split(",") if x]; rl = [int(x) for x in a.reset_layers.split(",") if x]
+    frozen, reset = router_plan(a.router, model.moe_layers(), fl, rl)
+    init_seed = a.init_seed if a.init_seed is not None else 100 + a.seed
+    reset_names = apply_router_plan(model, a.router, frozen, reset, init_seed, hp["init_std"], "cuda", fresh_start=R is None)
     named = [(n, p) for n, p in model.named_parameters() if p.requires_grad]
     decay = [p for n, p in named if p.ndim > 1]; nodecay = [p for n, p in named if p.ndim <= 1]
     opt = torch.optim.AdamW([{"params": decay, "weight_decay": hp["wd"]}, {"params": nodecay, "weight_decay": 0.0}],
@@ -418,22 +471,16 @@ def main():
     if R is not None:
         opt.load_state_dict(R["opt"])
     else:
-        n_loaded = 0
-        for n, p in named:
-            if adam and n in adam and not (a.router == "reset" and n.endswith("mlp.router.weight")):
-                opt.state[p] = {"step": torch.tensor(step0, dtype=torch.float32, device="cuda"), "exp_avg": adam[n][0].cuda(), "exp_avg_sq": adam[n][1].cuda()}
-                n_loaded += 1
-            else:
-                opt.state[p] = {"step": torch.tensor(0.0, dtype=torch.float32, device="cuda"), "exp_avg": torch.zeros_like(p), "exp_avg_sq": torch.zeros_like(p)}
+        n_loaded = init_opt_state(opt, named, adam, step0, reset_names, "cuda")
         print(f"param source {src}; Adam state loaded for {n_loaded}/{len(named)} trainable tensors (step {step0:.0f})", flush=True)
     del adam
     st_base = {"aux_on": a.aux == "on", "aux_coeff": hp["aux"], "z_coeff": hp["z"], "mbs_official": hp["mbs_official"]}
-    data = Pools(a.root, a.seed)
+    data = Pools(a.root, a.seed, a.pools.split(","))
     streams = eval_streams(a.root) if not a.smoke else None
     dumpset = DumpSet(a.root) if not a.smoke else None
     n_micro = GB // a.mbs
     info = {"arm": a.arm, "start_ckpt": a.start_ckpt, "start_iter": start_iter, "router": a.router, "aux": a.aux, "seed": a.seed,
-            "init_seed": (a.init_seed if a.init_seed is not None else 100 + a.seed) if a.router == "reset" else None,
+            "init_seed": init_seed if reset else None, "frozen_layers": sorted(frozen), "reset_layers": reset, "pools": a.pools,
             "param_source": src, "load_check": chk, "hp": hp, "mbs": a.mbs, "n_micro": n_micro, "cfg": c, "host": os.uname().nodename,
             "gpu": os.environ.get("CUDA_VISIBLE_DEVICES"), "torch": torch.__version__}
     json.dump(info, open(f"{a.out}/run_info.json", "w"), indent=1)
@@ -457,7 +504,7 @@ def main():
 
     if not a.smoke and it0 == 0 and not os.path.exists(f"{a.out}/nll_c0000.npz"):
         checkpoint_point(0)
-    h0 = router_hash(model)
+    h0 = router_hash(model); h0_l = router_hashes(model)
     # router-only arm (F): fp32 snapshot of every non-router parameter, compared exactly every --ckpt-every iters
     snap = {n: p.detach().clone() for n, p in model.named_parameters() if not n.endswith("mlp.router.weight")} if a.router == "only" else None
     t_start = time.time(); n_iter = a.smoke or a.n_iter
@@ -486,10 +533,10 @@ def main():
             gr["lr"] = lr_at(it)
         opt.step(); opt.zero_grad(set_to_none=True)
         torch.cuda.synchronize(); dt = time.time() - t0
-        rh = router_hash(model)
+        rh = router_hash(model); rh_l = router_hashes(model)
         rec = {"it": it + 1, "official_iter": start_iter + it + 1, "lm": tot["lm"], "aux": tot["aux"], "z": tot["z"], "gn": gn,
                "lr": lr_at(it), "dt": dt, "tok_s": GB * SEQ / dt, "router_hash": rh,
-               "router_unchanged": rh == h0, "top6_psum_l": [round(x[0], 4) for x in load],
+               "router_unchanged": rh == h0, "router_unchanged_l": [x == y for x, y in zip(rh_l, h0_l)], "top6_psum_l": [round(x[0], 4) for x in load],
                "maxload_l": [round(x[1], 3) for x in load],
                "loadent_l": [round(x[2], 4) for x in load], "lse2_l": [round(x[3], 4) for x in load], "mem_gb": torch.cuda.max_memory_allocated() / 1e9}
         if snap is not None and (it == it0 or (it + 1) % a.ckpt_every == 0):

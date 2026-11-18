@@ -100,6 +100,24 @@ def main():
         out, n = tok_shard((raw, f"{D}/tok3_gs05_ls0_s0.u16", f"{R}/tok/pythia12b"))
         x = np.fromfile(out, np.uint16)[:EVAL_TOK]; assert len(x) == EVAL_TOK
         x.tofile(f"{D}/eval_dclm3.u16"); print("eval_dclm3", len(x), "of", n)
+    elif a.cmd == "gs03pool":
+        # p6 test (round 3, 11-18): official training data = DCLM global-shard_03, local shards 1/3/6/8/9 (all 279 shards
+        # each are in the official data_path).  We take global-shard_03/local-shard_1_of_10/shard_00000000..02, same
+        # tokenisation + EOD, and keep the first 108 x 1024 x 2048 + 1 tokens as pool_GS03.u16.
+        import subprocess
+        need = 108 * GB * SEQ + 1; parts, have = [], 0
+        for i in range(6):
+            raw = f"{D}/raw_gs03/shard_{i:08d}_processed.jsonl.zst"; os.makedirs(os.path.dirname(raw), exist_ok=True)
+            if not os.path.exists(raw):
+                url = f"https://huggingface.co/datasets/mlfoundations/dclm-baseline-1.0/resolve/main/global-shard_03_of_10/local-shard_1_of_10/shard_{i:08d}_processed.jsonl.zst"
+                assert subprocess.run(["curl", "-sSL", "--retry", "5", "--max-time", "3600", "-o", raw + ".part", url]).returncode == 0
+                os.replace(raw + ".part", raw)
+            out, n = tok_shard((raw, f"{D}/tok_gs03_ls1_s{i}.u16", f"{R}/tok/pythia12b"))
+            parts.append(np.fromfile(out, np.uint16)); have += n; print(out, n, have, flush=True)
+            if have >= need:
+                break
+        x = np.concatenate(parts)[:need]; assert len(x) == need
+        x.tofile(f"{D}/pool_GS03.u16"); print("pool_GS03", len(x))
     else:
         raise SystemExit(a.cmd)
 

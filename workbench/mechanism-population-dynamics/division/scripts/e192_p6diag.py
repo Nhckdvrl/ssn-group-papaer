@@ -81,7 +81,7 @@ for name, (x, y, (C, P, Q)) in comps.items():
 o0, o1 = load(f"{R}/official/i1080/nll.npz", "dclm"), load(f"{R}/official/i1620/nll.npz", "dclm")
 C, P, Q = C10
 out["curve"] = {}
-for arm in ("A1", "A2", "B1"):
+for arm in ("A1", "A2", "B1", "P6GS03"):
     rows = {}
     for c in range(0, 541, 54):
         f = f"{A}/{arm}/nll_c{c:04d}.npz"
@@ -90,6 +90,19 @@ for arm in ("A1", "A2", "B1"):
         dv = load(f, "dclm") - (o0 + (o1 - o0) * c / 540)
         rows[str(c)] = {"total": float(dv.mean()), **{k: float((dv * m).sum() / max(m.sum(), 1)) for k, m in C.items()}}
     out["curve"][arm] = rows
+# round 3 p6 test: continuation on the official data (gs03) at c54 / c108 vs the official interpolation, both streams
+out["gs03_test"] = {}
+if os.path.exists(f"{R}/p6/off1080_nll.npz"):
+    q0, q1 = load(f"{R}/p6/off1080_nll.npz", "dclm_gs05"), load(f"{R}/p6/off1620_nll.npz", "dclm_gs05")
+    for c in (54, 108):
+        f = f"{R}/p6/P6GS03_c{c:04d}_nll.npz"
+        if os.path.exists(f):
+            z = np.load(f)
+            out["gs03_test"][f"c{c}"] = {"gs10_minus_interp": float((z["dclm_gs10"].astype(np.float64) - (o0 + (o1 - o0) * c / 540)).mean()),
+                                         "gs05_minus_interp": float((z["dclm_gs05"].astype(np.float64) - (q0 + (q1 - q0) * c / 540)).mean())}
+            fa = f"{A}/A1/nll_c{c:04d}.npz"
+            if os.path.exists(fa):
+                out["gs03_test"][f"c{c}"]["gs10_minus_A1"] = float((z["dclm_gs10"].astype(np.float64) - load(fa, "dclm")).mean())
 json.dump(out, open(f"{R}/p6/p6_diag.json", "w"), indent=1, ensure_ascii=False)
 
 T = ["### R6′ (p6) 诊断：续训比官方低的那 .05 nat 落在哪些 token 上（POST-HOC，11-18；只用已保存的逐 token NLL；"
@@ -108,5 +121,9 @@ T.append("| 臂 | c | " + " | ".join(names) + " |\n|" + "---|" * (len(names) + 2
 for arm, rows in out["curve"].items():
     for c, r in rows.items():
         T.append(f"| {arm} | {c} | " + " | ".join(f"{r[k]:+.4f}" for k in names) + " |")
+if out["gs03_test"]:
+    T.append("\n**p6 检验（第三轮）：用官方训练数据（gs03）从 S 续训**——相对官方 1080→1620 线性插值的差（gs10 / gs05），及与 A1 同点之差（gs10）\n")
+    for k, v in out["gs03_test"].items():
+        T.append(f"- {k}: " + "，".join(f"{kk} {vv:+.4f}" for kk, vv in v.items()))
 open(f"{R}/p6/p6_diag.md", "w").write("\n".join(T) + "\n")
 print("\n".join(T))

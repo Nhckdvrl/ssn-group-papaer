@@ -74,8 +74,17 @@ ARMDEF = {"A1": (1080, "free", "on", 1), "A2": (1080, "free", "on", 2), "B1": (1
 ARMDEF.update({"B2r": (1080, "frozen", "on", 2), "G2": (1080, "frozen", "off", 2), "A3": (1080, "free", "on", 3), "B3": (1080, "frozen", "on", 3),
                "A4": (1080, "free", "on", 4), "B4": (1080, "frozen", "on", 4), "A5": (1080, "free", "on", 5), "B5": (1080, "frozen", "on", 5)})
 REPL = ["B2r", "G2", "A3", "B3", "A4", "B4", "A5", "B5"]
+# round 3 (card "B2r 的结果与第三轮", 11-18): per-layer router treatments + p6 test on the official data
+ARMDEF.update({"CL1_1": (1080, "reset", "on", 1), "CL1_2": (1080, "reset", "on", 2), "CD_1": (1080, "reset", "on", 1), "CD_2": (1080, "reset", "on", 2),
+               "DL1free": (540, "frozen", "on", 1), "DL1only": (540, "frozen", "on", 1), "D2": (540, "frozen", "on", 2), "E2": (540, "free", "on", 2),
+               "P6GS03": (1080, "free", "on", 1)})
+ROUND3 = ["CL1_1", "CL1_2", "CD_1", "CD_2", "DL1free", "DL1only", "D2", "E2", "P6GS03"]
+RESET_L = {"CL1_1": [1], "CL1_2": [1], "CD_1": list(range(2, 9)), "CD_2": list(range(2, 9))}       # MoE layer numbers
+FROZEN_L = {"DL1free": list(range(2, 9)), "DL1only": [1], "D2": list(range(1, 9))}
+HIDE = set(REPL) | set(ROUND3)
 PAIRS = [("B1", "A1"), ("B2", "A2"), ("C1", "A1"), ("C2", "A2"), ("D", "E"), ("G", "B1"), ("F", "A1"),
-         ("B3", "A3"), ("B4", "A4"), ("B5", "A5"), ("B2r", "A2"), ("G2", "A2"), ("G2", "B2r"), ("B2r", "B2")]
+         ("B3", "A3"), ("B4", "A4"), ("B5", "A5"), ("B2r", "A2"), ("G2", "A2"), ("G2", "B2r"), ("B2r", "B2"),
+         ("CL1_1", "A1"), ("CL1_2", "A2"), ("CD_1", "A1"), ("CD_2", "A2"), ("DL1free", "E"), ("DL1only", "E"), ("D2", "E2"), ("P6GS03", "A1")]
 FLOOR = ("A1", "A2")
 
 
@@ -92,8 +101,8 @@ def points(arm):
 
 ARMS = [x for x in ARMDEF if os.path.isdir(f"{a.ana}/arms/{x}")]
 PTS = {x: points(x) for x in ARMS}
-DONE = {x: any(os.path.exists(f"{a.ana}/arms/{x}/DONE_{n:04d}") for n in (540, 1080) if n <= a.max_c) for x in ARMS}
-INTERIM = not all(DONE.get(x, False) for x in ["A1", "A2", "B1", "B2", "C1", "C2", "D", "E"])
+DONE = {x: any(os.path.exists(f"{a.ana}/arms/{x}/DONE_{n:04d}") for n in (108, 540, 1080) if n <= a.max_c) for x in ARMS}
+INTERIM = not all(DONE.get(x, False) for x in ARMS)          # any present arm still running -> interim label
 log("arms", PTS, "interim" if INTERIM else "final")
 S = {"arms": ARMS, "points": PTS, "done": DONE, "interim": INTERIM, "pending": []}
 
@@ -591,6 +600,48 @@ if not S["p6"]:
     S["pending"].append("p6 third-shard evals (e192_p6.py; queued on fvcrc20 GPU 3 after F)")
 log("replication / stability done")
 
+# ---- R7 (moved from the 11-18 hand computation): F's router displacement vs A1's, routing agreement, logit scale
+S["r7"] = {}
+if "F" in ARMS and "A1" in ARMS and 540 in PTS["F"] and 540 in PTS["A1"]:
+    WS_, WA_, WF_ = pt("A1", 0)[0], pt("A1", 540)[0], pt("F", 540)[0]
+    S["r7"]["F_dW_cos_vs_A1"] = [float(torch.nn.functional.cosine_similarity((WF_[l] - WS_[l]).ravel(), (WA_[l] - WS_[l]).ravel(), dim=0)) for l in range(L)]
+    S["r7"]["F_dW_norm_ratio"] = [float((WF_[l] - WS_[l]).norm() / (WA_[l] - WS_[l]).norm()) for l in range(L)]
+    S["r7"]["agree_on_A1_input"] = {"F_vs_A1": cmp_routers(("F", 540), ("A1", 540), ("A1", 540), False)["top6"],
+                                    "S_vs_A1": cmp_routers(("A1", 0), ("A1", 540), ("A1", 540), False)["top6"],
+                                    "F_vs_S": cmp_routers(("F", 540), ("A1", 0), ("A1", 540), False)["top6"]}
+S["r7"]["lse2"] = {}
+for x in ("A1", "B1", "F", "G", "G2", "B2r"):
+    for c in (0, 540, 1080):
+        if x in ARMS and c in PTS[x]:
+            v = [float(torch.logsumexp(xhat(x, c, l) @ weff(x, c, l).T, -1).pow(2).mean()) for l in range(L)]
+            S["r7"]["lse2"][f"{x}@c{c}"] = {"per_layer": v, "mid": float(np.mean([v[l] for l in MID]))}
+
+# ---- round 3: per-layer relearned / frozen router readouts
+S["round3"] = {}
+for x, y, z in (("CL1_1", "A1", "CL1_2"), ("CL1_2", "A2", "CL1_1"), ("CD_1", "A1", "CD_2"), ("CD_2", "A2", "CD_1")):
+    if x not in ARMS or y not in ARMS:
+        continue
+    rec = {}
+    for c in PTS[x]:
+        r = {"vsS_onS": [v[1] for v in cmp_routers((x, c), ("A1", 0), ("A1", 0), False)["per_layer"]]}
+        if c in PTS[y]:
+            r["vsA_same_iter"] = [v[1] for v in cmp_routers((x, c), (y, c), (x, c), False)["per_layer"]]
+            r["A_vsS"] = [v[1] for v in cmp_routers((y, c), ("A1", 0), (y, c), False)["per_layer"]]
+        if z in ARMS and c in PTS[z]:
+            r["vs_other_seed"] = [v[1] for v in cmp_routers((x, c), (z, c), (x, c), False)["per_layer"]]
+        rec[str(c)] = r
+    S["round3"][x] = {"reset_layers": RESET_L[x], "pair": y, "points": rec}
+for x, y in (("DL1free", "E"), ("DL1only", "E"), ("D2", "E2")):
+    if x not in ARMS or y not in ARMS:
+        continue
+    rec = {}
+    for c in sorted(set(PTS[x]) & set(PTS[y])):
+        rec[str(c)] = {"vsE_same_iter": [v[1] for v in cmp_routers((x, c), (y, c), (x, c), False)["per_layer"]],
+                       "vs_start": [v[1] for v in cmp_routers((x, c), ("E", 0), (x, c), False)["per_layer"]],
+                       "maxabs_W_vs_start": [float((pt(x, c)[0][l] - pt("E", 0)[0][l]).abs().max()) for l in range(L)]}
+    S["round3"][x] = {"frozen_layers": FROZEN_L[x], "pair": y, "points": rec}
+log("round 3 done")
+
 json.dump(S, open(f"{a.out}/summary.json", "w"), indent=1, ensure_ascii=False)
 
 # ================================================================== figures
@@ -702,12 +753,13 @@ T.append("- (p3) 前 54 iter 相邻最大跳变：" + "，".join(f"{x} {S['train
          + "；吞吐中位数（k token/s）：" + "，".join(f"{x} {S['train'][x]['tok_s_median'] / 1e3:.1f}" for x in ARMS if S['train'][x]['tok_s_median']))
 T.append("\n### 训练稳定性（POST-HOC，11-18 看到 B2 c324 后加；逐 54 iter 块，第一个 micro batch 的最大负载 × E 取 8 层最大）\n")
 T.append("| 臂 | iter 块 | 训练 loss 均值 | 梯度范数中位数 | 梯度范数最大 | z-loss 最大 | 最大负载 × E 最大 | 相邻跳变 > .1 次数 |\n|---|---|---|---|---|---|---|---|")
-for x, bl in S["stability"].items():
+_m = lambda d: {k: v for k, v in d.items() if k not in HIDE}
+for x, bl in _m(S["stability"]).items():
     for k, v in bl.items():
         T.append(f"| {x} | {k} | {v['lm_mean']:.4f} | {v['gn_median']:.3f} | {v['gn_max']:.2f} | {v['z_max']:.4f} | {v['maxload_max']:.2f} | {v['n_jump_gt_0.1']} |")
 T.append("\n## §1 留出 NLL（读数 1）\n")
 T.append("| 臂 | c | 官方 iter | DCLM 留出 | wikitext-103 test |\n|---|---|---|---|---|")
-for x in ARMS:
+for x in [y for y in ARMS if y not in HIDE]:
     for c in PTS[x]:
         v = S["nll"]["curves"][x][str(c)]
         T.append(f"| {x} | {c} | {v['official_iter']} | {f3(v['dclm'])} | {f3(v['wikitext'])} |")
@@ -717,16 +769,16 @@ T.append("\n配对差（同数据种子，同一批窗口）与地板 |A1 − A2
 T.append("（阶段：c ≤ 540 = 阶段 1（池 P1）；c > 540 = 阶段 2（池 P2，只 A/B/C）；复制臂另见 §R）\n")
 T.append("| 对比 | 阶段 | c | DCLM 差 | wikitext 差 |\n|---|---|---|---|---|")
 for name, d in list(S["nll"]["pairs"].items()) + [(f"地板 {k}", v) for k, v in S["nll"]["floor"].items()]:
-    if any(x in REPL for x in name.replace("地板 ", "").split("-")):
+    if any(x in HIDE for x in name.replace("地板 ", "").split("-")):
         continue
     for c, v in d.items():
         T.append(f"| {name} | {1 if int(c) <= 540 else 2} | {c} | {f3s(v['dclm'])} | {f3s(v['wikitext'])} |")
-for name, v in S["nll"].get("vs_official", {}).items():
+for name, v in {k: v for k, v in S["nll"].get("vs_official", {}).items() if k.split("@")[0] not in HIDE}.items():
     T.append(f"| {name} − 官方 | — | {f3s(v['dclm'])} | {f3s(v['wikitext'])} |")
 T.append("\n## §2 路由（读数 2）\n")
 T.append("### 2·1 各臂路由器 vs 起点路由器（各自当前输入；1080 臂对 S，D/E 对 iter 540 路由器）\n")
 T.append("| 臂 | c | top-6 恒等 | top-6 匈牙利 | top-1 恒等 | 偶遇 |\n|---|---|---|---|---|---|")
-for x, d in S["routing"]["vsS"].items():
+for x, d in _m(S["routing"]["vsS"]).items():
     for c, v in d.items():
         T.append(f"| {x} | {c} | {f2(v['top6'])} | {f2(v['top6_hung'])} | {f2(v['top1'])} | {v['chance_top6_mid']:.3f} |")
 T.append("\n### 2b 重置路由器的重学（C）\n")
@@ -757,7 +809,7 @@ for x, d in S["routing"]["B_gain"].items():
         T.append(f"| {x} | {c} | {v['rel_gain_change_mid']:.4f} | {v['eff_router_rowcos_mid']:.4f} | {f2(v['routing_vs_S_on_own_input'])} |")
 T.append("\n### 2d O / H / R（对各臂自身最新点；e191 定义；mid，top-6，括号内 top-1）\n")
 T.append("| 臂 | 终点 c | c | O | H | R |\n|---|---|---|---|---|---|")
-for x, d in S["decomp"].items():
+for x, d in _m(S["decomp"]).items():
     if x == "vs_official":
         continue
     for c, v in d["toF"].items():
@@ -767,13 +819,13 @@ for name, d in S["decomp"].get("vs_official", {}).items():
         T.append(f"| {name} | — | {c} | " + " | ".join(f"{f2(v[k]['top6'])} ({v[k]['top1'][0]:.3f})" for k in ("O", "H", "R")) + " |")
 T.append("\n### 负载与 top-6 概率和（主视图，mid）\n")
 T.append("| 臂 | c | 最大负载 × E | 负载熵（bit，均匀 6） | top-6 概率和 |\n|---|---|---|---|---|")
-for x, d in S["routing"]["load"].items():
+for x, d in _m(S["routing"]["load"]).items():
     for c, v in d.items():
         T.append(f"| {x} | {c} | {v['maxload_xE']:.3f} | {v['load_entropy_bits']:.3f} | {v['top6_psum']:.4f} |")
 T.append("\n### 2e 从起点出发各自走了多远：路由器权重 vs 路由器输入（mid；1080 臂以 S 为起点，D/E 以官方 540）\n")
 T.append("H_起点路由器 = 起点路由器作用于当前输入 vs 作用于起点输入的 top-6 重合（只由输入漂移造成的路由变化）。\n")
 T.append("| 臂 | c | W 行余弦 | 有效路由器行余弦 | x̂ 逐 token 余弦 | x̂ 子空间内 | x̂ 子空间外 | H_起点路由器 top-6 | 路由器 vs 起点 top-6（当前输入） |\n|---|---|---|---|---|---|---|---|---|")
-for x, d in S["routing"].get("drift_from_start", {}).items():
+for x, d in _m(S["routing"].get("drift_from_start", {})).items():
     for c, v in d.items():
         T.append(f"| {x} | {c} | {v['W_rowcos']:.4f} | {v['Weff_rowcos']:.4f} | {v['xhat_cos']:.4f} | {v['xhat_cos_in']:.4f} | {v['xhat_cos_out']:.4f} | {f2(v['H_startrouter_top6'])} | {f2(S['routing']['vsS'][x][c]['top6'])} |")
 cl = S["routing"]["C"]
@@ -872,6 +924,46 @@ if S["p6"]:
     for k, v in S["p6"].items():
         fm = f3s if "−" in k else f3
         T.append(f"| {k} | {fm(v['dclm_gs10'])} | {fm(v['dclm_gs05'])} |")
+T.append("\n### R2b 复制臂配对差逐点（DCLM 留出）\n")
+T.append("| 对比 | c | DCLM 差 | wikitext 差 |\n|---|---|---|---|")
+for name, d in S["nll"]["pairs"].items():
+    if any(x in REPL for x in name.split("-")):
+        for c, v in d.items():
+            T.append(f"| {name} | {c} | {f3s(v['dclm'])} | {f3s(v['wikitext'])} |")
+T.append("\n地板（全部 A 两两差，逐点）：" + "；".join(f"c{c} [{v['min']:+.4f}, {v['max']:+.4f}]（{v['n_pairs']} 对）" for c, v in S["nll"]["floor_allA"].items()))
+if S["r7"]:
+    T.append("\n### R7 F / G 的补充读数（主视图 mid，top-6 恒等）\n")
+    if "F_dW_cos_vs_A1" in S["r7"]:
+        T.append("- cos(W_F − W_S, W_A1 − W_S)（层 1–8）：" + " / ".join(f"{v:.3f}" for v in S["r7"]["F_dW_cos_vs_A1"])
+                 + "；‖W_F − W_S‖ / ‖W_A1 − W_S‖：" + " / ".join(f"{v:.2f}" for v in S["r7"]["F_dW_norm_ratio"]))
+        g_ = S["r7"]["agree_on_A1_input"]
+        T.append(f"- A1@c540 输入上：F vs A1@c540 {f2(g_['F_vs_A1'])}；S vs A1@c540 {f2(g_['S_vs_A1'])}；F vs S {f2(g_['F_vs_S'])}")
+    T.append("- 路由器 logits 尺度 mean lse²：" + "；".join(f"{k} mid {v['mid']:.3f}（层 1–8：{' / '.join(f'{u:.2f}' for u in v['per_layer'])}）" for k, v in S["r7"]["lse2"].items()))
+
+# ------------------------------------------------------------------ §T round 3
+T3 = [x for x in ROUND3 if x in ARMS]
+if T3:
+    T.append("\n## §T 第三轮（POST-HOC，卡\"B2r 的结果与第三轮\"一节；按层的路由器处理与 p6 官方数据续训）\n")
+    T.append("### T1 留出 NLL 配对差（DCLM，逐点；与 C − A、D − E 并列）\n")
+    T.append("| 对比 | c | DCLM 差 | wikitext 差 |\n|---|---|---|---|")
+    for name in ("C1-A1", "CL1_1-A1", "CD_1-A1", "C2-A2", "CL1_2-A2", "CD_2-A2", "D-E", "DL1free-E", "DL1only-E", "D2-E2", "P6GS03-A1"):
+        for c, v in S["nll"]["pairs"].get(name, {}).items():
+            if int(c) <= 540:
+                T.append(f"| {name} | {c} | {f3s(v['dclm'])} | {f3s(v['wikitext'])} |")
+    T.append("\n### T2 逐层路由器（top-6 恒等，各臂最新点；重置层 / 冻结层加 *）\n")
+    for x, d in S["round3"].items():
+        c = max(d["points"], key=int); r = d["points"][c]; mark = set(d.get("reset_layers", d.get("frozen_layers", [])))
+        T.append(f"**{x}**（c{c}，对照 {d['pair']}）\n")
+        T.append("| 量 | " + " | ".join(f"{l}{'*' if l in mark else ''}" for l in range(1, L + 1)) + " |\n|" + "---|" * (L + 1))
+        for k, v in r.items():
+            T.append(f"| {k} | " + " | ".join(f"{u:.3f}" if isinstance(u, float) and u < 10 else f"{u:.1e}" for u in v) + " |")
+        T.append("")
+    T.append("### T3 第三轮各臂的留出 NLL、负载（主视图 mid）\n")
+    T.append("| 臂 | c | DCLM | wikitext | 最大负载 × E | 负载熵 | top-6 概率和 |\n|---|---|---|---|---|---|---|")
+    for x in T3:
+        for c in PTS[x]:
+            v = S["nll"]["curves"][x][str(c)]; ld = S["routing"]["load"][x][str(c)]
+            T.append(f"| {x} | {c} | {f3(v['dclm'])} | {f3(v['wikitext'])} | {ld['maxload_xE']:.3f} | {ld['load_entropy_bits']:.3f} | {ld['top6_psum']:.4f} |")
 if os.path.exists(f"{a.root}/p6/p6_diag.md"):                 # e192_p6diag.py output (POST-HOC, 11-18)
     T.append("\n" + open(f"{a.root}/p6/p6_diag.md").read())
 open(f"{a.out}/tables.md", "w").write("\n".join(T) + "\n")
