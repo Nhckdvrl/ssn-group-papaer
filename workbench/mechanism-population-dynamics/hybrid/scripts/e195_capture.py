@@ -46,7 +46,7 @@ class Capture:
             x[i, :len(s)] = torch.tensor(s)
         self.pos = torch.tensor([[len(s) - o for o in offsets] for s in ids], device="cuda")
         self.out = []
-        self.base(input_ids=x.cuda())
+        self.base(input_ids=x.cuda(), use_cache=False)
         return torch.stack(self.out)  # [L+1, B, P, d]
 
 
@@ -57,7 +57,7 @@ def mode_nll(model, tok, start, passages):
         ids = ([start] if start is not None else []) + tok(p["text"], add_special_tokens=False)["input_ids"][:511]
         x = torch.tensor([ids], device="cuda")
         with torch.no_grad():
-            lp = model(input_ids=x).logits[0, :-1].float().log_softmax(-1)
+            lp = model(input_ids=x, use_cache=False).logits[0, :-1].float().log_softmax(-1)
         l = -lp.gather(1, x[0, 1:, None])[:, 0].cpu().numpy()
         nll.append(l)
         if len(l) >= 256:
@@ -65,7 +65,9 @@ def mode_nll(model, tok, start, passages):
     pr = tok("The capital of France is", add_special_tokens=False)["input_ids"]
     with torch.no_grad():
         p0 = ([start] if start is not None else []) + pr
-        g = model.generate(torch.tensor([p0], device="cuda"), max_new_tokens=12, do_sample=False)
+        g = torch.tensor([p0], device="cuda")
+        for _ in range(12):  # greedy without KV cache (remote code caches break under tf 4.57)
+            g = torch.cat([g, model(input_ids=g, use_cache=False).logits[:, -1].argmax(-1, keepdim=True)], 1)
     return {"nll_mean": float(np.concatenate(nll).mean()), "first128": float(np.mean(first)), "last128": float(np.mean(last)),
             "greedy": tok.decode(g[0, len(p0):])}
 
