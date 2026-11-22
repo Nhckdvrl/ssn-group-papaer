@@ -61,11 +61,21 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("model"); ap.add_argument("pud"); ap.add_argument("out"); ap.add_argument("--start", default="auto")
     ap.add_argument("--bs", type=int, default=24)
+    ap.add_argument("--cond", default="none", help="E200: none | noconv | nomem | none_mix (recurrent layers given by --layers)")
+    ap.add_argument("--layers", default="")
     a = ap.parse_args()
     t0 = time.time()
     tok = AutoTokenizer.from_pretrained(a.model)
     model = AutoModelForCausalLM.from_pretrained(a.model, dtype=torch.bfloat16, device_map="cuda").eval()
     emb, layers = find_parts(model)
+    if a.cond != "none":
+        for li in [int(x) for x in a.layers.split(",")]:
+            mx = next(m for m in layers[li].modules() if hasattr(m, "conv1d") and hasattr(m, "A_log"))
+            with torch.no_grad():
+                if a.cond in ("noconv", "none_mix"):
+                    mx.conv1d.weight[..., :-1] = 0
+                if a.cond in ("nomem", "none_mix"):
+                    mx.A_log += 20
     lt = layer_types(model)
     start = None if a.start == "none" else (int(a.start) if a.start != "auto" else None)
     pad = tok.pad_token_id if tok.pad_token_id is not None else (tok.eos_token_id or 0)
@@ -124,7 +134,7 @@ def main():
         pooled[lg] = torch.stack(pl)  # [N, L+1, d]
         print(json.dumps({"lang": lg, "sec": round(time.time() - t0, 1)}), flush=True)
     # M1
-    res = {"model": a.model, "layer_types": lt, "langs": langs, "n": N, "sigma_mult": SIGMA_MULT, "M1": {}, "M1mis": {}, "M2": {}}
+    res = {"model": a.model, "cond": a.cond, "switched_layers": a.layers, "layer_types": lt, "langs": langs, "n": N, "sigma_mult": SIGMA_MULT, "M1": {}, "M1mis": {}, "M2": {}}
     for lg, A in acc.items():
         h = A.cpu().numpy()  # [L+1, S, 3, 2]
         res["M1"][lg] = (h[..., 0, 0] / np.sqrt(h[..., 1, 0] * h[..., 2, 0])).tolist()
