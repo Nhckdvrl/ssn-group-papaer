@@ -128,7 +128,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 
 | workbench | 状态 | 目标会议 | 截稿 | 主张账本 | 上次人审 | 备注 |
 |---|---|---|---|---|---|---|
-| `mechanism-population-dynamics` | PROPOSED | — | — | `CLAIMS.md` | 2026-10-31 | **用户10-31决定摒弃MoE计算组织线（E144–E166，存档不投稿），回到导师原问：自训多seed小型MoE，扣掉词身份与隐状态几何后测专家分工是否跨seed重现（E167）。** ≤8卡（fvcrc10/11/12/15/20/21空闲卡）；尚无跨seed结果。复盘见[RETROSPECTIVE](mechanism-population-dynamics/moe/notes/RETROSPECTIVE_2026-10-31.md)，入口[division/](mechanism-population-dynamics/division/README.md)。头线CLOSED，其他ACTIVE不变。 |
+| `mechanism-population-dynamics` | PROPOSED | — | — | `CLAIMS.md` | 2026-10-31 | **11-23：开探索子线 [hybrid/](mechanism-population-dynamics/hybrid/README.md)（混合架构里在哪一层拼词），试测卡 E194 PLANNED，待人签字；division 原问题 11-22 起不再作主问题。状态仍为 PROPOSED，不动 ACTIVE 分配。** 此前：**用户10-31决定摒弃MoE计算组织线（E144–E166，存档不投稿），回到导师原问：自训多seed小型MoE，扣掉词身份与隐状态几何后测专家分工是否跨seed重现（E167）。** ≤8卡（fvcrc10/11/12/15/20/21空闲卡）；尚无跨seed结果。复盘见[RETROSPECTIVE](mechanism-population-dynamics/moe/notes/RETROSPECTIVE_2026-10-31.md)，入口[division/](mechanism-population-dynamics/division/README.md)。头线CLOSED，其他ACTIVE不变。 |
 | `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有原生GPU测量与训练**：R1–R5持续开放；固定数据充分训练seed0/1/2为38/19/36（各48）；当前方法入口按RESEARCH_PLAN与I14/E20执行，尚无已成立科学主张；不改变ACTIVE分配 |
 | `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有真实GPU底座**：E12四静态策略完整八任务评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审；I01/I02/I03仍为候选，主张均L0；实时数字见workbench状态页，不改变ACTIVE调度 |
 | `in-context-evidence-structure` | ACTIVE-EXPLORE | ICML / ICLR；ACL / EMNLP 叙事并行 | — | `CLAIMS.md` | 2026-10-08 | 继续保持正式探索线；截至 2026-10-11 已完成 E103，E104 的运行前设计已建立，尚未形成新机制主张；本次清理不改变其研究状态。 |

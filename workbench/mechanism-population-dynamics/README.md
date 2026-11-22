@@ -1,6 +1,8 @@
 # Mechanism Population Dynamics
 
-当前研究是**分别训练的 MoE 是否自发形成同一套专家分工**（[division/](division/README.md)，2026-10-31 起，自训多 seed，最多 8 卡）。此前的 MoE 计算组织线（E144–E166）已由人决定摒弃，结果存档于 [moe/](moe/README.md)，理由见[复盘](moe/notes/RETROSPECTIVE_2026-10-31.md)。头线保持 CLOSED。
+**2026-11-23 起的当前工作：** [hybrid/](hybrid/README.md)，问混合架构（循环层 + 少量全注意力层）里被切开的词在哪一层拼回整词。试测卡 E194 已写好，等人签字后才跑。
+
+此前的工作是**分别训练的 MoE 是否自发形成同一套专家分工**（[division/](division/README.md)，2026-10-31 起）。11-22 起不再作为主问题：头线已答过同类问题，结项原因是答不出"所以呢"。经过见 [PROGRESS_REVIEW](division/PROGRESS_REVIEW_2026-11-22.md)。此前的 MoE 计算组织线（E144–E166）已由人决定摒弃，结果存档于 [moe/](moe/README.md)，理由见[复盘](moe/notes/RETROSPECTIVE_2026-10-31.md)。头线保持 CLOSED。
 
 ## 从这里开始
 
