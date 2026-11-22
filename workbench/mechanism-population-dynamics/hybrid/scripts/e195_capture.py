@@ -22,7 +22,7 @@ N_SRC = 300
 
 def parts(model):
     base = getattr(model, "model", None) or getattr(model, "backbone")
-    emb = getattr(base, "embed_tokens", None) or getattr(base, "embeddings")
+    emb = getattr(base, "embed_tokens", None) or getattr(base, "embeddings", None) or getattr(base, "word_embeddings")
     return base, emb, list(base.layers)
 
 
@@ -114,9 +114,10 @@ def main():
     ap.add_argument("--random", type=int, default=-1); ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--items_per_batch", type=int, default=4); ap.add_argument("--passages", default="")
     ap.add_argument("--no_start", action="store_true", help="no document-start token (dense Granite degenerates with it)")
+    ap.add_argument("--trust", action="store_true", help="trust_remote_code (Ring/Ling, code read beforehand)")
     a = ap.parse_args()
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
-    tok = AutoTokenizer.from_pretrained(a.model)
+    tok = AutoTokenizer.from_pretrained(a.model, trust_remote_code=a.trust)
     start = tok.bos_token_id if tok.bos_token_id is not None else tok.eos_token_id
     pad = tok.pad_token_id if tok.pad_token_id is not None else start
     if a.no_start:
@@ -124,10 +125,10 @@ def main():
     pad = pad if pad is not None else 0
     if a.random >= 0:
         torch.manual_seed(a.random)
-        cfg = AutoConfig.from_pretrained(a.model)
-        model = AutoModelForCausalLM.from_config(cfg, dtype=torch.bfloat16).cuda().eval()
+        cfg = AutoConfig.from_pretrained(a.model, trust_remote_code=a.trust)
+        model = AutoModelForCausalLM.from_config(cfg, dtype=torch.bfloat16, trust_remote_code=a.trust).cuda().eval()
     else:
-        model = AutoModelForCausalLM.from_pretrained(a.model, dtype=torch.bfloat16, device_map="cuda").eval()
+        model = AutoModelForCausalLM.from_pretrained(a.model, dtype=torch.bfloat16, device_map="cuda", trust_remote_code=a.trust).eval()
     t0 = time.time()
     if a.mode == "nll":
         res = mode_nll(model, tok, start, a.passages)
