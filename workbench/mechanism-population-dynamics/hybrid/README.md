@@ -2,7 +2,7 @@
 
 **状态（2026-11-23 06:35）：**
 - 探索子线，用户 11-23 签字开跑。workbench 在登记表里仍是 PROPOSED，ACTIVE 名额不动（R2/R7）。
-- 卡 E194–E200 已跑完。没有推进任何主张等级（全部是 PILOT）。
+- 卡 E194–E201 已跑完。没有推进任何主张等级（全部是 PILOT）。
 
 ## 问题（一句话）
 アテンションをほとんど持たないハイブリッドLLMは、サブワードをどこで・何によって単語にまとめているのか。
@@ -35,12 +35,22 @@
    - 在 Granite-H 和 Qwen3.5 上，它是"进入全注意力层的表示"的几何尖峰：随便配对的句子同样出现，并与第一主成分跳变同步（E197）。
    - 按预先写定的口径判"复现不了"；口径失误已在卡上写明。
 
+## 定位（11-23 检索；近邻按全文或摘要核对过）
+"关掉线性或混合模型的短卷积，再看子词合成"这个交叉点目前没有人做过。近邻分两类：
+
+| 近邻 | 做了什么 | 与我们的距离 |
+|---|---|---|
+| Kaplan et al. ICLR 2025；Busigin & Pinter（Word Factory）Findings EMNLP 2026；EMNLP 2025 子词组合性；BlackboxNLP 2026 早期拼词注意力头 | 只在 Transformer 上研究拼词。Word Factory 发现第 1 层的注意力加 MLP 完成拼词，第 3 层以后的层对拼词几乎无影响 | 我们把问题推广到混合模型：谁来拼由架构在最初几层提供的部件决定，并有跨三类部件的因果对照 |
+| Allen-Zhu Part 4.1（NeurIPS 2025）/ 4.2（arXiv 2611.24963）；BabyLM 2025；CHELA 2024 | 短卷积显著提升线性模型的性能，"GDN、Mamba2 的额外机制可能只是在混合相邻 token" | 只看性能，不看卷积算了什么。我们给出一个可测的内容：拼词 |
+| Bandarkar et al. 2609.35378；Zeng et al. 2611.01909；Afendulev et al. 2609.04434 | 混合模型的跨语言事件、检索回路、循环状态与 KV 的分工 | 见上面"它能解释的"一节 |
+
 ## 它能解释的、别人留下的现象（推论，尚未直接检验）
 - **Bandarkar 的蒸馏结果：** 他们把 Transformer 蒸馏成混合模型时，短卷积按恒等初始化（附录算法 1），这正是我们的"关卷积"状态。按第 2、3 条，学生模型在早期拼不了词，所以凡是第一层放全注意力的排法都胜出，切得最碎的非拉丁文字收益最大。
 - **Zeng 2611.01909：** 把最早的循环块换成逐 token 投影后，检索不变、困惑度 10.6 → 44.7。我们关卷积时 NLL 也从 2.97 升到 4.03，丢掉的正是拼词。
 - **Allen-Zhu Part 4.1：** Mamba2 的性能主要来自短卷积。这里给出一个语言学上的理由：短卷积在做拼词。
 
 ## 需要人决定的
+- **怎样拆开"有没有卷积"与"记忆类型"：** 自训小模型（E201）在 9 千万参数、5 亿 token 的规模上不拼词，桥接失败。剩下两条路：PhysicsLM4.2（见下一条），或把自训扩大到几亿参数、几十亿 token（超过 20 GPU 小时，需要批准）。
 - **PhysicsLM4.2：** Llama 与 LlamaCanon（同配方，只差 Canon 短卷积，1B–8B，各两种学习率）在 Hugging Face 上是受限访问。接受许可并允许用你的凭证下载，就能在同配方下检验"加了卷积后，拼词是否从注意力转给卷积"。我没有擅自使用凭证。
 - **12-02 给导师的材料：** 草稿见 [`ADVISOR_ONEPAGER_DRAFT.md`](ADVISOR_ONEPAGER_DRAFT.md)，不由我发送。
 - **模型权重：** 约 200 GB，分散在 fvcrc10、13、21 的本地 `/tmp`。继续做就保留，否则按 compute-policy 删除。
@@ -60,6 +70,7 @@
 | [E198](experiments/E198-conv-memory-replication.md) | 卷积/记忆开关在 Granite-H、Qwen3.5 上复现 | 只复现 1（卷积必要） |
 | [E199](experiments/E199-convless-hybrid.md) | 无卷积的 Ring-mini-linear 对其父模型 | 记忆自己拼 |
 | [E200](experiments/E200-conv-off-fragmentation.md) | Qwen3.5 关卷积后跨语言损伤与切分程度 | 随碎片化上升 |
+| [E201](experiments/E201-tiny-models-mixer-choice.md) | 自训 6 个 9 千万参数模型，只差最初几层的局部混合部件 | 桥接检查不通过：这个规模的小模型几乎不拼人为拆开的词，不作解读 |
 
 关键图：[`results/e198/fig_conv_memory_three_hybrids.png`](results/e198/fig_conv_memory_three_hybrids.png)。
 
