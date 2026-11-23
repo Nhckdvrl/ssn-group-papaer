@@ -9,7 +9,8 @@ import sys
 import time
 from pathlib import Path
 
-import fla.models  # noqa: F401  (registers the fla model classes with transformers)
+if "--no_fla" not in sys.argv:  # fla-hub Mamba must load with transformers' native class (fla 0.4.0's Mamba is wrong)
+    import fla.models  # noqa: F401  (registers the fla model classes with transformers)
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -21,6 +22,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("model"); ap.add_argument("items"); ap.add_argument("passages"); ap.add_argument("out")
     ap.add_argument("--noconv_upto", type=int, default=-1)
+    ap.add_argument("--no_fla", action="store_true")
     a = ap.parse_args()
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     tok = AutoTokenizer.from_pretrained(a.model)

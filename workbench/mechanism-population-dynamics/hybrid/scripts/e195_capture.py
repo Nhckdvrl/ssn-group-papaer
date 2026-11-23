@@ -21,9 +21,11 @@ N_SRC = 300
 
 
 def parts(model):
-    base = getattr(model, "model", None) or getattr(model, "backbone")
-    emb = getattr(base, "embed_tokens", None) or getattr(base, "embeddings", None) or getattr(base, "word_embeddings")
-    return base, emb, list(base.layers)
+    base = getattr(model, "model", None) or getattr(model, "backbone", None) or getattr(model, "rwkv", None) or getattr(model, "gpt_neox")
+    emb = (getattr(base, "embed_tokens", None) or getattr(base, "embeddings", None) or getattr(base, "word_embeddings", None)
+           or getattr(base, "embed_in"))
+    layers = getattr(base, "layers", None) or getattr(base, "blocks")  # RWKV: rwkv.blocks; GPT-NeoX: gpt_neox.layers
+    return base, emb, list(layers)
 
 
 class Capture:

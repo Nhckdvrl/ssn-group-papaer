@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 # Fetch one HF repo revision (json/txt/safetensors/model files at top level) with curl, then verify LFS sha256.
-# Usage: dl_hf.sh REPO REV DIR
+# Usage: dl_hf.sh REPO REV DIR [bin]   (bin: also fetch top-level .bin weights, e.g. RWKV-4)
 set -u
 repo=$1; rev=$2; dir=$3; mkdir -p "$dir"
 curl -sL --max-time 60 "https://huggingface.co/api/models/$repo/tree/$rev" | python3 -I -c '
 import json,sys
 for f in json.load(sys.stdin):
     p=f["path"]
-    if "/" not in p and p.endswith((".json",".safetensors",".txt",".model",".py",".tiktoken")):
-        print(p, f.get("size",0), (f.get("lfs") or {}).get("oid","-"))' > "$dir/.files"
+    ext = (".json",".safetensors",".txt",".model",".py",".tiktoken") + ((".bin",) if sys.argv[1:] == ["bin"] else ())
+    if "/" not in p and p.endswith(ext):
+        print(p, f.get("size",0), (f.get("lfs") or {}).get("oid","-"))' ${4:-} > "$dir/.files"
 echo "$repo@$rev" > "$dir/SOURCE"
 while read -r p size oid; do
   if [ -f "$dir/$p" ] && [ "$(stat -c %s "$dir/$p")" = "$size" ]; then continue; fi
