@@ -25,11 +25,18 @@ def main():
     texts = [p["text"] for p in P["passages"]]
     enc = lambda s: tok(s, add_special_tokens=False)["input_ids"]
     single = {}
+    # SentencePiece tokenizers (Llama) prepend "▁" to every encoded string, so a continuation piece encoded on its
+    # own would become a word-initial token. For them, look pieces up in the vocabulary directly.
+    spm = tok.convert_ids_to_tokens(enc("a"))[0].startswith("▁")
+    vocab = tok.get_vocab() if spm else None
 
     def one(piece):
         if piece not in single:
-            ids = enc(piece)
-            single[piece] = ids[0] if len(ids) == 1 else None
+            if spm:
+                single[piece] = vocab.get(("▁" + piece[1:]) if piece.startswith(" ") else piece)
+            else:
+                ids = enc(piece)
+                single[piece] = ids[0] if len(ids) == 1 else None
         return single[piece]
 
     rng = random.Random(SEED)
@@ -39,7 +46,7 @@ def main():
         if s < 1 or t[s - 1] != " " or not form.isalpha():
             continue
         pre = enc(t[:s - 1])
-        wids = enc(" " + form)
+        wids = enc(form) if spm else enc(" " + form)
         if enc(t[:end]) != pre + wids or len(pre) < 3:
             continue
         ctx = pre[-CTX:]
@@ -108,7 +115,7 @@ def main():
             continue
         it["nonword"] = [rng.choice(others)["pieces"][k] for k in range(it["m"] - 1)] + [it["pieces"][-1]]
 
-    summ = {"n_S": len(S), "S_by_m": {m: sum(str(m) in it["splits"] for it in S) for m in MS},
+    summ = {"sentencepiece": spm, "n_S": len(S), "S_by_m": {m: sum(str(m) in it["splits"] for it in S) for m in MS},
             "n_N": len(N), "N_by_stratum": dict(by_stratum), "n_S_cand": len(S_cand), "n_N_cand": len(N_cand),
             "seed": SEED, "eos_prefix": tok.eos_token_id}
     (out / "items.json").write_text(json.dumps({"S": S, "N": N, "summary": summ}))
