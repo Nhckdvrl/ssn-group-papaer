@@ -16,6 +16,7 @@ def main():
     src, tokdir, out = sys.argv[1:4]
     max_tok = int(sys.argv[4]) if len(sys.argv) > 4 else 600_000_000
     tok = AutoTokenizer.from_pretrained(tokdir)
+    eos = tok.eos_token_id if tok.eos_token_id is not None else EOS
     pf = pq.ParquetFile(src)
     buf = np.lib.format.open_memmap(out, mode="w+", dtype=np.uint32, shape=(max_tok,))
     n, t0 = 0, time.time()
@@ -24,7 +25,7 @@ def main():
         for i in range(0, len(texts), 1000):
             enc = tok(texts[i:i + 1000], add_special_tokens=False)["input_ids"]
             for ids in enc:
-                ids = ids + [EOS]
+                ids = ids + [eos]
                 k = min(len(ids), max_tok - n)
                 buf[n:n + k] = ids[:k]
                 n += k
