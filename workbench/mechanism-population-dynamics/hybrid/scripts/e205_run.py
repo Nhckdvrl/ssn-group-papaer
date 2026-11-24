@@ -13,7 +13,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 sys.path.insert(0, str(Path(__file__).parent))
 import e195_capture as cap  # noqa: E402
 
-LAYERS = (0, 1, 2)
+LAYERS = tuple(int(x) for x in __import__("os").environ.get("E218_LAYERS", "0,1,2").split(","))  # E218: single-layer runs
 
 
 def main():

@@ -17,7 +17,7 @@ import torch.nn.functional as F
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 EOS, PAD = 100257, 100277
-LAYERS = (0, 1, 2)
+LAYERS = tuple(int(x) for x in __import__("os").environ.get("E218_LAYERS", "0,1,2").split(","))  # E218: single-layer runs
 
 
 def apply(model, cond):
