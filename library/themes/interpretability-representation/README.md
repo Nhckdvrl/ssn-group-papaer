@@ -157,6 +157,29 @@ Start from MIB / causal abstraction / SAEBench / established model-diffing harne
 - [Towards Universality: Studying Mechanistic Similarity Across Language Model Architectures](papers/2410.06672_towards-universality-mamba-transformer.md)
 - [The Platonic Representation Hypothesis](papers/2405.07987_platonic-representation-hypothesis.md)
 
+### 算法普适性：跨种子、家族、规模、架构（11-25 补读）
+
+- [Mechanistic Analysis of Universality: Numerical Comparison Circuits Across Transformer Architectures](papers/2026.acl-srw.84_bhardia-numerical-comparison-circuits.md)
+- [Grokking Group Multiplication with Cosets](papers/2312.06581_stander-group-multiplication-cosets.md)
+- [Universal Neurons in GPT2 Language Models](papers/2401.12181_gurnee-universal-neurons-gpt2.md)
+- [LLM Circuit Analyses Are Consistent Across Training and Scale](papers/2407.10827_tigges-circuits-consistent-training-scale.md)
+- [Quantifying Feature Space Universality Across Large Language Models via Sparse Autoencoders](papers/2410.06981_lan-sae-feature-space-universality.md)
+- [Algorithmic Phase Transitions in Language Models: A Mechanistic Case Study of Arithmetic](papers/2412.07386_sun-algorithmic-phase-transitions-arithmetic.md)
+- [Open Problems in Mechanistic Interpretability](papers/2501.16496_sharkey-open-problems-mech-interp.md)
+- [PolyPythias: Stability and Outliers across Fifty Language Model Pre-Training Runs](papers/2503.09543_polypythias-seed-stability.md)
+- [Toward a Theory of Generalizability in LLM Mechanistic Interpretability Research](papers/2509.22831_trott-generalizability-mech-interp.md)
+- [Quantifying LLM Attention-Head Stability: Implications for Circuit Universality](papers/2602.16740_bali-attention-head-seed-stability.md)
+- [Transformers Converge to Invariant Algorithmic Cores](papers/2602.22600_schiffman-algorithmic-cores.md)
+- [How Much Do Circuits Tell Us? Measuring the Consistency and Specificity of Language Model Circuits](papers/2605.08348_li-how-much-do-circuits-tell-us.md)
+- [Polymorphism Is Rotation: Operational Mechanistic Interpretability from a Two-Layer Transformer to Pythia-70m](papers/2605.24577_mccann-polymorphism-rotation.md)
+- [Many Circuits, One Mechanism: Input Variation and Evaluation Granularity in Circuit Discovery](papers/2606.06267_bayat-makou-many-circuits-one-mechanism.md)
+
+### 状态更新：写入时还是读出时（11-25 补读）
+
+- [Investigating the Indirect Object Identification circuit in Mamba](papers/2407.14008_ensign-ioi-circuit-mamba.md)
+- [Lost with a Map: Conversational State and Behavioral Reliability in Language Models](papers/2609.33883_dokme-heck-lost-with-a-map.md)
+- [Beyond State Capacity: Why Retrieval Breaks in Mamba](papers/2610.19709_yarden-beyond-state-capacity-mamba.md)
+
 ### 后训练改变了读出还是计算
 
 - [Represented but misread: Post-training changes how language models read out what they represent](papers/2611.26584_represented-but-misread.md)
