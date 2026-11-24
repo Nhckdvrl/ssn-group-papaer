@@ -4,6 +4,7 @@
 - 探索子线，用户 11-23 签字开跑。workbench 在登记表里仍是 PROPOSED，ACTIVE 名额不动（R2/R7）。
 - 卡 E194–E214 已跑完或停止。讨论文档：https://claude.ai/artifact/FL7uHvDSxk3XfAkHH8sb4G没有推进任何主张等级（全部是 PILOT）。
 - **11-24：按一般标准审，本题合格（见"立题检查"）；不自训。按顶会论文的证据门槛对照，唯一的核心缺口（读数一致）已由 E211 补上。**
+- **11-24 论证角度固定为"架构：哪个部件把子词拼成词"。** 蒸馏结果作为这个角度的推论（卷积初始化决定词由谁来拼）；训练量造成的深度差异（fla 库拼得晚）只作局限。不再开新角度（E215、E216 已停）。
 
 ## 问题（一句话）
 アテンションをほとんど持たないハイブリッドLLMは、サブワードをどこで・何によって単語にまとめているのか。
@@ -120,6 +121,8 @@
 | [E212](experiments/E212-distilled-identity-conv.md) | 卷积恒等初始化的蒸馏模型 Llamba-1B | 记忆接手：关卷积无影响（.61 → .63），关记忆拼词消失（.02） |
 | [E213](experiments/E213-distilled-random-conv.md) | 卷积随机初始化的蒸馏模型 M1-3B | 桥接不过（M1 普通文本上拼词太弱，Δ2 .20），只描述 |
 | [E214](experiments/E214-distilled-conv-vs-inherited-attention.md) | 蒸馏模型 Llama3.2-Mamba-3B-distill：随机卷积（第 0 层）对继承的注意力（第 1 层） | 中间：关注意力拼词消失（18%），关卷积降到 64%；方向上支持"继承 / 模仿" |
+| [E215](experiments/E215-jet-nemotron-learned-conv.md) | Jet-Nemotron（学出来的循环部件） | 停止，未得到读数 |
+| [E216](experiments/E216-olmo-training-trajectory.md) | OLMo 训练中间检查点 | 停止，未运行（换了角度） |
 
 关键图：[`results/e198/fig_conv_memory_three_hybrids.png`](results/e198/fig_conv_memory_three_hybrids.png)。
 
