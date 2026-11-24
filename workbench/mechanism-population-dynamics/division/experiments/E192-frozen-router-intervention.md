@@ -167,6 +167,7 @@ A1 vs A2（只差数据顺序）的 NLL 差与路由一致率；A 与官方同 i
 `division/scripts/e192_{data,fetch,inspect,train,eval,dump,analyze}.py`、`e192_mkenv.sh`；`division/results/e192/`（表、json、图，< 5 MB）。大文件只在节点本地（见资产位置）。
 
 ## 资产位置（节点本地，重启即失）
+- **2026-11-24 夜按用户指示全部删除**（fvcrc20、fvcrc21 的 `/tmp/xiang_e192`，约 930 GB）。下面是删除前的布局，只作记录；`division/results/e192/` 的汇总仍在 git。
 - fvcrc20 与 fvcrc21（192.168.0.37）：`/tmp/xiang_e192/{env,scripts,data,tok,dclm,ckpt,official,arms/<臂>}`；环境 `e192_mkenv.sh`（torch 2.8.0+cu128、transformers 4.57.6、numpy 1.26.4、zstandard、pyarrow<16）。
 - 每臂目录：`train_log.jsonl`、`run_info.json`、`resume.pt`（续跑）、`routers_cXXXX.npz`、`nll_cXXXX.npz`、`dump_cXXXX/`、`full_cXXXX.pt`、`DONE_XXXX`、`stdout.log`。
 
