@@ -117,6 +117,18 @@ Start from MIB / causal abstraction / SAEBench / established model-diffing harne
 - [Who Asks, Who Answers: Linear Attention Builds the Query in Hybrid Language Models](papers/2611.01909_linear-attention-builds-query.md)
 - [On the Recall Scaling Laws in Mamba: A Theoretical and Mechanistic Study via Hashing](papers/2609.07681_mamba-recall-scaling-hashing.md)
 
+### 覆写、前摄干扰与状态更新（11-25 补读）
+
+- [Unable to Forget: Proactive Interference Reveals Working Memory Limits in LLMs Beyond Context Length](papers/2506.08184_wang-sun-proactive-interference.md)
+- [When Context Changes: Understanding Update Failures in LLMs](papers/2609.38866_guo-stale-binding-cicm.md)
+- [LLMs Remember First, Forget Last: Dual-Process Interference in Large Language Models](papers/2603.00270_chattaraj-ri-pi-dual-process.md)
+- [A Fine-Grained Hierarchy and Benchmark for State Tracking in Language Models](papers/2611.03094_petty-statebench-hierarchy.md)
+- [Gated Delta Networks: Improving Mamba2 with Delta Rule](papers/2412.06464_gated-deltanet.md)
+- [Parallelizing Linear Transformers with the Delta Rule over Sequence Length](papers/2406.06484_deltanet-parallel.md)
+- [Anatomy of Associative Recall in Fixed-State Recurrences: A Matched-State Decomposition, an Interference Wall, and a Curriculum That Breaks It](papers/2609.16183_boesch-recall-anatomy-interference-wall.md)
+- [RWKV-7 "Goose" with Expressive Dynamic State Evolution](papers/2503.14456_rwkv7-goose.md)
+- [Linear Transformers Are Secretly Fast Weight Programmers](papers/2102.11174_schlag-fast-weight-programmers.md)
+
 ### 表征流形与几何
 
 - [When Models Manipulate Manifolds: The Geometry of a Counting Task](papers/2601.04480_gurnee-manipulate-manifolds.md)
