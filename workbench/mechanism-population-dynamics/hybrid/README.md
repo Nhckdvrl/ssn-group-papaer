@@ -1,10 +1,10 @@
 # hybrid：混合架构（循环层 + 少量全注意力层）里，词是在哪里、靠什么拼起来的
 
-**状态（2026-11-24 09:55）：**
-- 探索子线，用户 11-23 签字开跑。workbench 在登记表里仍是 PROPOSED，ACTIVE 名额不动（R2/R7）。
-- 卡 E194–E214 已跑完或停止。讨论文档：https://claude.ai/artifact/FL7uHvDSxk3XfAkHH8sb4G没有推进任何主张等级（全部是 PILOT）。
-- **11-24：按一般标准审，本题合格（见"立题检查"）；不自训。按顶会论文的证据门槛对照，唯一的核心缺口（读数一致）已由 E211 补上。**
-- **11-24 论证角度固定为"架构：哪个部件把子词拼成词"。** 蒸馏结果作为这个角度的推论（卷积初始化决定词由谁来拼）；训练量造成的深度差异（fla 库拼得晚）只作局限。不再开新角度（E215、E216 已停）。
+**状态（2026-11-24 夜）：STOPPED，用户决定不再继续。**
+- 用户 11-24 夜看完 E217–E223 后判断这个方向没有意义，决定停止。不恢复，除非用户明确同意（R2）。
+- E194–E223 的卡片、脚本、汇总结果和讨论文档（https://claude.ai/artifact/FL7uHvDSxk3XfAkHH8sb4G）留在 git 作为历史记录；没有推进任何主张等级（全部是 PILOT）。
+- 节点上的模型权重、环境和逐 token 输出已于 11-24 夜全部删除（见"资产位置"）。
+- 停止前的教训：先有工具后有问题；后期实验在审计自己的旧说法；文献在跑完后才核对；跟着外部意见逐份跑实验。E217–E223 全部是降级或已有人做过。
 
 ## 问题（一句话）
 アテンションをほとんど持たないハイブリッドLLMは、サブワードをどこで・何によって単語にまとめているのか。
@@ -90,7 +90,6 @@
 ## 需要人决定的
 - **"同一种记忆 ± 卷积"的直接对比：** E203 已用公开的同配方模型库基本解除混杂。E209 后，带卷积且干预干净的同配方模型有 DeltaNet、Mamba 两个。不自训（11-24）；是否还需要 PhysicsLM4.2，等顶会论文的证据构成核对完再定。
 - **PhysicsLM4.2：** Llama 与 LlamaCanon（同配方，只差 Canon 短卷积，1B–8B，各两种学习率）在 Hugging Face 上是受限访问。接受许可并允许用你的凭证下载，就能在同配方下检验"加了卷积后，拼词是否从注意力转给卷积"。我没有擅自使用凭证。
-- **模型权重：** 约 200 GB，分散在 fvcrc10、11、13、21 的本地 `/tmp`。继续做就保留，否则按 compute-policy 删除。
 
 ## 还没站住或有分歧的
 - **Patchscopes 在混合模型早期层偏低：** 只在这个读数的时间上与 R1 不一致；整词表 logit lens 与 R1 一致，三种读数在因果结论上一致（E211）。Patchscopes 在混合模型早期层偏低的原因未解释（E207 已排除"表示缠在上下文里"）。
@@ -127,8 +126,6 @@
 关键图：[`results/e198/fig_conv_memory_three_hybrids.png`](results/e198/fig_conv_memory_three_hybrids.png)。
 
 ## 资产位置（不进 git）
-- **fvcrc13 `/tmp/xiang_e194/`：** OLMo 四个检查点、uv 环境（transformers 5.24、torch 2.8 cu128）、E194/E197 的逐条目输出。
-- **fvcrc13 `/tmp/xiang_hyb/`：** Granite 一对、E195 的输出。
-- **fvcrc10 `/tmp/xiang_hyb/`：** Falcon-Mamba、Qwen 一对；E196 的输出在 fvcrc10 的 `/tmp/xiang_e194/out196/`。
-- **fvcrc21：** Qwen3.5 与 E198 的输出。
-- 检查点都可用 `scripts/dl_hf.sh` 或 `e194_download.sh` 重下（有 sha256 校验）。用完按 compute-policy 删除。
+- 11-24 夜按用户指示全部删除：fvcrc10、11、13、21 上的 `/tmp/xiang_e194`、`/tmp/xiang_hyb`、`/tmp/xiang_e199(b)`、`/tmp/xiang_e201`、`/tmp/xiang_e206_fla*`（模型权重、uv 环境、逐 token 输出，共约 470 GB）。
+- 家目录 HF 缓存里的 Qwen3-4B、Qwen3.5、Llama-3.2-1B 是更早其他线下载的，未动。
+- 检查点都可用 `scripts/dl_hf.sh` 或 `e194_download.sh` 重下（有 sha256 校验）。
