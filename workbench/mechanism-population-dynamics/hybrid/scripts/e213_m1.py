@@ -24,6 +24,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import e195_capture as cap  # noqa: E402
 
 LAYERS = (0, 1, 2)
+DT_DOUBLE_BIAS = True  # as in jxiw/M1 inference code; E213 debug compares False
 
 
 class RMSNorm(nn.Module):
@@ -63,7 +64,7 @@ class Mamba(nn.Module):
         B = repeat_groups(B, self.rep, self.n).reshape(b, L, -1, self.n).float()  # [b, L, G, N]
         C = C.reshape(b, L, -1, self.n).float()
         G = C.shape[2]
-        delta = F.softplus(self.dt_proj(dt).float() + self.dt_proj.bias.float())  # [b, L, Dn]
+        delta = F.softplus(self.dt_proj(dt).float() + (self.dt_proj.bias.float() if DT_DOUBLE_BIAS else 0.0))  # [b, L, Dn]
         A = -torch.exp(self.A_log.float())  # [Dn, N]
         xd = (delta * x).reshape(b, L, G, -1)  # [b, L, G, Dg]
         dA = torch.exp(delta[..., None] * A)  # [b, L, Dn, N]
