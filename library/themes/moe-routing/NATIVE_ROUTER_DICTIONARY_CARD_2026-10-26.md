@@ -14,4 +14,4 @@
 
 ## 另一篇近邻的接口适配备注
 
-[Routers Learn the Geometry §2–3](https://arxiv.org/html/2605.12476v1) 的 masked activation 及未选行梯度论证不能直接用于本项目完整 softmax 后截取、不重归一的 OLMoE。忽略量化、固定支持时，task gradient 有全行分母项；具体自主推导与 tiny HF 核对见 [当前研究说明](../../../workbench/mechanism-population-dynamics/moe/RESEARCH_DIRECTION.md) §4.1。这里只校对适用前提，没有宣称推翻其设置下的结论或识别新的历史机制。
+[Routers Learn the Geometry §2–3](https://arxiv.org/html/2605.12476v1) 的 masked activation 及未选行梯度论证不能直接用于本项目完整 softmax 后截取、不重归一的 OLMoE。忽略量化、固定支持时，task gradient 有全行分母项；具体自主推导与 tiny HF 核对见 [当前研究说明](../../../workbench/mechanism-population-dynamics/moe/README.md#母问题与演进) §4.1。这里只校对适用前提，没有宣称推翻其设置下的结论或识别新的历史机制。

@@ -44,7 +44,7 @@ def contents(records):
             header = proc.stdout.readline().decode().strip().split()
             if len(header) != 3 or header[1] != 'blob':
                 raise RuntimeError('Frozen Git blob unavailable for '+name+
-                                   '; fetch the recorded snapshot commit or use the sealed source package in ASSETS.md')
+                                   '; fetch the recorded snapshot commit or use the sealed source package listed in moe/README.md (资产与恢复)')
             size = int(header[2]); value = proc.stdout.read(size)
             if proc.stdout.read(1) != b'\n' or size != record['bytes'] or len(value) != size:
                 raise ValueError('Historical source length differs: '+name)

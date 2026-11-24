@@ -2,7 +2,7 @@
 
 - **状态：** DONE（2026-11-06；纯 CPU，0 GPU，只用 E167 路由 / hidden 缓存与 UD 标注）
 - **类型：** REPRO（已发表单模型专家分析读数在 9 个 run 上的跨 seed 复算；不推进新主张）
-- **对应：** [ROUTE_AUDIT](../ROUTE_AUDIT_2026-11-06.md) B4（".73 只有一种方法、一个族"）的修法；[DIRECTION](../DIRECTION_2026-11-06.md) F4；读数定义来自 [READOUT_CATALOGUE](../../../../library/themes/moe-routing/READOUT_CATALOGUE_AND_SEED_ROBUSTNESS_2026-11-06.md) 表 1 的 #1 #2 #3 #6 #7 #13，#8 引用 E172。
+- **对应：** [ROUTE_AUDIT](../DIRECTION_2026-11-06.md#附录a-路线逻辑审查) B4（".73 只有一种方法、一个族"）的修法；[DIRECTION](../DIRECTION_2026-11-06.md) F4；读数定义来自 [READOUT_CATALOGUE](../../../../library/themes/moe-routing/READOUT_CATALOGUE_AND_SEED_ROBUSTNESS_2026-11-06.md) 表 1 的 #1 #2 #3 #6 #7 #13，#8 引用 E172。
 - **问题（一句话）：** 已发表的单模型 MoE 专家分析结论，换 init seed 还在不在；在模型级、类别级、专家级三级中的哪一级还在？
 
 ## 原文读数与要核对的那句结论（PDF 在会话 scratchpad，未进仓库）

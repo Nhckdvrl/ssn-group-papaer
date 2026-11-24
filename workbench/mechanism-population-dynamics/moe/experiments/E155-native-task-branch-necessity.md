@@ -66,7 +66,7 @@ B的R-zero损伤16.41个百分点，R仍承担实际任务作用；S-zero损伤1
 
 科学判断：B的子集部署更好，R仍重要，shared的任务作用在后期历史中明显增加。完整能力相近时，实际依赖配置可以改变；要确定重用单位，应做共同接收者中的函数来源组合，而非将裁剪好直接解释为R函数自包含。E156已在新重组读数前登记。
 
-[summary](../results/e155/summary.json)、[补全预定对比](../results/e155/remaining_preregistered_contrasts.json)、[CPU复算](../results/e155/raw_verification.json)、[Terra独立复算](../results/e155_terra_audit/NOTE.md)。165项CPU点及配对CI复核误差0，独立实现最大差1.67e−16；A/B native的128×4候选LL逐项等于E153，全部原生cal/完整mask/因果前缀/只读hash通过。图已查看，实际4836.337123 GPU秒=1.343426979 GPU·时，峰值并发3卡≤8、每卡<60GB，无训练/新权重。
+[summary](../results/e155/summary.json)、[补全预定对比](../results/e155/remaining_preregistered_contrasts.json)、[CPU复算](../results/e155/raw_verification.json)、[Terra独立复算](../results/README.md#e155_terra_audit)。165项CPU点及配对CI复核误差0，独立实现最大差1.67e−16；A/B native的128×4候选LL逐项等于E153，全部原生cal/完整mask/因果前缀/只读hash通过。图已查看，实际4836.337123 GPU秒=1.343426979 GPU·时，峰值并发3卡≤8、每卡<60GB，无训练/新权重。
 
 **POST-HOC共同成功分析：** 看完全矩阵后，按P/A/B native均正确一次性定义44题（生物36、数学8），不使用零化结果选题。共同集合上S-zero B−A正确率−.3403 [−.5347,−.1736]、B−P−.3681 [−.5974,−.0970]；它说明共同成功题也有依赖差异。该条件排除了干预纠错，不替代全样本或算独立确认；完整计数及代码在独立审计目录common_success_posthoc.json。E156将把该集合在新干预前固定作次分析，主分析仍全部128题。
 

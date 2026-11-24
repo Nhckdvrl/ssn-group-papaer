@@ -1,6 +1,6 @@
 # 从专家标签到可重用计算：八篇全文再定位（2026-10-28）
 
-范围：本轮完整阅读8篇论文及stitching独立附录，共204页（含参考/数学证明/实验附录/图注与checklist）；关键图另查看。不是全部证明的独立审计，也未复现作者实验。版本、PDF SHA和逐页覆盖见[清单](../../../workbench/mechanism-population-dynamics/moe/notes/PRIMARY_READING_REASSESSMENT_2026-10-28.json)。当前研究判断见[论文形态](../../../workbench/mechanism-population-dynamics/moe/PAPER_SHAPE.md)。
+范围：本轮完整阅读8篇论文及stitching独立附录，共204页（含参考/数学证明/实验附录/图注与checklist）；关键图另查看。不是全部证明的独立审计，也未复现作者实验。版本、PDF SHA和逐页覆盖见[清单](../../../workbench/mechanism-population-dynamics/moe/notes/PRIMARY_READING_REASSESSMENT_2026-10-28.json)。当前研究判断见[论文形态](../../../workbench/mechanism-population-dynamics/moe/README.md#论文主旨与领域位置)。
 
 ## Monet，ICLR 2025，32页
 

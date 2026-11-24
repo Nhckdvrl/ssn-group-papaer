@@ -1,36 +1,215 @@
-# 分工重现：分别训练的 MoE 会不会自发分出同一套专家分工
+# division：分别训练的 MoE 会不会自发分出同一套专家分工（10-31 → 11-22）
 
-- **状态（2026-11-22）：** 进度与检讨材料见 [`PROGRESS_REVIEW_2026-11-22.md`](PROGRESS_REVIEW_2026-11-22.md)：四个阶段每一步做了什么、数字、为什么转向；逐条对照导师历次要求与用户的担忧；主会话的失误清单；未决事项。11-20 调研见 [`QUESTION_SEARCH_2026-11-20.md`](QUESTION_SEARCH_2026-11-20.md)。主线未定，没有实验在跑，下次面谈 12-02 13:30。
-- **状态（2026-11-19，面谈后）：** 导师否定 N4 的问题设定（"谁先定型"依赖定义；从中途 checkpoint 冻结 / 重置只能得到程度问题；二分归因不自然），重申他的问题是**独立从头训练的 MoE 是否自发形成相同分工**，要求保留从头训练，并用独立训练的公开模型看同一趋势。11-09 冻结自训平台、转公开模型推理的决定与此相反，是否回到 E167 / E173 路线由人定（R2）。记录与解读：[`MEETING_2026-11-19_RECORD.md`](MEETING_2026-11-19_RECORD.md)。下次面谈 12-02 13:30，方向性商量只走口头。
-- **状态（2026-11-18 18:40，主会话）：** N4 的因果腿 **E192 已跑完**（用户 11-17 批准；FLAME-MoE-290M 从公开 iter 1080 / 540 续训，路由器自由 / 冻结 / 重置 / 按层处理，27 臂，fvcrc20/21 八卡约 22 小时、约 180 GPU h）。(1) **在 2.26B token 处冻结路由器，之后 1.13B token 无损失代价**（4 个无事件配对 −.0045 … +.0009，地板 .004；种子 1 延到 2.26B 仍 +.002）；只训路由器只拿到自由训练收益的 5%（.009 对 .181）。(2) **路由器重置成随机后，深层路由器回到原来那套分配**（与原分配重合 .49–.72 @1.13B、.63–.75 @2.26B，上限 .89–.94；两个独立初始化回到同一批专家编号），**第一个 MoE 层不回去**（.29–.34，上限 .77–.83，两个种子各去别处）——深层的分配由专家一侧固定，路由器可重新推出。(3) **重置的代价是一个不缩小的时间延迟**：全部重置约 200 iter（0.42B token），只重置第 1 层约 100 iter，一次发散事件 150–190 iter；NLL 差缩小只是对照曲线变平（POST-HOC 读数）。(4) **没有成立的**："第 1 层路由器换掉无代价"（实测是全部重置代价的 48% / 55%，按卡撤回）；"1.13B 处冻结有代价"（早起点 6 臂都不稳，不可解读）；发散事件冻结臂、自由臂各 1 次，不算冻结的代价。(5) 未解释：续训比官方同 token 数低 .05 nat，用官方数据续训也一样。对 N4 措辞的影响：下一条里的"携带来源记忆的是路由器"要改成"深层的分配由专家一侧固定、路由器是可重新推出的读出；第一个 MoE 层相反"。详见 [`DIRECTION_2026-11-06.md`](DIRECTION_2026-11-06.md) §27、[实验卡](experiments/E192-frozen-router-intervention.md)、主张 C30。**N4 仍是提议的 ACTIVE-MAIN，待人签字（R2）。**
-- **状态（2026-11-11 16:30，主会话；按用户指令"主线确立即暂停"）：** 候选主线 **N4 达到预登记的确立标准，提议为 ACTIVE-MAIN 交人签字（R2）**：*MoE 里先定型、并携带来源记忆的是路由器的决策函数，不是它读的几何；已发表的"路由早饱和"曲线量的是后者。* 证据三块：训练轴两条公开轨迹（E189 OLMoE-0924 5T：R 到 .5/.8 用 381B/2.33T vs H 857B/4.18T；E191 FLAME-290M 11B：到 .8 用 3.79B vs 6.39B；第一个 MoE 层两模型都反向）、复制轴（E187 Qwen3：R .53 vs .15）、功能腿（E190 三模型：打断同 id 内上下文 +1.3 nat，占全局 22–26%，前一 token 收回 59–75%）。判断与待人决定的四件事见 [`DIRECTION_2026-11-06.md`](DIRECTION_2026-11-06.md) §26；叙事见 [`MAINLINE_NARRATIVE_2026-11-11.md`](MAINLINE_NARRATIVE_2026-11-11.md)；文献归属 `library/themes/moe-routing/POSITIONING_N4_ROUTER_FIRST_2026-11-11.md`；资产清单 [`ASSETS_2026-11-11.md`](ASSETS_2026-11-11.md)。机制开放（不是门饱和）。GPU 11-11 合计约 3.3 h。
-- **状态（2026-11-10 12:00，主会话）：** 11-09 起本线改在**公开 MoE 上只做推理**（自训平台冻结，DIRECTION §17）：用同一隐状态上的随机路由器族（N_A / N_B / N_C）读训练路由器。已出：E185 路由方差分解图谱（§21）、E186 七家族 + OLMoE-0924 九个 checkpoint 的同格式采集与追加（§22，1.35 + 0.76 GPU h）、E187 Qwen3-30B-A3B 复制层的路由分歧分解（§21.1）、领域地图 [`FIELD_MAP_2026-11-09.md`](../../../library/themes/moe-routing/FIELD_MAP_2026-11-09.md)。一句话：训练路由器 = 几何读出 × 词表锐化 + 给定 token 后少量局部序列信息；语言 / 文字 / 词类 / 位置都不在训练新增里；模型依赖的只有中层跨语内容；训练轴与复制层两条线索都指向"路由器权重先于几何定型、并携带来源记忆"（候选叙事 N4，未锁）。主张 C24–C27（L1）。**11-10 全部文件因 NFS 故障未提交**；原始存储 160 GB 与 OLMoE 逐 token 隐状态 13 GB 在节点 /tmp（见各卡"资产位置"）。
-- **状态（2026-11-06 06:50，主会话）：** E173（配方轴三对）、E174（零假设）、E175（D1 试探）、E176（已发表读数三级重现表）均已出首批结果；判断见 [`DIRECTION_2026-11-06.md`](DIRECTION_2026-11-06.md) §9–§11——候选主线改为 R-A 方法学（扣零假设阶梯 .56 / .45 / .20；冻结路由器 T_D ≈ 0 而 CE 不变；已发表结论 9/9 或 0/9、专家级不重现），锁定条件已达成，待人确认；主张登记 CLAIMS C15–C21。
-- **E172 纯 CPU 三项读数（2026-11-05 夜，Opus 会话执行，主会话核对）：** [实验卡](experiments/E172-token-class-agreement-and-standard-readouts.md)、FINDINGS §4.9——词类与词频不是一致度的对比轴（内容词 .233 / 功能词 .229；各词类初始化÷重跑都≈ .5）；Antoine 式专精度的大头是负载集中（未训练已 +26 / 训练后 +32），其词类排序换 seed 只重现 .73（重跑 .97）；语法骨架两段式出现（词类 / 形态先，依存与上下文同档，2500 万 token 时最早共享的是体裁 / 位置、随后丢弃）。
-- **面谈记录与解读（2026-11-05 16:00）：** [`MEETING_2026-11-05_RECORD.md`](MEETING_2026-11-05_RECORD.md)——导师：单个一致度数字不成论文，要"こういうモデルでは低い、こういうモデルでは高い"的对比轴 / 第二尺度 / token 类别 / 语言 / 借现成分析法看其结论的跨模型一致；偏好路由分配一致与几何，不偏好消融；作业 = 查清 MoE 专家分析史（我们当场答"几乎没有"是错的，已写 [`历史综述`](../../../library/themes/moe-routing/MOE_EXPERT_ANALYSIS_HISTORY_2026-11-05.md)）。行动项 A1–A5 按成本排，模型类型对比轴（2 seed × 若干配方，每 run 约 4 GPU 小时）是导师首选。
-- **方向总规划（2026-11-06 起，主会话维护）：** [`DIRECTION_2026-11-06.md`](DIRECTION_2026-11-06.md)——主线命题"分工里哪些是模型属性、哪些是训练偶然"，对手命题 H_arch / H_run / H_skeleton 与已有判决，E173 决策表，各工作流的负责会话，不做清单与加实验前自检。
-- **调研 v2：相邻领域与可行空间（2026-11-05 晚）：** [`SURVEY_V2_ADJACENT_FIELDS_2026-11-05.md`](SURVEY_V2_ADJACENT_FIELDS_2026-11-05.md)——v1 的"数据/配方/初始化各占多少"被人审否决（归因分解不可识别）；新读 41 篇相邻领域（训练早期决定论、普适性/欠定、涌现模块性、专精理论、神经科学、语言发育），从已有 checkpoint 读出"分工在第 100–200 步（训练 1%）被非确定性噪声定型、此后不变，数据决定的语法骨架随后慢长"，推荐研究空间改为"分工的早期锁定"（Frankle 式分叉实验，< 20 GPU 小时）。
-- **调研与方向分析（2026-11-05）：** [`SURVEY_AND_DIRECTIONS_2026-11-05.md`](SURVEY_AND_DIRECTIONS_2026-11-05.md)——52 篇文献的领域地图、顶会主张尺度、我们结果的定位、5 个可挖方向与推荐（只读不跑；逐篇笔记在 `library/themes/moe-routing/SURVEY_SPECIALIZATION_UNIVERSALITY_2026-11-05.md`）。
-**状态（2026-11-04）：** 8 个 run + 1 个完全相同配置重跑训练完并读完；总结见 **[FINDINGS_2026-11-04](FINDINGS_2026-11-04.md)**（导师的问题、相关工作、实验、结论、自评、日文版）。一句话：扣掉自然一致后，深层分工跨初始化一致 .28，而完全相同配置重跑也只有 .50——训练本身只能重现一半；重现的那部分沿词类 / 依存 / 前后词类组织，具体由哪个专家在哪些 token 上实现连重跑都不重现。GPU 已释放（只差 I4D0 在 32 亿处的 R4 损伤指纹）；未登记主张；下一步由人与导师决定。
+**状态：停止。** 11-22 用户叫停 E193，division 不再作为主问题：头线已经答过同类问题，最后死于答不出“所以呢”。没有实验在跑，自训 checkpoint 11-18 已从共享缓存丢失，E186、E192 的节点数据 11-24 已删。四个阶段的经过、对照导师要求的自评和主会话的失误，见 [PROGRESS_REVIEW](PROGRESS_REVIEW_2026-11-22.md)。
 
 ## 问题
-同架构、同数据、只换初始化训练的 MoE 语言模型，扣掉“同一个词去同一个专家”（词知识一致）和“同样的隐状态几何怎么切都相似”（几何一致）之后，专家的语言分工是否仍跨 seed 重现？上限是什么？重现的是什么语言内容？
 
-导师的问题是起点，不是要死守的题目；推进中若出现更有意思或更重要的现象，按信息量决定是否转向。此前一个月的弯路见 [RETROSPECTIVE_2026-10-31](../moe/notes/RETROSPECTIVE_2026-10-31.md)。
+同架构、同数据、只换初始化训练的 MoE 语言模型，扣掉“同一个词去同一个专家”（词知识）和“同样的隐状态几何怎么切都相似”（几何）之后，专家的语言分工是否仍跨 seed 重现？上限是什么？重现的是什么语言内容？这是导师 10-16 / 10-22 / 11-05 / 11-19 反复提的问题，原话见 [ADVISOR](../ADVISOR.md)。
 
-## 入口
+## 四个阶段
+
+| 阶段 | 时间 | 做了什么 | 主要结果 | 为何转向或停止 |
+|---|---|---|---|---|
+| A 自训多 seed 小 MoE | 10-31 → 11-09 | E167/E171 共 10 个 run；E169 簇零假设；E170、E172、E174 语言学分解；E173、E177 配方与规模；E176 已发表读数 | 扣掉零假设后：完全相同配置重跑 .47，只换顺序 .37，只换初始化 .23；粒度阶梯 .56 → .45 → .20；随专家数 .13 → .81；7 类已发表读数里有 4 类在未训练模型上就成立（C15–C23） | 数字随配方变，主会话提议冻结平台，用户同意（11-09）。事后看这是失误：丢掉了导师要的对比轴 |
+| B 公开 MoE 零模型审计 | 11-09 → 11-10 | E178–E187：在同一隐状态上换随机路由器，检验已发表的语言、文字、token 级结论；E185–E187 方差图谱 | 训练路由器只把语言专属度乘一个常数 1.1–1.8；首尾层的语言专属由文字主导；深层按下一 token 路由不成立；随机路由器预测跨语迁移同样好（C24–C27） | 转向 N4 |
+| C N4“路由器先于表示定型” | 11-11 → 11-19 | E189/E191 两条训练轴；E190 功能；E192 冻结或重置路由器后续训（27 臂） | 冻结路由器无代价（−.0045…+.0009）；重置后深层回到原分配 .63–.75，第一层不回（.29–.34）。E192 原估 2–4 GPU h，实耗约 180 | **导师 11-19 否定**：“谁先定型”依赖定义，只是程度问题，二分不自然（C28–C30 数字保留） |
+| D 面谈后调研 | 11-19 → 11-22 | 17 篇全文精读；E193 只写了卡 | 最后一版方案“规模变大时独立训练的分工是否更趋相同”，未经人认可 | 11-22 用户叫停 |
+
+## 文件
+
 | 内容 | 位置 |
 |---|---|
-| **总结（唯一的汇报文档）** | [FINDINGS_2026-11-04](FINDINGS_2026-11-04.md)；总图 `results/e167/prelim_figure_v4(_ja).png`（`scripts/prelim_figure_v4.py`） |
-| **公开模型零模型审计（11-09 起）** | DIRECTION §17–§22；实验卡 [E185 图谱](experiments/E185-routing-variance-atlas.md)、[E186 广度采集](experiments/E186-atlas-capture-breadth.md)、[E187 复制层](experiments/E187-copied-layer-routing-divergence.md)；结果 `results/e185/`–`results/e187/`（`tables.md` 为完整表，不写判决表）；定位 `library/themes/moe-routing/{FIELD_MAP,POSITIONING_COPIED_LAYERS,RESIDUALS_E185}_2026-11-09.md` |
-| 实验卡（自训平台，已冻结） | [E167 多 seed 训练与主读数](experiments/E167-multiseed-moe-division.md)、[E168 逐 token 因果角色 / 移植](experiments/E168-matched-expert-transplant.md)、[E169 簇零假设](experiments/E169-cluster-null-for-routing-agreement.md)、[E170 语言学分解](experiments/E170-linguistic-decomposition-of-reproducible-division.md)、[E171 完全相同配置重跑](experiments/E171-exact-config-rerun.md) |
-| 模型与训练 | [moe_model.py](scripts/moe_model.py)、[train_moe.py](scripts/train_moe.py)、[launch_run.sh](scripts/launch_run.sh) |
-| 数据准备 | [prepare_data.py](scripts/prepare_data.py)（Dolma v1.7，约 60 亿 token，`~/mechpop_cache/e167_dolma_6b`） |
-| 结果 | `results/e167/`–`results/e171/`（小文件进 git；checkpoint 与分析缓存只在本地，见下） |
-| 日志 | `../logs/2026-11-01.md`、`2026-11-03.md`、`2026-11-04.md` |
+| 阶段 A 的结果报告（含给导师的日文版） | [FINDINGS_2026-11-04](FINDINGS_2026-11-04.md)；总图 `results/e167/prelim_figure_v4(_ja).png` |
+| 全部经过、失误、未决事项 | [PROGRESS_REVIEW_2026-11-22](PROGRESS_REVIEW_2026-11-22.md)（附录：被否的 N4 主线叙事草案） |
+| 方向决策的逐次记录（§1–§27，含路线审查、候选问题两个附录） | [DIRECTION_2026-11-06](DIRECTION_2026-11-06.md) |
+| 三份文献与问题调研（11-05 v1、11-05 v2 相邻领域、11-20 面谈后） | [SURVEYS](SURVEYS.md)；逐篇笔记在 `library/themes/moe-routing/` |
+| 导师面谈与偏好 | [../ADVISOR.md](../ADVISOR.md) |
+| 实验卡 E167–E193 | [experiments/](experiments/)（E188 未建卡；E193 只写了卡，未运行） |
+| 结果 | `results/eNNN/`（`tables.md` 为完整表） |
+| 模型、训练、数据准备代码 | [moe_model.py](scripts/moe_model.py)、[train_moe.py](scripts/train_moe.py)、[prepare_data.py](scripts/prepare_data.py) |
+| 主张 | [../CLAIMS.md](../CLAIMS.md) 的 division 节（C15–C30） |
 
-## 资产位置
-- 训练数据：`~/mechpop_cache/e167_dolma_6b/{train,held}`（uint16 .npy，manifest.json 含逐文件 SHA），训练前复制到各节点 NVMe。
-- checkpoint：`~/mechpop_cache/e167_runs/<run>/ckpt_<tokens>.pt`（bf16，不进 git）；run：I0D0–I5D0、I0D1、I1D1、I4D0R（重跑）、I0D0R（重跑，停在 4 亿）。
-- 分析缓存：`~/mechpop_cache/e167_analysis/{routing,functional,token_roles,hidden,heads_attn}/<run>__ckpt_<tokens>.npz`。
-- 补齐 R4 重跑分母：有空卡时 `CUDA_VISIBLE_DEVICES=<g> E167_BATCH=16 ~/.venvs/mechpop/bin/python scripts/functional_probe.py ~/mechpop_cache/e167_analysis/functional ~/mechpop_cache/e167_runs/I4D0/ckpt_3200000000.pt`（先把同名 `.npz` 挪开），然后 `scripts/e171_compare.py` 与 `scripts/prelim_figure_v4.py`。
+## 实验与资产索引
+
+（11-11 的只读盘点原样保留。自训 checkpoint 11-18 已从缓存丢失，E186、E192 的节点数据 11-24 已删，表中的缓存路径多已失效；结果小文件仍在 `results/`。）
+
+*原文件 `division/ASSETS_2026-11-11.md`；原标题：division 线资产清单（2026-11-11，只读盘点）*
+用途：接手的人一眼看到有什么数据、在哪、还能回答什么。所有大小来自 2026-11-11 的 `du`；路径相对仓库根（`division/` = `workbench/mechanism-population-dynamics/division/`）。"未核对"= 本次没查。
+两条先记住：(1) `~/mechpop_cache` 在 **/home（NFS，192.168.0.25:/data/home）**，不是节点本地，重启不丢，但读写会给 NFS 加负载（见 `nfs-home-io-rules`）；(2) E186 的逐 token 原始存储**只在节点 /tmp**，只有一份。
+卡里没有 E188–E190（`experiments/` 最大到 E187）。DIRECTION §22 末尾写的"E188 = Part C 第 1 问 + 第 4 问"尚未建卡。
+### 1. 实验卡 E167–E190
+状态列抄卡头状态字段；带 † 的是卡头与实际不符（卡头未更新，实际见括号）。GPU 列抄卡内"算力/实际"。C##/N# 来自 `CLAIMS.md` 与 `MAINLINE_NARRATIVE_2026-11-11.md`，标"推断"的是我按卡内容对应的，卡头没写。
+
+| ID | 题目 | 状态 | GPU | 结果目录 | 主要产物 | 主张/叙事 |
+|---|---|---|---|---|---|---|
+| E167 | 独立训练的 MoE 是否分出同一套专家分工（10 个 run） | RUNNING †（实际训练与采集已完成，自训平台 11-09 起冻结） | 约 150 GPU·h（计划） | results/e167 + 缓存 e167_runs | routing_*.json、passages.json、ud_annotations.json、prelim_figure.png | P34；C20–C23 的底层数据 |
+| E168 | 对齐的专家能否跨初始化互换（transplant） | RUNNING †（v3，5 个终点已比较） | 卡内未单列 | results/e168 | token_roles_final.json | P34；E167 后果检验 |
+| E169 | 簇零假设：跨 seed 路由一致里有多少是几何自然聚类 | 采集 DONE，分析部分层 | 采集单卡 A100 约 8×3–5 min；分析 CPU | results/e169 | cluster_null_*.json、n1_reliability_*.json | P34；零模型方法 |
+| E170 | 可重现的分工里哪些语言区分是规范的 | 阶段 1/1b DONE；阶段 2 未开 | 0 | results/e170 | ambiguous_*.json、decomp_*.json | P34 |
+| E171 | 完全相同配置重跑：只换顺序天花板 .44 是什么 | DONE（R4 对仍在跑） | 1 卡 RTX PRO 6000 约 17 h | results/e171 | routing.json、functional_route.json | 重跑上限；C22/C23 的分母 |
+| E172 | 按词类的一致、现成读数的跨 seed 稳定性 | DONE | 0（CPU 约 2.5 h） | results/e172 | results/e172/ 下表与图 | C20（推断） |
+| E173 | 配方对比轴：一致度随配方（专家数/top-k）变 | RUNNING †（(b) lb=0.1 两个 run 未开，等人） | 约 3+10+9 GPU·h（计划） | results/e173 + 缓存 e173_runs | rerun_ceiling.md、baseline15_routing_*.json | C23 |
+| E174 | 骨架一致是否是"词类敏感"的重述（格内置换零假设） | DONE | 0 | results/e174 | td_null_*_summary.json | C20（推断） |
+| E175 | 输入 token vs 下一 token 路由（交叉拟合信息） | DONE | 0（CPU 约 1.5 h） | results/e175 | e175_summary.json、e175_readouts.json、e175_rows.json | C21 |
+| E176 | 已发表读数的可重现性（锚点 + 自然流） | DONE | 0 | results/e176 | e176_figure.png、runs.json、natural.json | ROUTE_AUDIT B4；C20/C21（推断） |
+| E177 | 规模轴小尺度点（6 层 d512） | DONE | 与 E173 同队列，卡内未单列 | results/e177 | summary.json | C22 |
+| E178 | Qwen3-30B-A3B 语言专家结论的随机路由对照试探 | DONE | ≤ 1.5 GPU·h（估） | results/e178 | tables.md、summary.json、fig_r1_r4_by_layer.png | C24 |
+| E179 | 语言层剖面跨模型复现 + 几何测量 + 锐度匹配零模型 | DONE | ≤ 0.5+0.2+Qwen3（估） | results/e179 | tables.md、summary.json、fig_{qwen3,gptoss,olmoe}.png | C24 |
+| E180 | 语言专属路由跟文字还是语言身份（塞语双文字） | DONE | ≤ 1.5 GPU·h（估） | results/e180 | tables.md | C25 |
+| E181 | 语言专属神经元/头/专家的同类随机单元零模型（DRAFT，仅 step1 登记） | step1 已登记，跑后状态未改 † | ≤ 2.5 GPU·h，fvcrc20 GPU1 | results/e181 | tables.md | C24 延伸（推断） |
+| E182 | 文字切换代价的词表载体 + 语言距离标尺（塞语+乌兹别克语） | DONE | 估 ≤ 约 1 GPU·h | results/e182 | tables.md、translit_uz_report.json、summary.json(.gz) | C25 |
+| E183 | 路由对齐对跨语迁移（Belebele）的预测力 | DONE | 3 模型×20 语×900 题，fvcrc11 GPU2/3 | results/e183 | tables.md、belebele_* | C27 |
+| E184 | token 级路由结论在公开 MoE 上过几何零模型 | DONE | fvcrc20 GPU0，约 10 万 token/模型 | results/e184 | tables.md、qwen3.json | C26 |
+| E185 | 路由方差分解图谱（因子×层×模型×路由器族） | DONE | 0（CPU 1.2 h） | results/e185 | tables.md、tables_layers.md、fig_map_*.png、fig_nested/fig_tokens/fig_residual_b.png、res_*.json | C24–C26 共同底层；N1 |
+| E186 | 图谱广度采集：7 个 MoE 家族 + OLMoE-0924 训练轴 | DONE | 0.52 h 采集 + 0.24 h toksub + 小核查，峰值 5 卡（共约 1.35 GPU·h，§22） | results/e186 | tables.md、tables_addendum.md、tables_layers.md、fig_map_*.png、fig_training.png、extra_*.json | N1、N4（训练轴）；FIELD_MAP |
+| E187 | Qwen3-30B-A3B 复制层路由分歧（隐状态 H vs 路由器 R 分解） | PLANNED †（实际已出结果，commit c8a99164） | 0 | results/e187 | tables.md、decomp.json、fig_decomp.png、fig_classes.png、e184_examples.md | N4（守恒量）；C23 的"init÷重跑"对照 |
+
+### 2. 结果目录 `division/results/`
+`git ls-files` 对比。"未入 git"主要是体积大被排除（AGENTS §5 / `git-keep-it-small`）；未逐个核对是否在 .gitignore。除 e1xx 外还有 `paper_figs`（508K）与 `chain.log`、`e169_*.log`（均小）。
+
+| 目录 | 大小 | 文件数 | 已入 git | 目录 | 大小 | 文件数 | 已入 git |
+|---|---|---|---|---|---|---|---|
+| e167 | 47M | 43 | 41 | e179 | 1.2M | 11 | 5 |
+| e168 | 296K | 2 | 2 | e180 | 1.7M | 12 | 7 |
+| e169 | 32K | 4 | 4 | e181 | 368K | 9 | 4 |
+| e170 | 1.4M | 11 | 7 | e182 | 18M | 30 | 8 |
+| e171 | 836K | 6 | 4 | e183 | 352K | 18 | 7 |
+| e172 | 3.0M | 13 | 6 | e184 | 3.5M | 17 | 6 |
+| e173 | 1.9M | 40 | 13 | e185 | 6.8M | 77 | 29 |
+| e174 | 1.4M | 19 | 11 | e186 | 3.9M | 112 | 77 |
+| e175 | 6.1M | 21 | 20 | e187 | 1.4M | 13 | 13 |
+| e176 | 9.0M | 8 | 4 | e177 | 372K | 7 | 7 |
+| e178 | 424K | 6 | 3 | | | | |
+
+未入 git 且 > 1 MB 的文件（丢了要重算；输入多来自缓存）：
+
+| 路径 | 大小 | 说明 |
+|---|---|---|
+| results/e167/ud_annotations.json | 38M | UD 逐词标注；E172/E174/E176 的输入，由 `ud_annotate.py` + passages.json 生成 |
+| results/e167/passages.json | 5.5M | UD 段落；同上 |
+| results/e182/summary.json | 6.5M | 有 .gz（2.7M，已入 git）备份 |
+| results/e176/runs.json | 4.6M | E176 逐 run 读数 |
+| results/e176/natural.json | 3.9M | 自然流重算 |
+| results/e182/_parts/qwen3.json、qwen3base.json | 各 2.0M | 分片中间件 |
+| results/e175/e175_rows.json | 2.0M | 逐行读数（e175_readouts.json 1.9M 已入 git） |
+| results/e184/qwen3.json | 1.5M | Qwen3 逐 token 汇总 |
+### 3. 节点本地与缓存资产
+#### 3.1 `~/mechpop_cache/`（/home NFS，共享，主机 fvcrc20 上核对）
+| 子目录 | 大小 | 内容（形状抄卡/脚本 docstring） | 产生它的卡 |
+|---|---|---|---|
+| e167_runs | 137G | 10 个 run（I0D0、I0D0R、I0D1、I1D0、I1D1、I2D0、I3D0、I4D0、I4D0R、I5D0），每个有 ckpt_{0…3999793152}.pt、DONE.json、routing/hidden/functional/heads/token_roles 子目录 | E167/E168/E171 |
+| e167_analysis | 23G | 分析缓存 | E167–E176 |
+| e167_dolma_6b | 12G | Dolma v1.7 约 60 亿 token 分片 | E167 |
+| e173_runs | 109G | 配方轴 run（BASE_I0、FRZ_I0/I1、G16_I0 等）及 checkpoint | E173/E177 |
+| e173_analysis | 1.9G | E173 分析缓存 | E173 |
+| e178 | 1.1G | div.npy、persent.npy、tallies.npz、meta.json（Qwen3，20 语 FLORES） | E178 |
+| e179 | 17G（gptoss 5.4G、olmoe 2.7G、qwen3 8.5G） | 每模型：sentmean.npy f16 [L,NU,d]；toksub.npy f16 [L,20000,d]（1000 token/语，seed 179）；persent/div/gateW.npy、tallies.npz、toksub_meta.npz、geometry.json；Qwen3 toksub = [48,20000,2048] | E179 |
+| e180 | 7.3G（qwen3 5.3G、olmoe 1.3G、gptoss 736M） | persent.npy、topk.npy、tokmeta.npz、diag.npz、meta.json；srp_Latn 转写 | E180 |
+| e181 | 7.2G（qwen3 6.2G、llama2 1.0G） | uncond.npy、routed.npy（计数 [r,l,k,n] uint16，r = T / 8 N_A / 8 N_B / 打乱标签）、diag.npz | E181 |
+| e182 | 34G（qwen3 14G、qwen3base 14G、olmoe 2.5G、gptoss 1.8G + cal100 1.8G） | ps_ALL/LET/NON/NONtm.npy [L,NU,17,E] 专家计数；topk_T.npy uint8 [L,NTOK,K]；tokmeta.npz、diag.npz | E182 |
+| e183（含 belebele/flores200/lingdata 语料各 43M/102M/59M） | 2.9M | items_{qwen3,olmoe,gptoss,gptoss_chat_a/b}.npz（Belebele 逐题 logits） | E183 |
+| e184 | 855M（qwen3 537M、olmoe 180M、gptoss 132M） | topk.npy uint8 [L,NTOK,17,K]；tokmeta.npz（corpus/seq/pos/inp/pred/nxt/upos/word）；diag.npz | E184 |
+| atlas_e185 | 15M | cf_/d180_/d184_/tok_/toksub_ids 的 .json/.npz 聚合（3 模型） | E185 |
+| atlas_e186 | 19M（81 个文件） | 同上聚合，9 个存储（7 家族 + OLMoE 6 个 checkpoint） | E186 |
+| e186 | 13M | _cfg（四个家族配置）+ 冒烟 | E186 |
+| e187 | 17G（agree_i_j.npz ×60；w_base 5.0G；w_instruct 12G） | agree：层 i/j 逐 token 拷贝一致；w_*：路由器 W [48,128,2048]、RMSNorm 增益、q/k/v/o、专家草图 [128,786944] fp16（NFS 退化后改缩减草图 [128,196352]）；另有 6 个 .log | E187 |
+| hf_emo_mature、hf_olmoe、hf_olmoe_mature | 203G、52G、13G | 下载的权重/检查点，见 §3.3 | E1xx 早期 |
+#### 3.2 节点 /tmp（node-local，重启或清理即丢）
+| 主机 | 路径 | 大小 | 内容 | 来源卡 |
+|---|---|---|---|---|
+| fvcrc10 | /tmp/xiang_e186/store | 73G | OLMoE-0924 七个 checkpoint 的逐 token 存储（main、s1220k、s140k、s200k、s260k、s5k、s80k） | E186 |
+| fvcrc10 | /tmp/xiang_e186/hidden | 13G | OLMoE-0924 九个 checkpoint 的隐状态（比 store 多 s20k、s320k） | E186 |
+| fvcrc10 | /tmp/xiang_e186/views | 14G | 从 store 切出的两个 E185 兼容视图 | E186 |
+| fvcrc10 | /tmp/xiang_e186/store_sat、env、uv | 4.1G、6.6G、6.7G | 饱和读数输入；venv；uv 缓存 | E186 |
+| fvcrc10 | /tmp/xiang_e186/{atlas,bundle,models,smoke,logs} | 8.5M、13M、21M、286M、164K | 小件；tok 为空 | E186 |
+| fvcrc13 | /tmp/xiang_e186/store | 58G | dsv2lite、olmoe0924_s20k、olmoe0924_s320k；另有 env 6.6G | E186 |
+| fvcrc11 | /tmp/xiang_e186/store | 37G | phimoe、phimoe2；另有 env 6.6G；无 hidden | E186 |
+| fvcrc21 | /tmp/xiang_e186/store（Mixtral 两卡） | 未核对 | fvcrc21 从本机主机名解析失败（"Name or service not known"）；E186 卡称 Mixtral 在该节点采集 | E186 |
+
+磁盘余量（`df /`）：fvcrc10 65G 空闲（93%）、fvcrc13 187G、fvcrc11 256G。fvcrc10 最紧。
+这些存储的 /home 副本：只有聚合（atlas_e186 19M）与 results/e186 的 .json；逐 token top-k 与隐状态没有副本。
+#### 3.3 HF 权重缓存 `~/.cache/huggingface/hub`（全部在 /home NFS；读它们加 NFS 负载）
+MoE 相关：
+
+| 目录 | 大小 | 备注 |
+|---|---|---|
+| models--Qwen--Qwen3-30B-A3B | 57G | E178–E187 主力；e187 的 w_instruct 从此读 |
+| models--Qwen--Qwen3-30B-A3B-Base | 57G | E182/E187 Base 对照 |
+| models--openai--gpt-oss-20b | 13G | E179–E186 |
+| models--allenai--OLMoE-1B-7B-0125-Instruct | 13G | E179–E185 |
+| 其余 MoE（Phi-3.5-MoE、Mixtral-8x7B、DeepSeek-V2-Lite、OLMoE-0924 各 checkpoint） | hub 里没有 | 它们只在节点 /tmp 或另处下载，来源路径未核对（E186 用 `e186_download.py` + `e186_dlchain.sh`） |
+
+非 MoE 但体量大的稠密模型（Qwen3-32B 62G、Mistral-Small-24B 88G、Qwen3.5-27B 52G、Qwen3-14B 28G 等）与本线无关，不列。
+### 4. 脚本 `division/scripts/`（按前缀分组）
+| 前缀 | 用途 |
+|---|---|
+| moe_model / train_moe / prepare_data / moe_measure | E167 自训小 MoE（OLMoE 缩小版）、Dolma 取数、测量库（N1 零模型等） |
+| capture_routing / capture_hidden / analysis_worker / analyze_routing / analyze_functional / functional_probe / heads_probe / heads_attn_fp / summarize_* | E167 路由与隐状态采集、跨 run 一致与功能指纹、注意力头 |
+| transplant / token_roles | E168 专家互换、token 级因果角色对应 |
+| ud_annotate / ud_passages | E170 UD 标注与段落 |
+| e169_* | 簇零假设、N1 零模型残差可靠性 |
+| e170_* | 多功能词、上下文可预测性、probe vs 路由、分解、图 |
+| e171_* | 精确重跑对的比较与流水线 |
+| e172_* | 词类一致、Antoine 式读数、token 类 T_D、F2 时间线 |
+| e173_* | 配方轴队列、启动、作业、对比、重跑天花板 |
+| e174_* | 格内置换零假设、粗粒度、token 级、窗口标注 |
+| e175_* | 输入 vs 下一 token、交叉拟合、事后 A/B、CPU 预测 |
+| e176_* | 已发表读数复现、自然流、汇总 |
+| e177_compare | 规模轴小尺度点 |
+| e178_capture / e178_analyze | Qwen3-30B-A3B FLORES 路由采集（T / N_A / N_B / N_G）与分析 |
+| e179_* | 三模型采集（含锐度匹配 N_T）、几何读数、作业 |
+| e180_* | 塞语双文字采集、转写、分析、事后分析 |
+| e181_* | Qwen3 / Llama 神经元零模型（在 E179 缓存上，无前向） |
+| e182_* | 22 语侧采集、乌兹别克转写、分析 |
+| e183_* | Belebele 每语准确率、路由对齐与迁移 |
+| e184_* | 英语两语料 token 级采集、分析、图 |
+| e185_*、e185x_* | 图谱管线（atlas/crossfit/lib/report/tokens/pc_cond/residuals/figure）；x 系列是残差核查（复制层一致、门 OV、第 0 层、标点、周期、权重） |
+| e186_* | 广度采集管线（capture/download/job/pipeline/views/satextract/extra/pc/report/figure/mkenv/run_*） |
+| e187_* | 复制层：权重读盘（weights/weights_np）、分解、漂移、lag 检验、增益诊断、token 类、E182/E184 对照 |
+### 5. 文献与定位文档 `library/themes/moe-routing/`
+| 文件 | 日期 | 用途 |
+|---|---|---|
+| README.md | 11-09 | 题材入口、热度 |
+| KEY_PAPERS.md | 11-09 | 单一入口论文表 |
+| FIELD_MAP_2026-11-09.md | 11-09 | 领域问题地图、我们的定位表、Part C 零 GPU 问题 |
+| BRIDGES_AND_CONTRADICTIONS_2026-11-09.md | 11-09 | 11 座推理桥、8 组文献矛盾 |
+| POSITIONING_NULLAUDIT / LANGUAGE_GEOMETRY / COPIED_LAYERS_2026-11-09.md | 11-09 | 零模型审计、稠密多语几何、复制层三条定位扫描 |
+| RESIDUALS_E185_2026-11-09.md | 11-09 | E185 三个残差的平凡原因核查 |
+| POSITIONING_RA_2026-11-06.md | 11-06 | 旧 R-A 定位表（主旨改方法学后重扫） |
+| READOUT_CATALOGUE_AND_SEED_ROBUSTNESS_2026-11-06.md | 11-06 | 现成读数目录 + 跨 seed 重现的相邻领域 |
+| VENUE_PARADIGMS_2026-11-06.md | 11-06 | 顶会范式卡 |
+| MOE_EXPERT_ANALYSIS_HISTORY_2026-11-05.md | 11-06 | MoE 专家分析史 1991–2026 |
+| SURVEY_SPECIALIZATION_UNIVERSALITY_2026-11-05.md | 11-06 | 专精与跨训练普遍性精读 |
+| SELECTABLE_COMPUTATION / FUNCTIONAL_TRANSFER / RECENT_PRUNING / MOE_ROUTE_CLOSEOUT 等（10-09 至 10-29，共 15 份全文阅读卡） | 10 月 | 早期专家对应、功能角色、LRE/ROME、EMO、ERC、OLMoE 历史等阅读卡；不逐个列 |
+| papers/2602.12587_mha_pre_routing_bottleneck.md | 11-10 | 注意力是 MoE 遗忘来源（ICML'26） |
+| papers/2604.17837_polysemantic_experts_monosemantic_paths.md | 11-10 | Ye：单义路径，N1/N2b 最近邻 |
+| papers/2605.07260_when_are_experts_misrouted.md | 11-10 | 反事实路由分析 |
+| papers/2609.32821_routing_drift_merged_moe.md | 11-10 | 合并 MoE 的路由漂移，与 E187 对照 |
+| papers/iclr26_cross_layer_contributions_moe_routing.md | 11-10 | 跨层贡献路由（Li，ICLR'26） |
+
+division 内相关文档：DIRECTION_2026-11-06.md（§15–§22 当前线形）、MAINLINE_NARRATIVE_2026-11-11.md（N1–N4 候选）、CANDIDATE_QUESTIONS_2026-11-09.md、ROUTE_AUDIT、FINDINGS、两份调研。
+### 6. 零 GPU 下还能回答的问题（只引用已写出的）
+来源 1：`FIELD_MAP_2026-11-09.md` Part C（现有存储上，≤ 6 问，按信息增益排序，不选主线）：
+
+| Part C | 问题（缩写） | 需要的存储 |
+|---|---|---|
+| 1 | Qwen3 已发表的中层语言通用剖面随深度变还是随复制块内位置变（12×3 重排） | e179/e185 已存逐层散度与平行句身份 |
+| 2 | 训练路由器新增信息落在哪类 token、是否随专家粒度（8→32→64→128）变 | E185 管线 × 7 模型的 topk 存储 |
+| 3 | OLMoE 训练中词表锐化、局部序列新增、跨语内容新增各在何时出现 | E186 OLMoE-0924 checkpoint 序列（/tmp 存储） |
+| 4 | Ye 的"专家路径单义、跨语"是路由器的还是几何的 | 逐 token top-1 路径拼接，T vs N_A/N_B |
+| 5 | 第 0 层是否普遍按前一 token 路由 | 权重级，7 模型第 0–1 层 |
+| 6 | "按/不按领域语言"的分歧是否随负载均衡作用域排列 | 7 模型语言份额 T/N_B 按技术报告作用域排序 |
+
+来源 2：`DIRECTION_2026-11-06.md` §22 "下一步（0 GPU，等 NFS 恢复）"：第 1 问 + 第 4 问合成一张卡 E188（E187 收尾后开，未建卡）；§22 还写了功能连接候选（词表部分替换路由器，≤ 2 GPU h，需要 GPU，不属零 GPU）。E186 卡"下一步"另列 0 GPU 项：OLMoE 第 0 层前一 token 头、连续门值上下文依赖（存储已有）；E187 卡"下一步"另列 H(e|id) × 频率分层、H(k) 曲线（0 GPU）。以上这三项不在 §22 / Part C，仅作指针。
+### 7. 风险
+| 风险 | 资产 | 说明 |
+|---|---|---|
+| 只有一份、在节点 /tmp | fvcrc10 /tmp/xiang_e186/{store 73G、hidden 13G、views 14G、store_sat 4.1G、env、uv} | OLMoE-0924 七个 checkpoint 逐 token 存储；fvcrc10 磁盘 93% 满，清理风险最高 |
+| 同上 | fvcrc13 /tmp/xiang_e186/store 58G | dsv2lite、s20k、s320k |
+| 同上 | fvcrc11 /tmp/xiang_e186/store 37G | phimoe、phimoe2 |
+| 同上 | fvcrc21 /tmp/xiang_e186/store（Mixtral） | 未核对；节点主机名当前解析失败 |
+| 重算成本 | Part C 第 3 问依赖上述 /tmp 存储 | /home 只有聚合（atlas_e186 19M），丢失后需重采（E186 全程约 1.35 GPU·h，加下载） |
+| /home 大目录（读会加 NFS 负载） | HF：Qwen3-30B-A3B 57G、Base 57G、gpt-oss-20b 13G、OLMoE-0125-Instruct 13G | 重读权重（e187_weights 类脚本）勿在 NFS 退化时跑；首选拷到节点 /tmp |
+| /home 大目录 | mechpop_cache：e167_runs 137G、e173_runs 109G、hf_emo_mature 203G、hf_olmoe 52G、e182 34G、e179/e187 各 17G | 自训平台已冻结；e167_runs 是 E167–E177 唯一 checkpoint 来源 |
+| 未入 git 的小文件 | results/e167/ud_annotations.json 38M 等（§2） | 只在本机；丢了需用 ud_annotate.py 重做 |
+| 卡头状态过期 | E167/E168/E173/E181/E187 | 易让接手人误判进度 |

@@ -1,6 +1,6 @@
 # MoE 实验索引 E120–E166（2026-10-29）
 
-这是证据导航，不是自动执行队列。E120–E142为受控阶段，E144–E166已完成，E143未运行。目录整理/全文再定位后，E164完成新55学科与实际路由通路检验。当前整合论文论证，无自动GPU后继；总上限4卡、当前0卡，旧数字与等级不改。执行前读[AGENTS](../../AGENTS.md)及[唯一研究说明](../README.md)。
+这是证据导航，不是自动执行队列。E120–E142为受控阶段，E144–E166已完成，E143未运行。目录整理/全文再定位后，E164完成新55学科与实际路由通路检验。当前整合论文论证，无自动GPU后继；总上限4卡、当前0卡，旧数字与等级不改。执行前读[AGENTS](../../README.md#执行约定)及[唯一研究说明](../README.md)。
 
 ## 本轮已预注册、尚无模型结果
 
@@ -26,7 +26,7 @@
 | [E160](E160-fixed-shared-signal-context-cross.md) | DONE；C14 | 相同S函数的生产/消费轨迹交叉有.260527答案NLL配套代价；固定信号后伙伴效应改变，产生与使用需分开 | [complete retry summary](../results/e160/retry_1/summary.json) |
 | [E161](E161-crossed-entity-relation-composition.md) | DONE；C14 | 双因素R交换没有支持跨国家纯关系操作；多数为other，attention保留强完整donor阳性 | [summary](../results/e161/summary.json) |
 | [E162](E162-full-course-native-division.md) | COMPLETE；C14=L2不变 | F/B完整raw都39.06%、文本NLL接近；F前缀损伤更低，同时S移除文本/任务NLL代价额外1.851/5.311；四模型同成功40题共同必要8/10/20/24。停止自动追加、转入整理 | [完整结果](../results/e162/summary.json)、[独立复算](../results/e162_independent_audit/report.json) |
-| [E163](E163-native-message-geometry-and-reuse.md) | COMPLETE；C14/P33，仍L2 | 四端点各16条件和真实消息27格完整；raw/norm/Gram原配NLL代价.260527/.248472/.245925，几何校准只解除小部分，准确率改善未区分；独立29650数值/1376元数据通过，含失败2.109199 GPU时 | [完整结果](../results/e163/summary.json)、[主图](../results/e163/figures/actual_message_reuse.png)、[独立复算](../results/e163/independent_audit.json)、[领域位置](../PAPER_SHAPE.md) |
+| [E163](E163-native-message-geometry-and-reuse.md) | COMPLETE；C14/P33，仍L2 | 四端点各16条件和真实消息27格完整；raw/norm/Gram原配NLL代价.260527/.248472/.245925，几何校准只解除小部分，准确率改善未区分；独立29650数值/1376元数据通过，含失败2.109199 GPU时 | [完整结果](../results/e163/summary.json)、[主图](../results/e163/figures/actual_message_reuse.png)、[独立复算](../results/e163/independent_audit.json)、[领域位置](../README.md#论文主旨与领域位置) |
 
 ## 预测配套与原生桥接 E144–E149
 

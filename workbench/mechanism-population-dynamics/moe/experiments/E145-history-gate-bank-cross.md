@@ -41,7 +41,7 @@
 
 R0/S0、R2/S2 各自具有配对的原始专家初值与 RNG，S 的初态仅更换 gate。R/S 的 seed1 整模型相同；不能把它们当独立 cohort，也不能把三对学生当三个独立训练重复。四个 donor 全保留，不按 native 性能、覆盖或移植结果筛选。
 
-资产入口为 [ASSETS.md](../ASSETS.md)、[E139 archive manifest](../results/e139/archive_manifest.json)、[E142 archive manifest](../results/e142/archive_manifest.json)，以及其中引用的 E135 seed1 文件。执行前按 manifest 解析实际路径并核验 checkpoint/tensor SHA，不假定归档根目录下就是 checkpoint。当前卡片核对的是仓库记载，不表示已经访问计算节点上的权重。
+资产入口为 [ASSETS.md](../README.md#资产与恢复)、[E139 archive manifest](../results/e139/archive_manifest.json)、[E142 archive manifest](../results/e142/archive_manifest.json)，以及其中引用的 E135 seed1 文件。执行前按 manifest 解析实际路径并核验 checkpoint/tensor SHA，不假定归档根目录下就是 checkpoint。当前卡片核对的是仓库记载，不表示已经访问计算节点上的权重。
 
 ## 3. 固定共同坐标与 13 个合法模型
 

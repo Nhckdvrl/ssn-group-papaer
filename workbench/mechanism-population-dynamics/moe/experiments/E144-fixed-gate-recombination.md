@@ -15,7 +15,7 @@
 
 复用 [E138](E138-fixed-assignment-student-reproducibility.md) 的 F 三学生：seed0/2 的 E138 终点与 seed1 的 E136 终点，全部 step4096。模型为 OLMoE-1B-7B-0924，L9（0 起算）、64 experts、Top-8、全 softmax 后取 Top-8 且不重归一；原生 prefix/downstream 冻结。三者共同 teacher gate 与物理槽位对应保持原值，不重新匹配、不重标定、不筛学生。
 
-来源按 [ASSETS.md](../ASSETS.md) 及 E136/E138 的已有 manifest 解析。设计核对基于仓库快照 `15b9b1bf78c9c60e32250434de4997e17cbf28f8`，参考 `e138_components.py`、`e138_readout.py`、`e137_components.py` 与 `e134_uniform_necessity.py`；本次未验证原机器上的 checkpoint/token 文件仍可读取。执行前核验真实权重、共同 gate、数据、tokenizer、配置与源码 SHA；缺失资产明确记录，不自造替代权重。
+来源按 [ASSETS.md](../README.md#资产与恢复) 及 E136/E138 的已有 manifest 解析。设计核对基于仓库快照 `15b9b1bf78c9c60e32250434de4997e17cbf28f8`，参考 `e138_components.py`、`e138_readout.py`、`e137_components.py` 与 `e134_uniform_necessity.py`；本次未验证原机器上的 checkpoint/token 文件仍可读取。执行前核验真实权重、共同 gate、数据、tokenizer、配置与源码 SHA；缺失资产明确记录，不自造替代权重。
 
 每套重组是合法的原生 MoE bank：槽位 e 的完整专家权重来自某个学生的同一 e，router 仍为共同 teacher gate。固定来源表作用于全部序列、全部位置；按整序列重跑后续网络，后续 MoE 自然重新路由。不能把孤立 target 的层向量注入当作此操作，也不能逐 token 重新抽来源。
 

@@ -6,7 +6,7 @@
 
 ## 从母问题到本实验
 
-已有实证不是只有routing：E155/E162同样成功的分担变化，E156性质载体与必要伙伴分离，E159同函数作用变化，E160实际S轨迹原配收益。它们尚未识别哪些消息特征需要配套。领域已有Monet的编辑、Standing Committee真实mask、stitching/LMC与Hydra/Dose/WISE条件干预；本项不重新发明这些一般概念，而是解释成熟组织下的实际角色和重用。领域位置/备选动作的取舍见[PAPER_SHAPE](../PAPER_SHAPE.md)。
+已有实证不是只有routing：E155/E162同样成功的分担变化，E156性质载体与必要伙伴分离，E159同函数作用变化，E160实际S轨迹原配收益。它们尚未识别哪些消息特征需要配套。领域已有Monet的编辑、Standing Committee真实mask、stitching/LMC与Hydra/Dose/WISE条件干预；本项不重新发明这些一般概念，而是解释成熟组织下的实际角色和重用。领域位置/备选动作的取舍见[PAPER_SHAPE](../README.md#论文主旨与领域位置)。
 
 新训练seed/更多层扫描不直接区分上述解释；单独旋转随机向量后网络受损也不够。因此本项同时保留native历史测量，以及同一S_P函数、同一输入的实际跨背景消息，后者是更有结构的重用检验。
 
@@ -127,4 +127,4 @@ Gram−raw的NLL差−.014602 [−.024973,−.004968]，norm−raw为−.012055 
 - 数值源c31e4b0e，冻结plan SHA `7493cb8207480a2773adb3147f1295f1e872a6d71bc127f648bce5deca4870cb`；资源等待器与指纹续跑器另有源码SHA。五份raw路径/SHA和实际监督退出见[manifest](../results/e163/manifest.json)。CPU入口：`~/.venvs/mechpop/bin/python -B moe/scripts/reproduce.py E163 all`。
 - 结果提交44b9e1ed；[封存凭证](../results/e163/artifact_seal.json)记录60,388,837 B源码/配置/输入/结果包，209个实文件逐项核对SHA，四个公共模型的Python/config/index均物化，权重按固定pin恢复。主图[research_spine](../results/e163/figures/research_spine.png)只组织既有估计及原CI，[sidecar](../results/e163/research_spine.json)逐项给来源，不新增统计检验。
 
-**本批决定：** 三条核心论证已有实测与最近邻定位，本项补上了一个主要竞争解释的直接检验；先形成论文论证、关键图和可复现封存，不自动追加E164、adapter优化或另一轮层/方向网格。更广成熟谱系与形成分叉仍是实质缺口，按其能否改变核心解释决定未来动作，见[PAPER_SHAPE](../PAPER_SHAPE.md)。
+**本批决定：** 三条核心论证已有实测与最近邻定位，本项补上了一个主要竞争解释的直接检验；先形成论文论证、关键图和可复现封存，不自动追加E164、adapter优化或另一轮层/方向网格。更广成熟谱系与形成分叉仍是实质缺口，按其能否改变核心解释决定未来动作，见[PAPER_SHAPE](../README.md#论文主旨与领域位置)。

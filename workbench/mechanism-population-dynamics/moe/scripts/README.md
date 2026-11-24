@@ -33,4 +33,4 @@ python3 -B moe/scripts/reproduce.py sources --export /tmp/mechpop-frozen-source
 
 复算时，入口持有跨节点共享锁，临时将**原字节恢复到原路径**，执行原程序，最后只收回自己创建且SHA未变的文件。已有冲突文件不会覆盖。这样保留`__file__`、动态import和冻结源码guard的契约，数值程序不做目录迁移或改写；仅替换了日常入口的组织方式。历史训练程序不会自动执行。
 
-若是浅克隆缺少该Git对象，先取得上述固定版本；封存包是另一精确恢复来源。历史完整环境/GPU程序按[ASSETS](../ASSETS.md)和原卡在独立checkout恢复；旧源中的准备命令不是当前实验队列。
+若是浅克隆缺少该Git对象，先取得上述固定版本；封存包是另一精确恢复来源。历史完整环境/GPU程序按[ASSETS](../README.md#资产与恢复)和原卡在独立checkout恢复；旧源中的准备命令不是当前实验队列。

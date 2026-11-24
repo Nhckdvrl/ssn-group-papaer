@@ -13,6 +13,8 @@
 
 ## 目前的答案
 
+> **11-24 降级（停止前最后的读数）：** E217 按事先判据，没有一个模型落在“专门负责拼词”，“卷积专门负责拼词”这一因果解读降级；E220 显示各层互为备份；E222 显示 Transformer 与混合模型在前几层的差别大半来自注意力汇聚点被破坏。下面的一句话和 1–3 保留为停止时的观测记录，不再作为解释。
+
 **一句话：** 単語の組み立ては、どのモデルでも最初の数層で行われ、それを担う部品はアーキテクチャが最初の数層に用意した局所混合器で決まる。後の層は肩代わりしない。
 
 （词在任何模型里都在最初几层拼好；由谁来拼，取决于架构在这几层提供的局部混合部件；后面的层不会补做。）
@@ -87,7 +89,7 @@
 - **Zeng 2611.01909：** 把最早的循环块换成逐 token 投影后，检索不变、困惑度 10.6 → 44.7。我们关卷积时 NLL 也从 2.97 升到 4.03，丢掉的正是拼词。
 - **Allen-Zhu Part 4.1：** Mamba2 的性能主要来自短卷积。这里给出一个语言学上的理由：短卷积在做拼词。
 
-## 需要人决定的
+## 停止时尚未决定的事（线已停，不再待决）
 - **"同一种记忆 ± 卷积"的直接对比：** E203 已用公开的同配方模型库基本解除混杂。E209 后，带卷积且干预干净的同配方模型有 DeltaNet、Mamba 两个。不自训（11-24）；是否还需要 PhysicsLM4.2，等顶会论文的证据构成核对完再定。
 - **PhysicsLM4.2：** Llama 与 LlamaCanon（同配方，只差 Canon 短卷积，1B–8B，各两种学习率）在 Hugging Face 上是受限访问。接受许可并允许用你的凭证下载，就能在同配方下检验"加了卷积后，拼词是否从注意力转给卷积"。我没有擅自使用凭证。
 
@@ -122,6 +124,13 @@
 | [E214](experiments/E214-distilled-conv-vs-inherited-attention.md) | 蒸馏模型 Llama3.2-Mamba-3B-distill：随机卷积（第 0 层）对继承的注意力（第 1 层） | 中间：关注意力拼词消失（18%），关卷积降到 64%；方向上支持"继承 / 模仿" |
 | [E215](experiments/E215-jet-nemotron-learned-conv.md) | Jet-Nemotron（学出来的循环部件） | 停止，未得到读数 |
 | [E216](experiments/E216-olmo-training-trajectory.md) | OLMo 训练中间检查点 | 停止，未运行（换了角度） |
+| [E217](experiments/E217-four-level-locality.md) | 关早期卷积后坏的是拼词、一切局部组合还是全局（四级对照） | 没有模型落在“专门拼词”；Qwen3.5、Falcon-H1 为全局破坏，“卷积专门拼词”降级 |
+| [E218](experiments/E218-per-layer-and-conv-anatomy.md) | 逐层拆开卷积与记忆；卷积权重指纹 | 没有哪一层的卷积单独承担拼词 |
+| [E219](experiments/E219-per-layer-mixing-map.md) | 10 个模型逐层、逐部件测谁在 token 间搬运信息 | 前 3 层只有一个部件在搬运（倍数 11–56）；纯 Mamba 不成立 |
+| [E220](experiments/E220-block-and-all-layer-isolation.md) | 按 4 层一组和全部层一起切断 | 各层互为备份：一起关是单独关之和的 3–6 倍，推翻 E219 的“其余部件闲着” |
+| [E221](experiments/E221-repeat-split-and-early-cut.md) | 全切断后损伤落在哪类 token；前 4 层一起切断 | Transformer 前 4 层一断约等于全断，混合模型 .21–.61（由 E222 修正） |
+| [E222](experiments/E222-sink-check-and-reentry.md) | 上面的对比是否是注意力汇聚点被破坏的假象 | 大半是：保留汇聚点后两类模型重叠，候选 D/E 降级 |
+| [E223](experiments/E223-fla-prediction-divergence.md) | fla 7 个同数据同词表架构的逐 token 预测分歧 | 分歧几乎均匀（JS .055–.073），不按架构成组；无噪声地板 |
 
 关键图：[`results/e198/fig_conv_memory_three_hybrids.png`](results/e198/fig_conv_memory_three_hybrids.png)。
 

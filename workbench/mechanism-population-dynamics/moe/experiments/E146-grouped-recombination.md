@@ -16,7 +16,7 @@ E144 若显示逐专家重组确实改变预测 KL，或显示值得解释的“
 
 复用 E144 的 F 三学生 step4096、共同 teacher gate、L9 原生实现、μ 参考、完整下游与冻结的 **64 序列/32768 位置/4 个新 B16 batch**。`selected.json` 的 token、mask、排序、batch 与 SHA 完全相同；不扩大 held、不换目标、不重新挑学生。不扩 POS、层数、模型、训练 seed 或 Fisher 网格。
 
-来源仅由 [ASSETS.md](../ASSETS.md) 与 E136/E138 manifest 解析；现有 checkpoint/cache 在原机器是否可读尚未验证。E144 的数值 floor 与端点可复用，但输入/权重/精度/源码必须同合同；若变化则需要相应重新校验。原 held 已参与探索，不称新独立确认。
+来源仅由 [ASSETS.md](../README.md#资产与恢复) 与 E136/E138 manifest 解析；现有 checkpoint/cache 在原机器是否可读尚未验证。E144 的数值 floor 与端点可复用，但输入/权重/精度/源码必须同合同；若变化则需要相应重新校验。原 held 已参与探索，不称新独立确认。
 
 ## 2. 校准统计与唯一组粒度
 
