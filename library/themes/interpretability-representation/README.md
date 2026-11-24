@@ -180,6 +180,13 @@ Start from MIB / causal abstraction / SAEBench / established model-diffing harne
 - [Lost with a Map: Conversational State and Behavioral Reliability in Language Models](papers/2609.33883_dokme-heck-lost-with-a-map.md)
 - [Beyond State Capacity: Why Retrieval Breaks in Mamba](papers/2610.19709_yarden-beyond-state-capacity-mamba.md)
 
+### 机制结论的跨模型推广与绑定容量（11-25 补读）
+
+- [Tracking Equivalent Mechanistic Interpretations Across Neural Networks](papers/2603.30002_sun-toneva-interpretive-equivalence.md)
+- [Differentiable Faithfulness Alignment for Cross-Model Circuit Transfer](papers/2604.24302_shao-dfa-cross-model-circuit-transfer.md)
+- [In-Context Binding Capacity in Language Models](papers/2609.30634_ravulapalli-incontext-binding-capacity.md)
+- [Late Attention Layers Alone Can Copy Entity Tokens, but Not Without Attending to Their Context](papers/2609.35663_he-late-layers-entity-copying.md)
+
 ### 后训练改变了读出还是计算
 
 - [Represented but misread: Post-training changes how language models read out what they represent](papers/2611.26584_represented-but-misread.md)
