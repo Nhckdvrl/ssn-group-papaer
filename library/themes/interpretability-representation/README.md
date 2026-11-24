@@ -92,3 +92,68 @@ Start from MIB / causal abstraction / SAEBench / established model-diffing harne
 - **已终止的实证项目**：[mechanism-population-dynamics](../../../workbench/mechanism-population-dynamics)（2026-10-11 CLOSED；[科研结项](../../../workbench/mechanism-population-dynamics/heads/README.md)）。仅为知识与数据资产入口，不代表仍有活跃研究计划。
 - **模型差分独立 workbench 已撤销**；不再将此题材误标为正在开展的项目。见 [模型差分知识卡](MODEL_DIFFING_MEASUREMENT.md)。
 - [Shape/OLMo 历史架构/表征混杂审计](../architecture-memory/SHAPE_OLMO_CLOSEOUT.md)（旧 workbench 已删除）
+
+## 论文卡（papers/，2026-11-25 为三个候选题精读全文写成）
+
+每张卡都读了正文和附录；一篇论文只有一张卡。
+
+### 变量绑定与实体追踪（Transformer）
+
+- [How do Language Models Bind Entities in Context?](papers/2310.17191_feng-steinhardt-binding-ids.md)
+- [Cell-Based Representation of Relational Binding in Language Models](papers/2604.19052_dai-cell-based-binding.md)
+- [A retrieval conditioned rebinding circuit for dynamic entity tracking in large language models](papers/2606.08644_oh-demberg-rebinding-circuit.md)
+- [How can embedding models bind concepts?](papers/2605.31503_uselis-embedding-binding.md)
+- [Mixing Mechanisms: How Language Models Retrieve Bound Entities In-Context](papers/2510.06182_gur-arieh-mixing-mechanisms.md)
+- [Do Language Models Track Entities Across State Changes?](papers/2605.30233_tang-entity-tracking-state-changes.md)
+- [How Do Transformers Learn Variable Binding in Symbolic Programs?](papers/2505.20896_wu-variable-binding-symbolic-programs.md)
+
+### 循环 / SSM / 混合架构里的记忆与检索
+
+- [Mechanistic evaluation of Transformers and state space models](papers/2505.15105_arora-mechanistic-eval-ssm.md)
+- [The Illusion of State in State-Space Models](papers/2404.08819_illusion-of-state-ssm.md)
+- [Comparing Transformers and Hybrid Models at the Token Level](papers/2606.20936_transformer-vs-hybrid-token-level.md)
+- [How Linear Attention Remembers](papers/2609.33093_how-linear-attention-remembers.md)
+- [What Attention Recalls and Recurrence Controls in Hybrid Language Models](papers/2609.04434_attention-recalls-recurrence-controls.md)
+- [Who Asks, Who Answers: Linear Attention Builds the Query in Hybrid Language Models](papers/2611.01909_linear-attention-builds-query.md)
+- [On the Recall Scaling Laws in Mamba: A Theoretical and Mechanistic Study via Hashing](papers/2609.07681_mamba-recall-scaling-hashing.md)
+
+### 表征流形与几何
+
+- [When Models Manipulate Manifolds: The Geometry of a Counting Task](papers/2601.04480_gurnee-manipulate-manifolds.md)
+- [Geometry of Ordinal Representations in Language Models](papers/2607.04167_bassi-ordinal-geometry.md)
+- [The Shape of Beliefs: Geometry, Dynamics, and Interventions along Representation Manifolds of Language Models' Posteriors](papers/2602.02315_sarfati-shape-of-beliefs.md)
+- [PersonaManifold: Revealing and Exploiting Curved Geometry in LLM Persona Representations](papers/2609.34571_personamanifold.md)
+- [Manifold Steering Reveals the Shared Geometry of Neural Network Representation and Behavior](papers/2605.05115_wurgaft-manifold-steering.md)
+- [Linear Probes to Bayesian Manifolds: Geometry of Arithmetic in Large Language Models](papers/2611.12998_kumar-bayesian-manifolds-arithmetic.md)
+- [Symmetry in Language Statistics Shapes the Geometry of Model Representations](papers/2602.15029_karkada-symmetry-geometry.md)
+- [Not All Language Model Features Are One-Dimensionally Linear](papers/2405.14860_not-all-features-one-dim-linear.md)
+- [Language Models Use Trigonometry to Do Addition](papers/2502.00873_trigonometry-addition-helix.md)
+- [The Origins of Representation Manifolds in Large Language Models](papers/2505.18235_origins-representation-manifolds.md)
+- [Spokes, not a Ring: Revisiting the Weekday Manifold in Language Models](papers/2610.37796_spokes-not-ring-weekday.md)
+- [Arithmetic in the Wild: Llama uses Base-10 Addition to Reason About Cyclic Concepts](papers/2605.01148_arithmetic-in-the-wild-cyclic.md)
+- [Pre-trained Large Language Models Use Fourier Features to Compute Addition](papers/2406.03445_pretrained-llms-fourier-addition.md)
+- [Hypothesis-Driven Feature Manifold Analysis in LLMs via Supervised Multi-Dimensional Scaling](papers/2510.01025_smds-feature-manifold-hypotheses.md)
+- [A Geometric Invariant of Attention Predicts Head Specialization from Weights Alone](papers/2611.12206_rho-invariant-head-specialization.md)
+
+### 跨运行 / 跨架构的普适与多样
+
+- [The Clock and the Pizza: Two Stories in Mechanistic Explanation of Neural Networks](papers/2306.17844_clock-and-pizza.md)
+- [A Toy Model of Universality: Reverse Engineering How Networks Learn Group Operations](papers/2302.03025_toy-model-universality-group.md)
+- [Convergent Evolution: How Different Language Models Learn Similar Number Representations](papers/2604.20817_fu-convergent-evolution-numbers.md)
+- [Language Models Learn Universal Representations of Numbers and Here's Why You Should Care](papers/2510.26285_universal-number-representations.md)
+- [Global Divergence, Local Convergence: Representation Geometry in SSMs and Transformers](papers/2609.08692_ssm-transformer-representation-geometry.md)
+- [Towards Universality: Studying Mechanistic Similarity Across Language Model Architectures](papers/2410.06672_towards-universality-mamba-transformer.md)
+- [The Platonic Representation Hypothesis](papers/2405.07987_platonic-representation-hypothesis.md)
+
+### 后训练改变了读出还是计算
+
+- [Represented but misread: Post-training changes how language models read out what they represent](papers/2611.26584_represented-but-misread.md)
+- [Why Does Reinforcement Learning Generalize? A Feature-Level Mechanistic Study of Post-Training in Large Language Models](papers/2604.25011_why-rl-generalize-crosscoder.md)
+- [Reasoning or Pattern Exploitation? Mechanistic Insights from RL-Trained Language Models](papers/2610.39182_reasoning-or-pattern-exploitation-tictactoe.md)
+- [Interpretability without actionability: mechanistic methods cannot correct language model errors despite near-perfect internal representations](papers/2603.18353_interpretability-without-actionability.md)
+- [Observable Patterns Are Not Explanations: A Causal-Geometric Analysis of Latent Reasoning Models](papers/2606.12689_observable-patterns-not-explanations-lrm.md)
+- [How Do Language Models Choose Between Context and Memory?](papers/2609.00753_context-vs-memory-authority.md)
+- [Many Biases, One Circuit: Post-Training Tunes a Pretrained Cue-Routing Mechanism](papers/2610.22937_many-biases-one-circuit.md)
+- [Base Models Know How to Reason, Thinking Models Learn When](papers/2510.07364_base-models-know-how-to-reason.md)
+- [RLVR Sharpens the Pencil, Not the Mind](papers/2611.02574_rlvr-sharpens-pencil-not-mind.md)
+- [Erased, Rerouted, or Rescaled? Post-Training and the Causal Quotient of a Language Model's Belief State](papers/2610.05292_erased-rerouted-rescaled.md)
