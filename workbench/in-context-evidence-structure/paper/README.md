@@ -1,10 +1,12 @@
-# ARR 投稿稿（LaTeX，2026-10-12 重写）
+# ARR 投稿稿（LaTeX，2026-10-12 重写，10-13 定稿）
 
-**标题：** *Whose Rule Is It? How Language Models Mix and Separate Source-Specific Rules in In-Context Learning*（可改）
+**标题：** *Whose Rule Is It Anyway? Shared Labels Mix and Names Separate Source-Specific Rules in In-Context Learning*
+
+**状态（2026-11-24）：** 已投 ARR，进入 rebuttal 准备。`main.tex` + `appendix.tex` 为投稿正本，rebuttal 期间不改动；准备材料见 [`rebuttal/`](rebuttal/)。去匿名 arXiv 版由 `make_arxiv.sh` 派生到 `arxiv/`（11-03）。投稿编号与 arXiv 编号待补。
 
 从 2026-10-12 起，**本目录的 `main.tex` + `appendix.tex` 是论文唯一正本**。原来用 pandoc 从 [PAPER_DRAFT.md](../PAPER_DRAFT.md)、[PAPER_APPENDIX.md](../PAPER_APPENDIX.md) 转出 TeX 的流程（`scripts/build_paper.py`）停用，两个 Markdown 文件保留为历史稿和实验记录索引。
 
-- [main.pdf](main.pdf)：当前 PDF。正文 8 页写满，第 9 页页首开始 Limitations，然后是 Ethical Considerations、参考文献、附录 A–J。
+- [main.pdf](main.pdf)：当前 PDF。正文 8 页写满，第 9 页页首开始 Limitations，然后是 Ethical Considerations、参考文献、附录 A–L。
 - `main.tex`：正文。第 1 页的 Figure 1 是 TikZ 示意图，直接写在 `main.tex` 里。
 - `appendix.tex`：附录。表格行在 `tables/app_*.tex` 中，由脚本生成；E122/E124–E128/E119 的表格从已审计的 PAPER_APPENDIX.md 转写。
 - `figures/`：Figure 2–5 和 `numbers.json`（正文所有数字的出处），由 [scripts/paper_figures_v2.py](../scripts/paper_figures_v2.py) 直接从 `results/` 的确认批次原始文件计算。重算散点图的相关系数时，会与已保存的 analysis 断言一致。
