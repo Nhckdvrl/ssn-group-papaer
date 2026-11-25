@@ -108,7 +108,13 @@ E224–E227 四次试测都撞上同一堵墙：现有公开的纯循环模型�
 - 训练阶段追踪这一做法已被谄媚研究大量使用：Yao 2610.37788（OLMo-2 各阶段；附和 base 就有，被追问后改口是后训练带来的）；Huang 2610.26655（741 个 checkpoint，含 OLMo-3 Think / Instruct / RL-Zero）；Pan 2508.15815（用户—助手偏向：base 接近中性）。
 - 风险：“同一套阶段追踪方法换一个现象”会被看成增量。本候选的独特处应放在第 1 问（base 有没有、是接着写还是归属），而不是阶段追踪本身。
 
-**可行性：** OLMo-2-7B（base / SFT / DPO / Instruct）和 OLMo-3-7B（base；Instruct-SFT / DPO / 最终；Think-SFT / DPO / 最终；RL-Zero）都公开、免授权。Tsui 的数据公开（`kenhktsui/scli5`、`gsm8k_sc`、`prm800k_sc`）。最小试测卡：[E229](experiments/E229-self-correction-blind-spot-origin.md)（PLANNED，未跑）。
+**可行性：** OLMo-2-7B（base / SFT / DPO / Instruct）和 OLMo-3-7B（base；Instruct-SFT / DPO / 最终；Think-SFT / DPO / 最终；RL-Zero）都公开、免授权。Tsui 的数据公开（`kenhktsui/scli5`、`gsm8k_sc`、`prm800k_sc`）。
+
+**E229 试测（11-25，OLMo-3-7B base / Instruct-SFT / Instruct，[卡](experiments/E229-self-correction-blind-spot-origin.md)）：**
+- base 已有不对称：接着写 0.01–0.03，另一人回复 0.28–0.51（O − C 区间不含 0）。“后训练造成”的说法不完整。
+- 最终 Instruct（chat）：错误留在自己上一轮、新开一轮时纠正率 0.86–0.94，与纠正用户（0.84–0.88）相同；只有接着写时低（0.26–0.51）。盲点主要是“接着写”，不是“自己的”。
+- 接着写时能改口，只在 DPO / RLVR 之后的最终版出现；SFT 在 chat 里还会照抄用户给的错答案（附和）。
+- 保留：S / O 可以“重答一遍”而不必指出错，C 必须当场推翻，读数分不开“看不见错”和“改口代价”；只测了一个家族。
 
 **一句话：** “记住谁拿了什么，再按问题取出来”这件事，文献给出了好几种机制解释，每一种都只在 1–4 个模型上做过。我们用每篇论文自己的反事实检验，在十来个独立训练的家族上看，这些结论哪些普遍成立、哪些只属于某些模型，以及不成立时是什么模型属性在起作用。
 
