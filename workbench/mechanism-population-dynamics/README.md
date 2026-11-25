@@ -1,6 +1,10 @@
 # Mechanism Population Dynamics
 
-**状态（2026-11-24）：当前没有进行中的工作。** 最后一条子线 [hybrid](hybrid/README.md) 已由用户 11-24 夜停止，节点上的模型和输出已删除。登记表状态仍是 PROPOSED。题目和主线要先和用户集中讨论，再锁定。
+**状态（2026-11-25）：找题阶段，已有一个推荐带去 zemi 的题目。** “独立训练的 LLM 在上下文绑定上用的是不是同一套算法”（[提案](ZEMI_PROPOSAL.md)，[找题工作页](TOPIC_SEARCH.md)）。试测 E224–E228 在 [experiments/](experiments/)：
+- 架构轴（循环模型 vs Transformer）因现有循环模型能力不足而停；
+- 跨家族的 Transformer 比较（E228）里，已发表的三条机制结论在 7 个模型上全部成立。
+
+锁题等用户审阅与导师反馈。登记表状态仍是 PROPOSED；hybrid 子线 11-24 已停。
 
 整条工作台围绕导师的问题：**独立训练的模型，会不会形成同样的机制或分工？** 两个月里换过五个对象：注意力头 → MoE 受控平台 → 公开 MoE 的计算组织 → 自训多 seed MoE 与公开 MoE 零模型 → 混合架构的拼词。导师原话见 [ADVISOR](ADVISOR.md)。
 
