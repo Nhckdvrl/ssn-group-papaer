@@ -1,0 +1,141 @@
+{
+ "args": {
+  "model": "/tmp/ices_models/gemma-2-9b",
+  "out": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e134/gemma9_confirmation",
+  "n": 32,
+  "seed": 132101,
+  "materials": "validation",
+  "shard": "0/1",
+  "device_map": "cuda",
+  "analyze_only": false
+ },
+ "plan": {
+  "shared": [
+   "normal",
+   "answer_cross_off",
+   "all_cross_off",
+   "iso_names",
+   "all_cross_off_cf",
+   "iso_names_cf",
+   "all_cross_off_cl",
+   "iso_names_cl",
+   "matched_count",
+   "matched_mass",
+   "answer_norenorm",
+   "AB:normal",
+   "AB:answer_cross_off",
+   "BA:normal",
+   "BA:answer_cross_off"
+  ],
+  "far": [
+   "normal",
+   "answer_cross_off",
+   "all_cross_off",
+   "iso_names",
+   "all_cross_off_cf",
+   "iso_names_cf",
+   "all_cross_off_cl",
+   "iso_names_cl",
+   "AB:normal",
+   "BA:normal"
+  ]
+ },
+ "worlds": [
+  "origin",
+  "cross"
+ ],
+ "namespaces": {
+  "shared": [
+   [
+    "no",
+    "yes"
+   ],
+   [
+    "no",
+    "yes"
+   ]
+  ],
+  "far": [
+   [
+    "no",
+    "yes"
+   ],
+   [
+    "pass",
+    "flag"
+   ]
+  ]
+ },
+ "word_ids": {
+  "flag": 8969,
+  "no": 793,
+  "pass": 2307,
+  "yes": 7778
+ },
+ "natural_materials": {
+  "dataset": "SetFit/sst5",
+  "cache_build": "e51bdcd8cd3a30da231967c1a249ba59361279a3",
+  "arrow_sha256": {
+   "train": "c3221ca614196a083a72efecd569148782022d434999bbd4a1da73d52e2a64b3",
+   "validation": "ea13ad57593993cf49b625dc14a8d9855f1b10e0fe6c0ab538ff1a5d22992898",
+   "test": "a92d0f50f5222807f063115e569aa43d0a26d4249a738229faf8712156e258bf"
+  },
+  "original_labels": [
+   0,
+   4
+  ],
+  "demo_split": "train",
+  "demo_hash_parity": 1,
+  "query_split": "test",
+  "comment_token_range": [
+   5,
+   64
+  ],
+  "valid_quartet_length_bins": 43,
+  "demo_pool_sizes": [
+   618,
+   555
+  ],
+  "query_pool_sizes": [
+   395,
+   276
+  ],
+  "selection_uses_model_outputs": false,
+  "original_text_retained": true,
+  "scope": "real extreme-sentiment texts; controlled private conventions, not human annotator rules"
+ },
+ "prefix_lengths": [
+  621,
+  516,
+  630,
+  678,
+  564,
+  475,
+  665,
+  611,
+  484,
+  468,
+  500,
+  630,
+  562,
+  627,
+  707,
+  550,
+  582,
+  684,
+  695,
+  590,
+  625,
+  659,
+  512,
+  551,
+  547,
+  512,
+  759,
+  540,
+  736,
+  611,
+  583,
+  534
+ ]
+}

@@ -1,0 +1,53 @@
+{
+ "args": {
+  "model": "/tmp/ices_models/Mistral-7B-v0.3",
+  "out": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e136/mistral_confirmation",
+  "n": 32,
+  "seed": 136101,
+  "materials": "validation",
+  "shard": "0/1",
+  "analyze_only": false
+ },
+ "model_type": "mistral",
+ "script_sha256": "94c53c80c8ebff673c5388bde2c68876b9d71c7919a5a3e47fb131b2ba517250",
+ "materials": {
+  "dataset": "SetFit/sst5",
+  "cache_build": "e51bdcd8cd3a30da231967c1a249ba59361279a3",
+  "arrow_sha256": {
+   "train": "c3221ca614196a083a72efecd569148782022d434999bbd4a1da73d52e2a64b3",
+   "validation": "ea13ad57593993cf49b625dc14a8d9855f1b10e0fe6c0ab538ff1a5d22992898",
+   "test": "a92d0f50f5222807f063115e569aa43d0a26d4249a738229faf8712156e258bf"
+  },
+  "original_labels": [
+   0,
+   4
+  ],
+  "demo_split": "train",
+  "demo_hash_parity": 1,
+  "query_split": "test",
+  "comment_token_range": [
+   5,
+   64
+  ],
+  "valid_quartet_length_bins": 49,
+  "demo_pool_sizes": [
+   626,
+   560
+  ],
+  "query_pool_sizes": [
+   395,
+   276
+  ],
+  "selection_uses_model_outputs": false,
+  "original_text_retained": true,
+  "scope": "real extreme-sentiment texts; controlled private conventions, not human annotator rules"
+ },
+ "numeric_max_error": 1.9073486328125e-06,
+ "dtype": "float32",
+ "attention": "eager",
+ "python": "3.12.13",
+ "torch": "2.8.0+cu128",
+ "transformers": "4.57.6",
+ "elapsed_seconds": 1497.6312456130981,
+ "gpu_hours": 0.4160086793369717
+}

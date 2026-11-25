@@ -4,7 +4,7 @@
 - **论文已投 ARR，进入 rebuttal 准备（2026-11-24）。** 投稿正本为 10-13 定稿的 [`paper/main.tex`](paper/main.tex) + [`paper/appendix.tex`](paper/appendix.tex)（PDF：[`paper/main.pdf`](paper/main.pdf)，正文 8 页 + Limitations + 附录 A–L）。仓库里没有投稿编号与轮次记录，待补。
 - **标题：** *Whose Rule Is It Anyway? Shared Labels Mix and Names Separate Source-Specific Rules in In-Context Learning*
 - **arXiv 版：** 11-03 生成去匿名版（作者 Xiang Ding、Tiancheng Xing），[`paper/arxiv/main.pdf`](paper/arxiv/main.pdf)，由 `paper/make_arxiv.sh` 从投稿正本派生；是否已上传 arXiv 未记录。
-- **Rebuttal 工作区：** [`paper/rebuttal/`](paper/rebuttal/)（证据地图、预期问题与可调用证据；收到审稿意见后在此逐条起草）。
+- **Rebuttal（2026-11-25 收到意见）：** 补充实验 E134–E136 已完成（6 模型），回复草稿在本地 `paper/rebuttal/responses/`（不进 git）；见 [`logs/2026-11-25.md`](logs/2026-11-25.md)。
 - **登记表状态：** ACTIVE-EXPLORE（正式状态由人决定）。旧的逐日状态记录见 [`logs/status-history.md`](logs/status-history.md)。
 
 ## 1. 论文的问题
@@ -49,7 +49,7 @@
 | `ideas/` | idea 卡（I04 为论文前身） |
 | `CLAIMS.md`、`PAPER_SHAPE.md` | 主张账本、论文形态卡（含历史版本） |
 | `RESEARCH_SYNTHESIS_2026-10-10.md`、`PAPER_ALIGNMENT_2026-10-12.md` | 研究综合与论文—证据对齐（历史） |
-| `PAPER_DRAFT.md`、`PAPER_APPENDIX.md`、`PAPER_OUTLINE.md` | 旧 Markdown 稿，已被 `paper/` 取代，保留作记录 |
+| `PAPER_DRAFT.md`、`PAPER_APPENDIX.md` | 旧 Markdown 稿，已被 `paper/` 取代；仍是附录表格的转写来源和 manuscript_claim_audit 的审计对象，保留（10-05 的 “Nearest, not newest” 旧提纲 11-24 删除，见 git 历史） |
 | `scripts/` | 数据构造、打分、干预与图表脚本；[`scripts/README.md`](scripts/README.md) |
 | `logs/` | 每日日志、状态历史 |
 | `参考图示例/` | Figure 1 设计参考图 |
