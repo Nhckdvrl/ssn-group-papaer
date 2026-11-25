@@ -116,7 +116,8 @@ def main():
     L = len(layers)
     print(f"layers: {lname} x {L}", flush=True)
     bos = [tok.bos_token_id] if getattr(tok, "bos_token_id", None) is not None else []
-    enc = lambda s: bos + tok(s, add_special_tokens=False)["input_ids"]
+    # 11-25 fix: follow each tokenizer's own special-token default (forcing a BOS broke Granite: 0.22 -> 0.99)
+    enc = lambda s: tok(s)["input_ids"]
     first = lambda w: tok(" " + w, add_special_tokens=False)["input_ids"][0]
 
     state = dict(mode=None, cap=[None] * L, patch=None)
