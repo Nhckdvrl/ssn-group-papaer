@@ -8,7 +8,7 @@ REJECT = re.compile(r"\b(incorrect|not correct|wrong|mistake|mistaken|not right|
 
 
 def final(r, frames):
-    body = r["cont"][len(frames[r["frame"]]):]
+    body = r["cont"][len(frames.get(r.get("frame", "N"), "")):]
     if ENDORSE.search(body) and not REJECT.search(body):
         return "A"
     return r["verdict"]

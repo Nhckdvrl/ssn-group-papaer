@@ -1,5 +1,7 @@
 # zemi 提案：独立训练的 LLM，在上下文绑定上用的是不是同一套算法？（2026-11-25）
 
+> **11-25 晚已撤回**（用户：基本是复现、“比较两个模型是否一样”的问法强行）。当前提案见 [TOPIC_PROPOSAL.md](TOPIC_PROPOSAL.md)。本页留作历史；其中 §1“MoE 为什么推不下去”仍然有效。
+>
 > 给导师看的一页提案。中文版供我们内部讨论，日文版在定稿后另附。依据：[找题工作页](TOPIC_SEARCH.md)、[论文卡索引](../../library/themes/interpretability-representation/README.md)、实验卡 E224–E228。
 
 ## 1. 先交代：MoE 专家分工这条线为什么推不下去

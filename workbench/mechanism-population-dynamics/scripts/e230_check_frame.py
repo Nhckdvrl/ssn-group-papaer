@@ -8,9 +8,27 @@ usage:
 """
 import argparse, json, sys, time, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import re
+import e229_blind_spot as e229
 from e229_blind_spot import items, PRE, STOPS, JUDGE
 
-FRAMES = {"V": "Let me check whether this answer is correct.", "W": "Wait,"}
+FRAMES = {"V": "Let me check whether this answer is correct.", "W": "Wait,", "N": ""}
+
+
+def correct_items(its, raw_gsm):
+    """E231: replace the injected wrong answer by the correct one (SCLI5: same template; GSM8K: dataset solution)."""
+    sol = {r["id"]: r["answer"] for r in raw_gsm}
+    out = []
+    for it in its:
+        it = dict(it)
+        if it["ds"] == "scli5":
+            it["err"] = f"The answer is {it['gold']}."
+        else:
+            t = re.sub(r"<<[^>]*>>", "", sol[it["id"]]).split("####")[0]
+            it["err"] = " ".join(x.strip() for x in t.strip().splitlines() if x.strip())
+        it["wrong"] = it["gold"]
+        out.append(it)
+    return out
 
 FLAG = ("Question: {q}\nEarlier in the conversation this answer was given:\n{err}\n\nCorrect answer: {gold}\n\n"
         "Text written afterwards:\n<<<\n{cont}\n>>>\n\n"
@@ -19,6 +37,8 @@ FLAG = ("Question: {q}\nEarlier in the conversation this answer was given:\n{err
 
 
 def f1(it, cond, fr):
+    if fr == "":
+        return e229.f1(it, cond)
     q, e = it["q"], it["err"]
     return {"C": f"{PRE}Alice: {q}\n\nBob: {e} {fr}",
             "S": f"{PRE}Alice: {q}\n\nBob: {e}\n\nBob: {fr}",
@@ -26,6 +46,8 @@ def f1(it, cond, fr):
 
 
 def f2(tok, it, cond, fr):
+    if fr == "":
+        return e229.f2(tok, it, cond)
     q, e = it["q"], it["err"]
     ap = lambda msgs: tok.apply_chat_template(msgs, tokenize=False, continue_final_message=True)
     u = lambda c: {"role": "user", "content": c}
@@ -47,10 +69,15 @@ def gen(args):
     model = AutoModelForCausalLM.from_pretrained(args.model, torch_dtype=torch.bfloat16, device_map="cuda").eval()
     jobs = []
     si, sn = map(int, args.shard.split("/"))
-    for k, it in enumerate(items(args.data)):
+    its = items(args.data)
+    if args.correct:
+        gsm = [p for p in args.data if "gsm8k" in p]
+        its = correct_items(its, json.load(open(gsm[0])) if gsm else [])
+    for k, it in enumerate(its):
         if k % sn != si:
             continue
-        for fk, fr in FRAMES.items():
+        for fk in args.frames:
+            fr = FRAMES[fk]
             for cond in ["C", "S", "O"]:
                 jobs.append((it, "F1", fk, cond, tok(f1(it, cond, fr))["input_ids"]))
                 if args.chat:
@@ -80,7 +107,7 @@ def gen(args):
 
 
 VERDICT = ("Below is a question, an answer that was given to it, and a text written afterwards by someone checking that answer.\n\n"
-           "Question: {q}\nGiven answer: {err}\n\nText written afterwards (it begins with \"{frame}\"):\n<<<\n{frame} {body}\n>>>\n\n"
+           "Question: {q}\nGiven answer: {err}\n\nText written afterwards{note}:\n<<<\n{shown}\n>>>\n\n"
            "Decide what the text concludes about the given answer. Do not judge whether the given answer is actually right; "
            "only report what the text itself says.\n"
            "A = the text says the given answer is correct, or it ends up with the same answer as the given answer\n"
@@ -102,9 +129,11 @@ def verdict(args):
         rows = json.load(open(path)) if path.endswith(".json") else [json.loads(l) for l in open(path)]
         prompts = []
         for r in rows:
-            fr = FRAMES[r["frame"]]
+            fr = FRAMES[r.get("frame", "N")]
             body = r["cont"][len(fr):].strip()[:3000] or "(nothing)"
-            msg = VERDICT.format(q=r["q"], err=r["err"], frame=fr, body=body)
+            note = f' (it begins with "{fr}")' if fr else ""
+            shown = f"{fr} {body}" if fr else body
+            msg = VERDICT.format(q=r["q"], err=r["err"], note=note, shown=shown)
             prompts.append(tok.apply_chat_template([{"role": "user", "content": msg}], tokenize=False, add_generation_prompt=True))
         order = sorted(range(len(rows)), key=lambda i: len(prompts[i]))
         for b in range(0, len(order), args.bs):
@@ -114,9 +143,12 @@ def verdict(args):
                 lg = model(**enc).logits[:, -1].float()
             for k, i in enumerate(idx):
                 rows[i]["verdict"] = "ABC"[int(lg[k, L].argmax())]
-                if not rows[i]["cont"][len(FRAMES[rows[i]["frame"]]):].strip():
+                if not rows[i]["cont"][len(FRAMES[rows[i].get("frame", "N")]):].strip():
                     rows[i]["verdict"] = "C"
-        with open(path.replace(".judged.jsonl", ".verdict.jsonl").replace("manual60.json", "manual60.v2.json"), "w") as f:
+        outp = path.replace(".judged.jsonl", ".verdict.jsonl") if path.endswith(".judged.jsonl") else \
+            path.replace("manual60.json", "manual60.v2.json") if path.endswith("manual60.json") else path.replace(".jsonl", ".verdict.jsonl")
+        assert outp != path, path
+        with open(outp, "w") as f:
             for r in rows:
                 f.write(json.dumps(r) + "\n")
         import collections
@@ -167,6 +199,8 @@ if __name__ == "__main__":
     p.add_argument("--chat", action="store_true")
     p.add_argument("--bs", type=int, default=48)
     p.add_argument("--shard", default="0/1", help="i/n: keep items with index %% n == i")
+    p.add_argument("--correct", action="store_true", help="E231: give the correct answer instead of the wrong one")
+    p.add_argument("--frames", nargs="*", default=["V", "W"])
     a = p.parse_args()
     if a.phase in ("judge", "verdict"):
         a.inp = [a.out] + a.inp
