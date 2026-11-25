@@ -1,0 +1,59 @@
+{
+ "args": {
+  "model": "/tmp/ices_models/gemma-2-9b",
+  "out": "/home/xiang/ssn-group-papaer/workbench/in-context-evidence-structure/results/e137/gemma9_k6",
+  "n": 32,
+  "per_class": 6,
+  "seed": 137101,
+  "materials": "validation",
+  "shard": "0/1",
+  "analyze_only": false,
+  "template": "default",
+  "bos": false
+ },
+ "model_type": "gemma2",
+ "script_sha256": "e6cdaf148be998c568b502e32bfb8800780b073cc4c842a3a22fc583eb604710",
+ "materials": {
+  "dataset": "SetFit/sst5",
+  "cache_build": "e51bdcd8cd3a30da231967c1a249ba59361279a3",
+  "arrow_sha256": {
+   "train": "c3221ca614196a083a72efecd569148782022d434999bbd4a1da73d52e2a64b3",
+   "validation": "ea13ad57593993cf49b625dc14a8d9855f1b10e0fe6c0ab538ff1a5d22992898",
+   "test": "a92d0f50f5222807f063115e569aa43d0a26d4249a738229faf8712156e258bf"
+  },
+  "original_labels": [
+   0,
+   2,
+   4
+  ],
+  "demo_split": "train",
+  "demo_hash_parity": 1,
+  "query_split": "test",
+  "comment_token_range": [
+   5,
+   64
+  ],
+  "per_class": 6,
+  "valid_signature_bins": 46,
+  "demo_pool_sizes": [
+   555,
+   730,
+   618
+  ],
+  "query_pool_sizes": [
+   276,
+   374,
+   395
+  ],
+  "selection_uses_model_outputs": false,
+  "scope": "real SST-5 texts; controlled three-class private conventions, not human annotator rules"
+ },
+ "numeric_max_error": 0.0,
+ "dtype": "float32",
+ "attention": "eager",
+ "python": "3.12.13",
+ "torch": "2.8.0+cu128",
+ "transformers": "4.57.6",
+ "elapsed_seconds": 1966.9580578804016,
+ "gpu_hours": 0.5463772383001115
+}
