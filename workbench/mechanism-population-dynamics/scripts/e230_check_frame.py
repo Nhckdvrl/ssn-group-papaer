@@ -21,7 +21,7 @@ def correct_items(its, raw_gsm):
     out = []
     for it in its:
         it = dict(it)
-        if it["ds"] == "scli5":
+        if it["ds"] in ("scli5", "factual"):
             it["err"] = f"The answer is {it['gold']}."
         else:
             t = re.sub(r"<<[^>]*>>", "", sol[it["id"]]).split("####")[0]
@@ -40,7 +40,8 @@ def f1(it, cond, fr):
     if fr == "":
         return e229.f1(it, cond)
     q, e = it["q"], it["err"]
-    return {"C": f"{PRE}Alice: {q}\n\nBob: {e} {fr}",
+    return {"U": f"{PRE}Alice: {q}\n\nBob: {e}\n\nAlice: OK.\n\nBob: {fr}",
+            "C": f"{PRE}Alice: {q}\n\nBob: {e} {fr}",
             "S": f"{PRE}Alice: {q}\n\nBob: {e}\n\nBob: {fr}",
             "O": f"{PRE}Alice: {q} {e}\n\nBob: {fr}"}[cond]
 
@@ -56,6 +57,8 @@ def f2(tok, it, cond, fr):
         return ap([u(q), a(f"{e} {fr}")])
     if cond == "S":
         return ap([u(q), a(e), a(fr)])
+    if cond == "U":
+        return ap([u(q), a(e), u("OK."), a(fr)])
     return ap([u(f"{q} {e}"), a(fr)])
 
 
@@ -78,8 +81,9 @@ def gen(args):
             continue
         for fk in args.frames:
             fr = FRAMES[fk]
-            for cond in ["C", "S", "O"]:
-                jobs.append((it, "F1", fk, cond, tok(f1(it, cond, fr))["input_ids"]))
+            for cond in args.conds:
+                if not args.f2only:
+                    jobs.append((it, "F1", fk, cond, tok(f1(it, cond, fr))["input_ids"]))
                 if args.chat:
                     jobs.append((it, "F2", fk, cond, tok(f2(tok, it, cond, fr), add_special_tokens=False)["input_ids"]))
     order = sorted(range(len(jobs)), key=lambda j: (jobs[j][0]["ds"], len(jobs[j][4])))
@@ -87,7 +91,7 @@ def gen(args):
     t0 = time.time()
     for b in range(0, len(order), args.bs):
         idx = order[b:b + args.bs]
-        maxnew = 384 if jobs[idx[0]][0]["ds"] == "gsm8k_sc" else 160
+        maxnew = 384 if jobs[idx[0]][0]["ds"] == "gsm8k_sc" or jobs[idx[0]][0]["ds"].startswith("onpolicy") else 160
         batch = tok.pad({"input_ids": [jobs[j][4] for j in idx]}, return_tensors="pt").to("cuda")
         with torch.no_grad():
             g = model.generate(**batch, max_new_tokens=maxnew, do_sample=False, stop_strings=STOPS, tokenizer=tok,
@@ -201,6 +205,8 @@ if __name__ == "__main__":
     p.add_argument("--shard", default="0/1", help="i/n: keep items with index %% n == i")
     p.add_argument("--correct", action="store_true", help="E231: give the correct answer instead of the wrong one")
     p.add_argument("--frames", nargs="*", default=["V", "W"])
+    p.add_argument("--conds", nargs="*", default=["C", "S", "O"])
+    p.add_argument("--f2only", action="store_true")
     a = p.parse_args()
     if a.phase in ("judge", "verdict"):
         a.inp = [a.out] + a.inp

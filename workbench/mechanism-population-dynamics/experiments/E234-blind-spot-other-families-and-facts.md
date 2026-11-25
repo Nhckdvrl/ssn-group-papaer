@@ -20,6 +20,7 @@ E229–E231 只测了 OLMo-3 一个家族，任务只有算术（SCLI5）和多�
   - SCLI5 286 题、GSM8K-SC 前 300 题（同前）。
   - **事实知识 302 题（新）：** 取自 CounterFact（ROME，`azhx/counterfact` 前 6000 条），8 种关系（首都、大洲、所在国、官方语言、母语、生产商、来源国、国籍），每种约 38 题，按关系写成问句（如 “What is the capital of {主语}?”）。错答案版：“The answer is {target_new}.”；正确答案版：“The answer is {target_true}.”。文件 `data/factual300_counterfact.json`。CounterFact 有少量标注错误，由知识门排除（模型在干净问法下答不出 target_true 的题不进分析）。
 - **条件：** 干净问法（知识门）；C / S / O × 错 / 对 × 检查语 N / V / W。
+- **跑前修改（11-25）：** 去掉 GSM8K（其长生成占约七成算力，而决策表本来以 SCLI5 与事实题为主），只跑 SCLI5 与事实题。
 - **读数：** 同 E231：三选一结论评判 + 认可规则 → 命中率 H、误报率 F、H − F。
 - **评判校验：** 事实题是新任务，另抽 40 条人工核对；SCLI5 / GSM8K 抽 20 条。
 - **命令：** `scripts/e229_blind_spot.py`（干净问法）、`scripts/e230_check_frame.py`（`--frames N V W`，错答案版与 `--correct` 各跑一次）；fvcrc13 GPU2–3 及其它空卡。

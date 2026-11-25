@@ -23,7 +23,13 @@ def items(paths):
     out = []
     for p in paths:
         rows = json.load(open(p))
-        if "scli5" in p:
+        if rows and "q" in rows[0] and "err" in rows[0]:  # pre-built items (E233 on-policy)
+            out += [dict(r) for r in rows]
+        elif "factual" in p:  # E234: CounterFact-derived, same template as SCLI5
+            for r in rows:
+                out.append(dict(ds="factual", id=r["id"], q=r["q"], err=f"The answer is {r['wrong']}.",
+                                gold=r["gold"], wrong=r["wrong"], type=r["type"]))
+        elif "scli5" in p:
             for r in rows:
                 m = r["messages_error_injection_in_model"]
                 wrong = re.search(r"The answer is (.+?)\.$", m[1]["content"]).group(1)
@@ -41,6 +47,7 @@ def items(paths):
 def f1(it, cond):
     q, e = it["q"], it["err"]
     return {"clean": f"{PRE}Alice: {q}\n\nBob:",
+            "U": f"{PRE}Alice: {q}\n\nBob: {e}\n\nAlice: OK.\n\nBob:",
             "C": f"{PRE}Alice: {q}\n\nBob: {e}",
             "S": f"{PRE}Alice: {q}\n\nBob: {e}\n\nBob:",
             "O": f"{PRE}Alice: {q} {e}\n\nBob:"}[cond]
@@ -55,6 +62,9 @@ def f2(tok, it, cond):
         return ap([{"role": "user", "content": q}, {"role": "assistant", "content": e}], continue_final_message=True)
     if cond == "S":
         return ap([{"role": "user", "content": q}, {"role": "assistant", "content": e}], add_generation_prompt=True)
+    if cond == "U":
+        return ap([{"role": "user", "content": q}, {"role": "assistant", "content": e}, {"role": "user", "content": "OK."}],
+                  add_generation_prompt=True)
     return ap([{"role": "user", "content": f"{q} {e}"}], add_generation_prompt=True)
 
 
@@ -67,10 +77,13 @@ def gen(a):
         tok.pad_token = tok.eos_token
     model = AutoModelForCausalLM.from_pretrained(a.model, torch_dtype=torch.bfloat16, device_map="cuda").eval()
     its = items(a.data)
+    si, sn = map(int, a.shard.split("/"))
+    its = [it for k, it in enumerate(its) if k % sn == si]
     jobs = []
     for it in its:
-        for cond in ["clean", "C", "S", "O"]:
-            jobs.append((it, "F1", cond, f1(it, cond), False))
+        for cond in a.conds:
+            if not a.f2only:
+                jobs.append((it, "F1", cond, f1(it, cond), False))
             if a.chat:
                 jobs.append((it, "F2", cond, f2(tok, it, cond), True))
     # encode: F1 follows the tokenizer's own special-token default; F2 text already carries the template's tokens
@@ -82,7 +95,7 @@ def gen(a):
     t0 = time.time()
     for b in range(0, len(order), a.bs):
         idx = order[b:b + a.bs]
-        maxnew = 384 if jobs[idx[0]][0]["ds"] == "gsm8k_sc" else 160
+        maxnew = a.maxnew_gsm if jobs[idx[0]][0]["ds"] in ("gsm8k_sc", "gsm8k_full") or jobs[idx[0]][0]["ds"].startswith("onpolicy") else 160
         batch = tok.pad({"input_ids": [jobs[j][4] for j in idx]}, return_tensors="pt").to("cuda")
         with torch.no_grad():
             g = model.generate(**batch, max_new_tokens=maxnew, do_sample=False, stop_strings=STOPS, tokenizer=tok,
@@ -148,6 +161,10 @@ if __name__ == "__main__":
     p.add_argument("--data", nargs="*")
     p.add_argument("--chat", action="store_true")
     p.add_argument("--bs", type=int, default=48)
+    p.add_argument("--conds", nargs="*", default=["clean", "C", "S", "O"])
+    p.add_argument("--maxnew_gsm", type=int, default=384)
+    p.add_argument("--f2only", action="store_true")
+    p.add_argument("--shard", default="0/1")
     a = p.parse_args()
     if a.phase == "judge":
         a.inp = [a.out] + a.inp
