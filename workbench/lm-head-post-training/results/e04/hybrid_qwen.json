@@ -51,6 +51,32 @@
    "mean_len": 766.138,
    "fork_rate": 0.14659499985642274,
    "argmax_agree_at_forks": 0.5268537645131419
+  },
+  "h_base_postfork": {
+   "n_problems": 500,
+   "acc": 0.764,
+   "ci95": [
+    0.726,
+    0.8
+   ],
+   "parse_fail": 0.084,
+   "truncated": 0.092,
+   "mean_len": 780.842,
+   "fork_rate": 0.21871518181655186,
+   "argmax_agree_at_forks": 0.5948167839702077
+  },
+  "h_post_basefork": {
+   "n_problems": 500,
+   "acc": 0.486,
+   "ci95": [
+    0.442,
+    0.53
+   ],
+   "parse_fail": 0.126,
+   "truncated": 0.078,
+   "mean_len": 698.908,
+   "fork_rate": 0.40854876464427364,
+   "argmax_agree_at_forks": 0.6322240822587537
   }
  },
  "paired": {
@@ -78,6 +104,22 @@
     -0.276
    ]
   },
+  "h_base - h_base_postfork": {
+   "n": 500,
+   "diff": -0.328,
+   "ci95": [
+    -0.374,
+    -0.28
+   ]
+  },
+  "h_base - h_post_basefork": {
+   "n": 500,
+   "diff": -0.05,
+   "ci95": [
+    -0.094,
+    -0.006
+   ]
+  },
   "h_post - h_base_basemode": {
    "n": 500,
    "diff": 0.072,
@@ -94,12 +136,68 @@
     0.064
    ]
   },
+  "h_post - h_base_postfork": {
+   "n": 500,
+   "diff": 0.024,
+   "ci95": [
+    -0.004,
+    0.056
+   ]
+  },
+  "h_post - h_post_basefork": {
+   "n": 500,
+   "diff": 0.302,
+   "ci95": [
+    0.258,
+    0.348
+   ]
+  },
   "h_base_basemode - h_base_postmode": {
    "n": 500,
    "diff": -0.042,
    "ci95": [
     -0.08,
     -0.004
+   ]
+  },
+  "h_base_basemode - h_base_postfork": {
+   "n": 500,
+   "diff": -0.048,
+   "ci95": [
+    -0.084,
+    -0.012
+   ]
+  },
+  "h_base_basemode - h_post_basefork": {
+   "n": 500,
+   "diff": 0.23,
+   "ci95": [
+    0.184,
+    0.274
+   ]
+  },
+  "h_base_postmode - h_base_postfork": {
+   "n": 500,
+   "diff": -0.006,
+   "ci95": [
+    -0.038,
+    0.026
+   ]
+  },
+  "h_base_postmode - h_post_basefork": {
+   "n": 500,
+   "diff": 0.272,
+   "ci95": [
+    0.23,
+    0.316
+   ]
+  },
+  "h_base_postfork - h_post_basefork": {
+   "n": 500,
+   "diff": 0.278,
+   "ci95": [
+    0.236,
+    0.32
    ]
   }
  }

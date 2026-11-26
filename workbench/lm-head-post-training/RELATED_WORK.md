@@ -73,6 +73,9 @@
 | Huang et al., [The Sharpening Mechanism](https://arxiv.org/abs/2412.01951) | 把自我改进/后训练形式化为对序列级最大似然的“锐化”；SFT 型在覆盖充分时极小极大最优，RLHF 型可借在线探索 | 理论框架：后训练≈锐化。E04 测的是真实后训练模型逐 token 是否就是锐化后的 base（答案：不是，见 E04-A2/D） |
 | Agarwal et al., [Entropy Minimization](https://arxiv.org/abs/2505.15134) | 只最小化熵（无标签）即可提升数学/代码；推理期 logit 调整（EM-INF）也有效 | 与 E04-B 中“Base 降温拿到 73% 增益”一致；我们的增量是定位收益来自哪些位置（熵门控）以及与真实后训练路径的差异 |
 | Shao et al., [Spurious Rewards](https://arxiv.org/abs/2506.10947) | 随机奖励的 GRPO 让 Qwen2.5-Math 在 MATH-500 +21（真实奖励 +29），机制是放大预训练高先验行为（代码推理）；OLMo2、Llama3 上几乎无效 | 提醒：Qwen 与 OLMo 的结论可能本质不同，必须两家族都看 |
+| Liu et al., [Understanding R1-Zero-Like Training](https://arxiv.org/abs/2503.20783)（COLM'25） | 模板决定 Base 是回答问题还是续写句子；几乎所有 Base 已有“Aha moment”式反思；模型与模板不匹配会在 RL 之前就破坏推理 | E04 中 OLMo Base 约 40% 以续写提示开头，强制推理开头即得 71.9%（C13）：OLMo RL-Zero 增益的大部分是这一模板效应，必须作为对照扣除，不能算作我们的发现 |
+| Wang et al., [Beyond the 80/20 Rule](https://arxiv.org/abs/2506.01939)（NeurIPS'25） | RLVR 主要改变约 20% 的高熵“分叉 token”，只对这些 token 做策略梯度即可匹配或超过全量更新；RLVR 基本保留 Base 的熵模式 | 最近邻：他们从训练侧说明更新集中在高熵 token；我们在推理侧做分叉交换（C09，正反两向）并检验改选是否价值导向（C11）。必须明确两者问题不同 |
+| Bigelow et al., [Forking Paths in Neural Text Generation](https://arxiv.org/abs/2412.07961)（ICLR'25） | 用逐 token 重采样估计结果分布，找出单个 token 改变即显著改变结果的“分叉 token” | E05 显示熵分叉多数不决定结果；他们的结果定义分叉正是我们需要的与阈值无关的定义（§5 待做 a） |
 
 ## 3. P1/P2：参数更新、谱与数值精度（E01 及后备空间）
 

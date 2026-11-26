@@ -23,12 +23,15 @@ def main():
     ap.add_argument("--max_tokens", type=int, default=2048)
     ap.add_argument("--max_model_len", type=int, default=4096)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--continue_with", default="parent", choices=["parent", "child"],
+                    help="which model continues after the fork token (child = value under the post-trained policy)")
     args = ap.parse_args()
     from vllm import LLM, SamplingParams
     from vllm.inputs import TokensPrompt
-    p0, _, _ = models.PAIRS[args.pair]
+    p0, p1, _ = models.PAIRS[args.pair]
+    cont = p0 if args.continue_with == "parent" else p1
     forks = [json.loads(l) for l in open(DIR / f"forks_{args.pair}.jsonl")]
-    llm = LLM(model=str(models.path(p0)), dtype="bfloat16", seed=args.seed, gpu_memory_utilization=0.85,
+    llm = LLM(model=str(models.path(cont)), dtype="bfloat16", seed=args.seed, gpu_memory_utilization=0.85,
               max_model_len=args.max_model_len, enable_prefix_caching=True)
     tok = llm.get_tokenizer()
     vocab = tok.get_vocab()
@@ -59,12 +62,13 @@ def main():
             lp = [list(d.values())[0].logprob for d in (comp.logprobs or []) if d]
             lps.append(sum(lp) / max(1, len(lp))); trunc.append(comp.finish_reason == "length")
         res.setdefault(i, {})[name] = {"token": c, "v": sum(corr) / len(corr), "ell": sum(lps) / len(lps), "trunc": sum(trunc) / len(trunc)}
-    with open(DIR / f"rollouts_{args.pair}.jsonl", "w") as fo:
+    suffix = "" if args.continue_with == "parent" else "__childcont"
+    with open(DIR / f"rollouts_{args.pair}{suffix}.jsonl", "w") as fo:
         for i, f in enumerate(forks):
             if i in res:
                 fo.write(json.dumps({k: f[k] for k in ("prompt_index", "sample", "t", "kind", "c_base", "c_post", "c_alt", "lp0", "lp1", "H0", "H1")}
                                     | {"cands": res[i]}) + "\n")
-    print(json.dumps({"pair": args.pair, "n_jobs": len(jobs), "seconds": time.time() - t0}))
+    print(json.dumps({"pair": args.pair, "continue_with": cont, "n_jobs": len(jobs), "seconds": time.time() - t0}))
 
 
 if __name__ == "__main__":
