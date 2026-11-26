@@ -84,3 +84,6 @@ E01/E02 完成后一起看：
 ## 7. 文献入口（不是已完成定位）
 
 必读 [Lost in Backpropagation](https://arxiv.org/abs/2603.10145)、[Causal Test](https://arxiv.org/abs/2608.16671) 的方法、关键图与限制；复现实验口径应以原文为准。后续有信号才针对性补查 softmax bottleneck（包括仓库 IDEA_EXPLORATION 提及的反向归因工作）、head-only tuning / PEFT、输出层与表征协同适配、RL 稀疏性与数值精度。不得把未取得全文的预印本当作已核实机制；无须为首轮重新阅读整个领域。
+
+
+补充入口：[关联工作与历史排雷地图](RELATED_WORK.md)（P0 必读，P1/P2 按信号使用）；[导师具体要求与晋级标准](MENTOR_REQUIREMENTS.md)。谱读数补充注意 rounding noise baseline，参见 RELATED_WORK §3；首轮不自动新增大规模实验。

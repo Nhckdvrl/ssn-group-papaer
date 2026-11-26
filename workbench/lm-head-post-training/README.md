@@ -12,9 +12,11 @@
 
 1. 仓库根 AGENTS.md、RESOURCES.md、workbench/README.md、EXECUTION.md。
 2. [讨论沿革与研究思想](logs/2026-11-26.md)：为什么选这片研究空间、哪些旧路不再走、我们究竟希望学到什么。
-3. [技术口径与实现指南](RESEARCH_PLAN.md)：数学、内存、指标、对照、结果解读和交付要求。
-4. [E01 权重解剖](experiments/E01-checkpoint-anatomy.md)、[E02 梯度几何](experiments/E02-gradient-geometry.md)。不要先跑 E03。
-5. 读两篇核心原文的方法与实验，记录原文定位和实际复现配置，不重新开启无限查重。
+3. [导师研究标准与本项目执行要求](MENTOR_REQUIREMENTS.md)：具体 12 项标准、Discovery/Problem-first、晋级与首轮探索的区别。
+4. [关联工作与文献地图](RELATED_WORK.md)：先读 P0 两篇，其他按结果查阅；不要阻塞首轮实验。
+5. [技术口径与实现指南](RESEARCH_PLAN.md)：数学、内存、指标、对照、结果解读和交付要求。
+6. [E01 权重解剖](experiments/E01-checkpoint-anatomy.md)、[E02 梯度几何](experiments/E02-gradient-geometry.md)。不要先跑 E03。
+7. 读两篇核心原文的方法与实验，记录原文定位和实际复现配置，不重新开启无限查重。
 
 ## 论文形态卡（探索初稿）
 
@@ -52,5 +54,6 @@
 ## 入口
 
 - [RESEARCH_PLAN.md](RESEARCH_PLAN.md)
+- [RELATED_WORK.md](RELATED_WORK.md) · [MENTOR_REQUIREMENTS.md](MENTOR_REQUIREMENTS.md)
 - [讨论与人审记录](logs/2026-11-26.md)
 - [E01](experiments/E01-checkpoint-anatomy.md) · [E02](experiments/E02-gradient-geometry.md) · [E03（暂缓）](experiments/E03-head-freeze.md)
