@@ -1,0 +1,106 @@
+{
+ "conditions": {
+  "h_base": {
+   "n_problems": 500,
+   "acc": 0.436,
+   "ci95": [
+    0.392,
+    0.482
+   ],
+   "parse_fail": 0.136,
+   "truncated": 0.076,
+   "mean_len": 684.854,
+   "fork_rate": 0.3171391274636638,
+   "argmax_agree_at_forks": 0.6128806504783741
+  },
+  "h_post": {
+   "n_problems": 500,
+   "acc": 0.788,
+   "ci95": [
+    0.754,
+    0.826
+   ],
+   "parse_fail": 0.09,
+   "truncated": 0.098,
+   "mean_len": 797.978,
+   "fork_rate": 0.2370090403494833,
+   "argmax_agree_at_forks": 0.6138065225667273
+  },
+  "h_base_basemode": {
+   "n_problems": 500,
+   "acc": 0.716,
+   "ci95": [
+    0.676,
+    0.758
+   ],
+   "parse_fail": 0.028,
+   "truncated": 0.036,
+   "mean_len": 610.844,
+   "fork_rate": 0.09802502766663829,
+   "argmax_agree_at_forks": 0.4600354053241591
+  },
+  "h_base_postmode": {
+   "n_problems": 500,
+   "acc": 0.758,
+   "ci95": [
+    0.722,
+    0.796
+   ],
+   "parse_fail": 0.094,
+   "truncated": 0.098,
+   "mean_len": 766.138,
+   "fork_rate": 0.14659499985642274,
+   "argmax_agree_at_forks": 0.5268537645131419
+  }
+ },
+ "paired": {
+  "h_base - h_post": {
+   "n": 500,
+   "diff": -0.352,
+   "ci95": [
+    -0.398,
+    -0.304
+   ]
+  },
+  "h_base - h_base_basemode": {
+   "n": 500,
+   "diff": -0.28,
+   "ci95": [
+    -0.328,
+    -0.23
+   ]
+  },
+  "h_base - h_base_postmode": {
+   "n": 500,
+   "diff": -0.322,
+   "ci95": [
+    -0.37,
+    -0.276
+   ]
+  },
+  "h_post - h_base_basemode": {
+   "n": 500,
+   "diff": 0.072,
+   "ci95": [
+    0.038,
+    0.108
+   ]
+  },
+  "h_post - h_base_postmode": {
+   "n": 500,
+   "diff": 0.03,
+   "ci95": [
+    -0.002,
+    0.064
+   ]
+  },
+  "h_base_basemode - h_base_postmode": {
+   "n": 500,
+   "diff": -0.042,
+   "ci95": [
+    -0.08,
+    -0.004
+   ]
+  }
+ }
+}

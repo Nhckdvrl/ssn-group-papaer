@@ -30,6 +30,8 @@ def render(template, problem, tok):
     if template == "qwen_chat":
         return tok.apply_chat_template([{"role": "user", "content": problem + QWEN_SUFFIX}], tokenize=False,
                                        add_generation_prompt=True, enable_thinking=False)
+    if template == "plain_math":   # template-robustness check: no chat markup at all
+        return "Problem: " + problem + QWEN_SUFFIX + "\nSolution:"
     if template == "olmo_rlzero":
         return OLMO_PREFIX + problem + "\n" + OLMO_SUFFIX
     raise ValueError(template)
