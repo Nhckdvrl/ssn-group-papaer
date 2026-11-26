@@ -61,6 +61,16 @@
 
 核查状态：核心 A/B 本轮已再次定位原始论文与作者入口；softmax bottleneck ICLR 2026 和 ACL 2022 head-tuning 原文入口亦已定位。其他 P1 多来自此前正文或摘要初筛，非完整逐页核查。具体算法与结论以正式版本为准。
 
+## 2.5 后训练输出变化的结构（I05 候选，2026-11-26 精读）
+
+| 工作 | 实际内容 | 与 I05 的关系 |
+|---|---|---|
+| Cohen et al., [Frustratingly Simple Black-Box Adaptation via Logit Bias](https://arxiv.org/abs/2607.22837)（2026-07） | 从 KL 正则 RL 出发：最优逐步修正 = 软价值 log Z(x,y<t,·)；它近似可分解为“固定向量+前缀常数”时，固定偏置才最优。用 IPS 从 rollout 估计偏置。Llama-3.1-8B-Instruct：MATH 30.3→33.1（LoRA-GRPO 45.2），GSM8K 33.9→34.8（76.7）；偏置很稀疏（约 1.3% 坐标），作用在格式、收尾、防跑题 | 最直接的近邻与理论锚点。它是“为奖励学一个偏置”；我们测的是真实后训练修正本身的可分解程度、跨阶段差异与功能依赖 |
+| Karan & Du, [Reasoning with Sampling](https://arxiv.org/abs/2510.14901)（2025-10） | 对 base 做序列级幂分布 MCMC 采样，单次准确率接近或超过 RL；命题 1：逐 token 降温 ≠ 序列级锐化 | 逐 token 的 τ 只能代表局部锐化；RLVR 的“锐化”若是序列级的，就会留在上下文相关残差里 |
+| Lin et al., [URIAL](https://arxiv.org/abs/2312.01552)（ICLR'24） | Llama-2 base vs chat：77.7% 位置 top-1 相同，92.2% 在 base 前 3；变化集中在风格/话语 token | 位置级排名分析，无分解、无干预、无定位 |
+| Kocher et al., [Diff Mining](https://arxiv.org/abs/2608.26462)（ICLR'26 workshop） | 参考语料上的“上下文×词表” logit 差，用 Top-K/NMF 汇总成指纹 token，做微调审计 | 数据结构相同，目标是审计而非科学问题 |
+| Yue et al. [2504.13837](https://arxiv.org/abs/2504.13837)、[RL Squeezes, SFT Expands](https://arxiv.org/abs/2509.21128)（ICLR'26）、[Invisible Leash](https://arxiv.org/abs/2507.14843) | RLVR 主要重加权 base 已有解（pass@k 角度）；SFT 扩展、RL 收缩 | “重新引导 vs 新能力”的大背景；I05 从逐 token 修正结构的角度切入，需要与之明确区分 |
+
 ## 3. P1/P2：参数更新、谱与数值精度（E01 及后备空间）
 
 | 工作 | 需要知道的边界 |
