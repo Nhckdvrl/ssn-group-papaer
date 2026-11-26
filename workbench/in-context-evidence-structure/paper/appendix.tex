@@ -34,7 +34,7 @@ $^\dagger$Loaded from the public mirror \texttt{NousResearch/Meta-Llama-3.1-70B}
 \end{table}
 
 Before scoring, we check for each model that every label word, with its leading space, is a single token; that scoring a query from the cached prompt agrees with scoring the full token sequence (maximum difference below $10^{-4}$ nats); that patching a run with its own states changes nothing; and that every attention mask is applied at every layer.
-The experiments used about 115 GPU-hours on NVIDIA A100 (80GB) and RTX PRO 6000 (96GB) GPUs, most of them for the 32B and 70B models.
+The experiments used about 115 GPU-hours, most of them for the 32B and 70B models.
 No model is trained or fine-tuned, so there is no hyperparameter search: the experimental choices are the prompt format, the label words, eight demonstrations per source and the seeds for prompt construction (120001/120101, 121001/121101, 123001/123101 and 132001/132101 for the development and confirmation prompts of the four main experiments), all fixed before the confirmation runs. Predictions are the highest-scoring next token, without sampling.
 
 \section{Materials and prompt format}
