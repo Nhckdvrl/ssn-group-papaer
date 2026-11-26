@@ -54,7 +54,13 @@ def main():
     if args.limit:
         probs = probs[: args.limit]
     jobs = [(p, k) for p in probs for k in range(args.n)]
-    out_f = open(BIG / f"{args.tag}.jsonl", "w")
+    # resume: keep finished (index, sample) pairs from a previous partial run
+    done_rows = []
+    if (BIG / f"{args.tag}.jsonl").exists():
+        done_rows = [json.loads(l) for l in open(BIG / f"{args.tag}.jsonl")]
+    finished = {(r["index"], r["sample"]) for r in done_rows}
+    jobs = [(p, k) for p, k in jobs if (p["index"], k) not in finished]
+    out_f = open(BIG / f"{args.tag}.jsonl", "a")
     n_ok = n_parse = n_trunc = n_tok = n_fork = n_agree = 0
     pad = tok.pad_token_id if tok.pad_token_id is not None else int(stop[0])
     for b0 in range(0, len(jobs), args.bs):
@@ -118,8 +124,13 @@ def main():
             n_fork += float(nfork[i]); n_agree += float(nagree[i])
             out_f.write(json.dumps({"index": p["index"], "answer": p["answer"], "sample": k, "text": text, "pred": pred, "reward": r,
                                     "n_tokens": len(g), "n_fork": float(nfork[i]), "n_fork_agree": float(nagree[i]), "truncated": trunc}) + "\n")
-        print(f"batch {b0 // args.bs}: acc so far {n_ok / (b0 + B):.3f} {time.time() - t0:.0f}s", flush=True)
-    N = len(jobs)
+        out_f.flush()
+        print(f"batch {b0 // args.bs}: acc so far (this run) {n_ok / (b0 + B):.3f} {time.time() - t0:.0f}s", flush=True)
+    allrows = [json.loads(l) for l in open(BIG / f"{args.tag}.jsonl")]
+    N = len(allrows)
+    n_ok = sum(r["reward"] for r in allrows); n_parse = sum(r["pred"] is None for r in allrows)
+    n_trunc = sum(r["truncated"] for r in allrows); n_tok = sum(r["n_tokens"] for r in allrows)
+    n_fork = sum(r["n_fork"] for r in allrows); n_agree = sum(r["n_fork_agree"] for r in allrows)
     meta = {"tag": args.tag, "pair": args.pair, "mode": args.mode, "thr": args.thr, "n": args.n, "seed": args.seed, "N": N,
             "accuracy": n_ok / N, "parse_fail": n_parse / N, "truncated": n_trunc / N, "mean_len": n_tok / N,
             "fork_rate": n_fork / max(1, n_tok), "argmax_agree_at_forks": n_agree / max(1, n_fork), "seconds": time.time() - t0}
