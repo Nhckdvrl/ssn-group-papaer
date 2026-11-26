@@ -5,17 +5,13 @@
 ## 结项记录
 
 - **决定人：** 用户（2026-11-26）。证据类别 A + C + H：各线的实验结果见下表；MoE 线的可行性问题见 [MOE_REVIEW](MOE_REVIEW.md)；是否值得继续由用户判断。
-- **主问题：** 导师的问题“独立训练的模型会不会形成同样的机制或分工”，两个月里换过五个对象（注意力头 → MoE 受控平台 → 公开 MoE 的计算组织 → 自训多 seed MoE 与公开 MoE 零模型 → 混合架构的拼词），没有一条形成可投稿的主张。11-24 → 11-26 的找题阶段也没有锁题。
+- **主问题：** 导师的问题“独立训练的模型会不会形成同样的机制或分工”，两个月里换过五个对象（注意力头 → MoE 受控平台 → 公开 MoE 的计算组织 → 自训多 seed MoE 与公开 MoE 零模型 → 混合架构的拼词），没有一条形成可投稿的主张。11-24 之后的找题阶段也没有锁题。
 - **MoE 为什么难以推进**（[MOE_REVIEW](MOE_REVIEW.md)，幻灯片 [moe_review_2026-11.pptx](moe_review_2026-11.pptx)）：
   1. 自训小模型的答案取决于设定；
   2. 公开 MoE 没有只换种子的版本，一致度低时无法解读；
   3. 相似的大部分来自词本身和隐状态几何，尺子依赖零模型的选法；
   4. 结果大致能事先猜到；
   5. 结果出来后会改变什么，说不清。
-- **最后的找题候选（未采用）：** 自我纠错的盲点，见 [TOPIC_PROPOSAL](TOPIC_PROPOSAL.md)、[TOPIC_SEARCH](TOPIC_SEARCH.md)，试测 E229–E234 的卡在 [experiments/](experiments/)，汇总在 [results/](results/)，幻灯片 [zemi_2026-11.pptx](zemi_2026-11.pptx)。已知问题：
-  - 与 Tsui（COLM 2026）、Ni 2610.34809 很近；
-  - “起源”一问是二分；
-  - 依赖 prompt 和评判器。
 - **可复用的教训：** 导师的一般标准 G1–G8、E1–E12（[ADVISOR](ADVISOR.md)）；下面的“反复出现的失败”表。
 - **重开条件：** 出现现代配方下只换种子的 MoE 多次训练（公开或可负担），并且能先写出两种结果各自改变什么。
 - **删除记录（2026-11-26）：** 删除了逐条原始输出（大 json、.pt、.gz、逐条目录）、日志、撤回的 ZEMI_PROPOSAL，以及仓库外的缓存和节点本地数据。保留卡片、代码、汇总表、图和文档。删除前的完整状态在 git 提交 `864baf46`，需要时用 `git checkout 864baf46 -- <路径>` 取回。
@@ -33,7 +29,7 @@
 | MoE-b：公开端点的计算组织 | 10-26 → 10-31 | 学习历史怎样组织可选的函数、性质载体和伙伴依赖 | C14（L2）；正确率差别分不出来 | 偏离导师原问（没有独立训练、没有单个专家）；用户 10-31 摒弃，不投稿 | [moe](moe/README.md)、[复盘](moe/notes/RETROSPECTIVE_2026-10-31.md) |
 | division：自训 MoE、零模型审计、N4 | 10-31 → 11-22 | 扣掉词知识和几何后，分工是否跨 seed 重现 | 重跑 .47、换初始化 .23；随机路由器预测跨语迁移同样好；冻结路由器无代价 | N4 被导师 11-19 否定（程度问题）；用户 11-22 叫停 | [division](division/README.md)；[整理与不可行之处](MOE_REVIEW.md) |
 | hybrid：混合架构在哪里拼词 | 11-22 → 11-24 | 几乎没有注意力的混合模型，在哪里、靠什么把子词拼成词 | 关早期短卷积后拼词消失，无卷积时由记忆拼；但 E217 判为全局破坏，E222 显示差别大半来自汇聚点；近邻已覆盖大部分 | 用户 11-24 停止，认为无意义 | [hybrid](hybrid/README.md) |
-| 找题：算法层比较（撤回）、自我纠错的盲点 | 11-24 → 11-26 | 独立训练的 LLM 是否用同一套算法（E224–E228）；模型为什么看不见自己刚写的错（E229–E234） | 前者基本是复现，问法强行；后者：盲点在 base 里就有，后训练在减轻，识别力保持（AUC ≈ 1），判定基准偏向自己的文字 | 用户 11-26 认为仍有不少问题，结项 | [TOPIC_PROPOSAL](TOPIC_PROPOSAL.md)、[experiments/](experiments/) |
+| 找题：算法层比较（撤回） | 11-24 → 11-25 | 独立训练的 LLM 是否用同一套算法（E224–E228） | 基本是复现，“比较两个模型是否一样”的问法强行 | 用户 11-25 否决；11-26 结项 | [TOPIC_SEARCH](TOPIC_SEARCH.md)、[experiments/](experiments/) |
 
 ## 反复出现的失败
 
@@ -68,4 +64,4 @@
 | [knowledge/](knowledge/PAPER_CATALOG.md) | 60 张论文卡与综合笔记 |
 | [logs/](logs/) | 按月合并的工作日志（2026-10、2026-11） |
 | [MOE_REVIEW.md](MOE_REVIEW.md)、[moe_review_2026-11.pptx](moe_review_2026-11.pptx) | MoE 题目的整理与难以推进的理由 |
-| [TOPIC_PROPOSAL.md](TOPIC_PROPOSAL.md)、[TOPIC_SEARCH.md](TOPIC_SEARCH.md)、[experiments/](experiments/)、[results/](results/)、[scripts/](scripts/) | 最后的找题阶段（E224–E234） |
+| [TOPIC_SEARCH.md](TOPIC_SEARCH.md)、[experiments/](experiments/)、[results/](results/)、[scripts/](scripts/) | 最后的找题阶段（E224–E228） |
