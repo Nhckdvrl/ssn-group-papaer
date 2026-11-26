@@ -13,12 +13,12 @@
 **未完成：** 官方 GPT-4o 反馈数据生成原版复现、跨任务/学生状态验证、生成式数据动作的真实训练效用、论文主张验证。所有本地科学主张仍为 L0。
 
 ## 阅读入口
+- **[2026-11-27 回顾：做了什么、为什么没出有用结果](RETROSPECTIVE_2026-11-27.md)**（重拾前先读这一份）
 - [领域整体、谱系、真实压力与选题尺度](FIELD_MAP.md)
 - [逐篇阅读范围与未完成债务](READING_LIST.md)
 - [关键论文卡：idea 怎样从近邻中长出来](../../library/themes/training-post-training/RSI_PAPER_CARDS.md)
 - [新颖性定位与不能冒领的贡献](POSITIONING.md)
 - [开源资产、单节点资源与完整成本](ASSETS.md)
-- [本地 agent 的接手边界](LOCAL_AGENT_BRIEF.md)
 
 ## 论文形态卡
 当前形态是候选空间，不是冻结的 paper story。
