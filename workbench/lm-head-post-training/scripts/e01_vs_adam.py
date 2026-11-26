@@ -55,12 +55,23 @@ def main():
         res["buckets"][b] = {"n": int(m.sum()), "mean_shift_along_mu": float(shift[m].mean()),
                              "median_shift_along_mu": float(np.median(shift[m])), "mean_drift": float(drift[m].mean()),
                              "median_rel_drift": float(np.median(rel[m]))}
+    # controls: parent row projection w0·μ̂ (a global shrink ΔW=αW0 shifts rows by α·w0·μ̂) and log frequency
+    w0mu = (W0 @ mu_hat).numpy()
+    logf = np.log1p(freq.astype(float))
+    def resid(y, X):
+        Xr = np.column_stack([np.argsort(np.argsort(x)) for x in X] + [np.ones(len(y))]).astype(float)
+        yr = np.argsort(np.argsort(y)).astype(float)
+        return yr - Xr @ np.linalg.lstsq(Xr, yr, rcond=None)[0]
+    shift_r = resid(shift, [w0mu, logf])
+    res["controls"] = {"spearman_shift_vs_w0mu": spearman(shift, w0mu), "spearman_shift_vs_logfreq": spearman(shift, logf)}
     for c in ("ce_onpolicy", "rl", "rft", "teacher"):
         pd, ps, tc = sim[f"{c}.drift"], sim[f"{c}.logit_shift"], sim[f"{c}.tgt_count"]
         never = tc == 0
+        ps_r = resid(ps, [w0mu, logf])
         res["corr"][c] = {"drift_all": spearman(drift, pd), "shift_all": spearman(shift, ps),
                           "drift_never_target": spearman(drift[never], pd[never]),
-                          "shift_never_target": spearman(shift[never], ps[never])}
+                          "shift_never_target": spearman(shift[never], ps[never]),
+                          "shift_partial_w0mu_logfreq": float(np.corrcoef(shift_r, ps_r)[0, 1])}
     out = ROOT / "results" / "e01"
     (out / f"vs_adam_{pair}.json").write_text(json.dumps(res, indent=1))
     print(json.dumps(res, indent=1))

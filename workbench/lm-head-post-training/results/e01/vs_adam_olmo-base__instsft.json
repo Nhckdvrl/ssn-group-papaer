@@ -1,0 +1,76 @@
+{
+ "pair": "olmo-base__instsft",
+ "stage": "SFT",
+ "e02_model": "olmo3-base",
+ "buckets": {
+  "freq0": {
+   "n": 15480,
+   "mean_shift_along_mu": 0.2168041169643402,
+   "median_shift_along_mu": 0.21601562201976776,
+   "mean_drift": 0.6385437250137329,
+   "median_rel_drift": 0.4845501184463501
+  },
+  "freq1-9": {
+   "n": 29994,
+   "mean_shift_along_mu": 0.1933523714542389,
+   "median_shift_along_mu": 0.19608524441719055,
+   "mean_drift": 0.6319605708122253,
+   "median_rel_drift": 0.4543759822845459
+  },
+  "freq10-999": {
+   "n": 53202,
+   "mean_shift_along_mu": 0.14388544857501984,
+   "median_shift_along_mu": 0.14312179386615753,
+   "mean_drift": 0.5652804374694824,
+   "median_rel_drift": 0.41479700803756714
+  },
+  "freq1000+": {
+   "n": 1580,
+   "mean_shift_along_mu": 0.04198341444134712,
+   "median_shift_along_mu": 0.0465095117688179,
+   "mean_drift": 0.2887660264968872,
+   "median_rel_drift": 0.2162843495607376
+  },
+  "special": {
+   "n": 22,
+   "mean_shift_along_mu": 0.21526335179805756,
+   "median_shift_along_mu": 0.25011444091796875,
+   "mean_drift": 0.621520459651947,
+   "median_rel_drift": 0.6478973031044006
+  }
+ },
+ "corr": {
+  "ce_onpolicy": {
+   "drift_all": -0.4852494472544382,
+   "shift_all": 0.7558078443279184,
+   "drift_never_target": -0.4143984350456747,
+   "shift_never_target": 0.8247150575650363,
+   "shift_partial_w0mu_logfreq": 0.133711162730369
+  },
+  "rl": {
+   "drift_all": -0.4717599621428235,
+   "shift_all": -0.5049302584252626,
+   "drift_never_target": -0.38461970863594463,
+   "shift_never_target": -0.5809360271954871,
+   "shift_partial_w0mu_logfreq": -0.11785100396250289
+  },
+  "rft": {
+   "drift_all": -0.4894319733492575,
+   "shift_all": 0.7878388107826348,
+   "drift_never_target": -0.43670267916269506,
+   "shift_never_target": 0.823941227004902,
+   "shift_partial_w0mu_logfreq": 0.17206187183150712
+  },
+  "teacher": {
+   "drift_all": -0.4646772892487047,
+   "shift_all": 0.8018273438409793,
+   "drift_never_target": -0.45375318839201606,
+   "shift_never_target": 0.8183258518961923,
+   "shift_partial_w0mu_logfreq": 0.0910418941222557
+  }
+ },
+ "controls": {
+  "spearman_shift_vs_w0mu": -0.9350329759457887,
+  "spearman_shift_vs_logfreq": -0.742718765317569
+ }
+}

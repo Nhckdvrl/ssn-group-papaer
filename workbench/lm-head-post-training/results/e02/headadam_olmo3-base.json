@@ -1,0 +1,210 @@
+{
+ "model": "olmo3-base",
+ "revision": "a81bae42db3975be1671e27b9c9a56da1a9f980f",
+ "steps": 69,
+ "adam": "b1=0.9 b2=0.999 eps=1e-8 lr=1 wd=0",
+ "mu_norm": 58.97618103027344,
+ "conds": {
+  "ce_onpolicy": {
+   "all": {
+    "n_rows": 100278,
+    "mean_drift": 0.05686996132135391,
+    "mean_cos_minus_mu": 0.5737841129302979,
+    "mean_logit_shift_per_step": -1.5268880128860474
+   },
+   "target_rows": {
+    "n_rows": 6406,
+    "mean_drift": 0.1379416137933731,
+    "mean_cos_minus_mu": 0.18413420021533966,
+    "mean_logit_shift_per_step": -1.8920561075210571
+   },
+   "never_target_rows": {
+    "n_rows": 93872,
+    "mean_drift": 0.051337480545043945,
+    "mean_cos_minus_mu": 0.6003745198249817,
+    "mean_logit_shift_per_step": -1.5019681453704834
+   },
+   "bucket_freq0": {
+    "n_rows": 15480,
+    "mean_drift": 0.00981156900525093,
+    "mean_cos_minus_mu": 0.6823088526725769,
+    "mean_logit_shift_per_step": -0.35185176134109497
+   },
+   "bucket_freq1-9": {
+    "n_rows": 29994,
+    "mean_drift": 0.02708302065730095,
+    "mean_cos_minus_mu": 0.626573383808136,
+    "mean_logit_shift_per_step": -0.8211086392402649
+   },
+   "bucket_freq10-999": {
+    "n_rows": 53202,
+    "mean_drift": 0.08444726467132568,
+    "mean_cos_minus_mu": 0.5230280160903931,
+    "mean_logit_shift_per_step": -2.2380263805389404
+   },
+   "bucket_freq1000+": {
+    "n_rows": 1580,
+    "mean_drift": 0.1548600196838379,
+    "mean_cos_minus_mu": 0.21618428826332092,
+    "mean_logit_shift_per_step": -2.494371175765991
+   },
+   "bucket_special": {
+    "n_rows": 22,
+    "mean_drift": 0.05240354314446449,
+    "mean_cos_minus_mu": 0.6650819778442383,
+    "mean_logit_shift_per_step": -1.3491476774215698
+   }
+  },
+  "rl": {
+   "all": {
+    "n_rows": 100278,
+    "mean_drift": 0.029041003435850143,
+    "mean_cos_minus_mu": -0.3364197909832001,
+    "mean_logit_shift_per_step": 0.29667341709136963
+   },
+   "target_rows": {
+    "n_rows": 6406,
+    "mean_drift": 0.11496295034885406,
+    "mean_cos_minus_mu": -0.04136230796575546,
+    "mean_logit_shift_per_step": 0.3612233102321625
+   },
+   "never_target_rows": {
+    "n_rows": 93872,
+    "mean_drift": 0.023177530616521835,
+    "mean_cos_minus_mu": -0.3565550744533539,
+    "mean_logit_shift_per_step": 0.29226842522621155
+   },
+   "bucket_freq0": {
+    "n_rows": 15480,
+    "mean_drift": 0.003968972247093916,
+    "mean_cos_minus_mu": -0.46138840913772583,
+    "mean_logit_shift_per_step": 0.06471525877714157
+   },
+   "bucket_freq1-9": {
+    "n_rows": 29994,
+    "mean_drift": 0.011850758455693722,
+    "mean_cos_minus_mu": -0.38481369614601135,
+    "mean_logit_shift_per_step": 0.14230649173259735
+   },
+   "bucket_freq10-999": {
+    "n_rows": 53202,
+    "mean_drift": 0.043382156640291214,
+    "mean_cos_minus_mu": -0.28023746609687805,
+    "mean_logit_shift_per_step": 0.4428885579109192
+   },
+   "bucket_freq1000+": {
+    "n_rows": 1580,
+    "mean_drift": 0.1182166114449501,
+    "mean_cos_minus_mu": -0.08305007219314575,
+    "mean_logit_shift_per_step": 0.5775160789489746
+   },
+   "bucket_special": {
+    "n_rows": 22,
+    "mean_drift": 0.021930472925305367,
+    "mean_cos_minus_mu": -0.486270934343338,
+    "mean_logit_shift_per_step": 0.2114209234714508
+   }
+  },
+  "rft": {
+   "all": {
+    "n_rows": 100278,
+    "mean_drift": 0.03252655267715454,
+    "mean_cos_minus_mu": 0.6001795530319214,
+    "mean_logit_shift_per_step": -0.8615128993988037
+   },
+   "target_rows": {
+    "n_rows": 4019,
+    "mean_drift": 0.1263081580400467,
+    "mean_cos_minus_mu": 0.18086425960063934,
+    "mean_logit_shift_per_step": -1.7124031782150269
+   },
+   "never_target_rows": {
+    "n_rows": 96259,
+    "mean_drift": 0.028610991314053535,
+    "mean_cos_minus_mu": 0.6176868081092834,
+    "mean_logit_shift_per_step": -0.8259865641593933
+   },
+   "bucket_freq0": {
+    "n_rows": 15480,
+    "mean_drift": 0.0036854720674455166,
+    "mean_cos_minus_mu": 0.6885318160057068,
+    "mean_logit_shift_per_step": -0.12893067300319672
+   },
+   "bucket_freq1-9": {
+    "n_rows": 29994,
+    "mean_drift": 0.012087542563676834,
+    "mean_cos_minus_mu": 0.636520504951477,
+    "mean_logit_shift_per_step": -0.35245752334594727
+   },
+   "bucket_freq10-999": {
+    "n_rows": 53202,
+    "mean_drift": 0.04926726967096329,
+    "mean_cos_minus_mu": 0.5636278390884399,
+    "mean_logit_shift_per_step": -1.310958981513977
+   },
+   "bucket_freq1000+": {
+    "n_rows": 1580,
+    "mean_drift": 0.1393408477306366,
+    "mean_cos_minus_mu": 0.27392882108688354,
+    "mean_logit_shift_per_step": -2.5657198429107666
+   },
+   "bucket_special": {
+    "n_rows": 22,
+    "mean_drift": 0.037137988954782486,
+    "mean_cos_minus_mu": 0.7089878916740417,
+    "mean_logit_shift_per_step": -1.0845149755477905
+   }
+  },
+  "teacher": {
+   "all": {
+    "n_rows": 100278,
+    "mean_drift": 0.07915341109037399,
+    "mean_cos_minus_mu": 0.5686375498771667,
+    "mean_logit_shift_per_step": -2.257180690765381
+   },
+   "target_rows": {
+    "n_rows": 1154,
+    "mean_drift": 0.15133942663669586,
+    "mean_cos_minus_mu": 0.2035762369632721,
+    "mean_logit_shift_per_step": -2.239373207092285
+   },
+   "never_target_rows": {
+    "n_rows": 99124,
+    "mean_drift": 0.07831302285194397,
+    "mean_cos_minus_mu": 0.5728875994682312,
+    "mean_logit_shift_per_step": -2.25738787651062
+   },
+   "bucket_freq0": {
+    "n_rows": 15480,
+    "mean_drift": 0.02019256353378296,
+    "mean_cos_minus_mu": 0.6594526171684265,
+    "mean_logit_shift_per_step": -0.7415558695793152
+   },
+   "bucket_freq1-9": {
+    "n_rows": 29994,
+    "mean_drift": 0.04475363343954086,
+    "mean_cos_minus_mu": 0.6193879246711731,
+    "mean_logit_shift_per_step": -1.4483819007873535
+   },
+   "bucket_freq10-999": {
+    "n_rows": 53202,
+    "mean_drift": 0.11195491999387741,
+    "mean_cos_minus_mu": 0.5208425521850586,
+    "mean_logit_shift_per_step": -3.088306427001953
+   },
+   "bucket_freq1000+": {
+    "n_rows": 1580,
+    "mean_drift": 0.2057090699672699,
+    "mean_cos_minus_mu": 0.3240383267402649,
+    "mean_logit_shift_per_step": -4.484443664550781
+   },
+   "bucket_special": {
+    "n_rows": 22,
+    "mean_drift": 0.05355890840291977,
+    "mean_cos_minus_mu": 0.6247149109840393,
+    "mean_logit_shift_per_step": -1.5458499193191528
+   }
+  }
+ },
+ "seconds": 355.72392773628235
+}
