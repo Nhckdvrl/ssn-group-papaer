@@ -1,6 +1,6 @@
 # Data-centric RSI 回顾：做了什么，为什么没做出有用的东西
 
-整理日期：2026-11-27。依据：本目录 README、CLAIMS、PAIN_LOG、三张 idea 卡、E00–E14 实验卡与 results、三天日志、2026-10-04 外部审计报告。除第 3.3 节一项补算外，没有新跑实验。
+整理日期：2026-11-27。依据：当时的 README、CLAIMS、PAIN_LOG、三张 idea 卡、E00–E14 实验卡与 results、三天日志，以及 2026-10-04 的外部审计报告。除第 3.3 节一项补算外，没有新跑实验。同日瘦身时删除了这些原始文件，可用 `git checkout 6ac6dda5 -- workbench/data-centric-rsi/<路径>` 恢复。LLaVA 的全部分数保留在 [results/LLAVA_SCORES.csv](results/LLAVA_SCORES.csv)。
 
 ## 0. 结论
 
@@ -123,7 +123,7 @@ DataEnvGym 的原论文靠 GPT-4o 出题、解题。本地换成 Qwen2.5/Qwen3-3
   - Curation-Bench 的 LLaVA 底座在本地能复现到论文量级（base 28.96 对 28.8）；
   - ICONS/ARDS 公开代码的索引映射有 bug（ICONS 58,201 条错指，ARDS 的 `global_id−1` 全错）；论文作者实际是否用错未知；
   - 单种子下，不同 10K 选法的差别大多在噪声内。
-- **代码**：`scripts/` 里有 E00–E14 全部脚本（Curation-Bench 本地训练/评测、judge、进程守护、映射审计）。注意：节点上的 Arrow 数据（93GB）、父模型、checkpoint 都已删除，重启要重新下载。
+- **代码**：`scripts/` 只保留了 Curation-Bench 本地 LLaVA 训练/评测的最小一套（下载、选子集、训练、评测、校验）。其余 E00–E14 脚本在提交 `6ac6dda5` 里。节点上的 Arrow 数据（93GB）、父模型、checkpoint 都已删除，重用时要重新下载。
 - **文献**：60 篇分级阅读账本（`READING_LIST.md`）、论文卡（`library/themes/training-post-training/RSI_PAPER_CARDS.md`）、定位表（`POSITIONING.md`）。重拾方向时这部分最值得复用。
 
 ## 5. 10-04 审计提出的转向（没有人做过决定）
