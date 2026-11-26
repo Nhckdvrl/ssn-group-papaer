@@ -23,13 +23,32 @@
 
 **共同研究张力：** 前向表达限制、当前梯度几何与真实长期学习效率是否一致？在哪些实际后训练设置中，LM Head 的功能变化或可训练性值得关注？不要提前给出答案。
 
+**精读核对（2026-11-26，全文）：** A 是 COLM 2026 正式版（v2）。95–99% 指 ‖P_ker g‖/‖g‖（范数比），对应保留余弦 0.1–0.3，即本项目 ρ≈0.01–0.09；随机方向的期望 ρ=d/V（Qwen3-8B 为 4096/151936≈0.027），所以“真实梯度几乎不比随机方向更对齐列空间”才是 A 的实质观察。A 的全部实验是预训练（FineWeb 上的公开 base 模型 + 2B 低秩头预训练 + SpamLang），没有任何后训练实验；附录 E 显示 OLMo-2-1B 预训练全程该比例几乎不变。B 的规模是 2.26M 参数（宽 96，BPE-8192），核心结论是“仅反向降秩”（+0.059）远小于“前向降秩头”（+0.180），且从头部自身更新里去掉正交分量最伤（+0.625，3 seeds）——即 g⊥ 被 W 自己的更新用掉了。B 的实现见公开仓库 `kupilikula/lm-head-gradient-bottleneck`（`DecoupledLinearFunction`：前向不变、反向用 W 的秩 r 近似并匹配 RMS），可直接借作对照。**两篇都只在预训练里成立/不成立；后训练里头部自身更新通道有多大，是双方论证都依赖却都没测的量。**
+
+## 1.5 后训练中的输出头：直接证据现状（2026-11-26 全文精读）
+
+结论：没有工作在标准 Base→SFT→DPO→RLVR 谱系上定量测过 lm_head；主流权重解剖论文普遍把 head 排除在外。最近的近邻是一篇 CPT/指令微调的遗忘机制论文。
+
+| 工作 | 与 head 相关的实际内容 | 对本项目的意义 |
+|---|---|---|
+| Han et al., [A Deafening Silence](https://arxiv.org/abs/2610.09835)（2026-10） | 冻结实验因果定位：CPT/指令微调的遗忘 31–51% 集中在**新语料中几乎不出现的 token 的输出 embedding 行**；机制是非目标行的单边梯度 −p_t h 被 Adam 的 √v̂ 归一化放大成满步长；只对输出投影调大 Adam ε 可去掉 39–68% 遗忘；事后重置漂移行只恢复 <5%。Pythia/Qwen2.5-0.5B/TinyLlama/OLMo-2-1B，无 DPO/RL。 | **最近邻。** 机制直接预测：on-policy RL 的非目标行梯度带优势符号、会互相抵消，SFT 不会。这正是 I04 的来源；必须把“SFT vs RL 的头部行符号结构”与它区分开（它只做了 SFT/CPT，未比较 RL）。 |
+| Wu et al., [Sparsity Curse](https://arxiv.org/abs/2606.18521)（KDD'26） | 层级稀疏图（bf16、1e-5 绝对阈值）：RL 模型的 embedding 与 head“更新稀少”，SFT 的 head“显著更新”；只有图，无数字。 | 与 I04 方向一致的定性线索；阈值口径有偏（低幅行），需用 ULP/舍入基线复核。 |
+| Altaf, [Rank Measures Need a Noise Baseline](https://arxiv.org/abs/2610.22438) | BF16 舍入零基线：两端独立 U(±ulp/2) 误差 E，σ1(E) 以下的 ΔW 奇异方向不可信；OLMo-2-1B 的 DPO→RL 只有 3% 方向高于地板。head/embedding 明确排除。 | E01 权重谱必须附舍入地板（已实现）；DPO/RL 阶段的 head 谱可能大部分在地板以下。 |
+| Zhu et al., [The Path Not Taken](https://arxiv.org/abs/2511.08567)；Mukherjee et al. [2505.11711](https://arxiv.org/abs/2505.11711)；[2507.17107](https://arxiv.org/abs/2507.17107)（已撤回） | RL 更新“稀疏”、离开主奇异方向；**分析只含 transformer 线性层，明确排除 embedding 与 head**。RL's Razor 附录：fp32 训练下稀疏性消失。 | 原 T2“RL 稀疏子网”不再做；head 是这批工作的空白，但“稀疏/不稀疏”本身不是目标。 |
+| He & Cao, [Post-Training Structural Changes](https://arxiv.org/abs/2509.17866) | 奇异值近似整体缩放 + 奇异向量一致旋转；head 只在附录 E.3 定性：大体相同但部分子空间不共转，假设因“直接受外部监督”扰动更大。 | E01 的 W0 比例分量 / 主角余弦正好量化这句假设。 |
+| Shiromani, [What a Weight Update Buys](https://arxiv.org/abs/2610.37719) | 用 Olmo-3-7B 的 SFT/DPO/RLVR/RL-Zero 阶段算 ΔW 的 Fisher “杠杆”；DPO 相对改变 ~1e-4–1e-3，SFT ~1e-1；无逐模块 head 结果。 | 同一谱系的近邻；E01 的 head 行级/功能读数不与其重复。 |
+| [HeadEdit](https://arxiv.org/abs/2610.01170)；Madl, [Channel Location and Subliminal Learning](https://arxiv.org/abs/2606.22019) | 冻结 unembedding 上的低秩推理期校正，部分预测 LoRA-DPO 的 logit 变化；子类学习迁移由 unembedding 行纠缠 cos(W_τ,W_j) 决定，正交化一行可降 >500×。 | 相邻（推理期 steering / 迁移审计），不是后训练动力学。 |
+| Ren & Sutherland [ICLR'25](https://arxiv.org/abs/2407.10490)；Cui et al. [Entropy Mechanism](https://arxiv.org/abs/2505.22617)；Razin et al. [ICLR'25](https://arxiv.org/abs/2410.08847)、[ICLR'24](https://arxiv.org/abs/2310.20703) | 后训练 logit 动力学理论。Cui 明确假设表格 softmax（每个 logit 独立参数）；Ren & Sutherland 的 squeezing 证明只用固定特征的读出层（K=‖φ‖²I，恰是 head 通道）；Razin 2025 把 h 当自由参数。**无一拆分 head 通道（各向同性 ‖h‖²I）与骨干通道（W J Jᵀ Wᵀ，秩 ≤ d）。** | 若后训练实际 logit 变化主要走骨干通道，这些理论的“表格”预测需要修正；可作为 I02/I04 之后的理论落点，先不展开。 |
+
+工程事实（代码/文档核对）：verl FSDP 默认 FP32 master + bf16 计算、单一参数组（head/embedding 与其他参数同 LR、同 AdamW）；TRL GRPO 默认 LR 1e-6、可选 `cast_lm_head_to_fp32`（ScaleRL 推荐，需非 tied）；MiniMax-M1 把训练/推理概率不一致定位到 head 高幅激活并改 FP32 head，ScaleRL 报告 FP32 head 提升渐近 reward，Sea AI Lab 的 FP16 论文认为仅 FP32 head 不足以防崩溃；Muon 系实现中 head 与 embedding 一律留在 AdamW。OLMo 3 报告：中训引入未见特殊 token 会导致模型输出它们、GSM8K 49.4→0（embedding 行问题的现实例子）。
+
 ## 2. P1：直接相邻理论、方法与实验口径
 
 | 文献 | 已知内容/与本项目的关系 | 本地执行需要避免的重复或混杂 |
 |---|---|---|
 | [Breaking the Softmax Bottleneck: A High-Rank RNN Language Model](https://arxiv.org/abs/1711.03953) | 经典输出分布表达秩限制 | 前向 softmax bottleneck ≠ 反向梯度有害 |
 | [The Softmax Bottleneck Does Not Limit the Probabilities of the Most Likely Tokens](https://proceedings.iclr.cc/paper_files/paper/2026/hash/d9b42c5f263a3f7486e50b84d6bbc0d3-Abstract-Conference.html), ICLR 2026 | 针对最可能 token 的实践表达能力分析 | 不要从 V≫d 或整体秩直接推出解题受限；读其适用范围 |
-| [ACL 2022 head tuning 实验](https://aclanthology.org/2022.acl-long.365/) | 已有仅微调 LM 输出矩阵、分离 tied embedding 的设置 | Head-only tuning、冻结/解冻本身不是新方法；检查真实权重共享 |
+| [Min et al., Noisy Channel LM Prompting, ACL 2022](https://aclanthology.org/2022.acl-long.365/) | 少样本分类中的 head tuning（只微调 O∈R^{V×h}）是很强的基线 | Head-only tuning、冻结/解冻本身不是新方法；检查真实权重共享 |
 | [LoRA](https://arxiv.org/abs/2106.09685), [QLoRA](https://arxiv.org/abs/2305.14314), [GaLore](https://arxiv.org/abs/2403.03507) | 参数高效与低秩梯度优化 | 不能把更多可训练参数的收益解释为特定 head 机制；报告真实训练成本 |
 | [Understanding Post-Training Structural Changes in Large Language Models](https://arxiv.org/abs/2509.17866) | 此前初筛：分析谱结构、奇异值与方向的功能 | E01 的权重谱不应成为唯一贡献；固定隐状态反事实仍有共同适配问题 |
 | [DAPO](https://arxiv.org/abs/2503.14476) | GRPO 组内零优势、动态采样与训练细节 | 全对/全错组要记录；单 token CE 与未裁剪策略梯度共线，不能把 reward 加权当新局部方向 |
@@ -46,7 +65,7 @@
 |---|---|
 | [Reinforcement Learning Fine-Tunes a Sparse Subnetwork in Large Language Models](https://arxiv.org/abs/2507.17107) | RL 更新稀疏与受限子网训练已有直接工作；原 T2 不再立项 |
 | [Why RL Updates Look Sparse](https://openreview.net/pdf/00f465ba63bf06cb7d8df77db1a0fa4eee449754.pdf) · [索引](https://lacuna.tiptreesystems.com/work/why-rl-updates-look-sparse-an-implicit-compass) | 讨论优化几何及 BF16 可见更新；不能从公开权重精确零比例推断真实优化自由度 |
-| [Rank Measures of Fine-Tuning Updates Need a Noise Baseline](https://arxiv.org/abs/2610.22438) | 本次补充检索线索：直接讨论 BF16 rounding floor 与 fine-tuning delta 秩测量，含 OLMo DPO/RL；优先核实其 rounding null baseline，对 E01 谱与零差解释尤为重要。未阅读全文，不改变首轮方案 |
+| [Rank Measures of Fine-Tuning Updates Need a Noise Baseline](https://arxiv.org/abs/2610.22438) | 已精读（见 §1.5）：两端独立 U(±ulp/2) 舍入误差 E、σ1(E) 作地板；head/embedding 被排除。E01 已按此实现 |
 | [The Surprising Effectiveness of Deleting Weights in LLM Post-Training](https://arxiv.org/abs/2611.10866) | 此前初筛报告极少量置零可匹配部分 SFT/RLVR/蒸馏表现；原始全文访问曾失败。不能说它证明完整微调只有稀疏有效参数，更不能和 BF16 表观稀疏视为直接矛盾 |
 | [DARE](https://arxiv.org/abs/2311.03099), [TIES-Merging](https://arxiv.org/abs/2306.01708) | 微调增量裁剪、重缩放、冲突处理 |
 | [Less is More: Binary Task Switch](https://arxiv.org/abs/2412.00054), [Auto-FlexSwitch](https://arxiv.org/abs/2604.28109) | 极简 mask/sign/scale 原语与模型合并；原语–能力大网格不能直接当新题 |
