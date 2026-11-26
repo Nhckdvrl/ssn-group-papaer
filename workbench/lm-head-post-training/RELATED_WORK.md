@@ -76,6 +76,11 @@
 | Liu et al., [Understanding R1-Zero-Like Training](https://arxiv.org/abs/2503.20783)（COLM'25） | 模板决定 Base 是回答问题还是续写句子；几乎所有 Base 已有“Aha moment”式反思；模型与模板不匹配会在 RL 之前就破坏推理 | E04 中 OLMo Base 约 40% 以续写提示开头，强制推理开头即得 71.9%（C13）：OLMo RL-Zero 增益的大部分是这一模板效应，必须作为对照扣除，不能算作我们的发现 |
 | Wang et al., [Beyond the 80/20 Rule](https://arxiv.org/abs/2506.01939)（NeurIPS'25） | RLVR 主要改变约 20% 的高熵“分叉 token”，只对这些 token 做策略梯度即可匹配或超过全量更新；RLVR 基本保留 Base 的熵模式 | 最近邻：他们从训练侧说明更新集中在高熵 token；我们在推理侧做分叉交换（C09，正反两向）并检验改选是否价值导向（C11）。必须明确两者问题不同 |
 | Bigelow et al., [Forking Paths in Neural Text Generation](https://arxiv.org/abs/2412.07961)（ICLR'25） | 用逐 token 重采样估计结果分布，找出单个 token 改变即显著改变结果的“分叉 token” | E05 显示熵分叉多数不决定结果；他们的结果定义分叉正是我们需要的与阈值无关的定义（§5 待做 a） |
+| **最近邻** Qwen Pilot Team, [Sparse but Critical](https://arxiv.org/abs/2603.22446)（2026-03，已读 §3–4） | 两模型同步、在 JS 散度 >ε 的位置换用另一模型的**采样**：正向（Base 主、RL 插入）用 1–10% 的 token 恢复 RL 水平，反向（RL 主、Base 插入）5–10% 即跌回 Base；Qwen2.5-32B SimpleRL/DAPO，AIME24/25，T=1、top-p 0.7。解读为“局部可互换的 token 也显著改变结果”“RL 在稀疏的高影响位置做出决定” | 我们的 E04-D 正反交换（C09）是它在 Qwen3-8B/MATH-500 上的复现，不是贡献。它没有“Base 在同位置取自己众数”的对照，也没有单点价值检验；E05（改选押对率与随机无异）直接检验它的解读 |
+| Akgül et al., [ReasonMaxxer / Sparse Policy Selection](https://arxiv.org/abs/2605.06241)（2026-05，已读 §3） | 贪心解码下，在 RL argmax ≠ Base argmax 处插入 RL 的 argmax，复现 RL pass@1；随机对照 = 从 Base 前 20 名随机取，不比 Base 好；Base 熵 >1.2 门控即接近 RL | “复现 RL pass@1”在贪心下是恒等式（序列即 RL 的贪心输出）；前 20 随机对照包含大量低概率候选，与 E05 的“靠前候选价值相同”不冲突，反而与 E06 的尾部假设同向 |
+| Shen et al., [Reasoning Can Be Restored by Correcting a Few Decision Tokens](https://arxiv.org/abs/2605.16874)（ICML'26，已读方法、附录 C） | Qwen3-0.6B/1.7B-Base 与 Qwen3-8B（Thinking），在分歧 top-r 位置由强模型接管一个 token；约 4% 预算补上 91% 差距；Base 熵触发也有效；对照为随机位置、只换开头；Base 采样 T=0.6、top-p 0.95 | 跨尺度（含能力转移），无反向、无 Base 自身众数对照、无价值检验；接管 token 以规划/自查标记为主、集中在前部，与 OLMo 开头模式（C13）相关 |
+| Qwen Pilot Team, [On the Direction of RLVR Updates](https://arxiv.org/abs/2603.22117)（2026-03，只读摘要与设置，未精读） | 按 Δlog p（带符号）选位置替换，比熵、KL 需要更少替换 | 提示熵不是最省的选位方法；我们用熵只为与 Base 单模型可算的定义一致 |
+| Fei et al., [Nudging](https://arxiv.org/abs/2410.09300)（子 agent 转述，未亲自核对） | Base top-1 概率 <γ 时由小对齐模型写一个词，约 10% token；指令跟随与 GSM8K 类任务 | 较早的同类“Base 不确定处交给对齐模型”；非 RL、非 MATH |
 
 ## 3. P1/P2：参数更新、谱与数值精度（E01 及后备空间）
 

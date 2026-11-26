@@ -7,6 +7,9 @@ Conditions (--mode):
   post_basefork       : post everywhere, at forks sample from base
   base_basemode       : base everywhere, at forks take base argmax   (≈ entropy-gated sharpening, τ→∞)
   base_postmode       : base everywhere, at forks take post argmax
+  post_basemode       : post everywhere, at forks take base argmax                     (E06)
+  post_basetrunc      : post everywhere, at forks sample base restricted to p ≥ 0.1·p_max (E06)
+  base_basetrunc      : base everywhere, at forks sample base restricted to p ≥ 0.1·p_max (E06)
 Positive controls: base_postfork with thr=1e9 ≡ base; with thr=-1 ≡ post.
 Both models see the identical token sequence (same tokenizer), so the only difference between conditions is who
 chooses the token at fork positions. Records fork rate and how often the two models' argmax agree at forks.
@@ -86,6 +89,9 @@ def main():
             fork = H0 >= args.thr
             s0 = torch.multinomial(lp0.exp(), 1).squeeze(1); s1 = torch.multinomial(lp1.exp(), 1).squeeze(1)
             a0 = lp0.argmax(-1); a1 = lp1.argmax(-1)
+            if args.mode.endswith("basetrunc"):
+                q0 = lp0.exp(); q0 = q0 * (q0 >= 0.1 * q0.max(-1, keepdim=True).values)
+                t0s = torch.multinomial(q0, 1).squeeze(1)
             if args.mode == "base":
                 nxt = s0
             elif args.mode == "post":
@@ -98,6 +104,12 @@ def main():
                 nxt = torch.where(fork, a0, s0)
             elif args.mode == "base_postmode":
                 nxt = torch.where(fork, a1, s0)
+            elif args.mode == "post_basemode":
+                nxt = torch.where(fork, a0, s1)
+            elif args.mode == "post_basetrunc":
+                nxt = torch.where(fork, t0s, s1)
+            elif args.mode == "base_basetrunc":
+                nxt = torch.where(fork, t0s, s0)
             else:
                 raise ValueError(args.mode)
             live = ~done
