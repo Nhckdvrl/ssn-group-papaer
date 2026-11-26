@@ -97,7 +97,14 @@ def main():
 
 if __name__ == "__main__":
     import sys
-    if "--export-e02" in sys.argv:
+    if "--export-math500" in sys.argv:
+        out = Path("/tmp/xiang_lmhead/e04"); out.mkdir(parents=True, exist_ok=True)
+        d = datasets.load_dataset("HuggingFaceH4/MATH-500", split="test")
+        with open(out / "math500.jsonl", "w") as f:
+            for i, r in enumerate(d):
+                f.write(json.dumps({"index": i, "problem": r["problem"], "answer": r["answer"], "subject": r["subject"],
+                                    "level": r["level"], "sha1": sha1(r["problem"])}) + "\n")
+    elif "--export-e02" in sys.argv:
         out = Path("/tmp/xiang_lmhead/e02"); out.mkdir(parents=True, exist_ok=True)
         with open(out / "prompts.jsonl", "w") as f:
             for p in load_e02_prompts():

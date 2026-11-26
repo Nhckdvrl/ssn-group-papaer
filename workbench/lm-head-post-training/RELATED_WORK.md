@@ -70,6 +70,9 @@
 | Lin et al., [URIAL](https://arxiv.org/abs/2312.01552)（ICLR'24） | Llama-2 base vs chat：77.7% 位置 top-1 相同，92.2% 在 base 前 3；变化集中在风格/话语 token | 位置级排名分析，无分解、无干预、无定位 |
 | Kocher et al., [Diff Mining](https://arxiv.org/abs/2608.26462)（ICLR'26 workshop） | 参考语料上的“上下文×词表” logit 差，用 Top-K/NMF 汇总成指纹 token，做微调审计 | 数据结构相同，目标是审计而非科学问题 |
 | Yue et al. [2504.13837](https://arxiv.org/abs/2504.13837)、[RL Squeezes, SFT Expands](https://arxiv.org/abs/2509.21128)（ICLR'26）、[Invisible Leash](https://arxiv.org/abs/2507.14843) | RLVR 主要重加权 base 已有解（pass@k 角度）；SFT 扩展、RL 收缩 | “重新引导 vs 新能力”的大背景；I05 从逐 token 修正结构的角度切入，需要与之明确区分 |
+| Huang et al., [The Sharpening Mechanism](https://arxiv.org/abs/2412.01951) | 把自我改进/后训练形式化为对序列级最大似然的“锐化”；SFT 型在覆盖充分时极小极大最优，RLHF 型可借在线探索 | 理论框架：后训练≈锐化。E04 测的是真实后训练模型逐 token 是否就是锐化后的 base（答案：不是，见 E04-A2/D） |
+| Agarwal et al., [Entropy Minimization](https://arxiv.org/abs/2505.15134) | 只最小化熵（无标签）即可提升数学/代码；推理期 logit 调整（EM-INF）也有效 | 与 E04-B 中“Base 降温拿到 73% 增益”一致；我们的增量是定位收益来自哪些位置（熵门控）以及与真实后训练路径的差异 |
+| Shao et al., [Spurious Rewards](https://arxiv.org/abs/2506.10947) | 随机奖励的 GRPO 让 Qwen2.5-Math 在 MATH-500 +21（真实奖励 +29），机制是放大预训练高先验行为（代码推理）；OLMo2、Llama3 上几乎无效 | 提醒：Qwen 与 OLMo 的结论可能本质不同，必须两家族都看 |
 
 ## 3. P1/P2：参数更新、谱与数值精度（E01 及后备空间）
 

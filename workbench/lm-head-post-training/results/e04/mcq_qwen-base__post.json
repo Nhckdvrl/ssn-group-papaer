@@ -1,0 +1,141 @@
+{
+ "pair": "qwen-base__post",
+ "stage": "multi-stage (SFT+RL+fusion), opaque",
+ "n": 2644,
+ "n_arc": 1144,
+ "letter_ids": [
+  32,
+  33,
+  34,
+  35
+ ],
+ "example_prompt": "ely effect of this increase in rotation?\nA. Planetary density will decrease.\nB. Planetary years will become longer.\nC. Planetary days will become shorter.\nD. Planetary gravity will become stronger.\nAnswer with the letter of the correct option only.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+ "parent": {
+  "acc": 0.7420574886535553,
+  "acc_calib": 0.7696671709531013,
+  "letter_mass": 0.14220461249351501,
+  "pred_hist": [
+   0.315,
+   0.261,
+   0.247,
+   0.176
+  ],
+  "pred_entropy": 1.3660730286932115,
+  "acc_arc": 0.8618881118881119,
+  "acc_calib_arc": 0.8916083916083916,
+  "acc_mmlu": 0.6506666666666666,
+  "acc_calib_mmlu": 0.6766666666666666
+ },
+ "child": {
+  "acc": 0.7776096822995462,
+  "acc_calib": 0.7757186081694403,
+  "letter_mass": 0.8605237007141113,
+  "pred_hist": [
+   0.273,
+   0.243,
+   0.241,
+   0.243
+  ],
+  "pred_entropy": 1.3849403326086815,
+  "acc_arc": 0.9055944055944056,
+  "acc_calib_arc": 0.9020979020979021,
+  "acc_mmlu": 0.68,
+  "acc_calib_mmlu": 0.6793333333333333
+ },
+ "parent_plus_neutral": {
+  "acc": 0.731089258698941,
+  "acc_calib": 0.7696671709531013,
+  "letter_mass": NaN,
+  "pred_hist": [
+   0.256,
+   0.204,
+   0.376,
+   0.165
+  ],
+  "pred_entropy": 1.3376104100997142,
+  "acc_arc": 0.8417832167832168,
+  "acc_calib_arc": 0.8916083916083916,
+  "acc_mmlu": 0.6466666666666666,
+  "acc_calib_mmlu": 0.6766666666666666
+ },
+ "child_minus_neutral": {
+  "acc": 0.7776096822995462,
+  "acc_calib": 0.7757186081694403,
+  "letter_mass": NaN,
+  "pred_hist": [
+   0.272,
+   0.248,
+   0.232,
+   0.248
+  ],
+  "pred_entropy": 1.3846682836433586,
+  "acc_arc": 0.9038461538461539,
+  "acc_calib_arc": 0.9020979020979021,
+  "acc_mmlu": 0.6813333333333333,
+  "acc_calib_mmlu": 0.6793333333333333
+ },
+ "parent_plus_gen_parent": {
+  "acc": 0.7344931921331316,
+  "acc_calib": 0.7696671709531013,
+  "letter_mass": NaN,
+  "pred_hist": [
+   0.248,
+   0.217,
+   0.371,
+   0.163
+  ],
+  "pred_entropy": 1.3411845464161307,
+  "acc_arc": 0.8452797202797203,
+  "acc_calib_arc": 0.8916083916083916,
+  "acc_mmlu": 0.65,
+  "acc_calib_mmlu": 0.6766666666666666
+ },
+ "child_minus_gen_parent": {
+  "acc": 0.777231467473525,
+  "acc_calib": 0.7757186081694403,
+  "letter_mass": NaN,
+  "pred_hist": [
+   0.272,
+   0.247,
+   0.233,
+   0.248
+  ],
+  "pred_entropy": 1.384796010031026,
+  "acc_arc": 0.9038461538461539,
+  "acc_calib_arc": 0.9020979020979021,
+  "acc_mmlu": 0.6806666666666666,
+  "acc_calib_mmlu": 0.6793333333333333
+ },
+ "parent_plus_gen_child": {
+  "acc": 0.7609682299546142,
+  "acc_calib": 0.7696671709531013,
+  "letter_mass": NaN,
+  "pred_hist": [
+   0.314,
+   0.207,
+   0.244,
+   0.236
+  ],
+  "pred_entropy": 1.374342743308819,
+  "acc_arc": 0.8767482517482518,
+  "acc_calib_arc": 0.8916083916083916,
+  "acc_mmlu": 0.6726666666666666,
+  "acc_calib_mmlu": 0.6766666666666666
+ },
+ "child_minus_gen_child": {
+  "acc": 0.7791225416036308,
+  "acc_calib": 0.7757186081694403,
+  "letter_mass": NaN,
+  "pred_hist": [
+   0.27,
+   0.25,
+   0.245,
+   0.235
+  ],
+  "pred_entropy": 1.3850023759921446,
+  "acc_arc": 0.9047202797202797,
+  "acc_calib_arc": 0.9020979020979021,
+  "acc_mmlu": 0.6833333333333333,
+  "acc_calib_mmlu": 0.6793333333333333
+ }
+}

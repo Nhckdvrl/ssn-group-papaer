@@ -18,6 +18,18 @@ def extract_boxed(s):
     return None
 
 
+def extract_answer(s):
+    """Final answer: last \\boxed{...}; otherwise the last 'Answer: ...' line (OLMo RL-Zero format)."""
+    b = extract_boxed(s)
+    if b is not None:
+        return b
+    m = re.findall(r"Answer:\s*(.+)", s)
+    if not m:
+        return None
+    a = m[-1].strip().rstrip(".").strip().strip("$").strip()
+    return a or None
+
+
 def _fix_fracs(s):
     return re.sub(r"\\frac(\d)(\d)", r"\\frac{\1}{\2}", s)
 
