@@ -27,10 +27,15 @@ def head(name):
         return f.get_tensor("lm_head.weight").float()
 
 
+def rank(x):
+    """Average ranks (ties share one rank; zero-frequency rows and unchanged bf16 rows are common)."""
+    u, inv, cnt = np.unique(np.asarray(x), return_inverse=True, return_counts=True)
+    return (np.cumsum(cnt) - (cnt - 1) / 2.0)[inv]
+
+
 def spearman(a, b):
     m = np.isfinite(a) & np.isfinite(b)
-    ra = np.argsort(np.argsort(a[m])); rb = np.argsort(np.argsort(b[m]))
-    return float(np.corrcoef(ra, rb)[0, 1])
+    return float(np.corrcoef(rank(a[m]), rank(b[m]))[0, 1])
 
 
 def main():
@@ -59,10 +64,21 @@ def main():
     w0mu = (W0 @ mu_hat).numpy()
     logf = np.log1p(freq.astype(float))
     def resid(y, X):
-        Xr = np.column_stack([np.argsort(np.argsort(x)) for x in X] + [np.ones(len(y))]).astype(float)
-        yr = np.argsort(np.argsort(y)).astype(float)
+        Xr = np.column_stack([rank(x) for x in X] + [np.ones(len(y))]).astype(float)
+        yr = rank(y)
         return yr - Xr @ np.linalg.lstsq(Xr, yr, rcond=None)[0]
     shift_r = resid(shift, [w0mu, logf])
+    shift_r1 = resid(shift, [w0mu])
+    # exact removal of the two global components: ΔW = α W0 + 1 cᵀ + R  (least squares), then residual shift R_j·μ̂
+    W0d, Dd = W0.double(), D.double()
+    Wc, Dc = W0d - W0d.mean(0), Dd - Dd.mean(0)            # removing 1cᵀ = row-centering
+    alpha = float((Dc * Wc).sum() / (Wc * Wc).sum())
+    R = Dc - alpha * Wc
+    res_shift = (R @ mu_hat.double()).numpy()
+    res["global_components"] = {"alpha": alpha, "energy_frac_common_shift": float(1 - (Dc ** 2).sum() / (Dd ** 2).sum()),
+                                "energy_frac_alpha_after_centering": float(alpha ** 2 * (Wc ** 2).sum() / (Dd ** 2).sum())}
+    res["residual_shift_by_bucket"] = {b: {"mean": float(res_shift[bk == b].mean()), "median": float(np.median(res_shift[bk == b]))}
+                                       for b in sorted(set(bk))}
     res["controls"] = {"spearman_shift_vs_w0mu": spearman(shift, w0mu), "spearman_shift_vs_logfreq": spearman(shift, logf)}
     for c in ("ce_onpolicy", "rl", "rft", "teacher"):
         pd, ps, tc = sim[f"{c}.drift"], sim[f"{c}.logit_shift"], sim[f"{c}.tgt_count"]
@@ -71,7 +87,10 @@ def main():
         res["corr"][c] = {"drift_all": spearman(drift, pd), "shift_all": spearman(shift, ps),
                           "drift_never_target": spearman(drift[never], pd[never]),
                           "shift_never_target": spearman(shift[never], ps[never]),
-                          "shift_partial_w0mu_logfreq": float(np.corrcoef(shift_r, ps_r)[0, 1])}
+                          "shift_partial_w0mu_logfreq": float(np.corrcoef(shift_r, ps_r)[0, 1]),
+                          "shift_partial_w0mu_only": float(np.corrcoef(shift_r1, resid(ps, [w0mu]))[0, 1]),
+                          "residual_shift_all": spearman(res_shift, ps),
+                          "residual_shift_never_target": spearman(res_shift[never], ps[never])}
     out = ROOT / "results" / "e01"
     (out / f"vs_adam_{pair}.json").write_text(json.dumps(res, indent=1))
     print(json.dumps(res, indent=1))
