@@ -2,7 +2,8 @@
 # E15b admission as a per-file job pool on the generation node (fvcrc21). One worker per GPU; a worker starts once
 # that GPU's generation queue has finished (QUEUE_DONE in queue<gpu>.log), then repeatedly takes any (solver, file)
 # job whose generation file is complete and which nobody has claimed (atomic mkdir lock), until all 36 jobs are done.
-# Each job: 1,000 parse_ok candidates of one 4,000-sample file, 9 samples each (official R-Zero settings).
+# Each job: 500 parse_ok candidates of one 4,000-sample file (the first 500 of a fixed shuffle), 9 samples each
+# (official R-Zero settings); 500 rather than 1,000 to keep E15 within the approved GPU budget.
 # Output: /tmp/xiang_e15/admit/admit_<solver>__<file stem>.jsonl  (solver = base | s5)
 # Usage: bash e15b_admit_pool.sh <gpu>
 set -u
@@ -23,7 +24,7 @@ while :; do
       mkdir $out.lock 2>/dev/null || continue
       echo "gpu$gpu start $sv $stem $(date +%T)"
       bash $S/e15_run.sh $gpu admit_${sv}__${stem} e15b_admit.py --solver ${SOLVER[$sv]} --inputs $G/$stem.jsonl \
-           --per_file 1000 --n 9 --out $out || { echo "FAILED $sv $stem"; touch $out.failed; }
+           --per_file 500 --n 9 --out $out || { echo "FAILED $sv $stem"; touch $out.failed; }
       ran=1
     done
   done
