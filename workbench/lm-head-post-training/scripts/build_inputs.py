@@ -104,6 +104,39 @@ if __name__ == "__main__":
             for i, r in enumerate(d):
                 f.write(json.dumps({"index": i, "problem": r["problem"], "answer": r["answer"], "subject": r["subject"],
                                     "level": r["level"], "sha1": sha1(r["problem"])}) + "\n")
+    elif "--export-hard" in sys.argv:
+        # E07 hard sets: MATH test Level 5 not in MATH-500 (500 sampled, seed 0); OlympiadBench OE_TO_maths_en_COMP,
+        # numerical, single answer, no unit. Index manifest (ids + sha1) goes to data/e07_problems.json.
+        import ast
+        import glob
+        import pandas as pd
+        out = Path("/tmp/xiang_lmhead/e07"); out.mkdir(parents=True, exist_ok=True)
+        m500 = {sha1(r["problem"]) for r in datasets.load_dataset("HuggingFaceH4/MATH-500", split="test")}
+        pool = []
+        for s in SUBJECTS:
+            d = datasets.load_dataset("EleutherAI/hendrycks_math", s, split="test")
+            for i, r in enumerate(d):
+                if r["level"] == "Level 5" and sha1(r["problem"]) not in m500 and last_boxed(r["solution"]):
+                    pool.append({"subject": s, "src_index": i, "problem": r["problem"], "answer": last_boxed(r["solution"]),
+                                 "level": 5, "sha1": sha1(r["problem"])})
+        rng = random.Random(0)
+        l5 = sorted(rng.sample(pool, 500), key=lambda r: (r["subject"], r["src_index"]))
+        ob = pd.read_parquet(glob.glob(os.path.expanduser("~/.cache/huggingface/hub/datasets--Hothan--OlympiadBench/snapshots/*/OlympiadBench/OE_TO_maths_en_COMP/*.parquet"))[0])
+        ob = ob[(ob.answer_type == "Numerical") & (ob.is_multiple_answer.astype(str) == "False") & (ob.unit.isna() | ob.unit.astype(str).isin(["nan", "None", ""]))]
+        olymp = []
+        for _, r in ob.iterrows():
+            fa = r["final_answer"]
+            fa = list(fa) if not isinstance(fa, str) else ast.literal_eval(fa)
+            olymp.append({"id": str(r["id"]), "problem": r["question"], "answer": str(fa[0]).strip().strip("$"),
+                          "subfield": r["subfield"], "sha1": sha1(r["question"])})
+        manifest = {}
+        for name, rows in (("math_l5", l5), ("olymp", olymp)):
+            with open(out / f"{name}.jsonl", "w") as f:
+                for k, r in enumerate(rows):
+                    f.write(json.dumps({"index": k, **r}) + "\n")
+            manifest[name] = [{k: r[k] for k in r if k not in ("problem", "answer")} for r in rows]
+            print(name, len(rows))
+        (DATA / "e07_problems.json").write_text(json.dumps({"seed": 0, **manifest}, indent=0))
     elif "--export-e02" in sys.argv:
         out = Path("/tmp/xiang_lmhead/e02"); out.mkdir(parents=True, exist_ok=True)
         with open(out / "prompts.jsonl", "w") as f:

@@ -59,6 +59,7 @@ def main():
     ap.add_argument("--top_p", type=float, default=1.0)
     ap.add_argument("--force_prefix", default="", help="text appended to the rendered prompt (forces the opening of the response)")
     ap.add_argument("--tag", required=True)
+    ap.add_argument("--out_dir", default="/tmp/xiang_lmhead/e04/gen")
     args = ap.parse_args()
     if args.bias:   # (z + s*b/τ)/(1/τ) = τ z + s b
         os.environ["E04_BIAS"], os.environ["E04_BIAS_KEY"] = args.bias, args.bias_key
@@ -69,7 +70,7 @@ def main():
         os.environ["E04_GATE_MODE"], os.environ["E04_GATE_THR"], os.environ["E04_GATE_TAU"] = mode, thr, gtau
         procs.append("e04_biasproc:EntropyGatedTemperature")
     from vllm import LLM, SamplingParams
-    src = {"train128": "/tmp/xiang_lmhead/e02/prompts.jsonl", "math500": "/tmp/xiang_lmhead/e04/math500.jsonl"}[args.prompts]
+    src = {"train128": "/tmp/xiang_lmhead/e02/prompts.jsonl", "math500": "/tmp/xiang_lmhead/e04/math500.jsonl"}.get(args.prompts, args.prompts)
     prompts = [json.loads(l) for l in open(src)]
     llm = LLM(model=str(models.path(args.model)), dtype="bfloat16", seed=args.seed, gpu_memory_utilization=0.85,
               max_model_len=args.max_model_len, enable_prefix_caching=True,
@@ -84,7 +85,7 @@ def main():
                         seed=args.seed, logprobs=0, stop_token_ids=stop_ids)
     t0 = time.time()
     outs = llm.generate(texts, sp)
-    out_dir = Path("/tmp/xiang_lmhead/e04/gen"); out_dir.mkdir(parents=True, exist_ok=True)
+    out_dir = Path(args.out_dir); out_dir.mkdir(parents=True, exist_ok=True)
     n_ok = n_all = n_tok = n_parse = n_trunc = 0
     with open(out_dir / f"{args.tag}.jsonl", "w") as f:
         for p, text, o in zip(prompts, texts, outs):

@@ -11,6 +11,11 @@ Conditions (--mode):
   post_postmode       : post everywhere, at forks take post argmax                     (E06, choice contrast)
   post_basetrunc      : post everywhere, at forks sample base restricted to p ≥ 0.1·p_max (E06)
   base_basetrunc      : base everywhere, at forks sample base restricted to p ≥ 0.1·p_max (E06)
+Deterministic grid (E07; no sampling anywhere, every argmax disagreement falls in exactly one of two sets):
+  greedy_base         : base argmax everywhere
+  greedy_post         : post argmax everywhere
+  greedy_base_postfork: base argmax, but post argmax where base H ≥ thr
+  greedy_base_postlow : base argmax, but post argmax where base H < thr and the two argmaxes differ
 Positive controls: base_postfork with thr=1e9 ≡ base; with thr=-1 ≡ post.
 Both models see the identical token sequence (same tokenizer), so the only difference between conditions is who
 chooses the token at fork positions. Records fork rate and how often the two models' argmax agree at forks.
@@ -45,6 +50,9 @@ def main():
     ap.add_argument("--start", type=int, default=0, help="first problem (for sharding a run across GPUs)")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--tag", required=True)
+    ap.add_argument("--problems", default="/tmp/xiang_lmhead/e04/math500.jsonl")
+    ap.add_argument("--out_dir", default=str(BIG))
+    ap.add_argument("--force_prefix", default="", help="text appended to every rendered prompt (unicode escapes decoded)")
     args = ap.parse_args()
     dev = "cuda"; t0 = time.time()
     torch.manual_seed(args.seed)
@@ -54,24 +62,27 @@ def main():
     m0 = AutoModelForCausalLM.from_pretrained(models.path(p0), dtype=torch.bfloat16).to(dev).eval()
     m1 = AutoModelForCausalLM.from_pretrained(models.path(p1), dtype=torch.bfloat16).to(dev).eval()
     vocab = tok.get_vocab()
-    stop = torch.tensor(sorted({vocab[t] for t in ("<|endoftext|>", "<|im_end|>") if t in vocab}), device=dev)
-    probs = [json.loads(l) for l in open("/tmp/xiang_lmhead/e04/math500.jsonl")]
+    stop = torch.tensor(sorted({vocab[t] for t in ("<|endoftext|>", "<|im_end|>") if t in vocab}
+                               | ({tok.eos_token_id} if tok.eos_token_id is not None else set())), device=dev)
+    big = Path(args.out_dir); big.mkdir(parents=True, exist_ok=True)
+    force = args.force_prefix.encode().decode("unicode_escape") if args.force_prefix else ""
+    probs = [json.loads(l) for l in open(args.problems)]
     if args.limit:
         probs = probs[: args.limit]
     probs = probs[args.start:]
     jobs = [(p, k) for p in probs for k in range(args.n)]
     # resume: keep finished (index, sample) pairs from a previous partial run
     done_rows = []
-    if (BIG / f"{args.tag}.jsonl").exists():
-        done_rows = [json.loads(l) for l in open(BIG / f"{args.tag}.jsonl")]
+    if (big / f"{args.tag}.jsonl").exists():
+        done_rows = [json.loads(l) for l in open(big / f"{args.tag}.jsonl")]
     finished = {(r["index"], r["sample"]) for r in done_rows}
     jobs = [(p, k) for p, k in jobs if (p["index"], k) not in finished]
-    out_f = open(BIG / f"{args.tag}.jsonl", "a")
+    out_f = open(big / f"{args.tag}.jsonl", "a")
     n_ok = n_parse = n_trunc = n_tok = n_fork = n_agree = 0
     pad = tok.pad_token_id if tok.pad_token_id is not None else int(stop[0])
     for b0 in range(0, len(jobs), args.bs):
         batch = jobs[b0: b0 + args.bs]
-        texts = [render(args.template, p["problem"], tok) for p, _ in batch]
+        texts = [render(args.template, p["problem"], tok) + force for p, _ in batch]
         enc = [tok(t, add_special_tokens=False)["input_ids"] for t in texts]
         L = max(len(e) for e in enc)
         ids = torch.tensor([[pad] * (L - len(e)) + e for e in enc], device=dev)
@@ -85,6 +96,8 @@ def main():
         done = torch.zeros(B, dtype=torch.bool, device=dev)
         gen = [[] for _ in range(B)]
         nfork = torch.zeros(B, device=dev); nagree = torch.zeros(B, device=dev)
+        ndis_hi = torch.zeros(B, device=dev); ndis_lo = torch.zeros(B, device=dev)
+        swaps = [[] for _ in range(B)]
         cur_pos = pos[:, -1]
         for step in range(args.max_tokens):
             lp0 = torch.log_softmax(z0, -1); lp1 = torch.log_softmax(z1, -1)
@@ -115,10 +128,24 @@ def main():
                 nxt = torch.where(fork, t0s, s1)
             elif args.mode == "base_basetrunc":
                 nxt = torch.where(fork, t0s, s0)
+            elif args.mode == "greedy_base":
+                nxt = a0
+            elif args.mode == "greedy_post":
+                nxt = a1
+            elif args.mode == "greedy_base_postfork":
+                nxt = torch.where(fork, a1, a0)
+            elif args.mode == "greedy_base_postlow":
+                nxt = torch.where(~fork & (a0 != a1), a1, a0)
             else:
                 raise ValueError(args.mode)
             live = ~done
             nfork += (fork & live).float(); nagree += (fork & live & (a0 == a1)).float()
+            dis = live & (a0 != a1)
+            ndis_hi += (dis & fork).float(); ndis_lo += (dis & ~fork).float()
+            if args.mode.startswith("greedy_base_"):
+                for i in torch.nonzero(dis & (nxt != a0)).flatten().tolist():
+                    if len(swaps[i]) < 300:
+                        swaps[i].append([len(gen[i]), int(a0[i]), int(a1[i]), round(float(H0[i]), 3)])
             nxt = torch.where(done, torch.full_like(nxt, pad), nxt)
             for i in torch.nonzero(live).flatten().tolist():
                 gen[i].append(int(nxt[i]))
@@ -140,10 +167,11 @@ def main():
             n_ok += r; n_parse += pred is None; n_trunc += trunc; n_tok += len(g)
             n_fork += float(nfork[i]); n_agree += float(nagree[i])
             out_f.write(json.dumps({"index": p["index"], "answer": p["answer"], "sample": k, "text": text, "pred": pred, "reward": r,
-                                    "n_tokens": len(g), "n_fork": float(nfork[i]), "n_fork_agree": float(nagree[i]), "truncated": trunc}) + "\n")
+                                    "n_tokens": len(g), "n_fork": float(nfork[i]), "n_fork_agree": float(nagree[i]), "truncated": trunc,
+                                    "n_dis_hi": float(ndis_hi[i]), "n_dis_lo": float(ndis_lo[i]), "swaps": swaps[i]}) + "\n")
         out_f.flush()
         print(f"batch {b0 // args.bs}: acc so far (this run) {n_ok / (b0 + B):.3f} {time.time() - t0:.0f}s", flush=True)
-    allrows = [json.loads(l) for l in open(BIG / f"{args.tag}.jsonl")]
+    allrows = [json.loads(l) for l in open(big / f"{args.tag}.jsonl")]
     N = len(allrows)
     n_ok = sum(r["reward"] for r in allrows); n_parse = sum(r["pred"] is None for r in allrows)
     n_trunc = sum(r["truncated"] for r in allrows); n_tok = sum(r["n_tokens"] for r in allrows)
@@ -151,7 +179,7 @@ def main():
     meta = {"tag": args.tag, "pair": args.pair, "mode": args.mode, "thr": args.thr, "n": args.n, "seed": args.seed, "N": N,
             "accuracy": n_ok / N, "parse_fail": n_parse / N, "truncated": n_trunc / N, "mean_len": n_tok / N,
             "fork_rate": n_fork / max(1, n_tok), "argmax_agree_at_forks": n_agree / max(1, n_fork), "seconds": time.time() - t0}
-    (BIG / f"{args.tag}.meta.json").write_text(json.dumps(meta, indent=1))
+    (big / f"{args.tag}.meta.json").write_text(json.dumps(meta, indent=1))
     print(json.dumps(meta, indent=1))
 
 
