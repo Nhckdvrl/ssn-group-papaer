@@ -271,15 +271,6 @@ theseus 综述的“结构性 L5 / 有效 L5”和 Weco 的 Level 0–3 是同�
 - 没找到 Meta FAIR、Thinking Machines、AI2、Hugging Face，以及 Jason Wei、Yao Shunyu、Gwern 等人 2026 年的相关文章（搜索无命中，不代表不存在）。
 - Epoch 的 “Can AI automate AI R&D yet?” 原文打不开，只有二手转述。
 - 关键数字的原文核对见 `VERIFY_2026-11.md`；核对之外的数字来自扫描笔记，附录大多没有逐条核对。
-p='DISCUSSION.md'; s=open(p).read()
-old='整理日期：2026-11-27。内容包括三部分：我们第一轮做了什么、2026-09 以来这个领域的新工作和整体动向、两者之间的事实对照。本文只陈述事实和数据，不列选项，也不给建议。'
-new='整理日期：2026-11-27。第 1–8 节是事实：我们第一轮做了什么、2026-09 以来这个领域的新工作和整体动向、两者之间的对照。第 9 节是我的判断和候选方向，与事实部分分开写。'
-assert old in s; s=s.replace(old,new)
-old2='没有 arXiv 版，只读到摘要，结果数字没有看到。'
-new2='没有 arXiv 版，只读到摘要。摘要称：在 Hyperagents 的三个模型上，两条谱系的差异主要来自继承（MiMo-V2.5 上几乎全部是继承），更新后的改进器拿到自己的副本时很少再做修改。另有一篇在审稿件 Why Is Recursive Self-Improvement Hard to Verify?（均分 1.67，仅摘要）给出了验证 RSI 需要同时测的三项：目标增益、安装自产更新的因果收益、更强的后继改进机制。'
-assert old2 in s; s=s.replace(old2,new2)
-s=s.rstrip()+'\n'+open('/dev/stdin').read()
-open(p,'w').write(s)
 
 ---
 
