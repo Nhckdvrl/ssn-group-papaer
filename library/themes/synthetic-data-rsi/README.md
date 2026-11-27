@@ -20,11 +20,11 @@
 | 闭环能走多远、新信息从哪里来 | `cross/CROSS_A`（迭代学习、performative prediction）、`cross/CROSS_F`（合成数据：累积与崩溃、锐化理论、知识与格式）、`scans/SCAN_2026-11_B`、`papers/READ_to_bias_or_not_to_bias`、`papers/READ_passk_yue2025_and_2606.15455`、`checks/CHECK_passk_and_checkpoints`、`papers/READ_rsi_arxiv_batch_2026-11`（STV、Self-Regress） |
 | 闭环为什么先升后平再降 | `scans/SCAN_2026-11_A`（R-Zero 系列、Survive or Collapse、R-Quest、ATRI）、`papers/READ_memory_full_loop_audit`、`papers/READ_rsi_arxiv_batch_2026-11`（Self-Regress）、`cross/CROSS_A`、`cross/CROSS_B` |
 | 选进来的不等于学到的 | `scans/SCAN_2026-11_A`（Selection Is Not Learning）、`cross/CROSS_E`（回归均值、自适应过拟合）、`cross/CROSS_B`（UED、Graves）、`scripts/frontier_null_model.py` |
-| 改进器本身有没有变好 | `papers/READ_better_at_improving`（主笔精读）、`papers/READ_why_rsi_hard_to_verify`、`papers/READ_rsi_arxiv_batch_2026-11`（Auditing the Product、Agent Plasticity、The Self-Improvement Problem）、`scans/SCAN_2026-11_A`、`scans/SCAN_2026-11_D`（SPADE、PROPEL）、`cross/CROSS_B`（协同进化的进步测量）、`cross/CROSS_D`（DreamCoder、Minimo） |
+| 改进器本身有没有变好 | `papers/READ_better_at_improving`（主笔精读）、`papers/READ_why_rsi_hard_to_verify`、`papers/READ_rsi_arxiv_batch_2026-11`（Auditing the Product、Agent Plasticity、The Self-Improvement Problem）、`scans/SCAN_2026-11_A`、`scans/SCAN_2026-11_D`（SPADE、PROPEL）、`cross/CROSS_B`（协同进化的进步测量）、`cross/CROSS_D`（DreamCoder、Minimo）、`papers/READ_skill_policy_coevolution_trap`（技能库与策略共同特化） |
 | 看不见的损失：持久保留 | `papers/READ_capability_loss_embodied_rsi`、`papers/READ_asset_or_expense`、`papers/READ_memory_full_loop_audit`、`papers/READ_rsi_arxiv_batch_2026-11`（Do Self-Evolving Agents Forget?） |
 | 测量、噪声、数据方法的真实效应 | `scans/SCAN_2026-11_C`（DataFlex-RL、AutoData、ADE 等）、`cross/CROSS_E`、`checks/VERIFY_2026-11` |
 | 生产者强弱与数据价值 | `cross/CROSS_F`、`cross/CROSS_C`（learnability gap、教学理论）、`cross/CROSS_D`（TTS、SynthCLIP） |
-| 任务与环境合成 | `scans/SCAN_2026-11_D` |
+| 任务与环境合成 | `scans/SCAN_2026-11_D`、`papers/READ_benchevolver`（冻结生成器、只演化产物） |
 | 领域全貌、blog、awesome 仓库、综述 | `scans/SCAN_2026-11_E` |
 | 安全 | `scans/SCAN_2026-11_A`（RSI Control）、`scans/SCAN_2026-11_B`（Progressive Misalignment） |
 
@@ -37,13 +37,14 @@
 
 ## 尚未读的 OpenReview 论文
 
+已从清单移出、改读 arXiv 版本的两篇：Skill–Policy Co-evolution Trap（`papers/READ_skill_policy_coevolution_trap`）、BenchEvolver（`papers/READ_benchevolver`）。
+
 OpenReview 对自动访问有机器人检测，不能绕过。需要时请在浏览器下载，放进 `workbench/data-centric-rsi/papers_in/`（已设为不进 git）。
 
 | 论文 | 会议 / 审稿分 | PDF |
 |---|---|---|
 | Information-Constrained Memory Evolution for Self-Improving Language Agents | ICLR 2027，3/3/4 | https://openreview.net/pdf?id=6co6OsqoT3 |
 | Automated Conjecturing: Generation, Selection, and Evaluation | ICLR 2027，3/3/4 | https://openreview.net/pdf?id=PARqAJvRPF |
-| Evolving Together, Failing Apart: The Skill-Policy Co-evolution Trap | ICLR 2027，3/3/3 | https://openreview.net/pdf?id=ZIBdUe2hGK |
 | Do LLM Agents Still Need to be Told How to Self-Improve? | ICLR 2027，2/3/4 | https://openreview.net/pdf?id=G2nWulnSp3 |
 | Task Arrival Order Shapes Experience Accumulation in Memory-Based Self-Evolving Agents | ICLR 2027，2/3/4 | https://openreview.net/pdf?id=I51UbJS8ql |
 | SUADS: Sampling-Uncertainty-Aware Data Selection for LLMs | ICLR 2027，3/3/3/3 | https://openreview.net/pdf?id=Oj94zxxkDK |
@@ -55,6 +56,5 @@ OpenReview 对自动访问有机器人检测，不能绕过。需要时请在浏
 | Understanding the Challenges in Iterative Generative Optimization with LLMs | NeurIPS 2026 poster | https://openreview.net/pdf?id=uMQtAycESf |
 | Coherence Mechanisms for Provable Self-Improvement | NeurIPS 2026 poster | https://openreview.net/pdf?id=fp0D7ypA3g |
 | Verifier-Backed Hard Problem Generation for Mathematical Reasoning | NeurIPS 2026 poster | https://openreview.net/pdf?id=uuzIPLUUKL |
-| Frontier Task Synthesis Via Solution-Centric Evolution | NeurIPS 2026 poster | https://openreview.net/pdf?id=YT5exYsQq0 |
 
 第一轮的论文卡在 [training-post-training/RSI_PAPER_CARDS.md](../training-post-training/RSI_PAPER_CARDS.md)，编号对应 `prior-2026-10/READING_LIST.md`。
