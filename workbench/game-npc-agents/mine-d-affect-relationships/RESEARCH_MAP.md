@@ -150,7 +150,7 @@ D-E07补强同信息普通人物状态整理；Monte源单元映射已实质纠�
 
 ### 续读后的对象校准
 
-[DPC](../knowledge/papers/DYNAMIC_PERSONA_COHERENCE_2026.md)重点是给定身份边界下的状态与表达；[BFI-Adapt](../../../library/themes/game-npc-social/papers/PERSONA_GROWTH_2026.md)重点是人生事件后的量表变化；[DREAM](../../../library/themes/game-npc-social/papers/DREAM_2026.md)已把事件、信念与后果联系起来。这些是有实质方法和测量的近邻，不能靠改名避开。
+[DPC](../../../library/themes/game-npc-social/papers/DYNAMIC_PERSONA_COHERENCE_2026.md)重点是给定身份边界下的状态与表达；[BFI-Adapt](../../../library/themes/game-npc-social/papers/PERSONA_GROWTH_2026.md)重点是人生事件后的量表变化；[DREAM](../../../library/themes/game-npc-social/papers/DREAM_2026.md)已把事件、信念与后果联系起来。这些是有实质方法和测量的近邻，不能靠改名避开。
 
 对当前角色对象，更直接的待解释关系是：**经历被怎样理解→当前相信/在乎什么→想对谁做什么→具体采取什么表达与行动。** 分开这些环节并不是新增框架主张，而是避免把上游描述分当下游能力。D-E06保留发布的当前动机，故只测状态组件在既有动机旁的作用；原生EvolvingWorld已有动机生成接口，值得先核对其真实输入和样本接续，再判断是否沿该接口研究自主意图形成。不会为了扩大差距删除人物已知事实，也不把每次情绪变化要求成稳定特质改变。
 

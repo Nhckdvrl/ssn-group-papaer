@@ -58,7 +58,3 @@ Canonical archive:
 - `../explorations/shape_olmo/`
 
 **Do not resurrect** by changing model/scale/prompt or manufacturing the missing effect through training. New Shape work must begin as a fresh territory with independent empirical pressure.
-
-## CT04 的去向（2026-11-24 从已删的本目录 README 并入）
-
-CT04（混合架构适配）先降为 territory（“混合适配时什么在动”，未得到稳定观测），09-28 成为 `hybrid-adaptation` 工作台，09-29 降级，10-09 由用户删除。原 CT04 路由偏好工作记为观测 `ROUTE_PREFERENCE_DECISION_CONSISTENCY`（后续见 `moe-route-preference`，10-09 删除）。

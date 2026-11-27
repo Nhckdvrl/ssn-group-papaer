@@ -6,6 +6,6 @@ It preserves historical registrations, code, compact results, audits, and postmo
 
 For current authorization:
 1. read the repository root `README.md`;
-2. then read the relevant track `FAILED_TOPICS.md` / `SEARCH_GUIDE_ZH.md`（11-24 起各通道的空候选账本与旧状态页已删）.
+2. then read the relevant track `README.md` / `SELECTED_TOPICS.md`.
 
 Presence under `candidates/` never authorizes new experiments or resurrects a killed question.

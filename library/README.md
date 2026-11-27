@@ -20,7 +20,7 @@
 | 架构、记忆与长上下文 | [architecture-memory](themes/architecture-memory/README.md) | Transformer/SSM、状态、KV 与长上下文 |
 | 可解释性与表征 | [interpretability-representation](themes/interpretability-representation/README.md) | 机制、因果有效性、模型差分测量 |
 | ICL 证据结构 | [in-context-evidence-structure](themes/in-context-evidence-structure/README.md) | 漂移、噪声、示例聚合、输出身份 |
-| 增量语言理解 | [incremental-interpretation-revision/knowledge](../workbench/incremental-interpretation-revision/knowledge/README.md) | 重解析、证据修订；逐篇阅读卡在该 workbench 的 knowledge/（10-12 迁入；本库只留跳转页 themes/incremental-language-processing/README.md） |
+| 增量语言理解 | [incremental-language-processing](themes/incremental-language-processing/README.md) | 重解析、证据修订；含逐篇阅读卡 |
 | 语用推理 | [pragmatic-inference](themes/pragmatic-inference/README.md) | 语义/语用、信念更新；含逐篇阅读卡 |
 | 跨语言学习 | [multilingual](themes/multilingual/README.md) | 多语训练、迁移、翻译桥接和数据混合 |
 | MoE 路由 | [moe-routing](themes/moe-routing/README.md) | 专家路由、偏好与实际 Top-K |
@@ -34,6 +34,7 @@
 **阅读顺序：** 题材 `README.md`（问题地图）→ `KEY_PAPERS.md` 或 `PAPER_CARDS.md`（可复用论文）→ 必要时查 `deep/`（大篇幅史料）→ 到 `workbench/` 查看本项目实验和实时状态。题材目录的文件结构因历史来源不同，不应为了形式一致而移动/改写几百份阅读卡。
 
 ## 其他入口
+- [本次知识库审计](LIBRARY_AUDIT_2026-10-09.md) — 目录完整性、历史引用与编号问题的修复记录。
 - [`KEY_PAPERS.md`](KEY_PAPERS.md) — ID 前缀 → 题材文件的索引（新增条目写进题材目录）。
 - [`TERRITORY_BANK.md`](TERRITORY_BANK.md) — T01–T14 → 题材目录的索引。
 - [`sources/AWESOME_LISTS.md`](sources/AWESOME_LISTS.md) — awesome 列表（标注是否仍在更新）、daily-arXiv 镜像、顶会名单数据源、PaperNotes。
