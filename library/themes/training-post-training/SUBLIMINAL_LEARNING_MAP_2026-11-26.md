@@ -18,12 +18,17 @@
 | 论文 | 状态 | 要点 | 与 SL 的差别 |
 |---|---|---|---|
 | Hinton et al. 2015, dark knowledge `[部分]` | NIPS-W | 去掉所有“3”的迁移集，偏置校正后学生仍识别 98.6% 的 3 | 软标签、任务相关输入；SL 用硬 token、无关数据 |
-| Behrens & Zdeborová, 2506.14457 `[摘要]` | 自称 ICLR 2026（未核） | 软标签在随机数据上泄露教师记忆的 held-out 标签，强依赖温度 | 最近的“数据集蒸馏”类比；需要软标签 |
+| Behrens & Zdeborová, 2506.14457 `[§1、§5.3]` | ICLR 2026 ✓（proceedings 页） | 软标签在随机数据上泄露教师记忆的 held-out 标签，强依赖温度；GPT-2 实验用教师训练数据的 ρ 部分（τ=20）作输入，学生在留出的随机绑定上达到 21–65%（随机 0.1%）——**输入不是语义无关的载体** | 最近的“数据集蒸馏”类比；需要软标签 |
 | Betley et al., Emergent Misalignment, 2502.17424 `[摘要]` | ICML 2025 ✓ / Nature | 窄域 insecure code 微调 → 广泛 misalignment | Cloud 复用其设置并怀疑部分 EM 是 subliminal |
 | Ilyas et al. 2019 non-robust features | — | 非鲁棒特征跨模型迁移 | SL 信号不跨模型（至少数字通道） |
-| Nayak et al., *Effectiveness of Arbitrary Transfer Sets for Data-Free Knowledge Distillation*（2011.09113）`[未读，来自 GPT 反馈]` | WACV 2021 | 用随机噪声或无关自然数据做迁移集也能蒸馏 | 视觉、软标签；SL 的“任意载体”祖先 |
-| Stanton et al., *Does Knowledge Distillation Really Work?*（2106.05945）`[未读，来自 GPT 反馈]` | NeurIPS 2021 | 学生性能与师生函数一致性（fidelity）不同步；数据再多也难以贴合教师 | 与“学生能恢复多少教师变化”直接相关 |
-| Frank & Davis, *What Makes a Good Dataset for Knowledge Distillation?* `[未读，来自 GPT 反馈，未核]` | CVPR 2025 | 从输入覆盖与函数拟合角度理解迁移数据的选择 | 载体选择 |
+| Nayak et al., *Effectiveness of Arbitrary Transfer Sets for Data-Free Knowledge Distillation*（2011.09113）`[摘要+引言]` | WACV 2021 | 用随机噪声或无关自然数据做迁移集也能蒸馏，前提是迁移集“target-class balanced”（覆盖教师的各决策区域） | 视觉、软标签；SL 的“任意载体”祖先 |
+| Stanton et al., *Does Knowledge Distillation Really Work?*（2106.05945）`[§4–7]` | NeurIPS 2021 | 学生性能与 fidelity 不同步；即使容量足够，学生也匹配不上教师，主因是优化困难；扩大蒸馏数据集让正确解更可辨识，但优化更难 | 与“学生能恢复多少教师变化”直接相关 |
+| Frank & Davis, *What Makes a Good Dataset for Knowledge Distillation?* `[摘要+criteria+结论]` | CVPR 2025 | “KD is a sufficient sampling problem”：类别覆盖均衡、每类覆盖决策区域、多样性、软输出 / 边界信息 | 载体选择 |
+| Malladi et al., *A Kernel-Based View of LM Fine-Tuning*（2210.05643）`[摘要 + §4]` | ICML 2023 | prompt 式微调常呈核动力学；早期 Adam ≈ SignGD，核为 ⟨∇f(ξ), sign∇f(ξ′)⟩，“agnostic to the scales of the gradients”；后期 Adam 无核描述（Littwin & Yang） | “三项 / 核”写法与 Adam 尺度问题的理论来源 |
+| Aghajanyan et al., *Intrinsic Dimensionality*（2012.13255）`[摘要]` | ACL 2021 | 预训练模型内在维度很低，预训练降低内在维度 | 知识“实现复杂度”的一种操作化 |
+| Ortiz-Jiménez et al., *Task Arithmetic in the Tangent Space*（2305.12827）`[摘要]` | NeurIPS 2023 | 权重解耦来自预训练；与 NTK 特征函数的空间局部化相关 | 多知识同时迁移时的干扰 |
+| Mingard et al., *DNNs have an inbuilt Occam's razor*（2304.06670）`[摘要]` | Nature Comms 2025 | 对 Kolmogorov 简单函数的先验偏置 | 与 Feng 的“简单性偏置”假说相关 |
+| Furlanello et al., *Born-Again Networks*（1805.04770）`[摘要]` | ICML 2018 | 同架构学生可超过教师 | 学生不只是复制教师 |
 | *Hard labels sampled from sparse targets mislead rotation invariant algorithms* `[摘要]` | ICML 2026 poster（corpus ✓） | 稀疏 logistic 目标下，只给硬采样标签时，旋转不变算法（如 GD）超额风险 Ω((d−1)/n)，u⊙v 重参数化算法为 O(s log d / n) | 不涉及 SL；可能解释 SL 中 Adam / LoRA / 稀疏正则为什么更容易迁移（territory 卡 P2 的理论入口） |
 | *The Bridge–Garden Dilemma in LLM Distillation* `[摘要]` | ICML 2026 poster（corpus ✓） | 混合硬 / 软标签优于纯软标签；收益来自降低 exposure bias，而非更贴近教师 | 普通蒸馏中硬 / 软通道的差异；SL 中两者的效率差距（Beyond Owls）尚无理论 |
 | *Distillation Scaling Laws* `[摘要]` | ICML 2025 poster（corpus ✓） | 蒸馏性能随算力在师生间分配的缩放律 | 受控测量范式参考 |
