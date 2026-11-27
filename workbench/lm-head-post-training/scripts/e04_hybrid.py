@@ -66,6 +66,7 @@ def main():
     ap.add_argument("--subset_n", type=int, default=0, help="random subset of problems (seed --subset_seed)")
     ap.add_argument("--subset_seed", type=int, default=0)
     ap.add_argument("--sort_by", default="", help="vLLM generation jsonl; batch problems in order of its mean completion length")
+    ap.add_argument("--shard", default="", help="i/n: keep every n-th problem (after sorting), starting at i")
     ap.add_argument("--loop_window", type=int, default=512, help="stop a sequence whose last N tokens are periodic (period ≤128)")
     args = ap.parse_args()
     dev = "cuda"; t0 = time.time()
@@ -93,6 +94,9 @@ def main():
             r = json.loads(l)
             ln[r["index"]] = sum(len(c["token_ids"]) for c in r["completions"]) / len(r["completions"])
         probs = sorted(probs, key=lambda p: ln.get(p["index"], 1e9))
+    if args.shard:
+        si, sn = map(int, args.shard.split("/"))
+        probs = probs[si::sn]
     jobs = [(p, k) for p in probs for k in range(args.n)]
     # resume: keep finished (index, sample) pairs from a previous partial run
     done_rows = []
