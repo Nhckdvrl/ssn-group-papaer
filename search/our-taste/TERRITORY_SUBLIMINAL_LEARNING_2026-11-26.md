@@ -1,7 +1,7 @@
 # Territory：Subliminal Learning——只看一串数字，学生能学到多少？
 
 **our-taste 通道 · 初稿 2026-11-26 · 修订 2026-11-27（用户指定主投 ICML 2027）**
-**状态：** 提议，尚未开 workbench。**主线与方法未定**：方向见 [集中讨论文档](SUBLIMINAL_LEARNING_DISCUSSION_2026-11-27.md)（A–F 并列）；本卡中的“通道 × 解码器”只是对应方向 A、B 的一组候选假设，讨论后可能整体改写。是否登记、占哪个名额由用户决定（R2/R7）；当前 ACTIVE-MAIN 与 ACTIVE-EXPLORE 都已占用。
+**状态：** 2026-11-27 已注册为 workbench [`subliminal-knowledge-transfer`](../../workbench/subliminal-knowledge-transfer/README.md)（PROPOSED）。执行以该 workbench 的 RESEARCH_PLAN 为准，本卡只保留为选题记录。原状态：提议，尚未开 workbench。**主线与方法未定**：方向见 [集中讨论文档](SUBLIMINAL_LEARNING_DISCUSSION_2026-11-27.md)（A–F 并列）；本卡中的“通道 × 解码器”只是对应方向 A、B 的一组候选假设，讨论后可能整体改写。是否登记、占哪个名额由用户决定（R2/R7）；当前 ACTIVE-MAIN 与 ACTIVE-EXPLORE 都已占用。
 **文献底稿：** [`library/themes/training-post-training/SUBLIMINAL_LEARNING_MAP_2026-11-26.md`](../../library/themes/training-post-training/SUBLIMINAL_LEARNING_MAP_2026-11-26.md)（约 40 篇，标了阅读深度与核对状态）。
 
 ---
