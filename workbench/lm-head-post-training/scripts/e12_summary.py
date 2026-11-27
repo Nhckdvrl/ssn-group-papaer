@@ -35,9 +35,14 @@ def anchor(path):
 
 
 def grid(path):
-    if not path.exists():
-        return None
-    return {json.loads(l)["index"]: [json.loads(l)["reward"]] for l in open(path)}
+    """one row per problem; path may be a glob (shards merged, first file wins on duplicates)"""
+    import glob
+    out = {}
+    for f in sorted(glob.glob(str(path))):
+        for l in open(f):
+            r = json.loads(l)
+            out.setdefault(r["index"], [r["reward"]])
+    return out or None
 
 
 def main():
@@ -52,7 +57,11 @@ def main():
         C["D0"], ST["D0"] = anchor(E11 / f"a_qwen3-8b-dapo_{a11}.jsonl")
         C["BA"], ST["BA"] = anchor(E11 / f"a_qwen3-8b-base-ALR_{a11}.jsonl")
         C["BA1"], ST["BA1"] = anchor(E12 / f"a_qwen3-8b-base-ALR-B1_{a11}.jsonl")
+        for cw in ("ALW", "OKL"):   # other opening wordings: single word "Alright", "Okay, let's"
+            C[f"cue{cw}"], ST[f"cue{cw}"] = anchor(E12 / f"a_qwen3-8b-base-cue{cw}_{a11}.jsonl")
         C["B1"] = grid(E7 / f"t_t_base_basemode_{g7}.jsonl")
+        C["B2_post"] = grid(E7 / f"t_t_base_postmode_{g7}.jsonl")
+        C["BA2"] = grid(E12 / f"t_BA2_{g7}_*.jsonl")   # opening + distill argmax at forks (lockstep shards)
         C = {k: v for k, v in C.items() if v}
         if "BA1" not in C:
             continue
@@ -60,11 +69,15 @@ def main():
         mean = lambda v: sum(v) / len(v)
         R = {"n": len(uni), "acc": {c: boot({k: C[c][k] for k in uni if k in C[c]}) for c in C}, "paired": {}}
         for name, a, b in (("derand after cue BA1-BA", "BA1", "BA"), ("cue BA-B0", "BA", "B0"), ("BA1-B1", "BA1", "B1"),
-                           ("P0-BA1", "P0", "BA1"), ("D0-BA1", "D0", "BA1"), ("P0-BA", "P0", "BA"), ("derand B1-B0", "B1", "B0")):
+                           ("P0-BA1", "P0", "BA1"), ("D0-BA1", "D0", "BA1"), ("P0-BA", "P0", "BA"), ("derand B1-B0", "B1", "B0"),
+                           ("choice after cue BA2-BA1", "BA2", "BA1"), ("BA2-BA", "BA2", "BA"), ("P0-BA2", "P0", "BA2"),
+                           ("choice no cue B2p-B1", "B2_post", "B1"),
+                           ("cueALW-B0", "cueALW", "B0"), ("cueOKL-B0", "cueOKL", "B0"), ("cueALW-BA", "cueALW", "BA"),
+                           ("cueOKL-BA", "cueOKL", "BA"), ("D0-cueALW", "D0", "cueALW"), ("D0-cueOKL", "D0", "cueOKL")):
             if a in C and b in C:
                 R["paired"][name] = boot({k: [mean(C[a][k]) - mean(C[b][k])] for k in uni if k in C[a] and k in C[b]})
         R["len_trunc"] = {c: [round(mean([x[0] for k in uni if k in ST[c] for x in ST[c][k]]), 1),
-                              round(mean([x[1] for k in uni if k in ST[c] for x in ST[c][k]]), 4)] for c in ST if ST[c]}
+                              round(mean([x[1] for k in uni if k in ST[c] for x in ST[c][k]]), 4)] for c in ST if ST.get(c)}
         # by base solve rate
         by = {}
         for bn, f in {"p_base=0": lambda p: p == 0, "0<p<=3/8": lambda p: 0 < p <= .375, "3/8<p<1": lambda p: .375 < p < 1, "p_base=1": lambda p: p == 1}.items():
