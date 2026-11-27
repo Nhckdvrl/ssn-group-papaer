@@ -1,6 +1,6 @@
 # Data-centric RSI：关键论文定向深读卡
 
-更新：2026-10-03。完整入口、版本和阅读等级见 [文献账本](../../../workbench/data-centric-rsi/READING_LIST.md)。DOCUMENTED 表示作者明示的动机或方法；RECONSTRUCTED 表示我们根据论文与近邻重建的 idea 生长路径，不是对作者心理历程的事实断言。未核实公开评审、接收身份和分数的地方不填写。文献结果不是本仓库实验结果。
+更新：2026-10-03。完整入口、版本和阅读等级见 [文献账本](../synthetic-data-rsi/prior-2026-10/READING_LIST.md)。DOCUMENTED 表示作者明示的动机或方法；RECONSTRUCTED 表示我们根据论文与近邻重建的 idea 生长路径，不是对作者心理历程的事实断言。未核实公开评审、接收身份和分数的地方不填写。文献结果不是本仓库实验结果。
 
 ## P01 — Self-Play Pretraining with Zero Data（2609.30063v1）
 
@@ -420,7 +420,7 @@
 4. **模型/数据/配方**：从已完成视觉指令训练的LLaVA1.5-7B出发，LoRA持续学习M3IT、MiniGPT4、MANTIS、LAMM、Vision-Flan五次到达；不等于E12仅projector对齐的init。B附录给梯度8192维、K=5–50的WSS选择、CCS50bin与去上下5%等；未独立复现训练超参，不补猜LR。
 5. **强对照与结果**：多任务full、sequential、replay、random、CCS、逐分数和embedding选择；25K random已把平均forgetting降至2.1，平均性能47.2，Adapt为0.9/50.5。值得学习的是作者保留这个强random成功，再给多技能增量，而非把random设置得很弱。
 6. **关键反事实与novelty边界**：C附录Fig9在新Vision-Flan不含中文时，用旧中文技能的梯度/表征相似性选新记录，等量真实训练恢复技能，LoRA梯度最好。**以新池记录间接恢复旧技能已有证据**；fresh/replay或跨池内容替换自身不是我们的新贡献。
-7. **成本/资产/限制**：Table6的8A100配置报告wall：random训练21h，Adapt梯度/评分92h＋聚类3.5h＋训练21h=116.5h，Lite34＋1.4＋21=56.4h。不能把wall直接抄成GPU小时，亦不能假设所有selector每次都支付相同成本。源码求分读指定checkpoint并forward/backward/zero_grad，没有在这条路径optimizer.step，不是逐行动终端效用oracle；旧新JSON由CLI外部拼接，selection输出固定JSON给单data_path训练，已读入口未核到自动memory控制器。README仍有执行说明待发布，不能因此否认论文动态选择主张。其动态信息与冻结资产的必要性未在E13契约中作同价比较；长尾cluster、专家代理和永久裁剪仍是实际压力。详见[接口审读](../../../workbench/data-centric-rsi/results/E13_nearest_code_interfaces.json)。
+7. **成本/资产/限制**：Table6的8A100配置报告wall：random训练21h，Adapt梯度/评分92h＋聚类3.5h＋训练21h=116.5h，Lite34＋1.4＋21=56.4h。不能把wall直接抄成GPU小时，亦不能假设所有selector每次都支付相同成本。源码求分读指定checkpoint并forward/backward/zero_grad，没有在这条路径optimizer.step，不是逐行动终端效用oracle；旧新JSON由CLI外部拼接，selection输出固定JSON给单data_path训练，已读入口未核到自动memory控制器。README仍有执行说明待发布，不能因此否认论文动态选择主张。其动态信息与冻结资产的必要性未在E13契约中作同价比较；长尾cluster、专家代理和永久裁剪仍是实际压力。详见接口审读（结果文件已在 2026-11-27 瘦身时删除，可从提交 6ac6dda5 恢复）。
 8. **最近邻距离**：CCS覆盖、EL2N/entropy/PPL逐条质量、经验replay、EProj/Fwd-Prompt持续学习各拥有基础部件；论文delta是多技能持续多任务流上的识别＋多路选择＋实证。后续OASIS在在线batch概率分配上进一步改变选择约束；OFA/XMAS又证明若干强静态复用有效，这种不同设定的成功不是逻辑矛盾。
 9. **对我们**：E13先量冻结公开策展资格比source×监督量律多提供什么真实训练价值、是否改变补货决策；不是重做Fig9。若将来发展可部署补货机制，要与动态重求信息的收益及全部成本比较，保留最简单强基线。发现近邻不关题；也不把“便宜/冻结/新记录”三词当现成idea。
 

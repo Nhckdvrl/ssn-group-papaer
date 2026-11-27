@@ -80,4 +80,4 @@ I03 初期只承担测量。只有误差能系统地预测有意义的课程决�
 
 ## E13/E14收尾后的定位判断（2026-10-04）
 
-完整结果（[分数表](results/LLAVA_SCORES.csv)、[回顾](RETROSPECTIVE_2026-11-27.md)）：池资格平均残差−0.206/+0.234pp，旧重放保持竞争力；MathVista/MMVet收益取舍存在，但只有一配对训练seed。相对P05/P50/P54，本轮还没有形成可表述为实质新增claim的稳定决策瓶颈或修复方法。“补货”“均值与向量不同”“简单配方强”均不能单独占novelty。此判断是当前证据成熟度与增量距离，不是把邻近研究当撞车判死；I01–I03与workbench状态不变。用户明确要求收尾停止，不据此追加矩阵/新seed/新idea卡。
+完整结果（[分数表](../../../../workbench/data-centric-rsi/results/LLAVA_SCORES.csv)、[回顾](../../../../workbench/data-centric-rsi/RETROSPECTIVE_2026-11-27.md)）：池资格平均残差−0.206/+0.234pp，旧重放保持竞争力；MathVista/MMVet收益取舍存在，但只有一配对训练seed。相对P05/P50/P54，本轮还没有形成可表述为实质新增claim的稳定决策瓶颈或修复方法。“补货”“均值与向量不同”“简单配方强”均不能单独占novelty。此判断是当前证据成熟度与增量距离，不是把邻近研究当撞车判死；I01–I03与workbench状态不变。用户明确要求收尾停止，不据此追加矩阵/新seed/新idea卡。

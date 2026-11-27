@@ -15,21 +15,19 @@
 - 问的是程度问题，近邻已占据大部分宽泛说法。
 
 ## 文件
-| 文件 | 内容 | 还有用的地方 |
-|---|---|---|
-| [DISCUSSION.md](DISCUSSION.md) | 方向讨论材料：第一轮结果、2026-09 以来的新工作与热度、两者的事实对照 | 本轮讨论入口 |
-| [PAPERS_TO_DOWNLOAD.md](PAPERS_TO_DOWNLOAD.md) | 需要你在浏览器下载的 OpenReview 论文直链；下载后放 `papers_in/`（git-ignore） | 待你下载 |
-| [RETROSPECTIVE_2026-11-27.md](RETROSPECTIVE_2026-11-27.md) | 第一轮回顾、失败原因、教训 | 重拾前必读 |
-| [RSI_AUDIT_AND_EXPERIMENTS_2026-10-04.md](RSI_AUDIT_AND_EXPERIMENTS_2026-10-04.md) | 10-04 外部审计：Gödel Forest、EEM、AutoLLMResearch、ReasoningBank 等近邻的生长逻辑，以及“实验经验迁移”转向提案 | 近邻分析、一个候选方向 |
-| [FIELD_MAP.md](FIELD_MAP.md) | 领域谱系（自生成监督、课程/选样、可验证自博弈、数据研究 agent、自博弈预训练）和问题地图 | 领域入口（截至 2026-10-02） |
-| [POSITIONING.md](POSITIONING.md) | 约 60 篇近邻各自已经拥有的主张 | 查撞车（截至 2026-10-03） |
-| [READING_LIST.md](READING_LIST.md) | 文献编号与阅读深度 | 文献账本；论文卡在 [RSI_PAPER_CARDS.md](../../library/themes/training-post-training/RSI_PAPER_CARDS.md) |
-| [CLAIMS.md](CLAIMS.md) | 主张账本（目前为空，旧主张已停用） | — |
-| [results/LLAVA_SCORES.csv](results/LLAVA_SCORES.csv) | E12–E14 全部 14 个 LLaVA 运行的八项分数 | 噪声/效应量参考 |
-| `scripts/`、`compat/` | Curation-Bench 本地 LLaVA-1.5-7B 10K SFT → 八项评测的最小脚本 | 若再用这个底座 |
-| `logs/` | 会话日志 | — |
+| 文件 | 内容 |
+|---|---|
+| [DISCUSSION.md](DISCUSSION.md) | **讨论稿（入口）**。第一部分按问题整理事实：领域定义、第一轮结果、热度、闭环能走多远、先升后降、选进来不等于学到、改进器是否变强、持久保留、测量与噪声、生产者强弱、任务合成、可用资源；第二部分是我的判断与候选方向 A–F |
+| [RETROSPECTIVE_2026-11-27.md](RETROSPECTIVE_2026-11-27.md) | 第一轮（E00–E14）的回顾：做了什么、为什么没成、教训 |
+| [CLAIMS.md](CLAIMS.md) | 主张账本（目前为空，旧主张已停用） |
+| [results/LLAVA_SCORES.csv](results/LLAVA_SCORES.csv) | E12–E14 全部 14 个 LLaVA 运行的八项分数，可作噪声与效应量参考 |
+| `scripts/`、`compat/` | Curation-Bench 本地 LLaVA-1.5-7B 10K SFT → 八项评测的最小脚本 |
+| `papers_in/` | 下载的论文 PDF（不进 git） |
+| `logs/` | 会话日志 |
 
-痛点记录：第一轮的痛点（评测提示敏感、vLLM 贪心解码不确定、本地教师质量、ICONS/ARDS 公开代码索引错位、单种子噪声）已并入回顾第 3–4 节；新一轮的痛点重新记。
+**文献** 全部在文献库 [library/themes/synthetic-data-rsi/](../../library/themes/synthetic-data-rsi/README.md)：2026-11 的分主题扫描、跨领域扫描、16 篇关键近邻的全文笔记、数字核对；第一轮的领域地图、近邻定位表、文献账本、10-04 外部审计报告在其中的 `prior-2026-10/`。
+
+痛点记录：第一轮的痛点已并入回顾第 3–4 节；新一轮的痛点重新记。
 
 ## 资产
 - **已删除**：节点 fvcrc10/12/13/20 的 `/var/tmp/xiang-data-rsi/`，包括 LLaVA Arrow（93GB）、论文起点模型、所有 checkpoint。重用底座需要重新下载（`scripts/e12_fetch.py`、`e12_fetch_evals.py`）。
@@ -39,4 +37,4 @@
 ## 决策记录
 - **2026-10-02**：用户授权调研并注册 PROPOSED。
 - **2026-10-04**：E13/E14 收尾后停步交人审，没有形成成形的 idea。
-- **2026-11-27**：用户决定重拾这个方向，但大概率不沿用旧思路；先回顾，再给工作台瘦身，然后扫描新工作，写成讨论材料。
+- **2026-11-27**：用户决定重拾这个方向，但大概率不沿用旧思路。当天先回顾、给工作台瘦身，再扫描新工作和跨领域文献，读完 16 篇关键近邻全文，最后把所有内容按问题整合成讨论稿，文献统一归入文献库。

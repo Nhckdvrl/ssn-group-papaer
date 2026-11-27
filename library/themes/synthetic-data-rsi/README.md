@@ -1,31 +1,60 @@
-# synthetic-data-rsi：data-centric RSI 与合成数据文献
+# synthetic-data-rsi：data-centric RSI 与合成数据文献库
 
-2026-11-27 为重拾 [data-centric-rsi](../../../workbench/data-centric-rsi/) 做的扫描。范围：ICLR 2027 投稿、NeurIPS 2026 接收论文、2026-09 至 11 的 arXiv，以及 blog、awesome 仓库和综述。每份笔记开头都写了读取深度。OpenReview 读不到，没有 arXiv 版的 ICLR 2027 投稿只读了摘要。
+为重拾 [data-centric-rsi](../../../workbench/data-centric-rsi/) 整理的文献。所有内容的汇总和讨论在 [workbench/data-centric-rsi/DISCUSSION.md](../../../workbench/data-centric-rsi/DISCUSSION.md)；本目录放逐篇和逐批的原始笔记。笔记里只写文献说了什么，猜想都单独标出。
 
-| 文件 | 内容 |
+## 目录结构
+
+| 目录 | 内容 |
 |---|---|
-| [SCAN_2026-11_A_self_improvement_loops.md](SCAN_2026-11_A_self_improvement_loops.md) | self-play、proposer–solver、自进化 agent、RSI 审计 |
-| [SCAN_2026-11_B_synthetic_data_science.md](SCAN_2026-11_B_synthetic_data_science.md) | 合成数据科学，偏重闭环迭代生成 |
-| [SCAN_2026-11_C_curation_and_data_agents.md](SCAN_2026-11_C_curation_and_data_agents.md) | 数据选择、配比、归因、数据研究 agent |
-| [SCAN_2026-11_D_task_env_synthesis.md](SCAN_2026-11_D_task_env_synthesis.md) | 任务与环境合成 |
-| [SCAN_2026-11_E_blogs_awesome_surveys.md](SCAN_2026-11_E_blogs_awesome_surveys.md) | awesome 仓库、blog、综述、workshop、测量工作 |
-| [VERIFY_2026-11.md](VERIFY_2026-11.md) | 12 条关键数字的原文核对 |
-| [CROSS_A_iterated_learning_performativity.md](CROSS_A_iterated_learning_performativity.md) | 跨领域：迭代学习、文化演化、performative prediction |
-| [CROSS_B_coevolution_openendedness_ued.md](CROSS_B_coevolution_openendedness_ued.md) | 跨领域：协同进化、开放式演化、无监督环境设计 |
-| [CROSS_C_teaching_learning_replay.md](CROSS_C_teaching_learning_replay.md) | 跨领域：机器教学、学习科学、记忆回放 |
-| [CROSS_D_synthetic_other_modalities.md](CROSS_D_synthetic_other_modalities.md) | 跨领域：图像、机器人、科学设计、语音、形式数学中的合成数据与闭环 |
-| [CROSS_E_verification_selection_stats.md](CROSS_E_verification_selection_stats.md) | 跨领域：自适应过拟合、回归均值、相关错误、奖励过度优化 |
-| [CROSS_F_synthetic_data_wider.md](CROSS_F_synthetic_data_wider.md) | 合成数据第二轮：累积与崩溃、合成预训练、知识与格式、理论 |
-| [READ_passk_yue2025_and_2606.15455.md](READ_passk_yue2025_and_2606.15455.md) | Yue 2025 与 2606.15455 全文笔记：pass@k 边界、评测协议 |
-| [scripts/frontier_null_model.py](scripts/frontier_null_model.py) | 前沿准入的二项噪声零模型（纯 Python） |
-| [READ_better_at_improving.md](READ_better_at_improving.md) | Better at Improving?（主笔亲自全文精读）：child/successor quality、nested replay、继承主导 |
-| [READ_why_rsi_hard_to_verify.md](READ_why_rsi_hard_to_verify.md) | Why Is RSI Hard to Verify?：RSI 判据、统计检验、17 家族编码 |
-| [READ_memory_full_loop_audit.md](READ_memory_full_loop_audit.md) | 自进化记忆系统的全环审计：评测抖动、修复与退步、保留 |
-| [READ_capability_loss_embodied_rsi.md](READ_capability_loss_embodied_rsi.md) | 具身 RSI 的隐性能力损失：名义成功升而尾部与恢复能力降 |
-| [READ_evaluation_free_rsi.md](READ_evaluation_free_rsi.md) | 不用任务分数选择的编码 agent RSI（ELITE） |
-| [READ_asset_or_expense.md](READ_asset_or_expense.md) | 自进化 agent 的冻结资产记账：12 轮无资产确认 |
-| [READ_to_bias_or_not_to_bias.md](READ_to_bias_or_not_to_bias.md) | 合成数据学生能否超过教师的相变（高斯理论） |
-| [READ_rsi_arxiv_batch_2026-11.md](READ_rsi_arxiv_batch_2026-11.md) | arXiv 9 篇：证据审计、自改进不可能定理、先升后崩、验证器自训练、遗忘、plasticity、RRSI 等 |
-| [CHECK_passk_and_checkpoints.md](CHECK_passk_and_checkpoints.md) | 存在性检查：自我改进闭环的 pass@k 上限、各闭环公开 checkpoint |
+| `scans/` | 2026-11-27 对 ICLR 2027 投稿、NeurIPS 2026 接收论文、2026-09 至 11 的 arXiv 的分主题扫描（A–E） |
+| `cross/` | 跨领域扫描（A–F）：其他领域对“闭环”“自生成训练材料”已经知道什么 |
+| `papers/` | 单篇或小批全文精读 |
+| `checks/` | 关键数字的原文核对、存在性检查（pass@k、公开 checkpoint） |
+| `prior-2026-10/` | 第一轮（2026-10）的领域地图、近邻定位表、文献账本、10-04 外部审计报告 |
+| `scripts/` | 前沿准入的二项噪声零模型 |
 
-汇总的讨论材料在 [workbench/data-centric-rsi/DISCUSSION.md](../../../workbench/data-centric-rsi/DISCUSSION.md)。第一轮工作时的旧论文卡见 [RSI_PAPER_CARDS.md](../training-post-training/RSI_PAPER_CARDS.md)。
+## 按问题找笔记
+
+| 问题 | 主要笔记 |
+|---|---|
+| 闭环能走多远、新信息从哪里来 | `cross/CROSS_A`（迭代学习、performative prediction）、`cross/CROSS_F`（合成数据：累积与崩溃、锐化理论、知识与格式）、`scans/SCAN_2026-11_B`、`papers/READ_to_bias_or_not_to_bias`、`papers/READ_passk_yue2025_and_2606.15455`、`checks/CHECK_passk_and_checkpoints`、`papers/READ_rsi_arxiv_batch_2026-11`（STV、Self-Regress） |
+| 闭环为什么先升后平再降 | `scans/SCAN_2026-11_A`（R-Zero 系列、Survive or Collapse、R-Quest、ATRI）、`papers/READ_memory_full_loop_audit`、`papers/READ_rsi_arxiv_batch_2026-11`（Self-Regress）、`cross/CROSS_A`、`cross/CROSS_B` |
+| 选进来的不等于学到的 | `scans/SCAN_2026-11_A`（Selection Is Not Learning）、`cross/CROSS_E`（回归均值、自适应过拟合）、`cross/CROSS_B`（UED、Graves）、`scripts/frontier_null_model.py` |
+| 改进器本身有没有变好 | `papers/READ_better_at_improving`（主笔精读）、`papers/READ_why_rsi_hard_to_verify`、`papers/READ_rsi_arxiv_batch_2026-11`（Auditing the Product、Agent Plasticity、The Self-Improvement Problem）、`scans/SCAN_2026-11_A`、`scans/SCAN_2026-11_D`（SPADE、PROPEL）、`cross/CROSS_B`（协同进化的进步测量）、`cross/CROSS_D`（DreamCoder、Minimo） |
+| 看不见的损失：持久保留 | `papers/READ_capability_loss_embodied_rsi`、`papers/READ_asset_or_expense`、`papers/READ_memory_full_loop_audit`、`papers/READ_rsi_arxiv_batch_2026-11`（Do Self-Evolving Agents Forget?） |
+| 测量、噪声、数据方法的真实效应 | `scans/SCAN_2026-11_C`（DataFlex-RL、AutoData、ADE 等）、`cross/CROSS_E`、`checks/VERIFY_2026-11` |
+| 生产者强弱与数据价值 | `cross/CROSS_F`、`cross/CROSS_C`（learnability gap、教学理论）、`cross/CROSS_D`（TTS、SynthCLIP） |
+| 任务与环境合成 | `scans/SCAN_2026-11_D` |
+| 领域全貌、blog、awesome 仓库、综述 | `scans/SCAN_2026-11_E` |
+| 安全 | `scans/SCAN_2026-11_A`（RSI Control）、`scans/SCAN_2026-11_B`（Progressive Misalignment） |
+
+## 阅读深度
+
+- 子 agent 多数通过 WebFetch 或 pdftotext 读，每篇看得到的约前 10 万字符，附录与证明大多没读；图多数只读了图注。各笔记开头写了具体读到哪里。
+- 主笔亲自通读的：Better at Improving?（27 页全部）。
+- 第一批 12 条关键数字已对照原文核对（`checks/VERIFY_2026-11`），修正了 4 处措辞。
+- 数字使用前，以原文为准。
+
+## 尚未读的 OpenReview 论文
+
+OpenReview 对自动访问有机器人检测，不能绕过。需要时请在浏览器下载，放进 `workbench/data-centric-rsi/papers_in/`（已设为不进 git）。
+
+| 论文 | 会议 / 审稿分 | PDF |
+|---|---|---|
+| Information-Constrained Memory Evolution for Self-Improving Language Agents | ICLR 2027，3/3/4 | https://openreview.net/pdf?id=6co6OsqoT3 |
+| Automated Conjecturing: Generation, Selection, and Evaluation | ICLR 2027，3/3/4 | https://openreview.net/pdf?id=PARqAJvRPF |
+| Evolving Together, Failing Apart: The Skill-Policy Co-evolution Trap | ICLR 2027，3/3/3 | https://openreview.net/pdf?id=ZIBdUe2hGK |
+| Do LLM Agents Still Need to be Told How to Self-Improve? | ICLR 2027，2/3/4 | https://openreview.net/pdf?id=G2nWulnSp3 |
+| Task Arrival Order Shapes Experience Accumulation in Memory-Based Self-Evolving Agents | ICLR 2027，2/3/4 | https://openreview.net/pdf?id=I51UbJS8ql |
+| SUADS: Sampling-Uncertainty-Aware Data Selection for LLMs | ICLR 2027，3/3/3/3 | https://openreview.net/pdf?id=Oj94zxxkDK |
+| Rethinking diversity in RLVR: from policy entropy to semantic coverage | ICLR 2027，2/4/4 | https://openreview.net/pdf?id=vFiySeyi1k |
+| Synthetic Pre-pretraining Survives Scale, but Not as a Grammatical Prior | ICLR 2027，3/3/4 | https://openreview.net/pdf?id=P8cMuhbbfz |
+| Model Collapse is a Singular Complexity Trajectory | NeurIPS 2026 poster | https://openreview.net/pdf?id=v3gGLfZguI |
+| A Computational Perspective to Data Ablation Experiments | NeurIPS 2026 poster | https://openreview.net/pdf?id=7jrxR7M4di |
+| Stability and Diversity of Networked Self-Consuming Generative Ecosystems | NeurIPS 2026 poster | https://openreview.net/pdf?id=Mq8Ixa9IkT |
+| Understanding the Challenges in Iterative Generative Optimization with LLMs | NeurIPS 2026 poster | https://openreview.net/pdf?id=uMQtAycESf |
+| Coherence Mechanisms for Provable Self-Improvement | NeurIPS 2026 poster | https://openreview.net/pdf?id=fp0D7ypA3g |
+| Verifier-Backed Hard Problem Generation for Mathematical Reasoning | NeurIPS 2026 poster | https://openreview.net/pdf?id=uuzIPLUUKL |
+| Frontier Task Synthesis Via Solution-Centric Evolution | NeurIPS 2026 poster | https://openreview.net/pdf?id=YT5exYsQq0 |
+
+第一轮的论文卡在 [training-post-training/RSI_PAPER_CARDS.md](../training-post-training/RSI_PAPER_CARDS.md)，编号对应 `prior-2026-10/READING_LIST.md`。

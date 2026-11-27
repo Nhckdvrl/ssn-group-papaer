@@ -43,7 +43,7 @@
 | B. 补货实验 | E13 | 两个父模型（init、已用 ICONS 10K 训过的 used）× 三个动作：重放旧数据 / 从策展池里补新样本 / 从池外按“来源 × 长度”补新样本 | init：**33.34 / 32.91 / 33.12**；used：**33.51 / 33.81 / 33.58** | 同一父模型下，三个动作的差别都在 **0.55 分以内** |
 | B. 最简单对手 | E14 | 只保留来源比例、全部换新数据 | init **32.78**，used **33.50** | 没有比别的方法好 |
 
-**10-04 停步时自己写的判断**：“尚未形成可以推荐作为主线重押的、增量清晰的成形 idea。”同一天外部审计（`RSI_AUDIT_AND_EXPERIMENTS_2026-10-04.md`）也给出了同样的结论，并提出了一个转向建议（见第 5 节）。之后没有人做决定。
+**10-04 停步时自己写的判断**：“尚未形成可以推荐作为主线重押的、增量清晰的成形 idea。”同一天外部审计（`library/themes/synthetic-data-rsi/prior-2026-10/RSI_AUDIT_AND_EXPERIMENTS_2026-10-04.md`）也给出了同样的结论，并提出了一个转向建议（见第 5 节）。之后没有人做决定。
 
 ## 3. 为什么没做出有用的
 
@@ -124,7 +124,7 @@ DataEnvGym 的原论文靠 GPT-4o 出题、解题。本地换成 Qwen2.5/Qwen3-3
   - ICONS/ARDS 公开代码的索引映射有 bug（ICONS 58,201 条错指，ARDS 的 `global_id−1` 全错）；论文作者实际是否用错未知；
   - 单种子下，不同 10K 选法的差别大多在噪声内。
 - **代码**：`scripts/` 只保留了 Curation-Bench 本地 LLaVA 训练/评测的最小一套（下载、选子集、训练、评测、校验）。其余 E00–E14 脚本在提交 `6ac6dda5` 里。节点上的 Arrow 数据（93GB）、父模型、checkpoint 都已删除，重用时要重新下载。
-- **文献**：60 篇分级阅读账本（`READING_LIST.md`）、论文卡（`library/themes/training-post-training/RSI_PAPER_CARDS.md`）、定位表（`POSITIONING.md`）。重拾方向时这部分最值得复用。
+- **文献**：60 篇分级阅读账本（文献库 `prior-2026-10/READING_LIST.md`）、论文卡（`library/themes/training-post-training/RSI_PAPER_CARDS.md`）、定位表（文献库 `prior-2026-10/POSITIONING.md`）。重拾方向时这部分最值得复用。
 
 ## 5. 10-04 审计提出的转向（没有人做过决定）
 

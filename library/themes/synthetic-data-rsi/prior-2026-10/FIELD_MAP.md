@@ -1,6 +1,6 @@
 # Data-centric RSI：领域地图与研究入口
 
-更新：2026-10-02；2026-11-27 瘦身时删去旧 idea 与旧进度两节。本文是文献驱动的 territory / problem map，不是已获实验证据的论文提案。论文编号和阅读范围见 [文献账本](READING_LIST.md)；定向深读见 [论文卡](../../library/themes/training-post-training/RSI_PAPER_CARDS.md)。本文的优先级是建设顺序，不是新颖性或可发表性的承诺。
+更新：2026-10-02；2026-11-27 瘦身时删去旧 idea 与旧进度两节，并移入文献库。**这是第一轮的领域地图，当前的汇总以 [DISCUSSION.md](../../../../workbench/data-centric-rsi/DISCUSSION.md) 为准。**本文是文献驱动的 territory / problem map，不是已获实验证据的论文提案。论文编号和阅读范围见 [文献账本](READING_LIST.md)；定向深读见 [论文卡](../../training-post-training/RSI_PAPER_CARDS.md)。本文的优先级是建设顺序，不是新颖性或可发表性的承诺。
 
 ## 1. 先把研究对象说清楚
 
@@ -71,7 +71,7 @@ P01 从随机初始化出发，生成程序的执行输出供学生做 byte pred
 
 ## 4. 旧的三个研究入口（已不沿用）
 
-2026-10 写的 I01（数据策略能否跨学生复用）、I02（从错题追随到选择有效训练干预）、I03（短程课程信号的时间视野）都没有得到证据，2026-11-27 决定重拾时不沿用。为什么没做出东西见 [RETROSPECTIVE_2026-11-27.md](RETROSPECTIVE_2026-11-27.md)；原卡可从提交 `6ac6dda5` 恢复。
+2026-10 写的 I01（数据策略能否跨学生复用）、I02（从错题追随到选择有效训练干预）、I03（短程课程信号的时间视野）都没有得到证据，2026-11-27 决定重拾时不沿用。为什么没做出东西见 [RETROSPECTIVE_2026-11-27.md](../../../../workbench/data-centric-rsi/RETROSPECTIVE_2026-11-27.md)；原卡可从提交 `6ac6dda5` 恢复。
 
 ## 5. 什么样的论文尺度才值得做
 
