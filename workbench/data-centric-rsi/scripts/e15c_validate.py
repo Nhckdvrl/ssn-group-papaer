@@ -209,11 +209,13 @@ def main():
     ap.add_argument("--out"); ap.add_argument("--workers", type=int, default=32)
     ap.add_argument("--materials_only"); ap.add_argument("--to_materials")
     a = ap.parse_args()
-    if a.materials_only:  # turn validated proposals into an AZR-format materials file
+    if a.materials_only:  # turn validated proposals into an AZR-format materials file (exact duplicates dropped)
+        seen = set()
         with open(a.to_materials, "w") as f:
             for l in open(a.materials_only):
                 r = json.loads(l)
-                if r.get("valid"):
+                if r.get("valid") and (r["code"], r["input"]) not in seen:
+                    seen.add((r["code"], r["input"]))
                     f.write(json.dumps({"snippet": r["code"], "input": r["input"], "output": r["output"], "imports": [],
                                         "original_snippet": r["code"], "composite_functions": []}) + "\n")
         return

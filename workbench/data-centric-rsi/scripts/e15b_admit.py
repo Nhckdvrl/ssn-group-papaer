@@ -1,7 +1,8 @@
 """E15b: score candidate questions with a FIXED solver exactly as R-Zero's question_evaluate/evaluate.py
 (system "Please reason step by step...", temperature 1.0, top_p 1.0, top_k 40, max 4096 tokens, n samples,
 answers clustered with mathruler.grade_answer, majority share = score; questions containing "证明" / "box"
-or a majority answer containing "text" are dropped, as in the official code).
+or a majority answer containing "text" are dropped, as in the official code; a response without \\boxed
+is extracted as the string "None" and counted as an answer, as in the official code).
 
 Input: one or more jsonl files from e15b_generate.py; a fixed random subsample of parse_ok rows per file.
 Usage: python e15b_admit.py --solver <dir> --inputs a.jsonl b.jsonl --per_file 2000 --n 9 --out <jsonl>
@@ -28,13 +29,13 @@ def _alarm(signum, frame):
 
 
 def grade_t(x, y, secs=10):
-    """grade_answer with a wall-clock timeout (the official code uses a 10 s stopit timeout)."""
+    """grade_answer with a wall-clock timeout (the official code uses a 10 s stopit timeout); None on timeout."""
     signal.signal(signal.SIGALRM, _alarm)
     signal.alarm(secs)
     try:
         return grade_answer(x, y)
     except _Timeout:
-        return False
+        return None
     finally:
         signal.alarm(0)
 
@@ -46,11 +47,16 @@ def cluster(results, grade):
         for e in counts:
             if r == e or ("no " in r.lower() and "no " in e.lower()):
                 counts[e] += 1; hit = True; break
-            try:
-                if grade(r, e) or grade(e, r):
-                    counts[e] += 1; hit = True; break
-            except Exception:
+            m1 = grade(r, e)          # official: on timeout skip to the next existing answer
+            if m1 is None:
                 continue
+            if m1:
+                counts[e] += 1; hit = True; break
+            m2 = grade(e, r)
+            if m2 is None:
+                continue
+            if m2:
+                counts[e] += 1; hit = True; break
         if not hit:
             counts[r] = 1
     return counts
@@ -79,7 +85,7 @@ def main():
                                        tokenize=False, add_generation_prompt=True) for r in rows]
     llm = vllm.LLM(model=a.solver, tokenizer=a.solver, seed=a.seed, gpu_memory_utilization=0.85)
     sp = vllm.SamplingParams(max_tokens=4096, temperature=1.0, top_p=1.0, top_k=40, n=a.n,
-                             stop_token_ids=[tok.eos_token_id], seed=a.seed)
+                             stop_token_ids=[tok.eos_token_id])  # engine-level seed only
     t0 = time.time()
     outs = llm.generate(prompts, sampling_params=sp)
     gen_s = time.time() - t0
@@ -87,17 +93,24 @@ def main():
     with open(a.out, "w") as f:
         for r, o in zip(rows, outs):
             ntok += sum(len(c.token_ids) for c in o.outputs)
-            res = [extract_boxed_content(c.text) for c in o.outputs]
-            res = [x for x in res if x and x != "None"]
-            counts = cluster(res, grade_t) if res else {}
+            extracted = [extract_boxed_content(c.text) for c in o.outputs]
+            res = [x for x in extracted if x]   # official: "None" (no \\boxed) stays in as an answer
+            err = False
+            try:
+                counts = cluster(res, grade_t) if res else {}
+            except Exception:  # official: the question is skipped ("CRITICAL ERROR")
+                counts, err = {}, True
             maj = max(counts, key=counts.get) if counts else ""
             score = counts[maj] / len(res) if counts else None
             dropped = ("证明" in r["question"] or "box" in r["question"].lower() or "text" in maj.lower()) if counts else True
-            agree_setter = bool(maj) and bool(r["answer"]) and (grade_t(maj, r["answer"]) or grade_t(r["answer"], maj))
+            try:
+                agree_setter = bool(maj) and bool(r["answer"]) and bool(grade_t(maj, r["answer"]) or grade_t(r["answer"], maj))
+            except Exception:
+                agree_setter = False
             f.write(json.dumps({"src": r["src"], "tag": r["tag"], "seed": r["seed"], "idx": r["idx"],
                                 "question": r["question"], "setter_answer": r["answer"], "majority": maj,
-                                "score": score, "n_boxed": len(res), "dropped": dropped,
-                                "agree_setter": agree_setter, "answers": res,
+                                "score": score, "n_boxed": len(res), "dropped": dropped, "grade_error": err,
+                                "agree_setter": agree_setter, "answers": res, "extracted": extracted,
                                 "resp_tokens": [len(c.token_ids) for c in o.outputs]}) + "\n")
     with open(a.out + ".meta.json", "w") as f:
         json.dump({"solver": a.solver, "inputs": a.inputs, "per_file": a.per_file, "n": a.n,

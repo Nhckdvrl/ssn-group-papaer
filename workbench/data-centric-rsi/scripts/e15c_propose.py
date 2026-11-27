@@ -52,7 +52,7 @@ def main():
                                                add_generation_prompt=True, tokenize=False))
         refs.append(idx)
     llm = vllm.LLM(model=a.model, tokenizer=a.model, seed=a.seed, gpu_memory_utilization=0.85, max_model_len=16384)
-    sp = vllm.SamplingParams(temperature=a.temp, top_p=1.0, max_tokens=8096, seed=a.seed)
+    sp = vllm.SamplingParams(temperature=a.temp, top_p=1.0, max_tokens=8096)  # engine-level seed only
     t0 = time.time()
     outs = llm.generate(prompts, sp)
     gen_s = time.time() - t0

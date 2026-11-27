@@ -64,7 +64,7 @@ def fetch_file(url, out, size, parts):
                 return
             time.sleep(2)
         raise RuntimeError(f"failed {url}")
-    pdir = out.parent / (out.name + ".parts"); pdir.mkdir(exist_ok=True)
+    pdir = out.parent / (out.name + f".parts{parts}"); pdir.mkdir(exist_ok=True)  # split-specific: never reuse parts of another split
     step = -(-size // parts)
     ranges = [(i, i * step, min(size, (i + 1) * step) - 1) for i in range(parts)]
     with ThreadPoolExecutor(parts) as ex:
@@ -97,11 +97,22 @@ def main():
             print("ok  ", rel, flush=True); continue
         if out.exists():
             out.unlink()  # partial single-stream file from an earlier version of this script
+        for stale in out.parent.glob(out.name + ".parts*"):
+            if stale.name != out.name + f".parts{a.parts}":
+                for p in stale.iterdir():
+                    p.unlink()
+                stale.rmdir()
         t0 = time.time()
         mirror = a.mirror if want else "hf"  # small non-LFS files: always from HF itself
-        fetch_file(url_for(mirror, a.repo, a.rev, f["path"]), out, f.get("size"), a.parts)
-        if want and sha256(out) != want:
-            out.unlink(); sys.exit(f"sha256 mismatch for {rel} (mirror {mirror})")
+        for attempt in range(2):
+            fetch_file(url_for(mirror, a.repo, a.rev, f["path"]), out, f.get("size"), a.parts)
+            if not want or sha256(out) == want:
+                break
+            out.unlink()
+            print(f"sha256 mismatch for {rel} (mirror {mirror}), attempt {attempt}", flush=True)
+            mirror = "hf"  # retry from HF itself
+        else:
+            sys.exit(f"sha256 still wrong for {rel}")
         print(f"got  {rel} {f.get('size', 0) / 1e9:.2f}GB {time.time() - t0:.0f}s via {mirror}", flush=True)
     print("DONE", root, flush=True)
 

@@ -56,7 +56,7 @@ solve_p = [tok.apply_chat_template([{"role": "system", "content": SOLVE_SYS}, {"
                                    tokenize=False, add_generation_prompt=True, enable_thinking=True) for r in pick]
 field_p = [tok.apply_chat_template([{"role": "user", "content": FIELD_PROMPT.format(q=r["question"])}],
                                    tokenize=False, add_generation_prompt=True, enable_thinking=False) for r in pick]
-so = llm.generate(solve_p, vllm.SamplingParams(n=4, temperature=0.6, top_p=0.95, top_k=20, max_tokens=12288, seed=0))
+so = llm.generate(solve_p, vllm.SamplingParams(n=4, temperature=0.6, top_p=0.95, top_k=20, max_tokens=12288))
 fo = llm.generate(field_p, vllm.SamplingParams(n=1, temperature=0.0, max_tokens=8))
 with open(a.out, "w") as f:
     for r, s, fl in zip(pick, so, fo):

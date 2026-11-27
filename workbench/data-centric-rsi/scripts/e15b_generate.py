@@ -65,7 +65,7 @@ def main():
     mtok = AutoTokenizer.from_pretrained(a.model)
     llm = vllm.LLM(model=a.model, tokenizer=a.model, seed=a.seed, gpu_memory_utilization=0.85)
     sp = vllm.SamplingParams(max_tokens=4096, temperature=1.0, top_p=0.95, n=1,
-                             stop_token_ids=[mtok.eos_token_id], seed=a.seed)
+                             stop_token_ids=[mtok.eos_token_id])  # no per-request seed: identical prompts would share one random stream
     t0 = time.time()
     outs = llm.generate([prompt] * a.n, sampling_params=sp)
     gen_s = time.time() - t0
@@ -83,8 +83,9 @@ def main():
                                 "finish": o.outputs[0].finish_reason, "raw": text}) + "\n")
     with open(a.out + ".meta.json", "w") as f:
         json.dump({"model": a.model, "template_dir": a.template_dir, "n": a.n, "seed": a.seed,
-                   "prompt": prompt, "gen_seconds": gen_s, "gen_tokens": ntok}, f, indent=1)
-    print(f"done {a.n} in {gen_s:.0f}s, {ntok} tokens", flush=True)
+                   "prompt": prompt, "gen_seconds": gen_s, "gen_tokens": ntok,
+                   "uniq_raw": len({o.outputs[0].text for o in outs})}, f, indent=1)
+    print(f"done {a.n} in {gen_s:.0f}s, {ntok} tokens, {len({o.outputs[0].text for o in outs})} distinct outputs", flush=True)
 
 
 if __name__ == "__main__":
