@@ -4,21 +4,21 @@
 
 **状态：** PROPOSED（用户 2026-11-26 要求开始做；是否登记为 ACTIVE、是否随问题改名，由人决定）
 **目标会议 / 截稿：** 待定（ACL / ICML / ICLR / NeurIPS；不投 Findings）　**上次人审：** 2026-11-27（第三轮 GPT/Gemini 反馈后，用户放行 E07）
-**当前问题（一句话）：** 后训练模型在 Base 拿不准的位置做出的选择，在什么条件下对推理结果有可测影响——与只是去掉采样随机性相比。
+**当前问题（一句话）：** 后训练带来的推理增益，在什么条件下是一个开头模式、是去掉 Base 的随机性、还是 Base 自己不会做的选择；这些选择是否建立了 Base 能继承的推理状态。
 **讨论材料：** [DISCUSSION.md](DISCUSSION.md)（唯一一份，只写上次讨论以来的实验、数据和结论）。
 
 ### 问题是怎么演变的
 
 1. **LM Head 阶段（11-26，E01–E02）：** 头部梯度几何与权重变化不区分后训练范式；RLVR 阶段几乎不动头。原问题得到负结果（C01–C06）。
 2. **输出行为阶段（11-27，E04–E06）：** 转向“后训练在下一 token 分布上改变了什么”。MATH-500 上增益集中在 Base 高熵的分叉位置；Base 按 T=1 采样时，分叉处的随机性代价大于“谁的首选”；单个分叉上改选测不出价值；OLMo RL-Zero 的大部分差距是回答开头的模式选择（C07–C14）。正反分叉交换近作已有。
-3. **条件阶段（11-27 晚，E07）：** Base 改用近作的截尾采样（T=0.6/top-p 0.95）后，分叉处的选择效应在易题上 ≈0（+1.3），在 MATH Level 5 上 +14.0，难题上 Post 首选补上差距的 70%；OlympiadBench 上方向一致、幅度减半（+7.3，补 38%）（C15）。
+3. **条件阶段（11-27 晚，E07–E09）：** Base 改用近作的截尾采样（T=0.6/top-p 0.95）后，分叉处的选择效应在易题上 ≈0（+1.3），在 MATH Level 5 上 +14.0，难题上 Post 首选补上差距的 70%；OlympiadBench 上方向一致、幅度减半（+7.3，补 38%）（C15）。E08：Post 写的前缀能被 Base 继承，Base 用 6 倍算力投票也买不到 Post 的优势（C17–C18）。E09：OLMo RL-Zero 在强制开头之后没有剩余优势（C16）；AIME 上选择效应方向一致但未显著。另：Qwen3-8B 是强到弱蒸馏模型，没有 RL 阶段（技术报告 §4.5）。
 
 ### 当前状态
 
-- **已完成：** E01、E02、E04、E05、E06、E07（Qwen）。
+- **已完成：** E01、E02、E04–E07、E08（Qwen 两题集；OLMo 交接因无差距停掉）、E09 首轮。
 - **运行中：** 无。
 - **未做：** E03（冻结头训练，暂缓）；OLMo-3 RL-Zero 上的 E07（可行但慢，见 E07 卡）。
-- **算力：** 11-26 约 1.5 GPU·时；11-27 E04–E06 约 25 GPU·时，E07 约 23 GPU·时。
+- **算力：** 11-26 约 1.5 GPU·时；11-27 E04–E06 约 25 GPU·时，E07 约 23 GPU·时；E08–E09 约 35 GPU·时（在批准的约 50 GPU·时内）。
 
 ## 目录
 
@@ -26,15 +26,15 @@
 |---|---|
 | `README.md` | 本页：状态、目录、决策记录、资产位置 |
 | `DISCUSSION.md` | 当前一轮的讨论材料 |
-| `CLAIMS.md` | 主张账本 C01–C15、作废与更正记录 |
-| `PAIN_LOG.md` | 痛点 P01–P08 |
+| `CLAIMS.md` | 主张账本 C01–C18、作废与更正记录 |
+| `PAIN_LOG.md` | 痛点 P01–P09 |
 | `RELATED_WORK.md` | 文献地图与精读核对（含近邻对照表） |
 | `MENTOR_REQUIREMENTS.md` | 导师标准与本项目执行要求 |
 | `RESEARCH_PLAN.md` | 历史：LM Head 阶段的技术指南（E01–E03） |
 | `ideas/` | I01–I05 idea 卡 |
 | `experiments/` | E01–E07 实验卡（设计、决策表、偏差、结果） |
 | `scripts/` | 全部代码，索引见 [scripts/README.md](scripts/README.md) |
-| `results/e0{1,2,4,5,7}/` | 进 git 的小型汇总（JSON/JSONL）；E06 的汇总在 `results/e04/hybrid_qwen.json` |
+| `results/e0{1,2,4,5,7,8,9}/` | 进 git 的小型汇总（JSON/JSONL）；E06 的汇总在 `results/e04/hybrid_qwen.json` |
 | `data/` | 输入清单（只存索引与 sha1） |
 | `logs/` | 每日会话记录 |
 
@@ -42,7 +42,7 @@
 
 1. 仓库根 AGENTS.md、RESOURCES.md、workbench/README.md、EXECUTION.md。
 2. [DISCUSSION.md](DISCUSSION.md) 与 [CLAIMS.md](CLAIMS.md)：当前结论与证据等级。
-3. [E07](experiments/E07-choice-conditions.md)、[E06](experiments/E06-fork-head-vs-tail.md)、[E05](experiments/E05-fork-value.md)、[E04](experiments/E04-global-affine-component.md)：方法、对照与偏差记录。
+3. [E07](experiments/E07-choice-conditions.md)、[E09](experiments/E09-regime-across-families.md)、[E08](experiments/E08-handoff.md)、[E06](experiments/E06-fork-head-vs-tail.md)、[E05](experiments/E05-fork-value.md)、[E04](experiments/E04-global-affine-component.md)：方法、对照与偏差记录。
 4. [RELATED_WORK.md](RELATED_WORK.md) §2.5：分叉交换与锐化相关近邻。
 5. [MENTOR_REQUIREMENTS.md](MENTOR_REQUIREMENTS.md)；LM Head 阶段的来龙去脉见 [logs/2026-11-26.md](logs/2026-11-26.md)。
 
