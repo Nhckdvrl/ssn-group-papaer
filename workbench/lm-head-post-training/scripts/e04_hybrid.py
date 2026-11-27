@@ -8,6 +8,7 @@ Conditions (--mode):
   base_basemode       : base everywhere, at forks take base argmax   (≈ entropy-gated sharpening, τ→∞)
   base_postmode       : base everywhere, at forks take post argmax
   post_basemode       : post everywhere, at forks take base argmax                     (E06)
+  post_postmode       : post everywhere, at forks take post argmax                     (E06, choice contrast)
   post_basetrunc      : post everywhere, at forks sample base restricted to p ≥ 0.1·p_max (E06)
   base_basetrunc      : base everywhere, at forks sample base restricted to p ≥ 0.1·p_max (E06)
 Positive controls: base_postfork with thr=1e9 ≡ base; with thr=-1 ≡ post.
@@ -41,6 +42,7 @@ def main():
     ap.add_argument("--bs", type=int, default=32)
     ap.add_argument("--max_tokens", type=int, default=3072)
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--start", type=int, default=0, help="first problem (for sharding a run across GPUs)")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--tag", required=True)
     args = ap.parse_args()
@@ -56,6 +58,7 @@ def main():
     probs = [json.loads(l) for l in open("/tmp/xiang_lmhead/e04/math500.jsonl")]
     if args.limit:
         probs = probs[: args.limit]
+    probs = probs[args.start:]
     jobs = [(p, k) for p in probs for k in range(args.n)]
     # resume: keep finished (index, sample) pairs from a previous partial run
     done_rows = []
@@ -104,6 +107,8 @@ def main():
                 nxt = torch.where(fork, a0, s0)
             elif args.mode == "base_postmode":
                 nxt = torch.where(fork, a1, s0)
+            elif args.mode == "post_postmode":
+                nxt = torch.where(fork, a1, s1)
             elif args.mode == "post_basemode":
                 nxt = torch.where(fork, a0, s1)
             elif args.mode == "post_basetrunc":

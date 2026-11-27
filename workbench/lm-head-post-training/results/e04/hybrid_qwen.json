@@ -77,6 +77,45 @@
    "mean_len": 698.908,
    "fork_rate": 0.40854876464427364,
    "argmax_agree_at_forks": 0.6322240822587537
+  },
+  "h_post_basemode": {
+   "n_problems": 500,
+   "acc": 0.76,
+   "ci95": [
+    0.72,
+    0.798
+   ],
+   "parse_fail": 0.006,
+   "truncated": 0.006,
+   "mean_len": 671.716,
+   "fork_rate": 0.17804250605910832,
+   "argmax_agree_at_forks": 0.531180494004716
+  },
+  "h_post_basetrunc_all": {
+   "n_problems": 500,
+   "acc": 0.66,
+   "ci95": [
+    0.62,
+    0.702
+   ],
+   "parse_fail": 0.032,
+   "truncated": 0.026,
+   "mean_len": 687.302,
+   "fork_rate": 0.21450250399387752,
+   "argmax_agree_at_forks": 0.5563664975445641
+  },
+  "h_base_basetrunc": {
+   "n_problems": 500,
+   "acc": 0.604,
+   "ci95": [
+    0.562,
+    0.646
+   ],
+   "parse_fail": 0.052,
+   "truncated": 0.028,
+   "mean_len": 622.514,
+   "fork_rate": 0.13930610395910775,
+   "argmax_agree_at_forks": 0.5113468634686347
   }
  },
  "paired": {
@@ -120,6 +159,30 @@
     -0.006
    ]
   },
+  "h_base - h_post_basemode": {
+   "n": 500,
+   "diff": -0.324,
+   "ci95": [
+    -0.372,
+    -0.276
+   ]
+  },
+  "h_base - h_post_basetrunc_all": {
+   "n": 500,
+   "diff": -0.224,
+   "ci95": [
+    -0.272,
+    -0.174
+   ]
+  },
+  "h_base - h_base_basetrunc": {
+   "n": 500,
+   "diff": -0.168,
+   "ci95": [
+    -0.216,
+    -0.118
+   ]
+  },
   "h_post - h_base_basemode": {
    "n": 500,
    "diff": 0.072,
@@ -152,6 +215,30 @@
     0.348
    ]
   },
+  "h_post - h_post_basemode": {
+   "n": 500,
+   "diff": 0.028,
+   "ci95": [
+    -0.004,
+    0.06
+   ]
+  },
+  "h_post - h_post_basetrunc_all": {
+   "n": 500,
+   "diff": 0.128,
+   "ci95": [
+    0.088,
+    0.172
+   ]
+  },
+  "h_post - h_base_basetrunc": {
+   "n": 500,
+   "diff": 0.184,
+   "ci95": [
+    0.142,
+    0.226
+   ]
+  },
   "h_base_basemode - h_base_postmode": {
    "n": 500,
    "diff": -0.042,
@@ -176,6 +263,30 @@
     0.274
    ]
   },
+  "h_base_basemode - h_post_basemode": {
+   "n": 500,
+   "diff": -0.044,
+   "ci95": [
+    -0.078,
+    -0.01
+   ]
+  },
+  "h_base_basemode - h_post_basetrunc_all": {
+   "n": 500,
+   "diff": 0.056,
+   "ci95": [
+    0.018,
+    0.096
+   ]
+  },
+  "h_base_basemode - h_base_basetrunc": {
+   "n": 500,
+   "diff": 0.112,
+   "ci95": [
+    0.068,
+    0.154
+   ]
+  },
   "h_base_postmode - h_base_postfork": {
    "n": 500,
    "diff": -0.006,
@@ -192,12 +303,108 @@
     0.316
    ]
   },
+  "h_base_postmode - h_post_basemode": {
+   "n": 500,
+   "diff": -0.002,
+   "ci95": [
+    -0.036,
+    0.034
+   ]
+  },
+  "h_base_postmode - h_post_basetrunc_all": {
+   "n": 500,
+   "diff": 0.098,
+   "ci95": [
+    0.06,
+    0.136
+   ]
+  },
+  "h_base_postmode - h_base_basetrunc": {
+   "n": 500,
+   "diff": 0.154,
+   "ci95": [
+    0.114,
+    0.194
+   ]
+  },
   "h_base_postfork - h_post_basefork": {
    "n": 500,
    "diff": 0.278,
    "ci95": [
     0.236,
     0.32
+   ]
+  },
+  "h_base_postfork - h_post_basemode": {
+   "n": 500,
+   "diff": 0.004,
+   "ci95": [
+    -0.028,
+    0.036
+   ]
+  },
+  "h_base_postfork - h_post_basetrunc_all": {
+   "n": 500,
+   "diff": 0.104,
+   "ci95": [
+    0.064,
+    0.144
+   ]
+  },
+  "h_base_postfork - h_base_basetrunc": {
+   "n": 500,
+   "diff": 0.16,
+   "ci95": [
+    0.118,
+    0.2
+   ]
+  },
+  "h_post_basefork - h_post_basemode": {
+   "n": 500,
+   "diff": -0.274,
+   "ci95": [
+    -0.318,
+    -0.23
+   ]
+  },
+  "h_post_basefork - h_post_basetrunc_all": {
+   "n": 500,
+   "diff": -0.174,
+   "ci95": [
+    -0.222,
+    -0.126
+   ]
+  },
+  "h_post_basefork - h_base_basetrunc": {
+   "n": 500,
+   "diff": -0.118,
+   "ci95": [
+    -0.168,
+    -0.07
+   ]
+  },
+  "h_post_basemode - h_post_basetrunc_all": {
+   "n": 500,
+   "diff": 0.1,
+   "ci95": [
+    0.062,
+    0.138
+   ]
+  },
+  "h_post_basemode - h_base_basetrunc": {
+   "n": 500,
+   "diff": 0.156,
+   "ci95": [
+    0.114,
+    0.196
+   ]
+  },
+  "h_post_basetrunc_all - h_base_basetrunc": {
+   "n": 500,
+   "diff": 0.056,
+   "ci95": [
+    0.012,
+    0.1
    ]
   }
  }
