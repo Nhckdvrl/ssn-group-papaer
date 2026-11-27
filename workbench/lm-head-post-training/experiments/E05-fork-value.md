@@ -4,7 +4,7 @@
 - **对应：** I05
 - **问题（一句话）：** 当 RL 后训练模型在分叉位置把 Base 的第二候选提到第一时，被选中的 token 是否在 Base 自己的续写下更可能答对（软价值更高），或续写更自信（序列级锐化），还是两者都不是？
 - **理论预测（不是我们的贡献）：** KL 正则 RL 的最优逐步修正 = log Z(x, y<t, ·)，Z 为 Base 续写下的指数化奖励（Cohen et al. 2607.22837 式 4；Korbak et al.；Rafailov et al.）。0/1 奖励下，Z(c) 随“接 c 后 Base 续写的答对率”单调。序列级幂分布锐化（Karan & Du 2510.14901）则偏向续写似然更高的 token。两者可以不一致。
-- **动机（来自 E04）：** 两条 RL 谱系（Qwen 多阶段、OLMo RL-Zero）在分叉处都不锐化，而是改选 Base 的第 2/3 候选（RL-Zero 多为 Wait/Therefore/no）；Base 降温能拿到约 72% 的增益（E04-B），但真实 RL 模型的路径不同（E04-A2/A3）。
+- **动机（来自 E04）：** 两条后训练谱系（Qwen3-8B 强到弱蒸馏、OLMo RL-Zero 纯 RLVR）在分叉处都不锐化，而是改选 Base 的第 2/3 候选（RL-Zero 多为 Wait/Therefore/no）；Base 降温能拿到约 72% 的增益（E04-B），但真实 RL 模型的路径不同（E04-A2/A3）。
 - **设置：**
   - 谱系对：OLMo-3 Base→RL-Zero-Math（纯 RLVR，最干净）；Qwen3-8B-Base→Qwen3-8B（参照）。
   - 分叉来源：子模型自己在 MATH-train 128 题上的生成（E04 的 gen_child 上下文），平均熵 ≥0.5。改选分叉 = 子首选 ≠ 父首选；对照分叉 = 两者一致。每对抽 300 个改选分叉 + 100 个一致分叉，按题目分层，seed 0。
