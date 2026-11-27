@@ -24,5 +24,9 @@
 - **口径调整：** 选择效应沿用 E07 的设计与上限 4096（与蒸馏模型已有的 B1/B2 直接可比）；DAPO 锚点同样用上限 4096、每题 8 样本；交接实验放在锚点之后，按 E08 的口径。
 - **分词器：** DAPO 的 tokenizer 与 Qwen3-8B 的词表与特殊 token 编号一致（同一段带模板的文本编码完全相同），可共用提示与前缀。
 - **开头 cue 对照（看到 DAPO 锚点后加，POST-HOC 设计）：** DAPO 的回答 52% 以 “Alright, I have this …” 开头（另有 13% 先写 “Assistant: Alright”），与 2610.24663 在 Qwen3-4B GRPO 上看到的 “Alright” 相同。加 Base + 强制 “Alright, I have this problem” 开头的锚点（每题 8 样本，上限 4096），用于在开头之后比较 DAPO 与 Base。
+- **交接实验（锚点之后加，跑之前写）：** 2510.00553（ICLR'26，与 DAPO 存档同一作者）报告：RL 模型写的前 20 个 token 交给 Base 续写即接近完整 RL 的表现；RL 主要改变开头（“Alright”“Let”）和转折处（“But”“Wait”）的少数 token；与蒸馏、SFT 不同，RL 几乎不改变 Base 对 RL 推理链的困惑度。由此得到一个可检验的同底座预测：DAPO 的短前缀（L=32）就能让 Base 接近 DAPO，而蒸馏模型需要约一半（E08：L=32 只补 39%）。
+  - 题集：OlympiadBench 300 题（主，干净）与 MATH Level 5 中 DAPO 没见过的 143 题。
+  - 组合（每题 2 个前缀，每个续写 1 次，L = 32、256、50%，总上限 8192）：DAPO 前缀 → Base / DAPO；Base 前缀 → DAPO；在 OlympiadBench 上同时补蒸馏的 Post 前缀 → Base / Post 与 Base 前缀 → Base，使两种后训练在同一题集上可比。另以“Base + 强制 ‘Alright, I have this problem’”作为开头 cue 的对照。
+  - 决策：DAPO 前缀在 L=32 时 G(s_DAPO) ≈ 0（Base 续写≈DAPO 续写）且明显超过强制 “Alright” 的 Base，而蒸馏模型在 L=32 时 G 仍大 → RL 的优势集中在开头少数 token 建立的状态上，蒸馏的优势在更长的推理过程中逐步建立；两者对“锐化还是新决策”给出不同答案。若 DAPO 在 L=32 也需要 Post 续写才能达到 → 与 2510.00553 不一致，记录差异（模板、预算、题集）。
 - **结果（进行中）：**
   - **DAPO 锚点，MATH Level 5（上限 4096，每题 8 样本）：** 全部 300 题：Base 48.7%、蒸馏 68.7%、DAPO 63.3%（平均 1937 token，截断 18.3%）。DAPO 没见过的 143 题：Base 62.1%、蒸馏 74.1%、DAPO 73.2%；见过的 157 题：Base 36.5%、蒸馏 63.7%、DAPO 54.4%。没见过的题上纯 RL 与蒸馏的增益几乎相同；见过的题整体更难，DAPO 在这些题上反而不及蒸馏。
