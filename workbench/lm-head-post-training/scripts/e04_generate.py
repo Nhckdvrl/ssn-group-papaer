@@ -55,6 +55,7 @@ def main():
     ap.add_argument("--bias_key", default="b")
     ap.add_argument("--bias_scale", type=float, default=1.0)
     ap.add_argument("--gate", default="", help="entropy-gated temperature: '<low|high>:<thr>:<tau>'")
+    ap.add_argument("--fork_argmax", type=float, default=0.0, help="B1: take the argmax where entropy at T=1 >= this (0 = off)")
     ap.add_argument("--min_p", type=float, default=0.0)
     ap.add_argument("--top_p", type=float, default=1.0)
     ap.add_argument("--force_prefix", default="", help="text appended to the rendered prompt (forces the opening of the response)")
@@ -69,6 +70,9 @@ def main():
         mode, thr, gtau = args.gate.split(":")
         os.environ["E04_GATE_MODE"], os.environ["E04_GATE_THR"], os.environ["E04_GATE_TAU"] = mode, thr, gtau
         procs.append("e04_biasproc:EntropyGatedTemperature")
+    if args.fork_argmax:
+        os.environ["E04_ARGMAX_THR"] = str(args.fork_argmax)
+        procs.append("e04_biasproc:EntropyGatedArgmax")
     from vllm import LLM, SamplingParams
     src = {"train128": "/tmp/xiang_lmhead/e02/prompts.jsonl", "math500": "/tmp/xiang_lmhead/e04/math500.jsonl"}.get(args.prompts, args.prompts)
     prompts = [json.loads(l) for l in open(src)]

@@ -137,6 +137,20 @@ if __name__ == "__main__":
             manifest[name] = [{k: r[k] for k in r if k not in ("problem", "answer")} for r in rows]
             print(name, len(rows))
         (DATA / "e07_problems.json").write_text(json.dumps({"seed": 0, **manifest}, indent=0))
+    elif "--export-aime" in sys.argv:
+        # E08: AIME 2022-2025 (120): AI-MO/aimo-validation-aime (2022-2024, 90) + math-ai/aime25 (30)
+        import glob
+        import pandas as pd
+        out = Path("/tmp/xiang_lmhead/e07"); out.mkdir(parents=True, exist_ok=True)
+        a = pd.read_parquet(glob.glob(os.path.expanduser("~/.cache/huggingface/hub/datasets--AI-MO--aimo-validation-aime/snapshots/*/data/*.parquet"))[0])
+        rows = [{"problem": r["problem"], "answer": str(r["answer"]).strip(), "src": r["url"].split("/")[-2]} for _, r in a.iterrows()]
+        for l in open(glob.glob(os.path.expanduser("~/.cache/huggingface/hub/datasets--math-ai--aime25/snapshots/*/test.jsonl"))[0]):
+            r = json.loads(l); rows.append({"problem": r["problem"], "answer": str(r["answer"]).strip(), "src": "2025_AIME_" + str(r["id"])})
+        with open(out / "aime.jsonl", "w") as f:
+            for k, r in enumerate(rows):
+                f.write(json.dumps({"index": k, **r, "sha1": sha1(r["problem"])}) + "\n")
+        m = json.loads((DATA / "e07_problems.json").read_text()); m["aime"] = [{"index": k, "src": r["src"], "sha1": sha1(r["problem"])} for k, r in enumerate(rows)]
+        (DATA / "e07_problems.json").write_text(json.dumps(m, indent=0)); print("aime", len(rows))
     elif "--export-e02" in sys.argv:
         out = Path("/tmp/xiang_lmhead/e02"); out.mkdir(parents=True, exist_ok=True)
         with open(out / "prompts.jsonl", "w") as f:

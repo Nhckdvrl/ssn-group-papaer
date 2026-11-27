@@ -55,3 +55,30 @@ class EntropyGatedTemperature(LogitsProcessor):
         gate = (H < self.thr) if self.mode == "low" else (H >= self.thr)
         scale = torch.where(gate, torch.full_like(H, self.tau), torch.ones_like(H))
         return logits * scale[:, None].to(logits.dtype)
+
+
+class EntropyGatedArgmax(LogitsProcessor):
+    """B1 in a single model (E08): where the row's entropy at T=1 is >= E04_ARGMAX_THR nats, keep only the argmax
+    (all other logits -> -inf); elsewhere leave logits untouched so the usual temperature / top-p sampling applies.
+    NOT argmax-invariant on purpose, so vLLM applies it BEFORE temperature and the entropy is measured at T=1,
+    matching e04_hybrid.py's fork definition."""
+
+    def __init__(self, vllm_config, device, is_pin_memory):
+        self.thr = float(os.environ.get("E04_ARGMAX_THR", "0.5"))
+
+    def is_argmax_invariant(self):
+        return False
+
+    def update_state(self, batch_update):
+        pass
+
+    def apply(self, logits):
+        lp = torch.log_softmax(logits.float(), -1)
+        H = -(lp.exp() * lp).sum(-1)
+        gate = H >= self.thr
+        if not bool(gate.any()):
+            return logits
+        am = logits.argmax(-1)
+        onehot = torch.full_like(logits, float("-inf"))
+        onehot.scatter_(1, am[:, None], 0.0)
+        return torch.where(gate[:, None], onehot, logits)
