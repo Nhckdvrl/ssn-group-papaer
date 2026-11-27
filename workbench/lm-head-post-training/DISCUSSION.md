@@ -81,12 +81,16 @@ OlympiadBench（495 题；锚点在上限 4096 下：Base 39.2、DAPO 51.5、蒸
 - E10：B2 回答截到一半交给 Base，保留了 B2 约 3/4 的收益。B2 的前段换词与“开头”作用的关系未测。
 - E09：OLMo RL-Zero 的增益基本是开头 “.\n\nOkay, let's”；现在 Qwen 底座上的纯 RL（DAPO）也是这样。
 
-## 3. 与已有工作的对照（调研笔记 `notes/rl_vs_distill_survey.md`；部分只读了摘要与相关章节，已在笔记中标明）
+## 3. 与已有工作的对照（调研笔记 `notes/rl_vs_distill_survey.md`、`notes/rl_elicits_mode_survey.md`；哪些读了全文、哪些只读了摘要与相关章节，笔记中逐篇标明）
 
-- **已被占的子结论：** RL 的 pass@k 不超过 Base、蒸馏能超过（Yue et al. NeurIPS'25；Qwen3 报告表 21）；RL 一侧的少数位置替换恢复增益（Sparse but Critical ICLR'26、2610.24663、Akgül 2605.06241、Shen et al. ICML'26）；RL 前 20 个 token 交给 Base 即接近完整 RL（2510.00553）；开头 cue 让 OLMo Base 达到 RL-Zero（2610.06851）；2610.24663 用 “Alright” 在 Qwen3-4B-Base GRPO 上恢复 35%。
-- **没有找到的：** 同一底座上 RL 与蒸馏的逐位置对照、蒸馏一侧的前缀交接长度、开头对照下两种后训练的剩余差距。2510.00553 有蒸馏对照，但只用来说明秩一性质在蒸馏上不成立，未做交接。
-- **竞争假设：** TIP 2604.14084 认为在线蒸馏中有信息量的位置包括低熵高分歧处；E07 的 B3（只在低熵分歧处换蒸馏首选）整体不显著。
-- **强论文的开篇写法（调研摘录）：** 2610.24663 写 “These observations describe what changes, not which change produces the gain”，然后把观察变成对 Base 的干预。
+- **“一个开头就等于 RL”已有人报告：** Wang et al. 2610.06851（arXiv）在 Qwen3-14B-Base 上预填 “Alright,” 使 MATH-500 从 72 到 87，等于他们自训的 GRPO 模型；OLMo-3-7B 上 “.\n\n Okay” 42 → 78（RL-Zero 75）；预算 31744 token。RL 把 P(“Alright,”) 从 0.04 提到 0.58，Base 与 RL 的 KL 集中在前两个位置；通过改 OLMo 中期训练数据追溯了 cue 的来源。他们只覆盖 R1-Zero 式 RL，没有蒸馏、没有逐题对照、没有交接、没有 RL 训练过的题。
+- **相反方向的结果：** Zhang et al. 2610.24663：Qwen3-4B-Base 与 DAPO-Math-17k 上的 GRPO 模型，AIME 120 题、上限 8192，只强制单词 “Alright” 恢复 35%（10.0 → 13.2，RL 19.3；加 “, I” 无进一步提升）；在约 4% 贪心选择不同的位置换成 RL 的选择恢复 90.5%。与我们的差别：AIME（更难）、4B、单词 cue、上限 8192。两者未调和。
+- **RL 与蒸馏可唤起程度不同：** Venhoff et al.（ICML'26 spotlight，2510.07364）：在 Base 上加 steering 向量恢复 RL 思考模型差距的约 76%，但只恢复 SFT 蒸馏模型差距的约 11%；模型对是 Qwen2.5/Llama 的不同对，没有开头对照、没有同底座比较。
+- **RL 的增益来自预训练已有行为的其他证据（对象不同）：** Spurious Rewards（Qwen2.5-Math 的代码推理）、Echo Chamber（RL 放大预训练中的一种输出格式）、Karan & Du（Base 采样匹配 RL）、1-shot RLVR。没有一篇把固定开头与 RL 的全部增益对比。
+- **底座的预训练内容：** OLMo 3 报告明确写 Dolmino 中期训练含思考轨迹（QwQ 1.87%、OpenThoughts2 1.25% 等），“为 RL-Zero 打基础”。Qwen3 报告只说第二阶段提高了 “STEM、代码、推理与合成数据” 的比例（约 5T token），没有明说含长推理链；“Qwen3-Base 预训练含长推理数据”是推断。
+- **RL 侧的少数位置替换与前缀：** Sparse but Critical（ICLR'26）、Shen et al.（ICML'26）、Akgül 2605.06241；2510.00553：RL 的前 20 个 token 交给 Base 即接近完整 RL（有蒸馏对照但未做交接）。pass@k 一侧：Yue et al.（NeurIPS'25）。
+- **调研对“没人做过什么”的结论：** 没有找到在同一底座上同时有 RL、蒸馏和开头对照的研究；“蒸馏只在更难的题上超出开头”“蒸馏模型的续写作用持续到回答一半而 RL 只在开头”“开头之后取 Base 首选不再有用”“RL 训练过的题上也不超出开头”均未见报告。
+- **审稿人会先问的对照（调研整理）：** 不含推理中期训练的底座；更长预算；多个开头措辞及不看 RL 输出的开头选择方式（我们的开头取自 DAPO 自己的回答）；与 Zhang 的 35% 的调和。
 
 ## 4. 局限
 - 上限 4096：DAPO 与“开头 Base”截断约 25%（OlympiadBench），蒸馏约 10%；绝对水平受上限影响，比较是同一上限内的。DAPO 训练时的回答上限远大于 4096。
