@@ -7,7 +7,7 @@
 | 目录 | 内容 |
 |---|---|
 | `scans/` | 2026-11-27 对 ICLR 2027 投稿、NeurIPS 2026 接收论文、2026-09 至 11 的 arXiv 的分主题扫描（A–E） |
-| `cross/` | 跨领域扫描（A–F）：其他领域对“闭环”“自生成训练材料”已经知道什么 |
+| `cross/` | 跨领域扫描（A–H）：其他领域对“闭环”“自生成训练材料”已经知道什么；G 为 PowerPlay、Go-Explore、MCC，H 为 DreamCoder、Decompiling Amortized Knowledge、Epiplexity |
 | `papers/` | 单篇或小批全文精读 |
 | `checks/` | 关键数字的原文核对、存在性检查（pass@k、公开 checkpoint） |
 | `prior-2026-10/` | 第一轮（2026-10）的领域地图、近邻定位表、文献账本、10-04 外部审计报告 |
@@ -17,10 +17,10 @@
 
 | 问题 | 主要笔记 |
 |---|---|
-| 闭环能走多远、新信息从哪里来 | `cross/CROSS_A`（迭代学习、performative prediction）、`cross/CROSS_F`（合成数据：累积与崩溃、锐化理论、知识与格式）、`scans/SCAN_2026-11_B`、`papers/READ_to_bias_or_not_to_bias`、`papers/READ_passk_yue2025_and_2606.15455`、`checks/CHECK_passk_and_checkpoints`、`papers/READ_rsi_arxiv_batch_2026-11`（STV、Self-Regress）、`papers/READ_rethinking_diversity_rlvr`（解题侧语义覆盖） |
+| 闭环能走多远、新信息从哪里来 | `cross/CROSS_A`（迭代学习、performative prediction）、`cross/CROSS_F`（合成数据：累积与崩溃、锐化理论、知识与格式）、`scans/SCAN_2026-11_B`、`papers/READ_to_bias_or_not_to_bias`、`papers/READ_passk_yue2025_and_2606.15455`、`checks/CHECK_passk_and_checkpoints`、`papers/READ_rsi_arxiv_batch_2026-11`（STV、Self-Regress）、`papers/READ_rethinking_diversity_rlvr`（解题侧语义覆盖）、`cross/CROSS_H`（Epiplexity：可学结构 vs 新颖） |
 | 闭环为什么先升后平再降 | `scans/SCAN_2026-11_A`（R-Zero 系列、Survive or Collapse、R-Quest、ATRI）、`papers/READ_memory_full_loop_audit`、`papers/READ_rsi_arxiv_batch_2026-11`（Self-Regress）、`cross/CROSS_A`、`cross/CROSS_B` |
 | 选进来的不等于学到的 | `scans/SCAN_2026-11_A`（Selection Is Not Learning）、`cross/CROSS_E`（回归均值、自适应过拟合）、`cross/CROSS_B`（UED、Graves）、`scripts/frontier_null_model.py` |
-| 改进器本身有没有变好 | `papers/READ_better_at_improving`（主笔精读）、`papers/READ_why_rsi_hard_to_verify`、`papers/READ_rsi_arxiv_batch_2026-11`（Auditing the Product、Agent Plasticity、The Self-Improvement Problem）、`scans/SCAN_2026-11_A`、`scans/SCAN_2026-11_D`（SPADE、PROPEL）、`cross/CROSS_B`（协同进化的进步测量）、`cross/CROSS_D`（DreamCoder、Minimo）、`papers/READ_skill_policy_coevolution_trap`（技能库与策略共同特化） |
+| 改进器本身有没有变好 | `papers/READ_better_at_improving`（主笔精读）、`papers/READ_why_rsi_hard_to_verify`、`papers/READ_rsi_arxiv_batch_2026-11`（Auditing the Product、Agent Plasticity、The Self-Improvement Problem）、`scans/SCAN_2026-11_A`、`scans/SCAN_2026-11_D`（SPADE、PROPEL）、`cross/CROSS_B`（协同进化的进步测量）、`cross/CROSS_D`（DreamCoder、Minimo）、`papers/READ_skill_policy_coevolution_trap`（技能库与策略共同特化）、`cross/CROSS_G`（开放式演化：积累什么、怎样判新任务）、`cross/CROSS_H`（程序库与摊销） |
 | 看不见的损失：持久保留 | `papers/READ_capability_loss_embodied_rsi`、`papers/READ_asset_or_expense`、`papers/READ_memory_full_loop_audit`、`papers/READ_rsi_arxiv_batch_2026-11`（Do Self-Evolving Agents Forget?） |
 | 测量、噪声、数据方法的真实效应 | `scans/SCAN_2026-11_C`（DataFlex-RL、AutoData、ADE 等）、`cross/CROSS_E`、`checks/VERIFY_2026-11` |
 | 生产者强弱与数据价值 | `cross/CROSS_F`、`cross/CROSS_C`（learnability gap、教学理论）、`cross/CROSS_D`（TTS、SynthCLIP） |
