@@ -19,6 +19,7 @@
 - **工作假设（未验证）：**
   - **通道**：可迁移的信息量受迁移数据上“教师 vs 基座”的累积对数似然比（KL 预算）约束。这能统一解释三件事：logit 蒸馏比采样 token 高效得多、divergence tokens 承载信号、按似然差过滤数据能放大迁移。
   - **解码器**：在固定的 KL 预算下，能否把信号解出来，取决于学习器的归纳偏置。按 ICML 2026 关于硬标签与旋转不变算法的结果类推，坐标级自适应（Adam）、低秩分解（LoRA）、稀疏正则这类**非旋转不变**的学习器应当在少量数据下就能解码，而旋转不变的 GD / 全参 SGD 需要随维度增长的数据量。如果成立，Adam/SGD、LoRA/全参、“正则放大迁移”、“数据量够大时全参也迁移”这四个矛盾可以收进一个解释。
+  - **竞争假设：** Chen et al.（2610.04907）把 GD 看作阻尼逐渐减弱的 Fisher 逆；按这个思路，Adam 的作用可能只是“预条件 ≈ 近似逆曲率”，与旋转不变性无关。两种假设在“把稀疏目标旋转成稠密基”时给出相反预测（见 §8 D4-a），这是第一个要做的判别实验。
 - **目标会议：** **ICML 2027**（官方：摘要 2027-01-14，全文 2027-01-22，AoE；来源 [icml.cc 2027 Reciprocal Reviewing 页](https://icml.cc/Conferences/2027/ReciprocalReviewingAndSubmissionQuotas)，正式 CfP 待发布）。截稿时主张不够就转投 NeurIPS 2027（`workbench/EXECUTION.md` §7），不关线。
 - **为什么适合 ICML：** 这是“理论 + 受控实验”形态。核心预测可以在线性 / logistic 玩具上精确检验，再到 LLM 上检验能否外推；ICML 2026 已经接收了硬 / 软标签理论（rotation invariance、Bridge–Garden）和 LLS（log-linearity）。
 
@@ -35,8 +36,8 @@
 
 1. **软标签与知识容量。** Hinton 2015（dark knowledge）→ Behrens & Zdeborová 2025（软标签在随机输入上泄露 held-out 知识）→ Cloud 2025（硬 token + 无关数据 + 同初始化也能传）→ Beyond Owls 2026（随机函数、后门可传；新信息基本只经 logit 通道）。
    - **缺口：** 硬 token 通道的容量从未被量化。
-2. **学习动态理论。** Cloud 单步定理 → Li 2026（PSD 核，NeurIPS workshop）/ Liu 2026（trait-direction drift，per-sample preference gap，NeurIPS）→ Blank 2026（steering-vector 蒸馏，NeurIPS）。
-   - **缺口：** 理论都是 GD 线性化，实验都用 Adam；Blank 说 Adam 必要，至少 5 篇说 SGD 也行；都没有把优化器的几何纳入理论。
+2. **学习动态理论。** Cloud 单步定理 → Li 2026（PSD 核，NeurIPS workshop）/ Liu 2026（trait-direction drift，per-sample preference gap，NeurIPS）→ Blank 2026（steering-vector 蒸馏，NeurIPS）→ **Chen 2026-10（2610.04907：带噪线性逆问题；GD ≈ 阻尼递减的 Fisher 逆；硬标签在低曲率方向放大采样噪声，所以需要数万条载体，软标签只需几百条）**。
+   - **缺口：** 理论都是 GD 线性化，实验都用 Adam；Blank 说 Adam 必要，至少 5 篇说 SGD 也行；没有一篇把优化器 / 参数化的几何（Adam、LoRA、全参）放进理论并给出缩放预测。
 3. **信号定位。** Zur 2025（token 纠缠）→ Schrodi 2026（divergence tokens，ICLR）→ Nief 2026（实体 token、早期 FFN，v2 自称部分结论有误）。
    - **缺口：** token 局部解释与全局方向解释从未在同一组运行上对照。
 4. **跨模型。** Cloud（需同初始化）→ Brockers（输出头兼容）/ Tang（Pythia↔OLMo 可迁移）/ Phantom Transfer（自然语言数据跨模型，NeurIPS）/ LLS（跨架构，ICML）。
@@ -88,7 +89,7 @@
 
 | # | 压力 | 出处 | 在论文中的位置 |
 |---|---|---|---|
-| P1 | **通道容量未知。** 新信息几乎只经 logit 蒸馏传过去：采样版随机函数 R²≈0，后门需要约 340 万条数据。另外，Beyond Owls 按似然差过滤数据，Liu 的 per-sample preference gap 预测漂移，Schrodi 的 divergence tokens 承载信号——三者都指向“教师 vs 基座的似然差”是关键量，但没人把它当作信息预算来测。 | Beyond Owls；Liu；Schrodi；Hinton | 主图 1、3 |
+| P1 | **通道容量未知。** 新信息几乎只经 logit 蒸馏传过去：采样版随机函数 R²=0.00；采样版后门（换了 steering-vector 教师、单次运行）在约 340 万条之后才首次出现。Chen 2610.04907 解释了硬标签为什么需要更多数据，但**没有给出能传多少比特、上限由什么决定**。另外，Beyond Owls 按似然差过滤数据，Liu 的 per-sample preference gap 预测漂移，Schrodi 的 divergence tokens 承载信号——三者都指向“教师 vs 基座的似然差”是关键量，但没人把它当作信息预算来测。 | Beyond Owls；Liu；Schrodi；Chen；Hinton | 主图 1、3 |
 | P2 | **解码器矛盾。** Adam 必要（Blank）vs SGD 可行（Morgulis、Feng、Tang、Xu）；LoRA 倒 U（Nief，固定 lr）vs 单调（Feng，逐 rank 调 lr）；全参不迁移（Nief、Blank）vs 数据量大时迁移（Feng 500k）；正则放大迁移（Feng）。 | Blank；Nief；Feng；Morgulis | 主图 2、4 |
 | P3 | **跨初始化。** 数字数据跨模型≈0，自然语言数据跨 10 个模型都迁移，Pythia 跨 seed 可迁移。在通道 × 解码器框架下，可以解释为异基座使“解码器”失配，而自然语言通道的 KL 预算中有可跨模型读取的语义成分。 | Cloud；Phantom；Shah；Tang；Madl | 讨论 / 扩展实验（视时间） |
 | P4 | **信号是 token 局部的还是全局方向。** 两边都有阳性证据，从未在同一组运行上同时检验。 | Schrodi；Nief；Blank；Hadley | 附录或后续工作 |
@@ -98,6 +99,7 @@
 
 | 最近邻 | 它占有的 claim | 我们的增量（目标） | compression risk |
 |---|---|---|---|
+| **Chen et al.（预印本 2026-10，2610.04907）** | 硬 vs 软标签的样本复杂度来自 Fisher 逆与采样噪声；软标签几百条、硬标签数万条 | (1) 学习器维度：Adam / LoRA / 全参的差异及其随 d 的缩放，Chen 只分析 GD；(2) 容量：任意新信息（随机绑定）能传多少比特，而不只是恢复一个 steering 方向；(3) 跨模型 / 跨通道 | **高**：硬 / 软差距这一条几乎被占有。主图 1 不能只是“硬标签需要更多数据”，必须给出比特上限和学习器缩放 |
 | Liu et al.（NeurIPS 2026，trait-direction drift） | 每个样本的 preference gap（似然差）驱动沿特质方向的漂移；corridor 正则 | 把似然差上升为**信息预算**，用于预测任意新信息的可迁移比特数；比较硬 / 软通道；加入解码器维度 | **高**：审稿人可能说“Liu 已经用似然差解释了”。必须展示 Liu 解释不了的东西：通道比较、容量上限、学习器缩放 |
 | Blank et al.（NeurIPS 2026，steering-vector 蒸馏） | 可 steer 性预测迁移；Adam 必要 | 用旋转不变性解释“为什么 Adam 必要、什么时候 SGD 也行”，并给出数据量阈值的缩放预测 | 中 |
 | Feng et al.（预印本 2026-11，正则放大迁移） | 低 rank、L1、更多数据都放大迁移 | 给出机制性理由（非旋转不变 / 稀疏归纳偏置）和定量缩放；多 seed | **中高**：方向最接近；若他们先补上理论，我们的增量就只剩通道部分 |
@@ -105,11 +107,18 @@
 | Hard-label rotation invariance（ICML 2026） | 线性 logistic 中，硬标签让旋转不变算法吃亏 | 把该结论迁移到 SL 设置，并在 LLM 上检验 | 低（他们不涉及 SL），但要讲清楚理论贡献是“应用 + 验证”还是“新定理” |
 | LLS（ICML 2026） | log-linear 结构 → 选子集诱导特质 | 我们讨论的是从教师生成的数据中解码，不是数据选择 | 低 |
 
-**待核：** 是否已有工作用 KL / 比特 / 容量量化 SL（代理在查，结果见 §7）。
+**已核（2026-11-27）：** 在 84 篇含 subliminal 的 arXiv 摘要中，没有一篇用教师 / 基座 KL 或对数似然比给迁移设上限，也没有一篇测量硬 token 通道能传多少比特或任意新信息。最近的是 Chen（样本复杂度）和 Liu（用似然差做相关，不是上限）。只检索了标题和摘要，正文中是否有类似分析未知。
 
 ## 7. 核对状态
 
-- 本卡与文献地图中的数字来自调研代理（WebFetch 读 arXiv HTML，得到的是模型摘要）。关键数字正在逐条对原文核对；核对结果写回本节和文献地图。
+- **2026-11-27 已对原文逐条核对 12 组关键数字**，7 组有误，已在本卡和文献地图中改正：
+  - Beyond Owls：80.9% 是 Nemotron 直接训练的结果；约 340 万条是采样版首次出现法语的时点（数据集 450 万行，换了 steering-vector 教师，单次运行）；“50 倍”是数据集大小之比，不是受控效率比；教师并非全是 LoRA。
+  - Liu：相关系数为 +0.769 至 +0.845；corridor 降到 6.45%；preference gap 的基线是 K 个中性 prompt 的平均。
+  - Tang：90–97% 是同一模型预训练轨迹内 checkpoint 网格的因子模型，不是跨模型配对；Pythia↔OLMo 的超出率只有 14%。
+  - Blank：arXiv 上没有 venue comments，NeurIPS 会议页存在。
+  - Cloud：跨模型原文措辞是“do not reliably”，比“≈0”弱。
+  - 其余（Schrodi、Nief、Feng、Phantom）确认；Feng 的种子数为主图 2–3 个、附录多为单 seed。
+- 未核对的数字在文献地图中没有 `核✓` 标记。
 - OpenReview 读不到，没有审稿意见。
 
 ## 8. 驻留（D1–D6），按 ICML 需要的证据排序，不排日期
@@ -122,7 +131,8 @@
 2. **D4-a 理论玩具（最便宜、最具决定性）。**
    - 线性 / logistic 教师–学生：教师偏移是 s-稀疏或低秩的，学生只看硬采样标签或软标签；
    - 比较 GD、Adam、u⊙v / 低秩重参数化，测解码阈值 n* 随 d 和 s 的缩放。
-   - 这一步在跑之前就写好两种结果的决策表：缩放符合预测 → 进 LLM；不符合 → 解码器假设作废，P2 回到纯测量。
+   - **判别 Chen 式“预条件 ≈ 逆曲率”与旋转不变性假设：** 把同一个稀疏偏移用随机正交矩阵旋转成稠密基。旋转不变性假设预测 Adam 的优势在旋转后消失；逆曲率假设预测优势取决于曲率谱，不受这种旋转影响。
+   - 这一步在跑之前就写好决策表：缩放与旋转结果符合旋转不变性 → 进 LLM；符合逆曲率 → 主旨改为“曲率 × 学习器”，并与 Chen 重新定位；两者都不符 → 解码器假设作废，P2 回到纯测量。
 3. **D4-b LLM 通道测量。**
    - 对每条迁移数据记录教师 vs 基座的对数似然比，验证迁移量是否随累积预算单调；
    - 比较硬 token 与 top-k logit 两种通道；
@@ -147,6 +157,7 @@ D4-c 与 P3 视进度而定，可作为扩展或留到 NeurIPS 2027。到截稿�
 | 风险 | 可能性 | 对策 |
 |---|---|---|
 | 强组先发表统一解释（Feng 组最近） | 中高 | 先跑 D4-a 玩具（便宜，能最早知道假设死活）；每次主旨变化都重扫近邻；如果被抢，就把增量转向通道容量（P1） |
+| 被压缩成“Chen 已经解释了硬标签需要更多数据” | 高 | 主旨不能停在硬 / 软差距；必须拿出 Chen 框架（只有 GD、只有方向恢复）给不出的东西：学习器缩放与旋转判别（D4-a）、任意新信息的比特容量（D4-c） |
 | 被压缩成“Liu 的 preference gap 换了个名字” | 中 | 主图 1 / 3 必须展示 Liu 的框架预测不了的量（硬 / 软通道差距、比特上限、学习器缩放） |
 | 旋转不变性类比在 LLM 上不成立（特质偏移并不稀疏或低秩） | 中 | 先在 LLM 里测教师偏移的有效秩 / 稀疏度；不成立时 P2 退回为“严格的受控测量”，仍可作为证据贡献 |
 | 效应只在 Qwen 上成立 | 中 | 从一开始就跑 2 个家族；只在 Qwen 上成立本身也要报告（P5） |
