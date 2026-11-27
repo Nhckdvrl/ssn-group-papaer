@@ -1,0 +1,136 @@
+"""E15b analysis (CPU only): surface/structure readouts of generated questions and admission readouts
+under fixed solvers. Thresholds fixed before the run (card E15): near-duplicate = Jaccard >= 0.7 on word
+3-gram shingles (MinHash 128 perms, LSH 32x4 then exact check); admission bands [0.3, 0.8] (code) and
+[0.3, 0.7] (paper); hard tail = majority share <= 0.3 among non-dropped, scored questions.
+
+Usage: python e15b_analyze.py --gen_dir <dir with gen_<tag>_s<seed>.jsonl> --admit_dir <dir> --out <json>
+"""
+import argparse
+import collections
+import glob
+import json
+import os
+import re
+import statistics as st
+import zlib
+
+import numpy as np
+
+P = (1 << 61) - 1
+RNG = np.random.default_rng(12345)
+A = RNG.integers(1, P - 1, size=128, dtype=np.uint64)
+B = RNG.integers(0, P - 1, size=128, dtype=np.uint64)
+NUM = re.compile(r"-?\d+(?:\.\d+)?")
+
+
+def shingles(text, k=3):
+    w = re.findall(r"\w+", text.lower())
+    if len(w) < k:
+        return {zlib.crc32(" ".join(w).encode())} if w else set()
+    return {zlib.crc32(" ".join(w[i:i + k]).encode()) for i in range(len(w) - k + 1)}
+
+
+def minhash(sh):
+    if not sh:
+        return np.full(128, P, dtype=np.uint64)
+    x = np.fromiter(sh, dtype=np.uint64)
+    return ((np.outer(x, A) + B) % P).min(axis=0)
+
+
+def near_dup_pairs(sigs, shs, thr=0.7, bands=32, rows=4):
+    buckets = collections.defaultdict(list)
+    for i, s in enumerate(sigs):
+        for b in range(bands):
+            buckets[(b, s[b * rows:(b + 1) * rows].tobytes())].append(i)
+    cand = set()
+    for ids in buckets.values():
+        if 1 < len(ids) < 2000:
+            for a in range(len(ids)):
+                for c in range(a + 1, len(ids)):
+                    cand.add((ids[a], ids[c]))
+    out = []
+    for i, j in cand:
+        u = len(shs[i] | shs[j])
+        if u and len(shs[i] & shs[j]) / u >= thr:
+            out.append((i, j))
+    return out
+
+
+def surface(rows):
+    qs = [r["question"] for r in rows if r["parse_ok"]]
+    nums = [[float(x) for x in NUM.findall(q)] for q in qs]
+    digits = [max((len(x.split(".")[0].lstrip("-")) for x in NUM.findall(q)), default=0) for q in qs]
+    return {
+        "n": len(rows), "parse_rate": len(qs) / max(1, len(rows)),
+        "truncated_rate": sum(r["finish"] == "length" for r in rows) / max(1, len(rows)),
+        "gen_tokens_mean": st.mean(r["n_tokens"] for r in rows) if rows else None,
+        "q_chars_median": st.median(len(q) for q in qs) if qs else None,
+        "q_chars_mean": st.mean(len(q) for q in qs) if qs else None,
+        "numbers_per_q_mean": st.mean(len(n) for n in nums) if qs else None,
+        "max_digits_median": st.median(digits) if qs else None,
+        "exact_dup_rate": 1 - len(set(qs)) / max(1, len(qs)),
+    }, qs
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--gen_dir", required=True); ap.add_argument("--admit_dir", default=None)
+    ap.add_argument("--out", required=True); ap.add_argument("--ref_tag", default="base")
+    a = ap.parse_args()
+    by_tag = collections.defaultdict(list)
+    for p in sorted(glob.glob(os.path.join(a.gen_dir, "gen_*.jsonl"))):
+        for l in open(p):
+            r = json.loads(l); by_tag[r["tag"]].append(r)
+    res = {"surface": {}, "dup": {}, "admit": {}}
+    qsets = {}
+    for tag, rows in by_tag.items():
+        res["surface"][tag], qsets[tag] = surface(rows)
+        # per-seed halves for the noise floor
+        for s in sorted({r["seed"] for r in rows}):
+            res["surface"][f"{tag}|seed{s}"], _ = surface([r for r in rows if r["seed"] == s])
+    # near duplicates: within each set (fixed-size random subsample so sets of different size compare fairly)
+    rng = np.random.default_rng(0)
+    m = min(len(q) for q in qsets.values())
+    sub = {t: [q[i] for i in rng.choice(len(q), size=m, replace=False)] for t, q in qsets.items()}
+    for tag, qs in sub.items():
+        shs = [shingles(q) for q in qs]; sigs = [minhash(s) for s in shs]
+        pairs = near_dup_pairs(sigs, shs)
+        involved = {i for p in pairs for i in p}
+        res["dup"][tag] = {"m": m, "near_dup_pairs": len(pairs), "frac_in_near_dup": len(involved) / m}
+    # cross-set: fraction of each set's questions with a near-duplicate in the reference (base) pool
+    if a.ref_tag in sub:
+        ref = sub[a.ref_tag]; rsh = [shingles(q) for q in ref]; rsig = [minhash(s) for s in rsh]
+        for tag, qs in sub.items():
+            if tag == a.ref_tag:
+                continue
+            shs = [shingles(q) for q in qs]; sigs = [minhash(s) for s in shs]
+            pairs = near_dup_pairs(rsig + sigs, rsh + shs)
+            hit = {j - len(ref) for i, j in pairs if i < len(ref) <= j}
+            res["dup"][tag]["frac_near_dup_of_ref"] = len(hit) / m
+    if a.admit_dir:
+        for p in sorted(glob.glob(os.path.join(a.admit_dir, "admit_*.jsonl"))):
+            solver = os.path.basename(p)[len("admit_"):-len(".jsonl")]
+            rows = [json.loads(l) for l in open(p)]
+            for tag in sorted({r["tag"] for r in rows}):
+                rr = [r for r in rows if r["tag"] == tag]
+                for s in [None] + sorted({r["seed"] for r in rr}):
+                    xs = [r for r in rr if s is None or r["seed"] == s]
+                    sc = [r["score"] for r in xs if r["score"] is not None and not r["dropped"]]
+                    key = f"{solver}|{tag}" + ("" if s is None else f"|seed{s}")
+                    pr = res["surface"].get(tag, {}).get("parse_rate", 0)
+                    adm8 = sum(0.3 <= x <= 0.8 for x in sc) / max(1, len(xs))
+                    res["admit"][key] = {
+                        "n": len(xs), "kept_after_drop": len(sc) / max(1, len(xs)),
+                        "admit_03_08": adm8, "admit_03_07": sum(0.3 <= x <= 0.7 for x in sc) / max(1, len(xs)),
+                        "hard_tail_le_03": sum(x <= 0.3 for x in sc) / max(1, len(xs)),
+                        "unanimous": sum(x == 1.0 for x in sc) / max(1, len(xs)),
+                        "agree_setter": sum(r["agree_setter"] for r in xs) / max(1, len(xs)),
+                        "admitted_per_1k_samples": 1000 * pr * adm8,
+                        "score_hist": np.histogram(sc, bins=[0, .2, .3, .4, .5, .6, .7, .8, .9, 1.0001])[0].tolist(),
+                    }
+    json.dump(res, open(a.out, "w"), indent=1, ensure_ascii=False)
+    print(json.dumps(res["surface"], indent=1, ensure_ascii=False)[:3000])
+
+
+if __name__ == "__main__":
+    main()
