@@ -1,7 +1,7 @@
 """E09 summary: de-randomisation vs choice effect per family and problem set.
 B2 (lockstep, e04_hybrid t_base_postmode) from /tmp/xiang_lmhead/e09/gen/<tag>*.jsonl (shards/seeds merged by
 (index, sample-file)); B0 / B1 / P0 from the E08 vLLM anchors in /tmp/xiang_lmhead/e08/gen.
-Usage: python3 e09_summary.py <fam> <set> <base_key> <post_key> <b2_glob>
+Usage: python3 e09_summary.py <fam> <set> <base_key> <post_key> <b2_glob> [anchor_cap]
   e.g. python3 e09_summary.py o math_l5_300 olmo3-base olmo3-rlzero-math 't_o_B2_math_l5_s*'"""
 import glob
 import json
@@ -20,6 +20,20 @@ def boot(per, n=4000, seed=0):
     return [round(sum(m) / len(m), 4), round(bs[int(0.025 * n)], 4), round(bs[int(0.975 * n)], 4), len(ks)]
 
 
+CAP = None   # set from argv: re-score anchors as if generation had stopped at CAP tokens (match the B2 cap)
+TOK = None
+
+
+def rescore(c, answer):
+    """Reward of an anchor completion truncated to CAP generated tokens (same verifier)."""
+    if CAP is None or len(c["token_ids"]) <= CAP:
+        return c["reward"]
+    from verifier import extract_answer, is_equiv
+    text = TOK.decode(c["token_ids"][:CAP])
+    pred = extract_answer(text)
+    return float(pred is not None and is_equiv(pred, answer))
+
+
 def anchor(tag):
     f = Path("/tmp/xiang_lmhead/e08/gen") / f"{tag}.jsonl"
     if not f.exists():
@@ -27,12 +41,18 @@ def anchor(tag):
     out = {}
     for l in open(f):
         r = json.loads(l)
-        out[r["index"]] = [c["reward"] for c in r["completions"]]
+        out[r["index"]] = [rescore(c, r["answer"]) for c in r["completions"]]
     return out
 
 
 def main():
+    global CAP, TOK
     fam, s, bkey, pkey, pat = sys.argv[1:6]
+    if len(sys.argv) > 6:
+        CAP = int(sys.argv[6])
+        import models
+        from transformers import AutoTokenizer
+        TOK = AutoTokenizer.from_pretrained(models.path(pkey))
     B2 = {}
     meta = {"files": [], "len": [], "trunc": [], "parse_fail": []}
     for f in sorted(glob.glob(f"/tmp/xiang_lmhead/e09/gen/{pat}.jsonl")):
@@ -43,7 +63,7 @@ def main():
             meta["len"].append(r["n_tokens"]); meta["trunc"].append(r["truncated"]); meta["parse_fail"].append(r["pred"] is None)
     B0, B1, P0 = anchor(f"a_{bkey}_{s}"), anchor(f"a_{bkey}-B1_{s}"), anchor(f"a_{pkey}_{s}")
     ks = sorted(set(B2) & set(B0 or {}) & set(B1 or {}) & set(P0 or {}))
-    res = {"family": fam, "set": s, "n_problems": len(ks), "b2_files": meta["files"],
+    res = {"family": fam, "set": s, "anchor_cap": CAP, "n_problems": len(ks), "b2_files": meta["files"],
            "b2_samples": sum(len(B2[k]) for k in ks),
            "b2_mean_len": round(sum(meta["len"]) / max(1, len(meta["len"])), 1),
            "b2_trunc": round(sum(meta["trunc"]) / max(1, len(meta["trunc"])), 4),
@@ -56,7 +76,7 @@ def main():
                      "choice B2-B1": boot({k: [mean(B2[k]) - mean(B1[k])] for k in ks}),
                      "remaining P0-B2": boot({k: [mean(P0[k]) - mean(B2[k])] for k in ks})}
     out = ROOT / "results" / "e09"; out.mkdir(parents=True, exist_ok=True)
-    (out / f"summary_{fam}_{s}.json").write_text(json.dumps(res, indent=1))
+    (out / f"summary_{fam}_{s}{'_cap' + str(CAP) if CAP else ''}.json").write_text(json.dumps(res, indent=1))
     print(json.dumps(res, indent=1))
 
 
