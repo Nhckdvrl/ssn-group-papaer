@@ -21,6 +21,9 @@
 | Behrens & Zdeborová, 2506.14457 `[摘要]` | 自称 ICLR 2026（未核） | 软标签在随机数据上泄露教师记忆的 held-out 标签，强依赖温度 | 最近的“数据集蒸馏”类比；需要软标签 |
 | Betley et al., Emergent Misalignment, 2502.17424 `[摘要]` | ICML 2025 ✓ / Nature | 窄域 insecure code 微调 → 广泛 misalignment | Cloud 复用其设置并怀疑部分 EM 是 subliminal |
 | Ilyas et al. 2019 non-robust features | — | 非鲁棒特征跨模型迁移 | SL 信号不跨模型（至少数字通道） |
+| Nayak et al., *Effectiveness of Arbitrary Transfer Sets for Data-Free Knowledge Distillation*（2011.09113）`[未读，来自 GPT 反馈]` | WACV 2021 | 用随机噪声或无关自然数据做迁移集也能蒸馏 | 视觉、软标签；SL 的“任意载体”祖先 |
+| Stanton et al., *Does Knowledge Distillation Really Work?*（2106.05945）`[未读，来自 GPT 反馈]` | NeurIPS 2021 | 学生性能与师生函数一致性（fidelity）不同步；数据再多也难以贴合教师 | 与“学生能恢复多少教师变化”直接相关 |
+| Frank & Davis, *What Makes a Good Dataset for Knowledge Distillation?* `[未读，来自 GPT 反馈，未核]` | CVPR 2025 | 从输入覆盖与函数拟合角度理解迁移数据的选择 | 载体选择 |
 | *Hard labels sampled from sparse targets mislead rotation invariant algorithms* `[摘要]` | ICML 2026 poster（corpus ✓） | 稀疏 logistic 目标下，只给硬采样标签时，旋转不变算法（如 GD）超额风险 Ω((d−1)/n)，u⊙v 重参数化算法为 O(s log d / n) | 不涉及 SL；可能解释 SL 中 Adam / LoRA / 稀疏正则为什么更容易迁移（territory 卡 P2 的理论入口） |
 | *The Bridge–Garden Dilemma in LLM Distillation* `[摘要]` | ICML 2026 poster（corpus ✓） | 混合硬 / 软标签优于纯软标签；收益来自降低 exposure bias，而非更贴近教师 | 普通蒸馏中硬 / 软通道的差异；SL 中两者的效率差距（Beyond Owls）尚无理论 |
 | *Distillation Scaling Laws* `[摘要]` | ICML 2025 poster（corpus ✓） | 蒸馏性能随算力在师生间分配的缩放律 | 受控测量范式参考 |
