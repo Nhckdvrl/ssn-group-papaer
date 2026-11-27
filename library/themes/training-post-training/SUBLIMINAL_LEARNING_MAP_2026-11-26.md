@@ -29,6 +29,16 @@
 | Ortiz-Jiménez et al., *Task Arithmetic in the Tangent Space*（2305.12827）`[摘要]` | NeurIPS 2023 | 权重解耦来自预训练；与 NTK 特征函数的空间局部化相关 | 多知识同时迁移时的干扰 |
 | Mingard et al., *DNNs have an inbuilt Occam's razor*（2304.06670）`[摘要]` | Nature Comms 2025 | 对 Kolmogorov 简单函数的先验偏置 | 与 Feng 的“简单性偏置”假说相关 |
 | Furlanello et al., *Born-Again Networks*（1805.04770）`[摘要]` | ICML 2018 | 同架构学生可超过教师 | 学生不只是复制教师 |
+| Nagarajan et al., *On student-teacher deviations in distillation*（2301.12923）`[摘要+核心主张]` | NeurIPS 2023 | 学生系统性地夸大教师的置信度；KD 夸大 GD 沿数据主特征方向更快收敛的隐式偏置 | 与 Chen 的 Fisher 谱顺序、Saxe 的逐模式学习同一谱系 |
+| Sarnthein et al., *Random Teachers are Good Teachers*（2302.12091）`[摘要]` | ICML 2023 | 向随机初始化教师蒸馏，学生表征也会改善，说明仅靠师生动力学的隐式正则就有收益 | 必须加随机教师对照 |
+| Wu et al., *What Mechanisms Does KD Distill?* `[PDF 摘要+引言]` | UniReps/PMLR 2024 | 用数据隐变量的反事实变化定义“机制”；Jacobian 匹配、对比表征学习能部分转移机制 | “功能结构是否被继承”的方法先例 |
+| Donoway et al., *Quantifying Elicitation of Latent Capabilities*（NeurIPS 2025）`[摘要]` | NeurIPS 2025 | 训练 10–100 个随机参数就能恢复最多 50% 的性能差距；用所需参数数区分激活与教授 | “实现复杂度”的操作化 |
+| Saxe et al., *A mathematical theory of semantic development*（1810.10531）`[结构与主张]` | PNAS 2019 | 深线性网络按奇异值强度逐模式学习，呈阶段式转变与层级分化 | 知识成分恢复顺序的理论参照 |
+| Rahaman et al., *Spectral Bias*（1806.08734）`[摘要]` | ICML 2019 | 网络优先学习低频函数 | 注意与载体 Fisher 谱不是同一概念 |
+| Achille et al., *Task2Vec*（1902.03545）；Vu et al.（2005.00770）`[摘要]` | ICCV 2019；EMNLP 2020 | 基于 Fisher 的任务嵌入；NLP 任务间非对称可迁移性与预测 | 模型兼容性 M(T,S,τ) 的方法先例 |
+| *On the Generalization vs Fidelity Paradox in KD*（2505.15442）`[摘要]` | ACL Findings 2025 | 0.5–7B、19 个任务：KD 提升准确率，但不一定保持教师的推理保真度 | LLM 尺度上的 fidelity 问题 |
+| ICML 2026 *What Makes a Strong Model? Unified Spectral Analysis of Knowledge Transfer* `[摘要]` | ICML 2026 | 高维线性回归中 SGD 动力学的统一谱分析：KD 的 spectral horizon expansion、W2S 的 spectral denoising | 理论部分的直接近邻 |
+| ICLR 2026 oral *Watch your steps (FAB)* `[摘要]` | ICLR 2026 oral | 元学习构造的“微调后才激活”的潜伏行为 | 与“学习准备效应”相关但机制不同 |
 | *Hard labels sampled from sparse targets mislead rotation invariant algorithms* `[摘要]` | ICML 2026 poster（corpus ✓） | 稀疏 logistic 目标下，只给硬采样标签时，旋转不变算法（如 GD）超额风险 Ω((d−1)/n)，u⊙v 重参数化算法为 O(s log d / n) | 不涉及 SL；可能解释 SL 中 Adam / LoRA / 稀疏正则为什么更容易迁移（territory 卡 P2 的理论入口） |
 | *The Bridge–Garden Dilemma in LLM Distillation* `[摘要]` | ICML 2026 poster（corpus ✓） | 混合硬 / 软标签优于纯软标签；收益来自降低 exposure bias，而非更贴近教师 | 普通蒸馏中硬 / 软通道的差异；SL 中两者的效率差距（Beyond Owls）尚无理论 |
 | *Distillation Scaling Laws* `[摘要]` | ICML 2025 poster（corpus ✓） | 蒸馏性能随算力在师生间分配的缩放律 | 受控测量范式参考 |
@@ -127,6 +137,8 @@
 | Shah et al., *Covert Influence*, 2606.04071 `[摘要]` | 无 venue | — | **数字载体更隐蔽，但跨家族迁移比自然语言载体差** |
 | Kim & Choi, *Subliminal RL*, 2610.41301 `[摘要]` | 无 venue | GRPO + LLM judge | 48 个设计格中 17 个迁移；异基座 judge 不迁移 |
 | “Subliminal Signals in Preference Labels” | ICLR 2026 AIWILD workshop | 偏好标签 | 有偏 judge 通过二元偏好标签传特质，迭代对齐中增强 |
+| Amjith, …, Torralba, Kim, *Subliminal Learning Crosses Modalities*（2611.31870）`[摘要、§3–4、附录 A.2、C.3]` | 无 venue（2026-11-24） | VLM 跨模态 | 图像表征偏移不区分情感；文本中的情感效应因特质而异（cat：hate 39% ≈ love 42%；owl/crimson：hate 学生很少说成最爱，但 log-prob +1.6–3.7 nats）；**weight lens 能从权重读出情感** → 吸收了但没表达。只有 Qwen3-VL-8B、硬标签、prompt 教师 |
+| Masud & Shefa, *Audit at the Precision You Deploy*（2611.00665）`[摘要、方法、结果]` | 无 venue（2026-10-31） | 量化与读出 | Qwen2.5-7B panda：HQQ 4-bit 55%→64%，NF4 推低；>99% 增量保留、方向保留至 98%；显式训练的学生波动窄约 5 倍 |
 | Hatami et al., 2611.08538 | WACV 2027 ✓ | VLM | 最多约 10 个百分点 |
 | Amjith, …, Torralba, Kim, 2611.31870 `[摘要]` | 无 venue | VLM → 扩散文本编码器 | 提出 weight lens 检测 |
 | Vo et al., *Slow Decay*, 2609.25721 `[摘要]` | 无 venue | 10 代蒸馏谱系 | 表达衰减，但 probe 仍为正（潜在特质） |
