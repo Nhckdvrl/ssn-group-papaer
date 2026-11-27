@@ -7,7 +7,7 @@
 | 目录 | 内容 |
 |---|---|
 | `scans/` | 2026-11-27 对 ICLR 2027 投稿、NeurIPS 2026 接收论文、2026-09 至 11 的 arXiv 的分主题扫描（A–E） |
-| `cross/` | 跨领域扫描（A–H）：其他领域对“闭环”“自生成训练材料”已经知道什么；G 为 PowerPlay、Go-Explore、MCC，H 为 DreamCoder、Decompiling Amortized Knowledge、Epiplexity |
+| `cross/` | 跨领域扫描（A–J）：其他领域对“闭环”“自生成训练材料”已经知道什么；G 为 PowerPlay、Go-Explore、MCC，H 为 DreamCoder、Decompiling Amortized Knowledge、Epiplexity，I 为学到的环境生成器的失败与修复（Stabilizing UED、ADD），J 为非对称自我对弈 |
 | `papers/` | 单篇或小批全文精读 |
 | `checks/` | 关键数字的原文核对、存在性检查（pass@k、公开 checkpoint） |
 | `prior-2026-10/` | 第一轮（2026-10）的领域地图、近邻定位表、文献账本、10-04 外部审计报告 |
@@ -24,7 +24,7 @@
 | 看不见的损失：持久保留 | `papers/READ_capability_loss_embodied_rsi`、`papers/READ_asset_or_expense`、`papers/READ_memory_full_loop_audit`、`papers/READ_rsi_arxiv_batch_2026-11`（Do Self-Evolving Agents Forget?） |
 | 测量、噪声、数据方法的真实效应 | `scans/SCAN_2026-11_C`（DataFlex-RL、AutoData、ADE 等）、`cross/CROSS_E`、`checks/VERIFY_2026-11` |
 | 生产者强弱与数据价值 | `cross/CROSS_F`、`cross/CROSS_C`（learnability gap、教学理论）、`cross/CROSS_D`（TTS、SynthCLIP） |
-| 任务与环境合成 | `scans/SCAN_2026-11_D`、`papers/READ_benchevolver`（冻结生成器、只演化产物）、`papers/READ_automated_conjecturing`（随机扰动 vs 学到的猜想者） |
+| 任务与环境合成 | `scans/SCAN_2026-11_D`、`papers/READ_benchevolver`（冻结生成器、只演化产物）、`papers/READ_automated_conjecturing`（随机扰动 vs 学到的猜想者）、`cross/CROSS_I`（学到的生成器 vs 随机生成加筛选）、`cross/CROSS_J`（非对称自我对弈） |
 | 领域全貌、blog、awesome 仓库、综述 | `scans/SCAN_2026-11_E` |
 | 安全 | `scans/SCAN_2026-11_A`（RSI Control）、`scans/SCAN_2026-11_B`（Progressive Misalignment） |
 
