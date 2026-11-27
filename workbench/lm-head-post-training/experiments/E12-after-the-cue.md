@@ -1,5 +1,5 @@
 # E12：Base 进入“Alright”开头的推理方式之后，后训练还加了什么？（2026-11-28）
-- **状态：** RUNNING
+- **状态：** RUNNING（BA1 OlympiadBench 完成；BA2 运行）
 - **类型：** PILOT / 对照（vLLM 单模型；必要时同步解码）
 - **对应：** I05；接 E11（强制 “Alright, I have this problem” 开头的 Base：易题 +9.8、MATH L5 未见 +13.6、OlympiadBench +15.7，追平或超过 DAPO 的全部增益；蒸馏只在 OlympiadBench（+3.9）与 DAPO 训练过的难题（+10.7）上超出）
 - **问题（一句话）：** E07 的“去随机化 / 选择效应”是在 Base 默认的回答方式下测的；Base 被开头带入更长的推理方式后，去随机化还剩多少？蒸馏超出开头的那部分，是否仍落在高熵分叉处的选择上？
@@ -16,3 +16,6 @@
   - BA1 − BA 明显为正且 BA1 ≥ P0 → 在 OlympiadBench 上，开头 + 去随机化已达到蒸馏；“蒸馏在分叉处的新选择”在开头之后不再需要，BA2 不跑。
   - BA1 − BA 为正但 BA1 < P0 → 剩余差距由 BA2 检验。
 - **算力预算：** BA1 约 2 GPU·时（fvcrc11 GPU0）；BA2 视情况约 6 GPU·时。
+- **结果（`scripts/e12_summary.py` → `results/e12/summary.json`）：**
+  - **BA1，OlympiadBench（495 题，剔除 DAPO 见过的 6 题；BA1 每题 4 样本）：** BA 55.0、BA1 54.7；**开头之后的去随机化 BA1 − BA = −0.3 [−1.9, 1.4]**（无开头时 B1 − B0 = +6.3 [2.4, 10.1]）。长度与截断不变（2213 token / 24.9%，BA 2187 / 23.9%）。按 p_base 分层各层均 ≈0。蒸馏仍比 BA1 高 +4.1 [2.0, 6.4]，DAPO 比 BA1 低 3.2 [1.3, 4.9]。
+  - **按决策表：** 第一行。Base 默认回答方式下“分叉处取首选”的作用，在开头之后消失；E07 的去随机化增益也属于这种推理方式的一部分。启动 BA2：开头 + 分叉处取蒸馏首选（同步解码，`e04_hybrid.py qwen-base__post --force_prefix`，OlympiadBench E07 的 300 题，两片：fvcrc13 GPU0、fvcrc11 GPU1，批 16，上限 4096）。读数：BA2 − BA1（单样本对 4 样本均值，按题配对）。BA2 ≈ P0 → 蒸馏超出开头的部分在分叉处的选择上；BA2 ≈ BA1 → 不在分叉处，分布在更长的过程中（与 E11 中蒸馏续写作用延续到回答后半一致）。MATH L5、易题的 BA1 在跑。
