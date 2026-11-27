@@ -2,77 +2,83 @@
 
 ## 状态（中文进度页）
 
-**状态：** PROPOSED（用户 2026-11-26 要求开始做；是否登记为 ACTIVE 由人决定）
-**territory 卡：** [研究思想与讨论沿革](logs/2026-11-26.md)　**目标会议 / 截稿：** 待定（ACL / ICML / ICLR / NeurIPS；不投 Findings） / —　**上次人审：** 2026-11-26（用户确认从纸面讨论转向实验探索，具体论文主旨未定）
-**一句话（当前版本）：** 研究现代语言模型输出头在后训练中的功能变化及学习信号传递，通过真实模型测量和最小干预，寻找可解释、可复现、值得进一步研究的现象。
+**状态：** PROPOSED（用户 2026-11-26 要求开始做；是否登记为 ACTIVE、是否随问题改名，由人决定）
+**目标会议 / 截稿：** 待定（ACL / ICML / ICLR / NeurIPS；不投 Findings）　**上次人审：** 2026-11-27（第三轮 GPT/Gemini 反馈后，用户放行 E07）
+**当前问题（一句话）：** 后训练模型在 Base 拿不准的位置做出的选择，在什么条件下对推理结果有可测影响——与只是去掉采样随机性相比。
+**讨论材料：** [DISCUSSION.md](DISCUSSION.md)（唯一一份，只写上次讨论以来的实验、数据和结论）。
 
-**当前进展（2026-11-26 晚，首轮完成，待人审）：** E01（4 个谱系对）与 E02（两家族各 128 题×8 条，外加头部 Adam 模拟 E02b）已跑完，约 1.5 GPU·时。结论按“问了什么 → 得到什么”：
-1. **Godey & Artzi 的“梯度瓶颈”几何不区分后训练范式**（C01–C02）。能传回骨干的 logit 梯度能量 ρ 在 Qwen 约 0.021、OLMo 约 0.032，都低于随机方向（d/V）。GRPO、普通 CE、RFT、教师 SFT 之间无差别，两家族一致。I02 原问题得到负结果。
-2. **RLVR 阶段几乎不动头**（C05）。OLMo 的两个 RL 对里，头部 ΔW 只有 1/4096 个方向高于 BF16 舍入地板；只换头的功能贡献约占 2–3%，分布变化几乎全部经由骨干。SFT/多阶段谱系里头动得和骨干一样多（C04），但大 SFT 下换头反事实失效（P03）。
-3. **SFT 与 RL 的区别落在头自身的更新通道上，但只在梯度层面看得到**（C03 / C06）。对“从未做目标的 token 行”，SFT 类信号的梯度跨批符号一致、模拟 Adam 下沿 −μ 稳定漂移；GRPO 下接近随机，两家族一致。可是在公开 checkpoint 上，控制整体收缩与频率之后，真实 SFT 与真实 RL 的头部逐行位移分不出这种差异（I04 的 checkpoint 检验为负结果）。
-E03（冻结头训练）仍未启动。
+### 问题是怎么演变的
 
-**第二轮进展（2026-11-27，用户授权自主推进，第二轮讨论材料见 [DISCUSSION.md](DISCUSSION.md)）：** 人审后从 LM Head 扩展到“后训练在下一 token 分布上改变了什么”，做了 E04（全局仿射成分、降温与熵门控、分叉处分布、分叉交换、选择题）、E05（单个分叉上的改选是否价值更高）、E06（分叉处承载增益的是随机性还是选择），约 25 GPU·时。要点：只给 Base 降温即拿到约 72% 的 MATH-500 增益，收益来自 Base 高熵位置；OLMo RL-Zero 的这部分全部是回答开头的模式选择（模板效应）；Qwen 上正反分叉交换充分且必要（近作已有，属复现）；单个分叉上的改选测不出价值；分叉处随机性的代价（尾部约 17 点、头部约 10–11 点）大于“谁的首选”（4–5 点）。主张 C07–C14。
+1. **LM Head 阶段（11-26，E01–E02）：** 头部梯度几何与权重变化不区分后训练范式；RLVR 阶段几乎不动头。原问题得到负结果（C01–C06）。
+2. **输出行为阶段（11-27，E04–E06）：** 转向“后训练在下一 token 分布上改变了什么”。MATH-500 上增益集中在 Base 高熵的分叉位置；Base 按 T=1 采样时，分叉处的随机性代价大于“谁的首选”；单个分叉上改选测不出价值；OLMo RL-Zero 的大部分差距是回答开头的模式选择（C07–C14）。正反分叉交换近作已有。
+3. **条件阶段（11-27 晚，E07）：** Base 改用近作的截尾采样（T=0.6/top-p 0.95）后，分叉处的选择效应在易题上 ≈0（+1.3），在 MATH Level 5 上 +14.0，难题上 Post 首选补上差距的 70%（C15）。OlympiadBench 复现运行中。
 
-## 给本地实验执行者的必读顺序
+### 当前状态
+
+- **已完成：** E01、E02、E04、E05、E06；E07 的 `math_l5`、`m500e`。
+- **运行中：** E07 的 OlympiadBench（B1 完成，B2 分三片在 fvcrc11/12 运行）。
+- **未做：** E03（冻结头训练，暂缓）；OLMo-3 RL-Zero 上的 E07（可行但慢，见 E07 卡）。
+- **算力：** 11-26 约 1.5 GPU·时；11-27 E04–E06 约 25 GPU·时，E07 约 23 GPU·时。
+
+## 目录
+
+| 位置 | 内容 |
+|---|---|
+| `README.md` | 本页：状态、目录、决策记录、资产位置 |
+| `DISCUSSION.md` | 当前一轮的讨论材料 |
+| `CLAIMS.md` | 主张账本 C01–C15、作废与更正记录 |
+| `PAIN_LOG.md` | 痛点 P01–P08 |
+| `RELATED_WORK.md` | 文献地图与精读核对（含近邻对照表） |
+| `MENTOR_REQUIREMENTS.md` | 导师标准与本项目执行要求 |
+| `RESEARCH_PLAN.md` | 历史：LM Head 阶段的技术指南（E01–E03） |
+| `ideas/` | I01–I05 idea 卡 |
+| `experiments/` | E01–E07 实验卡（设计、决策表、偏差、结果） |
+| `scripts/` | 全部代码，索引见 [scripts/README.md](scripts/README.md) |
+| `results/e0{1,2,4,5,7}/` | 进 git 的小型汇总（JSON/JSONL）；E06 的汇总在 `results/e04/hybrid_qwen.json` |
+| `data/` | 输入清单（只存索引与 sha1） |
+| `logs/` | 每日会话记录 |
+
+## 必读顺序
 
 1. 仓库根 AGENTS.md、RESOURCES.md、workbench/README.md、EXECUTION.md。
-2. [讨论沿革与研究思想](logs/2026-11-26.md)：为什么选这片研究空间、哪些旧路不再走、我们究竟希望学到什么。
-3. [导师研究标准与本项目执行要求](MENTOR_REQUIREMENTS.md)：具体 12 项标准、Discovery/Problem-first、晋级与首轮探索的区别。
-4. [关联工作与文献地图](RELATED_WORK.md)：先读 P0 两篇，其他按结果查阅；不要阻塞首轮实验。
-5. [技术口径与实现指南](RESEARCH_PLAN.md)：数学、内存、指标、对照、结果解读和交付要求。
-6. [E01 权重解剖](experiments/E01-checkpoint-anatomy.md)、[E02 梯度几何](experiments/E02-gradient-geometry.md)。不要先跑 E03。
-7. 读两篇核心原文的方法与实验，记录原文定位和实际复现配置，不重新开启无限查重。
+2. [DISCUSSION.md](DISCUSSION.md) 与 [CLAIMS.md](CLAIMS.md)：当前结论与证据等级。
+3. [E07](experiments/E07-choice-conditions.md)、[E06](experiments/E06-fork-head-vs-tail.md)、[E05](experiments/E05-fork-value.md)、[E04](experiments/E04-global-affine-component.md)：方法、对照与偏差记录。
+4. [RELATED_WORK.md](RELATED_WORK.md) §2.5：分叉交换与锐化相关近邻。
+5. [MENTOR_REQUIREMENTS.md](MENTOR_REQUIREMENTS.md)；LM Head 阶段的来龙去脉见 [logs/2026-11-26.md](logs/2026-11-26.md)。
 
-## 论文形态卡（探索初稿）
+## 论文形态卡（探索中）
 
-- 主旨：尚未确定；不能写成“LM Head 已被证明存在有害梯度瓶颈”。
-- 可能形态：理论与实证 / 失败模式与最小修复 / 学习机制分析，取决于测量。
-- 核心贡献：❌ 待真实证据；当前没有 manuscript-critical claim。
-- 主图：先产出阶段权重变化、功能扰动、投影保留/增益、组级聚合与梯度方向；不是预定论文图。
-- 强基线：原生 checkpoint、标准 CE、同轨迹奖励加权、标准 GRPO；两篇核心文献的关键工具对照。
-- 证据标准：pilot 先校验工具和噪声地板；正式主张按 EXECUTION.md 升级、重复、跨模型及独立复算。
-- 定位：核心两篇有明确竞争解释；PEFT/head tuning、softmax bottleneck、RL 稀疏更新为相邻边界，见 RESEARCH_PLAN。未宣称原创性。
-- 决策：先建设及测量；人审后决定继续、转向同一空间或暂停。暂不启动第二空间（真实稀疏自由度与 BF16 精度）。
+- 主旨：尚未确定。
+- 可能形态：学习机制分析（后训练在哪些位置、以什么方式、在什么条件下改变推理结果），以受控解码干预为主要工具。
+- 核心贡献：❌ 尚无 manuscript-critical claim；E07 的难度依赖是目前最强的线索（L1，单谱系）。
+- 定位：正反分叉交换（Sparse but Critical、Shen et al.、ReasonMaxxer）与 RL≈锐化系列为直接近邻，见 DISCUSSION §3。
 
 ## Idea 组合
 
-| ID | 一句话 | 来源 | 研究动作 | 状态 | 证据等级 |
-|---|---|---|---|---|---|
-| I01 | 后训练不同阶段的输出头功能变化是否值得单独研究 | 核心争议及公开谱系 | 定位、干预 | PILOT 首轮完成 | L1（C04、C05） |
-| I02 | 奖励加权与轨迹分布怎样改变输出头处的学习信号 | 核心争议 | 重新归因、测量 | PILOT 首轮完成（负结果） | L1（C01、C02） |
-| I03 | 冻结输出头会否对不同后训练范式造成不同影响 | 两篇论文的解释分歧 | 干预 | PARKED（等人审） | 未测 |
-| I04 | SFT 与 on-policy RL 在头部行上的梯度符号结构 | Han et al. 2610.09835 + 推导 | 重新归因、测量 | PILOT 首轮完成（梯度层成立 / checkpoint 层负） | L1（C03、C06） |
-
-## 主张与痛点
-
-[CLAIMS.md](CLAIMS.md)：C01–C14（均 L1，单任务），含作废与更正记录。[PAIN_LOG.md](PAIN_LOG.md)：P01–P05（数值稳定性、bf16 看不到 RL 头部更新、大 SFT 反事实失效、全局分量造成虚假相关、下载卡死）。
+| ID | 一句话 | 研究动作 | 状态 | 证据 |
+|---|---|---|---|---|
+| I01 | 后训练不同阶段的输出头功能变化 | 定位、干预 | PILOT 完成 | C04、C05 |
+| I02 | 奖励加权怎样改变头部的学习信号 | 测量 | PILOT 完成（负结果） | C01、C02 |
+| I03 | 冻结输出头对不同范式的影响 | 干预 | PARKED | 未测 |
+| I04 | SFT 与 RL 在头部行上的梯度符号结构 | 测量 | PILOT 完成（梯度层成立 / checkpoint 层负） | C03、C06 |
+| I05 | 后训练输出变化的结构：去随机化、改选、条件 | 测量、受控解码干预 | PILOT 进行中 | C07–C15 |
 
 ## 决策记录
 
-- 2026-11-26 · 用户明确要求不再进行无限纸面辩论，从有价值空间出发，以真实数据驱动问题发现；GPT/Gemini 多轮审查收敛到 LM Head，授权登记，E0/E1 优先，E2 等结果。
-- 2026-11-26 · 本次注册采用仓库规范编号 E01/E02/E03，对应对话 E0/E1/E2；保留现有 ACTIVE-MAIN/ACTIVE-EXPLORE 状态，不代替用户改线。
-- 2026-11-26 · 最后一轮工程建议已纳入，同时修正“零坐标失配风险”、大 SVD 无成本、聚合 logit 梯度等同参数梯度等说法。详见技术指南。
-- 2026-11-26（agent，按用户“自主推进”）· E02 主模型由 Qwen3-8B 改为 Qwen3-8B-Base：后训练版在 MATH 上 87.5% 的组全对、零优势，无法比较 RL 信号。
-- 2026-11-26（agent）· 运行前新增 I04（来源 Han et al.），读数挂在 E01/E02 上，不单开实验；新增 E02b（头部 Adam 模拟）与 E01 的逐行对照，作为 I04 的决定性检验。
-- 2026-11-26（agent）· 用户授权跨节点最多 8 卡；本轮实际只用 fvcrc11/12 的 3 张空闲卡。为跑 OLMo 对，把 OLMo Base（15 GB）从 fvcrc11 rsync 到 fvcrc12（局域网，约 3 分钟）。这与上方旧的“不跨节点同步大模型”交接不一致，请人确认今后是否允许。
+- 2026-11-26 · 用户要求以真实数据驱动问题发现；GPT/Gemini 审查收敛到 LM Head，授权登记，E01/E02 优先。
+- 2026-11-26（agent）· E02 主模型改为 Qwen3-8B-Base（后训练版 87.5% 的组全对、零优势）；新增 I04 与 E02b。
+- 2026-11-26（agent）· 为跑 OLMo 对，把 OLMo Base 从 fvcrc11 rsync 到 fvcrc12（局域网）。今后是否允许节点间同步模型，待人确认。
+- 2026-11-27 · 第一、二轮讨论后，用户授权从 LM Head 扩展到输出行为并自主推进（E04–E06）。
+- 2026-11-27 · 第三轮讨论后，用户放行 E07（Qwen 部分，约 12–15 GPU·时）。
+- 2026-11-27（agent）· E07 改设计：Qwen3-8B 在全程贪心下退化，改为“指定位置取首选、其余 T=0.6 采样”；中途按吞吐缩小范围（详见 E07 卡）。实际约 23 GPU·时，超出放行预算。
+- 2026-11-27（agent）· 断线重连后本会话的旧副本仍在运行，其中一个把 OlympiadBench B2 拆成三片并提交了 `--shard`（9ac0968f）；已停掉旧副本并接管运行（P08）。
 
 ## 资产位置
 
-- 代码：`scripts/`（几何库 `lmhead_geom.py` 与测试 `test_geom.py`；E01 `e01_weights.py`/`e01_function.py`/`e01_vs_adam.py`；E02 `e02_rollout.py`/`e02_geometry.py`/`e02_headadam.py`/`verifier.py`；输入清单 `build_inputs.py`；下载与校验 `fetch_ranges.py`/`verify_models.py`；节点运行器 `run_node.sh`/`run_vllm.sh`/`chain_e02.sh`；汇总 `summarize.py`；E04 `e04_fit.py`/`e04_local_tau.py`/`e04_forks.py`/`e04_tail.py`/`e04_mcq.py`/`e04_generate.py`（vLLM，处理器 `e04_biasproc.py`）/`e04_hybrid.py`（两模型同步解码，E04-D 与 E06）及各自 summary；E05 `e05_extract_forks.py`/`e05_rollout.py`/`e05_analyze.py`）。
-- 环境：`~/.venvs/ices-tf457`（torch 2.8 / transformers 4.57.6，OLMo-3 必须用 4.57）；vLLM 用 `~/.venvs/vllm023-cu128`（需 `VLLM_USE_FLASHINFER_SAMPLER=0`）。
-- 输入清单：`data/e01_texts.json`、`data/e02_prompts.json`（只存索引与 sha1，文本从本地 HF 缓存复原）。
-- 小型结果：`results/e01/`、`results/e02/`、`results/e04/`、`results/e05/`（JSON/JSONL）。生成文本与 rollout 在节点本地 `/tmp/xiang_lmhead/e04/gen/`、`/tmp/xiang_lmhead/e05/`（fvcrc10/11/12/20）。
-- 节点本地（会随重启丢失）：权重 `/tmp/xiang_lmhead/models/`（fvcrc11：Qwen3-8B、Qwen3-8B-Base、OLMo-3 Base、RL-Zero-Math、Think-SFT 下载中；fvcrc12：OLMo-3 Base、Think-DPO、Think、Instruct-SFT），均按 HF sha256 校验；rollout、逐 token 数组、逐行 npz 在 `/tmp/xiang_lmhead/e0{1,2}/`；日志在 `/tmp/xiang_lmhead/logs/`。revision 写在每个结果 JSON 里。
-
-## 入口
-
-- [RESEARCH_PLAN.md](RESEARCH_PLAN.md)
-- [RELATED_WORK.md](RELATED_WORK.md) · [MENTOR_REQUIREMENTS.md](MENTOR_REQUIREMENTS.md)
-- [讨论与人审记录](logs/2026-11-26.md)
-- [E01](experiments/E01-checkpoint-anatomy.md) · [E02](experiments/E02-gradient-geometry.md) · [E03（暂缓）](experiments/E03-head-freeze.md) · [E04](experiments/E04-global-affine-component.md) · [E05](experiments/E05-fork-value.md) · [E06](experiments/E06-fork-head-vs-tail.md)
-- [第二轮讨论材料](DISCUSSION.md) · [日志 2026-11-27](logs/2026-11-27.md)
+- **环境：** `~/.venvs/ices-tf457`（torch 2.8 / transformers 4.57.6，OLMo-3 必须用 4.57）；`~/.venvs/vllm023-cu128`（vLLM 0.23，需 `VLLM_USE_FLASHINFER_SAMPLER=0`）。
+- **权重（节点本地，按 HF sha256 校验）：** `/tmp/xiang_lmhead/models/`。fvcrc11：Qwen3-8B、Qwen3-8B-Base、OLMo-3 Base、RL-Zero-Math、Think-SFT；fvcrc12：Qwen3-8B、Qwen3-8B-Base、OLMo-3 Base、Think-DPO、Think、Instruct-SFT；fvcrc10：OLMo-3 Base、RL-Zero-Math。
+- **大文件（节点本地，不进 git）：** E01/E02 `/tmp/xiang_lmhead/e0{1,2}/`；E04–E06 生成与同步解码 `/tmp/xiang_lmhead/e04/gen/`（fvcrc10/11/12）；E05 `/tmp/xiang_lmhead/e05/`（fvcrc11/20）；E07 题集、锚点与网格 `/tmp/xiang_lmhead/e07/`（fvcrc11/12；停掉的贪心网格在 `greedy_void/`）；日志 `/tmp/xiang_lmhead/logs/`。revision 写在每个结果 JSON 里。
 
 ## 待人审
 
-首轮问题（11-26）已由用户在讨论中处理（转向输出行为、授权自主推进）。第二轮的实验与结果整理在 [DISCUSSION.md](DISCUSSION.md)；工作台状态仍为 PROPOSED，由人决定。
+当前一轮的实验与结果见 [DISCUSSION.md](DISCUSSION.md)。工作台状态、命名与下一步由人决定。
