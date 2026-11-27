@@ -10,7 +10,9 @@
 1. **Godey & Artzi 的“梯度瓶颈”几何不区分后训练范式**（C01–C02）。能传回骨干的 logit 梯度能量 ρ 在 Qwen 约 0.021、OLMo 约 0.032，都低于随机方向（d/V）。GRPO、普通 CE、RFT、教师 SFT 之间无差别，两家族一致。I02 原问题得到负结果。
 2. **RLVR 阶段几乎不动头**（C05）。OLMo 的两个 RL 对里，头部 ΔW 只有 1/4096 个方向高于 BF16 舍入地板；只换头的功能贡献约占 2–3%，分布变化几乎全部经由骨干。SFT/多阶段谱系里头动得和骨干一样多（C04），但大 SFT 下换头反事实失效（P03）。
 3. **SFT 与 RL 的区别落在头自身的更新通道上，但只在梯度层面看得到**（C03 / C06）。对“从未做目标的 token 行”，SFT 类信号的梯度跨批符号一致、模拟 Adam 下沿 −μ 稳定漂移；GRPO 下接近随机，两家族一致。可是在公开 checkpoint 上，控制整体收缩与频率之后，真实 SFT 与真实 RL 的头部逐行位移分不出这种差异（I04 的 checkpoint 检验为负结果）。
-**需要人决定：** 见本页末“待人审问题”。E03（冻结头训练）仍未启动。
+E03（冻结头训练）仍未启动。
+
+**第二轮进展（2026-11-27，用户授权自主推进，第二轮讨论材料见 [DISCUSSION.md](DISCUSSION.md)）：** 人审后从 LM Head 扩展到“后训练在下一 token 分布上改变了什么”，做了 E04（全局仿射成分、降温与熵门控、分叉处分布、分叉交换、选择题）、E05（单个分叉上的改选是否价值更高）、E06（分叉处承载增益的是随机性还是选择），约 25 GPU·时。要点：只给 Base 降温即拿到约 72% 的 MATH-500 增益，收益来自 Base 高熵位置；OLMo RL-Zero 的这部分全部是回答开头的模式选择（模板效应）；Qwen 上正反分叉交换充分且必要（近作已有，属复现）；单个分叉上的改选测不出价值；分叉处随机性的代价（尾部约 17 点、头部约 10–11 点）大于“谁的首选”（4–5 点）。主张 C07–C14。
 
 ## 给本地实验执行者的必读顺序
 
@@ -44,7 +46,7 @@
 
 ## 主张与痛点
 
-[CLAIMS.md](CLAIMS.md)：C01–C06（均 L1，单任务），含 1 条作废记录。[PAIN_LOG.md](PAIN_LOG.md)：P01–P05（数值稳定性、bf16 看不到 RL 头部更新、大 SFT 反事实失效、全局分量造成虚假相关、下载卡死）。
+[CLAIMS.md](CLAIMS.md)：C01–C14（均 L1，单任务），含作废与更正记录。[PAIN_LOG.md](PAIN_LOG.md)：P01–P05（数值稳定性、bf16 看不到 RL 头部更新、大 SFT 反事实失效、全局分量造成虚假相关、下载卡死）。
 
 ## 决策记录
 
@@ -57,10 +59,10 @@
 
 ## 资产位置
 
-- 代码：`scripts/`（几何库 `lmhead_geom.py` 与测试 `test_geom.py`；E01 `e01_weights.py`/`e01_function.py`/`e01_vs_adam.py`；E02 `e02_rollout.py`/`e02_geometry.py`/`e02_headadam.py`/`verifier.py`；输入清单 `build_inputs.py`；下载与校验 `fetch_ranges.py`/`verify_models.py`；节点运行器 `run_node.sh`/`run_vllm.sh`/`chain_e02.sh`；汇总 `summarize.py`）。
+- 代码：`scripts/`（几何库 `lmhead_geom.py` 与测试 `test_geom.py`；E01 `e01_weights.py`/`e01_function.py`/`e01_vs_adam.py`；E02 `e02_rollout.py`/`e02_geometry.py`/`e02_headadam.py`/`verifier.py`；输入清单 `build_inputs.py`；下载与校验 `fetch_ranges.py`/`verify_models.py`；节点运行器 `run_node.sh`/`run_vllm.sh`/`chain_e02.sh`；汇总 `summarize.py`；E04 `e04_fit.py`/`e04_local_tau.py`/`e04_forks.py`/`e04_tail.py`/`e04_mcq.py`/`e04_generate.py`（vLLM，处理器 `e04_biasproc.py`）/`e04_hybrid.py`（两模型同步解码，E04-D 与 E06）及各自 summary；E05 `e05_extract_forks.py`/`e05_rollout.py`/`e05_analyze.py`）。
 - 环境：`~/.venvs/ices-tf457`（torch 2.8 / transformers 4.57.6，OLMo-3 必须用 4.57）；vLLM 用 `~/.venvs/vllm023-cu128`（需 `VLLM_USE_FLASHINFER_SAMPLER=0`）。
 - 输入清单：`data/e01_texts.json`、`data/e02_prompts.json`（只存索引与 sha1，文本从本地 HF 缓存复原）。
-- 小型结果：`results/e01/`、`results/e02/`（JSON/JSONL）。
+- 小型结果：`results/e01/`、`results/e02/`、`results/e04/`、`results/e05/`（JSON/JSONL）。生成文本与 rollout 在节点本地 `/tmp/xiang_lmhead/e04/gen/`、`/tmp/xiang_lmhead/e05/`（fvcrc10/11/12/20）。
 - 节点本地（会随重启丢失）：权重 `/tmp/xiang_lmhead/models/`（fvcrc11：Qwen3-8B、Qwen3-8B-Base、OLMo-3 Base、RL-Zero-Math、Think-SFT 下载中；fvcrc12：OLMo-3 Base、Think-DPO、Think、Instruct-SFT），均按 HF sha256 校验；rollout、逐 token 数组、逐行 npz 在 `/tmp/xiang_lmhead/e0{1,2}/`；日志在 `/tmp/xiang_lmhead/logs/`。revision 写在每个结果 JSON 里。
 
 ## 入口
@@ -68,10 +70,9 @@
 - [RESEARCH_PLAN.md](RESEARCH_PLAN.md)
 - [RELATED_WORK.md](RELATED_WORK.md) · [MENTOR_REQUIREMENTS.md](MENTOR_REQUIREMENTS.md)
 - [讨论与人审记录](logs/2026-11-26.md)
-- [E01](experiments/E01-checkpoint-anatomy.md) · [E02](experiments/E02-gradient-geometry.md) · [E03（暂缓）](experiments/E03-head-freeze.md)
+- [E01](experiments/E01-checkpoint-anatomy.md) · [E02](experiments/E02-gradient-geometry.md) · [E03（暂缓）](experiments/E03-head-freeze.md) · [E04](experiments/E04-global-affine-component.md) · [E05](experiments/E05-fork-value.md) · [E06](experiments/E06-fork-head-vs-tail.md)
+- [第二轮讨论材料](DISCUSSION.md) · [日志 2026-11-27](logs/2026-11-27.md)
 
-## 待人审问题（2026-11-26 首轮）
+## 待人审
 
-1. **方向：** 两条“梯度瓶颈”线索（I02 投影几何、I04 符号结构）都没有在后训练里产生能区分范式的真实信号。I04 只在梯度回放里成立，公开 checkpoint 看不出来。要选：(a) 在同一空间里转向受控小训练，同起点、同步数比较 SFT 与 RL，保存 FP32 头部状态，直接看头部行漂移与通用文本遗忘，这就是 E03 的变体，需要批准训练算力；(b) 把首轮作为测量记录，转向 C05 暗示的问题：RL 阶段分布变化几乎全部经由骨干，头基本冻结，那么后训练理论里“logit 可自由更新”的表格假设（Cui et al. 熵机制等）在多大程度上被骨干通道的秩约束改变；(c) 暂停本空间。
-2. **工作台状态：** 目前仍是 PROPOSED，是否登记为 ACTIVE-EXPLORE 由你决定。
-3. **算力与资产：** 是否允许节点间同步模型（见决策记录）；OLMo Think-SFT 两对仍在下载/排队，是否需要补跑进入下一轮。
+首轮问题（11-26）已由用户在讨论中处理（转向输出行为、授权自主推进）。第二轮的实验与结果整理在 [DISCUSSION.md](DISCUSSION.md)；工作台状态仍为 PROPOSED，由人决定。

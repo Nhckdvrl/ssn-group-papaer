@@ -116,6 +116,19 @@
    "mean_len": 622.514,
    "fork_rate": 0.13930610395910775,
    "argmax_agree_at_forks": 0.5113468634686347
+  },
+  "h_post_postmode_all": {
+   "n_problems": 500,
+   "acc": 0.808,
+   "ci95": [
+    0.772,
+    0.842
+   ],
+   "parse_fail": 0.046,
+   "truncated": 0.052,
+   "mean_len": 846.258,
+   "fork_rate": 0.18522483687007982,
+   "argmax_agree_at_forks": 0.5805241534182254
   }
  },
  "paired": {
@@ -183,6 +196,14 @@
     -0.118
    ]
   },
+  "h_base - h_post_postmode_all": {
+   "n": 500,
+   "diff": -0.372,
+   "ci95": [
+    -0.418,
+    -0.326
+   ]
+  },
   "h_post - h_base_basemode": {
    "n": 500,
    "diff": 0.072,
@@ -239,6 +260,14 @@
     0.226
    ]
   },
+  "h_post - h_post_postmode_all": {
+   "n": 500,
+   "diff": -0.02,
+   "ci95": [
+    -0.048,
+    0.008
+   ]
+  },
   "h_base_basemode - h_base_postmode": {
    "n": 500,
    "diff": -0.042,
@@ -287,6 +316,14 @@
     0.154
    ]
   },
+  "h_base_basemode - h_post_postmode_all": {
+   "n": 500,
+   "diff": -0.092,
+   "ci95": [
+    -0.13,
+    -0.054
+   ]
+  },
   "h_base_postmode - h_base_postfork": {
    "n": 500,
    "diff": -0.006,
@@ -327,6 +364,14 @@
     0.194
    ]
   },
+  "h_base_postmode - h_post_postmode_all": {
+   "n": 500,
+   "diff": -0.05,
+   "ci95": [
+    -0.078,
+    -0.022
+   ]
+  },
   "h_base_postfork - h_post_basefork": {
    "n": 500,
    "diff": 0.278,
@@ -359,6 +404,14 @@
     0.2
    ]
   },
+  "h_base_postfork - h_post_postmode_all": {
+   "n": 500,
+   "diff": -0.044,
+   "ci95": [
+    -0.076,
+    -0.016
+   ]
+  },
   "h_post_basefork - h_post_basemode": {
    "n": 500,
    "diff": -0.274,
@@ -383,6 +436,14 @@
     -0.07
    ]
   },
+  "h_post_basefork - h_post_postmode_all": {
+   "n": 500,
+   "diff": -0.322,
+   "ci95": [
+    -0.368,
+    -0.28
+   ]
+  },
   "h_post_basemode - h_post_basetrunc_all": {
    "n": 500,
    "diff": 0.1,
@@ -399,12 +460,36 @@
     0.196
    ]
   },
+  "h_post_basemode - h_post_postmode_all": {
+   "n": 500,
+   "diff": -0.048,
+   "ci95": [
+    -0.08,
+    -0.018
+   ]
+  },
   "h_post_basetrunc_all - h_base_basetrunc": {
    "n": 500,
    "diff": 0.056,
    "ci95": [
     0.012,
     0.1
+   ]
+  },
+  "h_post_basetrunc_all - h_post_postmode_all": {
+   "n": 500,
+   "diff": -0.148,
+   "ci95": [
+    -0.188,
+    -0.108
+   ]
+  },
+  "h_base_basetrunc - h_post_postmode_all": {
+   "n": 500,
+   "diff": -0.204,
+   "ci95": [
+    -0.244,
+    -0.162
    ]
   }
  }
