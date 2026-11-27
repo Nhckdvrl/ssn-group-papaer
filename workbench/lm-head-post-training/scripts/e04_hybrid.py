@@ -16,6 +16,14 @@ Deterministic grid (E07; no sampling anywhere, every argmax disagreement falls i
   greedy_post         : post argmax everywhere
   greedy_base_postfork: base argmax, but post argmax where base H ≥ thr
   greedy_base_postlow : base argmax, but post argmax where base H < thr and the two argmaxes differ
+  (Qwen3-8B post degenerates under full greedy decoding -- 44% of OlympiadBench answers hit the length cap -- so E07
+   uses the t_* modes below instead: everything not intervened on is sampled at --bg_temp / --bg_top_p.)
+Tempered-background modes (E07; fork = base T=1 entropy ≥ thr; low = base entropy < thr and argmaxes differ):
+  t_base                  : base sampled at bg_temp/bg_top_p everywhere
+  t_base_basemode         : forks -> base argmax
+  t_base_postmode         : forks -> post argmax
+  t_base_postlow          : low   -> post argmax
+  t_base_basemode_postlow : forks -> base argmax, low -> post argmax
 Positive controls: base_postfork with thr=1e9 ≡ base; with thr=-1 ≡ post.
 Both models see the identical token sequence (same tokenizer), so the only difference between conditions is who
 chooses the token at fork positions. Records fork rate and how often the two models' argmax agree at forks.
@@ -53,6 +61,12 @@ def main():
     ap.add_argument("--problems", default="/tmp/xiang_lmhead/e04/math500.jsonl")
     ap.add_argument("--out_dir", default=str(BIG))
     ap.add_argument("--force_prefix", default="", help="text appended to every rendered prompt (unicode escapes decoded)")
+    ap.add_argument("--bg_temp", type=float, default=0.6)
+    ap.add_argument("--bg_top_p", type=float, default=0.95)
+    ap.add_argument("--subset_n", type=int, default=0, help="random subset of problems (seed --subset_seed)")
+    ap.add_argument("--subset_seed", type=int, default=0)
+    ap.add_argument("--sort_by", default="", help="vLLM generation jsonl; batch problems in order of its mean completion length")
+    ap.add_argument("--loop_window", type=int, default=512, help="stop a sequence whose last N tokens are periodic (period ≤128)")
     args = ap.parse_args()
     dev = "cuda"; t0 = time.time()
     torch.manual_seed(args.seed)
@@ -70,6 +84,15 @@ def main():
     if args.limit:
         probs = probs[: args.limit]
     probs = probs[args.start:]
+    if args.subset_n:
+        import random as _r
+        probs = sorted(_r.Random(args.subset_seed).sample(probs, min(args.subset_n, len(probs))), key=lambda p: p["index"])
+    if args.sort_by:
+        ln = {}
+        for l in open(args.sort_by):
+            r = json.loads(l)
+            ln[r["index"]] = sum(len(c["token_ids"]) for c in r["completions"]) / len(r["completions"])
+        probs = sorted(probs, key=lambda p: ln.get(p["index"], 1e9))
     jobs = [(p, k) for p in probs for k in range(args.n)]
     # resume: keep finished (index, sample) pairs from a previous partial run
     done_rows = []
@@ -98,6 +121,7 @@ def main():
         nfork = torch.zeros(B, device=dev); nagree = torch.zeros(B, device=dev)
         ndis_hi = torch.zeros(B, device=dev); ndis_lo = torch.zeros(B, device=dev)
         swaps = [[] for _ in range(B)]
+        looped = [False] * B
         cur_pos = pos[:, -1]
         for step in range(args.max_tokens):
             lp0 = torch.log_softmax(z0, -1); lp1 = torch.log_softmax(z1, -1)
@@ -105,6 +129,13 @@ def main():
             fork = H0 >= args.thr
             s0 = torch.multinomial(lp0.exp(), 1).squeeze(1); s1 = torch.multinomial(lp1.exp(), 1).squeeze(1)
             a0 = lp0.argmax(-1); a1 = lp1.argmax(-1)
+            if args.mode.startswith("t_"):
+                q = torch.softmax(z0 / args.bg_temp, -1)
+                srt, idx = torch.sort(q, -1, descending=True)
+                keep = (srt.cumsum(-1) - srt) < args.bg_top_p
+                srt = srt * keep
+                tb0 = idx.gather(-1, torch.multinomial(srt, 1)).squeeze(1)
+                low = ~fork & (a0 != a1)
             if args.mode.endswith("basetrunc"):
                 q0 = lp0.exp(); q0 = q0 * (q0 >= 0.1 * q0.max(-1, keepdim=True).values)
                 t0s = torch.multinomial(q0, 1).squeeze(1)
@@ -136,20 +167,40 @@ def main():
                 nxt = torch.where(fork, a1, a0)
             elif args.mode == "greedy_base_postlow":
                 nxt = torch.where(~fork & (a0 != a1), a1, a0)
+            elif args.mode == "t_base":
+                nxt = tb0
+            elif args.mode == "t_base_basemode":
+                nxt = torch.where(fork, a0, tb0)
+            elif args.mode == "t_base_postmode":
+                nxt = torch.where(fork, a1, tb0)
+            elif args.mode == "t_base_postlow":
+                nxt = torch.where(low, a1, tb0)
+            elif args.mode == "t_base_basemode_postlow":
+                nxt = torch.where(fork, a0, torch.where(low, a1, tb0))
             else:
                 raise ValueError(args.mode)
             live = ~done
             nfork += (fork & live).float(); nagree += (fork & live & (a0 == a1)).float()
             dis = live & (a0 != a1)
             ndis_hi += (dis & fork).float(); ndis_lo += (dis & ~fork).float()
-            if args.mode.startswith("greedy_base_"):
-                for i in torch.nonzero(dis & (nxt != a0)).flatten().tolist():
+            interv = {"greedy_base_postfork": fork & dis, "t_base_postmode": fork & dis,
+                      "greedy_base_postlow": ~fork & dis, "t_base_postlow": ~fork & dis,
+                      "t_base_basemode_postlow": ~fork & dis}.get(args.mode)
+            if interv is not None:
+                for i in torch.nonzero(interv & live).flatten().tolist():
                     if len(swaps[i]) < 300:
                         swaps[i].append([len(gen[i]), int(a0[i]), int(a1[i]), round(float(H0[i]), 3)])
             nxt = torch.where(done, torch.full_like(nxt, pad), nxt)
             for i in torch.nonzero(live).flatten().tolist():
                 gen[i].append(int(nxt[i]))
             done = done | torch.isin(nxt, stop)
+            if args.loop_window and step % 32 == 31:
+                W = args.loop_window
+                for i in torch.nonzero(~done).flatten().tolist():
+                    g_ = gen[i]
+                    if len(g_) >= W and any(g_[-W:-p] == g_[-W + p:] for p in range(1, 129)):
+                        looped[i] = True
+                        done[i] = True
             if bool(done.all()):
                 break
             att = torch.cat([att, (~done | torch.isin(nxt, stop)).long()[:, None]], 1)
@@ -168,7 +219,7 @@ def main():
             n_fork += float(nfork[i]); n_agree += float(nagree[i])
             out_f.write(json.dumps({"index": p["index"], "answer": p["answer"], "sample": k, "text": text, "pred": pred, "reward": r,
                                     "n_tokens": len(g), "n_fork": float(nfork[i]), "n_fork_agree": float(nagree[i]), "truncated": trunc,
-                                    "n_dis_hi": float(ndis_hi[i]), "n_dis_lo": float(ndis_lo[i]), "swaps": swaps[i]}) + "\n")
+                                    "n_dis_hi": float(ndis_hi[i]), "n_dis_lo": float(ndis_lo[i]), "swaps": swaps[i], "looped": looped[i]}) + "\n")
         out_f.flush()
         print(f"batch {b0 // args.bs}: acc so far (this run) {n_ok / (b0 + B):.3f} {time.time() - t0:.0f}s", flush=True)
     allrows = [json.loads(l) for l in open(big / f"{args.tag}.jsonl")]
