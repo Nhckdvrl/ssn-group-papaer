@@ -30,6 +30,10 @@ def render(template, problem, tok):
     if template == "qwen_chat":
         return tok.apply_chat_template([{"role": "user", "content": problem + QWEN_SUFFIX}], tokenize=False,
                                        add_generation_prompt=True, enable_thinking=False)
+    if template == "qwen_chat2":   # template robustness: same chat format, different instruction wording
+        return tok.apply_chat_template([{"role": "user", "content": "Solve the following problem. Show your work, then give the final "
+                                         "answer in the form \\boxed{answer}.\n\n" + problem}], tokenize=False,
+                                       add_generation_prompt=True, enable_thinking=False)
     if template == "plain_math":   # template-robustness check: no chat markup at all
         return "Problem: " + problem + QWEN_SUFFIX + "\nSolution:"
     if template == "olmo_rlzero":
@@ -53,6 +57,7 @@ def main():
     ap.add_argument("--gate", default="", help="entropy-gated temperature: '<low|high>:<thr>:<tau>'")
     ap.add_argument("--min_p", type=float, default=0.0)
     ap.add_argument("--top_p", type=float, default=1.0)
+    ap.add_argument("--force_prefix", default="", help="text appended to the rendered prompt (forces the opening of the response)")
     ap.add_argument("--tag", required=True)
     args = ap.parse_args()
     if args.bias:   # (z + s*b/τ)/(1/τ) = τ z + s b
@@ -70,7 +75,8 @@ def main():
               max_model_len=args.max_model_len, enable_prefix_caching=True,
               logits_processors=procs or None)
     tok = llm.get_tokenizer()
-    texts = [render(args.template, p["problem"], tok) for p in prompts]
+    prefix = args.force_prefix.encode().decode("unicode_escape") if args.force_prefix else ""
+    texts = [render(args.template, p["problem"], tok) + prefix for p in prompts]
     # identical stopping rule for parent and child (base configs list only <|endoftext|>)
     vocab = tok.get_vocab()
     stop_ids = sorted({vocab[t] for t in ("<|endoftext|>", "<|im_end|>") if t in vocab} | ({tok.eos_token_id} if tok.eos_token_id is not None else set()))
@@ -94,7 +100,7 @@ def main():
                                 "completions": comps}) + "\n")
     meta = {"tag": args.tag, "model": args.model, "revision": models.revision(args.model), "template": args.template,
             "prompts": args.prompts, "n": args.n, "max_tokens": args.max_tokens, "max_model_len": args.max_model_len, "seed": args.seed, "tau": args.tau,
-            "stop_token_ids": stop_ids, "gate": args.gate, "min_p": args.min_p, "top_p": args.top_p, "bias": args.bias, "bias_key": args.bias_key, "bias_scale": args.bias_scale, "accuracy": n_ok / n_all,
+            "stop_token_ids": stop_ids, "force_prefix": prefix, "gate": args.gate, "min_p": args.min_p, "top_p": args.top_p, "bias": args.bias, "bias_key": args.bias_key, "bias_scale": args.bias_scale, "accuracy": n_ok / n_all,
             "parse_fail": n_parse / n_all, "truncated": n_trunc / n_all, "mean_len": n_tok / n_all, "seconds": time.time() - t0}
     (out_dir / f"{args.tag}.meta.json").write_text(json.dumps(meta, indent=1))
     print(json.dumps(meta, indent=1))

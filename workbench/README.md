@@ -130,7 +130,7 @@ D1–D6 交付齐全之前，不允许以“没意思 / 被拥有 / 天花板不
 |---|---|---|---|---|---|---|
 | `mechanism-population-dynamics` | CLOSED | — | — | `CLAIMS.md` | 2026-11-26 | **2026-11-26 用户决定结项。** 五个对象（注意力头 → MoE 受控平台 → 公开 MoE 计算组织 → 自训多 seed MoE 与零模型 → 混合架构拼词）和最后的找题阶段（E224–E228）都没有形成可投稿的主张；MoE 难以推进的理由见 `MOE_REVIEW.md`。原始输出已删，删除前状态在提交 864baf46。结项记录见该目录 [README](mechanism-population-dynamics/README.md)。 |
 | `latent-world-model-planning` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有原生GPU测量与训练**：R1–R5持续开放；固定数据充分训练seed0/1/2为38/19/36（各48）；当前方法入口按RESEARCH_PLAN与I14/E20执行，尚无已成立科学主张；不改变ACTIVE分配 |
-| `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | **已有真实GPU底座**：E12四静态策略完整八任务评分；E13/E14八支训练与全部原定终点评分完成，当前停步交人审；I01/I02/I03仍为候选，主张均L0；实时数字见workbench状态页，不改变ACTIVE调度 |
+| `data-centric-rsi` | PROPOSED | ICML / ICLR / NeurIPS；届次待定 | — | `CLAIMS.md` | — | 第一轮 E00–E14 没有可用结果，2026-10-04 起停步；2026-11-27 用户决定重拾但不沿用旧思路，已写回顾并给工作台瘦身（见状态页） |
 | `in-context-evidence-structure` | ACTIVE-EXPLORE | ARR（ACL/EMNLP 系） | — | `CLAIMS.md` | 2026-11-24 | **论文已投 ARR，进入 rebuttal 准备**：*Whose Rule Is It Anyway? Shared Labels Mix and Names Separate Source-Specific Rules in In-Context Learning*（正本 `paper/main.tex`，10-13 定稿；11-03 去匿名 arXiv 版）；8 模型 4 家族；rebuttal 材料在 `paper/rebuttal/`；正式状态由人决定 |
 | `incremental-interpretation-revision` | PROPOSED | ACL / EMNLP / NAACL | — | `CLAIMS.md` | 2026-10-06 | **人已授权 residency；2026-10-08要求整理并上传main**：103张卡的方向/结果与整体总结见该workbench，尚无合格idea；09:00前已释放GPU和权重，当前无实验队列。需标注只用Step Plan step-5-preview，禁止现金接口；未改变当前ACTIVE分配或线状态 |
 | `xeno-interpretability` | PROPOSED | —（探索阶段） | — | `CLAIMS.md` | — | **用户 2026-10-12 指定新建 workbench，专属知识库在 [`knowledge/`](xeno-interpretability/knowledge) 内；初始文献核查与实验设计仍未构成实证发现；不调整 ACTIVE 分配。** |

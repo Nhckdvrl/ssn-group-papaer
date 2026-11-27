@@ -31,13 +31,14 @@ def pearson(x, y):
 
 def main():
     pair = sys.argv[1]
-    rows = [json.loads(l) for l in open(f"/tmp/xiang_lmhead/e05/rollouts_{pair}.jsonl")]
+    suffix = sys.argv[2] if len(sys.argv) > 2 else ""     # "" (parent continues) or "__childcont"
+    rows = [json.loads(l) for l in open(f"/tmp/xiang_lmhead/e05/rollouts_{pair}{suffix}.jsonl")]
     from transformers import AutoTokenizer
     tok = AutoTokenizer.from_pretrained(models.path(models.PAIRS[pair][1]))
     dec = lambda i: tok.convert_ids_to_tokens(int(i))
     agree = [r for r in rows if r["kind"] == "agree" and "base_rep" in r["cands"]]
     ch = [r for r in rows if r["kind"] == "changed" and "post" in r["cands"] and "base" in r["cands"]]
-    res = {"pair": pair, "n_agree": len(agree), "n_changed": len(ch)}
+    res = {"pair": pair, "continuation": "child" if suffix else "parent", "n_agree": len(agree), "n_changed": len(ch)}
     res["noise_floor_abs_dv_agree"] = sum(abs(r["cands"]["base"]["v"] - r["cands"]["base_rep"]["v"]) for r in agree) / max(1, len(agree))
     res["agree_v"] = boot_by_prompt(agree, lambda r: r["cands"]["base"]["v"]) if agree else None
     res["changed_v_base"] = boot_by_prompt(ch, lambda r: r["cands"]["base"]["v"])
@@ -73,7 +74,7 @@ def main():
     res["examples"] = [(dec(r["c_base"]), dec(r["c_post"]), round(r["cands"]["base"]["v"], 3), round(r["cands"]["post"]["v"], 3)) for r in ch[:40]]
     res["trunc_rate"] = sum(c["trunc"] for r in rows for c in r["cands"].values()) / sum(len(r["cands"]) for r in rows)
     out = ROOT / "results" / "e05"; out.mkdir(parents=True, exist_ok=True)
-    (out / f"fork_value_{pair}.json").write_text(json.dumps(res, indent=1))
+    (out / f"fork_value_{pair}{suffix}.json").write_text(json.dumps(res, indent=1))
     print(json.dumps({k: v for k, v in res.items() if k != "examples"}, indent=1))
     print(res["examples"][:20])
 
