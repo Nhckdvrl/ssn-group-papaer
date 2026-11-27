@@ -4,7 +4,7 @@
 
 **2026-10-18维护：** 当前领域认识见[全领域地图](../../../workbench/game-npc-agents/knowledge/DOMAIN_ATLAS.md)，逐篇正式身份、版本、实际阅读范围与唯一规范卡见[阅读总账](../../../workbench/game-npc-agents/knowledge/READING_CATALOG.md)。未重读条目不因本页更新而升级。
 
-**ID 勘误（2026-10-09）**：旧增补段落把 `NPC13–NPC15` 分别用于两组不同论文，后者已更名为 `NPC19–NPC21`，各行内容未删。详见[知识库审计](../../LIBRARY_AUDIT_2026-10-09.md)。该日记录涉及的两个旧NPC工作台后来已于2026-10-11删除，当前入口为[game-npc-agents](../../../workbench/game-npc-agents/README.md)。
+**ID 勘误（2026-10-09）**：旧增补段落把 `NPC13–NPC15` 分别用于两组不同论文，后者已更名为 `NPC19–NPC21`，各行内容未删。该日记录涉及的两个旧NPC工作台后来已于2026-10-11删除，当前入口为[game-npc-agents](../../../workbench/game-npc-agents/README.md)。
 
 ## Game NPCs / interactive characters
 

@@ -52,7 +52,7 @@ P03主体归属、P04撤回事实仍是应诚实保留的工程/测量观察。�
 | [EvoSpark](../../../library/themes/game-npc-social/papers/EVOSPARK_2026.md) | 经历反思、关系/人格原位更新、演化与行动一致性 | 单NPC的变化学习或互动后果；不能声称近邻都只看卡片不看行为 |
 | [PD-LLM](../../../library/themes/game-npc-social/papers/TRAIT_ACTIVATION_2026.md) | 情境调节特质LoRA与风格、正负特质表达 | 持续经历造成的变化；一次压力处境的适配不是长期成长 |
 | [AdvRole](../../../library/themes/game-npc-social/papers/ADVROLE_2026.md) | Actor/情境改写器交替GRPO、情境覆盖与多轮角色评价 | 所学人物适应过程及经历的持续后果；模型/训练池演化不等于人物成长 |
-| [DPC](../../../library/themes/game-npc-social/papers/DYNAMIC_PERSONA_COHERENCE_2026.md) / [BFI-Adapt](../../../library/themes/game-npc-social/papers/PERSONA_GROWTH_2026.md) | 身份与动态状态一致性；人生事件后量表变化 | 跨情境的角色行为及关系意义，不能仅靠人格量表差 |
+| [DPC](../knowledge/papers/DYNAMIC_PERSONA_COHERENCE_2026.md) / [BFI-Adapt](../../../library/themes/game-npc-social/papers/PERSONA_GROWTH_2026.md) | 身份与动态状态一致性；人生事件后量表变化 | 跨情境的角色行为及关系意义，不能仅靠人格量表差 |
 | EMA / FAtiMA / OSSE | 评价、应对、人格与关系的过程模型 | 从开放语言经历学习人物特有过程，而非再包装手工心理架构 |
 
 **整体增量压力：** 动态树、事件图、关系覆盖、反思更新、阶段DPO均已存在。潜在贡献须体现在新学到的能力及其证据，不能仅靠模块排列或增加“causal / evidence-driven”等名称。近邻的存在用于调整增量，不构成自动关闭方向的理由。

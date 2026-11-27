@@ -98,7 +98,7 @@ Wang et al. EMNLP'23（标签词锚点，机制层最近邻）· Kossen et al. I
 | `ideas/` | I04（主 idea）、I01（早期版本） |
 | `experiments/` | E00–E123 实验卡（E80未运行；E86仅pilot；E87候选未实施；跑前卡与POST-HOC分开）；`INDEX.md` 为总索引 |
 | `CLAIMS.md` | 主张账本 C00–C24、混杂审计、作废记录 |
-| `PAPER_SHAPE.md` | 论文形态卡（I04 版）；`PAPER_DRAFT.md` 为当前英文论证；`PAPER_OUTLINE.md` 为 10-05 旧版历史提纲 |
+| `PAPER_SHAPE.md` | 论文形态卡（I04 版）；`PAPER_DRAFT.md` 为当前英文论证；10-05 旧版提纲 `PAPER_OUTLINE.md` 已于 11-24 删除（git 历史可查） |
 | `DATA_PLAN.md` | 数据方案与实际使用的数据 |
 | `PAIN_LOG.md` | 痛点与工程坑 |
 | `scripts/` | 数据构造、打分、分析、机制脚本；见 [`scripts/README.md`](scripts/README.md) |

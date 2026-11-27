@@ -2,6 +2,12 @@
 
 **人类明确授权的最终决定。** 本记录不是 archive，也不是新研究工作台。
 
+## 10-09 先行删除（原 WORKBENCH_AUDIT_2026-10-09 的决定，11-24 并入本页）
+
+- 用户决定从 HEAD 删除 `ai4quant`、`hybrid-adaptation`（桌面提案，0 个脚本，不建 archive 副本）。
+- `model-diffing-measurement` 先吸收为[模型差分测量知识卡](../library/themes/interpretability-representation/MODEL_DIFFING_MEASUREMENT.md)，再从 HEAD 删除。
+- 同日 `moe-route-preference`、`shape-olmo`、`pragmatic-inference-calibration` 也已移出 HEAD（见 [项目史](../PROJECT_HISTORY.md) §4）。
+
 ## 直接从当前 Git HEAD 删除（五项，合计 323 个已跟踪文件）
 
 - `workbench/real-time-causalization-capability-preservation/`
@@ -31,7 +37,7 @@
 
 删除前主分支提交 [`b7be63751eac0342679819cc1fac0da264e39c89`](https://github.com/Nhckdvrl/ssn-group-papaer/tree/b7be63751eac0342679819cc1fac0da264e39c89/workbench)；需要查看或恢复旧目录时可使用该历史版本。删除只影响新 Git 树，不清除 Git 历史、外部主机文件或独立设备缓存。
 
-所有当前状态以 [workbench 登记表](README.md) 为准；[2026-10-09 审计](WORKBENCH_AUDIT_2026-10-09.md) 仅是历史快照。
+所有当前状态以 [workbench 登记表](README.md) 为准。
 
 ## 2026-10-11 后续人类决定：NPC 两项目一并删除
 

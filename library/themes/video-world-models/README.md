@@ -18,7 +18,7 @@
 
 ## 当前工作台与历史
 
-- **PROPOSED：** [`latent-world-model-planning`](../../../workbench/latent-world-model-planning/)，对应 [`LATENT_PLANNING_SURVEY.md`](LATENT_PLANNING_SURVEY.md)。
+- **PROPOSED：** [`latent-world-model-planning`](../../../workbench/latent-world-model-planning/)，对应 [文献入口](../../../workbench/latent-world-model-planning/literature/README.md)。
 - **已删除（2026-10-11 用户决定）：** `real-time-causalization-capability-preservation` 与 `video-world-model-temporal-interfaces` 两个 workbench。不再有本领域 ACTIVE-MAIN。[`REALTIME_CAUSALIZATION_SURVEY.md`](REALTIME_CAUSALIZATION_SURVEY.md) 为历史文献资料，不能当成当前研究计划；旧 workbench 可在 Git 历史查看。
 
 ## Method / ownership map
@@ -46,7 +46,7 @@
 
 ## 深读
 - [`REALTIME_CAUSALIZATION_SURVEY.md`](REALTIME_CAUSALIZATION_SURVEY.md)
-- [`LATENT_PLANNING_SURVEY.md`](LATENT_PLANNING_SURVEY.md)
+- [latent planning 文献入口](../../../workbench/latent-world-model-planning/literature/README.md)（原调查全文：[`archive/.../LATENT_PLANNING_SURVEY.pre-consolidation.md`](../../../archive/latent-world-model-planning/LATENT_PLANNING_SURVEY.pre-consolidation.md)）
 - `library/deep/academic/GENEALOGIES_04.md`
 - `library/deep/open-artifacts/GENEALOGIES_10_LONG_HORIZON_STATE_AND_CORRECTION.md`
 - `library/deep/open-artifacts/GENEALOGIES_11_FINAL_FRONTIER_WAVE.md`

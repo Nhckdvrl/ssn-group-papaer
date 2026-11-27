@@ -21,7 +21,7 @@ T11（AI4Quant）已依人类明确兴趣选择从当前资料库移除，编号
 | T12 | Agents / search / tools | [`themes/agents-tools/`](themes/agents-tools/README.md) |
 | T13 | Game NPCs / interactive characters | [`themes/game-npc-social/`](themes/game-npc-social/README.md) |
 | T14 | Cross-lingual capability formation / multilingual learning dynamics | [`themes/multilingual/`](themes/multilingual/README.md) |
-| T15 | Incremental language processing / interpretation revision | [`themes/incremental-language-processing/`](themes/incremental-language-processing/README.md) |
+| T15 | Incremental language processing / interpretation revision | [`workbench/incremental-interpretation-revision/knowledge/`](../workbench/incremental-interpretation-revision/knowledge/README.md) |
 | T16 | In-context evidence structure / adaptive aggregation | [themes/in-context-evidence-structure/](themes/in-context-evidence-structure/README.md) |
 | — | 多智能体与大小模型协作（2026-09-30 新增；territory 扫描推荐，待人确认） | [`themes/multi-agent-collaboration/`](themes/multi-agent-collaboration/README.md) |
 | — | 理解与生成 / 统一多模态（2026-09-30 新增） | [`themes/unified-multimodal/`](themes/unified-multimodal/README.md) |
