@@ -18,6 +18,7 @@
 | 文件 | 内容 | 还有用的地方 |
 |---|---|---|
 | [DISCUSSION.md](DISCUSSION.md) | 方向讨论材料：第一轮结果、2026-09 以来的新工作与热度、两者的事实对照 | 本轮讨论入口 |
+| [PAPERS_TO_DOWNLOAD.md](PAPERS_TO_DOWNLOAD.md) | 需要你在浏览器下载的 OpenReview 论文直链；下载后放 `papers_in/`（git-ignore） | 待你下载 |
 | [RETROSPECTIVE_2026-11-27.md](RETROSPECTIVE_2026-11-27.md) | 第一轮回顾、失败原因、教训 | 重拾前必读 |
 | [RSI_AUDIT_AND_EXPERIMENTS_2026-10-04.md](RSI_AUDIT_AND_EXPERIMENTS_2026-10-04.md) | 10-04 外部审计：Gödel Forest、EEM、AutoLLMResearch、ReasoningBank 等近邻的生长逻辑，以及“实验经验迁移”转向提案 | 近邻分析、一个候选方向 |
 | [FIELD_MAP.md](FIELD_MAP.md) | 领域谱系（自生成监督、课程/选样、可验证自博弈、数据研究 agent、自博弈预训练）和问题地图 | 领域入口（截至 2026-10-02） |

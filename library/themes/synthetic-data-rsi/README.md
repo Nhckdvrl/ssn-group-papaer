@@ -16,6 +16,8 @@
 | [CROSS_D_synthetic_other_modalities.md](CROSS_D_synthetic_other_modalities.md) | 跨领域：图像、机器人、科学设计、语音、形式数学中的合成数据与闭环 |
 | [CROSS_E_verification_selection_stats.md](CROSS_E_verification_selection_stats.md) | 跨领域：自适应过拟合、回归均值、相关错误、奖励过度优化 |
 | [CROSS_F_synthetic_data_wider.md](CROSS_F_synthetic_data_wider.md) | 合成数据第二轮：累积与崩溃、合成预训练、知识与格式、理论 |
+| [READ_passk_yue2025_and_2606.15455.md](READ_passk_yue2025_and_2606.15455.md) | Yue 2025 与 2606.15455 全文笔记：pass@k 边界、评测协议 |
+| [scripts/frontier_null_model.py](scripts/frontier_null_model.py) | 前沿准入的二项噪声零模型（纯 Python） |
 | [CHECK_passk_and_checkpoints.md](CHECK_passk_and_checkpoints.md) | 存在性检查：自我改进闭环的 pass@k 上限、各闭环公开 checkpoint |
 
 汇总的讨论材料在 [workbench/data-centric-rsi/DISCUSSION.md](../../../workbench/data-centric-rsi/DISCUSSION.md)。第一轮工作时的旧论文卡见 [RSI_PAPER_CARDS.md](../training-post-training/RSI_PAPER_CARDS.md)。
