@@ -76,6 +76,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--gen_dir", required=True); ap.add_argument("--admit_dir", default=None)
     ap.add_argument("--out", required=True); ap.add_argument("--ref_tag", default="base")
+    ap.add_argument("--alt_none", action="store_true")
     a = ap.parse_args()
     by_tag = collections.defaultdict(list)
     for p in sorted(glob.glob(os.path.join(a.gen_dir, "gen_*.jsonl"))):
@@ -108,26 +109,61 @@ def main():
             hit = {j - len(ref) for i, j in pairs if i < len(ref) <= j}
             res["dup"][tag]["frac_near_dup_of_ref"] = len(hit) / m
     if a.admit_dir:
-        for p in sorted(glob.glob(os.path.join(a.admit_dir, "admit_*.jsonl"))):
-            solver = os.path.basename(p)[len("admit_"):-len(".jsonl")]
-            rows = [json.loads(l) for l in open(p)]
+        # generation cost per tag (sum over that tag's files) for "admitted per generation GPU-hour"
+        gen_h = collections.defaultdict(float); gen_n = collections.defaultdict(int)
+        for p in glob.glob(os.path.join(a.gen_dir, "gen_*.jsonl.meta.json")):
+            m = json.load(open(p)); t = os.path.basename(p).split("_")[1]
+            gen_h[t] += m["gen_seconds"] / 3600; gen_n[t] += m["n"]
+        alt_cluster = None
+        if a.alt_none:  # alternative scoring: drop the "None" extraction before clustering (official keeps it)
+            ns = {}
+            src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "e15b_admit.py")).read()
+            src = src.replace("import vllm\n", "").replace("from transformers import AutoTokenizer\n", "")
+            exec(compile(src.split("def main():")[0], "e15b_admit", "exec"), ns)
+            alt_cluster = lambda xs: ns["cluster"](xs, ns["grade_t"])
+        by_solver = collections.defaultdict(list)
+        for p in sorted(glob.glob(os.path.join(a.admit_dir, "admit_*__*.jsonl"))):
+            solver = os.path.basename(p)[len("admit_"):].split("__")[0]
+            by_solver[solver] += [json.loads(l) for l in open(p)]
+        for solver, rows in by_solver.items():
+            if alt_cluster:
+                for r in rows:
+                    xs = [x for x in r.get("extracted", []) if x and x != "None"]
+                    c = alt_cluster(xs) if xs else {}
+                    mj = max(c, key=c.get) if c else ""
+                    r["alt_score"] = c[mj] / len(xs) if c else None
+                    r["alt_dropped"] = (("证明" in r["question"] or "box" in r["question"].lower() or "text" in mj.lower())
+                                        if c else True)
             for tag in sorted({r["tag"] for r in rows}):
                 rr = [r for r in rows if r["tag"] == tag]
                 for s in [None] + sorted({r["seed"] for r in rr}):
                     xs = [r for r in rr if s is None or r["seed"] == s]
-                    sc = [r["score"] for r in xs if r["score"] is not None and not r["dropped"]]
+                    ok = [r for r in xs if r["score"] is not None and not r["dropped"]]
+                    sc = [r["score"] for r in ok]
                     key = f"{solver}|{tag}" + ("" if s is None else f"|seed{s}")
                     pr = res["surface"].get(tag, {}).get("parse_rate", 0)
-                    adm8 = sum(0.3 <= x <= 0.8 for x in sc) / max(1, len(xs))
-                    res["admit"][key] = {
-                        "n": len(xs), "kept_after_drop": len(sc) / max(1, len(xs)),
-                        "admit_03_08": adm8, "admit_03_07": sum(0.3 <= x <= 0.7 for x in sc) / max(1, len(xs)),
-                        "hard_tail_le_03": sum(x <= 0.3 for x in sc) / max(1, len(xs)),
-                        "unanimous": sum(x == 1.0 for x in sc) / max(1, len(xs)),
-                        "agree_setter": sum(r["agree_setter"] for r in xs) / max(1, len(xs)),
+                    n = max(1, len(xs))
+                    adm8 = sum(0.3 <= x <= 0.8 for x in sc) / n
+                    adm = [r for r in ok if 0.3 <= r["score"] <= 0.8]
+                    d = {
+                        "n": len(xs), "kept_after_drop": len(sc) / n,
+                        "admit_03_08": adm8, "admit_03_07": sum(0.3 <= x <= 0.7 for x in sc) / n,
+                        "hard_tail_le_03": sum(x <= 0.3 for x in sc) / n,
+                        "unanimous": sum(x == 1.0 for x in sc) / n,
+                        "agree_setter": sum(r["agree_setter"] for r in xs) / n,
+                        "admitted_majority_none": sum(r["majority"] == "None" for r in adm) / max(1, len(adm)),
+                        "resp_without_box": sum(e == "None" for r in xs for e in r.get("extracted", [])) / max(1, sum(len(r.get("extracted", [])) for r in xs)),
+                        "grade_error": sum(r.get("grade_error", False) for r in xs) / n,
                         "admitted_per_1k_samples": 1000 * pr * adm8,
                         "score_hist": np.histogram(sc, bins=[0, .2, .3, .4, .5, .6, .7, .8, .9, 1.0001])[0].tolist(),
                     }
+                    if s is None and gen_h.get(tag):
+                        d["admitted_per_gen_gpu_hour"] = pr * adm8 * gen_n[tag] / gen_h[tag]
+                    if alt_cluster:
+                        asc = [r["alt_score"] for r in xs if r["alt_score"] is not None and not r["alt_dropped"]]
+                        d["alt_none_dropped_admit_03_08"] = sum(0.3 <= x <= 0.8 for x in asc) / n
+                        d["alt_none_dropped_hard_tail_le_03"] = sum(x <= 0.3 for x in asc) / n
+                    res["admit"][key] = d
     json.dump(res, open(a.out, "w"), indent=1, ensure_ascii=False)
     print(json.dumps(res["surface"], indent=1, ensure_ascii=False)[:3000])
 

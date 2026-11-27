@@ -3,7 +3,12 @@ each question; we record whether its own answers agree with each other and with 
 It also labels the field with the eight fields listed in R-Zero's own questioner prompt (non-thinking, greedy).
 Neither readout is ground truth; both are reported with that caveat (card E15).
 
-Usage: python e15b_validity.py --model <Qwen3-14B dir> --admit <admit_*.jsonl> --per_tag 500 --out <jsonl>
+Questions come from the base-solver admission files: per questioner tag, a fixed random sample of admitted
+questions (score in [0.3, 0.8], not dropped) and of hard-tail questions (score <= 0.3, not dropped). The solver_v5
+majority for the same question (same per-file subsample) is joined in from --alt files when given.
+
+Usage: python e15b_validity.py --model <Qwen3-14B dir> --admit admit_base_*.jsonl [--alt admit_s5_*.jsonl]
+       --per_tag 300 --tail_per_tag 150 --shard 0 --nshards 4 --out <jsonl>
 """
 import argparse
 import json
@@ -39,17 +44,25 @@ def same(x, y):
 
 
 ap = argparse.ArgumentParser()
-ap.add_argument("--model", required=True); ap.add_argument("--admit", required=True)
-ap.add_argument("--per_tag", type=int, default=500); ap.add_argument("--out", required=True)
+ap.add_argument("--model", required=True); ap.add_argument("--admit", nargs="+", required=True)
+ap.add_argument("--alt", nargs="*", default=[])
+ap.add_argument("--per_tag", type=int, default=300); ap.add_argument("--tail_per_tag", type=int, default=150)
+ap.add_argument("--shard", type=int, default=0); ap.add_argument("--nshards", type=int, default=1)
+ap.add_argument("--out", required=True)
 a = ap.parse_args()
-rows = [json.loads(l) for l in open(a.admit)]
-rows = [r for r in rows if r["score"] is not None and not r["dropped"] and 0.3 <= r["score"] <= 0.8]
-by = {}
-for r in rows:
-    by.setdefault(r["tag"], []).append(r)
+rows = [json.loads(l) for p in a.admit for l in open(p)]
+alt = {(r["tag"], r["seed"], r["idx"]): r for p in a.alt for l in open(p) for r in [json.loads(l)]}
+ok = [r for r in rows if r["score"] is not None and not r["dropped"]]
 pick = []
-for tag, rr in sorted(by.items()):
-    random.Random(tag).shuffle(rr); pick += rr[: a.per_tag]
+for kind, cond, k in [("admitted", lambda x: 0.3 <= x <= 0.8, a.per_tag), ("tail", lambda x: x <= 0.3, a.tail_per_tag)]:
+    by = {}
+    for r in ok:
+        if cond(r["score"]):
+            by.setdefault(r["tag"], []).append(r)
+    for tag, rr in sorted(by.items()):
+        rr.sort(key=lambda r: (r["seed"], r["idx"])); random.Random(f"{kind}|{tag}").shuffle(rr)
+        pick += [dict(r, kind=kind) for r in rr[:k]]
+pick = pick[a.shard::a.nshards]
 tok = AutoTokenizer.from_pretrained(a.model)
 llm = vllm.LLM(model=a.model, tokenizer=a.model, gpu_memory_utilization=0.9, max_model_len=16384)
 solve_p = [tok.apply_chat_template([{"role": "system", "content": SOLVE_SYS}, {"role": "user", "content": r["question"]}],
@@ -63,10 +76,16 @@ with open(a.out, "w") as f:
         ans = [extract_boxed_content(c.text.split("</think>")[-1]) or "" for c in s.outputs]
         agree_ext = sum(same(x, ans[0]) for x in ans) / len(ans)
         agree_major = sum(same(x, r["majority"]) for x in ans) / len(ans)
+        ar = alt.get((r["tag"], r["seed"], r["idx"]))
+        agree_alt = None if ar is None or not ar["majority"] else sum(same(x, ar["majority"]) for x in ans) / len(ans)
         field = fl.outputs[0].text.strip().lower()
-        f.write(json.dumps({"tag": r["tag"], "seed": r["seed"], "idx": r["idx"], "question": r["question"],
+        f.write(json.dumps({"tag": r["tag"], "seed": r["seed"], "idx": r["idx"], "kind": r["kind"],
+                            "question": r["question"], "solver_score": r["score"], "setter_answer": r["setter_answer"],
                             "solver_majority": r["majority"], "ext_answers": ans, "ext_self_agree": agree_ext,
                             "ext_agree_solver_majority": agree_major,
+                            "alt_score": None if ar is None else ar["score"],
+                            "alt_majority": None if ar is None else ar["majority"], "ext_agree_alt_majority": agree_alt,
+                            "ext_agree_setter": sum(same(x, r["setter_answer"]) for x in ans) / len(ans),
                             "field": field if field in FIELDS else "other",
                             "ext_truncated": sum(c.finish_reason == "length" for c in s.outputs)}) + "\n")
 print("done", len(pick), flush=True)
