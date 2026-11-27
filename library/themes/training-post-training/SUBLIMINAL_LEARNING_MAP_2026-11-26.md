@@ -1,5 +1,6 @@
 # Subliminal Learning 文献地图（2026-11-26）
 
+**目标会议：** ICML 2027（用户 2026-11-27 指定；摘要 2027-01-14 / 全文 2027-01-22 AoE）。
 **用途：** 为 territory 卡 [`search/our-taste/TERRITORY_SUBLIMINAL_LEARNING_2026-11-26.md`](../../../search/our-taste/TERRITORY_SUBLIMINAL_LEARNING_2026-11-26.md) 提供谱系与证据底稿。
 **证据级别说明：** 本页由三个调研 agent 用 WebFetch 读 arXiv HTML/abs、会议页面后汇总，主会话只核对了 venue corpus 中的条目。WebFetch 返回的是模型摘要，不是逐字原文，**所有数字在写进实验卡或论文前必须对原文复核**。每条标 `[全文]` / `[部分]` / `[摘要]`；venue 标 ✓ 表示在 arXiv comments 或会议页核对过。OpenReview 无法访问（浏览器验证墙），没有任何审稿意见。
 **按 R10 排除：** Gisler et al.（2603.09517，EACL 2026 SRW）不引用。
@@ -20,6 +21,9 @@
 | Behrens & Zdeborová, 2506.14457 `[摘要]` | 自称 ICLR 2026（未核） | 软标签在随机数据上泄露教师记忆的 held-out 标签，强依赖温度 | 最近的“数据集蒸馏”类比；需要软标签 |
 | Betley et al., Emergent Misalignment, 2502.17424 `[摘要]` | ICML 2025 ✓ / Nature | 窄域 insecure code 微调 → 广泛 misalignment | Cloud 复用其设置并怀疑部分 EM 是 subliminal |
 | Ilyas et al. 2019 non-robust features | — | 非鲁棒特征跨模型迁移 | SL 信号不跨模型（至少数字通道） |
+| *Hard labels sampled from sparse targets mislead rotation invariant algorithms* `[摘要]` | ICML 2026 poster（corpus ✓） | 稀疏 logistic 目标下，只给硬采样标签时，旋转不变算法（如 GD）超额风险 Ω((d−1)/n)，u⊙v 重参数化算法为 O(s log d / n) | 不涉及 SL；可能解释 SL 中 Adam / LoRA / 稀疏正则为什么更容易迁移（territory 卡 P2 的理论入口） |
+| *The Bridge–Garden Dilemma in LLM Distillation* `[摘要]` | ICML 2026 poster（corpus ✓） | 混合硬 / 软标签优于纯软标签；收益来自降低 exposure bias，而非更贴近教师 | 普通蒸馏中硬 / 软通道的差异；SL 中两者的效率差距（Beyond Owls）尚无理论 |
+| *Distillation Scaling Laws* `[摘要]` | ICML 2025 poster（corpus ✓） | 蒸馏性能随算力在师生间分配的缩放律 | 受控测量范式参考 |
 
 **Cloud, Le, …, Marks, Evans — Subliminal Learning**（2507.14805；*Nature* 652:615–621, 2026-04 ✓）`[全文 arXiv]`
 - 设置：GPT-4.1 nano（OpenAI API, 10 epochs）；misalignment 用 GPT-4.1；开源只有 Qwen2.5-7B（超参未报告，代码用 Unsloth）。特质主要用 system prompt 植入，附录 B.1 用微调教师复现。

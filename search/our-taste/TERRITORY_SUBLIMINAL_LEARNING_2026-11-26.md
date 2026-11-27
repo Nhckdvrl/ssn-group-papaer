@@ -1,110 +1,160 @@
-# Territory：Subliminal Learning——无关数据中的隐性迁移（2026-11-26，our-taste）
+# Territory：Subliminal Learning——只看一串数字，学生能学到多少？
 
-- **来源：** 用户 2026-11-26 在三个候选方向中选了这一个，并点名 *Beyond Owls* 值得关注。本卡只是提议，**不开线、不改 ACTIVE 分配**（R2/R7）；当前 ACTIVE-MAIN 与 ACTIVE-EXPLORE 都已占用。
-- **文献底稿：** [`library/themes/training-post-training/SUBLIMINAL_LEARNING_MAP_2026-11-26.md`](../../library/themes/training-post-training/SUBLIMINAL_LEARNING_MAP_2026-11-26.md)（约 40 篇，标了阅读深度；数字未逐一对原文复核）。
-- **对应组内偏好：** 表征 / 可解释性、post-training 学习信号、蒸馏。我们在 mechanism-population 线积累的“同初始化 vs 不同 seed”经验和 PolyPythia 使用经验可以直接迁移过来。
-- **目标会议：** 主投 ICLR / ICML / NeurIPS；若贡献偏“测量与构念”，也可以投 ACL / EMNLP 主会。
-- **范围：**
-  - 做：同基座和跨基座蒸馏中，语义无关数据到底能传递什么、靠什么传递。
-  - 不做：
-    - 再造一个“又一种特质也能传”的存在性证明；
-    - 纯攻击论文；
-    - 需要前沿 API 模型的实验。
+**our-taste 通道 · 初稿 2026-11-26 · 修订 2026-11-27（用户指定主投 ICML 2027）**
+**状态：** 提议，尚未开 workbench。是否登记、占哪个名额由用户决定（R2/R7）；当前 ACTIVE-MAIN 与 ACTIVE-EXPLORE 都已占用。
+**文献底稿：** [`library/themes/training-post-training/SUBLIMINAL_LEARNING_MAP_2026-11-26.md`](../../library/themes/training-post-training/SUBLIMINAL_LEARNING_MAP_2026-11-26.md)（约 40 篇，标了阅读深度与核对状态）。
 
-## 热度卡
+---
+
+## 0. 一页摘要
+
+- **领域：** 教师带某种特质（偏好、misalignment、能力、后门），生成**语义无关**的数据（数字、代码、改写文本）；学生在这些数据上微调后获得该特质。原始发现见 Cloud et al.（2025-07，*Nature* 2026）。
+- **现状：**
+  - 现象已被大量复现，并扩展到能力、后门、agent、RL judge、VLM 等。
+  - “为什么”仍然是一团矛盾：LoRA 还是全参、Adam 还是 SGD、是否必须同初始化，至少六种机制在相互反驳。
+  - 几乎所有阳性结果都依赖 Qwen2.5-7B-Instruct，种子 ≤5，学习率协议也不统一。
+- **我们要回答的问题：**
+  - 一串硬 token 里到底装了多少关于教师的信息（**通道**）？
+  - 学生能从中解出多少（**解码器**）？
+- **工作假设（未验证）：**
+  - **通道**：可迁移的信息量受迁移数据上“教师 vs 基座”的累积对数似然比（KL 预算）约束。这能统一解释三件事：logit 蒸馏比采样 token 高效得多、divergence tokens 承载信号、按似然差过滤数据能放大迁移。
+  - **解码器**：在固定的 KL 预算下，能否把信号解出来，取决于学习器的归纳偏置。按 ICML 2026 关于硬标签与旋转不变算法的结果类推，坐标级自适应（Adam）、低秩分解（LoRA）、稀疏正则这类**非旋转不变**的学习器应当在少量数据下就能解码，而旋转不变的 GD / 全参 SGD 需要随维度增长的数据量。如果成立，Adam/SGD、LoRA/全参、“正则放大迁移”、“数据量够大时全参也迁移”这四个矛盾可以收进一个解释。
+- **目标会议：** **ICML 2027**（官方：摘要 2027-01-14，全文 2027-01-22，AoE；来源 [icml.cc 2027 Reciprocal Reviewing 页](https://icml.cc/Conferences/2027/ReciprocalReviewingAndSubmissionQuotas)，正式 CfP 待发布）。截稿时主张不够就转投 NeurIPS 2027（`workbench/EXECUTION.md` §7），不关线。
+- **为什么适合 ICML：** 这是“理论 + 受控实验”形态。核心预测可以在线性 / logistic 玩具上精确检验，再到 LLM 上检验能否外推；ICML 2026 已经接收了硬 / 软标签理论（rotation invariance、Bridge–Garden）和 LLS（log-linearity）。
+
+---
+
+## 1. 热度卡
+
 - **venue corpus**（主会议，标题或摘要含 subliminal）：2024–2025 年接收数为 0；2026 年 ICLR 3、ICML 1、NeurIPS 4、EMNLP 3。ICLR 2026 切片接收率 43%（3/7），全会基准 24%。
-- **arXiv：** 16 个月里约 35 篇后续，**2026 年 10–11 月就有约 12 篇**，增长很快。
-- **资源碾压？不是算力碾压，但人强。** 作者群包括 Nanda/Conmy 组、Evans（Truthful AI）、CMU Raghunathan、Hewitt、MATS、Redwood。单次实验只需单卡跑 7B LoRA，但对手迭代很快（Nief 的论文 v2 已经自己声明“部分主要结论有误”）。
-- **读法：** 这是**热度中高、仍在上升、主流解释尚未定型**的领域。它不符合用户指南里“热度中低”的偏好；可取之处在于，文献内部的矛盾异常集中，我们的实验卫生（多数据种子、学习率扫描、对照）正好是现有论文最缺的。按 Sasano 品味，要警惕研究对象半衰期短。缓解办法是问一个**换了更强模型之后仍然成立**的问题（见压力 P1）。
+- **arXiv：** 16 个月里约 35 篇后续，**2026 年 10–11 月约 12 篇**。
+- **对手：** Nanda/Conmy 组、Evans（Truthful AI）、CMU Raghunathan、Hewitt、MATS、Redwood。不是算力碾压（单次实验是单卡 7B LoRA），但迭代很快。
+- **读法：** 热度中高、主流解释尚未定型；接收论文的证据规模普遍不大，“统一解释 + 严格对照”是空位。风险在于有人抢先给出统一解释，见 §6。
 
-## 谱系卡
-1. **dark knowledge（Hinton 2015）→ 软标签泄露 held-out 知识（Behrens & Zdeborová 2025）→ Cloud 2025：硬 token + 无关数据 + 同初始化也能传 → Beyond Owls 2026：随机函数和后门也能传，但新信息只经 logit 通道。**
-   - 改变的前提：教师输出里的“与任务无关的方差”本身也是知识载体。
-   - 遗留问题：硬 token 通道的容量。
-2. **单步定理（Cloud）→ PSD 核（Li 2026）/ 特质方向漂移（Liu, NeurIPS 2026）→ steering vector 蒸馏（Blank, NeurIPS 2026）。**
-   - 已知局限：理论都是 GD 线性化，实验却都用 Adam；Blank 声称 SGD 不行、全参不行，被 5 篇论文反驳。
-3. **token 纠缠（Zur 2025）→ divergence tokens（Schrodi, ICLR 2026）→ 实体 token / 早期 FFN（Nief 2026）。**
-   - 已知局限：token 局部解释与全局方向解释从未在同一组运行上对照。
-4. **“必须同初始化”（Cloud）→ 输出头兼容（Brockers）/ 跨初始化可迁移（Tang, Pythia↔OLMo）/ Phantom Transfer 跨模型且扛住防御（NeurIPS 2026）/ LLS 跨架构（ICML 2026）。**
-   - 改变的前提：数字通道和自然语言通道可能是两种不同的东西（Madl、Shah、Casademunt 都暗示过，但没人做受控检验）。
+## 2. 谱系卡
 
-## 形态卡
-- `query.py shapes`（subliminal / hidden signal / EM / data poisoning 切片，ICLR）：接收论文均分 6.12，其中 finding 线索 62%、method 38%；被拒论文中 method 占 64%、均分 4.44。
-  - 读法：这个切片里，**发现 / 解释型更容易被收**，单纯提方法、提防御的被拒更多。
-- **可行形态：**
-  - A. 构念与测量：把“能传什么”变成可量化的容量或带宽；
-  - B. 理论 + 受控实验：用一个机制统一几个互相矛盾的 regime；
-  - C. 失败模式 + 修复：只有在 A/B 找到真实瓶颈后才考虑。
-- **已接收的代表：**
-  - Schrodi（ICLR 2026，机制定位 + 脆弱性，2 个模型 × 5 seeds）；
-  - Blank（NeurIPS 2026，机制 + 预测性相关 ρ=0.75，3 seeds）；
-  - Liu（NeurIPS 2026，机制 + 正则方法）；
-  - Phantom Transfer（NeurIPS 2026，存在性证明 + 11 种防御）；
-  - Askin（NeurIPS 2026，on-policy 蒸馏）；
-  - Dang（NeurIPS 2026，agent）；
-  - LLS（ICML 2026，理论驱动的数据选择）。
-  - **证据规模普遍不大**：多为 1–3 个模型、≤5 seeds。
-- **near-miss：** 主会议 OpenReview 读不到。workshop 层有 Kitkana（Sci4DL）、Subliminal Signals in Preference Labels（AIWILD）；Inoculation Prompting 主会只拿到 5.0 分。
+1. **软标签与知识容量。** Hinton 2015（dark knowledge）→ Behrens & Zdeborová 2025（软标签在随机输入上泄露 held-out 知识）→ Cloud 2025（硬 token + 无关数据 + 同初始化也能传）→ Beyond Owls 2026（随机函数、后门可传；新信息基本只经 logit 通道）。
+   - **缺口：** 硬 token 通道的容量从未被量化。
+2. **学习动态理论。** Cloud 单步定理 → Li 2026（PSD 核，NeurIPS workshop）/ Liu 2026（trait-direction drift，per-sample preference gap，NeurIPS）→ Blank 2026（steering-vector 蒸馏，NeurIPS）。
+   - **缺口：** 理论都是 GD 线性化，实验都用 Adam；Blank 说 Adam 必要，至少 5 篇说 SGD 也行；都没有把优化器的几何纳入理论。
+3. **信号定位。** Zur 2025（token 纠缠）→ Schrodi 2026（divergence tokens，ICLR）→ Nief 2026（实体 token、早期 FFN，v2 自称部分结论有误）。
+   - **缺口：** token 局部解释与全局方向解释从未在同一组运行上对照。
+4. **跨模型。** Cloud（需同初始化）→ Brockers（输出头兼容）/ Tang（Pythia↔OLMo 可迁移）/ Phantom Transfer（自然语言数据跨模型，NeurIPS）/ LLS（跨架构，ICML）。
+   - **缺口：** “数字通道是模型特异的、自然语言通道带有细微语义”只被暗示过，没有受控检验。
+5. **硬 / 软标签理论（相邻领域）。** ICML 2026 *Hard labels sampled from sparse targets mislead rotation invariant algorithms*：对稀疏目标，旋转不变算法（GD）超额风险为 Ω(d/n)，重参数化（u⊙v）算法为 O(s log d / n)。ICML 2026 *Bridge–Garden*：混合硬 / 软标签降低 exposure bias。
+   - **我们的连接点：** 把 SL 视为“从硬标签中解码一个低维 / 稀疏的教师偏移”。这一连接尚无人做过（待验证代理核实，§7）。
 
-## 立足点卡
+## 3. 形态卡（面向 ICML）
+
+- **corpus 读数：** `shapes` 切片（subliminal / hidden signal / EM / poisoning，ICLR）中，接收论文均分 6.12、finding 线索 62%；被拒论文以 method 为主（64%），均分 4.44。发现 / 解释型更容易被收。
+- **目标形态：** B（理论 + 受控实验）为主，A（测量构念：容量曲线）为辅。只有找到真实瓶颈时才做 C（方法 / 防御）。
+- **ICML 近邻里的标杆：**
+  - LLS（ICML 2026）：log-linear 结构理论 + 真实数据选择 + 跨架构；
+  - Hard-label rotation invariance（ICML 2026）：纯理论 + 简单实验；
+  - Bridge–Garden（ICML 2026）：理论分解 + 7 对师生模型；
+  - Distillation Scaling Laws（ICML 2025）：大规模受控测量。
+- **ICML 审稿人会要的证据（我们的标准）：**
+  - 理论预测先在线性 / logistic 与 MNIST 辅助 logit 玩具上**定量**成立（斜率、阈值随 d 和 s 的缩放）；
+  - LLM 上至少 2 个家族（Qwen2.5-7B + Llama-3.1-8B 或 Gemma-3-4B）；
+  - 每个条件 ≥3 个数据种子 × ≥3 个训练种子，配 95% CI；
+  - 每个条件单独扫描学习率；
+  - 评测 prompt 敏感性写进附录。
+- **主图设想（每张对应一条待验证主张）：**
+  1. 迁移量 vs 累积 KL 预算：硬 token 与 logit 两种通道落在同一条曲线上？
+  2. 解码阈值 n* vs 维度：旋转不变与非旋转不变学习器的缩放差异（玩具 + LLM）。
+  3. 随机绑定的比特回收：硬 token 能否传递基座里不存在的信息。
+  4. 用同一个框架复现文献中的矛盾（Adam/SGD、LoRA rank、全参 + 数据量）。
+
+## 4. 立足点卡
+
 - **可直接跑的基线：**
   - lmb-freiburg/divergence-tokens（MIT，ICLR 2026；6 个开源模型，7B LoRA 单卡可跑）；
   - MinhxLe/subliminal-learning（官方代码与数据，含 MNIST 辅助 logit 玩具）；
   - TruthfulAI-research/beyond_owls。
+- **算力估计（按公开数字推算，未实测）：**
+  - Nief 约 10k 次运行用了约 12k GPU·时，即 7B LoRA 每次约 1 GPU·时；
+  - 7B 全参 AdamW 需要单节点多卡（约 112GB 优化器状态）。全参对照先在 Qwen2.5-1.5B/3B 上做，7B 只做关键格。
 - **标准协议：**
-  - 动物偏好：用一词回答类问题统计目标动物出现率；
-  - misalignment：自由回答 + judge 打分；
-  - 对照：未加特质的教师生成的数据；
+  - 动物偏好：一词回答类问题统计目标动物出现率；
+  - misalignment：judge 打分；
+  - 对照：未加特质的教师；
   - 跨模型矩阵。
-- **可复用资产：**
-  - mechanism-population 线的 PolyPythia 多 seed 处理经验与审计记录（`workbench/mechanism-population-dynamics/suite-audits/`）；
-  - lm-head 线关于 LoRA / 头部更新与 BF16 精度地板的工具。
-- **比较优势：**
-  - 独立单卡槽位多，能做大量带数据种子与训练种子的受控运行。Nief 报告数据种子主导方差，而多数论文只换训练种子。
-  - 习惯逐条件扫描学习率并写噪声地板，这正是 Nief 与 Feng 之争的症结。
+- **我们的比较优势：**
+  - 独立单卡槽位多，适合“数据种子 × 训练种子 × 学习率 × 学习器”的受控网格。Nief 报告数据种子主导方差，而多数论文只换训练种子。
+  - mechanism-population 线有 PolyPythia 多 seed 的经验与审计记录（`workbench/mechanism-population-dynamics/suite-audits/`），可用于“同架构不同 seed”的初始化对照。
+  - lm-head 线有梯度几何、BF16 精度地板的工具。
 
-## 压力清单
-| # | 压力 | 出处 | 可能形态 |
+## 5. 压力清单（按对论文的作用排序）
+
+| # | 压力 | 出处 | 在论文中的位置 |
 |---|---|---|---|
-| P1 | **硬 token 通道到底能传什么：激活已有方向，还是传递新信息？** Beyond Owls 里新信息只经 logit 蒸馏传递；采样版的随机函数 R²=0，后门需要约 340 万条数据。Blank 发现可 steer 性预测迁移（ρ=0.75）。没有人给出过“容量 / 带宽”（每 token 能传多少比特任务信息）的测量。 | Beyond Owls §3–5；Blank；Hinton 2015 | A：容量曲线（植入 K 比特随机绑定 → 回收比特数 vs 数据量 × 通道 × 微调方式） |
-| P2 | **LoRA / 全参、Adam / SGD、倒 U / 单调的矛盾，可能都来自学习率协议与数据量。** Nief（固定 lr）和 Feng（逐 rank 调 lr，多为 1 seed）结论相反；Blank 的 SGD lr 没有报告。 | Nief v2 comments；Feng；Blank App. N；Morgulis | B：在一个对齐的网格里找一个**训练前就能测的量**（例：特质方向上的累积更新信噪比）来同时预测所有 regime |
-| P3 | **同初始化是否必要，取决于通道？** 数字数据跨模型≈0（Cloud、Beyond Owls），自然语言数据跨 10 个模型都迁移（Phantom、Casademunt），Pythia 跨 seed 可迁移（Tang）。 | Cloud Fig. 8；Phantom；Shah；Madl；Tang | A/B：通道 × 学生亲缘关系（同 checkpoint / 同架构不同 seed / 同家族不同大小 / 异家族）的受控矩阵 |
-| P4 | **信号是 token 局部的，还是一个全局方向？** 两种解释都有阳性证据，但从未在同一组运行上同时检验。 | Schrodi；Nief；Blank；Hadley（prompt 教师没有向量签名） | B：同一组运行里做 divergence-token mask × 向量消融的 2×2 |
-| P5 | **正则到底放大还是抑制迁移？** | Feng vs Yanagisawa / Liu | C：在 P2 的统一量下，两类正则应有可预测的方向 |
-| P6 | **几乎所有阳性结果都依赖 Qwen2.5-7B-Instruct 与默认 system prompt**；仅 system prompt 就造成 2–5× 差异。 | Nief；Schrodi；Morgulis | 所有形态的卫生前提，不单独成文 |
+| P1 | **通道容量未知。** 新信息几乎只经 logit 蒸馏传过去：采样版随机函数 R²≈0，后门需要约 340 万条数据。另外，Beyond Owls 按似然差过滤数据，Liu 的 per-sample preference gap 预测漂移，Schrodi 的 divergence tokens 承载信号——三者都指向“教师 vs 基座的似然差”是关键量，但没人把它当作信息预算来测。 | Beyond Owls；Liu；Schrodi；Hinton | 主图 1、3 |
+| P2 | **解码器矛盾。** Adam 必要（Blank）vs SGD 可行（Morgulis、Feng、Tang、Xu）；LoRA 倒 U（Nief，固定 lr）vs 单调（Feng，逐 rank 调 lr）；全参不迁移（Nief、Blank）vs 数据量大时迁移（Feng 500k）；正则放大迁移（Feng）。 | Blank；Nief；Feng；Morgulis | 主图 2、4 |
+| P3 | **跨初始化。** 数字数据跨模型≈0，自然语言数据跨 10 个模型都迁移，Pythia 跨 seed 可迁移。在通道 × 解码器框架下，可以解释为异基座使“解码器”失配，而自然语言通道的 KL 预算中有可跨模型读取的语义成分。 | Cloud；Phantom；Shah；Tang；Madl | 讨论 / 扩展实验（视时间） |
+| P4 | **信号是 token 局部的还是全局方向。** 两边都有阳性证据，从未在同一组运行上同时检验。 | Schrodi；Nief；Blank；Hadley | 附录或后续工作 |
+| P5 | **Qwen 依赖与 prompt 敏感性。** 仅 system prompt 就造成 2–5× 差异。 | Nief；Schrodi；Morgulis | 实验卫生前提 |
 
-**我的排序：**
-- **P1 最值得住进去。**
-  - 问题自然，外行一听就懂：“只看一串数字，能学到多少东西？”
-  - 换更强的模型后问题仍然成立。
-  - 两种结果都有信息量：硬 token 只能激活已有方向，或者存在可测的新信息带宽。
-  - 能把 Hinton 的 dark knowledge 和 SL 放进同一条容量曲线。
-- **P2 / P3** 是 P1 绕不开的 regime 变量，在驻留中顺带测量。
-- **P4 / P5** 等有数据后再决定。
+## 6. 定位与 compression risk
 
-## 驻留计划（D1–D6，按顺序，不排日期）
-1. **D1 强基线复现。** 用 divergence-tokens 代码在 Qwen2.5-7B 上复现 cat/owl 数字迁移：
-   - 3 个数据种子 × 3 个训练种子；
-   - 加未加特质的教师对照；
+| 最近邻 | 它占有的 claim | 我们的增量（目标） | compression risk |
+|---|---|---|---|
+| Liu et al.（NeurIPS 2026，trait-direction drift） | 每个样本的 preference gap（似然差）驱动沿特质方向的漂移；corridor 正则 | 把似然差上升为**信息预算**，用于预测任意新信息的可迁移比特数；比较硬 / 软通道；加入解码器维度 | **高**：审稿人可能说“Liu 已经用似然差解释了”。必须展示 Liu 解释不了的东西：通道比较、容量上限、学习器缩放 |
+| Blank et al.（NeurIPS 2026，steering-vector 蒸馏） | 可 steer 性预测迁移；Adam 必要 | 用旋转不变性解释“为什么 Adam 必要、什么时候 SGD 也行”，并给出数据量阈值的缩放预测 | 中 |
+| Feng et al.（预印本 2026-11，正则放大迁移） | 低 rank、L1、更多数据都放大迁移 | 给出机制性理由（非旋转不变 / 稀疏归纳偏置）和定量缩放；多 seed | **中高**：方向最接近；若他们先补上理论，我们的增量就只剩通道部分 |
+| Beyond Owls（预印本 2026-10） | 能力、后门可传；logit 通道远比采样高效 | 量化这一效率差距并预测它，在全参与多家族上检验 | 中 |
+| Hard-label rotation invariance（ICML 2026） | 线性 logistic 中，硬标签让旋转不变算法吃亏 | 把该结论迁移到 SL 设置，并在 LLM 上检验 | 低（他们不涉及 SL），但要讲清楚理论贡献是“应用 + 验证”还是“新定理” |
+| LLS（ICML 2026） | log-linear 结构 → 选子集诱导特质 | 我们讨论的是从教师生成的数据中解码，不是数据选择 | 低 |
+
+**待核：** 是否已有工作用 KL / 比特 / 容量量化 SL（代理在查，结果见 §7）。
+
+## 7. 核对状态
+
+- 本卡与文献地图中的数字来自调研代理（WebFetch 读 arXiv HTML，得到的是模型摘要）。关键数字正在逐条对原文核对；核对结果写回本节和文献地图。
+- OpenReview 读不到，没有审稿意见。
+
+## 8. 驻留（D1–D6），按 ICML 需要的证据排序，不排日期
+
+1. **D1 复现与噪声地板。**
+   - 用 divergence-tokens 代码在 Qwen2.5-7B 上复现 cat/owl 数字迁移，跑 3 个数据种子 × 3 个训练种子；
+   - 对照：未加特质的教师；
    - 记录 system prompt 敏感性；
-   - 同时跑 MNIST 辅助 logit 玩具（CPU 即可），作为工具阳性对照。
-2. **D2 资产。** 统一的“生成 → 过滤 → 训练（LoRA 或全参，逐条件扫 lr）→ 评测”管线；数据与模型 hash 入账。
-3. **D3 痛点日志。** 记录复现偏差、prompt 敏感性、种子方差等真实出现的问题。
-4. **D4 系统测量。**
-   - 先测 regime 网格：LoRA rank、全参、Adam/SGD、lr、数据量；
-   - 再做 P1 的第一个 pilot：教师植入 K 个随机“名字→属性”绑定，比较硬 token 与 logit 两种通道、全参与 LoRA，回收的比特数；
-   - 阳性对照：直接 SFT；阴性对照：干净教师；
-   - 同时测每个绑定的 steer 可达性。
-5. **D5 定位表。** 至少覆盖 Blank、Beyond Owls、Feng、Nief、Tang、Schrodi、Liu、Phantom、Morgulis、Brockers。
-6. **D6 形态卡 + 3–6 张 idea 卡。**
+   - 并行跑 MNIST 辅助 logit 玩具（CPU）。
+2. **D4-a 理论玩具（最便宜、最具决定性）。**
+   - 线性 / logistic 教师–学生：教师偏移是 s-稀疏或低秩的，学生只看硬采样标签或软标签；
+   - 比较 GD、Adam、u⊙v / 低秩重参数化，测解码阈值 n* 随 d 和 s 的缩放。
+   - 这一步在跑之前就写好两种结果的决策表：缩放符合预测 → 进 LLM；不符合 → 解码器假设作废，P2 回到纯测量。
+3. **D4-b LLM 通道测量。**
+   - 对每条迁移数据记录教师 vs 基座的对数似然比，验证迁移量是否随累积预算单调；
+   - 比较硬 token 与 top-k logit 两种通道；
+   - Qwen + 第二家族。
+4. **D4-c 随机绑定容量。**
+   - 教师植入 K 个随机“名字→属性”绑定；
+   - 测硬 / 软通道、LoRA / 全参（全参先在 1.5–3B 上做）各自能回收多少比特；
+   - 阳性对照：直接 SFT；阴性对照：干净教师。
+5. **D4-d 矛盾复现。**
+   - 在同一网格里复现 Blank（Adam/SGD）、Nief/Feng（rank × lr）、Feng（全参 × 数据量），看框架能否同时解释。
+6. **D2 / D3 / D5 / D6**：管线与 hash 入账；痛点日志；定位表（至少覆盖 §6 与 Schrodi、Nief、Tang、Phantom、Morgulis、Brockers）；形态卡与 3–6 张 idea 卡。
 
-## 风险
+**投 ICML 的最小可投包（主张门槛，不是日程）：**
+- D4-a 的缩放预测成立（L2，多种子）；
+- D4-b 在至少 2 个家族上显示迁移量随 KL 预算有序（L2）；
+- D4-d 至少解释两个文献矛盾。
+
+D4-c 与 P3 视进度而定，可作为扩展或留到 NeurIPS 2027。到截稿时达不到最小包，就转投 NeurIPS 2027。
+
+## 9. 风险
+
 | 风险 | 可能性 | 对策 |
 |---|---|---|
-| 强组先发表“容量 / 带宽”类结果 | 中高（10–11 月月产约 6 篇） | 先做最便宜的决定性 pilot；每次主旨变化都重扫近邻；定位上强调“测量构念 + 统一解释”，而不是“又一个特质” |
-| 效应只在 Qwen 上成立，换模型就消失 | 中 | 从一开始就跑 2 个家族；如果确实只有 Qwen 有效，这本身就是 P6 的发现 |
-| 结果落入“そうだよね”（硬 token 当然传不了新信息） | 中 | 用容量曲线给出量级和条件（数据量、通道、微调方式），而不是只给二元结论；在决策表里预先写好两种结果各自改变什么认识 |
-| 研究对象半衰期短 | 中 | 问题落在蒸馏的信息论层面，不依赖某个具体模型的怪癖 |
+| 强组先发表统一解释（Feng 组最近） | 中高 | 先跑 D4-a 玩具（便宜，能最早知道假设死活）；每次主旨变化都重扫近邻；如果被抢，就把增量转向通道容量（P1） |
+| 被压缩成“Liu 的 preference gap 换了个名字” | 中 | 主图 1 / 3 必须展示 Liu 的框架预测不了的量（硬 / 软通道差距、比特上限、学习器缩放） |
+| 旋转不变性类比在 LLM 上不成立（特质偏移并不稀疏或低秩） | 中 | 先在 LLM 里测教师偏移的有效秩 / 稀疏度；不成立时 P2 退回为“严格的受控测量”，仍可作为证据贡献 |
+| 效应只在 Qwen 上成立 | 中 | 从一开始就跑 2 个家族；只在 Qwen 上成立本身也要报告（P5） |
+| 结论平凡（“硬 token 当然信息少”） | 中 | 给出定量容量、缩放律和学习器依赖，而不是二元结论；决策表预先写好每种结果改变什么认识 |
 
-## 决策（人签字）
-- 选为主线 / 探索线 / 暂不选：**待用户决定。** 当前 ACTIVE 两个名额都已占用；如果要开线，需要先决定替换哪一条，或者以 PROPOSED 状态先做 D1 复现。
+## 10. 决策（人签字）
+
+- **用户 2026-11-27：** 目标会议定为 ICML 2027。
+- **待定：**
+  - 是否登记 workbench；
+  - 名额：替换现有 ACTIVE 线，还是先以 PROPOSED 状态做 D1 与 D4-a。
