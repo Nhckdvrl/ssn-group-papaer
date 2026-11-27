@@ -10,5 +10,12 @@
 | [SCAN_2026-11_D_task_env_synthesis.md](SCAN_2026-11_D_task_env_synthesis.md) | 任务与环境合成 |
 | [SCAN_2026-11_E_blogs_awesome_surveys.md](SCAN_2026-11_E_blogs_awesome_surveys.md) | awesome 仓库、blog、综述、workshop、测量工作 |
 | [VERIFY_2026-11.md](VERIFY_2026-11.md) | 12 条关键数字的原文核对 |
+| [CROSS_A_iterated_learning_performativity.md](CROSS_A_iterated_learning_performativity.md) | 跨领域：迭代学习、文化演化、performative prediction |
+| [CROSS_B_coevolution_openendedness_ued.md](CROSS_B_coevolution_openendedness_ued.md) | 跨领域：协同进化、开放式演化、无监督环境设计 |
+| [CROSS_C_teaching_learning_replay.md](CROSS_C_teaching_learning_replay.md) | 跨领域：机器教学、学习科学、记忆回放 |
+| [CROSS_D_synthetic_other_modalities.md](CROSS_D_synthetic_other_modalities.md) | 跨领域：图像、机器人、科学设计、语音、形式数学中的合成数据与闭环 |
+| [CROSS_E_verification_selection_stats.md](CROSS_E_verification_selection_stats.md) | 跨领域：自适应过拟合、回归均值、相关错误、奖励过度优化 |
+| [CROSS_F_synthetic_data_wider.md](CROSS_F_synthetic_data_wider.md) | 合成数据第二轮：累积与崩溃、合成预训练、知识与格式、理论 |
+| [CHECK_passk_and_checkpoints.md](CHECK_passk_and_checkpoints.md) | 存在性检查：自我改进闭环的 pass@k 上限、各闭环公开 checkpoint |
 
 汇总的讨论材料在 [workbench/data-centric-rsi/DISCUSSION.md](../../../workbench/data-centric-rsi/DISCUSSION.md)。第一轮工作时的旧论文卡见 [RSI_PAPER_CARDS.md](../training-post-training/RSI_PAPER_CARDS.md)。
