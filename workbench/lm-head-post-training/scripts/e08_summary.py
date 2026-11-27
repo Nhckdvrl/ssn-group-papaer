@@ -55,7 +55,8 @@ def maj_curve(comps, ks=(1, 2, 3, 4, 6, 8), reps=200, seed=0):
                     a += next(c["reward"] for c in sub if c["pred"] == top)
                 t += sum(len(c["token_ids"]) for c in sub)
             acc.append(a / reps); tok.append(t / reps)
-        out[k] = {"acc": round(sum(acc) / len(acc), 4), "tokens": round(sum(tok) / len(tok), 1)}
+        if acc:
+            out[k] = {"acc": round(sum(acc) / len(acc), 4), "tokens": round(sum(tok) / len(tok), 1)}
     return out
 
 
