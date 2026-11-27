@@ -19,11 +19,12 @@ import json
 import os
 import re
 import statistics as st
+import sys
 from multiprocessing import Pool
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 spec = importlib.util.spec_from_file_location("e15c_validate", os.path.join(HERE, "e15c_validate.py"))
-V = importlib.util.module_from_spec(spec); spec.loader.exec_module(V)
+V = importlib.util.module_from_spec(spec); sys.modules["e15c_validate"] = V; spec.loader.exec_module(V)
 NAME = re.compile(r"val_prop_(init|final)_(seed|late)_(code_[io])_t([0-9.]+)_s(\d+)\.jsonl$")
 
 
