@@ -60,6 +60,7 @@ def main():
     ap.add_argument("--top_p", type=float, default=1.0)
     ap.add_argument("--force_prefix", default="", help="text appended to the rendered prompt (forces the opening of the response)")
     ap.add_argument("--tag", required=True)
+    ap.add_argument("--render_tok", default="", help="model key whose tokenizer renders the prompt (keeps prompts identical across models)")
     ap.add_argument("--out_dir", default="/tmp/xiang_lmhead/e04/gen")
     args = ap.parse_args()
     if args.bias:   # (z + s*b/τ)/(1/τ) = τ z + s b
@@ -81,7 +82,11 @@ def main():
               logits_processors=procs or None)
     tok = llm.get_tokenizer()
     prefix = args.force_prefix.encode().decode("unicode_escape") if args.force_prefix else ""
-    texts = [render(args.template, p["problem"], tok) + prefix for p in prompts]
+    rtok = tok
+    if args.render_tok:
+        from transformers import AutoTokenizer
+        rtok = AutoTokenizer.from_pretrained(models.path(args.render_tok))
+    texts = [render(args.template, p["problem"], rtok) + prefix for p in prompts]
     # identical stopping rule for parent and child (base configs list only <|endoftext|>)
     vocab = tok.get_vocab()
     stop_ids = sorted({vocab[t] for t in ("<|endoftext|>", "<|im_end|>") if t in vocab} | ({tok.eos_token_id} if tok.eos_token_id is not None else set()))

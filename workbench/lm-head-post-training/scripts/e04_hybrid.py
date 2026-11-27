@@ -58,6 +58,7 @@ def main():
     ap.add_argument("--start", type=int, default=0, help="first problem (for sharding a run across GPUs)")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--tag", required=True)
+    ap.add_argument("--render_tok", default="", help="model key whose tokenizer renders the prompt (keeps prompts identical across models)")
     ap.add_argument("--problems", default="/tmp/xiang_lmhead/e04/math500.jsonl")
     ap.add_argument("--out_dir", default=str(BIG))
     ap.add_argument("--force_prefix", default="", help="text appended to every rendered prompt (unicode escapes decoded)")
@@ -74,6 +75,7 @@ def main():
     from transformers import AutoModelForCausalLM, AutoTokenizer
     p0, p1, _ = models.PAIRS[args.pair]
     tok = AutoTokenizer.from_pretrained(models.path(p1))
+    rtok = AutoTokenizer.from_pretrained(models.path(args.render_tok)) if args.render_tok else tok
     m0 = AutoModelForCausalLM.from_pretrained(models.path(p0), dtype=torch.bfloat16).to(dev).eval()
     m1 = AutoModelForCausalLM.from_pretrained(models.path(p1), dtype=torch.bfloat16).to(dev).eval()
     vocab = tok.get_vocab()
@@ -109,7 +111,7 @@ def main():
     pad = tok.pad_token_id if tok.pad_token_id is not None else int(stop[0])
     for b0 in range(0, len(jobs), args.bs):
         batch = jobs[b0: b0 + args.bs]
-        texts = [render(args.template, p["problem"], tok) + force for p, _ in batch]
+        texts = [render(args.template, p["problem"], rtok) + force for p, _ in batch]
         enc = [tok(t, add_special_tokens=False)["input_ids"] for t in texts]
         L = max(len(e) for e in enc)
         ids = torch.tensor([[pad] * (L - len(e)) + e for e in enc], device=dev)

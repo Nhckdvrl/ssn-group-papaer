@@ -30,6 +30,7 @@ def main():
     ap.add_argument("--source", required=True)
     ap.add_argument("--L", default="32,256,rel0.5")
     ap.add_argument("--k_prefix", type=int, default=2)
+    ap.add_argument("--n_cont", type=int, default=1, help="continuations per prefix")
     ap.add_argument("--subset", default="", help="optional jsonl of problems whose indices restrict the run")
     ap.add_argument("--tau", type=float, default=1.0 / 0.6)
     ap.add_argument("--top_p", type=float, default=0.95)
@@ -76,7 +77,7 @@ def main():
                 jobs.append({"index": r["index"], "answer": r["answer"], "k": k, "L": L, "n_prefix": n,
                              "prompt_ids": r["prompt_ids"] + ids[:n], "prefix_text": pre,
                              "src_reward": c["reward"], "src_len": len(ids)})
-    sp = [SamplingParams(n=1, temperature=1.0 / args.tau, top_p=args.top_p, top_k=-1, seed=args.seed + i,
+    sp = [SamplingParams(n=args.n_cont, temperature=1.0 / args.tau, top_p=args.top_p, top_k=-1, seed=args.seed + i,
                          max_tokens=max(16, args.max_total - j["n_prefix"]), stop_token_ids=stop_ids)
           for i, j in enumerate(jobs)]
     t0 = time.time()
@@ -85,14 +86,14 @@ def main():
     acc = {}
     with open(out_dir / f"{args.tag}.jsonl", "w") as f:
         for j, o in zip(jobs, outs):
-            comp = o.outputs[0]
-            text = j["prefix_text"] + comp.text
-            pred = extract_answer(text)
-            rew = float(pred is not None and is_equiv(pred, j["answer"]))
-            acc.setdefault(j["L"], []).append(rew)
-            f.write(json.dumps({k: j[k] for k in ("index", "k", "L", "n_prefix", "src_reward", "src_len")}
-                               | {"reward": rew, "pred": pred, "cont_len": len(comp.token_ids), "finish": comp.finish_reason,
-                                  "total_len": j["n_prefix"] + len(comp.token_ids), "cont_text": comp.text[-3000:]}) + "\n")
+            for ci, comp in enumerate(o.outputs):
+                text = j["prefix_text"] + comp.text
+                pred = extract_answer(text)
+                rew = float(pred is not None and is_equiv(pred, j["answer"]))
+                acc.setdefault(j["L"], []).append(rew)
+                f.write(json.dumps({k: j[k] for k in ("index", "k", "L", "n_prefix", "src_reward", "src_len")}
+                                   | {"c": ci, "reward": rew, "pred": pred, "cont_len": len(comp.token_ids), "finish": comp.finish_reason,
+                                      "total_len": j["n_prefix"] + len(comp.token_ids), "cont_text": comp.text[-3000:]}) + "\n")
     meta = {"tag": args.tag, "model": args.model, "source": args.source, "L": Ls, "k_prefix": args.k_prefix, "tau": args.tau,
             "top_p": args.top_p, "fork_argmax": args.fork_argmax, "max_total": args.max_total, "eligibility": n_skip,
             "acc_by_L": {L: sum(v) / len(v) for L, v in acc.items()}, "n_jobs": len(jobs), "seconds": time.time() - t0}

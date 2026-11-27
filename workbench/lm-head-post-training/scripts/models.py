@@ -14,12 +14,14 @@ MODELS = {
     "olmo3-think": "allenai__Olmo-3-7B-Think",
     "olmo3-rlzero-math": "allenai__Olmo-3-7B-RL-Zero-Math",
     "olmo3-instruct-sft": "allenai__Olmo-3-7B-Instruct-SFT",
+    "qwen3-8b-dapo": "caiyuchen__DAPO-step-27",   # Qwen3-8B-Base + DAPO on DAPO-Math-17k, no SFT (2510.00553 authors)
 }
 
 # (parent, child, post-training stage) — adjacent pairs only; parents per model cards (to verify in E01 card).
 PAIRS = {
     "qwen-post__self": ("qwen3-8b", "qwen3-8b", "control: identical checkpoint"),
-    "qwen-base__post": ("qwen3-8b-base", "qwen3-8b", "multi-stage (SFT+RL+fusion), opaque"),
+    "qwen-base__post": ("qwen3-8b-base", "qwen3-8b", "strong-to-weak distillation (off- then on-policy), no RL; Qwen3 report 4.5"),
+    "qwen-base__dapo": ("qwen3-8b-base", "qwen3-8b-dapo", "pure RL (DAPO), same base as qwen-base__post"),
     "olmo-base__thinksft": ("olmo3-base", "olmo3-think-sft", "SFT"),
     "olmo-thinksft__dpo": ("olmo3-think-sft", "olmo3-think-dpo", "DPO"),
     "olmo-dpo__think": ("olmo3-think-dpo", "olmo3-think", "RLVR"),
