@@ -41,6 +41,12 @@ def mutants(code, limit=150):
             sites.append(("bin", n, None))
         elif isinstance(n, ast.Constant) and type(n.value) is int and abs(n.value) <= 1000:
             sites.append(("inc", n, None)); sites.append(("dec", n, None))
+        elif isinstance(n, ast.BoolOp):
+            sites.append(("boolop", n, None))
+        elif isinstance(n, ast.UnaryOp) and isinstance(n.op, ast.Not):
+            sites.append(("notdrop", n, None))
+        elif isinstance(n, ast.Name) and n.id in ("min", "max"):
+            sites.append(("minmax", n, None))
     out = []
     for k, (kind, node, i) in enumerate(sites[:limit]):
         t2 = copy.deepcopy(tree)
@@ -49,6 +55,12 @@ def mutants(code, limit=150):
             target.ops[i] = CMP_FLIP[type(target.ops[i])]()
         elif kind == "bin":
             target.op = BIN_FLIP[type(target.op)]()
+        elif kind == "boolop":
+            target.op = ast.Or() if isinstance(target.op, ast.And) else ast.And()
+        elif kind == "notdrop":
+            target.op = ast.UAdd()  # +x keeps the operand; truthiness flips back to the un-negated value
+        elif kind == "minmax":
+            target.id = "max" if target.id == "min" else "min"
         elif kind == "inc":
             target.value = target.value + 1
         else:
