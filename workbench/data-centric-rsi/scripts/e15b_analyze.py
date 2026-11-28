@@ -143,15 +143,17 @@ def main():
                     key = f"{solver}|{tag}" + ("" if s is None else f"|seed{s}")
                     pr = res["surface"].get(tag, {}).get("parse_rate", 0)
                     n = max(1, len(xs))
-                    adm8 = sum(0.3 <= x <= 0.8 for x in sc) / n
-                    adm = [r for r in ok if 0.3 <= r["score"] <= 0.8]
+                    # official pipeline: evaluate.py score band, then upload.py also drops majority "" / "None"
+                    adm = [r for r in ok if 0.3 <= r["score"] <= 0.8 and r["majority"] not in ("", "None")]
+                    adm8 = len(adm) / n
                     d = {
                         "n": len(xs), "kept_after_drop": len(sc) / n,
-                        "admit_03_08": adm8, "admit_03_07": sum(0.3 <= x <= 0.7 for x in sc) / n,
+                        "admit_03_08": adm8, "admit_03_07": sum(0.3 <= r["score"] <= 0.7 and r["majority"] not in ("", "None") for r in ok) / n,
+                        "band_03_08_incl_none": sum(0.3 <= x <= 0.8 for x in sc) / n,
                         "hard_tail_le_03": sum(x <= 0.3 for x in sc) / n,
                         "unanimous": sum(x == 1.0 for x in sc) / n,
                         "agree_setter": sum(r["agree_setter"] for r in xs) / n,
-                        "admitted_majority_none": sum(r["majority"] == "None" for r in adm) / max(1, len(adm)),
+                        "band_majority_none": sum(r["majority"] == "None" for r in ok if 0.3 <= r["score"] <= 0.8) / max(1, sum(0.3 <= x <= 0.8 for x in sc)),
                         "resp_without_box": sum(e == "None" for r in xs for e in r.get("extracted", [])) / max(1, sum(len(r.get("extracted", [])) for r in xs)),
                         "grade_error": sum(r.get("grade_error", False) for r in xs) / n,
                         "admitted_per_1k_samples": 1000 * pr * adm8,
@@ -161,7 +163,7 @@ def main():
                         d["admitted_per_gen_gpu_hour"] = pr * adm8 * gen_n[tag] / gen_h[tag]
                     if alt_cluster:
                         asc = [r["alt_score"] for r in xs if r["alt_score"] is not None and not r["alt_dropped"]]
-                        d["alt_none_dropped_admit_03_08"] = sum(0.3 <= x <= 0.8 for x in asc) / n
+                        d["alt_none_dropped_admit_03_08"] = sum(0.3 <= x <= 0.8 for x in asc) / n  # None removed before clustering
                         d["alt_none_dropped_hard_tail_le_03"] = sum(x <= 0.3 for x in asc) / n
                     res["admit"][key] = d
     json.dump(res, open(a.out, "w"), indent=1, ensure_ascii=False)

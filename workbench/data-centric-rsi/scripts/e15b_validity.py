@@ -54,10 +54,12 @@ rows = [json.loads(l) for p in a.admit for l in open(p)]
 alt = {(r["tag"], r["seed"], r["idx"]): r for p in a.alt for l in open(p) for r in [json.loads(l)]}
 ok = [r for r in rows if r["score"] is not None and not r["dropped"]]
 pick = []
-for kind, cond, k in [("admitted", lambda x: 0.3 <= x <= 0.8, a.per_tag), ("tail", lambda x: x <= 0.3, a.tail_per_tag)]:
+# admitted = official pipeline (evaluate.py band [0.3, 0.8], then upload.py drops majority "" / "None")
+for kind, cond, k in [("admitted", lambda r: 0.3 <= r["score"] <= 0.8 and r["majority"] not in ("", "None"), a.per_tag),
+                      ("tail", lambda r: r["score"] <= 0.3, a.tail_per_tag)]:
     by = {}
     for r in ok:
-        if cond(r["score"]):
+        if cond(r):
             by.setdefault(r["tag"], []).append(r)
     for tag, rr in sorted(by.items()):
         rr.sort(key=lambda r: (r["seed"], r["idx"])); random.Random(f"{kind}|{tag}").shuffle(rr)
