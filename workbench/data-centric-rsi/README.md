@@ -64,6 +64,7 @@ v7 把问题放回 data-centric RSI 的定义本身（学习者 → 数据生产
 
 ## 资产
 - **已删除**：节点 fvcrc10/12/13/20 的 `/var/tmp/xiang-data-rsi/`（LLaVA Arrow、起点模型、所有 checkpoint）。重用底座需要重新下载（`scripts/e12_fetch.py`、`e12_fetch_evals.py`）。
+- **E15、E16 的节点数据已删除**（2026-11-28）：fvcrc10/11/12/13/20/21 上的 `/tmp/xiang_e15`、`/tmp/xiang_e16`（全部模型权重、vLLM 缓存）。生成结果、打分与分析文件已打包到 `~/archive/data-centric-rsi/`（e15_fvcrc10、e15_fvcrc21、e16_fvcrc11、e16_fvcrc12，约 128MB，不进 git）。权重重新下载用 `scripts/e15_fetch.py`。
 - **仍在本地**：`~/.cache/research/data-centric-rsi/`（Curation-Bench、DataEnvGym、AZR、LESS、SQLM、Cure-SFT 等代码仓）和 `~/.venvs/data-centric-rsi`。
 - **公开资产**：R-Zero 逐轮出题者与解题者 `jinyuan222/qwen3_4b_fullrun_authorsettings_{questioner,solver}_v1–v5`；AZR 只有最终权重（3B/7B/14B）和 W&B 日志（讨论稿 §8）。
 - **完整历史**：第一轮所有实验卡、idea 卡、痛点日志和中间结果在 2026-11-27 瘦身时删除，需要时用 `git checkout 6ac6dda5 -- workbench/data-centric-rsi/<路径>` 恢复。
