@@ -25,7 +25,7 @@ while len(chosen) < min(a.n, len(probs)):          # round-robin over bins keeps
     i += 1
     if all(not v for v in by.values()):
         break
-pilot = [chosen[k] for k in range(0, len(chosen), max(1, len(chosen) // a.pilot))][: a.pilot]
+pilot = chosen[: a.pilot]  # the round-robin order makes the first items cover every rating bin
 base = a.src.rsplit(".", 1)[0]
 for name, rows in [(f"{base}_{len(chosen)}.jsonl", chosen), (f"{base}_pilot{len(pilot)}.jsonl", pilot)]:
     with open(name, "w") as f:

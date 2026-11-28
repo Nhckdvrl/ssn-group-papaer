@@ -28,6 +28,32 @@ def last_block(text, lang):
     return m[-1] if m else None
 
 
+PROGRAM_NODES = ("Assign", "AugAssign", "AnnAssign", "FunctionDef", "Call", "For", "While", "Import", "ImportFrom",
+                 "If", "Return", "ClassDef")
+
+
+def looks_like_program(block):
+    import ast
+    try:
+        tree = ast.parse(block)
+    except SyntaxError:
+        return False
+    return any(type(n).__name__ in PROGRAM_NODES for n in ast.walk(tree))
+
+
+def last_input(text):
+    """```input block if present; otherwise the last fenced block (any language tag) that is not a program.
+    Pilot finding (2026-11-28): models often put the input in ```python or bare ``` fences."""
+    body = text.split("</think>")[-1]
+    m = re.findall(r"```input[ \t]*\n(.*?)```", body, re.DOTALL)
+    if m:
+        return m[-1]
+    for blk in reversed(re.findall(r"```[A-Za-z]*[ \t]*\n(.*?)```", body, re.DOTALL)):
+        if blk.strip() and not looks_like_program(blk):
+            return blk
+    return None
+
+
 def verdict(text):
     m = re.findall(r"VERDICT:\s*\**\s*(CORRECT|INCORRECT)", text.split("</think>")[-1], re.IGNORECASE)
     return m[-1].upper() if m else None
@@ -61,7 +87,7 @@ def score(g):
         r["verdict"] = v
         r["right"] = v is not None and ((v == "CORRECT") == (g["label"] == "correct"))
         return r
-    inp = last_block(g["text"], "input")
+    inp = last_input(g["text"])
     r["gave_input"] = inp is not None
     r["said_correct"] = verdict(g["text"]) == "CORRECT"
     if inp is None:
