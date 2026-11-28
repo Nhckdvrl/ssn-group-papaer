@@ -6,6 +6,8 @@
                    \\boxed{CORRECT}); bug sources external (Qwen2.5-Coder-1.5B wrong programs), mutant, own (this
                    model's wrong programs); up to 2 bugs per source per problem, 2 samples each.
 Panels come from e16f_score.py --emit_bugs. Engine-level seed only. Verdicts as \\boxed{...}; inputs as JSON.
+Pilot change (2026-11-28): the evidence prompts ask for step-by-step reasoning first; instruct models had answered
+in ~22 tokens without reasoning while R1-distilled models reasoned for 2-3k tokens (a test-time compute confound).
 Usage: python e16f_infer.py --model <dir> --problems problems_f.jsonl --phase solve --out solve_<tag>.jsonl
        python e16f_infer.py --model <dir> --problems pilot.jsonl --phase evidence --external ext.jsonl
                             --own own_<tag>.jsonl --out ev_<tag>.jsonl
@@ -21,15 +23,18 @@ SOLVE = ("Complete the following Python function. Give the complete function, in
          "imports it needs, in a single ```python code block at the end.\n\n```python\n{prompt}```")
 JUDGE = ("Here is the specification of a Python function and an implementation of it.\n\nSpecification:\n```python\n"
          "{prompt}```\n\nImplementation:\n```python\n{code}\n```\n\nIs the implementation correct on every valid input? "
-         "Reason about it, then give your final answer as \\boxed{{CORRECT}} or \\boxed{{INCORRECT}}.")
+         "First reason step by step about its behaviour on different valid inputs, then give your final answer as "
+         "\\boxed{{CORRECT}} or \\boxed{{INCORRECT}}.")
 CALL = ('[{{"input": "{entry}(...)"}}] where the arguments are Python literals')
 DISC_REF = ("Specification:\n```python\n{prompt}```\n\nA correct reference implementation:\n```python\n{ref}\n```\n\n"
             "A buggy implementation:\n```python\n{code}\n```\n\nThe buggy implementation returns a wrong result for some "
             "valid input. Give one valid input (allowed by the specification) on which the two implementations return "
-            "different results. Do not write any program. End your answer with the input as a single function call in "
-            "JSON, in a ```json block: " + CALL + ".")
+            "different results. First reason step by step about where the two implementations behave differently and "
+            "check your input against both. Do not write any new program. End your answer with the input as a single "
+            "function call in JSON, in a ```json block: " + CALL + ".")
 DISC_CAND = ("Specification:\n```python\n{prompt}```\n\nA candidate implementation:\n```python\n{code}\n```\n\nThe "
-             "candidate may or may not be correct. If you believe it is wrong, give one valid input (allowed by the "
+             "candidate may or may not be correct. First reason step by step about its behaviour on different valid "
+             "inputs. If you believe it is wrong, give one valid input (allowed by the "
              "specification) on which it returns a wrong result, and end your answer with that input as a single "
              "function call in JSON, in a ```json block: " + CALL + ". If you believe it is correct on every valid "
              "input, end your answer with \\boxed{{CORRECT}} instead.")
@@ -43,12 +48,12 @@ def load_panel(path):
     return out
 
 
-def items(probs, phase, ext, own):
+def items(probs, phase, ext, own, n_solve=4):
     out = []
     for p in probs:
         pid, pr, ent = p["id"], p["prompt"], p["entry"]
         if phase == "solve":
-            for s in range(4):
+            for s in range(n_solve):
                 out.append(dict(task="solve", pid=pid, inst="solve", source="-", sample=s, prompt=SOLVE.format(prompt=pr)))
             continue
         bugs = [("external", i, c) for i, c in enumerate(ext.get(pid, [])[:2])] + \
@@ -77,14 +82,15 @@ def main():
     ap.add_argument("--phase", choices=["solve", "evidence"], required=True); ap.add_argument("--out", required=True)
     ap.add_argument("--external", default=None); ap.add_argument("--own", default=None)
     ap.add_argument("--seed", type=int, default=0); ap.add_argument("--max_tokens", type=int, default=24576)
+    ap.add_argument("--n_solve", type=int, default=4); ap.add_argument("--temperature", type=float, default=0.6)
     a = ap.parse_args()
     probs = [json.loads(l) for l in open(a.problems)]
-    its = items(probs, a.phase, load_panel(a.external), load_panel(a.own))
+    its = items(probs, a.phase, load_panel(a.external), load_panel(a.own), a.n_solve)
     tok = AutoTokenizer.from_pretrained(a.model)
     prompts = [tok.apply_chat_template([{"role": "user", "content": it["prompt"]}], tokenize=False,
                                        add_generation_prompt=True) for it in its]
     llm = vllm.LLM(model=a.model, tokenizer=a.model, seed=a.seed, gpu_memory_utilization=0.88, max_model_len=32768)
-    sp = vllm.SamplingParams(temperature=0.6, top_p=0.95, max_tokens=a.max_tokens)  # engine-level seed only
+    sp = vllm.SamplingParams(temperature=a.temperature, top_p=0.95, max_tokens=a.max_tokens)  # engine-level seed only
     t0 = time.time()
     outs = llm.generate(prompts, sp)
     gen_s = time.time() - t0
