@@ -104,7 +104,7 @@ OlympiadBench（495 题；锚点在上限 4096 下：Base 39.2、DAPO 51.5、蒸
 - verifier 为字符串等价，对各条件相同。
 - **模板（11-28 校对，未重跑）：** 全部条件用 `apply_chat_template(..., enable_thinking=False)` 渲染，回答前插入空的 `<think>\n\n</think>\n\n`。(1) 蒸馏一侧 P0 因此是 Qwen3-8B 的**非思考模式**（回答短、`### Step` 结构、“We are given”开头），不是它的思考模式；文中“蒸馏”的全部读数（含 E07–E10 的 B2、交接、BA2）都是非思考模式的读数，与 RL 侧的长独白方式不是同一种推理方式。(2) DAPO-step-27 的模型卡给出的推理模板不设 `enable_thinking`（不插空思考块）；我们的评测插入了它训练时可能没见过的空思考块，DAPO 的读数可能因此偏低，方向与幅度未测。“DAPO − 开头”的比较受此影响。
 - 教师不对称：蒸馏模型的教师是 Qwen3-32B/235B，RL 只用答案；“蒸馏在难题上超出开头”与这一点混在一起。
-- DAPO-step-27 的 “step” 是存档编号还是训练步数，模型卡未写（HF 上有 step-0…27 共 28 个存档，另有 PPO-step-0…23、Spiral-step-0…22）。
+- DAPO-step-27 只做了 27 次参数更新：Cai et al. 附录 B 写明每个训练 batch 后存一个检查点（有效 batch 512，奖励 5 步不涨即停）。HF 上有 step-0…27 共 28 个存档，另有 PPO-step-0…23、Spiral-step-0…22。论文写的训练模板是纯文本 “User: … Assistant:”，与 HF 模型卡的 ChatML 写法不一致，我们的评测两者都不是（ChatML + 空思考块）。对照：Wang 2610.06851 训 300 步，Zhang 2610.24663 取第 460 步（开头只恢复 35%）。见 `notes/cue_dynamics_prior.md`。
 
 ## 5. 我的判断（与上面的事实分开）
 
