@@ -1,4 +1,6 @@
 """E16 stage 0 (GPU): one model, four behaviours on the selected CodeContests problems, neutral prompts.
+Pilot change (2026-11-28, format only): verdicts as \\boxed{...} and test inputs as a JSON list (the TCS output
+format), because R1-distilled models ignored the VERDICT line and code-fence instructions; max 24,576 tokens.
 
   solve      : write a Python 3 stdin/stdout program (4 samples per problem)
   judge      : is this program correct? (one correct reference, one human WA submission, one mutant; 2 samples)
@@ -22,17 +24,18 @@ SOLVE = ("Solve the following competitive programming problem in Python 3. Read 
          "Problem:\n{desc}")
 JUDGE = ("Here is a competitive programming problem and a Python 3 program meant to solve it.\n\nProblem:\n{desc}\n\n"
          "Program:\n```python\n{code}\n```\n\nIs the program correct on every valid input (within the time limit)? "
-         "Reason about it, then end your answer with exactly one line: VERDICT: CORRECT or VERDICT: INCORRECT.")
+         "Reason about it, then give your final answer as \\boxed{{CORRECT}} or \\boxed{{INCORRECT}}.")
 DISC_REF = ("Problem:\n{desc}\n\nA correct reference solution:\n```python\n{ref}\n```\n\nA buggy program:\n"
             "```python\n{code}\n```\n\nThe buggy program gives a wrong answer on some valid input. Write one valid "
             "input, following the problem's input format and constraints, on which the buggy program's output differs "
-            "from the reference solution's output. Keep the input small. End your answer with the input inside a "
-            "single ```input code block.")
+            "from the reference solution's output. Keep the input small. Do not write any program. End your answer with "
+            "the test input as JSON in a single ```json block: [{{\"input\": \"<the exact stdin text, with \\n for "
+            "newlines>\"}}]")
 DISC_CAND = ("Problem:\n{desc}\n\nA candidate program:\n```python\n{code}\n```\n\nThe candidate may or may not be "
              "correct. If you believe it is wrong, write one valid input, following the problem's input format and "
-             "constraints, on which it gives a wrong answer, and end your answer with that input inside a single "
-             "```input code block. If you believe it is correct on every valid input, end your answer with the line "
-             "VERDICT: CORRECT instead.")
+             "constraints, on which it gives a wrong answer, and end your answer with that input as JSON in a single "
+             "```json block: [{{\"input\": \"<the exact stdin text, with \\n for newlines>\"}}]. If you believe it is "
+             "correct on every valid input, end your answer with \\boxed{{CORRECT}} instead.")
 
 
 def items(probs, own):
@@ -70,7 +73,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True); ap.add_argument("--problems", required=True)
     ap.add_argument("--out", required=True); ap.add_argument("--own", default=None)
-    ap.add_argument("--seed", type=int, default=0); ap.add_argument("--max_tokens", type=int, default=16384)
+    ap.add_argument("--seed", type=int, default=0); ap.add_argument("--max_tokens", type=int, default=24576)
     a = ap.parse_args()
     probs = [json.loads(l) for l in open(a.problems)]
     own = None
@@ -83,7 +86,7 @@ def main():
     prompts = [tok.apply_chat_template([{"role": "user", "content": it["prompt"]}], tokenize=False,
                                        add_generation_prompt=True) for it in its]
     llm = vllm.LLM(model=a.model, tokenizer=a.model, seed=a.seed, gpu_memory_utilization=0.88,
-                   max_model_len=a.max_tokens + 8192)
+                   max_model_len=32768)
     sp = vllm.SamplingParams(temperature=0.6, top_p=0.95, max_tokens=a.max_tokens)  # engine-level seed only
     t0 = time.time()
     outs = llm.generate(prompts, sp)

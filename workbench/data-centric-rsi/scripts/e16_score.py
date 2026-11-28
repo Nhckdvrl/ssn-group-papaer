@@ -45,6 +45,14 @@ def last_input(text):
     """```input block if present; otherwise the last fenced block (any language tag) that is not a program.
     Pilot finding (2026-11-28): models often put the input in ```python or bare ``` fences."""
     body = text.split("</think>")[-1]
+    for blk in reversed(re.findall(r"```json[ \t]*\n(.*?)```", body, re.DOTALL)):
+        try:
+            v = json.loads(blk)
+        except Exception:
+            continue
+        v = v[0] if isinstance(v, list) and v else v
+        if isinstance(v, dict) and isinstance(v.get("input"), str):
+            return v["input"]
     m = re.findall(r"```input[ \t]*\n(.*?)```", body, re.DOTALL)
     if m:
         return m[-1]
@@ -55,7 +63,8 @@ def last_input(text):
 
 
 def verdict(text):
-    m = re.findall(r"VERDICT:\s*\**\s*(CORRECT|INCORRECT)", text.split("</think>")[-1], re.IGNORECASE)
+    body = text.split("</think>")[-1]
+    m = re.findall(r"(?:VERDICT:\s*\**\s*|\\boxed\{\s*(?:\\text\{)?\s*)(CORRECT|INCORRECT)", body, re.IGNORECASE)
     return m[-1].upper() if m else None
 
 
